@@ -516,6 +516,7 @@ def _dashboard_state(state: dict[str, Any], market_rows: list[dict[str, Any]], f
         "market_snapshot": market_rows,
         "positions": state.get("positions", []),
         "trade_events": state.get("trade_events", [])[-250:],
+        "summary": state.get("summary") or {},
         "warnings": _warnings(state, feed_rows),
     }
 
@@ -705,6 +706,7 @@ h1{{margin:0;font-size:24px}}h2{{font-size:17px}}#chart{{width:100%;min-width:0}
 table{{width:max-content;min-width:100%;border-collapse:collapse;font-size:13px}}
 th,td{{border-bottom:1px solid #2b3444;padding:6px 8px;text-align:left;white-space:nowrap;vertical-align:top}}
 th{{color:#9fb5d1}}.grid{{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;min-width:0}}
+.summary-line{{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 10px;color:#9fb5d1;font-size:14px}}.summary-line strong{{color:#e8edf4}}
 .ok{{color:#6de38b}}.warn{{color:#ffcf5a}}#warnings{{max-height:360px;overflow:auto}}
 #warnings ul{{margin:0;padding-left:1.1rem}}#warnings li{{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.35;margin:0 0 8px}}
 @media(max-width:1100px){{main{{padding:12px}}.grid{{grid-template-columns:minmax(0,1fr)}}}}
@@ -726,10 +728,12 @@ function parseUtc(v){{if(!v)return null;const text=String(v).includes('T')?Strin
 function formatPT(v){{const d=parseUtc(v);return d?ptDateTimeFmt.format(d):fmt(v);}}
 function chartPT(v){{const d=parseUtc(v);return d?ptChartFmt.format(d):fmt(v);}}
 function isTimeKey(key){{return /(^time_utc$|_at_utc$|_utc$)/.test(String(key));}}
-function cell(row,key){{return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
+function money(v){{if(v===null||v===undefined||v==='')return '--';const n=Number(v);return Number.isFinite(n)?`${{n<0?'-':''}}$${{Math.abs(n).toFixed(2)}}`:fmt(v);}}
+function cell(row,key){{if(String(key).endsWith('_dollars'))return money(row[key]);return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
 document.getElementById('meta').textContent=`Updated ${{formatPT(state.updated_at_utc)}} | fake-money-only | times shown in PT | refresh {refresh}s`;
 function table(rows,cols){{if(!rows||!rows.length)return '<em>none</em>';return '<div class="table-wrap"><table><thead><tr>'+cols.map(c=>`<th>${{c[0]}}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>`<td>${{cell(r,c[1])}}</td>`).join('')+'</tr>').join('')+'</tbody></table></div>';}}
-document.getElementById('positions').innerHTML=table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Stake','stake_dollars'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','unrealized_pnl_dollars'],['Target','target_progress_pct'],['Status','status']]);
+const summary=state.summary||{{}};
+document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Stake','stake_dollars'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['Open $','unrealized_pnl_dollars'],['Closed $','realized_pnl_dollars'],['Target','target_progress_pct'],['Status','status']]);
 document.getElementById('feeds').innerHTML=table(state.model_feed_status,[['Model','model_key'],['Provider','provider'],['Family','family'],['OK','success'],['High F','high_f'],['Generated (PT)','generated_at_utc'],['Elapsed','elapsed_seconds'],['Error','error_message']]);
 document.getElementById('market').innerHTML=table(state.market_snapshot,[['Bracket','bracket_label'],['YES bid','yes_bid_cents'],['YES ask','yes_ask_cents'],['NO bid','no_bid_cents'],['NO ask','no_ask_cents'],['Mid','market_midpoint_cents']]);
 document.getElementById('events').innerHTML=table((state.trade_events||[]).slice(-80).reverse(),[['Time (PT)','time_utc'],['Event','event_type'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Reason','reason']]);

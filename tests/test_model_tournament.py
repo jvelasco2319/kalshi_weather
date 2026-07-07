@@ -190,12 +190,27 @@ def test_dashboard_state_json_and_files_are_written(tmp_path) -> None:
         "model_feed_status",
         "market_snapshot",
         "positions",
+        "summary",
         "trade_events",
         "warnings",
     }
     assert json.loads((tmp_path / "model_tournament_summary.json").read_text())["total_positions"] >= 3
     assert loaded["temperature_observations"][-1]["latest_observed_temp_f"] == 68.7
     assert paths["dashboard"].endswith("dashboard.html")
+
+
+def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) -> None:
+    config = TournamentConfig(run_id="test")
+    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
+    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.45), previous_state=state, config=config)
+    write_tournament_files(state, tmp_path)
+
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+
+    assert "Closed bet money" in html
+    assert "closed_pnl_dollars" in html
+    assert "Closed $" in html
+    assert "realized_pnl_dollars" in html
 
 
 def test_dashboard_displays_times_in_pt(tmp_path) -> None:
