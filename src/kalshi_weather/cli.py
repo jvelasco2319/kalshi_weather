@@ -137,8 +137,10 @@ from kalshi_weather.model.model_estimates import (
 )
 from kalshi_weather.model_tournament import (
     TournamentConfig,
+    load_position_overrides,
     load_tournament_state,
     run_tournament_cycle,
+    update_position_override,
     write_tournament_files,
 )
 from kalshi_weather.model_registry import (
@@ -7678,7 +7680,13 @@ def model_tournament_run(
             force_model_recompute_every_iteration=force_model_recompute_every_iteration,
             model_refresh_seconds=0 if force_model_recompute_every_iteration else interval_seconds,
         )
-        state = run_tournament_cycle(model_payload=model_payload, previous_state=state, config=config)
+        position_overrides = load_position_overrides(out_dir)
+        state = run_tournament_cycle(
+            model_payload=model_payload,
+            previous_state=state,
+            config=config,
+            position_overrides=position_overrides,
+        )
         paths = write_tournament_files(state, out_dir)
         write_json_report(out_dir / "final_results.json", state.get("summary") or {})
         write_json_report(
@@ -7716,7 +7724,7 @@ def model_tournament_dashboard(
     port: int = typer.Option(8765, "--port", "--dashboard-port"),
     host: str = typer.Option("127.0.0.1", "--host"),
 ) -> None:
-    """Serve a read-only local dashboard for a model tournament run."""
+    """Serve a local dashboard for a model tournament run."""
     import functools
     import http.server
     import socketserver
@@ -7725,7 +7733,45 @@ def model_tournament_dashboard(
     dashboard_path = out_dir / "dashboard.html"
     if not dashboard_path.exists():
         raise typer.BadParameter(f"dashboard not found: {dashboard_path}")
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out_dir))
+
+    class TournamentDashboardHandler(http.server.SimpleHTTPRequestHandler):
+        def _write_json_response(self, status: int, payload: dict[str, Any]) -> None:
+            body = json.dumps(safe_console_payload(payload), separators=(",", ":")).encode("utf-8")
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def do_POST(self) -> None:  # noqa: N802 - inherited stdlib method name
+            if self.path.split("?", 1)[0] != "/api/position-overrides":
+                self.send_error(404, "not found")
+                return
+            try:
+                length = int(self.headers.get("Content-Length") or "0")
+            except ValueError:
+                self._write_json_response(400, {"ok": False, "error": "invalid content length"})
+                return
+            try:
+                body = self.rfile.read(length).decode("utf-8")
+                payload = json.loads(body or "{}")
+                state = update_position_override(out_dir, payload)
+            except (ValueError, json.JSONDecodeError) as exc:
+                self._write_json_response(400, {"ok": False, "error": str(exc)})
+                return
+            except Exception as exc:  # pragma: no cover - defensive local server guard
+                self._write_json_response(500, {"ok": False, "error": str(exc)})
+                return
+            self._write_json_response(
+                200,
+                {
+                    "ok": True,
+                    "summary": state.get("summary") or {},
+                    "updated_at_utc": state.get("updated_at_utc"),
+                },
+            )
+
+    handler = functools.partial(TournamentDashboardHandler, directory=str(out_dir))
     url = f"http://{host}:{port}/dashboard.html"
     console.print(f"Serving model tournament dashboard: {url}")
     console.print(f"Directory: {out_dir}")
