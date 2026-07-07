@@ -686,9 +686,34 @@ def _positions_for_dashboard(state: dict[str, Any], market_rows: list[dict[str, 
         row = dict(position)
         label = str(row.get("bracket_label") or "")
         row["_created_order"] = index
+        row["source_group"] = _position_source_group(row)
         row["bracket_model_count"] = int(bracket_counts.get(label, 0))
         rows.append(row)
     return sorted(rows, key=lambda row: _position_dashboard_sort_key(row, bracket_order))
+
+
+def _position_source_group(row: dict[str, Any]) -> str:
+    provider = str(row.get("provider") or "").lower()
+    family = str(row.get("model_family") or "").lower()
+    model_key = str(row.get("model_key") or "").lower()
+    if provider == "open_meteo" or model_key.startswith("open_meteo:"):
+        return "Open-Meteo"
+    if provider in {"noaa_herbie", "noaa"} or model_key.startswith("noaa_herbie:") or family in {
+        "hrrr",
+        "nbm",
+        "gfs",
+        "rap",
+        "nam",
+        "href",
+        "noaa",
+        "noaa_herbie",
+    }:
+        return "NOAA"
+    return "Other"
+
+
+def _position_source_group_rank(row: dict[str, Any]) -> int:
+    return {"Open-Meteo": 0, "NOAA": 1, "Other": 2}.get(str(row.get("source_group") or "Other"), 2)
 
 
 def _latest_estimated_bracket_counts(estimate_history: list[dict[str, Any]]) -> dict[str, int]:
@@ -713,6 +738,7 @@ def _position_dashboard_sort_key(row: dict[str, Any], bracket_order: dict[str, i
     side_rank = 0 if row.get("side") == "YES" else 1 if row.get("side") == "NO" else 2
     return (
         status_rank,
+        _position_source_group_rank(row),
         -int(row.get("bracket_model_count") or 0),
         bracket_order.get(label, 999),
         side_rank,
@@ -1038,7 +1064,7 @@ async function savePositionOverride(rowEl){{if(!rowEl)return;const positionId=ro
 document.addEventListener('click',event=>{{const button=event.target.closest('button[data-adjust-field]');if(!button)return;const rowEl=button.closest('tr[data-position-id]');const input=rowEl?.querySelector(`input[data-field="${{button.dataset.adjustField}}"]`);if(!rowEl||!input)return;const step=Number(input.dataset.step||input.step||1);const delta=Number(button.dataset.delta||0);const decimals=Number(input.dataset.decimals||2);const next=Math.max(Number(input.min||0),Number(input.value||0)+delta*step);input.value=next.toFixed(decimals);savePositionOverride(rowEl);}});
 document.addEventListener('change',event=>{{const input=event.target.closest('input[data-field]');if(!input)return;savePositionOverride(input.closest('tr[data-position-id]'));}});
 const summary=state.summary||{{}};
-document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Models','bracket_model_count'],['Stake','_stake_control'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','_target_control'],['Status','status'],['Why','_close_status_reason']]);
+document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Group','source_group'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Models','bracket_model_count'],['Stake','_stake_control'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','_target_control'],['Status','status'],['Why','_close_status_reason']]);
 document.getElementById('feeds').innerHTML=table(state.model_feed_status,[['Model','model_key'],['Provider','provider'],['Family','family'],['OK','success'],['High F','high_f'],['Generated (PT)','generated_at_utc'],['Elapsed','elapsed_seconds'],['Error','error_message']]);
 document.getElementById('market').innerHTML=table(state.market_snapshot,[['Bracket','bracket_label'],['YES bid','yes_bid_cents'],['YES ask','yes_ask_cents'],['NO bid','no_bid_cents'],['NO ask','no_ask_cents'],['Mid','market_midpoint_cents']]);
 document.getElementById('events').innerHTML=table((state.trade_events||[]).slice(-80).reverse(),[['Time (PT)','time_utc'],['Event','event_type'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Reason','reason']]);

@@ -299,6 +299,68 @@ def test_dashboard_positions_sort_open_first_then_by_estimated_bracket_count() -
     assert rows[1]["bracket_model_count"] == 1
 
 
+def test_dashboard_positions_group_by_model_source_within_status() -> None:
+    market_rows = market_rows_from_payload(_payload())
+    state = {
+        "positions": [
+            {
+                "position_id": "open-noaa",
+                "status": "open",
+                "bracket_label": "72-73",
+                "side": "YES",
+                "model_key": "noaa_herbie:hrrr",
+                "provider": "noaa_herbie",
+            },
+            {
+                "position_id": "closed-open-meteo",
+                "status": "closed",
+                "bracket_label": "72-73",
+                "side": "YES",
+                "model_key": "open_meteo:gfs013",
+                "provider": "open_meteo",
+            },
+            {
+                "position_id": "open-other",
+                "status": "open",
+                "bracket_label": "72-73",
+                "side": "YES",
+                "model_key": "synthetic:consensus_median",
+                "provider": "synthetic",
+            },
+            {
+                "position_id": "open-open-meteo",
+                "status": "open",
+                "bracket_label": "72-73",
+                "side": "YES",
+                "model_key": "open_meteo:best_match",
+                "provider": "open_meteo",
+            },
+            {
+                "position_id": "closed-noaa",
+                "status": "closed",
+                "bracket_label": "72-73",
+                "side": "YES",
+                "model_key": "noaa_herbie:nbm",
+                "provider": "noaa_herbie",
+            },
+        ],
+        "estimate_history": [
+            {"time_utc": "2026-07-03T16:00:00+00:00", "model_key": "a", "estimated_bracket": "72-73"},
+        ],
+    }
+
+    rows = _dashboard_state(state, market_rows, [])["positions"]
+
+    assert [row["position_id"] for row in rows] == [
+        "open-open-meteo",
+        "open-noaa",
+        "open-other",
+        "closed-open-meteo",
+        "closed-noaa",
+    ]
+    assert [row["source_group"] for row in rows] == ["Open-Meteo", "NOAA", "Other", "Open-Meteo", "NOAA"]
+
+
 def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) -> None:
     config = TournamentConfig(run_id="test")
     state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
@@ -310,6 +372,8 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "Closed bet money" in html
     assert "closed_pnl_dollars" in html
     assert "P/L" in html
+    assert "Group" in html
+    assert "source_group" in html
     assert "Models" in html
     assert "bracket_model_count" in html
     assert "Open $" not in html
