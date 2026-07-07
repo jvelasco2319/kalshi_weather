@@ -86,106 +86,6 @@ def stake_sizing(stake_dollars: float, entry_price_cents: float | None, profit_t
     )
 
 
-def load_position_overrides(output_dir: Path) -> dict[str, dict[str, Any]]:
-    path = output_dir / "position_overrides.json"
-    if not path.exists():
-        return {}
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return {}
-    return _normalize_position_overrides(payload)
-
-
-def write_position_overrides(output_dir: Path, overrides: dict[str, Any]) -> None:
-    _write_json(output_dir / "position_overrides.json", _normalize_position_overrides(overrides))
-
-
-def apply_position_overrides(
-    state: dict[str, Any],
-    overrides: dict[str, Any] | None,
-    *,
-    now: str | None = None,
-) -> list[dict[str, Any]]:
-    normalized = _normalize_position_overrides(overrides or {})
-    state["position_overrides"] = normalized
-    events: list[dict[str, Any]] = []
-    if not normalized:
-        return events
-    event_time = now or str(state.get("updated_at_utc") or utc_now_iso())
-    for position in state.get("positions", []):
-        position_id = str(position.get("position_id") or "")
-        override = normalized.get(position_id)
-        if not override:
-            continue
-        position["position_override"] = override
-        if position.get("status") != "open":
-            position["position_override_note"] = "Override ignored because this fake position is already closed."
-            continue
-        changed = _apply_open_position_override(position, override, event_time)
-        if changed:
-            events.append(
-                _event(
-                    event_time,
-                    "position_override",
-                    str(position.get("model_key")),
-                    position.get("side"),
-                    position.get("bracket_label"),
-                    (
-                        f"manual fake-money settings: stake {_money(position.get('stake_dollars'))}, "
-                        f"target {float(position.get('profit_target_pct') or 0.0) * 100:.1f}%"
-                    ),
-                    position=position,
-                )
-            )
-    return events
-
-
-def update_position_override(output_dir: Path, payload: dict[str, Any]) -> dict[str, Any]:
-    state = load_tournament_state(output_dir)
-    if state is None:
-        raise ValueError("model tournament state not found")
-    position_id = str(payload.get("position_id") or "").strip()
-    if not position_id:
-        raise ValueError("position_id is required")
-    positions = state.get("positions") or []
-    position = next((row for row in positions if str(row.get("position_id")) == position_id), None)
-    if position is None:
-        raise ValueError("position not found")
-    if position.get("status") != "open":
-        raise ValueError("closed positions are read-only")
-
-    stake = _positive_float(payload.get("stake_dollars"), "stake_dollars")
-    target_pct = _positive_float(payload.get("profit_target_pct"), "profit_target_pct")
-    if target_pct > 1.0:
-        target_pct /= 100.0
-
-    overrides = load_position_overrides(output_dir)
-    overrides[position_id] = {
-        "position_id": position_id,
-        "stake_dollars": round(stake, 4),
-        "profit_target_pct": round(target_pct, 6),
-        "updated_at_utc": utc_now_iso(),
-    }
-    write_position_overrides(output_dir, overrides)
-
-    now = str(state.get("updated_at_utc") or utc_now_iso())
-    events = apply_position_overrides(state, overrides, now=now)
-    market_rows = state.get("market_snapshot") or []
-    if market_rows:
-        events.extend(_mark_and_close_positions(state, market_rows, now))
-    if events:
-        state.setdefault("trade_events", []).extend(events)
-    books = _model_books(state.get("positions") or [])
-    state["positions_open"] = [p for p in state.get("positions", []) if p.get("status") == "open"]
-    state["positions_closed"] = [p for p in state.get("positions", []) if p.get("status") == "closed"]
-    state["model_books"] = books
-    state["summary"] = _summary(state, books)
-    state["dashboard"] = _dashboard_state(state, state.get("market_snapshot") or [], state.get("model_feed_status") or [])
-    write_tournament_files(state, output_dir)
-    return state
-
-
 def market_rows_from_payload(model_payload: dict[str, Any]) -> list[dict[str, Any]]:
     rows_by_ticker: dict[str, dict[str, Any]] = {}
     for row in model_payload.get("probabilities") or []:
@@ -308,7 +208,6 @@ def run_tournament_cycle(
     model_payload: dict[str, Any],
     previous_state: dict[str, Any] | None,
     config: TournamentConfig,
-    position_overrides: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     now = str(model_payload.get("generated_at_utc") or utc_now_iso())
     state = _initial_state(config) if not previous_state else dict(previous_state)
@@ -389,10 +288,6 @@ def run_tournament_cycle(
             event = _ensure_position(state, plan, now, config)
             if event is not None:
                 cycle_events.append(event)
-    if position_overrides is not None:
-        cycle_events.extend(apply_position_overrides(state, position_overrides, now=now))
-    else:
-        cycle_events.extend(apply_position_overrides(state, state.get("position_overrides") or {}, now=now))
     cycle_events.extend(_mark_and_close_positions(state, market_rows, now))
     state["trade_events"].extend(cycle_events)
     books = _model_books(state["positions"])
@@ -419,8 +314,6 @@ def write_tournament_files(state: dict[str, Any], output_dir: Path) -> dict[str,
     _write_json(files["state"], state)
     _write_json(files["summary"], state.get("summary") or {})
     _write_json(files["latest"], state)
-    if "position_overrides" in state:
-        _write_json(output_dir / "position_overrides.json", state.get("position_overrides") or {})
     _write_dashboard_html(files["dashboard"], state)
     _append_rows(output_dir / "model_estimate_history.jsonl", state.get("estimate_history", []), ("time_utc", "model_key"))
     _append_rows(output_dir / "temperature_observations.jsonl", state.get("temperature_observations", []), ("time_utc",))
@@ -865,78 +758,6 @@ def _probability_to_cents(value: Any) -> float | None:
     return round(number, 4)
 
 
-def _normalize_position_overrides(payload: Any) -> dict[str, dict[str, Any]]:
-    raw = payload.get("positions", payload) if isinstance(payload, dict) else {}
-    normalized: dict[str, dict[str, Any]] = {}
-    if not isinstance(raw, dict):
-        return normalized
-    for key, value in raw.items():
-        if not isinstance(value, dict):
-            continue
-        position_id = str(value.get("position_id") or key)
-        stake = _float_or_none(value.get("stake_dollars"))
-        target_pct = _float_or_none(value.get("profit_target_pct"))
-        if target_pct is not None and target_pct > 1.0:
-            target_pct /= 100.0
-        if not position_id or stake is None or stake <= 0 or target_pct is None or target_pct <= 0:
-            continue
-        normalized[position_id] = {
-            "position_id": position_id,
-            "stake_dollars": round(stake, 4),
-            "profit_target_pct": round(target_pct, 6),
-            "updated_at_utc": value.get("updated_at_utc"),
-        }
-    return normalized
-
-
-def _positive_float(value: Any, name: str) -> float:
-    number = _float_or_none(value)
-    if number is None or number <= 0:
-        raise ValueError(f"{name} must be positive")
-    return float(number)
-
-
-def _apply_open_position_override(position: dict[str, Any], override: dict[str, Any], now: str) -> bool:
-    stake = _float_or_none(override.get("stake_dollars"))
-    target_pct = _float_or_none(override.get("profit_target_pct"))
-    price = _float_or_none(position.get("entry_price_cents"))
-    if stake is None or stake <= 0 or target_pct is None or target_pct <= 0:
-        position["position_override_note"] = "Override ignored because stake and target percent must be positive."
-        return False
-    sizing = stake_sizing(stake, price, target_pct)
-    if sizing.contracts <= 0:
-        position["position_override_note"] = "Override ignored because the stake is too small for this entry price."
-        return False
-    old = (
-        _float_or_none(position.get("stake_dollars")),
-        _float_or_none(position.get("profit_target_pct")),
-        int(position.get("contracts") or 0),
-    )
-    position["stake_dollars"] = round(stake, 4)
-    position["profit_target_pct"] = round(target_pct, 6)
-    position["contracts"] = sizing.contracts
-    position["cost_dollars"] = sizing.cost_dollars
-    position["target_profit_dollars"] = sizing.target_profit_dollars
-    position["target_exit_bid_cents"] = sizing.target_exit_bid_cents
-    position["target_possible"] = sizing.target_possible
-    position["position_override_applied"] = True
-    position["position_override_note"] = "Manual fake-money stake/target settings are active."
-    position["position_override_updated_at_utc"] = now
-    if not sizing.target_possible:
-        warnings = position.setdefault("warnings", [])
-        if "target impossible due to high entry price" not in warnings:
-            warnings.append("target impossible due to high entry price")
-    bid = _float_or_none(position.get("current_exit_price_cents"))
-    if bid is not None:
-        value = sizing.contracts * bid / 100.0
-        pnl = value - sizing.cost_dollars
-        position["current_value_dollars"] = round(value, 4)
-        position["unrealized_pnl_dollars"] = round(pnl, 4)
-        position["target_progress_pct"] = None if sizing.target_profit_dollars <= 0 else round(max(0.0, pnl) / sizing.target_profit_dollars, 4)
-    new = (round(stake, 4), round(target_pct, 6), sizing.contracts)
-    return old != new
-
-
 def _float_or_none(value: Any) -> float | None:
     if value is None or value == "":
         return None
@@ -1014,14 +835,6 @@ th{{color:#9fb5d1}}.grid{{display:grid;grid-template-columns:minmax(0,1.2fr) min
 .pnl-positive{{color:#72e58f}}
 .pnl-negative{{color:#ff8e95}}
 .pnl-zero{{color:#c9d3df}}
-.control-cell{{min-width:150px}}
-.adjust-control{{display:flex;align-items:center;gap:4px}}
-.adjust-control button{{width:24px;height:24px;border:1px solid #3b4a60;border-radius:5px;background:#202938;color:#e8edf4;font-weight:700;cursor:pointer}}
-.adjust-control button:hover{{background:#2b3648}}
-.adjust-control input{{width:68px;background:#101722;color:#e8edf4;border:1px solid #3b4a60;border-radius:5px;padding:3px 5px;text-align:right}}
-.control-subtext{{margin-top:3px;color:#9fb5d1;font-size:11px;line-height:1.25}}
-.save-state{{margin-top:3px;font-size:11px;color:#9fb5d1;min-height:14px}}
-.save-state.saved{{color:#72e58f}}.save-state.error{{color:#ff8e95}}
 .bracket-cell{{text-align:center}}
 .bracket-token{{display:inline-block;min-width:58px;padding:2px 8px;border-radius:999px;font-weight:800;text-align:center;border:1px solid transparent}}
 .bracket-color-0{{color:#8ee7ff;background:rgba(57,180,210,.14);border-color:rgba(57,180,210,.34)}}
@@ -1067,24 +880,17 @@ for(const row of state.positions||[]){{rememberBracket(row.bracket_label);}}
 for(const row of state.trade_events||[]){{rememberBracket(row.bracket_label);}}
 function bracketClass(v){{const key=normalizedBracketKey(v);if(!key)return 'bracket-color-other';if(!bracketColorMap.has(key))rememberBracket(key);return `bracket-color-${{bracketColorMap.get(key)}}`;}}
 function bracketBadge(v){{return `<span class="bracket-token ${{bracketClass(v)}}">${{htmlAttr(fmt(v))}}</span>`;}}
-function fallbackCloseReason(row){{if(row.close_status_reason)return row.close_status_reason;if(row.status==='closed')return `Closed because realized P/L ${{money(row.realized_pnl_dollars)}} reached the profit target.`;const pnl=Number(row.unrealized_pnl_dollars||0);const target=Number(row.target_profit_dollars||0);if(row.current_exit_price_cents===null||row.current_exit_price_cents===undefined||row.current_exit_price_cents==='')return `Still open because the exit bid is missing for ${{row.side}} ${{row.bracket_label}}. Without an exit bid, the fake position cannot close at the profit target.`;if(row.target_possible===false)return `Still open because the ${{(targetPct(row)*100).toFixed(1)}}% target is not reachable from this entry price and contract sizing.`;if(target<=0)return 'Still open because no positive profit target is configured.';const progress=Math.max(0,pnl)/target;const remaining=Math.max(0,target-pnl);return `Still open because current open P/L is ${{money(pnl)}}, below the ${{money(target)}} target (${{(progress*100).toFixed(0)}}% of target). Needs about ${{cents(row.target_exit_bid_cents)}} exit bid; current bid is ${{cents(row.current_exit_price_cents)}}, leaving ${{money(remaining)}} to go.`;}}
+function fallbackCloseReason(row){{if(row.close_status_reason)return row.close_status_reason;if(row.status==='closed')return `Closed because realized P/L ${{money(row.realized_pnl_dollars)}} reached the profit target.`;const pnl=Number(row.unrealized_pnl_dollars||0);const target=Number(row.target_profit_dollars||0);if(row.current_exit_price_cents===null||row.current_exit_price_cents===undefined||row.current_exit_price_cents==='')return `Still open because the exit bid is missing for ${{row.side}} ${{row.bracket_label}}. Without an exit bid, the fake position cannot close at the profit target.`;if(row.target_possible===false)return 'Still open because the configured target is not reachable from this entry price and contract sizing.';if(target<=0)return 'Still open because no positive profit target is configured.';const progress=Math.max(0,pnl)/target;const remaining=Math.max(0,target-pnl);return `Still open because current open P/L is ${{money(pnl)}}, below the ${{money(target)}} target (${{(progress*100).toFixed(0)}}% of target). Needs about ${{cents(row.target_exit_bid_cents)}} exit bid; current bid is ${{cents(row.current_exit_price_cents)}}, leaving ${{money(remaining)}} to go.`;}}
 function statusBadge(v){{const s=String(v||'').toLowerCase();if(s==='closed')return '<span class="status-badge status-closed">Closed</span>';if(s==='open')return '<span class="status-badge status-open">Open</span>';return fmt(v);}}
 function positionPnl(row){{return row.status==='closed'?row.realized_pnl_dollars:row.unrealized_pnl_dollars;}}
 function pnlValue(row){{const value=positionPnl(row);const n=Number(value);const cls=Number.isFinite(n)?(n>0?'pnl-positive':n<0?'pnl-negative':'pnl-zero'):'pnl-zero';return `<span class="${{cls}}">${{signedMoney(value)}}</span>`;}}
-function targetPct(row){{const n=Number(row.profit_target_pct);return Number.isFinite(n)&&n>0?n:0.10;}}
-function stakeControl(row){{if(row.status!=='open')return money(row.stake_dollars);const value=Number(row.stake_dollars||0).toFixed(2);return `<div class="adjust-control"><button type="button" data-adjust-field="stake_dollars" data-delta="-1">-</button><span>$</span><input type="number" min="0.01" step="5" data-step="5" data-decimals="2" data-field="stake_dollars" value="${{htmlAttr(value)}}"><button type="button" data-adjust-field="stake_dollars" data-delta="1">+</button></div><div class="control-subtext">${{fmt(row.contracts)}} contracts</div><div class="save-state"></div>`;}}
-function targetControl(row){{const pct=targetPct(row)*100;if(row.status!=='open')return `${{pct.toFixed(1)}}%`;const progress=Number(row.target_progress_pct);const progressText=Number.isFinite(progress)?`${{Math.max(0,progress*100).toFixed(0)}}% to target`:'-- to target';return `<div class="adjust-control"><button type="button" data-adjust-field="profit_target_pct" data-delta="-1">-</button><input type="number" min="0.1" step="1" data-step="1" data-decimals="1" data-field="profit_target_pct" value="${{htmlAttr(pct.toFixed(1))}}"><span>%</span><button type="button" data-adjust-field="profit_target_pct" data-delta="1">+</button></div><div class="control-subtext">${{progressText}} | target ${{money(row.target_profit_dollars)}}</div><div class="save-state"></div>`;}}
-function cell(row,key){{if(key==='_close_status_reason')return fallbackCloseReason(row);if(key==='_position_pnl_dollars')return pnlValue(row);if(key==='_stake_control')return stakeControl(row);if(key==='_target_control')return targetControl(row);if(key==='status')return statusBadge(row[key]);if(key==='bracket_label')return bracketBadge(row[key]);if(String(key).endsWith('_dollars'))return money(row[key]);return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
+function cell(row,key){{if(key==='_close_status_reason')return fallbackCloseReason(row);if(key==='_position_pnl_dollars')return pnlValue(row);if(key==='status')return statusBadge(row[key]);if(key==='bracket_label')return bracketBadge(row[key]);if(String(key).endsWith('_dollars'))return money(row[key]);return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
 document.getElementById('meta').textContent=`Updated ${{formatPT(state.updated_at_utc)}} | fake-money-only | times shown in PT | refresh {refresh}s`;
-function cellClass(key){{const classes=[];if(key==='_close_status_reason')classes.push('reason-cell');if(key==='status')classes.push('status-cell');if(key==='bracket_label')classes.push('bracket-cell');if(key==='_position_pnl_dollars')classes.push('pnl-cell');if(key==='_stake_control'||key==='_target_control')classes.push('control-cell');return classes.join(' ');}}
+function cellClass(key){{const classes=[];if(key==='_close_status_reason')classes.push('reason-cell');if(key==='status')classes.push('status-cell');if(key==='bracket_label')classes.push('bracket-cell');if(key==='_position_pnl_dollars')classes.push('pnl-cell');return classes.join(' ');}}
 function rowAttr(row){{return row.position_id?` data-position-id="${{htmlAttr(row.position_id)}}"`:'';}}
 function table(rows,cols){{if(!rows||!rows.length)return '<em>none</em>';return '<div class="table-wrap"><table><thead><tr>'+cols.map(c=>`<th>${{c[0]}}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>`<tr${{rowAttr(r)}}>`+cols.map(c=>`<td class="${{cellClass(c[1])}}">${{cell(r,c[1])}}</td>`).join('')+'</tr>').join('')+'</tbody></table></div>';}}
-function setSaveState(rowEl,text,cls){{for(const el of rowEl.querySelectorAll('.save-state')){{el.textContent=text;el.className=`save-state ${{cls||''}}`;}}}}
-async function savePositionOverride(rowEl){{if(!rowEl)return;const positionId=rowEl.dataset.positionId;const stakeInput=rowEl.querySelector('input[data-field="stake_dollars"]');const targetInput=rowEl.querySelector('input[data-field="profit_target_pct"]');if(!positionId||!stakeInput||!targetInput)return;const stake=Number(stakeInput.value);const targetPercent=Number(targetInput.value);if(!Number.isFinite(stake)||stake<=0||!Number.isFinite(targetPercent)||targetPercent<=0){{setSaveState(rowEl,'enter positive values','error');return;}}setSaveState(rowEl,'saving...','');try{{const response=await fetch('/api/position-overrides',{{method:'POST',headers:{{'Content-Type':'application/json'}},body:JSON.stringify({{position_id:positionId,stake_dollars:stake,profit_target_pct:targetPercent/100}})}});if(!response.ok)throw new Error(await response.text());setSaveState(rowEl,'saved','saved');}}catch(err){{setSaveState(rowEl,'save failed','error');}}}}
-document.addEventListener('click',event=>{{const button=event.target.closest('button[data-adjust-field]');if(!button)return;const rowEl=button.closest('tr[data-position-id]');const input=rowEl?.querySelector(`input[data-field="${{button.dataset.adjustField}}"]`);if(!rowEl||!input)return;const step=Number(input.dataset.step||input.step||1);const delta=Number(button.dataset.delta||0);const decimals=Number(input.dataset.decimals||2);const next=Math.max(Number(input.min||0),Number(input.value||0)+delta*step);input.value=next.toFixed(decimals);savePositionOverride(rowEl);}});
-document.addEventListener('change',event=>{{const input=event.target.closest('input[data-field]');if(!input)return;savePositionOverride(input.closest('tr[data-position-id]'));}});
 const summary=state.summary||{{}};
-document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Group','source_group'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Models','bracket_model_count'],['Stake','_stake_control'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','_target_control'],['Status','status'],['Why','_close_status_reason']]);
+document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Group','source_group'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Models','bracket_model_count'],['Stake','stake_dollars'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','target_progress_pct'],['Status','status'],['Why','_close_status_reason']]);
 document.getElementById('feeds').innerHTML=table(state.model_feed_status,[['Model','model_key'],['Provider','provider'],['Family','family'],['OK','success'],['High F','high_f'],['Generated (PT)','generated_at_utc'],['Elapsed','elapsed_seconds'],['Error','error_message']]);
 document.getElementById('market').innerHTML=table(state.market_snapshot,[['Bracket','bracket_label'],['YES bid','yes_bid_cents'],['YES ask','yes_ask_cents'],['NO bid','no_bid_cents'],['NO ask','no_ask_cents'],['Mid','market_midpoint_cents']]);
 document.getElementById('events').innerHTML=table((state.trade_events||[]).slice(-80).reverse(),[['Time (PT)','time_utc'],['Event','event_type'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Reason','reason']]);

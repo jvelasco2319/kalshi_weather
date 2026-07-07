@@ -11,7 +11,6 @@ from kalshi_weather.model_tournament import (
     planned_bets_for_model,
     run_tournament_cycle,
     stake_sizing,
-    update_position_override,
     write_tournament_files,
 )
 
@@ -157,67 +156,6 @@ def test_open_position_records_reason_it_has_not_closed() -> None:
 
     assert open_position["close_status_reason"].startswith("Still open")
     assert "target" in open_position["close_status_reason"]
-
-
-def test_position_override_recalculates_open_stake_and_target() -> None:
-    config = TournamentConfig(run_id="test")
-    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
-    yes = next(p for p in state["positions"] if p["side"] == "YES" and p["bracket_label"] == "72-73")
-
-    state = run_tournament_cycle(
-        model_payload=_payload(yes_bid_7273=0.41),
-        previous_state=state,
-        config=config,
-        position_overrides={yes["position_id"]: {"stake_dollars": 50, "profit_target_pct": 0.05}},
-    )
-    resized = next(p for p in state["positions"] if p["position_id"] == yes["position_id"])
-
-    assert resized["status"] == "open"
-    assert resized["stake_dollars"] == 50
-    assert resized["profit_target_pct"] == 0.05
-    assert resized["contracts"] == 125
-    assert resized["cost_dollars"] == 50
-    assert resized["target_profit_dollars"] == 2.5
-    assert resized["target_exit_bid_cents"] == 42
-    assert resized["position_override_applied"] is True
-
-
-def test_position_override_can_lower_target_and_close_position() -> None:
-    config = TournamentConfig(run_id="test")
-    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
-    yes = next(p for p in state["positions"] if p["side"] == "YES" and p["bracket_label"] == "72-73")
-    assert yes["status"] == "open"
-
-    state = run_tournament_cycle(
-        model_payload=_payload(yes_bid_7273=0.41),
-        previous_state=state,
-        config=config,
-        position_overrides={yes["position_id"]: {"stake_dollars": 100, "profit_target_pct": 0.02}},
-    )
-    closed = next(p for p in state["positions"] if p["position_id"] == yes["position_id"])
-
-    assert closed["status"] == "closed"
-    assert closed["target_profit_dollars"] == 2
-    assert closed["realized_pnl_dollars"] == 2.5
-
-
-def test_dashboard_update_position_override_writes_state_and_file(tmp_path) -> None:
-    config = TournamentConfig(run_id="test")
-    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
-    write_tournament_files(state, tmp_path)
-    yes = next(p for p in state["positions"] if p["side"] == "YES" and p["bracket_label"] == "72-73")
-
-    updated = update_position_override(
-        tmp_path,
-        {"position_id": yes["position_id"], "stake_dollars": 75, "profit_target_pct": 0.04},
-    )
-    stored = json.loads((tmp_path / "position_overrides.json").read_text(encoding="utf-8"))
-    position = next(p for p in updated["positions"] if p["position_id"] == yes["position_id"])
-
-    assert stored[yes["position_id"]]["stake_dollars"] == 75
-    assert position["stake_dollars"] == 75
-    assert position["profit_target_pct"] == 0.04
-    assert (tmp_path / "dashboard.html").exists()
 
 
 def test_no_position_closes_using_no_bid() -> None:
@@ -387,10 +325,11 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "_position_pnl_dollars" in html
     assert "pnl-positive" in html
     assert "pnl-negative" in html
-    assert "_stake_control" in html
-    assert "_target_control" in html
-    assert "savePositionOverride" in html
-    assert "/api/position-overrides" in html
+    assert "_stake_control" not in html
+    assert "_target_control" not in html
+    assert "savePositionOverride" not in html
+    assert "/api/position-overrides" not in html
+    assert "adjust-control" not in html
     assert "realized_pnl_dollars" in html
     assert "Why" in html
     assert "_close_status_reason" in html
