@@ -292,6 +292,30 @@ The dashboard shows:
 
 The dashboard is read-only. Stake and target percentage are not editable.
 
+### Two Overlapping Market Dashboards
+
+Kalshi can have today's LA high-temperature market and tomorrow's market open at
+the same time. Keep them separate by running one tournament per target date. This
+script starts two tournament loops, serves them on different ports, and writes a
+small tabbed HTML page that switches between the two dashboards:
+
+```powershell
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -CurrentDashboardPort 8766 `
+  -NextDashboardPort 8767 `
+  -IntervalSeconds 60
+```
+
+Direct dashboard URLs:
+
+```text
+http://127.0.0.1:8766/dashboard.html
+http://127.0.0.1:8767/dashboard.html
+```
+
+The script prints the path to the tabbed HTML file under
+`reports\trader_agent\dashboard_tabs\`.
+
 ## Useful CLI Commands
 
 Inspect model estimates:
