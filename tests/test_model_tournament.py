@@ -218,7 +218,12 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
 
     assert "Closed bet money" in html
     assert "closed_pnl_dollars" in html
-    assert "Closed $" in html
+    assert "P/L" in html
+    assert "Open $" not in html
+    assert "Closed $" not in html
+    assert "_position_pnl_dollars" in html
+    assert "pnl-positive" in html
+    assert "pnl-negative" in html
     assert "realized_pnl_dollars" in html
     assert "Why" in html
     assert "_close_status_reason" in html
