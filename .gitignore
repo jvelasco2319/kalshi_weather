@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.test-artifacts/
+.handoff_tmp/
+.tmp*/
+.pytest_cache/
+.matplotlib-cache/
+*.log
+
+# Virtual envs
+.venv/
+venv/
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Runtime data
+data/
+logs/
+journals/
+reports/
+results_for_chatgpt*/
+synthetic_scenarios/
+chatgpt_*/
+chatgpt_*_package/
+codex_*_package/
+*.zip
+HANDOFF_ZIP_CHECK.txt
+CHATGPT_*.txt
+*_OUTPUT.txt
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

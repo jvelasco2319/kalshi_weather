@@ -1,0 +1,32 @@
+defaults:
+  model_weight_no_calibration: 0.35
+  min_model_weight: 0.20
+  max_model_weight: 0.75
+
+profiles:
+  overnight_next_day:
+    model_weight: 0.35
+  morning_pre_observation:
+    model_weight: 0.45
+  active_nowcast:
+    model_weight: 0.60
+  late_day_risk_manage:
+    model_weight: 0.50
+  risk_reduce:
+    model_weight: 0.35
+  close_only:
+    model_weight: 0.30
+
+overrides:
+  observation_fresh_confirming:
+    model_weight_add: 0.10
+  observation_missing_or_stale:
+    model_weight_add: -0.05
+  model_disagreement_high:
+    model_weight_add: -0.15
+  model_disagreement_extreme:
+    model_weight_add: -0.30
+  positive_station_skill:
+    model_weight_add: 0.10
+  negative_clv_recent:
+    model_weight_add: -0.10

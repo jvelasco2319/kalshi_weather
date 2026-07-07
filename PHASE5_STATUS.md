@@ -1,0 +1,21 @@
+﻿# Phase 5 Status
+
+- canonical directory: C:\Users\jarve\Documents\Codex\kalshi_weather
+- tests passed: yes (57 passed)
+- ruff passed: yes
+- CLI help passed: yes
+- live trading enabled: false
+- live order endpoint present: false
+- production counts: {'market_snapshots': 38, 'weather_snapshots': 38, 'model_predictions': 228, 'official_outcomes': 0, 'prediction_outcomes': 0, 'paper_fills': 0, 'paper_positions': 0, 'opportunity_snapshots': 0, 'paper_equity': 22}
+- known limitation: production official outcomes and joined outcomes are still zero because stored prediction dates are waiting for settlement.
+- official outcome parser improved: yes.
+- outcome backfill implemented: yes, with settlement buffer.
+- joined prediction logic implemented: yes.
+- calibration report v2 implemented: yes.
+- residual report v2 implemented: yes.
+- calibration-demo implemented: yes, demo-only.
+- production official outcomes count: 0.
+- production joined outcomes count: 0.
+- demo rows count if run: 10 fixture rows.
+- sample calibration metrics: demo only, not trading evidence.
+- next recommended work: fetch official outcomes after settlement and rerun join/calibration.

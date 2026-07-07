@@ -1,0 +1,21 @@
+﻿# Phase 6 Status
+
+- canonical directory: C:\Users\jarve\Documents\Codex\kalshi_weather
+- tests passed: yes (57 passed)
+- ruff passed: yes
+- CLI help passed: yes
+- live trading enabled: false
+- live order endpoint present: false
+- production counts: {'market_snapshots': 38, 'weather_snapshots': 38, 'model_predictions': 228, 'official_outcomes': 0, 'prediction_outcomes': 0, 'paper_fills': 0, 'paper_positions': 0, 'opportunity_snapshots': 0, 'paper_equity': 22}
+- known limitation: production official outcomes and joined outcomes are still zero because stored prediction dates are waiting for settlement.
+- model registry implemented: yes.
+- residual sigma tuning implemented: yes.
+- probability calibration implemented: yes, guarded by minimum row counts.
+- model weight report implemented: yes.
+- replay-predictions implemented: yes.
+- POC run command implemented: yes.
+- POC demo command implemented: yes.
+- production joined rows count: 0.
+- production calibration fitted: no.
+- demo calibration fitted: yes, fixture-only.
+- warning: no production edge is proven.

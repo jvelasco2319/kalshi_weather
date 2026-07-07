@@ -1,0 +1,19 @@
+# Station timezone and local-standard-time settings.
+
+stations:
+  KLAX:
+    timezone: America/Los_Angeles
+    windows_timezone: Pacific Standard Time
+    standard_utc_offset_hours: -8
+    nws_cli_product: CLILAX
+    nws_cli_site: LOX
+
+  KNYC:
+    timezone: America/New_York
+    windows_timezone: Eastern Standard Time
+    standard_utc_offset_hours: -5
+
+  KMDW:
+    timezone: America/Chicago
+    windows_timezone: Central Standard Time
+    standard_utc_offset_hours: -6

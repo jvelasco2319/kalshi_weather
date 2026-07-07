@@ -1,0 +1,105 @@
+# Lifecycle-aware profile defaults.
+
+profiles:
+  pre_open:
+    allow_new_entries: false
+    allow_close: false
+    allow_cancel: true
+    allow_reduce_risk: false
+
+  overnight_next_day:
+    min_edge_cents: 12
+    min_no_edge_cents: 12
+    min_no_upside_cents: 12
+    max_no_bin_probability: 0.10
+    max_open_positions: 2
+    max_open_orders: 2
+    max_total_open_risk_groups: 2
+    max_risk_dollars_per_trade: 25
+    max_total_exposure_dollars: 100
+    max_contracts_per_trade: 50
+    allow_new_entries: true
+    allow_no_exclusion: limited
+    allow_observation_elimination: false
+    allow_close: true
+    allow_cancel: true
+
+  active_nowcast:
+    min_edge_cents: 8
+    min_no_edge_cents: 8
+    min_no_upside_cents: 8
+    max_no_bin_probability: 0.20
+    max_open_positions: 4
+    max_open_orders: 4
+    max_total_open_risk_groups: 4
+    max_risk_dollars_per_trade: 50
+    max_total_exposure_dollars: 250
+    allow_new_entries: true
+    allow_no_exclusion: true
+    allow_observation_elimination: true_only_if_fresh_station_matched
+    allow_close: true
+    allow_cancel: true
+
+  late_day_risk_manage:
+    min_edge_cents: 10
+    min_no_edge_cents: 10
+    min_no_upside_cents: 10
+    max_no_bin_probability: 0.15
+    max_open_positions: 3
+    max_open_orders: 1
+    max_total_open_risk_groups: 3
+    max_risk_dollars_per_trade: 25
+    max_total_exposure_dollars: 150
+    allow_new_entries: limited
+    allow_no_exclusion: observation_confirmed_only
+    allow_observation_elimination: true_only_if_fresh_station_matched
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    prefer_close_over_new_entries: true
+
+  close_only:
+    allow_new_entries: false
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    force_cancel_open_orders: true
+    prefer_take_profit_or_reduce_risk: true
+
+  post_close:
+    allow_new_entries: false
+    allow_close: false
+    allow_cancel: true
+    allow_reduce_risk: false
+    stop_new_trading: true
+
+  wait_settlement:
+    allow_new_entries: false
+    allow_close: false
+    allow_cancel: false
+    allow_reduce_risk: false
+    stop_new_trading: true
+
+dynamic_overrides:
+  stale_observation:
+    effective_allow_observation_elimination: false
+
+  high_model_disagreement:
+    min_edge_add_cents: 2
+    min_no_edge_add_cents: 2
+    max_contracts_multiplier: 0.5
+    block_high_confidence_no: true
+
+  extreme_model_disagreement:
+    min_edge_add_cents: 4
+    min_no_edge_add_cents: 4
+    max_contracts_multiplier: 0.25
+    block_high_confidence_no: true
+
+  drawdown_risk_reduce:
+    threshold_dollars: 20
+    switch_profile: risk_reduce
+
+  drawdown_close_only:
+    threshold_dollars: 40
+    switch_profile: close_only

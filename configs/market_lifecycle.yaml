@@ -1,0 +1,32 @@
+# Market lifecycle defaults.
+# Kalshi market metadata is the source of truth when available.
+
+default_poll_seconds: 60
+default_settlement_poll_seconds: 900
+allow_metadata_fallback_times: false
+fake_money_only: true
+
+market_phase_offsets:
+  late_day_risk_manage_before_close_minutes: 360
+  close_only_before_close_minutes: 120
+  post_close_after_close_seconds: 0
+
+settlement:
+  allow_provisional_settlement: true
+  auto_finalize_only_on_final_official: true
+  settlement_report_filename: settlement_report.json
+  prevent_double_settlement: true
+
+rollover:
+  enabled_default: false
+  require_next_event_exists: true
+  separate_journal_per_event: true
+  carry_forward_cash_default: false
+
+maintenance:
+  pause_during_exchange_maintenance: true
+  maintenance_timezone: America/New_York
+  weekly:
+    - weekday: Thursday
+      start_local: "03:00"
+      end_local: "05:00"

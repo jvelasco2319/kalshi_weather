@@ -1,0 +1,13 @@
+defaults:
+  max_thesis_exposure_dollars: 75
+  max_thesis_worst_case_loss_dollars: 50
+  max_positions_per_thesis: 2
+  allow_multiple_same_thesis_overnight: false
+
+labels:
+  below_center:
+    description: benefits if final high stays below or near consensus center
+  above_center:
+    description: benefits if final high moves above consensus center
+  exact_center:
+    description: benefits if final high lands in the top exact bin

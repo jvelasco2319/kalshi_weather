@@ -1,0 +1,296 @@
+project:
+  name: kalshi_weather
+  mode: paper
+
+kalshi:
+  api_base: https://external-api.kalshi.com/trade-api/v2
+  demo_api_base: https://external-api.demo.kalshi.co/trade-api/v2
+  enable_real_orders: false
+  default_series_ticker: KXHIGHLAX
+
+weather:
+  station_id: KLAX
+  station_name: Los Angeles International Airport
+  latitude: 33.93816
+  longitude: -118.3866
+  local_timezone: America/Los_Angeles
+  climate_standard_utc_offset_hours: -8
+  nws_api_base: https://api.weather.gov
+  open_meteo_noaa_endpoint: https://api.open-meteo.com/v1/gfs
+  user_agent: kalshi-weather-research/0.1 your_email@example.com
+  open_meteo_models:
+    - gfs_seamless
+    - gfs013
+    - gfs_global
+    - best_match
+  open_meteo_probe_models:
+    - best_match
+    - gfs_seamless
+    - gfs_global
+    - gfs_global025
+    - gfs_global016
+    - gfs025
+    - gfs013
+    - hrrr
+    - hrrr_conus
+    - nbm
+    - nbm_conus
+    - nam
+    - nam_conus
+    - graphcast
+    - graphcast025
+    - gfs_graphcast
+    - gfs_graphcast025
+    - aigfs
+    - aigfs025
+    - hgefs
+    - hgefs025
+  hourly_variables:
+    - temperature_2m
+    - cloud_cover
+    - cloud_cover_low
+    - cloud_cover_mid
+    - cloud_cover_high
+    - shortwave_radiation
+    - direct_radiation
+    - diffuse_radiation
+    - sunshine_duration
+    - apparent_temperature
+    - wind_speed_10m
+    - wind_gusts_10m
+    - wind_direction_10m
+    - relative_humidity_2m
+    - dew_point_2m
+
+model:
+  default_model_version: v0.3-openmeteo-weighted-normal-residual
+  settlement_buffer_hours: 4
+  minimum_rows_for_residual_calibration: 30
+  minimum_rows_for_probability_calibration: 100
+  residual_sigma_f_initial: 1.0
+  sample_count: 20000
+  convergence_to_fair_value: 0.60
+  open_meteo_model_weights:
+    gfs_seamless: 1.0
+    gfs013: 0.75
+    gfs_global: 0.75
+    best_match: 1.0
+
+model_estimate_comparison:
+  enabled: true
+  default_providers:
+    - current
+    - open_meteo
+    - noaa_herbie
+  default_models:
+    current:
+      - current_weighted_blend
+    open_meteo:
+      - gfs_seamless
+      - gfs013
+      - gfs_global
+      - best_match
+    noaa_herbie:
+      - hrrr
+      - nbm
+      - gfs
+      - rap
+  optional_models:
+    - ecmwf_ifs
+    - aifs
+  store_by_default: false
+  probability_residual_sigma_f: 1.0
+  direct_model_timeout_seconds: 60
+  max_forecast_hours: 48
+  herbie_source_priority:
+    - aws
+    - nomads
+    - google
+    - azure
+  herbie_cache_dir:
+  enable_direct_noaa_models: true
+  direct_models_fail_gracefully: true
+
+direct_noaa_models:
+  enabled: true
+  provider: noaa_herbie
+  cache_dir: data/herbie_cache
+  fail_gracefully: true
+  station_lat: 33.93816
+  station_lon: -118.3866
+  models:
+    hrrr:
+      model: hrrr
+      product: sfc
+      forecast_hours: [0, 18]
+      cycle_hours: hourly
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    nbm:
+      model: nbm
+      product: co
+      forecast_hours: [1, 36]
+      cycle_hours: hourly
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m.*fcst"
+    gfs:
+      model: gfs
+      product: pgrb2.0p25
+      forecast_hours: [0, 48]
+      cycle_hours: [0, 6, 12, 18]
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    rap:
+      model: rap
+      product: awp130pgrb
+      forecast_hours: [0, 18]
+      cycle_hours: hourly
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    nam:
+      model: nam
+      product: awphys
+      forecast_hours: [0, 36]
+      cycle_hours: [0, 6, 12, 18]
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    nam_conus:
+      family: NAM CONUS Nest
+      model: nam
+      product: conusnest.hiresf
+      forecast_hours: [0, 36]
+      cycle_hours: [0, 6, 12, 18]
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    href_mean:
+      family: HREF
+      model: href
+      domain: conus
+      product: mean
+      forecast_hours: [1, 36]
+      cycle_hours: [0, 6, 12, 18]
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+    href_p50:
+      family: HREF
+      model: href
+      domain: conus
+      product: pmmn
+      forecast_hours: [1, 36]
+      cycle_hours: [0, 6, 12, 18]
+      search_strings:
+        - "TMP:2 m"
+        - ":TMP:2 m"
+        - ":TMP:2 m above ground"
+
+paper_trading:
+  starting_cash: 1000.00
+  max_position_per_market: 25
+  max_order_cost: 25.00
+  max_daily_fake_loss: 50.00
+  max_total_exposure: 250.00
+  max_contracts_per_event: 100
+  max_contracts_per_bracket: 25
+  allow_crossing_spread: true
+  minimum_liquidity: 0
+  max_spread: 1.00
+  min_edge: 0.05
+  fee_buffer: 0.01
+  model_error_buffer: 0.03
+  paper_profit_target: 0.04
+  paper_stop_loss: 0.03
+  paper_max_hold_minutes: 120
+  paper_exit_risk_penalty: 0.015
+  paper_exit_when_edge_disappears: true
+  polling_interval_seconds: 60
+  default_quantity: 1
+  fill_model: cross_spread_only
+
+model_race:
+  race_mode: independent
+  starting_cash_per_model: 100
+  entry_interval_seconds: 900
+  exit_interval_seconds: 60
+  stale_model_minutes: 45
+  base_hurdle: 0.09
+  max_risk_per_trade: 5
+  max_exposure_per_model: 25
+  max_exposure_per_bracket: 10
+  max_daily_fake_loss_per_model: 10
+  profit_target_cents: 10
+  stop_loss_cents: 6
+  probability_drop_exit: 0.15
+  max_hold_minutes: 45
+  force_flat_time_local: "17:55"
+  require_exit_bid_for_entry: true
+  max_spread_cents: 15
+  minimum_top_book_size: 1
+  allow_penny_contract_entries: false
+  penny_contract_price_cents: 3
+  missing_bid_mark_mode: "na"
+  block_new_entries_if_any_open_position_missing_bid: true
+  max_missing_bid_warnings_before_block_new_entries: 1
+  block_new_entries_if_model_spread_gt_f: 4.0
+  outlier_threshold_f: 3.0
+  reduce_size_if_spread_gt_f: 2.0
+  reduced_size_multiplier: 0.5
+  block_outlier_model_entries: false
+  cooldown_after_stop_minutes: 30
+  cooldown_after_illiquid_entry_minutes: 60
+  cooldown_scope: market_ticker
+  max_entry_price_cents: 80
+  allow_high_price_entries: false
+  high_price_override_edge: 0.25
+
+llm_trade_advisor:
+  enabled: false
+  default_provider: "rule_based"
+  allow_external_llm: false
+  prompt_path: "prompts/LLM_TRADE_ADVISOR_SYSTEM_PROMPT.md"
+  fail_closed_decision: "BLOCK"
+  require_strict_json: true
+  max_prompt_chars: 12000
+  log_all_decisions: true
+
+llm_advisor:
+  enabled: false
+  provider: ollama
+  model: gpt-oss:120b
+  host_env: OLLAMA_HOST
+  api_key_env: OLLAMA_API_KEY
+  timeout_seconds: 60
+  max_retries: 2
+  temperature: 0
+  fallback_action: wait
+  strict_json: true
+  log_decisions: true
+  rule_only: false
+  dry_run: false
+
+confirmed_edge:
+  required_signal_seen_count: 2
+  morning_caution_until_local: "10:00"
+  midday_start_local: "10:00"
+  late_day_start_local: "14:00"
+  min_score_for_buy: 75
+  min_score_for_small_trade: 60
+  recent_stop_penalty_minutes: 30
+  require_market_confirmation: false
+
+storage:
+  sqlite_path: data/kalshi_weather.sqlite
+  snapshot_dir: data/snapshots

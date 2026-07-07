@@ -1,0 +1,21 @@
+hold:
+  min_hold_edge_cents: 5
+  max_probability_decay: 0.15
+  model_spread_close_hysteresis_f: 1.0
+
+stop:
+  position_stop_loss_cents: 12
+  stop_requires_thesis_break_for_yes: true
+  no_position_stop_loss_cents: 8
+
+take_profit:
+  yes_target_1_min_gain_cents: 12
+  yes_target_1_fraction: 0.50
+  yes_target_2_gap_to_fair_cents: 5
+  yes_target_2_fraction: 0.50
+  no_target_1_min_gain_cents: 8
+  no_target_1_fraction: 0.50
+
+age:
+  max_position_age_minutes: 240
+  max_position_age_requires_edge_check: true

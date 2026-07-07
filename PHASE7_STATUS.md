@@ -1,0 +1,22 @@
+﻿# Phase 7 Status
+
+- canonical directory: C:\Users\jarve\Documents\Codex\kalshi_weather
+- tests passed: yes (57 passed)
+- ruff passed: yes
+- CLI help passed: yes
+- live trading enabled: false
+- live order endpoint present: false
+- production counts: {'market_snapshots': 38, 'weather_snapshots': 38, 'model_predictions': 228, 'official_outcomes': 0, 'prediction_outcomes': 0, 'paper_fills': 0, 'paper_positions': 0, 'opportunity_snapshots': 0, 'paper_equity': 22}
+- known limitation: production official outcomes and joined outcomes are still zero because stored prediction dates are waiting for settlement.
+- paper attribution implemented: yes, storage accepts richer fill attribution.
+- exit logic improved: yes, profit/stop/edge-disappeared replay diagnostics are present.
+- paper replay implemented: yes.
+- threshold sweep replay implemented: yes.
+- poc-check implemented: yes.
+- poc-demo implemented: yes.
+- POC acceptance report created: yes.
+- production joined rows count: 0.
+- fake paper fills count: 0.
+- demo outputs created: yes.
+- current proof-of-edge status: no edge proven; not enough production outcomes and no fake trades fired under current thresholds.
+- next recommended work: collect settled snapshots, ingest official outcomes, and inspect calibration/replay.

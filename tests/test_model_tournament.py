@@ -1,0 +1,286 @@
+from __future__ import annotations
+
+import json
+
+from kalshi_weather.model_tournament import (
+    TournamentConfig,
+    bracket_for_temperature,
+    load_tournament_state,
+    market_rows_from_payload,
+    planned_bets_for_model,
+    run_tournament_cycle,
+    stake_sizing,
+    write_tournament_files,
+)
+
+
+def _prob(
+    label: str,
+    lo: int | None,
+    hi: int | None,
+    p_yes: float,
+    *,
+    yes_bid: float = 0.40,
+    yes_ask: float = 0.42,
+    no_bid: float = 0.57,
+    no_ask: float | None = 0.59,
+    model_id: str = "gfs013",
+) -> dict:
+    ticker_suffix = "T66" if lo is None else ("T73" if hi is None else f"B{lo}.5")
+    return {
+        "provider": "open_meteo",
+        "model_id": model_id,
+        "market_ticker": f"KXHIGHLAX-26JUL03-{ticker_suffix}",
+        "bracket_label": label,
+        "bracket_lower_f": lo,
+        "bracket_upper_f": hi,
+        "p_yes": p_yes,
+        "yes_bid": yes_bid,
+        "yes_ask": yes_ask,
+        "no_bid": no_bid,
+        "no_ask": no_ask,
+    }
+
+
+def _payload(
+    *,
+    no_ask_for_lowest: float | None = 0.99,
+    no_bid_for_lowest: float = 0.98,
+    yes_bid_7273: float = 0.61,
+) -> dict:
+    rows = [
+        _prob("<66", None, 65, 0.01, yes_bid=0.00, yes_ask=0.01, no_bid=no_bid_for_lowest, no_ask=no_ask_for_lowest),
+        _prob("66-67", 66, 67, 0.02, yes_bid=0.01, yes_ask=0.02, no_bid=0.97, no_ask=0.98),
+        _prob("68-69", 68, 69, 0.05, yes_bid=0.04, yes_ask=0.05, no_bid=0.94, no_ask=0.95),
+        _prob("70-71", 70, 71, 0.20, yes_bid=0.19, yes_ask=0.20, no_bid=0.79, no_ask=0.80),
+        _prob("72-73", 72, 73, 0.70, yes_bid=yes_bid_7273, yes_ask=0.40, no_bid=0.59, no_ask=0.60),
+        _prob(">73", 74, None, 0.02, yes_bid=0.02, yes_ask=0.03, no_bid=0.96, no_ask=0.97),
+    ]
+    return {
+        "generated_at_utc": "2026-07-03T16:00:00+00:00",
+        "series": "KXHIGHLAX",
+        "station": "KLAX",
+        "market_date": "2026-07-03",
+        "observed_high_so_far_f": 69.5,
+        "latest_observed_temp_f": 68.7,
+        "latest_observation_utc": "2026-07-03T15:50:00+00:00",
+        "estimates": [
+            {
+                "provider": "open_meteo",
+                "model_id": "gfs013",
+                "model_name": "GFS013",
+                "model_family": "open_meteo",
+                "future_high_f": 71.6,
+                "settlement_high_estimate_f": 71.6,
+                "successful": True,
+                "asof_utc": "2026-07-03T16:00:00+00:00",
+            }
+        ],
+        "probabilities": rows,
+    }
+
+
+def test_model_estimate_maps_to_correct_bracket() -> None:
+    rows = market_rows_from_payload(_payload())
+    assert bracket_for_temperature(71.6, rows)["bracket_label"] == "72-73"
+
+
+def test_yes_and_no_stake_contract_sizing_and_target() -> None:
+    yes = stake_sizing(100, 40, 0.10)
+    assert yes.contracts == 250
+    assert yes.cost_dollars == 100
+    assert yes.target_exit_bid_cents == 44
+    no = stake_sizing(10, 50, 0.10)
+    assert no.contracts == 20
+    assert no.cost_dollars == 10
+    assert no.target_exit_bid_cents == 55
+
+
+def test_target_impossible_detection() -> None:
+    sizing = stake_sizing(10, 99, 0.10)
+    assert sizing.target_possible is False
+    assert sizing.target_exit_bid_cents > 100
+
+
+def test_at_least_two_no_ranges_attempted_and_yes_bracket_excluded() -> None:
+    payload = _payload()
+    rows = market_rows_from_payload(payload)
+    estimate = {"model_key": "open_meteo:gfs013", **payload["estimates"][0]}
+    plans = planned_bets_for_model(
+        estimate=estimate,
+        market_rows=rows,
+        probabilities=payload["probabilities"],
+        config=TournamentConfig(run_id="test"),
+    )
+    no_plans = [plan for plan in plans if plan["side"] == "NO" and plan["entry_price_cents"] is not None]
+    assert len(no_plans) >= 2
+    assert all(plan["bracket_label"] != "72-73" for plan in no_plans)
+
+
+def test_missing_no_ask_skips_to_next_range() -> None:
+    payload = _payload(no_ask_for_lowest=None)
+    rows = market_rows_from_payload(payload)
+    estimate = {"model_key": "open_meteo:gfs013", **payload["estimates"][0]}
+    plans = planned_bets_for_model(
+        estimate=estimate,
+        market_rows=rows,
+        probabilities=payload["probabilities"],
+        config=TournamentConfig(run_id="test"),
+    )
+    no_plans = [plan for plan in plans if plan["side"] == "NO"]
+    assert any(plan["bracket_label"] == "<66" and plan["entry_price_cents"] is None for plan in no_plans)
+    assert len([plan for plan in no_plans if plan["entry_price_cents"] is not None]) >= 2
+
+
+def test_taker_buys_use_asks_and_closes_use_bids() -> None:
+    config = TournamentConfig(run_id="test")
+    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
+    yes = next(p for p in state["positions"] if p["side"] == "YES" and p["bracket_label"] == "72-73")
+    no = next(p for p in state["positions"] if p["side"] == "NO")
+    assert yes["entry_price_cents"] == 40
+    assert yes["entry_price_source"] == "yes_ask"
+    assert no["entry_price_source"] == "no_ask"
+
+    state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.45), previous_state=state, config=config)
+    closed_yes = next(p for p in state["positions"] if p["side"] == "YES" and p["bracket_label"] == "72-73")
+    assert closed_yes["status"] == "closed"
+    assert closed_yes["close_price_cents"] == 45
+    assert closed_yes["close_price_source"] == "yes_bid"
+
+
+def test_no_position_closes_using_no_bid() -> None:
+    config = TournamentConfig(run_id="test")
+    state = run_tournament_cycle(
+        model_payload=_payload(no_ask_for_lowest=0.50, no_bid_for_lowest=0.50, yes_bid_7273=0.41),
+        previous_state=None,
+        config=config,
+    )
+    opened_no = next(p for p in state["positions"] if p["side"] == "NO" and p["bracket_label"] == "<66")
+    assert opened_no["entry_price_cents"] == 50
+    assert opened_no["entry_price_source"] == "no_ask"
+
+    state = run_tournament_cycle(
+        model_payload=_payload(no_ask_for_lowest=0.50, no_bid_for_lowest=0.56, yes_bid_7273=0.41),
+        previous_state=state,
+        config=config,
+    )
+    closed_no = next(p for p in state["positions"] if p["side"] == "NO" and p["bracket_label"] == "<66")
+    assert closed_no["status"] == "closed"
+    assert closed_no["close_price_cents"] == 56
+    assert closed_no["close_price_source"] == "no_bid"
+
+
+def test_dashboard_state_json_and_files_are_written(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    paths = write_tournament_files(state, tmp_path)
+    assert (tmp_path / "model_tournament_state.json").exists()
+    assert (tmp_path / "model_estimate_history.jsonl").exists()
+    assert (tmp_path / "temperature_observations.jsonl").exists()
+    assert (tmp_path / "model_tournament_trades.jsonl").exists()
+    assert (tmp_path / "model_tournament_positions.jsonl").exists()
+    assert (tmp_path / "model_tournament_summary.json").exists()
+    assert (tmp_path / "quote_snapshots.jsonl").exists()
+    assert (tmp_path / "dashboard.html").exists()
+    loaded = load_tournament_state(tmp_path)
+    assert loaded["fake_money_only"] is True
+    assert loaded["real_orders_available"] is False
+    assert set(loaded["dashboard"]) >= {
+        "temperature_observations",
+        "estimate_history",
+        "model_feed_status",
+        "market_snapshot",
+        "positions",
+        "trade_events",
+        "warnings",
+    }
+    assert json.loads((tmp_path / "model_tournament_summary.json").read_text())["total_positions"] >= 3
+    assert loaded["temperature_observations"][-1]["latest_observed_temp_f"] == 68.7
+    assert paths["dashboard"].endswith("dashboard.html")
+
+
+def test_dashboard_displays_times_in_pt(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "America/Los_Angeles" in html
+    assert "times shown in PT" in html
+    assert "Time (PT)" in html
+    assert "Generated (PT)" in html
+
+
+def test_dashboard_contains_responsive_overflow_guards(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "overflow-x:hidden" in html
+    assert "table-wrap" in html
+    assert "overflow-x:auto" in html
+    assert "overflow-wrap:anywhere" in html
+    assert "grid-template-columns:minmax(0,1fr)" in html
+
+
+def test_dashboard_shades_top_two_market_brackets(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "topMarketRows" in html
+    assert "marketYesScore" in html
+    assert "type:'rect'" in html
+    assert "Top ${index+1}" in html
+
+
+def test_dashboard_caps_open_ended_bracket_shading_to_estimate_range(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "minEstimateTemp" in html
+    assert "maxEstimateTemp" in html
+    assert "label.startsWith('>')" in html
+    assert "label.startsWith('<')" in html
+    assert "maxEstimateTemp+2" in html
+    assert "minEstimateTemp-2" in html
+    assert "dash:'dot'" not in html
+
+
+def test_dashboard_y_axis_bounds_follow_visible_temperature_domain(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "yDomain" in html
+    assert "yRange" in html
+    assert "Math.min(...yDomain)-2" in html
+    assert "Math.max(...yDomain)+2" in html
+    assert "yAxis.range=[yRange[0],yRange[1]]" in html
+    assert "yAxis.autorange=false" in html
+    assert "rangemode:'normal'" in html
+    assert "fixedrange:true" in html
+    assert "zeroline:false" in html
+    assert "if(v===null||v===undefined||v==='')return null" in html
+
+
+def test_dashboard_plots_exact_klax_temperature(tmp_path) -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    write_tournament_files(state, tmp_path)
+    html = (tmp_path / "dashboard.html").read_text(encoding="utf-8")
+    assert "latest_observed_temp_f" in html
+    assert "KLAX exact temp" in html
+    assert "exactSeries.push" in html
+    assert "x:exactSeries.map(r=>r.time)" in html
+    assert html.index("name:'KLAX exact temp'") > html.index("for(const [name,rows] of Object.entries(groups))")
+    assert "width:5" in html
+
+
+def test_exact_klax_temperature_carries_forward_between_observation_updates() -> None:
+    config = TournamentConfig(run_id="test")
+    first = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=config)
+    second_payload = _payload()
+    second_payload["generated_at_utc"] = "2026-07-03T16:01:00+00:00"
+    second_payload["latest_observed_temp_f"] = None
+    second_payload["latest_actual_temp_f"] = None
+    second_payload["latest_observation_utc"] = None
+
+    second = run_tournament_cycle(model_payload=second_payload, previous_state=first, config=config)
+
+    latest = second["temperature_observations"][-1]
+    assert latest["latest_observed_temp_f"] == 68.7
+    assert latest["latest_observed_temp_carried_forward"] is True

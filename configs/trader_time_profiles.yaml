@@ -1,0 +1,162 @@
+station_timezone: America/Los_Angeles
+
+profiles:
+  overnight_next_day:
+    start_local: "18:00"
+    end_local: "05:30"
+    min_edge_cents: 12
+    min_no_edge_cents: 12
+    min_no_upside_cents: 12
+    max_no_bin_probability: 0.10
+    max_open_positions: 2
+    max_open_orders: 2
+    max_total_open_risk_groups: 2
+    max_risk_dollars_per_trade: 25
+    max_total_exposure_dollars: 100
+    max_contracts_per_trade: 50
+    allow_new_entries: true
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    allow_no_exclusion: limited
+    allow_observation_elimination: false
+
+  morning_pre_observation:
+    start_local: "05:30"
+    end_local: "09:00"
+    min_edge_cents: 10
+    min_no_edge_cents: 10
+    min_no_upside_cents: 10
+    max_no_bin_probability: 0.15
+    max_open_positions: 2
+    max_open_orders: 2
+    max_total_open_risk_groups: 2
+    max_risk_dollars_per_trade: 35
+    max_total_exposure_dollars: 150
+    max_contracts_per_trade: 50
+    allow_new_entries: true
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    allow_no_exclusion: limited
+    allow_observation_elimination: false
+
+  active_nowcast:
+    start_local: "09:00"
+    end_local: "13:30"
+    allow_new_entries: true
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    max_open_positions: 4
+    max_open_orders: 4
+    max_total_open_risk_groups: 4
+    max_risk_dollars_per_trade: 50
+    max_total_exposure_dollars: 250
+    min_edge_cents: 8
+    min_no_edge_cents: 8
+    min_no_upside_cents: 8
+    max_no_bin_probability: 0.20
+    allow_no_exclusion: true
+    allow_observation_elimination: true_only_if_fresh_station_matched
+
+  late_day_risk_manage:
+    start_local: "13:30"
+    end_local: "16:30"
+    allow_new_entries: limited
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    max_open_positions: 3
+    max_open_orders: 1
+    max_total_open_risk_groups: 3
+    max_risk_dollars_per_trade: 25
+    max_total_exposure_dollars: 150
+    min_edge_cents: 10
+    min_no_edge_cents: 10
+    min_no_upside_cents: 10
+    max_no_bin_probability: 0.15
+    allow_no_exclusion: observation_confirmed_only
+    allow_observation_elimination: true_only_if_fresh_station_matched
+    prefer_close_over_new_entries: true
+
+  risk_reduce:
+    allow_new_entries: false
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    prioritize_closing_bad_positions: true
+
+  close_only:
+    start_local: "16:30"
+    end_local: "18:00"
+    allow_new_entries: false
+    allow_close: true
+    allow_cancel: true
+    allow_reduce_risk: true
+    max_open_positions: 2
+    max_open_orders: 0
+    max_total_open_risk_groups: 2
+    allow_no_exclusion: false
+    allow_observation_elimination: true_only_if_fresh_station_matched
+    force_cancel_open_orders: true
+    prefer_take_profit_or_reduce_risk: true
+
+  post_close:
+    start_local: "18:00"
+    end_local: "23:59"
+    allow_new_entries: false
+    allow_close: false
+    allow_cancel: true
+    allow_reduce_risk: false
+    max_open_positions: 0
+    max_open_orders: 0
+    max_total_open_risk_groups: 0
+    allow_no_exclusion: false
+    allow_observation_elimination: false
+    stop_new_trading: true
+
+dynamic_overrides:
+  stale_observation:
+    allow_observation_elimination: false
+
+  high_model_disagreement:
+    min_edge_add_cents: 2
+    min_no_edge_add_cents: 2
+    max_contracts_multiplier: 0.5
+    block_high_confidence_no: true
+
+  extreme_model_disagreement:
+    min_edge_add_cents: 4
+    min_no_edge_add_cents: 4
+    max_contracts_multiplier: 0.25
+    block_high_confidence_no: true
+
+  drawdown_risk_reduce:
+    threshold_dollars: 20
+    switch_profile: risk_reduce
+
+  drawdown_close_only:
+    threshold_dollars: 40
+    switch_profile: close_only
+
+  max_risk_groups_reached:
+    allow_new_entries: false
+    generate_close_candidates: true
+
+  settlement_concentration:
+    max_single_scenario_loss_dollars: 50
+    switch_profile: risk_reduce
+
+position_management:
+  min_hold_edge_cents: 5
+  max_probability_decay: 0.15
+  model_spread_hold_hysteresis_f: 1.0
+  hold_yes_until_fair_value_convergence: true
+  take_profit_enabled: true
+  take_profit_1_gap_fraction: 0.50
+  take_profit_1_min_cents: 12
+  take_profit_1_fraction_to_close: 0.50
+  take_profit_2_within_fair_cents: 5
+  take_profit_2_fraction_to_close: 0.50
+  hold_remainder_if_thesis_valid: true
