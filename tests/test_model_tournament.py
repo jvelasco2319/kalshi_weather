@@ -377,8 +377,11 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "Models" in html
     assert "bracket_model_count" in html
     assert "bracket-token" in html
+    assert "bracketColorMap" in html
     assert "bracketClass" in html
-    assert "bracket-72-73" in html
+    assert "bracket-color-0" in html
+    assert "bracket-color-5" in html
+    assert "bracket-72-73" not in html
     assert "Open $" not in html
     assert "Closed $" not in html
     assert "_position_pnl_dollars" in html

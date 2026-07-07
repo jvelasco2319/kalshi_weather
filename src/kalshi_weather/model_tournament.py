@@ -1024,13 +1024,15 @@ th{{color:#9fb5d1}}.grid{{display:grid;grid-template-columns:minmax(0,1.2fr) min
 .save-state.saved{{color:#72e58f}}.save-state.error{{color:#ff8e95}}
 .bracket-cell{{text-align:center}}
 .bracket-token{{display:inline-block;min-width:58px;padding:2px 8px;border-radius:999px;font-weight:800;text-align:center;border:1px solid transparent}}
-.bracket-lt66{{color:#8ee7ff;background:rgba(57,180,210,.14);border-color:rgba(57,180,210,.34)}}
-.bracket-66-67{{color:#75e2bd;background:rgba(47,190,145,.14);border-color:rgba(47,190,145,.34)}}
-.bracket-68-69{{color:#9bf078;background:rgba(100,205,70,.14);border-color:rgba(100,205,70,.34)}}
-.bracket-70-71{{color:#ffdf6b;background:rgba(235,185,55,.16);border-color:rgba(235,185,55,.38)}}
-.bracket-72-73{{color:#ffaf66;background:rgba(242,133,49,.16);border-color:rgba(242,133,49,.40)}}
-.bracket-gt73{{color:#ff8fac;background:rgba(232,76,120,.16);border-color:rgba(232,76,120,.40)}}
-.bracket-other{{color:#c8d4e4;background:rgba(159,181,209,.12);border-color:rgba(159,181,209,.30)}}
+.bracket-color-0{{color:#8ee7ff;background:rgba(57,180,210,.14);border-color:rgba(57,180,210,.34)}}
+.bracket-color-1{{color:#75e2bd;background:rgba(47,190,145,.14);border-color:rgba(47,190,145,.34)}}
+.bracket-color-2{{color:#9bf078;background:rgba(100,205,70,.14);border-color:rgba(100,205,70,.34)}}
+.bracket-color-3{{color:#ffdf6b;background:rgba(235,185,55,.16);border-color:rgba(235,185,55,.38)}}
+.bracket-color-4{{color:#ffaf66;background:rgba(242,133,49,.16);border-color:rgba(242,133,49,.40)}}
+.bracket-color-5{{color:#ff8fac;background:rgba(232,76,120,.16);border-color:rgba(232,76,120,.40)}}
+.bracket-color-6{{color:#d1a6ff;background:rgba(166,105,228,.16);border-color:rgba(166,105,228,.40)}}
+.bracket-color-7{{color:#9fb7ff;background:rgba(95,120,230,.16);border-color:rgba(95,120,230,.40)}}
+.bracket-color-other{{color:#c8d4e4;background:rgba(159,181,209,.12);border-color:rgba(159,181,209,.30)}}
 .ok{{color:#6de38b}}.warn{{color:#ffcf5a}}#warnings{{max-height:360px;overflow:auto}}
 #warnings ul{{margin:0;padding-left:1.1rem}}#warnings li{{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.35;margin:0 0 8px}}
 @media(max-width:1100px){{main{{padding:12px}}.grid{{grid-template-columns:minmax(0,1fr)}}}}
@@ -1056,7 +1058,14 @@ function money(v){{if(v===null||v===undefined||v==='')return '--';const n=Number
 function signedMoney(v){{if(v===null||v===undefined||v==='')return '--';const n=Number(v);return Number.isFinite(n)?`${{n>0?'+':n<0?'-':''}}$${{Math.abs(n).toFixed(2)}}`:fmt(v);}}
 function cents(v){{if(v===null||v===undefined||v==='')return '--';const n=Number(v);return Number.isFinite(n)?`${{n.toFixed(1)}}c`:fmt(v);}}
 function htmlAttr(v){{return String(v??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}}
-function bracketClass(v){{const key=String(v??'').replace(/[°F\\s]/g,'');const classes={{'<66':'bracket-lt66','66-67':'bracket-66-67','68-69':'bracket-68-69','70-71':'bracket-70-71','72-73':'bracket-72-73','>73':'bracket-gt73'}};return classes[key]||'bracket-other';}}
+const BRACKET_COLOR_CLASS_COUNT=8;
+function normalizedBracketKey(v){{return String(v??'').replace(/[°F\\s]/g,'');}}
+const bracketColorMap=new Map();
+function rememberBracket(v){{const key=normalizedBracketKey(v);if(key&&!bracketColorMap.has(key))bracketColorMap.set(key,bracketColorMap.size%BRACKET_COLOR_CLASS_COUNT);}}
+for(const row of state.market_snapshot||[]){{rememberBracket(row.bracket_label);}}
+for(const row of state.positions||[]){{rememberBracket(row.bracket_label);}}
+for(const row of state.trade_events||[]){{rememberBracket(row.bracket_label);}}
+function bracketClass(v){{const key=normalizedBracketKey(v);if(!key)return 'bracket-color-other';if(!bracketColorMap.has(key))rememberBracket(key);return `bracket-color-${{bracketColorMap.get(key)}}`;}}
 function bracketBadge(v){{return `<span class="bracket-token ${{bracketClass(v)}}">${{htmlAttr(fmt(v))}}</span>`;}}
 function fallbackCloseReason(row){{if(row.close_status_reason)return row.close_status_reason;if(row.status==='closed')return `Closed because realized P/L ${{money(row.realized_pnl_dollars)}} reached the profit target.`;const pnl=Number(row.unrealized_pnl_dollars||0);const target=Number(row.target_profit_dollars||0);if(row.current_exit_price_cents===null||row.current_exit_price_cents===undefined||row.current_exit_price_cents==='')return `Still open because the exit bid is missing for ${{row.side}} ${{row.bracket_label}}. Without an exit bid, the fake position cannot close at the profit target.`;if(row.target_possible===false)return `Still open because the ${{(targetPct(row)*100).toFixed(1)}}% target is not reachable from this entry price and contract sizing.`;if(target<=0)return 'Still open because no positive profit target is configured.';const progress=Math.max(0,pnl)/target;const remaining=Math.max(0,target-pnl);return `Still open because current open P/L is ${{money(pnl)}}, below the ${{money(target)}} target (${{(progress*100).toFixed(0)}}% of target). Needs about ${{cents(row.target_exit_bid_cents)}} exit bid; current bid is ${{cents(row.current_exit_price_cents)}}, leaving ${{money(remaining)}} to go.`;}}
 function statusBadge(v){{const s=String(v||'').toLowerCase();if(s==='closed')return '<span class="status-badge status-closed">Closed</span>';if(s==='open')return '<span class="status-badge status-open">Open</span>';return fmt(v);}}
