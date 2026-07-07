@@ -390,10 +390,15 @@ def _mark_and_close_positions(state: dict[str, Any], market_rows: list[dict[str,
     events: list[dict[str, Any]] = []
     for position in state.get("positions", []):
         if position.get("status") != "open":
+            position.setdefault("close_status_reason", "Closed because the fake position already reached its profit target.")
             continue
         market = market_by_label.get(str(position.get("bracket_label")))
         if not market:
             position.setdefault("warnings", []).append("market bracket missing")
+            position["close_status_reason"] = (
+                "Still open because this bracket is missing from the latest market snapshot. "
+                "Without a current quote, the tournament cannot confirm the profit target."
+            )
             continue
         bid_key = "yes_bid_cents" if position.get("side") == "YES" else "no_bid_cents"
         bid = _float_or_none(market.get(bid_key))
@@ -402,6 +407,10 @@ def _mark_and_close_positions(state: dict[str, Any], market_rows: list[dict[str,
         position["last_marked_at_utc"] = now
         if bid is None:
             position.setdefault("warnings", []).append("missing exit bid")
+            position["close_status_reason"] = (
+                f"Still open because the {position.get('side')} exit bid is missing for {position.get('bracket_label')}. "
+                "Without an exit bid, the fake position cannot close at the profit target."
+            )
             continue
         contracts = int(position.get("contracts") or 0)
         value = contracts * bid / 100.0
@@ -410,6 +419,7 @@ def _mark_and_close_positions(state: dict[str, Any], market_rows: list[dict[str,
         position["current_value_dollars"] = round(value, 4)
         position["unrealized_pnl_dollars"] = round(pnl, 4)
         position["target_progress_pct"] = None if target_profit <= 0 else round(max(0.0, pnl) / target_profit, 4)
+        position["close_status_reason"] = _close_status_reason(position, bid, pnl, target_profit)
         if target_profit > 0 and pnl >= target_profit:
             position["status"] = "closed"
             position["closed_at_utc"] = now
@@ -417,6 +427,10 @@ def _mark_and_close_positions(state: dict[str, Any], market_rows: list[dict[str,
             position["close_price_source"] = bid_key.replace("_cents", "")
             position["realized_pnl_dollars"] = round(pnl, 4)
             position["unrealized_pnl_dollars"] = 0.0
+            position["close_status_reason"] = (
+                f"Closed because realized P/L {_money(pnl)} met or exceeded the "
+                f"{_money(target_profit)} profit target."
+            )
             events.append(
                 _event(now, "target_reached", position["model_key"], position["side"], position["bracket_label"], "profit target reached", position=position)
             )
@@ -424,6 +438,39 @@ def _mark_and_close_positions(state: dict[str, Any], market_rows: list[dict[str,
                 _event(now, "close", position["model_key"], position["side"], position["bracket_label"], "fake taker close at bid", position=position)
             )
     return events
+
+
+def _money(value: float | int | None) -> str:
+    if value is None:
+        return "--"
+    amount = float(value)
+    sign = "-" if amount < 0 else ""
+    return f"{sign}${abs(amount):.2f}"
+
+
+def _cents(value: float | int | None) -> str:
+    if value is None:
+        return "--"
+    return f"{float(value):.1f}c"
+
+
+def _close_status_reason(position: dict[str, Any], bid: float, pnl: float, target_profit: float) -> str:
+    if not position.get("target_possible", True):
+        return (
+            "Still open because the 10% target is not reachable from this entry price and contract sizing. "
+            "The tournament keeps marking it, but it cannot auto-close on that target."
+        )
+    if target_profit <= 0:
+        return "Still open because no positive profit target is configured for this fake position."
+    remaining = max(0.0, target_profit - pnl)
+    progress = None if target_profit <= 0 else max(0.0, pnl) / target_profit
+    target_exit = _float_or_none(position.get("target_exit_bid_cents"))
+    progress_text = f"{progress * 100:.0f}% of target" if progress is not None else "below target"
+    return (
+        f"Still open because current open P/L is {_money(pnl)}, below the {_money(target_profit)} target "
+        f"({progress_text}). Needs about {_cents(target_exit)} exit bid; current bid is {_cents(bid)}, "
+        f"leaving {_money(remaining)} to go."
+    )
 
 
 def _rank_no_candidates(
@@ -707,6 +754,7 @@ table{{width:max-content;min-width:100%;border-collapse:collapse;font-size:13px}
 th,td{{border-bottom:1px solid #2b3444;padding:6px 8px;text-align:left;white-space:nowrap;vertical-align:top}}
 th{{color:#9fb5d1}}.grid{{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;min-width:0}}
 .summary-line{{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 10px;color:#9fb5d1;font-size:14px}}.summary-line strong{{color:#e8edf4}}
+.reason-cell{{white-space:normal;min-width:280px;max-width:560px;line-height:1.3}}
 .ok{{color:#6de38b}}.warn{{color:#ffcf5a}}#warnings{{max-height:360px;overflow:auto}}
 #warnings ul{{margin:0;padding-left:1.1rem}}#warnings li{{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.35;margin:0 0 8px}}
 @media(max-width:1100px){{main{{padding:12px}}.grid{{grid-template-columns:minmax(0,1fr)}}}}
@@ -729,11 +777,13 @@ function formatPT(v){{const d=parseUtc(v);return d?ptDateTimeFmt.format(d):fmt(v
 function chartPT(v){{const d=parseUtc(v);return d?ptChartFmt.format(d):fmt(v);}}
 function isTimeKey(key){{return /(^time_utc$|_at_utc$|_utc$)/.test(String(key));}}
 function money(v){{if(v===null||v===undefined||v==='')return '--';const n=Number(v);return Number.isFinite(n)?`${{n<0?'-':''}}$${{Math.abs(n).toFixed(2)}}`:fmt(v);}}
-function cell(row,key){{if(String(key).endsWith('_dollars'))return money(row[key]);return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
+function cents(v){{if(v===null||v===undefined||v==='')return '--';const n=Number(v);return Number.isFinite(n)?`${{n.toFixed(1)}}c`:fmt(v);}}
+function fallbackCloseReason(row){{if(row.close_status_reason)return row.close_status_reason;if(row.status==='closed')return `Closed because realized P/L ${{money(row.realized_pnl_dollars)}} reached the profit target.`;const pnl=Number(row.unrealized_pnl_dollars||0);const target=Number(row.target_profit_dollars||0);if(row.current_exit_price_cents===null||row.current_exit_price_cents===undefined||row.current_exit_price_cents==='')return `Still open because the exit bid is missing for ${{row.side}} ${{row.bracket_label}}. Without an exit bid, the fake position cannot close at the profit target.`;if(row.target_possible===false)return 'Still open because the 10% target is not reachable from this entry price and contract sizing.';if(target<=0)return 'Still open because no positive profit target is configured.';const progress=Math.max(0,pnl)/target;const remaining=Math.max(0,target-pnl);return `Still open because current open P/L is ${{money(pnl)}}, below the ${{money(target)}} target (${{(progress*100).toFixed(0)}}% of target). Needs about ${{cents(row.target_exit_bid_cents)}} exit bid; current bid is ${{cents(row.current_exit_price_cents)}}, leaving ${{money(remaining)}} to go.`;}}
+function cell(row,key){{if(key==='_close_status_reason')return fallbackCloseReason(row);if(String(key).endsWith('_dollars'))return money(row[key]);return isTimeKey(key)?formatPT(row[key]):fmt(row[key]);}}
 document.getElementById('meta').textContent=`Updated ${{formatPT(state.updated_at_utc)}} | fake-money-only | times shown in PT | refresh {refresh}s`;
-function table(rows,cols){{if(!rows||!rows.length)return '<em>none</em>';return '<div class="table-wrap"><table><thead><tr>'+cols.map(c=>`<th>${{c[0]}}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>`<td>${{cell(r,c[1])}}</td>`).join('')+'</tr>').join('')+'</tbody></table></div>';}}
+function table(rows,cols){{if(!rows||!rows.length)return '<em>none</em>';return '<div class="table-wrap"><table><thead><tr>'+cols.map(c=>`<th>${{c[0]}}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>`<td class="${{c[1]==='_close_status_reason'?'reason-cell':''}}">${{cell(r,c[1])}}</td>`).join('')+'</tr>').join('')+'</tbody></table></div>';}}
 const summary=state.summary||{{}};
-document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Stake','stake_dollars'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['Open $','unrealized_pnl_dollars'],['Closed $','realized_pnl_dollars'],['Target','target_progress_pct'],['Status','status']]);
+document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Stake','stake_dollars'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['Open $','unrealized_pnl_dollars'],['Closed $','realized_pnl_dollars'],['Target','target_progress_pct'],['Status','status'],['Why','_close_status_reason']]);
 document.getElementById('feeds').innerHTML=table(state.model_feed_status,[['Model','model_key'],['Provider','provider'],['Family','family'],['OK','success'],['High F','high_f'],['Generated (PT)','generated_at_utc'],['Elapsed','elapsed_seconds'],['Error','error_message']]);
 document.getElementById('market').innerHTML=table(state.market_snapshot,[['Bracket','bracket_label'],['YES bid','yes_bid_cents'],['YES ask','yes_ask_cents'],['NO bid','no_bid_cents'],['NO ask','no_ask_cents'],['Mid','market_midpoint_cents']]);
 document.getElementById('events').innerHTML=table((state.trade_events||[]).slice(-80).reverse(),[['Time (PT)','time_utc'],['Event','event_type'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Reason','reason']]);

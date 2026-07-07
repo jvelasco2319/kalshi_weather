@@ -146,6 +146,15 @@ def test_taker_buys_use_asks_and_closes_use_bids() -> None:
     assert closed_yes["status"] == "closed"
     assert closed_yes["close_price_cents"] == 45
     assert closed_yes["close_price_source"] == "yes_bid"
+    assert "profit target" in closed_yes["close_status_reason"]
+
+
+def test_open_position_records_reason_it_has_not_closed() -> None:
+    state = run_tournament_cycle(model_payload=_payload(), previous_state=None, config=TournamentConfig(run_id="test"))
+    open_position = next(p for p in state["positions"] if p["status"] == "open")
+
+    assert open_position["close_status_reason"].startswith("Still open")
+    assert "target" in open_position["close_status_reason"]
 
 
 def test_no_position_closes_using_no_bid() -> None:
@@ -211,6 +220,9 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "closed_pnl_dollars" in html
     assert "Closed $" in html
     assert "realized_pnl_dollars" in html
+    assert "Why" in html
+    assert "_close_status_reason" in html
+    assert "fallbackCloseReason" in html
 
 
 def test_dashboard_displays_times_in_pt(tmp_path) -> None:
