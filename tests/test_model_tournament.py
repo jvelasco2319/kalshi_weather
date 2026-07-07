@@ -223,6 +223,8 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "Why" in html
     assert "_close_status_reason" in html
     assert "fallbackCloseReason" in html
+    assert "status-badge status-open" in html
+    assert "status-badge status-closed" in html
 
 
 def test_dashboard_displays_times_in_pt(tmp_path) -> None:
