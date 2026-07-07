@@ -671,11 +671,54 @@ def _dashboard_state(state: dict[str, Any], market_rows: list[dict[str, Any]], f
         "estimate_history": state.get("estimate_history", []),
         "model_feed_status": feed_rows,
         "market_snapshot": market_rows,
-        "positions": state.get("positions", []),
+        "positions": _positions_for_dashboard(state, market_rows),
         "trade_events": state.get("trade_events", [])[-250:],
         "summary": state.get("summary") or {},
         "warnings": _warnings(state, feed_rows),
     }
+
+
+def _positions_for_dashboard(state: dict[str, Any], market_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    bracket_counts = _latest_estimated_bracket_counts(state.get("estimate_history") or [])
+    bracket_order = {str(row.get("bracket_label")): index for index, row in enumerate(market_rows)}
+    rows: list[dict[str, Any]] = []
+    for index, position in enumerate(state.get("positions") or []):
+        row = dict(position)
+        label = str(row.get("bracket_label") or "")
+        row["_created_order"] = index
+        row["bracket_model_count"] = int(bracket_counts.get(label, 0))
+        rows.append(row)
+    return sorted(rows, key=lambda row: _position_dashboard_sort_key(row, bracket_order))
+
+
+def _latest_estimated_bracket_counts(estimate_history: list[dict[str, Any]]) -> dict[str, int]:
+    latest_by_model: dict[str, dict[str, Any]] = {}
+    for row in estimate_history:
+        model_key = str(row.get("model_key") or "")
+        bracket = row.get("estimated_bracket")
+        if not model_key or not bracket:
+            continue
+        latest_by_model[model_key] = row
+    counts: dict[str, int] = {}
+    for row in latest_by_model.values():
+        bracket = str(row.get("estimated_bracket") or "")
+        if bracket:
+            counts[bracket] = counts.get(bracket, 0) + 1
+    return counts
+
+
+def _position_dashboard_sort_key(row: dict[str, Any], bracket_order: dict[str, int]) -> tuple[Any, ...]:
+    status_rank = 0 if row.get("status") == "open" else 1 if row.get("status") == "closed" else 2
+    label = str(row.get("bracket_label") or "")
+    side_rank = 0 if row.get("side") == "YES" else 1 if row.get("side") == "NO" else 2
+    return (
+        status_rank,
+        -int(row.get("bracket_model_count") or 0),
+        bracket_order.get(label, 999),
+        side_rank,
+        str(row.get("model_key") or ""),
+        int(row.get("_created_order") or 0),
+    )
 
 
 def _warnings(state: dict[str, Any], feed_rows: list[dict[str, Any]]) -> list[str]:
@@ -995,7 +1038,7 @@ async function savePositionOverride(rowEl){{if(!rowEl)return;const positionId=ro
 document.addEventListener('click',event=>{{const button=event.target.closest('button[data-adjust-field]');if(!button)return;const rowEl=button.closest('tr[data-position-id]');const input=rowEl?.querySelector(`input[data-field="${{button.dataset.adjustField}}"]`);if(!rowEl||!input)return;const step=Number(input.dataset.step||input.step||1);const delta=Number(button.dataset.delta||0);const decimals=Number(input.dataset.decimals||2);const next=Math.max(Number(input.min||0),Number(input.value||0)+delta*step);input.value=next.toFixed(decimals);savePositionOverride(rowEl);}});
 document.addEventListener('change',event=>{{const input=event.target.closest('input[data-field]');if(!input)return;savePositionOverride(input.closest('tr[data-position-id]'));}});
 const summary=state.summary||{{}};
-document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Stake','_stake_control'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','_target_control'],['Status','status'],['Why','_close_status_reason']]);
+document.getElementById('positions').innerHTML=`<div class="summary-line"><span>Closed bet money: <strong>${{money(summary.closed_pnl_dollars)}}</strong></span><span>Open P/L: <strong>${{money(summary.open_pnl_dollars)}}</strong></span><span>Closed bets: <strong>${{fmt(summary.closed_positions)}}</strong></span></div>`+table(state.positions,[['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Models','bracket_model_count'],['Stake','_stake_control'],['Entry','entry_price_cents'],['Exit','current_exit_price_cents'],['P/L','_position_pnl_dollars'],['Target','_target_control'],['Status','status'],['Why','_close_status_reason']]);
 document.getElementById('feeds').innerHTML=table(state.model_feed_status,[['Model','model_key'],['Provider','provider'],['Family','family'],['OK','success'],['High F','high_f'],['Generated (PT)','generated_at_utc'],['Elapsed','elapsed_seconds'],['Error','error_message']]);
 document.getElementById('market').innerHTML=table(state.market_snapshot,[['Bracket','bracket_label'],['YES bid','yes_bid_cents'],['YES ask','yes_ask_cents'],['NO bid','no_bid_cents'],['NO ask','no_ask_cents'],['Mid','market_midpoint_cents']]);
 document.getElementById('events').innerHTML=table((state.trade_events||[]).slice(-80).reverse(),[['Time (PT)','time_utc'],['Event','event_type'],['Model','model_key'],['Side','side'],['Bracket','bracket_label'],['Reason','reason']]);

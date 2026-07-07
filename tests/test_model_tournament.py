@@ -4,6 +4,7 @@ import json
 
 from kalshi_weather.model_tournament import (
     TournamentConfig,
+    _dashboard_state,
     bracket_for_temperature,
     load_tournament_state,
     market_rows_from_payload,
@@ -270,6 +271,34 @@ def test_dashboard_state_json_and_files_are_written(tmp_path) -> None:
     assert paths["dashboard"].endswith("dashboard.html")
 
 
+def test_dashboard_positions_sort_open_first_then_by_estimated_bracket_count() -> None:
+    market_rows = market_rows_from_payload(_payload())
+    state = {
+        "positions": [
+            {"position_id": "closed-popular", "status": "closed", "bracket_label": "72-73", "side": "YES", "model_key": "m1"},
+            {"position_id": "open-less-popular", "status": "open", "bracket_label": "68-69", "side": "YES", "model_key": "m2"},
+            {"position_id": "open-popular", "status": "open", "bracket_label": "72-73", "side": "YES", "model_key": "m3"},
+            {"position_id": "closed-less-popular", "status": "closed", "bracket_label": "68-69", "side": "YES", "model_key": "m4"},
+        ],
+        "estimate_history": [
+            {"time_utc": "2026-07-03T16:00:00+00:00", "model_key": "a", "estimated_bracket": "72-73"},
+            {"time_utc": "2026-07-03T16:00:00+00:00", "model_key": "b", "estimated_bracket": "72-73"},
+            {"time_utc": "2026-07-03T16:00:00+00:00", "model_key": "c", "estimated_bracket": "68-69"},
+        ],
+    }
+
+    rows = _dashboard_state(state, market_rows, [])["positions"]
+
+    assert [row["position_id"] for row in rows] == [
+        "open-popular",
+        "open-less-popular",
+        "closed-popular",
+        "closed-less-popular",
+    ]
+    assert rows[0]["bracket_model_count"] == 2
+    assert rows[1]["bracket_model_count"] == 1
+
+
 def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) -> None:
     config = TournamentConfig(run_id="test")
     state = run_tournament_cycle(model_payload=_payload(yes_bid_7273=0.41), previous_state=None, config=config)
@@ -281,6 +310,8 @@ def test_dashboard_shows_closed_bet_money_in_model_tournament_table(tmp_path) ->
     assert "Closed bet money" in html
     assert "closed_pnl_dollars" in html
     assert "P/L" in html
+    assert "Models" in html
+    assert "bracket_model_count" in html
     assert "Open $" not in html
     assert "Closed $" not in html
     assert "_position_pnl_dollars" in html
