@@ -1,442 +1,264 @@
 # Kalshi Weather
 
-Fake-money research and monitoring tools for Kalshi Los Angeles high-temperature
-markets.
+Local fake-money tools for watching Kalshi Los Angeles high-temperature markets.
 
-The main workflow estimates the daily high temperature at KLAX/LAX, compares the
-model view with Kalshi `KXHIGHLAX` temperature brackets, and simulates
-rules-based paper trading. The project also includes a model tournament dashboard
-that tracks how each weather model would have performed over time.
+The easiest thing to run is the model tournament dashboard. It tracks the current
+LA high-temperature market and the next market at the same time, then shows both
+in one browser page with tabs.
 
-This repo is intentionally fake-money-only. It does not place real Kalshi orders.
+This project is fake-money-only by default. It does not place real Kalshi orders.
 
-## What This Project Does
+## What You Get
 
-- Fetches public Kalshi market/orderbook data for `KXHIGHLAX`.
-- Fetches KLAX/LAX observations and high-so-far temperature.
-- Fetches Open-Meteo model estimates and optional direct NOAA/Herbie models.
-- Builds bracket probabilities for canonical temperature brackets.
-- Runs a rules-based paper trader with conservative simulated fills.
-- Saves debug files for review: `latest.json`, `decisions.jsonl`,
-  `candidates.csv`, `diagnostic.sqlite`, `terminal_output.txt`, and ZIP packages.
-- Runs a model tournament dashboard to compare model estimates and fake results.
-
-Canonical bracket labels are normalized to plain ranges such as `70-71`,
-`72-73`, `<66`, and `>76`.
-
-## Safety
-
-This package is for local fake-money research.
-
-- Real trading is disabled by default.
-- `KALSHI_ENABLE_REAL_ORDERS=false` should stay false.
-- No real order-placement workflow is required for the current runs.
-- `.env`, runtime data, reports, logs, journals, SQLite files, and ZIP packages
-  are git-ignored.
-
-Do not put private Kalshi keys or secrets in GitHub.
+- KLAX/LAX temperature observations.
+- Weather model high-temperature estimates.
+- Kalshi `KXHIGHLAX` temperature bracket prices.
+- A local HTML dashboard for current and next-day markets.
+- Fake model-tournament results and P/L for research.
 
 ## Requirements
 
 - Windows PowerShell 5.1 or newer.
 - Python 3.11 or newer.
 - Git.
-- Internet access for Kalshi, NWS, Open-Meteo, and optional NOAA model data.
+- Internet access.
 
-Optional but useful:
+Optional for direct NOAA/Herbie models:
 
-- Conda or mamba for `eccodes`/`cfgrib` if you want direct NOAA/Herbie models.
+- Conda or mamba.
+- `eccodes`, `cfgrib`, `xarray`, and `herbie-data`.
+
+Open-Meteo models work without the optional NOAA setup.
 
 ## Install
 
-Clone and enter the repo:
+Open PowerShell and run:
 
 ```powershell
 git clone https://github.com/jvelasco2319/kalshi_weather.git
 cd kalshi_weather
-```
 
-Create and activate a virtual environment:
-
-```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
+
 python -m pip install --upgrade pip
-```
-
-Install the package and test tools:
-
-```powershell
 python -m pip install -e ".[dev]"
 ```
 
-Copy the environment template:
+If PowerShell blocks local scripts, run this once in the same PowerShell window:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Create your local environment file:
 
 ```powershell
 copy .env.example .env
 ```
 
-Edit `.env` and set a descriptive NWS user agent:
+Then open `.env` and keep real trading disabled:
+
+```text
+KALSHI_ENABLE_REAL_ORDERS=false
+```
+
+It is also helpful to set a user agent for weather APIs:
 
 ```text
 NWS_USER_AGENT=kalshi-weather-research/0.1 your_email@example.com
-KALSHI_ENABLE_REAL_ORDERS=false
 ```
 
 Verify the install:
 
 ```powershell
 kalshi-weather --help
-python -m pytest -q
-```
-
-If PowerShell blocks local scripts, allow scripts for the current shell only:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 ## Optional NOAA / Herbie Setup
 
-Open-Meteo/current blend models work without NOAA/Herbie. Direct NOAA models are
-slower and need extra dependencies.
+You can skip this at first. The dashboard can run with Open-Meteo models.
 
-Try the project installer:
+To try direct NOAA/Herbie support:
 
 ```powershell
 .\scripts\install_direct_noaa_models.ps1
 ```
 
-If `eccodes` or `cfgrib` fails on Windows, conda is often easier:
+If that fails on Windows, conda is usually easier:
 
 ```powershell
 conda install -c conda-forge eccodes cfgrib
 python -m pip install herbie-data xarray
 ```
 
-You can still run the bot with NOAA disabled if this setup is incomplete.
+## Run Two Markets With Tabs
 
-## Current Recommended Run
+This is the main easy-use command. It starts:
 
-Use the market-cycle supervisor, not an infinite raw `trader-paper-run` loop.
-The supervisor repeatedly checks the active market, runs one controlled
-paper-trading cycle, saves canonical files, and creates ZIP packages.
+- one dashboard for today's LA high-temperature market,
+- one dashboard for tomorrow's LA high-temperature market,
+- one tabbed HTML page that shows both.
 
-Run the next market using the current aggressive fake-money test settings:
-
-```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
-
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -Tomorrow `
-  -AggressiveAllDay `
-  -NoaaAfterNoon `
-  -FastModelRefreshSeconds 60 `
-  -NoaaModelRefreshSeconds 900 `
-  -ObservationRefreshSeconds 300 `
-  -MinEdgeCents 2 `
-  -MinNoEdgeCents 2 `
-  -MinNoUpsideCents 2 `
-  -MaxNoBinProbability 0.40 `
-  -PackageEveryMinutes 60 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-For a specific target date:
-
-```powershell
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -TargetDate "YYYY-MM-DD" `
-  -AggressiveAllDay `
-  -NoaaAfterNoon `
-  -FastModelRefreshSeconds 60 `
-  -NoaaModelRefreshSeconds 900 `
-  -ObservationRefreshSeconds 300 `
-  -MinEdgeCents 2 `
-  -MinNoEdgeCents 2 `
-  -MinNoUpsideCents 2 `
-  -MaxNoBinProbability 0.40 `
-  -PackageEveryMinutes 60 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-Stop the run with `Ctrl+C`.
-
-### Run Variants
-
-Open-Meteo/current models only:
-
-```powershell
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -Tomorrow `
-  -AggressiveAllDay `
-  -NoaaOff `
-  -FastModelRefreshSeconds 60 `
-  -MinEdgeCents 2 `
-  -MinNoEdgeCents 2 `
-  -MinNoUpsideCents 2 `
-  -MaxNoBinProbability 0.40 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-NOAA/Herbie active all day:
-
-```powershell
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -Tomorrow `
-  -AggressiveAllDay `
-  -NoaaModelRefreshSeconds 900 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-All configured weather models:
-
-```powershell
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -Tomorrow `
-  -AggressiveAllDay `
-  -AllWeatherModels `
-  -NoaaModelRefreshSeconds 900 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-More model-trusting / less market-prior behavior:
-
-```powershell
-.\scripts\run_lax_market_cycle_forever.ps1 `
-  -Tomorrow `
-  -AggressiveAllDay `
-  -ModelAuthoritative `
-  -NoaaAfterNoon `
-  -MinEdgeCents 1 `
-  -MinNoEdgeCents 1 `
-  -MinNoUpsideCents 1 `
-  -MaxNoBinProbability 0.60 `
-  -ShowModelEstimates `
-  -SnapshotStyle table
-```
-
-## What The Main Run Saves
-
-Run folders are written under:
-
-```text
-reports\trader_agent\debug\<run_id>\
-```
-
-Important files:
-
-- `latest.json` - latest full decision/context snapshot.
-- `decisions.jsonl` - one decision record per cycle.
-- `candidates.csv` - candidate trade audit table.
-- `diagnostic.sqlite` - local SQLite journal.
-- `terminal_output.txt` - captured terminal output.
-- `final_results.json` - end/run summary when available.
-- `bot_trust_report.json` - safety and model-trust summary when available.
-- `effective_config.json` - effective run configuration when available.
-
-ZIP packages are written under:
-
-```text
-reports\trader_agent\archives\
-```
-
-The supervisor packages the latest run every hour by default. Change that with:
-
-```powershell
--PackageEveryMinutes 30
-```
-
-Manually package the latest run:
-
-```powershell
-.\scripts\package_debug_run.ps1 -Latest
-```
-
-## Model Tournament Dashboard
-
-The model tournament compares model-specific fake bets and model estimates over
-time. It is separate from the main paper trader.
-
-Run the tournament for today and open a local dashboard:
+From the repo folder:
 
 ```powershell
 cd C:\Users\jarve\Documents\Codex\kalshi_weather
 
-.\scripts\run_lax_model_tournament_forever.ps1 `
-  -TargetDate "YYYY-MM-DD" `
-  -ShowDashboard `
-  -DashboardPort 8766 `
-  -IntervalSeconds 60
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8766/dashboard.html
-```
-
-The dashboard shows:
-
-- model estimates over time in PT,
-- observed KLAX exact temperature and high-so-far,
-- top temperature bracket highlights,
-- open/closed fake model positions,
-- signed P/L by row,
-- reason text explaining why open rows have not closed.
-
-The dashboard is read-only. Stake and target percentage are not editable.
-
-### Two Overlapping Market Dashboards
-
-Kalshi can have today's LA high-temperature market and tomorrow's market open at
-the same time. Keep them separate by running one tournament per target date. This
-script starts two tournament loops, serves them on different ports, and writes a
-small tabbed HTML page that switches between the two dashboards:
-
-```powershell
 .\scripts\run_lax_model_tournament_two_markets.ps1 `
   -CurrentDashboardPort 8766 `
   -NextDashboardPort 8767 `
-  -IntervalSeconds 60
+  -TabbedDashboardPort 8768 `
+  -IntervalSeconds 60 `
+  -CheckEverySeconds 60
 ```
 
-Direct dashboard URLs:
+Open this in your browser:
+
+```text
+http://127.0.0.1:8768/lax_model_tournament_tabs.html
+```
+
+The tabbed page updates automatically. When the local date rolls forward, the
+script starts the new target date and the HTML page adds/updates tabs from its
+manifest.
+
+Leave the PowerShell window open while you want the dashboard running.
+
+Stop it with:
+
+```text
+Ctrl+C
+```
+
+## Direct Dashboard URLs
+
+If you want to open the individual dashboards directly:
 
 ```text
 http://127.0.0.1:8766/dashboard.html
 http://127.0.0.1:8767/dashboard.html
 ```
 
-The script prints the path to the tabbed HTML file under
-`reports\trader_agent\dashboard_tabs\`.
+The combined tab page is usually easier:
 
-## Useful CLI Commands
-
-Inspect model estimates:
-
-```powershell
-kalshi-weather model-estimates --series KXHIGHLAX --station KLAX --show-failures
+```text
+http://127.0.0.1:8768/lax_model_tournament_tabs.html
 ```
 
-Run one market lifecycle check:
+## Useful Run Options
+
+Run only today and tomorrow, without automatic date rolling:
 
 ```powershell
-kalshi-weather trader-market-cycle `
-  --series KXHIGHLAX `
-  --station KLAX `
-  --tomorrow `
-  --cycle-mode once `
-  --decision-mode rules `
-  --strategy hybrid `
-  --order-style passive `
-  --paper-fill-price-mode conservative `
-  --profile-mode auto `
-  --use-canonical-paths `
-  --use-cached-models `
-  --noaa-model-mode scheduled `
-  --noaa-model-refresh-seconds 900 `
-  --show-snapshot changed `
-  --snapshot-style compact
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -NoAutoRollDates `
+  -CurrentTargetDate "2026-07-07" `
+  -NextTargetDate "2026-07-08"
 ```
 
-Audit a paper portfolio:
+Keep yesterday visible too:
 
 ```powershell
-kalshi-weather trader-portfolio --race-id <run_id> --journal-path <path-to-diagnostic.sqlite>
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -RetainPastDays 1
 ```
 
-Settle/finalize a paper run after the official high is known:
+Run more future days:
 
 ```powershell
-kalshi-weather trader-settle-paper-run --run-id <run_id> --journal-path <path-to-diagnostic.sqlite>
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -DaysAhead 2
 ```
 
-Open a model tournament dashboard for an existing run:
+Turn off cached model values and recompute every loop:
 
 ```powershell
-kalshi-weather model-tournament-dashboard --run-id <run_id> --port 8766
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -NoCachedModels `
+  -ForceModelRecomputeEveryIteration
 ```
 
-## Main Parameters
+Use the slower direct NOAA/Herbie mode every loop:
 
-- `-AggressiveAllDay`: uses a fixed aggressive profile instead of time-of-day
-  risk profiles.
-- `-NoaaOff`: disables direct NOAA/Herbie model fetches.
-- `-NoaaAfterNoon`: uses Open-Meteo/current models before noon PT, then enables
-  NOAA/Herbie models after noon.
-- `-AllWeatherModels`: enables a broader model list. This can be slower and may
-  produce more model disagreement.
-- `-FastModelRefreshSeconds`: cadence for fast/current/Open-Meteo model refresh.
-- `-NoaaModelRefreshSeconds`: cadence for slower NOAA/Herbie refresh.
-- `-ObservationRefreshSeconds`: cadence for station observation refresh.
-- `-MinEdgeCents`: minimum edge for general/YES candidates.
-- `-MinNoEdgeCents`: minimum edge for NO candidates.
-- `-MinNoUpsideCents`: minimum upside required for NO candidates.
-- `-MaxNoBinProbability`: maximum model probability allowed for buying NO on a
-  bracket. Higher values make NO trades easier to allow.
-- `-ModelAuthoritative`: puts more trust in model probabilities and less in the
-  market-implied prior.
-- `-ShowModelEstimates`: prints model/market snapshots every cycle in table form.
+```powershell
+.\scripts\run_lax_model_tournament_two_markets.ps1 `
+  -NoaaModelMode full_recompute_each_iteration
+```
+
+## Where Files Are Saved
+
+Dashboard tab files:
+
+```text
+reports\trader_agent\dashboard_tabs\
+```
+
+Model tournament run files:
+
+```text
+reports\trader_agent\debug\<run_id>\
+```
+
+Common files:
+
+- `terminal_output.txt`
+- `dashboard.html`
+- model tournament JSON/SQLite outputs
+- generated report/debug files
+
+Runtime reports and ZIP packages are ignored by git.
 
 ## Troubleshooting
 
-If `.\scripts\...` is not recognized, make sure you are in the repo root:
+If `.\scripts\...` is not recognized, you are probably not in the repo folder:
 
 ```powershell
 cd C:\Users\jarve\Documents\Codex\kalshi_weather
 ```
 
-If Open-Meteo or NWS fails with a connection error, the bot will usually retry on
-the next cycle. Check your internet connection and keep the laptop awake.
+If the dashboard does not load:
 
-If NOAA/Herbie is slow, that is expected. Use scheduled NOAA refreshes:
+1. Make sure the PowerShell script is still running.
+2. Open `http://127.0.0.1:8768/lax_model_tournament_tabs.html`.
+3. Try the direct ports: `8766` and `8767`.
+4. Hard refresh the browser.
 
-```powershell
--NoaaModelRefreshSeconds 900
-```
+If weather downloads fail:
 
-If NOAA dependencies are broken, run Open-Meteo only:
+- Check your internet connection.
+- Let the script retry on the next loop.
+- Try Open-Meteo/current models first before setting up NOAA/Herbie.
 
-```powershell
--NoaaOff
-```
+If your laptop sleeps or loses Wi-Fi:
 
-If the dashboard looks stale, restart the dashboard server or hard refresh the
-browser.
+- Set Windows sleep to `Never` while plugged in.
+- Keep the lid open or change lid-close behavior.
+- Keep PowerShell running.
 
-## Tests
+## Safety Notes
 
-Run the full test suite:
+- This repo is for fake-money research.
+- Keep `KALSHI_ENABLE_REAL_ORDERS=false`.
+- Do not commit `.env`, API keys, runtime data, SQLite files, logs, or ZIPs.
+- The model tournament dashboard is read-only and local to your machine.
+
+## Developer Commands
+
+Run tests:
 
 ```powershell
 python -m pytest -q
 ```
 
-Run focused tests:
-
-```powershell
-python -m pytest -q tests\test_model_tournament.py
-python -m pytest -q tests\test_model_refresh_modes.py
-```
-
-Lint:
+Run lint:
 
 ```powershell
 python -m ruff check .
 ```
 
-## Notes For Contributors
+Inspect the CLI:
 
-- Keep the default system fake-money-only.
-- Do not add real order placement unless the safety model is explicitly reviewed.
-- Prefer the market-cycle supervisor for long runs.
-- Keep large runtime artifacts out of git; use ZIP packages from
-  `reports\trader_agent\archives\` for review.
-- When changing trading behavior, add tests for risk limits, fake fills,
-  settlement/finalization, and report packaging.
+```powershell
+kalshi-weather --help
+```
