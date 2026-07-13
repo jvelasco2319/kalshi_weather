@@ -1,0 +1,1061 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.klax/schemas/explainability_snapshot-1.0.0.json",
+  "title": "KLAX current-strategy explainability snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "evaluationId",
+    "strategyId",
+    "strategyConfigHash",
+    "evaluatedAt",
+    "eventTicker",
+    "targetDate",
+    "mode",
+    "analysisState",
+    "executionState",
+    "finalReasonCode",
+    "station",
+    "models",
+    "outcomeMap",
+    "mixture",
+    "market",
+    "economics",
+    "decision",
+    "equations",
+    "gates",
+    "captureHealth"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isFixture",
+        "warning"
+      ],
+      "properties": {
+        "isFixture": {
+          "type": "boolean"
+        },
+        "warning": {
+          "type": "string"
+        },
+        "sourceContext": {
+          "type": "string"
+        }
+      }
+    },
+    "evaluationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strategyId": {
+      "const": "klax-current-five-model-2026-07-11"
+    },
+    "strategyConfigHash": {
+      "type": "string",
+      "minLength": 8
+    },
+    "evaluatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eventTicker": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "mode": {
+      "enum": [
+        "shadow",
+        "replay",
+        "paper"
+      ]
+    },
+    "analysisState": {
+      "enum": [
+        "DATA_BLOCKED",
+        "ANALYSIS_PARTIAL",
+        "ANALYSIS_READY"
+      ]
+    },
+    "executionState": {
+      "enum": [
+        "BLOCKED",
+        "NO_TRADE",
+        "SHADOW_CANDIDATE",
+        "PAPER_CANDIDATE"
+      ]
+    },
+    "finalReasonCode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selectedMarketTicker": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "selectedSide": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "yes",
+        "no",
+        null
+      ]
+    },
+    "station": {
+      "$ref": "#/$defs/station"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    },
+    "outcomeMap": {
+      "$ref": "#/$defs/outcomeMap"
+    },
+    "mixture": {
+      "$ref": "#/$defs/mixture"
+    },
+    "market": {
+      "$ref": "#/$defs/market"
+    },
+    "economics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/economics"
+      }
+    },
+    "decision": {
+      "$ref": "#/$defs/decision"
+    },
+    "equations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/equation"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/gate"
+      }
+    },
+    "captureHealth": {
+      "$ref": "#/$defs/captureHealth"
+    }
+  },
+  "$defs": {
+    "probability": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "nullableNumber": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "station": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stationId",
+        "stationDayStart",
+        "stationDayEnd",
+        "observedHighF",
+        "observedHighAvailableAt",
+        "sourceObservationIds"
+      ],
+      "properties": {
+        "stationId": {
+          "const": "KLAX"
+        },
+        "stationDayStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stationDayEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "observedHighF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "observedHighAvailableAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "sourceObservationIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "healthy",
+            "stale",
+            "missing",
+            "invalid"
+          ]
+        },
+        "statusReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "bracketProbability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "marketTicker",
+        "pMeanYes",
+        "pSafeYes",
+        "pMeanNo",
+        "pSafeNo"
+      ],
+      "properties": {
+        "marketTicker": {
+          "type": "string"
+        },
+        "pMeanYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "pSafeYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "pMeanNo": {
+          "$ref": "#/$defs/probability"
+        },
+        "pSafeNo": {
+          "$ref": "#/$defs/probability"
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelKey",
+        "label",
+        "sourceVariant",
+        "runTime",
+        "sourceAvailableAt",
+        "receivedAt",
+        "remainingWindowStart",
+        "remainingWindowEnd",
+        "remainingMaxF",
+        "observedMaxF",
+        "rawLiveStateF",
+        "residualMedianF",
+        "correctedPointF",
+        "historyCount",
+        "nEff",
+        "priorWeight",
+        "effectiveWeight",
+        "maturityState",
+        "eligibility",
+        "ineligibilityReason",
+        "scenarioTemperaturesF",
+        "scenarioWeights",
+        "bracketProbabilities",
+        "sourceIds"
+      ],
+      "properties": {
+        "modelKey": {
+          "enum": [
+            "ecmwf_ifs",
+            "gfs013",
+            "gfs_seamless",
+            "nam",
+            "nbm"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "sourceVariant": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runTime": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "sourceAvailableAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "receivedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "remainingWindowStart": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "remainingWindowEnd": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "remainingMaxF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "observedMaxF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "rawLiveStateF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "residualMedianF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "correctedPointF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "historyCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nEff": {
+          "type": "number",
+          "minimum": 0
+        },
+        "priorWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "effectiveWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maturityState": {
+          "enum": [
+            "unavailable",
+            "immature",
+            "provisional",
+            "ready"
+          ]
+        },
+        "eligibility": {
+          "enum": [
+            "eligible",
+            "research_only",
+            "ineligible",
+            "unavailable"
+          ]
+        },
+        "ineligibilityReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scenarioTemperaturesF": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "scenarioWeights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "bracketProbabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bracketProbability"
+          }
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "freshnessSeconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reliabilityScore": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "familyCapApplied": {
+          "type": "boolean"
+        }
+      }
+    },
+    "outcomeBracket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "marketTicker",
+        "label",
+        "order",
+        "lowerBoundF",
+        "upperBoundF",
+        "lowerInclusive",
+        "upperInclusive"
+      ],
+      "properties": {
+        "marketTicker": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lowerBoundF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "upperBoundF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "lowerInclusive": {
+          "type": "boolean"
+        },
+        "upperInclusive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "outcomeMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verified",
+        "verificationReason",
+        "settlementRulesVersion",
+        "sourceMetadataIds",
+        "brackets"
+      ],
+      "properties": {
+        "verified": {
+          "type": "boolean"
+        },
+        "verificationReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "settlementRulesVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceMetadataIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "brackets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/outcomeBracket"
+          }
+        }
+      }
+    },
+    "mixtureBracketProbability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "marketTicker",
+        "pMeanYes",
+        "mixtureLowerBoundYes",
+        "weightedComponentLowerBoundYes",
+        "pTradeYes",
+        "pMeanNo",
+        "mixtureLowerBoundNo",
+        "weightedComponentLowerBoundNo",
+        "pTradeNo"
+      ],
+      "properties": {
+        "marketTicker": {
+          "type": "string"
+        },
+        "pMeanYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "mixtureLowerBoundYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "weightedComponentLowerBoundYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "pTradeYes": {
+          "$ref": "#/$defs/probability"
+        },
+        "pMeanNo": {
+          "$ref": "#/$defs/probability"
+        },
+        "mixtureLowerBoundNo": {
+          "$ref": "#/$defs/probability"
+        },
+        "weightedComponentLowerBoundNo": {
+          "$ref": "#/$defs/probability"
+        },
+        "pTradeNo": {
+          "$ref": "#/$defs/probability"
+        }
+      }
+    },
+    "mixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioTemperaturesF",
+        "scenarioWeights",
+        "effectiveSampleSize",
+        "modelSpreadF",
+        "bracketProbabilities"
+      ],
+      "properties": {
+        "scenarioTemperaturesF": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "scenarioWeights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "effectiveSampleSize": {
+          "type": "number",
+          "minimum": 0
+        },
+        "modelSpreadF": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "bracketProbabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mixtureBracketProbability"
+          }
+        }
+      }
+    },
+    "marketRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "marketTicker",
+        "bracketLabel",
+        "yesBid",
+        "yesAsk",
+        "noBid",
+        "noAsk",
+        "yesDepth",
+        "noDepth",
+        "quoteAvailableAt"
+      ],
+      "properties": {
+        "marketTicker": {
+          "type": "string"
+        },
+        "bracketLabel": {
+          "type": "string"
+        },
+        "yesBid": {
+          "$ref": "#/$defs/probability"
+        },
+        "yesAsk": {
+          "$ref": "#/$defs/probability"
+        },
+        "noBid": {
+          "$ref": "#/$defs/probability"
+        },
+        "noAsk": {
+          "$ref": "#/$defs/probability"
+        },
+        "yesDepth": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "noDepth": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "quoteAvailableAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "market": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bookState",
+        "bookAgeSeconds",
+        "sequenceValid",
+        "feeScheduleVersion",
+        "feeRole",
+        "seriesMultiplier",
+        "markets"
+      ],
+      "properties": {
+        "bookState": {
+          "enum": [
+            "valid",
+            "stale",
+            "unavailable",
+            "invalid"
+          ]
+        },
+        "bookAgeSeconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sequenceValid": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "feeScheduleVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "feeRole": {
+          "enum": [
+            "maker",
+            "taker",
+            "quote_only",
+            "unknown"
+          ]
+        },
+        "seriesMultiplier": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/marketRow"
+          }
+        }
+      }
+    },
+    "pricePoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "price",
+        "requiredProbability"
+      ],
+      "properties": {
+        "price": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "requiredProbability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "economics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "marketTicker",
+        "side",
+        "quantity",
+        "priceBasis",
+        "price",
+        "exactFee",
+        "executionCost",
+        "allInCost",
+        "pMean",
+        "pSafe",
+        "requiredProbability",
+        "expectedValue",
+        "modeledNetRoi",
+        "maxAcceptablePrice",
+        "activeHurdle",
+        "eligible",
+        "rejectionReason",
+        "priceSensitivity"
+      ],
+      "properties": {
+        "marketTicker": {
+          "type": "string"
+        },
+        "side": {
+          "enum": [
+            "yes",
+            "no"
+          ]
+        },
+        "quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "priceBasis": {
+          "enum": [
+            "executable_book",
+            "top_of_book_quote",
+            "unavailable"
+          ]
+        },
+        "price": {
+          "$ref": "#/$defs/probability"
+        },
+        "exactFee": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "executionCost": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "allInCost": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "pMean": {
+          "$ref": "#/$defs/probability"
+        },
+        "pSafe": {
+          "$ref": "#/$defs/probability"
+        },
+        "requiredProbability": {
+          "$ref": "#/$defs/probability"
+        },
+        "expectedValue": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "modeledNetRoi": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "maxAcceptablePrice": {
+          "$ref": "#/$defs/probability"
+        },
+        "activeHurdle": {
+          "type": "number",
+          "minimum": 0
+        },
+        "eligible": {
+          "type": "boolean"
+        },
+        "rejectionReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priceSensitivity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pricePoint"
+          }
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateId",
+        "focusMarketTicker",
+        "focusSide",
+        "pMean",
+        "pSafe",
+        "requiredProbability",
+        "modeledNetRoi",
+        "maxAcceptablePrice",
+        "proposedQuantity",
+        "reasonCode"
+      ],
+      "properties": {
+        "candidateId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "focusMarketTicker": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "focusSide": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "yes",
+            "no",
+            null
+          ]
+        },
+        "pMean": {
+          "$ref": "#/$defs/probability"
+        },
+        "pSafe": {
+          "$ref": "#/$defs/probability"
+        },
+        "requiredProbability": {
+          "$ref": "#/$defs/probability"
+        },
+        "modeledNetRoi": {
+          "$ref": "#/$defs/nullableNumber"
+        },
+        "maxAcceptablePrice": {
+          "$ref": "#/$defs/probability"
+        },
+        "proposedQuantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reasonCode": {
+          "type": "string"
+        }
+      }
+    },
+    "equation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "equationId",
+        "label",
+        "scope",
+        "formula",
+        "substitutedExpression",
+        "result",
+        "units",
+        "status",
+        "missingInputs"
+      ],
+      "properties": {
+        "equationId": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "object"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "substitutedExpression": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "result": {},
+        "units": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "available",
+            "blocked",
+            "not_applicable"
+          ]
+        },
+        "missingInputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gateCode",
+        "status",
+        "observedValue",
+        "requiredValue",
+        "detail"
+      ],
+      "properties": {
+        "gateCode": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "warn",
+            "fail",
+            "not_applicable"
+          ]
+        },
+        "observedValue": {},
+        "requiredValue": {},
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceHealth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceKey",
+        "status",
+        "lastSuccessAt",
+        "ageSeconds",
+        "detail"
+      ],
+      "properties": {
+        "sourceKey": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "healthy",
+            "stale",
+            "missing",
+            "invalid",
+            "disabled"
+          ]
+        },
+        "lastSuccessAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "ageSeconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "captureHealth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "captureHealthId",
+        "overallStatus",
+        "sources",
+        "orderPathReachable"
+      ],
+      "properties": {
+        "captureHealthId": {
+          "type": "string"
+        },
+        "overallStatus": {
+          "enum": [
+            "healthy",
+            "degraded",
+            "blocked"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceHealth"
+          }
+        },
+        "orderPathReachable": {
+          "const": false
+        }
+      }
+    }
+  }
+}

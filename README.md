@@ -1,264 +1,165 @@
-# Kalshi Weather
+# kalshi-weather
 
-Local fake-money tools for watching Kalshi Los Angeles high-temperature markets.
+Local paper-trading research package for Kalshi LA high-temperature markets.
 
-The easiest thing to run is the model tournament dashboard. It tracks the current
-LA high-temperature market and the next market at the same time, then shows both
-in one browser page with tabs.
+The current target is `KXHIGHLAX`, using KLAX/LAX observations and Open-Meteo
+forecast guidance to estimate probabilities for Kalshi temperature brackets.
+All execution is fake-money simulation. There is no live Kalshi order placement
+code in this package.
 
-This project is fake-money-only by default. It does not place real Kalshi orders.
-
-## What You Get
-
-- KLAX/LAX temperature observations.
-- Weather model high-temperature estimates.
-- Kalshi `KXHIGHLAX` temperature bracket prices.
-- A local HTML dashboard for current and next-day markets.
-- Fake model-tournament results and P/L for research.
-
-## Requirements
-
-- Windows PowerShell 5.1 or newer.
-- Python 3.11 or newer.
-- Git.
-- Internet access.
-
-Optional for direct NOAA/Herbie models:
-
-- Conda or mamba.
-- `eccodes`, `cfgrib`, `xarray`, and `herbie-data`.
-
-Open-Meteo models work without the optional NOAA setup.
-
-## Install
-
-Open PowerShell and run:
+## Setup
 
 ```powershell
-git clone https://github.com/jvelasco2319/kalshi_weather.git
-cd kalshi_weather
-
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
+cd C:\Users\jarve\Documents\Codex\kalshi_weather
 python -m pip install -e ".[dev]"
-```
-
-If PowerShell blocks local scripts, run this once in the same PowerShell window:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-Create your local environment file:
-
-```powershell
 copy .env.example .env
-```
-
-Then open `.env` and keep real trading disabled:
-
-```text
-KALSHI_ENABLE_REAL_ORDERS=false
-```
-
-It is also helpful to set a user agent for weather APIs:
-
-```text
-NWS_USER_AGENT=kalshi-weather-research/0.1 your_email@example.com
-```
-
-Verify the install:
-
-```powershell
-kalshi-weather --help
-```
-
-## Optional NOAA / Herbie Setup
-
-You can skip this at first. The dashboard can run with Open-Meteo models.
-
-To try direct NOAA/Herbie support:
-
-```powershell
-.\scripts\install_direct_noaa_models.ps1
-```
-
-If that fails on Windows, conda is usually easier:
-
-```powershell
-conda install -c conda-forge eccodes cfgrib
-python -m pip install herbie-data xarray
-```
-
-## Run Two Markets With Tabs
-
-This is the main easy-use command. It starts:
-
-- one dashboard for today's LA high-temperature market,
-- one dashboard for tomorrow's LA high-temperature market,
-- one tabbed HTML page that shows both.
-
-From the repo folder:
-
-```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
-
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -CurrentDashboardPort 8766 `
-  -NextDashboardPort 8767 `
-  -TabbedDashboardPort 8768 `
-  -IntervalSeconds 60 `
-  -CheckEverySeconds 60
-```
-
-Open this in your browser:
-
-```text
-http://127.0.0.1:8768/lax_model_tournament_tabs.html
-```
-
-The tabbed page updates automatically. When the local date rolls forward, the
-script starts the new target date and the HTML page adds/updates tabs from its
-manifest.
-
-Leave the PowerShell window open while you want the dashboard running.
-
-Stop it with:
-
-```text
-Ctrl+C
-```
-
-## Direct Dashboard URLs
-
-If you want to open the individual dashboards directly:
-
-```text
-http://127.0.0.1:8766/dashboard.html
-http://127.0.0.1:8767/dashboard.html
-```
-
-The combined tab page is usually easier:
-
-```text
-http://127.0.0.1:8768/lax_model_tournament_tabs.html
-```
-
-## Useful Run Options
-
-Run only today and tomorrow, without automatic date rolling:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoAutoRollDates `
-  -CurrentTargetDate "2026-07-07" `
-  -NextTargetDate "2026-07-08"
-```
-
-Keep yesterday visible too:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -RetainPastDays 1
-```
-
-Run more future days:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -DaysAhead 2
-```
-
-Turn off cached model values and recompute every loop:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoCachedModels `
-  -ForceModelRecomputeEveryIteration
-```
-
-Use the slower direct NOAA/Herbie mode every loop:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoaaModelMode full_recompute_each_iteration
-```
-
-## Where Files Are Saved
-
-Dashboard tab files:
-
-```text
-reports\trader_agent\dashboard_tabs\
-```
-
-Model tournament run files:
-
-```text
-reports\trader_agent\debug\<run_id>\
-```
-
-Common files:
-
-- `terminal_output.txt`
-- `dashboard.html`
-- model tournament JSON/SQLite outputs
-- generated report/debug files
-
-Runtime reports and ZIP packages are ignored by git.
-
-## Troubleshooting
-
-If `.\scripts\...` is not recognized, you are probably not in the repo folder:
-
-```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
-```
-
-If the dashboard does not load:
-
-1. Make sure the PowerShell script is still running.
-2. Open `http://127.0.0.1:8768/lax_model_tournament_tabs.html`.
-3. Try the direct ports: `8766` and `8767`.
-4. Hard refresh the browser.
-
-If weather downloads fail:
-
-- Check your internet connection.
-- Let the script retry on the next loop.
-- Try Open-Meteo/current models first before setting up NOAA/Herbie.
-
-If your laptop sleeps or loses Wi-Fi:
-
-- Set Windows sleep to `Never` while plugged in.
-- Keep the lid open or change lid-close behavior.
-- Keep PowerShell running.
-
-## Safety Notes
-
-- This repo is for fake-money research.
-- Keep `KALSHI_ENABLE_REAL_ORDERS=false`.
-- Do not commit `.env`, API keys, runtime data, SQLite files, logs, or ZIPs.
-- The model tournament dashboard is read-only and local to your machine.
-
-## Developer Commands
-
-Run tests:
-
-```powershell
-python -m pytest -q
-```
-
-Run lint:
-
-```powershell
+python -m pytest
 python -m ruff check .
 ```
 
-Inspect the CLI:
+Update `.env` with a descriptive `NWS_USER_AGENT` before daily use.
+
+## Commands
 
 ```powershell
 kalshi-weather --help
+kalshi-weather markets --series KXHIGHLAX
+kalshi-weather weather-snapshot --station KLAX
+kalshi-weather weather-debug --station KLAX
+kalshi-weather time-debug --station KLAX
+kalshi-weather probe-open-meteo-models --station KLAX
+kalshi-weather predict-once --series KXHIGHLAX --station KLAX
+kalshi-weather predict-once --series KXHIGHLAX --station KLAX --store
+kalshi-weather opportunities --series KXHIGHLAX --station KLAX
+kalshi-weather collect-once --series KXHIGHLAX --station KLAX
+kalshi-weather collect-loop --series KXHIGHLAX --station KLAX --interval-seconds 60 --max-iterations 10
+kalshi-weather paper-once --series KXHIGHLAX --station KLAX
+kalshi-weather paper-once --series KXHIGHLAX --station KLAX --reset-paper
+kalshi-weather run-paper --series KXHIGHLAX --station KLAX --interval-seconds 60 --max-iterations 3
+kalshi-weather fetch-outcome --station KLAX --date YYYY-MM-DD
+kalshi-weather fetch-outcomes --station KLAX --start-date YYYY-MM-DD --end-date YYYY-MM-DD --dry-run
+kalshi-weather fetch-missing-outcomes --station KLAX
+kalshi-weather validate-outcome-parser --station KLAX --start-date YYYY-MM-DD --end-date YYYY-MM-DD
+kalshi-weather record-outcome --station KLAX --date YYYY-MM-DD --official-high-f 71 --source manual
+kalshi-weather join-outcomes
+kalshi-weather replay --snapshot-dir data/snapshots
+kalshi-weather calibration-report --station KLAX
+kalshi-weather residual-report --station KLAX
+kalshi-weather paper-report
 ```
+
+The module form also works after installation:
+
+```powershell
+python -m kalshi_weather.cli --help
+```
+
+## What It Does
+
+- Reads public Kalshi market and orderbook data.
+- Reads NWS KLAX observations for the Pacific standard-time climate day.
+- Reads Open-Meteo hourly forecast data for LAX coordinates.
+- Parses Kalshi bracket labels, including ranges plus `<67 deg` / `>74 deg` open-ended labels.
+- Computes Monte Carlo bracket probabilities from a simple residual model.
+- Compares model probabilities to executable bid/ask prices.
+- Simulates conservative fake fills only: buy at ask, sell at bid.
+- Stores SQLite records and JSON decision snapshots under `data/`.
+- Stores joinable prediction rows with model version, bracket bounds, prices, edges, and weather features.
+- Stores official outcomes manually or from best-effort NWS CLI-style climate products.
+- Computes market dates from fixed UTC-8 local standard time, matching NWS climate-day settlement.
+- Probes Open-Meteo model aliases and reports which identifiers work.
+- Resumes fake-money paper cash/positions from SQLite unless `--reset-paper` is used.
+- Replays saved snapshots without live API calls.
+
+## Safety
+
+This package is paper-trading only.
+
+- `KALSHI_ENABLE_REAL_ORDERS=false` by default.
+- No create-order endpoint is implemented.
+- No API keys are needed for current market-data commands.
+- `.env`, private keys, SQLite files, and snapshots are ignored by git.
+
+## Known Limitations
+
+- Some configured Open-Meteo model identifiers may be rejected by the selected endpoint. Phase 2 requests each model separately, records successes/failures, and uses the generic fallback only when every model-specific request fails.
+- The v0.2 forecast model is intentionally simple: blended future high plus global normal residual.
+- Calibration reports need stored official outcomes before metrics are meaningful.
+- Paper state resume/reset is implemented; paper reports still leave hold-time and mark-to-market P&L unavailable until more fill/quote history is captured.
+
+## Phase 2 Notes
+
+The intended canonical project directory is:
+
+```powershell
+C:\Users\jarve\Documents\Codex\kalshi_weather
+```
+
+Phase 2 adds:
+
+- Per-model Open-Meteo requests with explicit success/failure diagnostics and generic fallback only when model-specific requests all fail.
+- `weather-debug` for inspecting Open-Meteo model status.
+- Collect-only commands that store market, weather, and prediction rows without fake or live trading.
+- Joinable prediction storage with model version, bracket bounds, prices, edges, and weather features.
+- Official outcome storage via best-effort NWS CLI fetch or manual record fallback.
+- Outcome joining and calibration reports over joined prediction/outcome rows.
+- `paper-report` for fake-money performance summaries.
+- `scripts/make_handoff_zip.ps1` for creating a safe handoff zip that excludes secrets/runtime data.
+
+Live trading remains disabled. There is still no Kalshi create-order endpoint in this package.
+
+## Phase 3 Notes
+
+Phase 3 adds exact NWS local-standard-time handling, outcome range/backfill
+commands, parser validation, Open-Meteo alias probing, richer marine-layer
+features, opportunity diagnostics, filtered calibration/residual reports, and
+persistent fake-money paper state.
+
+`fetch-missing-outcomes` skips the current fixed-standard climate date unless
+`--include-current` is passed, so it will not store unsettled production
+outcomes by accident.
+
+## Handoff Zip
+
+```powershell
+.\scripts\make_handoff_zip.ps1
+Get-Content .\HANDOFF_ZIP_CHECK.txt
+```
+
+The zip intentionally excludes `.env`, `.git`, `.venv`, runtime `data/`,
+SQLite files, caches, snapshots, and key material.
+
+## Phase 4-7 POC Workflow
+
+Safe collection and maintenance:
+
+```powershell
+kalshi-weather collect-session --series KXHIGHLAX --station KLAX --interval-seconds 60 --duration-minutes 60
+kalshi-weather daily-maintenance --series KXHIGHLAX --station KLAX
+```
+
+POC validation:
+
+```powershell
+kalshi-weather research-status --series KXHIGHLAX --station KLAX
+kalshi-weather opportunities --series KXHIGHLAX --station KLAX --short
+kalshi-weather threshold-sweep --series KXHIGHLAX --station KLAX
+kalshi-weather calibration-readiness --station KLAX
+kalshi-weather paper-replay --series KXHIGHLAX --station KLAX
+kalshi-weather poc-demo --station KLAX
+kalshi-weather poc-check --series KXHIGHLAX --station KLAX
+```
+
+Outcome and calibration flow:
+
+```powershell
+kalshi-weather fetch-missing-outcomes --station KLAX
+kalshi-weather record-outcome --station KLAX --date YYYY-MM-DD --official-high-f NN --source manual --allow-unsettled-store
+kalshi-weather join-outcomes --station KLAX --overwrite
+kalshi-weather calibration-report --station KLAX
+kalshi-weather residual-report --station KLAX
+```
+
+`poc-demo` uses fixture data only and is labeled `DEMO DATA - NOT TRADING EVIDENCE`.
+It proves plumbing, not market edge. A real edge claim requires settled official outcomes,
+joined predictions, calibration/replay evidence, and a much larger production sample.

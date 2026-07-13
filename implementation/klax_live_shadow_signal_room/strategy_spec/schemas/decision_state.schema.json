@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "book_sequence": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "candidate": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "config_hash": {
+      "type": "string"
+    },
+    "decision_id": {
+      "type": "string"
+    },
+    "evaluated_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "event_ticker": {
+      "type": "string"
+    },
+    "mode": {
+      "const": "shadow"
+    },
+    "model_states": {
+      "items": {
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "model_weights": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "type": "object"
+    },
+    "probabilities": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "reason_code": {
+      "type": "string"
+    },
+    "source_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "strategy_id": {
+      "const": "klax-current-five-model-2026-07-11"
+    },
+    "target_date_local": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "strategy_id",
+    "config_hash",
+    "target_date_local",
+    "event_ticker",
+    "evaluated_at_utc",
+    "mode",
+    "reason_code",
+    "source_ids",
+    "model_states",
+    "probabilities"
+  ],
+  "title": "DecisionState",
+  "type": "object"
+}

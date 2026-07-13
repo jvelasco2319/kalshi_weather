@@ -1,0 +1,552 @@
+[
+  {
+    "sample": 0,
+    "at": "2026-07-13T02:02:00.504Z",
+    "status": 200,
+    "evaluationId": "ce0079630700af225464",
+    "evaluatedAt": "2026-07-13T02:01:18.477407Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - ce0079630700af225464 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 1,
+    "at": "2026-07-13T02:02:30.654Z",
+    "status": 200,
+    "evaluationId": "171d72e0a8fb08bf8b0d",
+    "evaluatedAt": "2026-07-13T02:01:51.731234Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 171d72e0a8fb08bf8b0d - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 2,
+    "at": "2026-07-13T02:03:01.190Z",
+    "status": 200,
+    "evaluationId": "69dc718e178b273a5a36",
+    "evaluatedAt": "2026-07-13T02:02:20.241071Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 69dc718e178b273a5a36 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 3,
+    "at": "2026-07-13T02:03:31.339Z",
+    "status": 200,
+    "evaluationId": "69dc718e178b273a5a36",
+    "evaluatedAt": "2026-07-13T02:02:20.241071Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 69dc718e178b273a5a36 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 4,
+    "at": "2026-07-13T02:04:01.488Z",
+    "status": 200,
+    "evaluationId": "d7f5b5b04fe68bb47be7",
+    "evaluatedAt": "2026-07-13T02:02:48.742284Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - d7f5b5b04fe68bb47be7 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 5,
+    "at": "2026-07-13T02:04:31.656Z",
+    "status": 200,
+    "evaluationId": "6cdbd93b8edd5410fba1",
+    "evaluatedAt": "2026-07-13T02:03:59.998277Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 6cdbd93b8edd5410fba1 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 6,
+    "at": "2026-07-13T02:05:01.904Z",
+    "status": 200,
+    "evaluationId": "efceceb3622203ef4bc6",
+    "evaluatedAt": "2026-07-13T02:04:27.199159Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - efceceb3622203ef4bc6 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 7,
+    "at": "2026-07-13T02:05:32.059Z",
+    "status": 200,
+    "evaluationId": "00b09312cf1bf681ac71",
+    "evaluatedAt": "2026-07-13T02:04:55.577018Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 00b09312cf1bf681ac71 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 8,
+    "at": "2026-07-13T02:06:02.224Z",
+    "status": 200,
+    "evaluationId": "2d169a8b7386e4150b12",
+    "evaluatedAt": "2026-07-13T02:05:22.838224Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 2d169a8b7386e4150b12 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 9,
+    "at": "2026-07-13T02:06:42.700Z",
+    "status": 200,
+    "evaluationId": "41cde7579891e982c788",
+    "evaluatedAt": "2026-07-13T02:05:51.839710Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 41cde7579891e982c788 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  },
+  {
+    "sample": 10,
+    "at": "2026-07-13T02:07:12.882Z",
+    "status": 200,
+    "evaluationId": "9e5c9f4ebf62c5681e23",
+    "evaluatedAt": "2026-07-13T02:06:20.251586Z",
+    "analysisState": "ANALYSIS_READY",
+    "executionState": "SHADOW_CANDIDATE",
+    "finalReasonCode": "SHADOW_CANDIDATE_NO",
+    "modelStatuses": [
+      {
+        "modelKey": "ecmwf_ifs",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs013",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "gfs_seamless",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nam",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      },
+      {
+        "modelKey": "nbm",
+        "eligibility": "eligible",
+        "maturityState": "ready",
+        "scenarios": 41
+      }
+    ],
+    "orderPathReachable": false,
+    "page": {
+      "distributionSvg": 1,
+      "footer": "KXHIGHLAX-26JUL12 - 9e5c9f4ebf62c5681e23 - ANALYSIS_READY / SHADOW_CANDIDATE",
+      "hero": "93.5%",
+      "marketSvg": 1,
+      "sensitivitySvg": 1
+    }
+  }
+]

@@ -89,35 +89,6 @@ Phase 4-7 finishes the fake-money proof-of-concept workflow:
 
 Live Kalshi order placement remains out of scope.
 
-## Operational validation goal
-
-The operational validation phase turns the POC into a daily evidence machine:
-
-1. `model-health` gives a plain-English scorecard for data readiness, residuals, calibration, model-vs-market, paper status, automation, and safety.
-2. `model-vs-market` compares stored model probabilities to Kalshi market-implied probabilities using joined outcomes.
-3. `calibration-readiness` explains missing outcomes, unsettled dates, joined rows, and next commands.
-4. Windows scripts collect data, run after-settlement joins/reports, and refresh model-health logs.
-5. `docs/HOW_TO_READ_RESULTS.md` explains the reports for beginners.
-
-This phase does not add live trading, authentication, private keys, or order placement.
-
-## Separate model estimate comparison goal
-
-The model estimate comparison phase adds diagnostic side-by-side estimates
-without replacing the current production model:
-
-1. The current weighted Open-Meteo blend remains the production baseline.
-2. Individual Open-Meteo feeds are shown as separate comparison estimates.
-3. Optional direct NOAA/Herbie HRRR, NBM, GFS, and RAP estimates fail gracefully
-   when dependencies or live model data are unavailable.
-4. Per-model bracket probabilities reuse the current normal-residual probability
-   method so only the weather-model input changes.
-5. Optional sidecar storage uses `model_estimates` and
-   `model_estimate_probabilities`, not `model_predictions`.
-
-This phase does not blend new models, change paper entry logic, or add live
-trading.
-
 ## Codex operating instruction
 
 Codex is the executor. Do not redesign the strategy. Implement the numbered prompts in order. If a prompt conflicts with a file, ask for clarification rather than improvising.

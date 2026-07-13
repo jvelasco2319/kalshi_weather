@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "count_fp": {
+      "pattern": "^(?!0+(?:\\.0+)?$)[0-9]+(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "created_time_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "is_block_trade": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "market_ticker": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "no_price_dollars": {
+      "type": "string"
+    },
+    "page_number": {
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "raw_payload_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "received_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "request_cursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "response_cursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trade_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "yes_price_dollars": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trade_id",
+    "market_ticker",
+    "count_fp",
+    "yes_price_dollars",
+    "no_price_dollars",
+    "created_time_utc",
+    "received_at_utc"
+  ],
+  "title": "TradeRecord",
+  "type": "object"
+}

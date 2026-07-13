@@ -1,0 +1,22 @@
+{
+  "approvedUiSha256": "79d7fe8a7ab8e445a05f31c43e54f84b940969ab9a296da59614b3c0839c2018",
+  "files": {
+    "CODEX_MASTER_PROMPT.md": "f296241c6d30e67bdbbd0947f7b1c0f11fcb72c0e550911860b9f7c6b28c53f9",
+    "README.md": "106f9768f8552986a8902ddc741586554fae8104d1e713a5bf751ed04a0d0f52",
+    "contracts/explainability_snapshot.schema.json": "f00b92d184064b0c32b24dd7ac83e4a14b1847cf224b5a651e9f45274b9c80d6",
+    "docs/01_AUDIT_CHECKLIST.md": "cdf56c990e0bca9c588a9cf677a0329dea23ce2151a282d38d4f0c5fcad6369c",
+    "docs/02_BACKEND_CONTRACT_AND_WIRING.md": "6eb57e506d5038df50a52028cc27e8fa2697b956b1e9ced71af685f07b9c42ad",
+    "docs/03_UI_IMPLEMENTATION_MAPPING.md": "b20b4eec4ef90ecfe59b861969c4c4a15748ff9b1b3157013db9207cf7ebc1e8",
+    "docs/04_ACCEPTANCE_TESTS.md": "12efc485515490e4f58cb27fd8f32ee982e6e7f3efdaa2d97404b6a37c4c3db1",
+    "fixtures/sample_explainability_snapshot.json": "4ce697c1ee51d2eb9e0aa035e01db35443d17fa0111ba900d4a70c09f349441d",
+    "reference/requirements.txt": "8bb08db6b17ea421f334198ff884931ad53b201dc5ebe65f24b038c6f211fe4c",
+    "reference/verify_package.py": "cae8ec6b3070d1cd05ffce18ec8809b493db8d559a1c28a73f05d0c989af9b16",
+    "ui_reference/APPROVED_UI_SHA256.txt": "cbf6716711f230b9b1a87ca478239e5ff5efdb329b35cab6cd5aad62a56ead31",
+    "ui_reference/README.md": "3ac046c33f26c2564bc572e85981a27d5caebaf3bc0867a9f0573fbbb21f0270",
+    "ui_reference/approved_probability_lab.png": "ecea39b7e765ceca41ae63cf5e767442368640501688929072ab73a86d949a7d",
+    "ui_reference/approved_probability_lab_exact.html": "79d7fe8a7ab8e445a05f31c43e54f84b940969ab9a296da59614b3c0839c2018",
+    "ui_reference/preview.html": "79d7fe8a7ab8e445a05f31c43e54f84b940969ab9a296da59614b3c0839c2018"
+  },
+  "package": "klax_probability_lab_live_audit_codex_package",
+  "version": "1.0.0"
+}

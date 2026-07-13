@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "bracket_id": {
+      "type": "string"
+    },
+    "component_probabilities": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "type": "object"
+    },
+    "effective_sample_size": {
+      "exclusiveMinimum": 0,
+      "type": "number"
+    },
+    "posterior_mean_no": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "posterior_mean_yes": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "safe_no": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "safe_yes": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    }
+  },
+  "required": [
+    "bracket_id",
+    "posterior_mean_yes",
+    "safe_yes",
+    "posterior_mean_no",
+    "safe_no",
+    "effective_sample_size"
+  ],
+  "title": "BracketProbability",
+  "type": "object"
+}

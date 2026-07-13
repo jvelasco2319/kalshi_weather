@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "corrected_point_f": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "decision_id": {
+      "type": "string"
+    },
+    "effective_sample_size": {
+      "minimum": 0,
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "evaluated_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "forecast_point_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "future_max_f": {
+      "type": "number"
+    },
+    "model_key": {
+      "enum": [
+        "ecmwf_ifs",
+        "gfs013",
+        "gfs_seamless",
+        "nam",
+        "nbm"
+      ]
+    },
+    "observation_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "observed_max_f": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "raw_live_state_f": {
+      "type": "number"
+    },
+    "reliability_weight": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "residual_history_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "source_variant": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "model_key",
+    "source_variant",
+    "evaluated_at_utc",
+    "future_max_f",
+    "raw_live_state_f",
+    "forecast_point_ids"
+  ],
+  "title": "ModelLiveState",
+  "type": "object"
+}

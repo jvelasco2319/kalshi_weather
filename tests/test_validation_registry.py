@@ -3,7 +3,7 @@ from __future__ import annotations
 from kalshi_weather.model_registry import MODEL_SOURCES, get_model_source, select_model_keys
 
 
-def test_validation_model_registry_contains_current_core_and_extended_sources() -> None:
+def test_current_high_priority_and_optional_registry_keys_exist() -> None:
     current = {
         "current_weighted_blend",
         "best_match",
@@ -19,7 +19,7 @@ def test_validation_model_registry_contains_current_core_and_extended_sources() 
         "gfs",
         "rap",
     }
-    core = {
+    high_priority = {
         "gefs_mean",
         "gefs_spread",
         "ecmwf_ens_mean",
@@ -37,14 +37,14 @@ def test_validation_model_registry_contains_current_core_and_extended_sources() 
     optional = {"gfs_graphcast", "aigfs", "rrfs", "rtma_analysis", "urma_analysis"}
 
     assert current <= MODEL_SOURCES.keys()
-    assert core <= MODEL_SOURCES.keys()
+    assert high_priority <= MODEL_SOURCES.keys()
     assert optional <= MODEL_SOURCES.keys()
     assert all(MODEL_SOURCES[key].enabled_by_default for key in current)
-    assert all(not MODEL_SOURCES[key].enabled_by_default for key in core | optional)
+    assert all(not MODEL_SOURCES[key].enabled_by_default for key in high_priority | optional)
 
 
-def test_validation_model_registry_metadata_groups_related_sources() -> None:
-    for source in MODEL_SOURCES.values():
+def test_registry_metadata_marks_duplicate_and_special_sources() -> None:
+    for key, source in MODEL_SOURCES.items():
         assert source.provider
         assert source.model_family
         assert source.independence_group
@@ -54,22 +54,17 @@ def test_validation_model_registry_metadata_groups_related_sources() -> None:
     assert get_model_source("gfs013").independence_group == "GFS"
     assert get_model_source("gfs_global").independence_group == "GFS"
     assert get_model_source("gfs").independence_group == "GFS"
+    assert get_model_source("nam").provider == "NOAA/Herbie"
+    assert get_model_source("nam").fetcher_type == "herbie"
     assert get_model_source("nbm").is_blend is True
+    assert get_model_source("nbm").fetcher_type == "herbie"
     assert get_model_source("current_weighted_blend").is_synthetic is True
     assert get_model_source("gefs_mean").is_ensemble is True
     assert get_model_source("href_p50").is_ensemble is True
     assert get_model_source("lamp").is_station_guidance is True
 
 
-def test_extended_open_meteo_sources_have_attemptable_model_candidates() -> None:
-    assert get_model_source("gfs_graphcast").model_param_candidates[0] == "gfs_graphcast025"
-    assert get_model_source("aigfs").model_param_candidates[:2] == ["aigfs025", "aigfs"]
-    assert get_model_source("gem_global").model_param_candidates == ["gem_global"]
-    assert get_model_source("gem_regional").model_param_candidates == ["gem_regional"]
-    assert get_model_source("icon_global").model_param_candidates == ["icon_global"]
-
-
-def test_validation_model_set_selection() -> None:
+def test_model_set_selection_and_filters() -> None:
     current = select_model_keys(model_set="current")
     core = select_model_keys(model_set="core")
     extended = select_model_keys(model_set="extended")

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "model_key": {
+      "enum": [
+        "ecmwf_ifs",
+        "gfs013",
+        "gfs_seamless",
+        "nam",
+        "nbm"
+      ]
+    },
+    "point_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "raw_payload_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "received_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "run_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "run_time_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "source_available_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "source_variant": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_date_local": {
+      "format": "date",
+      "type": "string"
+    },
+    "temperature_f": {
+      "maximum": 160,
+      "minimum": -100,
+      "type": "number"
+    },
+    "valid_time_utc": {
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "required": [
+    "point_id",
+    "target_date_local",
+    "model_key",
+    "source_variant",
+    "run_id",
+    "run_time_utc",
+    "source_available_at_utc",
+    "valid_time_utc",
+    "received_at_utc",
+    "temperature_f"
+  ],
+  "title": "ForecastPathPoint",
+  "type": "object"
+}

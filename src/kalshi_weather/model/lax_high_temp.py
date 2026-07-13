@@ -138,23 +138,12 @@ def weather_snapshot_from_frames(
     if observations.empty:
         observed_high = float("nan")
         latest = None
-        latest_temp = None
     else:
-        temps = pd.to_numeric(observations["temp_f"], errors="coerce")
-        observed_high = float(temps.max())
+        observed_high = float(pd.to_numeric(observations["temp_f"], errors="coerce").max())
         latest_value = observations["timestamp_utc"].max()
         latest = latest_value.to_pydatetime() if hasattr(latest_value, "to_pydatetime") else latest_value
-        latest_temp = None
-        if latest_value is not None and "timestamp_utc" in observations:
-            latest_rows = observations.loc[observations["timestamp_utc"] == latest_value]
-            if not latest_rows.empty:
-                latest_temp_value = pd.to_numeric(latest_rows["temp_f"], errors="coerce").dropna()
-                if not latest_temp_value.empty:
-                    latest_temp = float(latest_temp_value.iloc[-1])
 
     details = dict(model_details or {})
-    if latest_temp is not None:
-        details["latest_observed_temp_f"] = latest_temp
     selected = details.get("selected_future_high_f") or details.get("future_max_selected")
     if selected is None:
         selected, components = weighted_future_high(model_maxes, OPEN_METEO_MODEL_WEIGHTS)

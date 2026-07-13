@@ -24,15 +24,7 @@ class Settings:
     open_meteo_probe_models: list[str]
     hourly_variables: list[str]
     open_meteo_model_weights: dict[str, float]
-    model_estimate_comparison_enabled: bool
-    model_estimate_default_providers: list[str]
-    model_estimate_default_models: dict[str, list[str]]
-    model_estimate_optional_models: list[str]
-    model_estimate_store_by_default: bool
-    model_estimate_probability_residual_sigma_f: float
-    direct_model_timeout_seconds: int
     max_forecast_hours: int
-    herbie_source_priority: list[str]
     herbie_cache_dir: str | None
     enable_direct_noaa_models: bool
     direct_models_fail_gracefully: bool
@@ -64,7 +56,6 @@ class Settings:
     max_hold_minutes: int
     paper_exit_risk_penalty: Decimal
     paper_exit_when_edge_disappears: bool
-    model_race: dict[str, Any]
     polling_interval_seconds: int
     log_level: str
 
@@ -152,11 +143,9 @@ def load_settings() -> Settings:
     kalshi = data.get("kalshi", {})
     weather = data.get("weather", {})
     model = data.get("model", {})
-    comparison = data.get("model_estimate_comparison", {})
     direct_noaa = data.get("direct_noaa_models", {})
     storage = data.get("storage", {})
     paper = data.get("paper_trading", {})
-    model_race = data.get("model_race", {})
     default_models = ["gfs_seamless", "gfs013", "gfs_global", "best_match"]
     default_probe_models = [
         "best_match",
@@ -204,11 +193,6 @@ def load_settings() -> Settings:
         "gfs_global": 0.75,
         "best_match": 1.0,
     }
-    default_comparison_models = {
-        "current": ["current_weighted_blend"],
-        "open_meteo": ["gfs_seamless", "gfs013", "gfs_global", "best_match"],
-        "noaa_herbie": ["hrrr", "nbm", "gfs", "rap"],
-    }
     default_direct_noaa_models = {
         "hrrr": {
             "model": "hrrr",
@@ -253,30 +237,16 @@ def load_settings() -> Settings:
             "cycle_hours": [0, 6, 12, 18],
             "search_strings": ["TMP:2 m", ":TMP:2 m", ":TMP:2 m above ground"],
         },
-        "href_mean": {
-            "family": "HREF",
-            "model": "href",
-            "domain": "conus",
-            "product": "mean",
-            "forecast_hours": [1, 36],
-            "cycle_hours": [0, 6, 12, 18],
-            "search_strings": ["TMP:2 m", ":TMP:2 m", ":TMP:2 m above ground"],
-        },
-        "href_p50": {
-            "family": "HREF",
-            "model": "href",
-            "domain": "conus",
-            "product": "pmmn",
-            "forecast_hours": [1, 36],
-            "cycle_hours": [0, 6, 12, 18],
-            "search_strings": ["TMP:2 m", ":TMP:2 m", ":TMP:2 m above ground"],
-        },
     }
     direct_noaa_config = {
-        "enabled": direct_noaa.get("enabled", comparison.get("enable_direct_noaa_models", True)),
-        "provider": direct_noaa.get("provider", "noaa_herbie"),
-        "cache_dir": direct_noaa.get("cache_dir", comparison.get("herbie_cache_dir", "data/herbie_cache")),
-        "fail_gracefully": direct_noaa.get("fail_gracefully", comparison.get("direct_models_fail_gracefully", True)),
+        "enabled": direct_noaa.get("enabled", True),
+        "cache_dir": direct_noaa.get("cache_dir", "data/herbie_cache"),
+        "fail_gracefully": direct_noaa.get("fail_gracefully", True),
+        "model_timeout_seconds": _float_setting(
+            "HERBIE_MODEL_TIMEOUT_SECONDS",
+            direct_noaa.get("model_timeout_seconds"),
+            20.0,
+        ),
         "station_lat": float(direct_noaa.get("station_lat", weather.get("latitude", 33.93816))),
         "station_lon": float(direct_noaa.get("station_lon", weather.get("longitude", -118.3866))),
         "models": direct_noaa.get("models", default_direct_noaa_models),
@@ -331,62 +301,15 @@ def load_settings() -> Settings:
         open_meteo_model_weights=_weights_setting(
             "OPEN_METEO_MODEL_WEIGHTS", model.get("open_meteo_model_weights"), default_weights
         ),
-        model_estimate_comparison_enabled=_bool(
-            os.getenv("MODEL_ESTIMATE_COMPARISON_ENABLED"),
-            comparison.get("enabled", True),
-        ),
-        model_estimate_default_providers=_list_setting(
-            "MODEL_ESTIMATE_DEFAULT_PROVIDERS",
-            comparison.get("default_providers"),
-            ["current", "open_meteo", "noaa_herbie"],
-        ),
-        model_estimate_default_models={
-            str(provider): _list_setting(
-                f"MODEL_ESTIMATE_DEFAULT_MODELS_{str(provider).upper()}",
-                models,
-                default_comparison_models.get(str(provider), []),
-            )
-            for provider, models in (
-                comparison.get("default_models") or default_comparison_models
-            ).items()
-        },
-        model_estimate_optional_models=_list_setting(
-            "MODEL_ESTIMATE_OPTIONAL_MODELS",
-            comparison.get("optional_models"),
-            ["ecmwf_ifs", "aifs"],
-        ),
-        model_estimate_store_by_default=_bool(
-            os.getenv("MODEL_ESTIMATE_STORE_BY_DEFAULT"),
-            comparison.get("store_by_default", False),
-        ),
-        model_estimate_probability_residual_sigma_f=_float_setting(
-            "MODEL_ESTIMATE_PROBABILITY_RESIDUAL_SIGMA_F",
-            comparison.get("probability_residual_sigma_f"),
-            1.0,
-        ),
-        direct_model_timeout_seconds=_int_setting(
-            "DIRECT_MODEL_TIMEOUT_SECONDS",
-            comparison.get("direct_model_timeout_seconds"),
-            60,
-        ),
         max_forecast_hours=_int_setting(
-            "MAX_FORECAST_HOURS",
-            comparison.get("max_forecast_hours"),
-            48,
+            "MAX_FORECAST_HOURS", direct_noaa.get("max_forecast_hours"), 48
         ),
-        herbie_source_priority=_list_setting(
-            "HERBIE_SOURCE_PRIORITY",
-            comparison.get("herbie_source_priority"),
-            ["aws", "nomads", "google", "azure"],
-        ),
-        herbie_cache_dir=os.getenv("HERBIE_CACHE_DIR", direct_noaa_config.get("cache_dir")),
+        herbie_cache_dir=os.getenv("HERBIE_CACHE_DIR", str(direct_noaa_config["cache_dir"])),
         enable_direct_noaa_models=_bool(
-            os.getenv("ENABLE_DIRECT_NOAA_MODELS"),
-            direct_noaa_config.get("enabled", True),
+            os.getenv("ENABLE_DIRECT_NOAA_MODELS"), direct_noaa_config["enabled"]
         ),
         direct_models_fail_gracefully=_bool(
-            os.getenv("DIRECT_MODELS_FAIL_GRACEFULLY"),
-            direct_noaa_config.get("fail_gracefully", True),
+            os.getenv("DIRECT_MODELS_FAIL_GRACEFULLY"), direct_noaa_config["fail_gracefully"]
         ),
         direct_noaa_models=direct_noaa_config,
         settlement_buffer_hours=_int_setting(
@@ -466,7 +389,6 @@ def load_settings() -> Settings:
             os.getenv("PAPER_EXIT_WHEN_EDGE_DISAPPEARS"),
             paper.get("paper_exit_when_edge_disappears", True),
         ),
-        model_race=model_race,
         polling_interval_seconds=_int_setting(
             "POLLING_INTERVAL_SECONDS", paper.get("polling_interval_seconds"), 60
         ),

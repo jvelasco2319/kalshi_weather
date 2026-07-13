@@ -1,0 +1,248 @@
+{
+  "package": "klax_bot_current_codex_package",
+  "strategy_id": "klax-current-five-model-2026-07-11",
+  "created_date": "2026-07-11",
+  "requires_prior_versions": false,
+  "files": [
+    {
+      "path": "CODEX_MASTER_PROMPT.md",
+      "size_bytes": 5146,
+      "sha256": "87ef85695b2324d2e85ee8a2f0dced9e2bee92c5b9963e16d2dc4dbdcd3e5d8c"
+    },
+    {
+      "path": "CODEX_TASK_GRAPH.yaml",
+      "size_bytes": 5061,
+      "sha256": "cea8bd08f013518fc7ae1fd893512e8e8a123616d518654480759994a875bc0a"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 2435,
+      "sha256": "e7203150043b4b48701c940a50d16715d043e5c4370e0a8e36824683f4c4366c"
+    },
+    {
+      "path": "SOURCES.md",
+      "size_bytes": 1390,
+      "sha256": "3bc6531e98da28523a4e283e2491e1a8ea18d92a901a30eb4c0a3586c4c1635f"
+    },
+    {
+      "path": "config/model_registry_current.yaml",
+      "size_bytes": 1506,
+      "sha256": "be7853c7c4151ed73a8bd84136550c6444472ccf0a19903c233998eb3cd6bc0d"
+    },
+    {
+      "path": "config/strategy_current.shadow.yaml",
+      "size_bytes": 2684,
+      "sha256": "a410d15de2f1b18ee2fcef004b77a8378e733f5795d0ed0aba9d27fe079c7ab3"
+    },
+    {
+      "path": "docs/00_BUILD_DECISION.md",
+      "size_bytes": 1734,
+      "sha256": "53137bef5c80b5e31eb7e6ab002251804ab28299488fc5af2715653d695324c9"
+    },
+    {
+      "path": "docs/01_EXISTING_ARCHITECTURE_REUSE_PLAN.md",
+      "size_bytes": 3057,
+      "sha256": "9da9c5932c9e295ef8178108929a8a12eb5da07f3c86a7882b4ca4030ab29783"
+    },
+    {
+      "path": "docs/02_MODEL_REGISTRY_AND_POLICY.md",
+      "size_bytes": 1913,
+      "sha256": "05556b67ea6e17fdae936b6d78e22fe557df28cc9232b46ec42d6ba8f53dfbc3"
+    },
+    {
+      "path": "docs/03_FORECAST_STATE_AND_ASOF_MATH.md",
+      "size_bytes": 1831,
+      "sha256": "3b0273cee63ace33677ef2431b8d74d69a574abf864cec4ac422544354d05bea"
+    },
+    {
+      "path": "docs/04_MODEL_PROBABILITIES_AND_MIXTURE.md",
+      "size_bytes": 3603,
+      "sha256": "c4e05ebf201405e7b07a4c91fc25135f2e7f0cc1c5050679f175039d4a92ab39"
+    },
+    {
+      "path": "docs/05_SETTLEMENT_AND_CONTRACT_MAPPING.md",
+      "size_bytes": 1167,
+      "sha256": "7e0580cde48d73434af3a3182950789b5c5732b1461ec42744fc52e3bcbce0fd"
+    },
+    {
+      "path": "docs/06_TRADING_ECONOMICS_AND_PRICE_SELECTION.md",
+      "size_bytes": 1723,
+      "sha256": "ed068215efa2a526f84b00ce611596211565058e41ff440f032887dd71d98691"
+    },
+    {
+      "path": "docs/07_MARKET_DATA_AND_EXECUTION.md",
+      "size_bytes": 1761,
+      "sha256": "8f993f70bd1fc56ed88c24ffb4790c735d117ebf7e15386e175fba4a68271242"
+    },
+    {
+      "path": "docs/08_RISK_AND_PORTFOLIO.md",
+      "size_bytes": 1539,
+      "sha256": "ff09b8293b26310541fcd21004397e89a313f1b6873b3924ab5597faf823829e"
+    },
+    {
+      "path": "docs/09_PERSISTENCE_AND_MIGRATIONS.md",
+      "size_bytes": 1281,
+      "sha256": "00ed5d45c2bcf51b16814ae50dcd8d53e734cfd52b413cfa283946a24dddcf97"
+    },
+    {
+      "path": "docs/10_CLI_AND_RUNTIME.md",
+      "size_bytes": 1277,
+      "sha256": "cbac24811a6b65c056c6efca9dd6611bf4fc74012ba2cf2fe9fefebe4a2bba84"
+    },
+    {
+      "path": "docs/11_REPLAY_SHADOW_AND_PROMOTION.md",
+      "size_bytes": 1446,
+      "sha256": "a470083530358f82574f6618a02831310037dd92d434859e2d3dfc6abb007c3f"
+    },
+    {
+      "path": "docs/12_ACCEPTANCE_TESTS.md",
+      "size_bytes": 3184,
+      "sha256": "7878c0d7cd657cb310ce2411f2798cb60d831e94a6e1c2d7efb8f1c9f7059cb2"
+    },
+    {
+      "path": "docs/13_REASON_CODES_AND_EVENTS.md",
+      "size_bytes": 1300,
+      "sha256": "29074778c35a2c000c25e4287993f61799c9f523226802a8bce1d931e33c55f0"
+    },
+    {
+      "path": "docs/14_SECURITY_AND_FAIL_CLOSED.md",
+      "size_bytes": 915,
+      "sha256": "4462e6a5b06c99d79ce4c6cbf53c839f94e769fddc246f83ac695c4c6ff8af0d"
+    },
+    {
+      "path": "docs/15_END_TO_END_ALGORITHM.md",
+      "size_bytes": 3481,
+      "sha256": "44e9e90a99314e7a3e8e454de28f528ad5bd00ca21d7bd2c55a7d9733e1ede7a"
+    },
+    {
+      "path": "docs/16_NO_DEPENDENCY_ON_V1_V2_V3.md",
+      "size_bytes": 813,
+      "sha256": "ecc41eb6de998e9c587dd378e32a7fa0a6f0a882182e720025ec0c371b23dca9"
+    },
+    {
+      "path": "evidence/JULY7_JULY9_DESIGN_DECISIONS.md",
+      "size_bytes": 1357,
+      "sha256": "0d99073a50d31481871e79fd3864cb0c3fd8f315a1d36426836746492041eba7"
+    },
+    {
+      "path": "evidence/source_extracts/klax_2026_07_09_preimplementation_action_list.md",
+      "size_bytes": 3207,
+      "sha256": "43a5faf9be9a9839ee02fa3da2376e1eb761f3504864fdb52b8a0cc7ad947764"
+    },
+    {
+      "path": "evidence/source_extracts/klax_july7_0724_1800_chatgpt_brief.md",
+      "size_bytes": 7533,
+      "sha256": "0e156183771468dc28d5f5016ff0f0b104b7a8fee37fcd9721f7bc648060a36e"
+    },
+    {
+      "path": "evidence/source_extracts/klax_july7_data_quality_summary.json",
+      "size_bytes": 1837,
+      "sha256": "2734ad59fa0200759720fcabb5ea3148fb273dbe1137f584a278ba66e2c0366f"
+    },
+    {
+      "path": "evidence/source_extracts/klax_july7_joined_checkpoint_analysis.csv",
+      "size_bytes": 1518,
+      "sha256": "dfc64c850436bc477a80584882c5eb16b032dbb6cef50340a410e04ca457bef1"
+    },
+    {
+      "path": "integration/expected_module_map.yaml",
+      "size_bytes": 964,
+      "sha256": "adeb967bd27c8fff8c5d49fb0b6d935fb735e8fec2aa5a566dcee2a9b0dae97e"
+    },
+    {
+      "path": "integration/repo_mapping_template.md",
+      "size_bytes": 1283,
+      "sha256": "1d9f99741fa2e1727da4cc5dd1e85c7056b469999a32188378b4363fe3b5a453"
+    },
+    {
+      "path": "prompts/P0_REPO_MAPPING.md",
+      "size_bytes": 464,
+      "sha256": "a35f024455ec49080ba96e2f08bba456fbd419bc8476f31bcb856545605c303d"
+    },
+    {
+      "path": "prompts/P1_P3_DATA_AND_STATE.md",
+      "size_bytes": 504,
+      "sha256": "1c8b98d6260dd480550a1ce40a40730fe0e3e6d09849e745f1c110dc9d118f3d"
+    },
+    {
+      "path": "prompts/P4_P6_PROBABILITY_ECONOMICS.md",
+      "size_bytes": 441,
+      "sha256": "5196cca1330cc326bea1df126a0c4410dd374c4d3ddd07cde489fe1c80ecf3ca"
+    },
+    {
+      "path": "prompts/P7_P9_SHADOW_REPLAY.md",
+      "size_bytes": 416,
+      "sha256": "0b2b3c4cf9e2ba328d7e02cb3689f349aee7af530f44f0071ace2acd735c94c0"
+    },
+    {
+      "path": "reference/requirements.txt",
+      "size_bytes": 53,
+      "sha256": "9521e3ed3f4a49348db801737f02f60636ecd6d8bb6ce4ead0307d842ab92ecd"
+    },
+    {
+      "path": "reference/strategy_current_reference.py",
+      "size_bytes": 15918,
+      "sha256": "80f7796dc1ab587e1997af3bd4319b2da062ca8726be3a188a13e5b02730ca69"
+    },
+    {
+      "path": "reference/test_strategy_current_reference.py",
+      "size_bytes": 7080,
+      "sha256": "8f7e05efa48d2c599a9d302f2ff867c39e383b6438516ad5e2124da35ee5ac08"
+    },
+    {
+      "path": "reference/test_vectors.json",
+      "size_bytes": 848,
+      "sha256": "78168f75b3a154b9f2102126444b74ad9e23b29e8b074d5c6477ea040c00b6e3"
+    },
+    {
+      "path": "reference/verify_package.py",
+      "size_bytes": 1984,
+      "sha256": "381abe98c7bc370580cc1451b5b3bcb9ffb30c9878f53c2bd053065658ab6613"
+    },
+    {
+      "path": "schemas/bracket_probability.schema.json",
+      "size_bytes": 960,
+      "sha256": "37de7c0c13ba898b2af41e0e7a0d50a8470ab2cf14c7fcfb0d7ab372d6c44120"
+    },
+    {
+      "path": "schemas/capture_manifest.schema.json",
+      "size_bytes": 1110,
+      "sha256": "8c7a87db740b70b1768e855b07bcf5ad4453d315dbb15bddc6c31d85ca0c89d5"
+    },
+    {
+      "path": "schemas/decision_state.schema.json",
+      "size_bytes": 1515,
+      "sha256": "680fd1da686c941a7e0bf13639320d8bd980e48762362a5140da65219b8b069f"
+    },
+    {
+      "path": "schemas/forecast_path_point.schema.json",
+      "size_bytes": 1365,
+      "sha256": "1f8cf997ec455461d46206fccc63e359706daecb2adbad56e0f6a40796522c0c"
+    },
+    {
+      "path": "schemas/model_live_state.schema.json",
+      "size_bytes": 1523,
+      "sha256": "da8f7ccff14f3b9bb123d0f3921a0a185d7d3cddc62e17bacd41b0d2c1b4adae"
+    },
+    {
+      "path": "schemas/orderbook_event.schema.json",
+      "size_bytes": 1443,
+      "sha256": "5a2d48b34b9fc813ec3b8bc670655b142d42cbac7a713043fd665312123e61f1"
+    },
+    {
+      "path": "schemas/strategy_config.schema.json",
+      "size_bytes": 969,
+      "sha256": "f67910056d7eb63b35c19602eb26ff493e4dad60b0ea7f1585f5ff2d7a585c0b"
+    },
+    {
+      "path": "schemas/trade_record.schema.json",
+      "size_bytes": 1329,
+      "sha256": "c0875d902d6f624f1c07865d66b0049a4972f62674442ad71c87d438f21ddcd8"
+    },
+    {
+      "path": "sql/001_strategy_current_additive.sql",
+      "size_bytes": 4717,
+      "sha256": "6581f619a0c5baf5eb08ba5a7e1396acd93593db1639f979832f741e98b2685e"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+runtime:
+  timezone: America/Los_Angeles
+  target_date: auto
+  include_next_day: true
+  event_discovery_seconds: 30
+  market_metadata_seconds: 30
+  open_meteo_new_run_check_seconds: 300
+  nbm_new_run_check_seconds: 300
+  klax_observation_poll_seconds: 60
+  trade_rest_fallback_seconds: 10
+  rules_fee_refresh_seconds: 900
+  book_watchdog_seconds: 1
+  evaluation_debounce_milliseconds: 250
+  shutdown_grace_seconds: 15
+
+strategy:
+  config_path: strategy_spec/config/strategy_current.shadow.yaml
+  mode: shadow
+  live_trading_enabled: false
+  canary_enabled: false
+  taker_enabled: false
+  order_submission_reachable: false
+
+market_data:
+  websocket_preferred: true
+  rest_observe_only_fallback: true
+  orderbook_depth_levels: 10
+  stale_book_after_seconds: 5
+
+signal_room:
+  enabled: true
+  host: 127.0.0.1
+  port: 8765
+  open_browser: true
+  sse_enabled: true
+  etag_poll_fallback_seconds: 2
+  allow_remote: false

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "book_sequence_valid": {
+      "type": "boolean"
+    },
+    "capture_id": {
+      "type": "string"
+    },
+    "completed_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "cursor_exhausted": {
+      "type": "boolean"
+    },
+    "details": {
+      "type": "object"
+    },
+    "expected": {
+      "type": "object"
+    },
+    "observed": {
+      "type": "object"
+    },
+    "schema_valid": {
+      "type": "boolean"
+    },
+    "started_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "failed"
+      ]
+    },
+    "target_date_local": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "capture_id",
+    "target_date_local",
+    "started_at_utc",
+    "completed_at_utc",
+    "expected",
+    "observed",
+    "cursor_exhausted",
+    "book_sequence_valid",
+    "schema_valid",
+    "status"
+  ],
+  "title": "CaptureManifest",
+  "type": "object"
+}

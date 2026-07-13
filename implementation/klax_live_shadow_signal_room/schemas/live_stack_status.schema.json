@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KLAX Live Shadow Stack Status",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "deployment", "events", "sources"],
+  "properties": {
+    "schema_version": {"const": "1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "deployment": {
+      "type": "object",
+      "required": ["mode", "order_submission_reachable"],
+      "properties": {
+        "mode": {"const": "shadow"},
+        "order_submission_reachable": {"const": false},
+        "live_trading_enabled": {"const": false},
+        "canary_enabled": {"const": false},
+        "taker_enabled": {"const": false}
+      },
+      "additionalProperties": true
+    },
+    "events": {"type": "array"},
+    "sources": {
+      "type": "object",
+      "required": ["ecmwf_ifs", "gfs013", "gfs_seamless", "nam", "nbm", "klax_observations", "kalshi_market"],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

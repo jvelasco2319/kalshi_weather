@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
-from typing import Any
+from dataclasses import asdict, dataclass
+from typing import Literal
+
+ModelSet = Literal["current", "core", "extended"]
 
 
 @dataclass(frozen=True)
@@ -13,10 +15,10 @@ class ModelSource:
     provider: str
     fetcher_type: str
     endpoint_family: str
+    model_param_candidates: tuple[str | None, ...]
     model_family: str
     independence_group: str
     source_type: str
-    model_param_candidates: list[str | None] = field(default_factory=list)
     is_blend: bool = False
     is_ensemble: bool = False
     is_direct_model: bool = False
@@ -26,474 +28,483 @@ class ModelSource:
     is_optional: bool = False
     expected_update_frequency: str | None = None
     forecast_horizon_hint: str | None = None
-    preferred_variables: list[str] = field(default_factory=lambda: ["temperature_2m"])
-    fallback_variables: list[str] = field(default_factory=lambda: ["temperature_2m"])
+    preferred_variables: tuple[str, ...] = ("temperature_2m",)
+    fallback_variables: tuple[str, ...] = ()
     raw_model_name: str | None = None
     raw_endpoint: str | None = None
-    notes: str | None = None
+    notes: str = ""
 
-    def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    def to_dict(self) -> dict[str, object]:
+        payload = asdict(self)
+        payload["model_param_candidates"] = list(self.model_param_candidates)
+        payload["preferred_variables"] = list(self.preferred_variables)
+        payload["fallback_variables"] = list(self.fallback_variables)
+        payload["model_set"] = model_set_for_source(self)
+        return payload
 
 
-def _source(**kwargs: Any) -> ModelSource:
-    return ModelSource(**kwargs)
+def _source(
+    model_key: str,
+    display_name: str,
+    priority: int,
+    provider: str,
+    fetcher_type: str,
+    endpoint_family: str,
+    model_family: str,
+    independence_group: str,
+    source_type: str,
+    *,
+    model_param_candidates: tuple[str | None, ...] = (),
+    enabled_by_default: bool = True,
+    is_blend: bool = False,
+    is_ensemble: bool = False,
+    is_direct_model: bool = False,
+    is_station_guidance: bool = False,
+    is_observation_or_analysis: bool = False,
+    is_synthetic: bool = False,
+    is_optional: bool = False,
+    expected_update_frequency: str | None = None,
+    forecast_horizon_hint: str | None = None,
+    raw_model_name: str | None = None,
+    raw_endpoint: str | None = None,
+    notes: str = "",
+) -> ModelSource:
+    return ModelSource(
+        model_key=model_key,
+        display_name=display_name,
+        enabled_by_default=enabled_by_default,
+        priority=priority,
+        provider=provider,
+        fetcher_type=fetcher_type,
+        endpoint_family=endpoint_family,
+        model_param_candidates=model_param_candidates,
+        model_family=model_family,
+        independence_group=independence_group,
+        source_type=source_type,
+        is_blend=is_blend,
+        is_ensemble=is_ensemble,
+        is_direct_model=is_direct_model,
+        is_station_guidance=is_station_guidance,
+        is_observation_or_analysis=is_observation_or_analysis,
+        is_synthetic=is_synthetic,
+        is_optional=is_optional,
+        expected_update_frequency=expected_update_frequency,
+        forecast_horizon_hint=forecast_horizon_hint,
+        raw_model_name=raw_model_name,
+        raw_endpoint=raw_endpoint,
+        notes=notes,
+    )
 
 
-MODEL_SOURCES: dict[str, ModelSource] = {
-    "current_weighted_blend": _source(
-        model_key="current_weighted_blend",
-        display_name="Current Blend",
-        enabled_by_default=True,
-        priority=10,
-        provider="internal",
-        fetcher_type="internal_blend",
-        endpoint_family="internal",
-        model_family="Blend",
-        independence_group="InternalBlend",
-        source_type="synthetic_blend",
+_CURRENT_SOURCES: tuple[ModelSource, ...] = (
+    _source(
+        "current_weighted_blend",
+        "Current Weighted Blend",
+        10,
+        "internal",
+        "internal_blend",
+        "internal",
+        "Blend",
+        "InternalBlend",
+        "synthetic_blend",
         is_blend=True,
         is_synthetic=True,
         expected_update_frequency="per recorder run",
-        notes="Existing project weighted blend.",
+        notes="Existing weighted blend from successful model estimates.",
     ),
-    "best_match": _source(
-        model_key="best_match",
-        display_name="Open-Meteo Best",
-        enabled_by_default=True,
-        priority=20,
-        provider="open_meteo",
-        fetcher_type="open_meteo",
-        endpoint_family="forecast",
-        model_param_candidates=["best_match", "auto", None],
-        model_family="BestMatch",
-        independence_group="OpenMeteoBestMatch",
-        source_type="provider_selection",
+    _source(
+        "best_match",
+        "Open-Meteo Best Match",
+        20,
+        "Open-Meteo",
+        "open_meteo",
+        "forecast",
+        "BestMatch",
+        "OpenMeteoBestMatch",
+        "provider_selection",
+        model_param_candidates=("best_match", None),
         is_blend=True,
-        expected_update_frequency="varies by selected model",
+        expected_update_frequency="provider-selected",
     ),
-    "gfs_seamless": _source(
-        model_key="gfs_seamless",
-        display_name="GFS Seamless",
-        enabled_by_default=True,
-        priority=30,
-        provider="open_meteo",
-        fetcher_type="open_meteo_gfs",
-        endpoint_family="gfs",
-        model_param_candidates=["gfs_seamless"],
-        model_family="GFS",
-        independence_group="GFS",
-        source_type="deterministic_or_provider_seamless",
+    _source(
+        "gfs_seamless",
+        "GFS Seamless",
+        30,
+        "Open-Meteo",
+        "open_meteo_gfs",
+        "gfs",
+        "GFS",
+        "GFS",
+        "deterministic_or_provider_seamless",
+        model_param_candidates=("gfs_seamless",),
         is_direct_model=True,
     ),
-    "gfs013": _source(
-        model_key="gfs013",
-        display_name="GFS 0.13",
-        enabled_by_default=True,
-        priority=31,
-        provider="open_meteo",
-        fetcher_type="open_meteo_gfs",
-        endpoint_family="gfs",
-        model_param_candidates=["gfs013", "gfs_013", "gfs_0p13", "gfs_0p11"],
-        model_family="GFS",
-        independence_group="GFS",
-        source_type="deterministic",
+    _source(
+        "gfs013",
+        "GFS 0.13/0.11",
+        31,
+        "Open-Meteo",
+        "open_meteo_gfs",
+        "gfs",
+        "GFS",
+        "GFS",
+        "deterministic",
+        model_param_candidates=("gfs013", "gfs_013", "gfs_0p13", "gfs_0p11"),
         is_direct_model=True,
     ),
-    "gfs_global": _source(
-        model_key="gfs_global",
-        display_name="GFS Global",
-        enabled_by_default=True,
-        priority=32,
-        provider="open_meteo",
-        fetcher_type="open_meteo_gfs",
-        endpoint_family="gfs",
-        model_param_candidates=["gfs_global"],
-        model_family="GFS",
-        independence_group="GFS",
-        source_type="deterministic",
+    _source(
+        "gfs_global",
+        "GFS Global",
+        32,
+        "Open-Meteo",
+        "open_meteo_gfs",
+        "gfs",
+        "GFS",
+        "GFS",
+        "deterministic",
+        model_param_candidates=("gfs_global",),
         is_direct_model=True,
     ),
-    "nam": _source(
-        model_key="nam",
-        display_name="NAM",
-        enabled_by_default=True,
-        priority=40,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["nam"],
-        model_family="NAM",
-        independence_group="NAM",
-        source_type="deterministic",
+    _source(
+        "nam",
+        "NAM",
+        40,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "NAM",
+        "NAM",
+        "deterministic",
+        model_param_candidates=("nam",),
         is_direct_model=True,
+        notes="Direct NOAA NAM through Herbie.",
     ),
-    "nam_conus": _source(
-        model_key="nam_conus",
-        display_name="NAM Conus",
-        enabled_by_default=True,
-        priority=41,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["nam_conus"],
-        model_family="NAM",
-        independence_group="NAM",
-        source_type="deterministic",
+    _source(
+        "nam_conus",
+        "NAM CONUS",
+        41,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "NAM",
+        "NAM",
+        "deterministic",
+        model_param_candidates=("nam_conus",),
         is_direct_model=True,
+        notes="Direct NOAA NAM CONUS nest through Herbie; canonical strategy aliases to NAM.",
     ),
-    "ecmwf_ifs": _source(
-        model_key="ecmwf_ifs",
-        display_name="ECMWF IFS",
-        enabled_by_default=True,
-        priority=50,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ecmwf",
-        endpoint_family="ecmwf",
-        model_param_candidates=["ecmwf_ifs", "ifs025", "ecmwf_ifs025"],
-        model_family="ECMWF",
-        independence_group="ECMWF_IFS",
-        source_type="deterministic",
+    _source(
+        "ecmwf_ifs",
+        "ECMWF IFS",
+        50,
+        "Open-Meteo",
+        "open_meteo_ecmwf",
+        "ecmwf",
+        "ECMWF",
+        "ECMWF_IFS",
+        "deterministic",
+        model_param_candidates=("ecmwf_ifs", "ecmwf_ifs025"),
         is_direct_model=True,
+        expected_update_frequency="6-hourly",
+        notes="Registry entry exists even when this repo has only the GFS endpoint configured.",
     ),
-    "aifs": _source(
-        model_key="aifs",
-        display_name="AIFS",
-        enabled_by_default=True,
-        priority=51,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ecmwf",
-        endpoint_family="ecmwf",
-        model_param_candidates=["aifs", "ecmwf_aifs025"],
-        model_family="AIFS",
-        independence_group="AIFS",
-        source_type="deterministic_ai",
+    _source(
+        "aifs",
+        "AIFS",
+        51,
+        "Open-Meteo",
+        "open_meteo_ecmwf",
+        "ecmwf",
+        "AIFS",
+        "AIFS",
+        "deterministic_ai",
+        model_param_candidates=("aifs", "ecmwf_aifs025"),
         is_direct_model=True,
+        expected_update_frequency="6-hourly",
+        notes="Registry entry exists even when this repo has only the GFS endpoint configured.",
     ),
-    "hrrr": _source(
-        model_key="hrrr",
-        display_name="HRRR Direct",
-        enabled_by_default=True,
-        priority=60,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["hrrr"],
-        model_family="HRRR",
-        independence_group="HRRR",
-        source_type="deterministic",
+    _source(
+        "hrrr",
+        "HRRR Direct",
+        60,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "HRRR",
+        "HRRR",
+        "deterministic",
+        model_param_candidates=("hrrr",),
         is_direct_model=True,
         expected_update_frequency="hourly",
+        notes="Direct NOAA model; recorded missing unless direct NOAA wiring is available.",
     ),
-    "nbm": _source(
-        model_key="nbm",
-        display_name="NBM Direct",
-        enabled_by_default=True,
-        priority=70,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["nbm"],
-        model_family="NBM",
-        independence_group="NBM",
-        source_type="calibrated_blend",
+    _source(
+        "nbm",
+        "NBM Direct",
+        61,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "NBM",
+        "NBM",
+        "calibrated_blend",
+        model_param_candidates=("nbm",),
         is_blend=True,
         is_direct_model=True,
         expected_update_frequency="hourly",
-        notes="Calibrated blend, not an independent raw dynamical model.",
+        notes="Calibrated blend, not an independent dynamical model.",
     ),
-    "gfs": _source(
-        model_key="gfs",
-        display_name="GFS Direct",
-        enabled_by_default=True,
-        priority=80,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["gfs"],
-        model_family="GFS",
-        independence_group="GFS",
-        source_type="deterministic",
+    _source(
+        "gfs",
+        "GFS Direct",
+        62,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "GFS",
+        "GFS",
+        "deterministic",
+        model_param_candidates=("gfs",),
         is_direct_model=True,
+        expected_update_frequency="6-hourly",
     ),
-    "rap": _source(
-        model_key="rap",
-        display_name="RAP Direct",
-        enabled_by_default=True,
-        priority=90,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["rap"],
-        model_family="RAP",
-        independence_group="RAP",
-        source_type="deterministic",
+    _source(
+        "rap",
+        "RAP Direct",
+        63,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "RAP",
+        "RAP",
+        "deterministic",
+        model_param_candidates=("rap",),
         is_direct_model=True,
+        expected_update_frequency="hourly",
     ),
-    "gefs_mean": _source(
-        model_key="gefs_mean",
-        display_name="GEFS Mean",
+)
+
+
+_CORE_ADDITIONS: tuple[ModelSource, ...] = (
+    _source(
+        "gefs_mean",
+        "GEFS Mean",
+        100,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "GEFS",
+        "GEFS",
+        "ensemble_mean",
+        model_param_candidates=("gefs",),
         enabled_by_default=False,
-        priority=100,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble",
-        model_param_candidates=["gfs_seamless", "gfs025"],
-        model_family="GEFS",
-        independence_group="GEFS",
-        source_type="ensemble_mean",
         is_ensemble=True,
         is_direct_model=True,
-        notes="Fetched from Open-Meteo ensemble members and averaged by recorder.",
+        expected_update_frequency="6-hourly",
+        notes="High-priority ensemble mean; missing until a GEFS fetcher is wired.",
     ),
-    "gefs_spread": _source(
-        model_key="gefs_spread",
-        display_name="GEFS Spread",
+    _source(
+        "gefs_spread",
+        "GEFS Spread",
+        101,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "GEFS",
+        "GEFS",
+        "ensemble_spread",
+        model_param_candidates=("gefs",),
         enabled_by_default=False,
-        priority=101,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble",
-        model_param_candidates=["gfs_seamless", "gfs025"],
-        model_family="GEFS",
-        independence_group="GEFS",
-        source_type="ensemble_spread",
         is_ensemble=True,
         is_direct_model=True,
+        expected_update_frequency="6-hourly",
     ),
-    "ecmwf_ens_mean": _source(
-        model_key="ecmwf_ens_mean",
-        display_name="ECMWF ENS Mean",
+    _source(
+        "ecmwf_ens_mean",
+        "ECMWF ENS Mean",
+        110,
+        "Open-Meteo",
+        "open_meteo_ensemble_mean",
+        "ensemble_mean",
+        "ECMWF",
+        "ECMWF_ENSEMBLE",
+        "ensemble_mean",
+        model_param_candidates=("ecmwf_ifs025",),
         enabled_by_default=False,
-        priority=110,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble_mean",
-        model_param_candidates=["ecmwf_ifs025"],
-        model_family="ECMWF",
-        independence_group="ECMWF_ENSEMBLE",
-        source_type="ensemble_mean",
         is_ensemble=True,
-        is_direct_model=True,
     ),
-    "ecmwf_ens_spread": _source(
-        model_key="ecmwf_ens_spread",
-        display_name="ECMWF ENS Spread",
+    _source(
+        "ecmwf_ens_spread",
+        "ECMWF ENS Spread",
+        111,
+        "Open-Meteo",
+        "open_meteo_ensemble_mean",
+        "ensemble_mean",
+        "ECMWF",
+        "ECMWF_ENSEMBLE",
+        "ensemble_spread",
+        model_param_candidates=("ecmwf_ifs025",),
         enabled_by_default=False,
-        priority=111,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble_mean",
-        model_param_candidates=["ecmwf_ifs025"],
-        model_family="ECMWF",
-        independence_group="ECMWF_ENSEMBLE",
-        source_type="ensemble_spread",
         is_ensemble=True,
-        is_direct_model=True,
     ),
-    "aifs_ens_mean": _source(
-        model_key="aifs_ens_mean",
-        display_name="AIFS ENS Mean",
+    _source(
+        "aifs_ens_mean",
+        "AIFS ENS Mean",
+        112,
+        "Open-Meteo",
+        "open_meteo_ensemble_mean",
+        "ensemble_mean",
+        "AIFS",
+        "AIFS_ENSEMBLE",
+        "ensemble_mean",
+        model_param_candidates=("ecmwf_aifs025",),
         enabled_by_default=False,
-        priority=120,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble_mean",
-        model_param_candidates=["ecmwf_aifs025"],
-        model_family="AIFS",
-        independence_group="AIFS_ENSEMBLE",
-        source_type="ensemble_mean",
         is_ensemble=True,
-        is_direct_model=True,
     ),
-    "aifs_ens_spread": _source(
-        model_key="aifs_ens_spread",
-        display_name="AIFS ENS Spread",
+    _source(
+        "aifs_ens_spread",
+        "AIFS ENS Spread",
+        113,
+        "Open-Meteo",
+        "open_meteo_ensemble_mean",
+        "ensemble_mean",
+        "AIFS",
+        "AIFS_ENSEMBLE",
+        "ensemble_spread",
+        model_param_candidates=("ecmwf_aifs025",),
         enabled_by_default=False,
-        priority=121,
-        provider="open_meteo",
-        fetcher_type="open_meteo_ensemble_mean",
-        endpoint_family="ensemble_mean",
-        model_param_candidates=["ecmwf_aifs025"],
-        model_family="AIFS",
-        independence_group="AIFS_ENSEMBLE",
-        source_type="ensemble_spread",
         is_ensemble=True,
-        is_direct_model=True,
     ),
-    "href_mean": _source(
-        model_key="href_mean",
-        display_name="HREF Mean",
+    _source(
+        "href_mean",
+        "HREF Mean",
+        120,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "HREF",
+        "HREF",
+        "ensemble_mean",
+        model_param_candidates=("href",),
         enabled_by_default=False,
-        priority=130,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["href"],
-        model_family="HREF",
-        independence_group="HREF",
-        source_type="ensemble_mean",
-        is_ensemble=True,
-        is_direct_model=True,
-    ),
-    "href_p50": _source(
-        model_key="href_p50",
-        display_name="HREF P50",
-        enabled_by_default=False,
-        priority=131,
-        provider="noaa_herbie",
-        fetcher_type="herbie",
-        endpoint_family="herbie",
-        model_param_candidates=["href"],
-        model_family="HREF",
-        independence_group="HREF",
-        source_type="ensemble_percentile",
         is_ensemble=True,
         is_direct_model=True,
     ),
-    "nws_hourly": _source(
-        model_key="nws_hourly",
-        display_name="NWS Hourly",
+    _source(
+        "href_p50",
+        "HREF P50",
+        121,
+        "NOAA/Herbie",
+        "herbie",
+        "herbie",
+        "HREF",
+        "HREF",
+        "ensemble_percentile",
+        model_param_candidates=("href",),
         enabled_by_default=False,
-        priority=140,
-        provider="nws",
-        fetcher_type="nws_api",
-        endpoint_family="nws_points",
-        model_family="NWS",
-        independence_group="NWS",
-        source_type="official_forecast",
+        is_ensemble=True,
+        is_direct_model=True,
+    ),
+    _source(
+        "nws_hourly",
+        "NWS Hourly",
+        130,
+        "NWS API",
+        "nws_api",
+        "nws_points",
+        "NWS",
+        "NWSForecast",
+        "official_forecast",
+        enabled_by_default=False,
         is_station_guidance=True,
     ),
-    "nws_grid_high": _source(
-        model_key="nws_grid_high",
-        display_name="NWS Grid High",
+    _source(
+        "nws_grid_high",
+        "NWS Grid High",
+        131,
+        "NWS API",
+        "nws_api",
+        "nws_grid",
+        "NWS",
+        "NWSForecast",
+        "official_grid_forecast",
         enabled_by_default=False,
-        priority=141,
-        provider="nws",
-        fetcher_type="nws_api",
-        endpoint_family="nws_grid",
-        model_family="NWS",
-        independence_group="NWS",
-        source_type="official_forecast",
         is_station_guidance=True,
     ),
-    "lamp": _source(
-        model_key="lamp",
-        display_name="LAMP",
+    _source(
+        "lamp",
+        "LAMP",
+        140,
+        "NOAA/MDL",
+        "mdl_text",
+        "mdl",
+        "LAMP",
+        "MOS_LAMP",
+        "station_guidance",
         enabled_by_default=False,
-        priority=150,
-        provider="noaa_mdl",
-        fetcher_type="mdl_text",
-        endpoint_family="mdl_text",
-        model_family="MOS_LAMP",
-        independence_group="MOS_LAMP",
-        source_type="station_guidance",
         is_station_guidance=True,
     ),
-    "gfs_mos": _source(
-        model_key="gfs_mos",
-        display_name="GFS MOS",
+    _source(
+        "gfs_mos",
+        "GFS MOS",
+        141,
+        "NOAA/MDL",
+        "mdl_text",
+        "mdl",
+        "MOS",
+        "MOS_LAMP",
+        "station_guidance",
         enabled_by_default=False,
-        priority=151,
-        provider="noaa_mdl",
-        fetcher_type="mdl_text",
-        endpoint_family="mdl_text",
-        model_family="MOS_LAMP",
-        independence_group="MOS_LAMP",
-        source_type="station_guidance",
         is_station_guidance=True,
     ),
-    "nam_mos": _source(
-        model_key="nam_mos",
-        display_name="NAM MOS",
+    _source(
+        "nam_mos",
+        "NAM MOS",
+        142,
+        "NOAA/MDL",
+        "mdl_text",
+        "mdl",
+        "MOS",
+        "MOS_LAMP",
+        "station_guidance",
         enabled_by_default=False,
-        priority=152,
-        provider="noaa_mdl",
-        fetcher_type="mdl_text",
-        endpoint_family="mdl_text",
-        model_family="MOS_LAMP",
-        independence_group="MOS_LAMP",
-        source_type="station_guidance",
         is_station_guidance=True,
     ),
+)
+
+
+_EXTENDED_ADDITIONS: tuple[ModelSource, ...] = (
+    _source("gfs_graphcast", "GFS GraphCast", 200, "Open-Meteo", "open_meteo_gfs", "gfs", "GraphCast", "GraphCast", "ai_forecast", model_param_candidates=("gfs_graphcast", "graphcast"), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("aigfs", "AIGFS", 201, "Open-Meteo", "open_meteo_gfs", "gfs", "AIGFS", "AIGFS", "ai_forecast", model_param_candidates=("aigfs", "aigfs025"), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("aigefs_mean", "AIGEFS Mean", 202, "Open-Meteo", "open_meteo_ensemble_mean", "ensemble_mean", "AIGEFS", "AIGEFS", "ensemble_mean", model_param_candidates=("aigefs", "aigefs025"), enabled_by_default=False, is_ensemble=True, is_optional=True),
+    _source("aigefs_spread", "AIGEFS Spread", 203, "Open-Meteo", "open_meteo_ensemble_mean", "ensemble_mean", "AIGEFS", "AIGEFS", "ensemble_spread", model_param_candidates=("aigefs", "aigefs025"), enabled_by_default=False, is_ensemble=True, is_optional=True),
+    _source("hgefs_mean", "HGEFS Mean", 204, "Open-Meteo", "open_meteo_gfs", "gfs", "HGEFS", "HGEFS", "ensemble_mean", model_param_candidates=("hgefs", "hgefs025"), enabled_by_default=False, is_ensemble=True, is_optional=True),
+    _source("gem_global", "GEM Global", 210, "Open-Meteo", "open_meteo", "forecast", "GEM", "GEM", "deterministic", model_param_candidates=("gem_global",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("gem_regional", "GEM Regional", 211, "Open-Meteo", "open_meteo", "forecast", "GEM", "GEM", "deterministic", model_param_candidates=("gem_regional",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("gem_hrdps", "GEM HRDPS", 212, "Open-Meteo", "open_meteo", "forecast", "GEM", "GEM_HRDPS", "deterministic", model_param_candidates=("gem_hrdps",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("ukmo_global", "UKMO Global", 220, "Open-Meteo", "open_meteo", "forecast", "UKMO", "UKMO", "deterministic", model_param_candidates=("ukmo_global",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("icon_global", "ICON Global", 221, "Open-Meteo", "open_meteo", "forecast", "ICON", "ICON", "deterministic", model_param_candidates=("icon_global",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("rrfs", "RRFS", 230, "NOAA/Herbie", "herbie", "herbie", "RRFS", "RRFS", "deterministic", model_param_candidates=("rrfs",), enabled_by_default=False, is_direct_model=True, is_optional=True),
+    _source("rtma_analysis", "RTMA Analysis", 240, "NOAA/Herbie", "herbie", "herbie", "RTMA", "RTMA_URMA", "analysis", model_param_candidates=("rtma",), enabled_by_default=False, is_observation_or_analysis=True, is_optional=True),
+    _source("urma_analysis", "URMA Analysis", 241, "NOAA/Herbie", "herbie", "herbie", "URMA", "RTMA_URMA", "analysis", model_param_candidates=("urma",), enabled_by_default=False, is_observation_or_analysis=True, is_optional=True),
+)
+
+MODEL_SOURCES: dict[str, ModelSource] = {
+    source.model_key: source
+    for source in (*_CURRENT_SOURCES, *_CORE_ADDITIONS, *_EXTENDED_ADDITIONS)
 }
 
-for key, family, group, provider, fetcher, candidates in [
-    ("gfs_graphcast", "GFS", "GFS_GRAPHCAST", "open_meteo", "open_meteo_gfs", ["gfs_graphcast025", "gfs_graphcast", "graphcast025", "graphcast"]),
-    ("aigfs", "AIGFS", "AIGFS", "open_meteo", "open_meteo_gfs", ["aigfs025", "aigfs"]),
-    ("aigefs_mean", "AIGEFS", "AIGEFS", "open_meteo", "open_meteo_ensemble_mean", ["aigefs025", "aigefs"]),
-    ("aigefs_spread", "AIGEFS", "AIGEFS", "open_meteo", "open_meteo_ensemble_mean", ["aigefs025", "aigefs"]),
-    ("hgefs_mean", "HGEFS", "HGEFS", "open_meteo", "open_meteo_ensemble_mean", ["hgefs025", "hgefs"]),
-    ("gem_global", "GEM", "GEM", "open_meteo", "open_meteo", ["gem_global"]),
-    ("gem_regional", "GEM", "GEM", "open_meteo", "open_meteo", ["gem_regional"]),
-    ("gem_hrdps", "GEM", "GEM_HRDPS", "open_meteo", "open_meteo", ["gem_hrdps"]),
-    ("ukmo_global", "UKMO", "UKMO", "open_meteo", "open_meteo", ["ukmo_global"]),
-    ("icon_global", "ICON", "ICON", "open_meteo", "open_meteo", ["icon_global"]),
-    ("rrfs", "RRFS", "RRFS", "noaa_herbie", "herbie", ["rrfs"]),
-    ("rtma_analysis", "RTMA", "RTMA", "noaa_herbie", "herbie", ["rtma"]),
-    ("urma_analysis", "URMA", "URMA", "noaa_herbie", "herbie", ["urma"]),
-]:
-    is_ensemble = key.endswith("_mean") or key.endswith("_spread")
-    MODEL_SOURCES[key] = _source(
-        model_key=key,
-        display_name=key.replace("_", " ").title(),
-        enabled_by_default=False,
-        priority=200 + len(MODEL_SOURCES),
-        provider=provider,
-        fetcher_type=fetcher,
-        endpoint_family="extended",
-        model_param_candidates=candidates,
-        model_family=family,
-        independence_group=group,
-        source_type="ensemble_spread" if key.endswith("_spread") else "ensemble_mean" if is_ensemble else "deterministic",
-        is_ensemble=is_ensemble,
-        is_direct_model=not key.endswith("_analysis"),
-        is_observation_or_analysis=key.endswith("_analysis"),
-        is_optional=True,
-        notes="Optional extended validation source. Record-only mode attempts this source when selected.",
-    )
 
-CURRENT_MODEL_KEYS = [
-    "current_weighted_blend",
-    "best_match",
-    "gfs_seamless",
-    "gfs013",
-    "gfs_global",
-    "nam",
-    "nam_conus",
-    "ecmwf_ifs",
-    "aifs",
-    "hrrr",
-    "nbm",
-    "gfs",
-    "rap",
-]
-
-CORE_ADDITION_KEYS = [
-    "gefs_mean",
-    "gefs_spread",
-    "ecmwf_ens_mean",
-    "ecmwf_ens_spread",
-    "aifs_ens_mean",
-    "aifs_ens_spread",
-    "href_mean",
-    "href_p50",
-    "nws_hourly",
-    "nws_grid_high",
-    "lamp",
-    "gfs_mos",
-    "nam_mos",
-]
-
-EXTENDED_ADDITION_KEYS = [
-    key
-    for key, source in MODEL_SOURCES.items()
-    if source.is_optional and key not in CURRENT_MODEL_KEYS and key not in CORE_ADDITION_KEYS
-]
+def model_set_for_source(source: ModelSource) -> str:
+    if source.model_key in {item.model_key for item in _CURRENT_SOURCES}:
+        return "current"
+    if source.model_key in {item.model_key for item in _CORE_ADDITIONS}:
+        return "core"
+    return "extended"
 
 
 def all_model_sources() -> list[ModelSource]:
-    return sorted(MODEL_SOURCES.values(), key=lambda source: (source.priority, source.model_key))
+    return sorted(MODEL_SOURCES.values(), key=lambda item: item.priority)
 
 
 def get_model_source(model_key: str) -> ModelSource:
@@ -503,55 +514,70 @@ def get_model_source(model_key: str) -> ModelSource:
         raise ValueError(f"Unknown model key: {model_key}") from exc
 
 
+def parse_model_list(value: str | None) -> list[str] | None:
+    if value is None:
+        return None
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
 def model_set_keys(model_set: str) -> list[str]:
-    normalized = model_set.strip().lower()
-    if normalized == "current":
-        return list(CURRENT_MODEL_KEYS)
-    if normalized == "core":
-        return list(dict.fromkeys([*CURRENT_MODEL_KEYS, *CORE_ADDITION_KEYS]))
-    if normalized == "extended":
-        return list(dict.fromkeys([*CURRENT_MODEL_KEYS, *CORE_ADDITION_KEYS, *EXTENDED_ADDITION_KEYS]))
-    if normalized == "all":
-        return [source.model_key for source in all_model_sources()]
-    raise ValueError("--model-set must be current, core, extended, or all")
+    if model_set not in {"current", "core", "extended"}:
+        raise ValueError("model_set must be one of: current, core, extended")
+    keys = [source.model_key for source in _CURRENT_SOURCES]
+    if model_set in {"core", "extended"}:
+        keys.extend(source.model_key for source in _CORE_ADDITIONS)
+    if model_set == "extended":
+        keys.extend(source.model_key for source in _EXTENDED_ADDITIONS)
+    return keys
 
 
 def select_model_keys(
-    *,
     model_set: str = "current",
-    models: str | None = None,
-    skip_models: str | None = None,
+    models: str | list[str] | None = None,
+    skip_models: str | list[str] | None = None,
 ) -> list[str]:
-    if models and models.strip():
-        keys = [part.strip() for part in models.split(",") if part.strip()]
-    else:
-        keys = model_set_keys(model_set)
-    skip = {part.strip() for part in (skip_models or "").split(",") if part.strip()}
+    requested = parse_model_list(models) if isinstance(models, str) else models
+    skipped = parse_model_list(skip_models) if isinstance(skip_models, str) else skip_models
+    keys = list(requested) if requested is not None else model_set_keys(model_set)
     unknown = [key for key in keys if key not in MODEL_SOURCES]
     if unknown:
         raise ValueError(f"Unknown model key(s): {', '.join(unknown)}")
-    selected = [key for key in keys if key not in skip]
-    return sorted(dict.fromkeys(selected), key=lambda key: (MODEL_SOURCES[key].priority, key))
+    skip_set = set(skipped or [])
+    unknown_skips = [key for key in skip_set if key not in MODEL_SOURCES]
+    if unknown_skips:
+        raise ValueError(f"Unknown skip model key(s): {', '.join(sorted(unknown_skips))}")
+    return [key for key in keys if key not in skip_set]
 
 
-def provider_model_options(model_keys: list[str]) -> tuple[str, str]:
-    providers: list[str] = []
-    model_ids: list[str] = []
-    for key in model_keys:
-        source = get_model_source(key)
-        provider = "current" if source.fetcher_type == "internal_blend" else source.provider
-        if provider in {"internal", "nws", "noaa_mdl"}:
-            continue
-        if provider not in providers:
-            providers.append(provider)
-        if key not in model_ids:
-            model_ids.append(key)
-    if "current_weighted_blend" in model_keys and "current" not in providers:
-        providers.insert(0, "current")
-        model_ids.insert(0, "current_weighted_blend")
-    return ",".join(providers), ",".join(model_ids)
+def open_meteo_model_keys(model_keys: list[str]) -> list[str]:
+    """Return model keys this repo can attempt through its existing Open-Meteo client."""
+    supported_fetchers = {
+        "open_meteo",
+        "open_meteo_gfs",
+        "open_meteo_ecmwf",
+    }
+    return [
+        key
+        for key in model_keys
+        if MODEL_SOURCES[key].fetcher_type in supported_fetchers
+        and MODEL_SOURCES[key].model_param_candidates
+    ]
 
 
-def registry_rows(model_keys: list[str] | None = None) -> list[dict[str, Any]]:
+def open_meteo_params_for_keys(model_keys: list[str]) -> list[str]:
+    params: list[str] = []
+    for key in open_meteo_model_keys(model_keys):
+        for candidate in MODEL_SOURCES[key].model_param_candidates:
+            if candidate is None:
+                if "best_match" not in params:
+                    params.append("best_match")
+                continue
+            if candidate not in params:
+                params.append(candidate)
+                break
+    return params
+
+
+def registry_rows(model_keys: list[str] | None = None) -> list[dict[str, object]]:
     keys = model_keys or [source.model_key for source in all_model_sources()]
     return [get_model_source(key).to_dict() for key in keys]

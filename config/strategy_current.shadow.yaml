@@ -1,0 +1,69 @@
+strategy_id: klax-current-five-model-2026-07-11
+mode: shadow
+live_trading_enabled: false
+canary_enabled: false
+taker_enabled: false
+order_submission_reachable: false
+station: KLAX
+series: KXHIGHLAX
+timezone: America/Los_Angeles
+
+models:
+  canonical_order:
+    - ecmwf_ifs
+    - gfs013
+    - gfs_seamless
+    - nam
+    - nbm
+  source_preferences:
+    ecmwf_ifs: open_meteo:ecmwf_ifs
+    gfs013: open_meteo:gfs013
+    gfs_seamless: open_meteo:gfs_seamless
+    nam: noaa_herbie:nam
+    nbm: noaa_herbie:nbm
+  aliases:
+    noaa_herbie:nam_conus: nam
+    nam_conus: nam
+  strategy_excluded:
+    - current_weighted_blend
+    - best_match
+    - gfs_global
+    - nam_conus_as_separate_vote
+    - hrrr
+    - rap
+    - noaa_gfs
+    - aifs
+  minimum_feeds_for_trade_probability: 4
+  minimum_independence_families: 3
+
+model_weights:
+  prior:
+    ecmwf_ifs: 0.20
+    gfs013: 0.25
+    gfs_seamless: 0.20
+    nam: 0.15
+    nbm: 0.20
+  individual_cap: 0.35
+  family_caps:
+    GFS: 0.45
+  nbm_caps_by_completed_dates:
+    below_10: 0.00
+    10_to_29: 0.10
+    30_to_59: 0.20
+    60_plus: 0.25
+
+market_data:
+  require_sequence_valid_book: true
+  require_trade_count_fp: true
+  require_exhausted_trade_cursor: true
+  candles_eligible_for_fill_simulation: false
+
+economics:
+  launch_expected_roi_hurdle: 0.15
+  price_increment_dollars: "0.01"
+  maker_first: true
+
+promotion:
+  minimum_settled_forecast_dates: 30
+  preferred_joined_market_dates: 60
+  human_approval_required: true

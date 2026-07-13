@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "book_event_id": {
+      "type": "string"
+    },
+    "delta_count_fp": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_type": {
+      "enum": [
+        "snapshot",
+        "delta",
+        "invalidated"
+      ]
+    },
+    "exchange_time_utc": {
+      "format": "date-time",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "levels": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "market_ticker": {
+      "type": "string"
+    },
+    "price_dollars": {
+      "pattern": "^[0-9]+\\.[0-9]{1,4}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_payload_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "received_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "sequence_number": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "side": {
+      "enum": [
+        "yes",
+        "no",
+        null
+      ]
+    },
+    "subscription_id": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "valid_after_event": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "book_event_id",
+    "market_ticker",
+    "event_type",
+    "received_at_utc",
+    "valid_after_event"
+  ],
+  "title": "OrderbookEvent",
+  "type": "object"
+}

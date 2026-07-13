@@ -1,0 +1,49 @@
+{
+  "strategy_id": "klax-current-five-model-2026-07-11",
+  "canonical_models": [
+    "ecmwf_ifs",
+    "gfs013",
+    "gfs_seamless",
+    "nam",
+    "nbm"
+  ],
+  "fee_vectors": [
+    {
+      "count": 100,
+      "price": "0.50",
+      "role": "taker",
+      "expected_fee": "1.7500"
+    },
+    {
+      "count": 100,
+      "price": "0.86",
+      "role": "taker",
+      "probability": "1.0",
+      "hurdle": "0.15",
+      "qualifies": true
+    },
+    {
+      "count": 100,
+      "price": "0.87",
+      "role": "taker",
+      "probability": "1.0",
+      "hurdle": "0.15",
+      "qualifies": false
+    }
+  ],
+  "nbm_caps": {
+    "9": 0.0,
+    "10": 0.1,
+    "30": 0.2,
+    "60": 0.25
+  },
+  "july7_past_max": {
+    "past_hour_f": 76.3,
+    "remaining_f": [
+      73.94,
+      73.5
+    ],
+    "evaluated_hour": 15,
+    "expected_future_max_f": 73.94
+  }
+}

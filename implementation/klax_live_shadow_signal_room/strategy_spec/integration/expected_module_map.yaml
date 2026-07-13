@@ -1,0 +1,29 @@
+repository_hint:
+  path: C:\Users\jarve\Documents\Codex\kalshi_weather
+  package: src/kalshi_weather
+  cli: kalshi-weather
+inspect_first:
+  - src/kalshi_weather/cli.py
+  - existing model registry/config module
+  - existing Open-Meteo clients
+  - existing NOAA/Herbie clients
+  - existing trader-paper-run context builder
+  - existing Kalshi client modules
+  - existing SQLite journal modules
+  - tests/test_cli.py
+  - tests/test_trader_paper_safety.py
+reuse_priority:
+  - network clients
+  - retry and caching
+  - station constants and METAR parsing
+  - market discovery and authentication
+  - shared snapshot construction
+  - journal connection and migrations
+  - safety flags and test fixtures
+new_namespace_if_needed: src/kalshi_weather/strategy_current
+forbidden_parallel_systems:
+  - second CLI
+  - second Open-Meteo client
+  - second Kalshi authentication implementation
+  - separate database without documented blocker
+  - live order path in shadow runtime

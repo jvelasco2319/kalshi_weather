@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>KLAX Signal Room - Probability Lab</title>
+  <link rel="stylesheet" href="/static/signal_room.css">
+  <link rel="stylesheet" href="/static/probability_lab.css">
+</head>
+<body
+  data-mode="{{ mode }}"
+  data-poll-seconds="{{ poll_seconds }}"
+  data-target-date="{{ target_date }}"
+  data-sample-mode="{{ 'true' if sample_mode else 'false' }}"
+>
+  <div class="shell lab-shell">
+    <header class="top">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">K</div>
+        <div>
+          <h1>KLAX Signal Room <span class="muted-title">Probability Lab</span></h1>
+          <div class="sub" id="labSubtitle">Loading live explainability snapshot</div>
+          <nav class="nav-links" aria-label="Signal Room views">
+            <a href="/">Command Center</a>
+            <a href="/strategy/probability-lab" aria-current="page">Probability Lab</a>
+          </nav>
+        </div>
+      </div>
+      <div class="chips" aria-label="Strategy safety state">
+        <span class="chip shadow" id="labModeChip">SHADOW MODE</span>
+        <span class="chip"><strong id="labModelCount">0</strong> model distributions</span>
+        <span class="chip"><strong id="labEvalAge">--</strong> age</span>
+        <span class="chip live" id="labOrderPath">order path disabled</span>
+      </div>
+    </header>
+
+    <div class="banner" id="labBanner" hidden></div>
+
+    <section class="lab-controlbar" aria-label="Probability Lab controls">
+      <div class="lab-control event-control">
+        <label for="labEventSelect">Event</label>
+        <select id="labEventSelect"></select>
+      </div>
+      <div class="lab-control replay-control">
+        <label for="labEvaluationRange">Evaluation</label>
+        <div class="range-row">
+          <input id="labEvaluationRange" type="range" min="0" max="0" value="0" step="1">
+          <span class="timepill" id="labTimePill">--</span>
+        </div>
+      </div>
+      <div class="lab-control">
+        <label for="labContractSelect">Contract</label>
+        <select id="labContractSelect"></select>
+      </div>
+      <div class="lab-control">
+        <label for="labSideSelect">Position side</label>
+        <select id="labSideSelect">
+          <option value="yes">Buy YES</option>
+          <option value="no">Buy NO</option>
+        </select>
+      </div>
+      <div class="lab-control">
+        <label for="labModelSelect">Equation model</label>
+        <select id="labModelSelect"></select>
+      </div>
+      <div class="lab-actions">
+        <button type="button" id="labLiveButton">Live</button>
+        <span id="labRefreshStatus" class="refresh-status">Connecting</span>
+      </div>
+    </section>
+
+    <section class="lab-hero" aria-label="Selected contract summary">
+      <article class="lab-hero-card primary">
+        <div class="eyebrow">Conservative trade probability</div>
+        <div class="hero-value" id="heroPSafe">--</div>
+        <div class="hero-note" id="heroPNote">Backend final conservative probability</div>
+      </article>
+      <article class="lab-hero-card">
+        <div class="eyebrow">Executable or quote price</div>
+        <div class="hero-value" id="heroAsk">--</div>
+        <div class="hero-note" id="heroAskNote">Backend price basis</div>
+      </article>
+      <article class="lab-hero-card">
+        <div class="eyebrow">Probability required</div>
+        <div class="hero-value" id="heroRequired">--</div>
+        <div class="hero-note">Backend economics output</div>
+      </article>
+      <article class="lab-hero-card">
+        <div class="eyebrow">Probability edge</div>
+        <div class="hero-value" id="heroEdge">--</div>
+        <div class="hero-note">Displayed from backend probability and requirement</div>
+      </article>
+      <article class="lab-hero-card">
+        <div class="eyebrow">Modeled net ROI</div>
+        <div class="hero-value" id="heroRoi">--</div>
+        <div class="hero-note">Backend modeled economics</div>
+      </article>
+      <article class="lab-hero-card">
+        <div class="eyebrow">Decision</div>
+        <div class="hero-value" id="heroDecision">--</div>
+        <div class="hero-note" id="heroReason">--</div>
+      </article>
+    </section>
+
+    <main>
+      <div class="lab-grid-main">
+        <div class="stack">
+          <section class="card">
+            <div class="section-head">
+              <div>
+                <h2>Physical-high scenario distributions</h2>
+                <p>Weighted scenario support from the backend snapshot, with the mixture shown in cyan.</p>
+              </div>
+              <span class="source-pill" id="distributionSource">Live backend</span>
+            </div>
+            <div class="legend" id="distributionLegend"></div>
+            <div class="chart lab-chart-large" id="distributionChart" role="img" aria-label="Physical high scenario distributions"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <div>
+                <h2>Model contribution ledger</h2>
+                <p>Live state, correction, corrected point, maturity, effective weight, and selected-bracket probability.</p>
+              </div>
+              <span class="source-pill">5-model mixture</span>
+            </div>
+            <div class="model-table-wrap">
+              <div class="model-ledger" id="modelLedger"></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="stack right-stack">
+          <section class="card">
+            <div class="section-head">
+              <div>
+                <h2>Probability funnel</h2>
+                <p>Backend probability narrowing for the selected market and side.</p>
+              </div>
+            </div>
+            <div class="flow" id="probabilityFunnel"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <div>
+                <h2>Equation trace</h2>
+                <p>Backend equation rows filtered by selected model, contract, and side.</p>
+              </div>
+            </div>
+            <div class="equations eq-list" id="equationTrace"></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="lower-grid">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Bracket probability matrix</h2>
+              <p>Per-model and mixture probabilities across the verified outcome map.</p>
+            </div>
+            <select id="matrixMode" aria-label="Matrix probability mode">
+              <option value="pMeanYes">Posterior mean YES</option>
+              <option value="pSafeYes">Conservative YES</option>
+              <option value="pMeanNo">Posterior mean NO</option>
+              <option value="pSafeNo">Conservative NO</option>
+            </select>
+          </div>
+          <div class="matrix-wrap"><div class="matrix" id="probabilityMatrix"></div></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Market versus weather probability</h2>
+              <p>Weather probability, selected-side market price, and required probability by bracket.</p>
+            </div>
+          </div>
+          <div class="chart lab-chart-large" id="marketWeatherChart" role="img" aria-label="Market versus weather probability"></div>
+        </section>
+      </div>
+
+      <div class="lower-grid">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Price sensitivity</h2>
+              <p>Server-enumerated required probability rows for the selected side.</p>
+            </div>
+            <span class="source-pill" id="sensitivityBasis">Backend grid</span>
+          </div>
+          <div class="chart lab-chart-large" id="priceSensitivityChart" role="img" aria-label="Price sensitivity"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Calculation and data health</h2>
+              <p>Separate source, calibration, settlement, book, risk, and execution gates.</p>
+            </div>
+          </div>
+          <div class="audit" id="auditGrid"></div>
+        </section>
+      </div>
+
+      <section class="card explain-card">
+        <div class="section-head">
+          <div>
+            <h2>How to read this screen</h2>
+            <p>The page separates forecast uncertainty, market economics, and operational gates.</p>
+          </div>
+        </div>
+        <div class="explain">
+          <div><strong>1. Look at the distribution, not just the point.</strong><p>Scenario support shows how model uncertainty maps into settlement brackets.</p></div>
+          <div><strong>2. Compare pTrade with the required probability.</strong><p>The selected-side economics row supplies both values; the backend decision remains authoritative.</p></div>
+          <div><strong>3. Read the decision reason.</strong><p>Valid probability analysis can still be blocked by data, book, settlement, risk, or execution gates.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="labFooterState">No snapshot loaded</span>
+      <span>Read-only immutable as-of snapshots - no order controls</span>
+    </footer>
+  </div>
+  <script src="/static/probability_lab.js"></script>
+</body>
+</html>

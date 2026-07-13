@@ -1,0 +1,49 @@
+strategy_model_set: klax_current_five
+models:
+  - key: ecmwf_ifs
+    canonical_source_key: open_meteo:ecmwf_ifs
+    provider: Open-Meteo
+    family: ECMWF
+    independence_group: ECMWF
+    fetcher_hint: existing Open-Meteo ECMWF client
+    required_path: hourly temperature_2m path
+    prior_weight: 0.20
+  - key: gfs013
+    canonical_source_key: open_meteo:gfs013
+    provider: Open-Meteo
+    family: GFS
+    independence_group: GFS
+    fetcher_hint: existing Open-Meteo GFS client
+    required_path: hourly temperature_2m path
+    prior_weight: 0.25
+  - key: gfs_seamless
+    canonical_source_key: open_meteo:gfs_seamless
+    provider: Open-Meteo
+    family: GFS
+    independence_group: GFS
+    fetcher_hint: existing Open-Meteo GFS client
+    required_path: hourly temperature_2m path
+    prior_weight: 0.20
+  - key: nam
+    canonical_source_key: noaa_herbie:nam
+    provider: NOAA/Herbie
+    family: NAM
+    independence_group: NAM
+    fetcher_hint: existing direct NOAA/Herbie NAM client
+    required_path: hourly temperature_2m path
+    prior_weight: 0.15
+    aliases:
+      - noaa_herbie:nam_conus
+      - nam_conus
+  - key: nbm
+    canonical_source_key: noaa_herbie:nbm
+    provider: NOAA/Herbie
+    family: NBM
+    independence_group: NBM
+    fetcher_hint: existing direct NOAA/Herbie NBM client
+    required_path: hourly or finer 2 m temperature path
+    prior_weight: 0.20
+rules:
+  provider_switch_requires_new_source_variant: true
+  aliases_are_not_extra_votes: true
+  all_other_registry_entries_ignored_by_strategy: true

@@ -1,0 +1,1045 @@
+{
+  "schemaVersion": "1.0.0",
+  "fixture": {
+    "isFixture": true,
+    "warning": "Illustrative UI contract fixture only. Production must render one immutable backend evaluation and never silently fall back to this file.",
+    "sourceContext": "July 7 KLAX replay-shaped example"
+  },
+  "evaluationId": "fixture-eval-20260707-0724-0001",
+  "strategyId": "klax-current-five-model-2026-07-11",
+  "strategyConfigHash": "fixture-config-hash-12345678",
+  "evaluatedAt": "2026-07-07T14:24:00Z",
+  "eventTicker": "KXHIGHLAX-26JUL07",
+  "targetDate": "2026-07-07",
+  "mode": "replay",
+  "analysisState": "ANALYSIS_READY",
+  "executionState": "NO_TRADE",
+  "finalReasonCode": "NO_TRADE_MODEL_DISAGREEMENT",
+  "selectedMarketTicker": "KXHIGHLAX-26JUL07-B73.5",
+  "selectedSide": "yes",
+  "station": {
+    "stationId": "KLAX",
+    "stationDayStart": "2026-07-07T07:00:00Z",
+    "stationDayEnd": "2026-07-08T07:59:00Z",
+    "observedHighF": 67.82,
+    "observedHighAvailableAt": "2026-07-07T14:20:00Z",
+    "sourceObservationIds": [
+      "metar-fixture-001"
+    ],
+    "status": "healthy",
+    "statusReason": null
+  },
+  "models": [
+    {
+      "modelKey": "ecmwf_ifs",
+      "label": "ECMWF IFS",
+      "sourceVariant": "fixture:ecmwf_ifs",
+      "runTime": "2026-07-07T12:00:00Z",
+      "sourceAvailableAt": "2026-07-07T13:00:00Z",
+      "receivedAt": "2026-07-07T13:00:05Z",
+      "remainingWindowStart": "2026-07-07T16:00:00Z",
+      "remainingWindowEnd": "2026-07-08T07:59:00Z",
+      "remainingMaxF": 72.8,
+      "observedMaxF": 67.82,
+      "rawLiveStateF": 72.8,
+      "residualMedianF": 0.4,
+      "correctedPointF": 73.2,
+      "historyCount": 45,
+      "nEff": 37.8,
+      "priorWeight": 0.2,
+      "effectiveWeight": 0.22,
+      "maturityState": "ready",
+      "eligibility": "eligible",
+      "ineligibilityReason": null,
+      "scenarioTemperaturesF": [
+        71.2,
+        72.2,
+        73.2,
+        74.2,
+        75.2
+      ],
+      "scenarioWeights": [
+        0.1,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "bracketProbabilities": [
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T69",
+          "pMeanYes": 0.01,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.99,
+          "pSafeNo": 0.95
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+          "pMeanYes": 0.04,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.96,
+          "pSafeNo": 0.92
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+          "pMeanYes": 0.2,
+          "pSafeYes": 0.16,
+          "pMeanNo": 0.8,
+          "pSafeNo": 0.76
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+          "pMeanYes": 0.46,
+          "pSafeYes": 0.42,
+          "pMeanNo": 0.54,
+          "pSafeNo": 0.5
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+          "pMeanYes": 0.23,
+          "pSafeYes": 0.19,
+          "pMeanNo": 0.77,
+          "pSafeNo": 0.73
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T76",
+          "pMeanYes": 0.06,
+          "pSafeYes": 0.02,
+          "pMeanNo": 0.94,
+          "pSafeNo": 0.9
+        }
+      ],
+      "sourceIds": [
+        "forecast-ecmwf_ifs-fixture"
+      ],
+      "freshnessSeconds": 120,
+      "reliabilityScore": 0.78,
+      "familyCapApplied": false
+    },
+    {
+      "modelKey": "gfs013",
+      "label": "GFS 0.13\u00b0",
+      "sourceVariant": "fixture:gfs013",
+      "runTime": "2026-07-07T12:00:00Z",
+      "sourceAvailableAt": "2026-07-07T13:00:00Z",
+      "receivedAt": "2026-07-07T13:00:05Z",
+      "remainingWindowStart": "2026-07-07T16:00:00Z",
+      "remainingWindowEnd": "2026-07-08T07:59:00Z",
+      "remainingMaxF": 73.6,
+      "observedMaxF": 67.82,
+      "rawLiveStateF": 73.6,
+      "residualMedianF": 0.4,
+      "correctedPointF": 74.0,
+      "historyCount": 45,
+      "nEff": 37.8,
+      "priorWeight": 0.25,
+      "effectiveWeight": 0.26,
+      "maturityState": "ready",
+      "eligibility": "eligible",
+      "ineligibilityReason": null,
+      "scenarioTemperaturesF": [
+        72.0,
+        73.0,
+        74.0,
+        75.0,
+        76.0
+      ],
+      "scenarioWeights": [
+        0.1,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "bracketProbabilities": [
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T69",
+          "pMeanYes": 0.0,
+          "pSafeYes": 0.0,
+          "pMeanNo": 1.0,
+          "pSafeNo": 0.96
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+          "pMeanYes": 0.02,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.98,
+          "pSafeNo": 0.94
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+          "pMeanYes": 0.13,
+          "pSafeYes": 0.09,
+          "pMeanNo": 0.87,
+          "pSafeNo": 0.83
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+          "pMeanYes": 0.39,
+          "pSafeYes": 0.35,
+          "pMeanNo": 0.61,
+          "pSafeNo": 0.57
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+          "pMeanYes": 0.34,
+          "pSafeYes": 0.3,
+          "pMeanNo": 0.66,
+          "pSafeNo": 0.62
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T76",
+          "pMeanYes": 0.12,
+          "pSafeYes": 0.08,
+          "pMeanNo": 0.88,
+          "pSafeNo": 0.84
+        }
+      ],
+      "sourceIds": [
+        "forecast-gfs013-fixture"
+      ],
+      "freshnessSeconds": 135,
+      "reliabilityScore": 0.75,
+      "familyCapApplied": true
+    },
+    {
+      "modelKey": "gfs_seamless",
+      "label": "GFS Seamless",
+      "sourceVariant": "fixture:gfs_seamless",
+      "runTime": "2026-07-07T12:00:00Z",
+      "sourceAvailableAt": "2026-07-07T13:00:00Z",
+      "receivedAt": "2026-07-07T13:00:05Z",
+      "remainingWindowStart": "2026-07-07T16:00:00Z",
+      "remainingWindowEnd": "2026-07-08T07:59:00Z",
+      "remainingMaxF": 74.7,
+      "observedMaxF": 67.82,
+      "rawLiveStateF": 74.7,
+      "residualMedianF": 0.4,
+      "correctedPointF": 75.1,
+      "historyCount": 45,
+      "nEff": 37.8,
+      "priorWeight": 0.2,
+      "effectiveWeight": 0.21,
+      "maturityState": "ready",
+      "eligibility": "eligible",
+      "ineligibilityReason": null,
+      "scenarioTemperaturesF": [
+        73.1,
+        74.1,
+        75.1,
+        76.1,
+        77.1
+      ],
+      "scenarioWeights": [
+        0.1,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "bracketProbabilities": [
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T69",
+          "pMeanYes": 0.0,
+          "pSafeYes": 0.0,
+          "pMeanNo": 1.0,
+          "pSafeNo": 0.96
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+          "pMeanYes": 0.01,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.99,
+          "pSafeNo": 0.95
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+          "pMeanYes": 0.08,
+          "pSafeYes": 0.04,
+          "pMeanNo": 0.92,
+          "pSafeNo": 0.88
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+          "pMeanYes": 0.26,
+          "pSafeYes": 0.22,
+          "pMeanNo": 0.74,
+          "pSafeNo": 0.7
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+          "pMeanYes": 0.42,
+          "pSafeYes": 0.38,
+          "pMeanNo": 0.58,
+          "pSafeNo": 0.54
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T76",
+          "pMeanYes": 0.23,
+          "pSafeYes": 0.19,
+          "pMeanNo": 0.77,
+          "pSafeNo": 0.73
+        }
+      ],
+      "sourceIds": [
+        "forecast-gfs_seamless-fixture"
+      ],
+      "freshnessSeconds": 150,
+      "reliabilityScore": 0.72,
+      "familyCapApplied": true
+    },
+    {
+      "modelKey": "nam",
+      "label": "NAM",
+      "sourceVariant": "fixture:nam",
+      "runTime": "2026-07-07T12:00:00Z",
+      "sourceAvailableAt": "2026-07-07T13:00:00Z",
+      "receivedAt": "2026-07-07T13:00:05Z",
+      "remainingWindowStart": "2026-07-07T16:00:00Z",
+      "remainingWindowEnd": "2026-07-08T07:59:00Z",
+      "remainingMaxF": 73.1,
+      "observedMaxF": 67.82,
+      "rawLiveStateF": 73.1,
+      "residualMedianF": 0.4,
+      "correctedPointF": 73.5,
+      "historyCount": 42,
+      "nEff": 35.28,
+      "priorWeight": 0.15,
+      "effectiveWeight": 0.16,
+      "maturityState": "ready",
+      "eligibility": "eligible",
+      "ineligibilityReason": null,
+      "scenarioTemperaturesF": [
+        71.5,
+        72.5,
+        73.5,
+        74.5,
+        75.5
+      ],
+      "scenarioWeights": [
+        0.1,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "bracketProbabilities": [
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T69",
+          "pMeanYes": 0.01,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.99,
+          "pSafeNo": 0.95
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+          "pMeanYes": 0.04,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.96,
+          "pSafeNo": 0.92
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+          "pMeanYes": 0.22,
+          "pSafeYes": 0.18,
+          "pMeanNo": 0.78,
+          "pSafeNo": 0.74
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+          "pMeanYes": 0.43,
+          "pSafeYes": 0.39,
+          "pMeanNo": 0.57,
+          "pSafeNo": 0.53
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+          "pMeanYes": 0.24,
+          "pSafeYes": 0.2,
+          "pMeanNo": 0.76,
+          "pSafeNo": 0.72
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T76",
+          "pMeanYes": 0.06,
+          "pSafeYes": 0.02,
+          "pMeanNo": 0.94,
+          "pSafeNo": 0.9
+        }
+      ],
+      "sourceIds": [
+        "forecast-nam-fixture"
+      ],
+      "freshnessSeconds": 165,
+      "reliabilityScore": 0.69,
+      "familyCapApplied": false
+    },
+    {
+      "modelKey": "nbm",
+      "label": "NBM",
+      "sourceVariant": "fixture:nbm",
+      "runTime": "2026-07-07T12:00:00Z",
+      "sourceAvailableAt": "2026-07-07T13:00:00Z",
+      "receivedAt": "2026-07-07T13:00:05Z",
+      "remainingWindowStart": "2026-07-07T16:00:00Z",
+      "remainingWindowEnd": "2026-07-08T07:59:00Z",
+      "remainingMaxF": 72.5,
+      "observedMaxF": 67.82,
+      "rawLiveStateF": 72.5,
+      "residualMedianF": 0.4,
+      "correctedPointF": 72.9,
+      "historyCount": 18,
+      "nEff": 15.12,
+      "priorWeight": 0.2,
+      "effectiveWeight": 0.15,
+      "maturityState": "provisional",
+      "eligibility": "eligible",
+      "ineligibilityReason": null,
+      "scenarioTemperaturesF": [
+        70.9,
+        71.9,
+        72.9,
+        73.9,
+        74.9
+      ],
+      "scenarioWeights": [
+        0.1,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "bracketProbabilities": [
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T69",
+          "pMeanYes": 0.01,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.99,
+          "pSafeNo": 0.95
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+          "pMeanYes": 0.08,
+          "pSafeYes": 0.04,
+          "pMeanNo": 0.92,
+          "pSafeNo": 0.88
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+          "pMeanYes": 0.31,
+          "pSafeYes": 0.27,
+          "pMeanNo": 0.69,
+          "pSafeNo": 0.65
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+          "pMeanYes": 0.46,
+          "pSafeYes": 0.42,
+          "pMeanNo": 0.54,
+          "pSafeNo": 0.5
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+          "pMeanYes": 0.12,
+          "pSafeYes": 0.08,
+          "pMeanNo": 0.88,
+          "pSafeNo": 0.84
+        },
+        {
+          "marketTicker": "KXHIGHLAX-26JUL07-T76",
+          "pMeanYes": 0.02,
+          "pSafeYes": 0.0,
+          "pMeanNo": 0.98,
+          "pSafeNo": 0.94
+        }
+      ],
+      "sourceIds": [
+        "forecast-nbm-fixture"
+      ],
+      "freshnessSeconds": 180,
+      "reliabilityScore": 0.66,
+      "familyCapApplied": false
+    }
+  ],
+  "outcomeMap": {
+    "verified": true,
+    "verificationReason": null,
+    "settlementRulesVersion": "fixture-rules-v1",
+    "sourceMetadataIds": [
+      "market-metadata-fixture-001"
+    ],
+    "brackets": [
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T69",
+        "label": "<69 F",
+        "order": 0,
+        "lowerBoundF": null,
+        "upperBoundF": 69.0,
+        "lowerInclusive": false,
+        "upperInclusive": false
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+        "label": "69-70 F",
+        "order": 1,
+        "lowerBoundF": 69.0,
+        "upperBoundF": 71.0,
+        "lowerInclusive": true,
+        "upperInclusive": false
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+        "label": "71-72 F",
+        "order": 2,
+        "lowerBoundF": 71.0,
+        "upperBoundF": 73.0,
+        "lowerInclusive": true,
+        "upperInclusive": false
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+        "label": "73-74 F",
+        "order": 3,
+        "lowerBoundF": 73.0,
+        "upperBoundF": 75.0,
+        "lowerInclusive": true,
+        "upperInclusive": false
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+        "label": "75-76 F",
+        "order": 4,
+        "lowerBoundF": 75.0,
+        "upperBoundF": 77.0,
+        "lowerInclusive": true,
+        "upperInclusive": false
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T76",
+        "label": ">76 F",
+        "order": 5,
+        "lowerBoundF": 77.0,
+        "upperBoundF": null,
+        "lowerInclusive": true,
+        "upperInclusive": false
+      }
+    ]
+  },
+  "mixture": {
+    "scenarioTemperaturesF": [
+      70.5,
+      71.5,
+      72.5,
+      73.5,
+      74.5,
+      75.5,
+      76.5
+    ],
+    "scenarioWeights": [
+      0.04,
+      0.08,
+      0.16,
+      0.28,
+      0.24,
+      0.14,
+      0.06
+    ],
+    "effectiveSampleSize": 36.8,
+    "modelSpreadF": 2.2,
+    "bracketProbabilities": [
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T69",
+        "pMeanYes": 0.006,
+        "mixtureLowerBoundYes": 0.001,
+        "weightedComponentLowerBoundYes": 0.002,
+        "pTradeYes": 0.001,
+        "pMeanNo": 0.994,
+        "mixtureLowerBoundNo": 0.944,
+        "weightedComponentLowerBoundNo": 0.954,
+        "pTradeNo": 0.944
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+        "pMeanYes": 0.034,
+        "mixtureLowerBoundYes": 0.012,
+        "weightedComponentLowerBoundYes": 0.015,
+        "pTradeYes": 0.012,
+        "pMeanNo": 0.966,
+        "mixtureLowerBoundNo": 0.916,
+        "weightedComponentLowerBoundNo": 0.926,
+        "pTradeNo": 0.916
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+        "pMeanYes": 0.179,
+        "mixtureLowerBoundYes": 0.115,
+        "weightedComponentLowerBoundYes": 0.126,
+        "pTradeYes": 0.115,
+        "pMeanNo": 0.821,
+        "mixtureLowerBoundNo": 0.771,
+        "weightedComponentLowerBoundNo": 0.781,
+        "pTradeNo": 0.771
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+        "pMeanYes": 0.402,
+        "mixtureLowerBoundYes": 0.315,
+        "weightedComponentLowerBoundYes": 0.327,
+        "pTradeYes": 0.315,
+        "pMeanNo": 0.598,
+        "mixtureLowerBoundNo": 0.548,
+        "weightedComponentLowerBoundNo": 0.558,
+        "pTradeNo": 0.548
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+        "pMeanYes": 0.293,
+        "mixtureLowerBoundYes": 0.212,
+        "weightedComponentLowerBoundYes": 0.221,
+        "pTradeYes": 0.212,
+        "pMeanNo": 0.707,
+        "mixtureLowerBoundNo": 0.657,
+        "weightedComponentLowerBoundNo": 0.667,
+        "pTradeNo": 0.657
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T76",
+        "pMeanYes": 0.086,
+        "mixtureLowerBoundYes": 0.042,
+        "weightedComponentLowerBoundYes": 0.046,
+        "pTradeYes": 0.042,
+        "pMeanNo": 0.914,
+        "mixtureLowerBoundNo": 0.864,
+        "weightedComponentLowerBoundNo": 0.874,
+        "pTradeNo": 0.864
+      }
+    ]
+  },
+  "market": {
+    "bookState": "unavailable",
+    "bookAgeSeconds": null,
+    "sequenceValid": null,
+    "feeScheduleVersion": "fixture-fee-v1",
+    "feeRole": "quote_only",
+    "seriesMultiplier": 1.0,
+    "markets": [
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T69",
+        "bracketLabel": "<69 F",
+        "yesBid": 0.0,
+        "yesAsk": 0.01,
+        "noBid": 0.99,
+        "noAsk": 1.0,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+        "bracketLabel": "69-70 F",
+        "yesBid": 0.0,
+        "yesAsk": 0.01,
+        "noBid": 0.99,
+        "noAsk": 1.0,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+        "bracketLabel": "71-72 F",
+        "yesBid": 0.0,
+        "yesAsk": 0.01,
+        "noBid": 0.99,
+        "noAsk": 1.0,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+        "bracketLabel": "73-74 F",
+        "yesBid": 0.05,
+        "yesAsk": 0.06,
+        "noBid": 0.94,
+        "noAsk": 0.95,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+        "bracketLabel": "75-76 F",
+        "yesBid": 0.5,
+        "yesAsk": 0.51,
+        "noBid": 0.49,
+        "noAsk": 0.5,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      },
+      {
+        "marketTicker": "KXHIGHLAX-26JUL07-T76",
+        "bracketLabel": ">76 F",
+        "yesBid": 0.46,
+        "yesAsk": 0.48,
+        "noBid": 0.52,
+        "noAsk": 0.54,
+        "yesDepth": null,
+        "noDepth": null,
+        "quoteAvailableAt": "2026-07-07T14:24:00Z"
+      }
+    ]
+  },
+  "economics": [
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-T69",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.01,
+      "exactFee": 0.07,
+      "executionCost": 0.0,
+      "allInCost": 1.07,
+      "pMean": 0.006,
+      "pSafe": 0.001,
+      "requiredProbability": 0.0165,
+      "expectedValue": -0.97,
+      "modeledNetRoi": -0.9,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": []
+    },
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-B69.5",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.01,
+      "exactFee": 0.07,
+      "executionCost": 0.0,
+      "allInCost": 1.07,
+      "pMean": 0.034,
+      "pSafe": 0.012,
+      "requiredProbability": 0.0165,
+      "expectedValue": 0.13,
+      "modeledNetRoi": 0.2,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": []
+    },
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-B71.5",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.01,
+      "exactFee": 0.07,
+      "executionCost": 0.0,
+      "allInCost": 1.07,
+      "pMean": 0.179,
+      "pSafe": 0.115,
+      "requiredProbability": 0.0165,
+      "expectedValue": 10.43,
+      "modeledNetRoi": 10.5,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": []
+    },
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.06,
+      "exactFee": 0.39,
+      "executionCost": 0.0,
+      "allInCost": 6.39,
+      "pMean": 0.402,
+      "pSafe": 0.315,
+      "requiredProbability": 0.074,
+      "expectedValue": 25.11,
+      "modeledNetRoi": 4.25,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": [
+        {
+          "price": 0.01,
+          "requiredProbability": 0.0165
+        },
+        {
+          "price": 0.03,
+          "requiredProbability": 0.0395
+        },
+        {
+          "price": 0.05,
+          "requiredProbability": 0.0625
+        },
+        {
+          "price": 0.06,
+          "requiredProbability": 0.074
+        },
+        {
+          "price": 0.08,
+          "requiredProbability": 0.097
+        },
+        {
+          "price": 0.1,
+          "requiredProbability": 0.12
+        },
+        {
+          "price": 0.15,
+          "requiredProbability": 0.1775
+        },
+        {
+          "price": 0.2,
+          "requiredProbability": 0.235
+        },
+        {
+          "price": 0.3,
+          "requiredProbability": 0.35
+        },
+        {
+          "price": 0.4,
+          "requiredProbability": 0.465
+        },
+        {
+          "price": 0.5,
+          "requiredProbability": 0.58
+        },
+        {
+          "price": 0.6,
+          "requiredProbability": 0.695
+        },
+        {
+          "price": 0.7,
+          "requiredProbability": 0.81
+        },
+        {
+          "price": 0.8,
+          "requiredProbability": 0.925
+        },
+        {
+          "price": 0.86,
+          "requiredProbability": 0.994
+        }
+      ]
+    },
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-B75.5",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.51,
+      "exactFee": 1.75,
+      "executionCost": 0.0,
+      "allInCost": 52.75,
+      "pMean": 0.293,
+      "pSafe": 0.212,
+      "requiredProbability": 0.5915,
+      "expectedValue": -31.55,
+      "modeledNetRoi": -0.5843,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": []
+    },
+    {
+      "marketTicker": "KXHIGHLAX-26JUL07-T76",
+      "side": "yes",
+      "quantity": 100,
+      "priceBasis": "top_of_book_quote",
+      "price": 0.48,
+      "exactFee": 1.75,
+      "executionCost": 0.0,
+      "allInCost": 49.75,
+      "pMean": 0.086,
+      "pSafe": 0.042,
+      "requiredProbability": 0.557,
+      "expectedValue": -45.55,
+      "modeledNetRoi": -0.9125,
+      "maxAcceptablePrice": 0.86,
+      "activeHurdle": 0.15,
+      "eligible": false,
+      "rejectionReason": "NO_TRADE_MODEL_DISAGREEMENT",
+      "priceSensitivity": []
+    }
+  ],
+  "decision": {
+    "candidateId": null,
+    "focusMarketTicker": "KXHIGHLAX-26JUL07-B73.5",
+    "focusSide": "yes",
+    "pMean": 0.402,
+    "pSafe": 0.315,
+    "requiredProbability": 0.074,
+    "modeledNetRoi": 4.25,
+    "maxAcceptablePrice": 0.86,
+    "proposedQuantity": 0,
+    "reasonCode": "NO_TRADE_MODEL_DISAGREEMENT"
+  },
+  "equations": [
+    {
+      "equationId": "raw_live_state",
+      "label": "Observed floor plus remaining forecast",
+      "scope": {
+        "modelKey": "nbm"
+      },
+      "formula": "X_m = max(O, R_m)",
+      "substitutedExpression": "max(67.82\u00b0F, 72.50\u00b0F)",
+      "result": 72.5,
+      "units": "\u00b0F",
+      "status": "available",
+      "missingInputs": []
+    },
+    {
+      "equationId": "corrected_model_state",
+      "label": "Residual-corrected model state",
+      "scope": {
+        "modelKey": "nbm"
+      },
+      "formula": "C_m = max(O, X_m + residualMedian_m)",
+      "substitutedExpression": "max(67.82\u00b0F, 72.50\u00b0F + 0.40\u00b0F)",
+      "result": 72.9,
+      "units": "\u00b0F",
+      "status": "available",
+      "missingInputs": []
+    },
+    {
+      "equationId": "final_trade_probability",
+      "label": "Conservative trade probability",
+      "scope": {
+        "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+        "side": "yes"
+      },
+      "formula": "pTrade = min(mixtureLowerBound, weightedComponentLowerBound)",
+      "substitutedExpression": "min(0.315, 0.327)",
+      "result": 0.315,
+      "units": "probability",
+      "status": "available",
+      "missingInputs": []
+    },
+    {
+      "equationId": "modeled_roi",
+      "label": "Modeled net expected ROI",
+      "scope": {
+        "marketTicker": "KXHIGHLAX-26JUL07-B73.5",
+        "side": "yes"
+      },
+      "formula": "ROI = (Cq - K) / K",
+      "substitutedExpression": "(100\u00d70.315 - 6.39) / 6.39",
+      "result": 3.9296,
+      "units": "ratio",
+      "status": "available",
+      "missingInputs": []
+    }
+  ],
+  "gates": [
+    {
+      "gateCode": "MODEL_FEEDS",
+      "status": "pass",
+      "observedValue": "5 eligible",
+      "requiredValue": "at least 4",
+      "detail": "All five fixture model slots are present."
+    },
+    {
+      "gateCode": "CALIBRATION",
+      "status": "pass",
+      "observedValue": "core ready; NBM provisional",
+      "requiredValue": "strategy thresholds",
+      "detail": "Fixture example only."
+    },
+    {
+      "gateCode": "MARKET_OUTCOME_MAP",
+      "status": "pass",
+      "observedValue": "verified",
+      "requiredValue": "no overlaps or gaps",
+      "detail": "Six fixture outcomes form a partition."
+    },
+    {
+      "gateCode": "EXECUTABLE_BOOK",
+      "status": "fail",
+      "observedValue": "unavailable",
+      "requiredValue": "sequence-valid depth",
+      "detail": "Economics are quote-based counterfactuals."
+    },
+    {
+      "gateCode": "MODEL_DISAGREEMENT",
+      "status": "fail",
+      "observedValue": "4.5\u00b0F",
+      "requiredValue": "<4.0\u00b0F",
+      "detail": "Example decision is blocked by disagreement."
+    },
+    {
+      "gateCode": "ORDER_PATH",
+      "status": "pass",
+      "observedValue": "unreachable",
+      "requiredValue": "unreachable",
+      "detail": "Shadow UI has no order submission path."
+    }
+  ],
+  "captureHealth": {
+    "captureHealthId": "fixture-capture-health-001",
+    "overallStatus": "degraded",
+    "sources": [
+      {
+        "sourceKey": "ecmwf_ifs",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:22:00Z",
+        "ageSeconds": 120,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "gfs013",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:21:45Z",
+        "ageSeconds": 135,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "gfs_seamless",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:21:30Z",
+        "ageSeconds": 150,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "nam",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:21:15Z",
+        "ageSeconds": 165,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "nbm",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:21:00Z",
+        "ageSeconds": 180,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "klax_observations",
+        "status": "healthy",
+        "lastSuccessAt": "2026-07-07T14:20:00Z",
+        "ageSeconds": 240,
+        "detail": "Fixture"
+      },
+      {
+        "sourceKey": "kalshi_orderbook",
+        "status": "missing",
+        "lastSuccessAt": null,
+        "ageSeconds": null,
+        "detail": "Fixture has quote-only data"
+      }
+    ],
+    "orderPathReachable": false
+  }
+}

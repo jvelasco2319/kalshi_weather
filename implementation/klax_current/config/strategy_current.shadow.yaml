@@ -1,0 +1,107 @@
+strategy_id: klax-current-five-model-2026-07-11
+mode: shadow
+live_trading_enabled: false
+canary_enabled: false
+taker_enabled: false
+order_submission_reachable: false
+station: KLAX
+series: KXHIGHLAX
+timezone: America/Los_Angeles
+
+models:
+  canonical_order: [ecmwf_ifs, gfs013, gfs_seamless, nam, nbm]
+  source_preferences:
+    ecmwf_ifs: open_meteo:ecmwf_ifs
+    gfs013: open_meteo:gfs013
+    gfs_seamless: open_meteo:gfs_seamless
+    nam: open_meteo:nam
+    nbm: noaa_herbie:nbm
+  aliases:
+    open_meteo:nam_conus: nam
+  strategy_excluded:
+    - current_weighted_blend
+    - best_match
+    - gfs_global
+    - nam_conus_as_separate_vote
+    - hrrr
+    - rap
+    - noaa_gfs
+    - aifs
+  minimum_feeds_for_trade_probability: 4
+  minimum_independence_families: 3
+
+residuals:
+  maximum_prior_target_dates: 45
+  minimum_prior_target_dates_standard: 30
+  minimum_prior_target_dates_nbm_provisional: 10
+  exact_market_hour_bucket_minutes: 60
+  fallback_stage_buckets:
+    - previous_day_07_18
+    - target_02_10
+    - target_11_13
+    - target_14_16
+    - target_17_close
+  recency_half_life_target_dates: 21.0
+  drift_recent_dates: 10
+  drift_absolute_threshold_f: 1.5
+  drift_sign_reversal_min_magnitude_f: 1.0
+
+model_weights:
+  prior:
+    ecmwf_ifs: 0.20
+    gfs013: 0.25
+    gfs_seamless: 0.20
+    nam: 0.15
+    nbm: 0.20
+  log_score_shrinkage_dates: 30
+  log_score_eta: 1.0
+  individual_cap: 0.35
+  family_caps:
+    GFS: 0.45
+  nbm_caps_by_completed_dates:
+    below_10: 0.00
+    10_to_29: 0.10
+    30_to_59: 0.20
+    60_plus: 0.25
+
+probability:
+  dirichlet_alpha_per_bracket: 0.5
+  safe_probability_quantile: 0.10
+  final_safe_rule: minimum_of_mixture_and_weighted_component_bounds
+  pair_physical_residual_and_settlement_gap_by_date: true
+
+risk:
+  normal_spread_below_f: 3.0
+  elevated_spread_below_f: 4.0
+  hard_stop_spread_at_f: 4.0
+  elevated_hurdle_add: 0.03
+  elevated_size_multiplier: 0.50
+  drift_hurdle_add: 0.03
+  drift_size_multiplier: 0.50
+  kelly_multiplier: 0.25
+  event_bankroll_cap: 0.015
+  contract_bankroll_cap: 0.0075
+  daily_loss_kill_fraction: 0.02
+  canary_bankroll_cap: 0.0025
+  canary_max_new_entries_per_target_date: 1
+
+economics:
+  long_run_target_roi: 0.10
+  launch_expected_roi_hurdle: 0.15
+  price_increment_dollars: '0.01'
+  maker_first: true
+  hold_to_settlement_default: true
+  blind_take_profit_enabled: false
+
+market_data:
+  orderbook_depth_levels: 10
+  require_sequence_valid_book: true
+  require_trade_count_fp: true
+  require_exhausted_trade_cursor: true
+  candles_eligible_for_fill_simulation: false
+  stale_book_after_seconds: 5
+
+promotion:
+  minimum_settled_forecast_dates: 30
+  preferred_joined_market_dates: 60
+  human_approval_required: true

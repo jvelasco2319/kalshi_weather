@@ -5,12 +5,11 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.matplotlib-cache/
 .test-artifacts/
 .handoff_tmp/
-.tmp*/
-.pytest_cache/
-.matplotlib-cache/
-*.log
+.tmp/
+.tmp_pytest_*/
 
 # Virtual envs
 .venv/
@@ -22,19 +21,26 @@ venv/
 *.key
 
 # Runtime data
-data/
-logs/
-journals/
-reports/
-results_for_chatgpt*/
-synthetic_scenarios/
-chatgpt_*/
-chatgpt_*_package/
-codex_*_package/
-*.zip
+/data/*.db
+/data/*.sqlite
+/data/raw/
+/data/snapshots/
+/logs/
+/journals/
+/reports/
+/data/
+*.log
+kalshi_weather_handoff_latest.zip
 HANDOFF_ZIP_CHECK.txt
+
+# Local handoff and generated audit output
+*.zip
 CHATGPT_*.txt
-*_OUTPUT.txt
+CHATGPT_*.md
+_tmp_*
+kalshi_weather_outputs.png
+baseline_test_report.md
+promotion_readiness_report.md
 
 # OS/editor
 .DS_Store

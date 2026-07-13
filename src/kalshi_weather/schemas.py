@@ -49,7 +49,7 @@ class OrderbookTop:
 class WeatherSnapshot:
     station_id: str
     timestamp_utc: datetime
-    observed_high_so_far_f: float | None
+    observed_high_so_far_f: float
     latest_observation_utc: datetime | None
     observation_count: int
     model_future_high_f: float | None = None

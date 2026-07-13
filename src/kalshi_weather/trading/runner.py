@@ -243,7 +243,6 @@ def collect_once(
 
     start_utc, end_utc = lax_climate_day_utc(today)
     obs = nws.station_observations(station or LAX_STATION_ID, start_utc, min(utc_now(), end_utc))
-    latest_observed_temp_f = _latest_observed_temp_f(obs)
     asof_local, end_local = remaining_lax_day_local()
     forecast_result = om.forecast_hourly_by_model(
         latitude=LAX_LATITUDE,
@@ -300,22 +299,8 @@ def collect_once(
         "station": station,
         "market_date": today,
         "weather": weather,
-        "latest_observed_temp_f": latest_observed_temp_f,
         "open_meteo": forecast_diagnostics(forecast_result),
     }
-
-
-def _latest_observed_temp_f(observations: Any) -> float | None:
-    if getattr(observations, "empty", True):
-        return None
-    if "timestamp_utc" not in observations or "temp_f" not in observations:
-        return None
-    try:
-        latest_idx = observations["timestamp_utc"].idxmax()
-        value = observations.loc[latest_idx, "temp_f"]
-        return float(value)
-    except Exception:  # noqa: BLE001
-        return None
 
 
 def build_prediction_records(

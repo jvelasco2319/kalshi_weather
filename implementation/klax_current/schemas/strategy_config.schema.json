@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "canary_enabled": {
+      "const": false
+    },
+    "live_trading_enabled": {
+      "const": false
+    },
+    "mode": {
+      "const": "shadow"
+    },
+    "models": {
+      "properties": {
+        "canonical_order": {
+          "const": [
+            "ecmwf_ifs",
+            "gfs013",
+            "gfs_seamless",
+            "nam",
+            "nbm"
+          ]
+        }
+      },
+      "required": [
+        "canonical_order"
+      ],
+      "type": "object"
+    },
+    "order_submission_reachable": {
+      "const": false
+    },
+    "strategy_id": {
+      "const": "klax-current-five-model-2026-07-11"
+    },
+    "taker_enabled": {
+      "const": false
+    }
+  },
+  "required": [
+    "strategy_id",
+    "mode",
+    "live_trading_enabled",
+    "canary_enabled",
+    "taker_enabled",
+    "models"
+  ],
+  "title": "StrategyConfig",
+  "type": "object"
+}

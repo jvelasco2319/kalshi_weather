@@ -1,0 +1,161 @@
+version: 1
+strategy_id: klax-current-five-model-2026-07-11
+supersedes: [v1, v2, v2-july7-amendment, v3]
+requires_prior_versions: false
+hard_defaults:
+  mode: shadow
+  live_trading_enabled: false
+  canary_enabled: false
+  taker_enabled: false
+  order_submission_reachable: false
+
+tasks:
+  - id: P0
+    name: Repository discovery and reuse mapping
+    depends_on: []
+    outputs:
+      - docs/klax_current_repo_mapping.md
+      - baseline_test_report.md
+      - docs/klax_current_deviations.md
+    exit_gate:
+      - actual modules mapped before new modules are proposed
+      - existing tests recorded
+      - no production behavior changed
+
+  - id: P1
+    name: Strategy-scoped model registry and configuration
+    depends_on: [P0]
+    requirements:
+      - canonical five-model set only
+      - preserve legacy registry entries without using them
+      - source variants have separate histories
+      - nam_conus treated as NAM alias, never an extra vote
+    outputs:
+      - versioned strategy config
+      - model registry tests
+
+  - id: P2
+    name: Additive source-data integrity and persistence
+    depends_on: [P0]
+    requirements:
+      - raw payload hashes
+      - full forecast paths with four timestamps
+      - quality-controlled KLAX observations
+      - trade count_fp and exhausted pagination cursors
+      - WebSocket orderbook snapshot and sequence-checked deltas
+      - capture completeness manifests
+      - market rule and fee versions
+    outputs:
+      - additive SQLite migrations
+      - collector completeness tests
+
+  - id: P3
+    name: Canonical as-of state builder
+    depends_on: [P1, P2]
+    requirements:
+      - strict backward as-of run selection
+      - remaining target-day maximum
+      - observed maximum so far
+      - raw live state per model
+      - immutable decision-state inputs
+    outputs:
+      - pure state builder
+      - July 7 past-maximum regression test
+      - future-source leakage tests
+
+  - id: P4
+    name: Historical reconstruction and residual libraries
+    depends_on: [P3]
+    requirements:
+      - reconstruct the exact live state historically
+      - final decimal KLAX high as physical target
+      - station-to-settlement gap stored separately
+      - rolling prior-date windows only
+      - recency weighting and effective sample size
+      - no use of legacy full-day scalar residuals for certification
+    outputs:
+      - model residual library
+      - settlement-gap library
+      - chronological replay fixtures
+
+  - id: P5
+    name: Five-model probability mixture
+    depends_on: [P4]
+    requirements:
+      - model-specific scenario distributions
+      - maturity-aware NBM participation
+      - shrunk historical log-score weights
+      - GFS family weight cap
+      - conservative Yes and No probabilities
+      - point estimate and uncertainty interval for reporting
+    outputs:
+      - pure probability engine
+      - model-weight audit table
+      - calibration tests
+
+  - id: P6
+    name: Settlement, fees, economics, and portfolio risk
+    depends_on: [P2, P5]
+    requirements:
+      - fail-closed settlement parser
+      - exact price-grid enumeration
+      - versioned maker/taker fee oracle
+      - Yes and No evaluation
+      - 15 percent launch hurdle
+      - fractional Kelly and event-outcome loss matrix
+      - dynamic price ceiling
+    outputs:
+      - economics engine
+      - risk engine
+      - deterministic test vectors
+
+  - id: P7
+    name: Event-driven shadow orchestration
+    depends_on: [P3, P5, P6]
+    requirements:
+      - triggers on models observations books orders fills and metadata
+      - immutable coherent as-of snapshot
+      - deterministic coalescing and deduplication
+      - single best incremental event-level candidate
+      - explicit NO_TRADE reason codes
+      - non-submitting ShadowOrderSink
+    outputs:
+      - strategy-shadow-run command
+      - strategy-status command
+      - shadow decision journal
+
+  - id: P8
+    name: Replay and execution simulation
+    depends_on: [P2, P7]
+    requirements:
+      - forecast-only chronological replay
+      - joined market replay
+      - candles labeled non-executable analytics
+      - depth-aware taker simulation when depth exists
+      - maker simulation only from synchronized books and latency assumptions
+      - July 7 and July 9 regression coverage
+    outputs:
+      - strategy-replay command
+      - replay report
+
+  - id: P9
+    name: Continuous shadow validation and promotion report
+    depends_on: [P7, P8]
+    requirements:
+      - at least 30 settled forecast dates
+      - preferably 60 joined market days
+      - probability calibration by band
+      - Brier and log loss
+      - ROI by predicted-edge decile
+      - maker fill and adverse-selection metrics
+      - date-clustered uncertainty
+      - NBM incremental-value report
+    outputs:
+      - promotion_readiness_report.md
+      - explicit NO_GO or READY_FOR_HUMAN_CANARY_REVIEW
+
+  - id: P10
+    name: Canary implementation
+    depends_on: [P9]
+    requires_human_approval: true
+    prohibited_in_this_run: true

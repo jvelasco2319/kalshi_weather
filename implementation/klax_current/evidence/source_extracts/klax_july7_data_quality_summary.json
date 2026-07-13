@@ -1,0 +1,67 @@
+{
+  "target_date": "2026-07-07",
+  "market_event": "KXHIGHLAX-26JUL07",
+  "candlestick_rows_full_market": 7816,
+  "trade_rows": 20253,
+  "unique_trade_ids": 20253,
+  "trade_count_null_rows": 20253,
+  "trade_count_null_rate": 1.0,
+  "candles_and_market_history_identical": true,
+  "candles_sha256": "29ea08212f5a50d65ccef22bbfb217421983ddb912b56ebcf5af5ae614cf0d13",
+  "market_history_sha256": "29ea08212f5a50d65ccef22bbfb217421983ddb912b56ebcf5af5ae614cf0d13",
+  "aggregate_volume_max_absolute_difference": 0.0,
+  "slice_rows": 2674,
+  "slice_possible_rows_six_contract_grid": 3822,
+  "slice_grid_coverage": 0.6996336996336996,
+  "winner_slice_rows": 627,
+  "winner_slice_coverage": 0.9843014128728415,
+  "seventyfive_slice_rows": 627,
+  "seventyfive_slice_coverage": 0.9843014128728415,
+  "nominal_model_snapshot_rows": 60,
+  "source_after_nominal_snapshot_rows": 40,
+  "source_more_than_60s_after_rows": 12,
+  "source_more_than_30m_after_rows": 2,
+  "max_source_lag_seconds": 4359.0,
+  "winner_ask_thresholds": {
+    "0.10": {
+      "time": "2026-07-07T10:07:00-07:00",
+      "ask": 0.12
+    },
+    "0.20": {
+      "time": "2026-07-07T11:14:00-07:00",
+      "ask": 0.2
+    },
+    "0.30": {
+      "time": "2026-07-07T12:04:00-07:00",
+      "ask": 0.31
+    },
+    "0.50": {
+      "time": "2026-07-07T13:13:00-07:00",
+      "ask": 0.64
+    },
+    "0.70": {
+      "time": "2026-07-07T13:24:00-07:00",
+      "ask": 0.72
+    },
+    "0.80": {
+      "time": "2026-07-07T13:34:00-07:00",
+      "ask": 0.81
+    },
+    "0.86": {
+      "time": "2026-07-07T14:22:00-07:00",
+      "ask": 0.87
+    },
+    "0.90": {
+      "time": "2026-07-07T15:31:00-07:00",
+      "ask": 0.93
+    },
+    "0.95": {
+      "time": "2026-07-07T15:35:00-07:00",
+      "ask": 0.95
+    },
+    "0.99": {
+      "time": "2026-07-07T17:47:00-07:00",
+      "ask": 1.0
+    }
+  }
+}

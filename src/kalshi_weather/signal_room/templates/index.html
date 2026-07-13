@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>KLAX Signal Room</title>
+  <link rel="stylesheet" href="/static/signal_room.css">
+</head>
+<body
+  data-mode="{{ mode }}"
+  data-poll-seconds="{{ poll_seconds }}"
+  data-target-date="{{ target_date }}"
+  data-sample-mode="{{ 'true' if sample_mode else 'false' }}"
+>
+  <div class="shell">
+    <header class="top">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">K</div>
+        <div>
+          <h1>KLAX Signal Room</h1>
+          <div class="sub" id="subtitle">Read-only operator dashboard</div>
+          <nav class="nav-links" aria-label="Signal Room views">
+            <a href="/" aria-current="page">Command Center</a>
+            <a href="/strategy/probability-lab">Probability Lab</a>
+          </nav>
+        </div>
+      </div>
+      <div class="chips" aria-label="Strategy safety state">
+        <span class="chip shadow" id="modeChip">SHADOW MODE</span>
+        <span class="chip"><strong>5</strong> model slots</span>
+        <span class="chip">eval <strong id="commandEvalId">--</strong></span>
+        <span class="chip"><strong id="liveOrderCount">0</strong> live orders</span>
+        <span class="chip live" id="orderPathChip">order path disabled</span>
+      </div>
+    </header>
+
+    <div class="banner" id="banner" hidden></div>
+
+    <section class="controlbar" aria-label="Dashboard controls">
+      <div class="control-live" id="liveControls">
+        <label for="eventSelect">Event</label>
+        <select id="eventSelect"></select>
+        <span class="timepill" id="latestEval">Waiting</span>
+        <button type="button" id="pauseButton">Pause</button>
+        <span id="refreshStatus" class="refresh-status">Polling</span>
+      </div>
+      <div class="control-replay" id="replayControls" hidden>
+        <label for="timeRange">Replay checkpoint</label>
+        <input id="timeRange" type="range" min="0" max="0" value="0" step="1" aria-label="Replay checkpoint">
+        <div class="timepill" id="timePill">--</div>
+      </div>
+    </section>
+
+    <main class="grid">
+      <div class="stack">
+        <section class="card decision" aria-labelledby="decisionTitle">
+          <div>
+            <h2 id="decisionTitle">Current Decision</h2>
+            <div class="decision-state" id="decisionState">DATA INCOMPLETE</div>
+            <div class="reason" id="decisionReason">Waiting for snapshot.</div>
+            <code class="reason-code" id="reasonCode">NO_DATA</code>
+          </div>
+          <div class="candidate">
+            <div>
+              <small>Focus contract</small>
+              <div class="big" id="focusContract">No eligible contract</div>
+            </div>
+            <div>
+              <small>Executable price</small>
+              <div class="ask" id="focusAsk">--</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="riskTitle">
+          <h2 id="riskTitle">Risk Snapshot</h2>
+          <div class="metrics">
+            <div class="metric"><div class="k">Model spread</div><div class="v" id="spreadV">--</div></div>
+            <div class="metric"><div class="k">Active hurdle</div><div class="v" id="hurdleV">--</div></div>
+            <div class="metric"><div class="k">Observed high</div><div class="v" id="observedV">--</div></div>
+            <div class="metric"><div class="k">Market leader</div><div class="v" id="leaderV">--</div></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="card forecast" aria-labelledby="forecastTitle">
+          <div class="chart-title">
+            <div>
+              <h2 id="forecastTitle">Five-Model Forecast Path</h2>
+              <p>State-consistent model values from persisted as-of snapshots.</p>
+            </div>
+            <div class="chart-note" id="chartNote"></div>
+          </div>
+          <div class="legend" id="modelLegend"></div>
+          <div class="chart-wrap" id="modelChart" role="img" aria-label="Five model state chart"></div>
+          <div class="models" id="modelCards"></div>
+        </section>
+      </div>
+
+      <div class="stack right">
+        <section class="card" aria-labelledby="gatesTitle">
+          <h2 id="gatesTitle">System Gates</h2>
+          <div class="alerts" id="alerts"></div>
+        </section>
+        <section class="card" aria-labelledby="readinessTitle">
+          <h2 id="readinessTitle">Feed Readiness</h2>
+          <div class="metrics">
+            <div class="metric"><div class="k">Tradable feeds</div><div class="v" id="feedCount">--</div></div>
+            <div class="metric"><div class="k">NBM maturity</div><div class="v warn" id="nbmMaturity">--</div></div>
+            <div class="metric"><div class="k">Book depth</div><div class="v" id="bookDepth">--</div></div>
+            <div class="metric"><div class="k">Live execution</div><div class="v" id="executionState">Disabled</div></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card book" aria-labelledby="marketTitle">
+        <div class="chart-title">
+          <div>
+            <h2 id="marketTitle">Bracket Market</h2>
+            <p>Backend shadow probabilities, quote-only economics, and market quotes.</p>
+          </div>
+        </div>
+        <table class="book-table" id="bookTable">
+          <thead>
+            <tr>
+              <th>Bracket</th>
+              <th>Bid</th>
+              <th>Ask</th>
+              <th>p-safe YES</th>
+              <th>p-safe NO</th>
+              <th>Required p</th>
+              <th>Modeled net ROI</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card lab" aria-labelledby="labTitle">
+        <div class="chart-title">
+          <div>
+            <h2 id="labTitle">Probability Lab</h2>
+            <p id="labMode">Waiting for shadow evaluation.</p>
+          </div>
+          <div class="chart-note" id="labEval"></div>
+        </div>
+        <div class="lab-summary">
+          <div class="metric"><div class="k">Calibration</div><div class="v" id="labCalibration">--</div></div>
+          <div class="metric"><div class="k">Effective sample</div><div class="v" id="labEffectiveN">--</div></div>
+          <div class="metric"><div class="k">Warnings</div><div class="v warn" id="labWarnings">--</div></div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Probability lab views">
+          <button type="button" class="tab active" data-lab-tab="distributions">Distributions</button>
+          <button type="button" class="tab" data-lab-tab="weights">Weights</button>
+          <button type="button" class="tab" data-lab-tab="funnel">Funnel</button>
+          <button type="button" class="tab" data-lab-tab="equations">Equations</button>
+          <button type="button" class="tab" data-lab-tab="sensitivity">Sensitivity</button>
+        </div>
+        <div class="lab-panel active" id="labPanelDistributions">
+          <div class="lab-chart" id="labDistributionChart" role="img" aria-label="Model and mixture bracket probability heatmap"></div>
+        </div>
+        <div class="lab-panel" id="labPanelWeights">
+          <div class="lab-grid" id="labWeights"></div>
+        </div>
+        <div class="lab-panel" id="labPanelFunnel">
+          <div class="funnel" id="labFunnel"></div>
+        </div>
+        <div class="lab-panel" id="labPanelEquations">
+          <div class="equations" id="labEquations"></div>
+        </div>
+        <div class="lab-panel" id="labPanelSensitivity">
+          <div class="sensitivity" id="labSensitivity"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="sourceLabel">No snapshot loaded</span>
+      <span>Read-only immutable as-of snapshots - no order controls</span>
+    </footer>
+  </div>
+  <script src="/static/signal_room.js"></script>
+</body>
+</html>

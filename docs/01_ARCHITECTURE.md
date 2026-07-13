@@ -40,9 +40,6 @@ src/kalshi_weather/trading/runner.py
 
 src/kalshi_weather/backtest/replay.py
   Replay stored snapshots.
-
-src/kalshi_weather/validation.py
-  Operational validation reports: calibration readiness, model-vs-market, and model-health.
 ```
 
 ## Data Store
@@ -136,29 +133,3 @@ outcomes.
 - `paper-replay` and `replay-predictions` use stored rows only and do not call live APIs.
 
 All Kalshi access remains public/read-only in the implemented code path.
-
-## Operational Validation Components
-
-- `model-health` reads SQLite only and summarizes whether evidence is sufficient.
-- `model-vs-market` scores joined prediction/outcome rows against market-implied probabilities.
-- `daily-maintenance --skip-collect` can generate reports without live collection.
-- Windows wrappers in `scripts/` run collection, after-settlement reports, and model-health with logs under `logs/automation/`.
-
-## Separate Model Estimate Comparison Components
-
-```text
-model/model_estimates.py
-  Dataclasses and helpers for comparison-only model high estimates and probabilities.
-
-data/herbie_client.py
-  Optional lazy Herbie provider for direct NOAA HRRR/NBM/GFS/RAP estimates.
-
-data/storage.py
-  Sidecar tables: model_estimates and model_estimate_probabilities.
-
-cli.py
-  model-provider-probe, model-estimates, model-probabilities, and model-estimate-score.
-```
-
-The comparison layer reads the same NWS/Open-Meteo/Kalshi public inputs but
-does not alter default prediction, opportunity, paper trading, or replay logic.

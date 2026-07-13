@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.kalshi-weather/contracts/explainability_snapshot.schema.json",
+  "title": "KLAX Signal Room Explainability Snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evaluation_id",
+    "generated_at",
+    "strategy_id",
+    "config_hash",
+    "source_ids",
+    "decision",
+    "blocking_codes",
+    "warning_codes",
+    "order_submission_reachable",
+    "live_trading_enabled",
+    "quote_only_economics",
+    "probability_lab_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "explainability_snapshot.v1"
+    },
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "config_hash": {
+      "type": "string",
+      "minLength": 32
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["evaluated_at", "status", "reason_code", "reason_text"],
+      "properties": {
+        "evaluated_at": {"type": "string", "format": "date-time"},
+        "status": {"enum": ["TRADE_CANDIDATE", "SHADOW_ONLY", "NO_TRADE", "DATA_INCOMPLETE"]},
+        "reason_code": {"type": "string"},
+        "reason_text": {"type": "string"},
+        "focus_ticker": {"type": ["string", "null"]},
+        "focus_bracket": {"type": ["string", "null"]},
+        "focus_side": {"type": ["string", "null"]},
+        "executable_price": {"type": ["string", "null"]},
+        "p_mean": {"type": ["number", "null"]},
+        "p_safe": {"type": ["number", "null"]},
+        "required_probability": {"type": ["number", "null"]},
+        "modeled_net_roi": {"type": ["string", "null"]},
+        "max_acceptable_price": {"type": ["string", "null"]},
+        "proposed_quantity": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "blocking_codes": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "warning_codes": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "order_submission_reachable": {
+      "const": false
+    },
+    "live_trading_enabled": {
+      "const": false
+    },
+    "quote_only_economics": {
+      "type": "boolean"
+    },
+    "probability_lab_ref": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
