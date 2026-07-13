@@ -199,20 +199,21 @@ def _models(snapshot: SignalRoomSnapshot, brackets: list[dict[str, Any]]) -> lis
                 "rawLiveStateF": slot.state_f,
                 "residualMedianF": 0.0 if slot.state_f is not None else None,
                 "correctedPointF": center,
-                "historyCount": int(weight.get("completed_dates") or slot.maturity_completed_dates or 0),
-                "nEff": _model_effective_n(snapshot, key, effective_weight),
+                "historyCount": int(weight.get("stage_history_dates") or 0),
+                "nEff": float(weight.get("stage_n_eff") or 0.0),
                 "priorWeight": prior_weight,
                 "effectiveWeight": effective_weight,
                 "maturityState": maturity,
                 "eligibility": eligibility,
-                "ineligibilityReason": _ineligibility_reason(slot, effective_weight),
+                "ineligibilityReason": weight.get("exclusion_reason")
+                or _ineligibility_reason(slot, effective_weight),
                 "scenarioTemperaturesF": scenarios["temperatures"],
                 "scenarioWeights": scenarios["weights"],
                 "bracketProbabilities": _model_bracket_probabilities(distribution, brackets),
                 "sourceIds": [f"{snapshot.event.ticker}:{key}"] if slot.feed_status == "healthy" else [],
                 "freshnessSeconds": slot.age_seconds,
-                "reliabilityScore": effective_weight,
-                "familyCapApplied": False,
+                "reliabilityScore": _number(weight.get("reliability_multiplier"), 1.0),
+                "familyCapApplied": bool(weight.get("family_cap_applied", False)),
             }
         )
     return output
@@ -526,6 +527,47 @@ def _equations(
     economics: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    lab = snapshot.probability_lab or {}
+    weighting = lab.get("weighting") if isinstance(lab.get("weighting"), dict) else {}
+    stage = weighting.get("stage") if isinstance(weighting.get("stage"), dict) else {}
+    if weighting:
+        rows.extend(
+            [
+                _equation(
+                    "stage_classification",
+                    "Market stage",
+                    {},
+                    "stage = backend PT stage classifier(evaluated_at, target_date)",
+                    stage.get("stageId"),
+                    None,
+                ),
+                _equation(
+                    "transition_blend",
+                    "Stage transition blend",
+                    {},
+                    "prior = (1-alpha) * previous_stage_prior + alpha * stage_prior",
+                    stage.get("transitionAlpha"),
+                    "ratio",
+                ),
+            ]
+        )
+        for weight in weighting.get("models", []):
+            if not isinstance(weight, dict):
+                continue
+            scope = {"modelKey": weight.get("modelKey")}
+            rows.extend(
+                [
+                    _equation("stage_prior", "Stage prior", scope, "prior_m = backend stage-prior lookup", weight.get("stagePrior"), "ratio"),
+                    _equation("stage_log_loss", "Prior-date stage log loss", scope, "loss_m = mean prior settled-date log loss", weight.get("stageLogLoss"), None),
+                    _equation("shrinkage", "Shrunk stage loss", scope, "shrunk_loss_m = backend recency and uniform shrinkage", weight.get("shrunkLogLoss"), None),
+                    _equation("reliability_multiplier", "Reliability multiplier", scope, "r_m = exp(-eta * excess_shrunk_loss_m)", weight.get("reliabilityMultiplier"), "ratio"),
+                    _equation("pre_cap_weight", "Pre-cap influence", scope, "u_m = stage_prior_m * reliability_multiplier_m", weight.get("preCapWeight"), "ratio"),
+                    _equation("individual_cap", "Individual cap applied", scope, "w_m <= individual_model_cap", bool(weight.get("individualCapApplied")), None),
+                    _equation("family_cap", "Family cap applied", scope, "sum(w_family) <= family_cap", bool(weight.get("familyCapApplied")), None),
+                    _equation("nbm_maturity_cap", "NBM maturity cap", scope, "w_nbm <= maturity_cap(completed_dates)", weight.get("maturityCap"), "ratio"),
+                    _equation("final_weight", "Final normalized weight", scope, "w_m = backend deterministic capped redistribution", weight.get("finalWeight"), "ratio"),
+                ]
+            )
     for model in models:
         scope = {"modelKey": model["modelKey"]}
         rows.extend(

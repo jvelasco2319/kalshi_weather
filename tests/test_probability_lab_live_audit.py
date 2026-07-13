@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sqlite3
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -13,6 +14,12 @@ from kalshi_weather.validation_journal import ValidationJournal
 PACKAGE = Path("implementation") / "klax_probability_lab_live_audit"
 SCHEMA_PATH = PACKAGE / "contracts" / "explainability_snapshot.schema.json"
 FIXTURE_PATH = PACKAGE / "fixtures" / "sample_explainability_snapshot.json"
+WEIGHT_SCHEMA_PATH = (
+    Path("implementation")
+    / "klax_stage_adaptive_weighting"
+    / "contracts"
+    / "stage_weight_snapshot.schema.json"
+)
 CANONICAL_KEYS = ["ecmwf_ifs", "gfs013", "gfs_seamless", "nam", "nbm"]
 
 
@@ -102,6 +109,40 @@ def test_canonical_explainability_routes_support_latest_index_and_replay_lookup(
     assert missing.status_code == 404
 
 
+def test_persisted_history_indexes_do_not_rebuild_strategy_snapshots(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    client = _client_with_complete_journal(tmp_path)
+    base = "/api/strategy/current/events/KXHIGHLAX-26JUL12"
+    latest = client.get(
+        f"{base}/explainability/latest",
+        params={"target": "2026-07-12"},
+    ).json()
+
+    def fail_rebuild(*args, **kwargs):
+        raise AssertionError("history endpoints must read immutable evaluations")
+
+    monkeypatch.setattr(
+        client.app.state.signal_room_service,
+        "latest_snapshot",
+        fail_rebuild,
+    )
+    evaluations = client.get(
+        f"{base}/evaluations",
+        params={"target": "2026-07-12"},
+    )
+    history = client.get(
+        f"{base}/weighting/history",
+        params={"target": "2026-07-12"},
+    )
+
+    assert evaluations.status_code == 200
+    assert history.status_code == 200
+    assert evaluations.json()[-1]["evaluationId"] == latest["evaluationId"]
+    assert history.json()[-1]["evaluation_id"] == latest["evaluationId"]
+
+
 def test_probability_lab_page_uses_local_assets_and_contains_approved_panels(tmp_path: Path) -> None:
     client = _client_with_complete_journal(tmp_path)
     html = client.get("/strategy/probability-lab").text
@@ -117,6 +158,10 @@ def test_probability_lab_page_uses_local_assets_and_contains_approved_panels(tmp
         "Price sensitivity",
         "Calculation and data health",
         "How to read this screen",
+        "Model weights through the market",
+        "Current-stage attribution",
+        "Counterfactual comparison",
+        "History readiness",
     ]
     for text in required_text:
         assert text in html
@@ -146,8 +191,62 @@ def test_probability_lab_browser_bundle_does_not_contain_strategy_math_or_order_
         "submit_order",
         "fetch(\"http",
         "fetch('http",
+        "Math.exp",
+        "Math.log",
+        "stagePrior *",
+        "reliabilityMultiplier *",
+        "familyTotal =",
+        "nbmCap =",
+        "finalWeight =",
     ]
     assert not any(term in source for term in blocked)
+
+
+def test_weighting_routes_are_evaluation_consistent_and_persist_once(tmp_path: Path) -> None:
+    client = _client_with_complete_journal(tmp_path)
+    base = "/api/strategy/current/events/KXHIGHLAX-26JUL12"
+
+    latest = client.get(f"{base}/weighting/latest", params={"target": "2026-07-12"}).json()
+    latest_again = client.get(
+        f"{base}/weighting/latest", params={"target": "2026-07-12"}
+    ).json()
+    pinned = client.get(
+        f"{base}/weighting",
+        params={
+            "target": "2026-07-12",
+            "evaluation_id": latest["evaluation_id"],
+        },
+    ).json()
+    history = client.get(
+        f"{base}/weighting/history", params={"target": "2026-07-12"}
+    ).json()
+    lab = client.get(
+        "/api/v1/signal-room/events/KXHIGHLAX-26JUL12/probability-lab",
+        params={"target": "2026-07-12"},
+    ).json()
+
+    assert latest == latest_again == pinned
+    assert history[-1]["evaluation_id"] == latest["evaluation_id"]
+    assert lab["evaluation_id"] == latest["evaluation_id"]
+    assert lab["weighting"] == latest["weighting"]
+    assert set(latest["weighting_modes"]) == {
+        "fixed_baseline",
+        "stage_prior_only",
+        "stage_reliability",
+    }
+    assert latest["weighting"]["primaryMode"] == "stage_reliability"
+    assert latest["order_submission_reachable"] is False
+    schema = json.loads(WEIGHT_SCHEMA_PATH.read_text(encoding="utf-8"))
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(
+        latest["weighting"]
+    )
+
+    journal_path = tmp_path / "validation.sqlite"
+    with sqlite3.connect(journal_path) as conn:
+        count = conn.execute(
+            "SELECT COUNT(*) FROM strategy_stage_weight_evaluations"
+        ).fetchone()[0]
+    assert count == 1
 
 
 def test_command_center_links_to_probability_lab_and_shows_eval_chip(tmp_path: Path) -> None:

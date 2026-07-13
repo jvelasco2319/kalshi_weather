@@ -45,6 +45,14 @@ from kalshi_weather.strategy_current.settlement import (
     settlement_bracket_from_market_bracket,
     validate_settlement_brackets,
 )
+from kalshi_weather.strategy_current.stage_weighting import (
+    StageWeightConfig,
+    WEIGHTING_MODES,
+    build_stage_weight_snapshot,
+    load_stage_weight_config,
+    public_weight_snapshot,
+    weighting_reason_code,
+)
 
 NO_TRADE_VALIDATION_EVALUATION_UNAVAILABLE = "NO_TRADE_VALIDATION_EVALUATION_UNAVAILABLE"
 SHADOW_QUOTE_EVALUATED = "SHADOW_QUOTE_EVALUATED"
@@ -61,6 +69,8 @@ class ValidationShadowEvaluation:
     probability_lab: dict[str, Any]
     explainability: dict[str, Any]
     source_ids: list[str]
+    weight_snapshot: dict[str, Any]
+    evaluation_payload: dict[str, Any]
 
 
 @dataclass(frozen=True)
@@ -85,6 +95,10 @@ def evaluate_validation_snapshot(
     observation_rows: list[dict[str, Any]],
     model_slots: list[ModelSlot],
     config: StrategyConfig,
+    stage_score_rows: Iterable[dict[str, Any]] = (),
+    persisted_weight_snapshot: dict[str, Any] | None = None,
+    stage_weight_config: StageWeightConfig | None = None,
+    code_revision: str = "unknown",
 ) -> ValidationShadowEvaluation:
     target = date.fromisoformat(str(snapshot_row["target_date"]))
     evaluated_at = _parse_dt(str(snapshot_row["captured_utc"]))
@@ -92,7 +106,22 @@ def evaluate_validation_snapshot(
     model_inputs = _canonical_model_inputs(model_rows)
     brackets = _market_brackets(market_rows)
     observed_high = _observed_high(observation_rows, target)
-    weights = _launch_weights(model_inputs.keys(), config) if model_inputs else {}
+    evaluation_id = _evaluation_id(target, evaluated_at, model_inputs, market_rows)
+    weight_config = stage_weight_config or load_stage_weight_config()
+    weight_snapshot = persisted_weight_snapshot or build_stage_weight_snapshot(
+        evaluation_id=evaluation_id,
+        evaluated_at=evaluated_at,
+        target_date=target,
+        strategy_config_hash=config.config_hash,
+        code_revision=code_revision,
+        bracket_count=len(brackets),
+        score_rows=stage_score_rows,
+        available={key: key in model_inputs for key in CANONICAL_MODEL_KEYS},
+        config=weight_config,
+    )
+    if str(weight_snapshot.get("evaluationId")) != evaluation_id:
+        raise ValueError("persisted stage-weight snapshot does not match evaluation")
+    weights = _weights_for_mode(weight_snapshot, weight_config.primary_mode)
     _annotate_model_slots(model_slots, brackets, weights)
 
     gates = _base_gates(
@@ -101,7 +130,24 @@ def evaluate_validation_snapshot(
         observed_high=observed_high,
         config=config,
     )
-    enough_models = len(model_inputs) >= config.minimum_feeds_for_trade_probability
+    weighting_ready = weight_snapshot.get("status") != "BLOCKED"
+    if not weighting_ready:
+        audit = weight_snapshot.get("_audit") or {}
+        gates.append(
+            GateState(
+                code=weighting_reason_code(weight_snapshot),
+                label="Stage-adaptive weighting",
+                severity="block",
+                detail=str(
+                    audit.get("blockedDetail")
+                    or "The stage-weight snapshot is blocked by an eligibility invariant."
+                ),
+            )
+        )
+    enough_models = (
+        len(model_inputs) >= config.minimum_feeds_for_trade_probability
+        and weighting_ready
+    )
     settlement_ready = _settlement_rules_verified(brackets.values())
     enough_brackets = bool(brackets) and settlement_ready
     if not enough_models or not enough_brackets:
@@ -109,19 +155,26 @@ def evaluate_validation_snapshot(
             evaluated_at=evaluated_at,
             status="DATA_INCOMPLETE",
             reason_code=(
-                NO_TRADE_TOO_FEW_MODELS
+                weighting_reason_code(weight_snapshot)
+                if not weighting_ready
+                else NO_TRADE_TOO_FEW_MODELS
                 if not enough_models
                 else NO_TRADE_SETTLEMENT_RULES_UNVERIFIED
             ),
             reason_text=(
-                f"{len(model_inputs)} canonical model states and {len(brackets)} market brackets "
-                "are available; shadow probability evaluation is waiting for a complete "
-                "settlement ladder."
+                "Stage-adaptive weighting is blocked by the persisted feed eligibility "
+                "or cap invariants."
+                if not weighting_ready
+                else (
+                    f"{len(model_inputs)} canonical model states and {len(brackets)} market brackets "
+                    "are available; shadow probability evaluation is waiting for a complete "
+                    "settlement ladder."
+                )
             ),
         )
         market = _plain_market_rows(market_rows, brackets)
         lab = _probability_lab_payload(
-            evaluation_id=_evaluation_id(target, evaluated_at, model_inputs, market_rows),
+            evaluation_id=evaluation_id,
             target=target,
             evaluated_at=evaluated_at,
             model_inputs=model_inputs,
@@ -132,6 +185,8 @@ def evaluate_validation_snapshot(
             market=market,
             side_evaluations=[],
             mode="incomplete",
+            weight_snapshot=public_weight_snapshot(weight_snapshot),
+            mode_outputs={},
         )
         risk = RiskSnapshot(
             model_spread_f=_model_spread(model_inputs),
@@ -156,6 +211,12 @@ def evaluate_validation_snapshot(
                 quote_only=True,
             ),
             source_ids=source_ids,
+            weight_snapshot=weight_snapshot,
+            evaluation_payload=_persisted_evaluation_payload(
+                mode_outputs={},
+                decision=decision,
+                analysis_state="DATA_BLOCKED",
+            ),
         )
 
     model_probabilities = {
@@ -167,20 +228,27 @@ def evaluate_validation_snapshot(
         )
         for model_key, row in model_inputs.items()
     }
-    bracket_probabilities = _mixture_probabilities(
-        brackets=brackets,
-        model_probabilities=model_probabilities,
-        weights=weights,
-        effective_n=20.0,
-    )
-    market, side_evaluations = _evaluated_market_rows(
-        market_rows=market_rows,
-        brackets=brackets,
-        bracket_probabilities=bracket_probabilities,
-        model_probabilities=model_probabilities,
-        hurdle=config.launch_expected_roi_hurdle,
-    )
-    selected = _best_side(side_evaluations, config.launch_expected_roi_hurdle)
+    mode_evaluations = {
+        mode: _evaluate_weighting_mode(
+            mode=mode,
+            weights=_weights_for_mode(weight_snapshot, mode),
+            brackets=brackets,
+            model_probabilities=model_probabilities,
+            market_rows=market_rows,
+            hurdle=config.launch_expected_roi_hurdle,
+        )
+        for mode in WEIGHTING_MODES
+    }
+    primary_evaluation = mode_evaluations[weight_config.primary_mode]
+    bracket_probabilities = primary_evaluation["bracket_probabilities"]
+    market = primary_evaluation["market"]
+    side_evaluations = primary_evaluation["side_evaluations"]
+    selected = primary_evaluation["selected"]
+    mode_outputs = {
+        mode: _weighting_mode_payload(mode, result)
+        for mode, result in mode_evaluations.items()
+    }
+    _attach_counterfactual_decisions(weight_snapshot, mode_outputs)
     for row in market:
         row.candidate = selected is not None and row.ticker == selected.ticker
 
@@ -227,7 +295,7 @@ def evaluate_validation_snapshot(
 
     leader = _market_leader(market)
     lab = _probability_lab_payload(
-        evaluation_id=_evaluation_id(target, evaluated_at, model_inputs, market_rows),
+        evaluation_id=evaluation_id,
         target=target,
         evaluated_at=evaluated_at,
         model_inputs=model_inputs,
@@ -238,6 +306,8 @@ def evaluate_validation_snapshot(
         market=market,
         side_evaluations=side_evaluations,
         mode="quote_shadow",
+        weight_snapshot=public_weight_snapshot(weight_snapshot),
+        mode_outputs=mode_outputs,
     )
     risk = RiskSnapshot(
         model_spread_f=_model_spread(model_inputs),
@@ -264,7 +334,37 @@ def evaluate_validation_snapshot(
             quote_only=True,
         ),
         source_ids=source_ids,
+        weight_snapshot=weight_snapshot,
+        evaluation_payload=_persisted_evaluation_payload(
+            mode_outputs=mode_outputs,
+            decision=decision,
+            analysis_state="ANALYSIS_READY",
+        ),
     )
+
+
+def _persisted_evaluation_payload(
+    *,
+    mode_outputs: dict[str, Any],
+    decision: DecisionState,
+    analysis_state: str,
+) -> dict[str, Any]:
+    execution_state = {
+        "DATA_INCOMPLETE": "BLOCKED",
+        "SHADOW_ONLY": "SHADOW_CANDIDATE",
+    }.get(decision.status, "NO_TRADE")
+    return {
+        "mode_outputs": mode_outputs,
+        "index": {
+            "analysisState": analysis_state,
+            "executionState": execution_state,
+            "finalReasonCode": decision.reason_code,
+            "selectedMarketTicker": decision.focus_ticker,
+            "selectedSide": (
+                str(decision.focus_side).lower() if decision.focus_side else None
+            ),
+        },
+    }
 
 
 def _canonical_model_inputs(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -300,6 +400,25 @@ def _market_brackets(rows: list[dict[str, Any]]) -> dict[str, Bracket]:
         if bracket is not None:
             output[ticker] = bracket
     return output
+
+
+def outcome_map_hash_for_market_rows(rows: list[dict[str, Any]]) -> str | None:
+    brackets = _market_brackets(rows)
+    if len(brackets) < 2:
+        return None
+    definitions = [
+        {"lo_f": bracket.lo_f, "hi_f": bracket.hi_f}
+        for bracket in sorted(
+            brackets.values(),
+            key=lambda item: (
+                float("-inf") if item.lo_f is None else float(item.lo_f),
+                float("inf") if item.hi_f is None else float(item.hi_f),
+            ),
+        )
+    ]
+    return hashlib.sha256(
+        json.dumps(definitions, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
 
 
 def _bracket_from_row(row: dict[str, Any]) -> Bracket | None:
@@ -351,6 +470,80 @@ def _launch_weights(keys: Iterable[str], config: StrategyConfig) -> dict[str, fl
         for key in receivers:
             weights[key] += released * weights[key] / receiver_total if receiver_total else 0.0
     return {key: weights.get(key, 0.0) for key in CANONICAL_MODEL_KEYS}
+
+
+def _weights_for_mode(snapshot: dict[str, Any], mode: str) -> dict[str, float]:
+    for row in snapshot.get("counterfactuals", []):
+        if row.get("mode") == mode:
+            values = row.get("weights") or {}
+            return {
+                key: float(values.get(key, 0.0))
+                for key in CANONICAL_MODEL_KEYS
+            }
+    raise ValueError(f"stage-weight snapshot is missing mode {mode}")
+
+
+def _evaluate_weighting_mode(
+    *,
+    mode: str,
+    weights: dict[str, float],
+    brackets: dict[str, Bracket],
+    model_probabilities: dict[str, dict[str, float]],
+    market_rows: list[dict[str, Any]],
+    hurdle: Decimal,
+) -> dict[str, Any]:
+    bracket_probabilities = _mixture_probabilities(
+        brackets=brackets,
+        model_probabilities=model_probabilities,
+        weights=weights,
+        effective_n=20.0,
+    )
+    market, side_evaluations = _evaluated_market_rows(
+        market_rows=market_rows,
+        brackets=brackets,
+        bracket_probabilities=bracket_probabilities,
+        model_probabilities=model_probabilities,
+        hurdle=hurdle,
+    )
+    selected = _best_side(side_evaluations, hurdle)
+    for row in market:
+        row.candidate = selected is not None and row.ticker == selected.ticker
+    return {
+        "mode": mode,
+        "weights": weights,
+        "bracket_probabilities": bracket_probabilities,
+        "market": market,
+        "side_evaluations": side_evaluations,
+        "selected": selected,
+    }
+
+
+def _weighting_mode_payload(mode: str, result: dict[str, Any]) -> dict[str, Any]:
+    selected = result["selected"]
+    return {
+        "mode": mode,
+        "weights": result["weights"],
+        "bracket_probabilities": result["bracket_probabilities"],
+        "selected_market_ticker": selected.ticker if selected else None,
+        "selected_bracket": selected.bracket if selected else None,
+        "selected_side": selected.side if selected else None,
+        "selected_p_trade": selected.p_safe if selected else None,
+        "selected_required_probability": (
+            selected.required_probability if selected else None
+        ),
+        "selected_modeled_net_roi": float(selected.roi) if selected else None,
+    }
+
+
+def _attach_counterfactual_decisions(
+    snapshot: dict[str, Any],
+    mode_outputs: dict[str, dict[str, Any]],
+) -> None:
+    for row in snapshot.get("counterfactuals", []):
+        output = mode_outputs.get(str(row.get("mode"))) or {}
+        row["selectedMarketTicker"] = output.get("selected_market_ticker")
+        row["selectedSide"] = output.get("selected_side")
+        row["selectedPTrade"] = output.get("selected_p_trade")
 
 
 def _normalize(raw: dict[str, float]) -> dict[str, float]:
@@ -721,14 +914,23 @@ def _probability_lab_payload(
     market: list[MarketRow],
     side_evaluations: list[SideEvaluation],
     mode: str,
+    weight_snapshot: dict[str, Any],
+    mode_outputs: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
     focus = _best_side(side_evaluations, Decimal("0")) if side_evaluations else None
+    weight_models = {
+        str(item.get("modelKey")): item
+        for item in weight_snapshot.get("models", [])
+        if isinstance(item, dict)
+    }
     return {
         "schema_version": "probability_lab.v1",
         "evaluation_id": evaluation_id,
         "target_date": target.isoformat(),
         "evaluated_at": evaluated_at.isoformat(),
         "mode": mode,
+        "weighting": weight_snapshot,
+        "weighting_modes": mode_outputs,
         "calibration": {
             "source": "launch_default_residual",
             "settled_dates": 0,
@@ -740,10 +942,43 @@ def _probability_lab_payload(
             {
                 "model_key": key,
                 "label": strategy_model_by_key(key).key.upper(),
-                "prior_weight": float(strategy_model_by_key(key).prior_weight),
-                "effective_weight": weights.get(key, 0.0),
-                "completed_dates": 0,
-                "maturity_status": "launch_default" if key in model_inputs else "missing",
+                "prior_weight": float(
+                    weight_models.get(key, {}).get(
+                        "fixedPrior", strategy_model_by_key(key).prior_weight
+                    )
+                ),
+                "stage_prior": weight_models.get(key, {}).get("stagePrior"),
+                "stage_history_dates": weight_models.get(key, {}).get(
+                    "stageHistoryDates", 0
+                ),
+                "stage_n_eff": weight_models.get(key, {}).get("stageNEff", 0.0),
+                "stage_log_loss": weight_models.get(key, {}).get("stageLogLoss"),
+                "shrunk_log_loss": weight_models.get(key, {}).get("shrunkLogLoss"),
+                "reliability_multiplier": weight_models.get(key, {}).get(
+                    "reliabilityMultiplier", 1.0
+                ),
+                "pre_cap_weight": weight_models.get(key, {}).get("preCapWeight"),
+                "individual_cap_applied": weight_models.get(key, {}).get(
+                    "individualCapApplied", False
+                ),
+                "family_cap_applied": weight_models.get(key, {}).get(
+                    "familyCapApplied", False
+                ),
+                "maturity_cap": weight_models.get(key, {}).get("maturityCap", 1.0),
+                "maturity_cap_applied": weight_models.get(key, {}).get(
+                    "maturityCapApplied", False
+                ),
+                "effective_weight": weight_models.get(key, {}).get(
+                    "finalWeight", weights.get(key, 0.0)
+                ),
+                "completed_dates": weight_models.get(key, {}).get(
+                    "stageHistoryDates", 0
+                ),
+                "maturity_status": weight_models.get(key, {}).get(
+                    "weightingStatus", "missing"
+                ),
+                "eligibility": weight_models.get(key, {}).get("eligible", False),
+                "exclusion_reason": weight_models.get(key, {}).get("exclusionReason"),
             }
             for key in CANONICAL_MODEL_KEYS
         ],
@@ -796,6 +1031,10 @@ def _probability_lab_payload(
             "settlement_high": "settlement_high = max(observed_high_so_far, future_high_sample)",
             "component_probability": "p_model(bracket) = NormalCDF(upper) - NormalCDF(lower), adjusted for observed floor",
             "mixture": "p_mean_yes = sum(model_weight * p_model_yes)",
+            "stage_weight": (
+                "raw_weight = stage_prior * reliability_multiplier; "
+                "final_weight = deterministic capped redistribution(raw_weight)"
+            ),
             "safe_probability": "p_safe = Beta lower 10% bound with launch effective sample size",
             "economics": "EV = p_safe - all_in_cost; ROI = EV / all_in_cost",
             "book_source": "REST top-of-book quote only; sequence-valid executable depth is not connected",

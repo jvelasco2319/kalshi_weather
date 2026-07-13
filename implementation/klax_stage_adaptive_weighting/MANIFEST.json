@@ -1,0 +1,130 @@
+{
+  "package": "klax-stage-adaptive-weighting-2026-07-13",
+  "files": [
+    {
+      "path": "CODEX_MASTER_PROMPT.md",
+      "sha256": "70bd1d1f808a7e1500be57a4188c5451b244438340c40e9f0cbe30eb8e3f65aa",
+      "bytes": 7097
+    },
+    {
+      "path": "CODEX_TASK_GRAPH.yaml",
+      "sha256": "e99f898b41d4689e6be19d5305689edcc7a91d2b0e10411ba4d7d3a20ad4881b",
+      "bytes": 3835
+    },
+    {
+      "path": "README.md",
+      "sha256": "4dcbe7af76430bb4eb3e177446bd9c3ffaaef62dd8bf64fa4ca35905e5d676de",
+      "bytes": 2353
+    },
+    {
+      "path": "config/stage_adaptive_weights.shadow.yaml",
+      "sha256": "b752120ef10fb4fb5beb81deb96a11dcf2e83f61d0ecea6d4fc38ed3223e8864",
+      "bytes": 2874
+    },
+    {
+      "path": "contracts/stage_weight_snapshot.schema.json",
+      "sha256": "9e1a2670e2ae6bb10dce2b2f9ced4d3c2d819fe9c7cb71ca7612092d190b1be6",
+      "bytes": 7039
+    },
+    {
+      "path": "docs/01_DECISION_AND_SCOPE.md",
+      "sha256": "9ded793a9a72a16843ad7927b9ebc27750e38c49bf7b3e2916106ce21f16cefd",
+      "bytes": 1495
+    },
+    {
+      "path": "docs/02_STAGE_DEFINITIONS_AND_PRIORS.md",
+      "sha256": "db2786e6c4f056c7ccc24fded0782cdd7c8c2fd4b5bb6f8ca05862e8c101002b",
+      "bytes": 1894
+    },
+    {
+      "path": "docs/03_WEIGHTING_MATH.md",
+      "sha256": "d597ade48dd33d8c19ac6c231cf9f0dfa60700bf8d8d0d4964618de802b6a637",
+      "bytes": 3073
+    },
+    {
+      "path": "docs/04_WALK_FORWARD_SCORING_AND_BACKFILL.md",
+      "sha256": "ee942c0c434124b7175ca6e129e2c95fbc224a16593217fe93ca3ce8529f14f2",
+      "bytes": 1753
+    },
+    {
+      "path": "docs/05_INTEGRATION_AND_PERSISTENCE.md",
+      "sha256": "13d01ea73ab32554af90faefc170c8727a465438b106746507866b814936de68",
+      "bytes": 1486
+    },
+    {
+      "path": "docs/06_PROBABILITY_LAB_UI.md",
+      "sha256": "5332784ebf832fc9358db30a030e0b819767f326db0ea4682fc7503f6446fa2b",
+      "bytes": 2491
+    },
+    {
+      "path": "docs/07_ACCEPTANCE_TESTS.md",
+      "sha256": "4861a9fc10652315152bd3e3298fd19e27fa5347bee9d07410b3f696a46b323a",
+      "bytes": 2105
+    },
+    {
+      "path": "docs/08_ROLLOUT_AND_MONITORING.md",
+      "sha256": "6f7884da83e4eb679864f9a78135c1d96deffbd4d2e875e411e60e072b415370",
+      "bytes": 1374
+    },
+    {
+      "path": "evidence/README.md",
+      "sha256": "8de51885b277ddd6815b1700f3c4d776f5ceda9fc724914d2c75c8e946be6aad",
+      "bytes": 704
+    },
+    {
+      "path": "evidence/klax_july7_0724_1800_chatgpt_brief.md",
+      "sha256": "0e156183771468dc28d5f5016ff0f0b104b7a8fee37fcd9721f7bc648060a36e",
+      "bytes": 7533
+    },
+    {
+      "path": "evidence/klax_model_metrics_by_market_stage.csv",
+      "sha256": "270a03b3c99a4f2a2aec57525c13f51ebaa63762b927993240635dd77aafb2b3",
+      "bytes": 2560
+    },
+    {
+      "path": "evidence/klax_model_metrics_common_window.csv",
+      "sha256": "bd69fc101f21561d777f4bcde1ec2bd75bffd9c0adae052ff099c782550bc374",
+      "bytes": 645
+    },
+    {
+      "path": "fixtures/stage_weight_snapshot.example.json",
+      "sha256": "b099b3f62dc1922fe7335aa42cab08064be7f59ab5e74fd2b6dfd05f2c4fd6a0",
+      "bytes": 4932
+    },
+    {
+      "path": "reference/requirements.txt",
+      "sha256": "7a351ec326ec7e6dc0e50370101c5db7b3965b88942171b66297c185babb59c4",
+      "bytes": 37
+    },
+    {
+      "path": "reference/stage_weight_reference.py",
+      "sha256": "8192154c79b6d07844551002fb4fae49879615299ec98f3f6b9ee9eb65cdf0c2",
+      "bytes": 12144
+    },
+    {
+      "path": "reference/test_stage_weight_reference.py",
+      "sha256": "4f20eda8e1ba8fc8462cfd4401ba8431dbb857404a8b1a573e988247ef77e473",
+      "bytes": 4125
+    },
+    {
+      "path": "reference/verify_package.py",
+      "sha256": "12fc07e60f5888e044c0aa3566893bbdd9ba2ac10b7ea9c610a187b99338285f",
+      "bytes": 2826
+    },
+    {
+      "path": "ui_reference/README.md",
+      "sha256": "d53c2b7f5bad11964f3cc146b9c88a6e1f433cf747ff3e15c27a47a7b34e6c35",
+      "bytes": 632
+    },
+    {
+      "path": "ui_reference/approved_probability_lab_exact.html",
+      "sha256": "79d7fe8a7ab8e445a05f31c43e54f84b940969ab9a296da59614b3c0839c2018",
+      "bytes": 106938
+    },
+    {
+      "path": "ui_reference/current_signal_room_reference.png",
+      "sha256": "482707a871e49ee727afcf1527e4a93f66f64718a2430849b904a7b1df66bdd4",
+      "bytes": 238487
+    }
+  ]
+}

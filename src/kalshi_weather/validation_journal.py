@@ -7,6 +7,8 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
+from kalshi_weather.strategy_current.persistence import ensure_strategy_current_schema
+
 
 def _json_default(value: Any) -> str:
     if isinstance(value, datetime | date):
@@ -113,6 +115,7 @@ class ValidationJournal:
             );
             """
         )
+        ensure_strategy_current_schema(self.conn)
         self._ensure_additive_columns()
         self.conn.executescript(
             """
@@ -261,6 +264,10 @@ class ValidationJournal:
         return {"status": "recorded", "snapshot_id": snapshot_id}
 
     def _delete_snapshot(self, snapshot_id: int) -> None:
+        self.conn.execute(
+            "DELETE FROM strategy_stage_weight_evaluations WHERE source_snapshot_id = ?",
+            (snapshot_id,),
+        )
         for table in (
             "validation_model_rows",
             "validation_market_rows",

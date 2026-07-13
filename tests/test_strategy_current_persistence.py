@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime, timezone
+from copy import deepcopy
 from decimal import Decimal
 from pathlib import Path
 from shutil import rmtree
@@ -20,6 +21,11 @@ from kalshi_weather.strategy_current.persistence import (
     forecast_point_id,
     source_history_key,
     validate_trade_pull,
+)
+from kalshi_weather.strategy_current.registry import CANONICAL_MODEL_KEYS
+from kalshi_weather.strategy_current.stage_weighting import (
+    build_stage_weight_snapshot,
+    load_stage_weight_config,
 )
 
 
@@ -47,6 +53,8 @@ def test_strategy_schema_is_added_to_existing_sqlite_store() -> None:
         assert "strategy_current_raw_payloads" in tables
         assert "strategy_current_forecast_points" in tables
         assert "strategy_current_capture_manifests" in tables
+        assert "strategy_stage_performance" in tables
+        assert "strategy_stage_weight_evaluations" in tables
     finally:
         rmtree(base, ignore_errors=True)
 
@@ -202,3 +210,79 @@ def test_decimal_money_style_fields_remain_strings() -> None:
     )
 
     assert record.count_fp == "2.5000"
+
+
+def test_stage_performance_and_weight_evaluation_are_additive_and_immutable() -> None:
+    base = _scratch("stage-weight-persistence")
+    try:
+        sqlite_store = SQLiteStore(base / "paper.sqlite", base / "snapshots")
+        store = StrategyCurrentStore(sqlite_store.conn)
+        weight_config = load_stage_weight_config()
+        performance = {
+            "strategy_id": weight_config.strategy_id,
+            "weighting_revision": weight_config.weighting_revision,
+            "weighting_config_hash": weight_config.config_hash,
+            "model_key": "gfs013",
+            "target_date_local": "2026-07-12",
+            "stage_id": "target_11_13",
+            "outcome_map_hash": "outcome-map-1",
+            "realized_market_ticker": "KXHIGHLAX-26JUL12-B74.5",
+            "realized_bracket_index": 2,
+            "evaluation_count": 3,
+            "mean_log_loss": 0.5,
+            "mean_brier_score": 0.2,
+            "mean_absolute_temperature_error": 1.25,
+            "mean_temperature_bias": -0.5,
+            "source_evaluation_ids": ["eval-1", "eval-2", "eval-3"],
+            "settled_at_utc": "2026-07-13T08:00:00+00:00",
+            "created_at_utc": "2026-07-13T09:00:00+00:00",
+            "code_revision": "test",
+        }
+        assert store.save_stage_performance_rows([performance]) == 1
+        assert store.save_stage_performance_rows([performance]) == 1
+        history = store.load_stage_performance_rows(
+            strategy_id=weight_config.strategy_id,
+            weighting_revision=weight_config.weighting_revision,
+            before_target_date="2026-07-13",
+            settled_by=datetime(2026, 7, 13, 12, tzinfo=timezone.utc),
+        )
+        assert len(history) == 1
+        assert history[0]["source_evaluation_ids"] == ["eval-1", "eval-2", "eval-3"]
+
+        snapshot = build_stage_weight_snapshot(
+            evaluation_id="weight-eval-1",
+            evaluated_at=datetime(2026, 7, 13, 12, tzinfo=timezone.utc),
+            target_date=date(2026, 7, 13),
+            strategy_config_hash="strategy-hash",
+            code_revision="test",
+            bracket_count=6,
+            score_rows=history,
+            available={key: True for key in CANONICAL_MODEL_KEYS},
+            config=weight_config,
+        )
+        payload = {"mode_outputs": {"fixed_baseline": []}}
+        assert store.save_stage_weight_evaluation(
+            snapshot,
+            source_snapshot_id=7,
+            evaluation_payload=payload,
+        ) == "recorded"
+        assert store.save_stage_weight_evaluation(
+            snapshot,
+            source_snapshot_id=7,
+            evaluation_payload=payload,
+        ) == "existing"
+        loaded = store.load_stage_weight_evaluation("weight-eval-1")
+        assert loaded is not None
+        assert loaded["weight_snapshot"]["evaluationId"] == "weight-eval-1"
+        assert loaded["evaluation_payload"] == payload
+
+        changed = deepcopy(snapshot)
+        changed["status"] = "READY"
+        with pytest.raises(ValueError, match="immutable"):
+            store.save_stage_weight_evaluation(
+                changed,
+                source_snapshot_id=7,
+                evaluation_payload=payload,
+            )
+    finally:
+        rmtree(base, ignore_errors=True)

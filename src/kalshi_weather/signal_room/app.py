@@ -240,6 +240,39 @@ def create_app(
             replay_mode=mode == "replay" or bool(sample_snapshots),
         )
 
+    @app.get("/api/strategy/current/events/{event_ticker}/weighting/latest")
+    def strategy_weighting_latest(
+        event_ticker: str,
+        target: date | None = Query(None),
+    ) -> dict[str, Any]:
+        selected_target = target or target_date or _target_from_event_ticker(event_ticker)
+        snap = _snapshot_for_request(
+            service=service,
+            sample_snapshots=sample_snapshots,
+            event_ticker=event_ticker,
+            target=selected_target,
+            as_of=None,
+        )
+        return _weighting_api_snapshot(snap)
+
+    @app.get("/api/strategy/current/events/{event_ticker}/probability-lab/latest")
+    def strategy_probability_lab_latest(
+        event_ticker: str,
+        target: date | None = Query(None),
+    ) -> dict[str, Any]:
+        selected_target = target or target_date or _target_from_event_ticker(event_ticker)
+        snap = _snapshot_for_request(
+            service=service,
+            sample_snapshots=sample_snapshots,
+            event_ticker=event_ticker,
+            target=selected_target,
+            as_of=None,
+        )
+        return _probability_lab_bundle(
+            snap,
+            replay_mode=mode == "replay" or bool(sample_snapshots),
+        )
+
     @app.get("/api/strategy/current/events/{event_ticker}/explainability")
     def strategy_explainability_by_id(
         event_ticker: str,
@@ -264,6 +297,89 @@ def create_app(
             replay_mode=mode == "replay" or bool(sample_snapshots),
         )
 
+    @app.get("/api/strategy/current/events/{event_ticker}/weighting")
+    def strategy_weighting_by_id(
+        event_ticker: str,
+        evaluation_id: str = Query(...),
+        target: date | None = Query(None),
+        limit: int = Query(500, ge=1, le=500),
+    ) -> dict[str, Any]:
+        selected_target = target or target_date or _target_from_event_ticker(event_ticker)
+        snap = _find_snapshot_by_evaluation_id(
+            service=service,
+            sample_snapshots=sample_snapshots,
+            event_ticker=event_ticker,
+            target=selected_target,
+            evaluation_id=evaluation_id,
+            limit=limit,
+            replay_mode=mode == "replay" or bool(sample_snapshots),
+        )
+        if snap is None:
+            raise HTTPException(status_code=404, detail="evaluation not found")
+        return _weighting_api_snapshot(snap)
+
+    @app.get("/api/strategy/current/events/{event_ticker}/probability-lab")
+    def strategy_probability_lab_by_id(
+        event_ticker: str,
+        evaluation_id: str = Query(...),
+        target: date | None = Query(None),
+        limit: int = Query(500, ge=1, le=500),
+    ) -> dict[str, Any]:
+        selected_target = target or target_date or _target_from_event_ticker(event_ticker)
+        snap = _find_snapshot_by_evaluation_id(
+            service=service,
+            sample_snapshots=sample_snapshots,
+            event_ticker=event_ticker,
+            target=selected_target,
+            evaluation_id=evaluation_id,
+            limit=limit,
+            replay_mode=mode == "replay" or bool(sample_snapshots),
+        )
+        if snap is None:
+            raise HTTPException(status_code=404, detail="evaluation not found")
+        return _probability_lab_bundle(
+            snap,
+            replay_mode=mode == "replay" or bool(sample_snapshots),
+        )
+
+    @app.get("/api/strategy/current/events/{event_ticker}/weighting/history")
+    def strategy_weighting_history(
+        event_ticker: str,
+        target: date | None = Query(None),
+        limit: int = Query(100, ge=1, le=500),
+    ) -> list[dict[str, Any]]:
+        selected_target = target or target_date or _target_from_event_ticker(event_ticker)
+        if sample_snapshots:
+            snapshots = [
+                SignalRoomSnapshot.model_validate(item)
+                for item in sample_snapshots[-limit:]
+            ]
+        else:
+            history_target = selected_target or service.list_events()[0].target_date
+            rows = service.repository.stage_weight_evaluation_history(
+                target_date=history_target,
+                weighting_revision=service.stage_weight_config.weighting_revision,
+                limit=limit,
+            )
+            if rows:
+                return [_weighting_api_row(row) for row in rows]
+            snapshots = [
+                service.latest_snapshot(
+                    event_ticker=event_ticker,
+                    target_date=selected_target,
+                )
+            ]
+        output: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        for snap in snapshots:
+            row = _weighting_api_snapshot(snap)
+            evaluation_id = str(row["evaluation_id"])
+            if evaluation_id in seen:
+                continue
+            seen.add(evaluation_id)
+            output.append(row)
+        return output
+
     @app.get("/api/strategy/current/events/{event_ticker}/evaluations")
     def strategy_evaluations(
         event_ticker: str,
@@ -277,21 +393,18 @@ def create_app(
                 snap = SignalRoomSnapshot.model_validate(item)
                 items.append(evaluation_index_item(snap))
             return items
-        points = service.timeline(target_date=selected_target, limit=limit)
-        items = []
-        seen: set[str] = set()
-        for point in points:
-            snap = service.latest_snapshot(
-                event_ticker=event_ticker,
-                target_date=selected_target,
-                as_of=point.evaluated_at,
-            )
-            item = evaluation_index_item(snap)
-            if item["evaluationId"] in seen:
-                continue
-            seen.add(str(item["evaluationId"]))
-            items.append(item)
-        return items
+        rows = service.repository.stage_weight_evaluation_history(
+            target_date=selected_target,
+            weighting_revision=service.stage_weight_config.weighting_revision,
+            limit=limit,
+        )
+        if rows:
+            return [_evaluation_index_from_weight_row(row, event_ticker) for row in rows]
+        snap = service.latest_snapshot(
+            event_ticker=event_ticker,
+            target_date=selected_target,
+        )
+        return [evaluation_index_item(snap)]
 
     return app
 
@@ -315,6 +428,88 @@ def _snapshot_for_request(
         ]
         return SignalRoomSnapshot.model_validate((eligible or sample_snapshots[:1])[-1])
     return service.latest_snapshot(event_ticker=event_ticker, target_date=target, as_of=as_of)
+
+
+def _weighting_api_snapshot(snapshot: SignalRoomSnapshot) -> dict[str, Any]:
+    lab = snapshot.probability_lab or {}
+    return {
+        "evaluation_id": str(lab.get("evaluation_id") or snapshot.revision),
+        "evaluated_at": snapshot.decision.evaluated_at.isoformat(),
+        "target_date": snapshot.event.target_date.isoformat(),
+        "weighting": lab.get("weighting") or {},
+        "weighting_modes": lab.get("weighting_modes") or {},
+        "equation_trace": lab.get("equation_trace") or {},
+        "order_submission_reachable": snapshot.strategy.order_submission_reachable,
+    }
+
+
+def _probability_lab_bundle(
+    snapshot: SignalRoomSnapshot,
+    *,
+    replay_mode: bool,
+) -> dict[str, Any]:
+    return {
+        "explainability": canonical_explainability_snapshot(
+            snapshot,
+            replay_mode=replay_mode,
+        ),
+        "weighting": _weighting_api_snapshot(snapshot),
+    }
+
+
+def _weighting_api_row(row: dict[str, Any]) -> dict[str, Any]:
+    payload = row.get("evaluation_payload") or {}
+    return {
+        "evaluation_id": str(row["evaluation_id"]),
+        "evaluated_at": str(row["evaluated_at_utc"]),
+        "target_date": str(row["target_date_local"]),
+        "weighting": row.get("weight_snapshot") or {},
+        "weighting_modes": payload.get("mode_outputs") or {},
+        "equation_trace": payload.get("equation_trace") or {},
+        "order_submission_reachable": False,
+    }
+
+
+def _evaluation_index_from_weight_row(
+    row: dict[str, Any],
+    event_ticker: str,
+) -> dict[str, Any]:
+    weighting = row.get("weight_snapshot") or {}
+    payload = row.get("evaluation_payload") or {}
+    index = payload.get("index") if isinstance(payload.get("index"), dict) else {}
+    mode_outputs = payload.get("mode_outputs") or {}
+    primary = mode_outputs.get(str(row.get("primary_mode"))) or {}
+    counterfactuals = weighting.get("counterfactuals") or []
+    primary_counterfactual = next(
+        (item for item in counterfactuals if item.get("isPrimary")),
+        {},
+    )
+    selected_ticker = (
+        index.get("selectedMarketTicker")
+        or primary.get("selected_market_ticker")
+        or primary_counterfactual.get("selectedMarketTicker")
+    )
+    selected_side = (
+        index.get("selectedSide")
+        or primary.get("selected_side")
+        or primary_counterfactual.get("selectedSide")
+    )
+    blocked = str(row.get("readiness_status")) == "BLOCKED"
+    audit = weighting.get("_audit") or {}
+    return {
+        "evaluationId": str(row["evaluation_id"]),
+        "evaluatedAt": str(row["evaluated_at_utc"]),
+        "analysisState": index.get("analysisState")
+        or ("DATA_BLOCKED" if blocked else "ANALYSIS_READY"),
+        "executionState": index.get("executionState")
+        or ("BLOCKED" if blocked else "SHADOW_CANDIDATE" if selected_ticker else "NO_TRADE"),
+        "finalReasonCode": index.get("finalReasonCode")
+        or audit.get("blockedReasonCode")
+        or ("PERSISTED_SHADOW_CANDIDATE" if selected_ticker else "PERSISTED_NO_TRADE"),
+        "eventTicker": event_ticker,
+        "selectedMarketTicker": selected_ticker,
+        "selectedSide": selected_side,
+    }
 
 
 def _load_sample_snapshots(path: str | Path | None) -> list[dict[str, Any]]:
@@ -366,6 +561,21 @@ def _find_snapshot_by_evaluation_id(
         latest = service.latest_snapshot(event_ticker=event_ticker, target_date=None)
         canonical = canonical_explainability_snapshot(latest, replay_mode=replay_mode)
         return latest if canonical["evaluationId"] == evaluation_id else None
+    persisted = service.repository.stage_weight_evaluation(evaluation_id)
+    if (
+        persisted is not None
+        and persisted.get("target_date_local") == target.isoformat()
+        and persisted.get("weighting_revision")
+        == service.stage_weight_config.weighting_revision
+    ):
+        snap = service.latest_snapshot(
+            event_ticker=event_ticker,
+            target_date=target,
+            as_of=_iso_dt(str(persisted["evaluated_at_utc"])),
+        )
+        canonical = canonical_explainability_snapshot(snap, replay_mode=replay_mode)
+        if canonical["evaluationId"] == evaluation_id:
+            return snap
     points = service.timeline(target_date=target, limit=limit)
     for point in reversed(points):
         snap = service.latest_snapshot(

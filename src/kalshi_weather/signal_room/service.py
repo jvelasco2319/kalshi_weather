@@ -23,14 +23,23 @@ from kalshi_weather.signal_room.api_models import (
     SignalRoomTimelinePoint,
     StrategyState,
 )
-from kalshi_weather.signal_room.evaluation import evaluate_validation_snapshot
+from kalshi_weather.signal_room.evaluation import (
+    ValidationShadowEvaluation,
+    evaluate_validation_snapshot,
+    outcome_map_hash_for_market_rows,
+)
 from kalshi_weather.signal_room.repository import SignalRoomReadRepository
 from kalshi_weather.strategy_current.config import StrategyConfig, load_strategy_config
+from kalshi_weather.strategy_current.persistence import StrategyCurrentStore
 from kalshi_weather.strategy_current.reason_codes import NO_TRADE_CAPTURE_INCOMPLETE
 from kalshi_weather.strategy_current.registry import (
     CANONICAL_MODEL_KEYS,
     canonicalize_model_key,
     strategy_model_by_key,
+)
+from kalshi_weather.strategy_current.stage_weighting import (
+    StageWeightConfig,
+    load_stage_weight_config,
 )
 
 NO_TRADE_PROBABILITY_UNCALIBRATED = "NO_TRADE_PROBABILITY_UNCALIBRATED"
@@ -59,9 +68,11 @@ class SignalRoomService:
         *,
         repository: SignalRoomReadRepository,
         config: StrategyConfig | None = None,
+        stage_weight_config: StageWeightConfig | None = None,
     ) -> None:
         self.repository = repository
         self.config = config or load_strategy_config()
+        self.stage_weight_config = stage_weight_config or load_stage_weight_config()
 
     def health(self) -> HealthResponse:
         return HealthResponse(
@@ -250,13 +261,12 @@ class SignalRoomService:
                     model_rows,
                     _parse_dt(str(validation_snapshot["captured_utc"])),
                 )
-                evaluation = evaluate_validation_snapshot(
+                evaluation = self._evaluate_validation_snapshot(
                     snapshot_row=validation_snapshot,
                     model_rows=model_rows,
                     market_rows=market_rows,
                     observation_rows=observation_rows,
                     model_slots=models,
-                    config=self.config,
                 )
                 gates = _with_validation_source_gate(evaluation.gates)
                 status = "invalid" if any(gate.severity == "block" for gate in gates) else "warning"
@@ -308,13 +318,12 @@ class SignalRoomService:
             status=_validation_event_status(market_rows),
         )
         models = _validation_model_slots(model_rows, captured_at)
-        evaluation = evaluate_validation_snapshot(
+        evaluation = self._evaluate_validation_snapshot(
             snapshot_row=snapshot_row,
             model_rows=model_rows,
             market_rows=market_rows,
             observation_rows=observation_rows,
             model_slots=models,
-            config=self.config,
         )
         gates = _with_validation_source_gate(evaluation.gates)
         revision = _revision(
@@ -345,6 +354,53 @@ class SignalRoomService:
                 "Probabilities and economics are quote-based shadow outputs; order submission is disabled."
             ),
         )
+
+    def _evaluate_validation_snapshot(
+        self,
+        *,
+        snapshot_row: dict[str, Any],
+        model_rows: list[dict[str, Any]],
+        market_rows: list[dict[str, Any]],
+        observation_rows: list[dict[str, Any]],
+        model_slots: list[ModelSlot],
+    ) -> ValidationShadowEvaluation:
+        snapshot_id = int(snapshot_row["id"])
+        target = date.fromisoformat(str(snapshot_row["target_date"]))
+        evaluated_at = _parse_dt(str(snapshot_row["captured_utc"]))
+        persisted = self.repository.stage_weight_evaluation_for_snapshot(
+            source_snapshot_id=snapshot_id,
+            weighting_revision=self.stage_weight_config.weighting_revision,
+        )
+        score_rows = self.repository.stage_performance_rows(
+            strategy_id=self.stage_weight_config.strategy_id,
+            weighting_revision=self.stage_weight_config.weighting_revision,
+            before_target_date=target,
+            settled_by=evaluated_at,
+            outcome_map_hash=outcome_map_hash_for_market_rows(market_rows),
+        )
+        evaluation = evaluate_validation_snapshot(
+            snapshot_row=snapshot_row,
+            model_rows=model_rows,
+            market_rows=market_rows,
+            observation_rows=observation_rows,
+            model_slots=model_slots,
+            config=self.config,
+            stage_score_rows=score_rows,
+            persisted_weight_snapshot=(persisted or {}).get("weight_snapshot"),
+            stage_weight_config=self.stage_weight_config,
+            code_revision=_code_revision(),
+        )
+        if persisted is None and self.repository.sqlite_path is not None:
+            store = StrategyCurrentStore.open(self.repository.sqlite_path)
+            try:
+                store.save_stage_weight_evaluation(
+                    evaluation.weight_snapshot,
+                    source_snapshot_id=snapshot_id,
+                    evaluation_payload=evaluation.evaluation_payload,
+                )
+            finally:
+                store.conn.close()
+        return evaluation
 
 
 def _model_slots(model_rows: list[dict[str, Any]]) -> list[ModelSlot]:

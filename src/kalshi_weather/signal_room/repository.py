@@ -195,6 +195,116 @@ class SignalRoomReadRepository:
             )
         return [dict(row) for row in rows]
 
+    def stage_performance_rows(
+        self,
+        *,
+        strategy_id: str,
+        weighting_revision: str,
+        before_target_date: date,
+        settled_by: datetime,
+        outcome_map_hash: str | None = None,
+    ) -> list[dict[str, Any]]:
+        """Return only performance that was settled before this evaluation."""
+        if not self.database_present:
+            return []
+        outcome_clause = ""
+        params: list[Any] = [
+            strategy_id,
+            weighting_revision,
+            before_target_date.isoformat(),
+            settled_by.astimezone(timezone.utc).isoformat(),
+        ]
+        if outcome_map_hash is not None:
+            outcome_clause = "AND outcome_map_hash = ?"
+            params.append(outcome_map_hash)
+        with self._connect() as conn:
+            rows = _safe_query(
+                conn,
+                f"""
+                SELECT *
+                FROM strategy_stage_performance
+                WHERE strategy_id = ?
+                  AND weighting_revision = ?
+                  AND target_date_local < ?
+                  AND settled_at_utc <= ?
+                  {outcome_clause}
+                ORDER BY target_date_local DESC, model_key, stage_id
+                """,
+                params,
+            )
+        output: list[dict[str, Any]] = []
+        for value in rows:
+            row = dict(value)
+            row["source_evaluation_ids"] = _json_list(
+                row.get("source_evaluation_ids_json")
+            )
+            output.append(row)
+        return output
+
+    def stage_weight_evaluation_for_snapshot(
+        self,
+        *,
+        source_snapshot_id: int,
+        weighting_revision: str,
+    ) -> dict[str, Any] | None:
+        if not self.database_present:
+            return None
+        with self._connect() as conn:
+            rows = _safe_query(
+                conn,
+                """
+                SELECT *
+                FROM strategy_stage_weight_evaluations
+                WHERE source_snapshot_id = ? AND weighting_revision = ?
+                LIMIT 1
+                """,
+                [source_snapshot_id, weighting_revision],
+            )
+        return _stage_weight_evaluation_row(rows[0]) if rows else None
+
+    def stage_weight_evaluation(
+        self,
+        evaluation_id: str,
+    ) -> dict[str, Any] | None:
+        if not self.database_present:
+            return None
+        with self._connect() as conn:
+            rows = _safe_query(
+                conn,
+                """
+                SELECT *
+                FROM strategy_stage_weight_evaluations
+                WHERE evaluation_id = ?
+                LIMIT 1
+                """,
+                [evaluation_id],
+            )
+        return _stage_weight_evaluation_row(rows[0]) if rows else None
+
+    def stage_weight_evaluation_history(
+        self,
+        *,
+        target_date: date,
+        weighting_revision: str,
+        limit: int,
+    ) -> list[dict[str, Any]]:
+        if not self.database_present:
+            return []
+        bounded_limit = min(max(limit, 1), 500)
+        with self._connect() as conn:
+            rows = _safe_query(
+                conn,
+                """
+                SELECT *
+                FROM strategy_stage_weight_evaluations
+                WHERE target_date_local = ? AND weighting_revision = ?
+                ORDER BY evaluated_at_utc DESC
+                LIMIT ?
+                """,
+                [target_date.isoformat(), weighting_revision, bounded_limit],
+            )
+        return [_stage_weight_evaluation_row(row) for row in reversed(rows)]
+
     def timeline(
         self,
         *,
@@ -294,3 +404,20 @@ def _json_object(value: Any) -> dict[str, Any]:
     except json.JSONDecodeError:
         return {}
     return payload if isinstance(payload, dict) else {}
+
+
+def _json_list(value: Any) -> list[Any]:
+    if not value:
+        return []
+    try:
+        payload = json.loads(str(value))
+    except json.JSONDecodeError:
+        return []
+    return payload if isinstance(payload, list) else []
+
+
+def _stage_weight_evaluation_row(row: sqlite3.Row) -> dict[str, Any]:
+    item = dict(row)
+    item["weight_snapshot"] = _json_object(item.get("weight_snapshot_json"))
+    item["evaluation_payload"] = _json_object(item.get("evaluation_payload_json"))
+    return item

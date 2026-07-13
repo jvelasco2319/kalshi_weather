@@ -21,6 +21,7 @@
     snapshot: null,
     events: [],
     evaluations: [],
+    weightHistory: [],
     eventTicker: null,
     targetDate: null,
     selectedMarketTicker: null,
@@ -61,6 +62,13 @@
   function fmtTemp(value) {
     const numeric = num(value);
     return numeric === null ? "--" : `${numeric.toFixed(1)} F`;
+  }
+  function fmtNumber(value, digits) {
+    const numeric = num(value);
+    return numeric === null ? "--" : numeric.toFixed(digits ?? 2);
+  }
+  function stageLabel(value) {
+    return String(value || "--").replaceAll("_", " ").toUpperCase();
   }
   function fmtTime(value) {
     if (!value) return "--";
@@ -118,11 +126,26 @@
     range.value = String(Math.max(0, state.evaluations.length - 1));
   }
 
+  async function loadWeightHistory() {
+    if (!state.eventTicker) return;
+    const url = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}/weighting/history${targetQuery()}`;
+    state.weightHistory = await getJson(url);
+  }
+
+  function withWeighting(payload, weightingPayload) {
+    return {
+      ...payload,
+      weighting: weightingPayload.weighting || {},
+      weightingModes: weightingPayload.weighting_modes || {},
+      weightingEquationTrace: weightingPayload.equation_trace || {},
+    };
+  }
+
   async function loadLatest() {
     if (!state.eventTicker) return;
-    const url = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}/explainability/latest${targetQuery()}`;
-    const payload = await getJson(url);
-    acceptSnapshot(payload);
+    const base = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}`;
+    const bundle = await getJson(`${base}/probability-lab/latest${targetQuery()}`);
+    acceptSnapshot(withWeighting(bundle.explainability, bundle.weighting));
     state.live = true;
     render();
   }
@@ -132,9 +155,9 @@
     const params = new URLSearchParams();
     params.set("evaluation_id", evaluationId);
     if (state.targetDate) params.set("target", state.targetDate);
-    const url = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}/explainability?${params}`;
-    const payload = await getJson(url);
-    acceptSnapshot(payload);
+    const base = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}`;
+    const bundle = await getJson(`${base}/probability-lab?${params}`);
+    acceptSnapshot(withWeighting(bundle.explainability, bundle.weighting));
     state.live = false;
     render();
   }
@@ -217,6 +240,11 @@
       banner.hidden = true;
     }
     renderHero(snap, selectedBracket);
+    renderWeightStatus(snap);
+    renderWeightLegend();
+    renderWeightHistory();
+    renderWeightAttribution(snap);
+    renderCounterfactuals(snap);
     renderDistributionLegend(snap);
     renderDistributionChart(snap);
     renderLedger(snap);
@@ -244,6 +272,126 @@
 
   function modelProbability(model, ticker) {
     return (model.bracketProbabilities || []).find((item) => item.marketTicker === ticker) || null;
+  }
+
+  function weightingModel(modelKey) {
+    return (state.snapshot?.weighting?.models || []).find((item) => item.modelKey === modelKey) || null;
+  }
+
+  function renderWeightStatus(snap) {
+    const weighting = snap.weighting || {};
+    const stage = weighting.stage || {};
+    text("#weightStage", stageLabel(stage.stageId));
+    text("#weightMode", stageLabel(weighting.primaryMode));
+    text("#weightRevision", weighting.weightingRevision || "--");
+    const transition = stage.transitionFromStage
+      ? `${stageLabel(stage.transitionFromStage)} -> ${stageLabel(stage.stageId)} (${fmtPct(stage.transitionAlpha, 0)})`
+      : "STABLE";
+    text("#weightTransition", transition);
+    text("#weightReadiness", weighting.status || "--");
+  }
+
+  function renderWeightLegend() {
+    const legend = $("#weightLegend");
+    legend.replaceChildren();
+    MODEL_ORDER.forEach((key) => {
+      const item = document.createElement("span");
+      item.innerHTML = `<i style="background:${MODEL_COLORS[key]}"></i>${esc(MODEL_LABELS[key])}`;
+      legend.appendChild(item);
+    });
+  }
+
+  function renderWeightHistory() {
+    const chart = $("#weightHistoryChart");
+    const rows = (state.weightHistory || []).filter((row) => (row.weighting?.models || []).length);
+    text("#weightHistorySource", `${rows.length} immutable evaluations`);
+    if (!rows.length) {
+      chart.textContent = "No persisted weight history is available for this event.";
+      return;
+    }
+    const width = 940, height = 285, pad = { l: 50, r: 18, t: 25, b: 48 };
+    const x = (index) => pad.l + index * (width - pad.l - pad.r) / Math.max(1, rows.length - 1);
+    const y = (value) => pad.t + (.4 - Math.max(0, Math.min(.4, Number(value || 0)))) * (height - pad.t - pad.b) / .4;
+    let svg = `<svg viewBox="0 0 ${width} ${height}" aria-hidden="true">`;
+    [0, .1, .2, .3, .4].forEach((tick) => {
+      svg += `<line x1="${pad.l}" y1="${y(tick)}" x2="${width - pad.r}" y2="${y(tick)}" stroke="#213342"/>`;
+      svg += `<text x="${pad.l - 8}" y="${y(tick) + 4}" fill="#89a2b6" font-size="10" text-anchor="end">${Math.round(tick * 100)}%</text>`;
+    });
+    rows.forEach((row, index) => {
+      const stage = row.weighting?.stage?.stageId;
+      const priorStage = index ? rows[index - 1].weighting?.stage?.stageId : null;
+      if (index === 0 || stage !== priorStage) {
+        svg += `<line x1="${x(index)}" y1="${pad.t}" x2="${x(index)}" y2="${height - pad.b}" stroke="#54738a" stroke-dasharray="3 4"/>`;
+        svg += `<text x="${x(index) + 4}" y="${pad.t + 10}" fill="#89a2b6" font-size="9">${esc(stageLabel(stage))}</text>`;
+      }
+    });
+    MODEL_ORDER.forEach((key) => {
+      const points = rows.map((row, index) => {
+        const model = (row.weighting.models || []).find((item) => item.modelKey === key);
+        return `${x(index).toFixed(2)},${y(model?.finalWeight).toFixed(2)}`;
+      });
+      svg += `<polyline points="${points.join(" ")}" fill="none" stroke="${MODEL_COLORS[key]}" stroke-width="2.2"/>`;
+      rows.forEach((row, index) => {
+        const model = (row.weighting.models || []).find((item) => item.modelKey === key);
+        if (key === "nbm" && model?.maturityCap === 0) {
+          svg += `<circle cx="${x(index)}" cy="${y(model.finalWeight)}" r="3" fill="${MODEL_COLORS[key]}"/>`;
+        }
+      });
+    });
+    const labelIndexes = [...new Set([0, Math.floor((rows.length - 1) / 2), rows.length - 1])];
+    labelIndexes.forEach((index) => {
+      svg += `<text x="${x(index)}" y="${height - 18}" fill="#89a2b6" font-size="10" text-anchor="middle">${esc(fmtTime(rows[index].evaluated_at))}</text>`;
+    });
+    chart.innerHTML = `${svg}</svg>`;
+  }
+
+  function renderWeightAttribution(snap) {
+    const wrap = $("#weightAttribution");
+    const model = weightingModel(state.modelKey);
+    text("#attributionModel", MODEL_LABELS[state.modelKey] || state.modelKey || "--");
+    if (!model) {
+      wrap.textContent = "No backend attribution is available for the selected model.";
+      return;
+    }
+    const capLabels = [
+      model.individualCapApplied ? "individual applied" : "individual clear",
+      model.familyCapApplied ? "family applied" : "family clear",
+      model.maturityCapApplied ? "maturity applied" : "maturity clear",
+    ].join("; ");
+    const steps = [
+      ["Stage prior", fmtPct(model.stagePrior, 1), `${model.stageHistoryDates} prior dates`],
+      ["Reliability multiplier", fmtNumber(model.reliabilityMultiplier, 3), `n-eff ${fmtNumber(model.stageNEff, 1)}`],
+      ["Pre-cap influence", fmtPct(model.preCapWeight, 1), "Backend product"],
+      ["Cap redistribution", capLabels, `maturity ceiling ${fmtPct(model.maturityCap, 0)}`],
+      ["Final effective weight", fmtPct(model.finalWeight, 1), model.weightingStatus || "--"],
+    ];
+    wrap.innerHTML = steps.map((step, index) => `${index ? '<div class="attribution-arrow">v</div>' : ""}<div class="attribution-step"><span>${esc(step[0])}</span><strong>${esc(step[1])}</strong><small>${esc(step[2])}</small></div>`).join("");
+  }
+
+  function renderCounterfactuals(snap) {
+    const wrap = $("#counterfactualComparison");
+    const selected = bracketByTicker(state.selectedMarketTicker);
+    const economics = selectedEconomics();
+    const sideKey = state.side === "yes" ? "p_safe_yes" : "p_safe_no";
+    text("#counterfactualContract", `${selected?.label || "--"} / ${String(state.side || "yes").toUpperCase()}`);
+    const modeRows = snap.weighting?.counterfactuals || [];
+    const rows = modeRows.map((mode) => {
+      const output = snap.weightingModes?.[mode.mode] || {};
+      const bracket = output.bracket_probabilities?.[state.selectedMarketTicker] || {};
+      return {
+        label: stageLabel(mode.mode),
+        probability: bracket[sideKey],
+        primary: Boolean(mode.isPrimary),
+      };
+    });
+    if (economics) {
+      rows.push({
+        label: "MARKET REQUIRED PROBABILITY",
+        probability: economics.requiredProbability,
+        primary: false,
+      });
+    }
+    wrap.innerHTML = rows.map((row) => `<div class="counterfactual-row${row.primary ? " primary" : ""}"><span>${esc(row.label)}${row.primary ? " / PRIMARY" : ""}</span><strong>${fmtPct(row.probability, 1)}</strong></div>`).join("");
   }
 
   function renderHero(snap, selectedBracket) {
@@ -351,22 +499,30 @@
 
   function renderLedger(snap) {
     const wrap = $("#modelLedger");
-    const columns = ["Model", "Raw X", "Correction", "Corrected", "n-eff", "Weight", "Selected probability"];
-    wrap.style.gridTemplateColumns = "1.35fr repeat(6, .8fr)";
+    const columns = ["Model", "Fixed prior", "Stage prior", "History", "n-eff", "Stage loss", "Shrunk loss", "Reliability", "Pre-cap", "Individual cap", "Family cap", "Maturity cap", "Final weight", "Selected probability"];
+    wrap.style.gridTemplateColumns = "1.45fr repeat(12, .72fr) 1fr";
     wrap.innerHTML = columns.map((column) => `<div class="ledger-cell head">${esc(column)}</div>`).join("");
     snap.models.forEach((model) => {
+      const weight = weightingModel(model.modelKey) || {};
       const probability = modelProbability(model, state.selectedMarketTicker);
       const meanKey = state.side === "yes" ? "pMeanYes" : "pMeanNo";
       const safeKey = state.side === "yes" ? "pSafeYes" : "pSafeNo";
       const selected = probability ? `${fmtPct(probability[meanKey], 1)} / safe ${fmtPct(probability[safeKey], 1)}` : "--";
       const color = MODEL_COLORS[model.modelKey] || "#47d7e8";
       const cells = [
-        `<span class="model-chip"><i style="--c:${color}"></i><strong>${esc(model.label)}</strong></span><br><small>${esc(model.eligibility)} - ${esc(model.maturityState)}</small>`,
-        fmtTemp(model.rawLiveStateF),
-        fmtTemp(model.residualMedianF),
-        fmtTemp(model.correctedPointF),
-        String(model.nEff ?? "--"),
-        `${fmtPct(model.effectiveWeight, 1)}<div class="weightbar"><i style="--c:${color};--w:${Math.max(0, Math.min(100, (model.effectiveWeight || 0) * 100))}%"></i></div>`,
+        `<span class="model-chip"><i style="--c:${color}"></i><strong>${esc(model.label)}</strong></span><br><small>${esc(weight.weightingStatus || model.eligibility)}${weight.exclusionReason ? ` - ${esc(weight.exclusionReason)}` : ""}</small>`,
+        fmtPct(weight.fixedPrior, 1),
+        fmtPct(weight.stagePrior, 1),
+        String(weight.stageHistoryDates ?? "--"),
+        fmtNumber(weight.stageNEff, 1),
+        fmtNumber(weight.stageLogLoss, 3),
+        fmtNumber(weight.shrunkLogLoss, 3),
+        fmtNumber(weight.reliabilityMultiplier, 3),
+        fmtPct(weight.preCapWeight, 1),
+        weight.individualCapApplied ? "Applied" : "Clear",
+        weight.familyCapApplied ? "Applied" : "Clear",
+        model.modelKey === "nbm" ? `${fmtPct(weight.maturityCap, 0)}${weight.maturityCapApplied ? " / applied" : ""}` : "--",
+        `${fmtPct(weight.finalWeight, 1)}<div class="weightbar"><i style="--c:${color};--w:${Math.max(0, Math.min(100, Number(weight.finalWeight || 0) * 100))}%"></i></div>`,
         selected,
       ];
       wrap.insertAdjacentHTML("beforeend", cells.map((cell) => `<div class="ledger-cell">${cell}</div>`).join(""));
@@ -564,10 +720,12 @@
   async function refreshLive() {
     if (!state.live || document.hidden || !state.eventTicker) return;
     try {
-      const url = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}/explainability/latest${targetQuery()}`;
-      const payload = await getJson(url);
+      const base = `/api/strategy/current/events/${encodeURIComponent(state.eventTicker)}`;
+      const bundle = await getJson(`${base}/probability-lab/latest${targetQuery()}`);
+      const payload = withWeighting(bundle.explainability, bundle.weighting);
       if (!state.snapshot || payload.evaluationId !== state.snapshot.evaluationId) {
         acceptSnapshot(payload);
+        await loadWeightHistory();
       }
       render();
     } catch (error) {
@@ -580,8 +738,10 @@
   }
 
   async function initializeEvent() {
-    await loadEvaluations();
     await loadLatest();
+    await loadEvaluations();
+    await loadWeightHistory();
+    render();
   }
 
   async function init() {
@@ -619,12 +779,14 @@
       state.live = true;
       await loadLatest();
       await loadEvaluations();
+      await loadWeightHistory();
     });
     window.setInterval(refreshLive, Math.max(5, Number(root.dataset.pollSeconds || 5)) * 1000);
     document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshLive(); });
   }
 
   init().catch((error) => {
+    console.error("Probability Lab initialization failed", error);
     const banner = $("#labBanner");
     banner.hidden = false;
     banner.textContent = `Probability Lab failed to initialize: ${error.message}`;

@@ -1,0 +1,121 @@
+weighting_revision: klax-stage-adaptive-weights-2026-07-13
+strategy_id: klax-current-five-model-2026-07-11
+timezone: America/Los_Angeles
+mode: shadow
+primary_shadow_weighting_mode: stage_reliability
+counterfactual_weighting_modes:
+  - fixed_baseline
+  - stage_prior_only
+
+models:
+  canonical_order: [ecmwf_ifs, gfs013, gfs_seamless, nam, nbm]
+  families:
+    ecmwf_ifs: ECMWF
+    gfs013: GFS
+    gfs_seamless: GFS
+    nam: NAM
+    nbm: NBM
+
+stages:
+  transition_blend_minutes_after_boundary: 30
+  definitions:
+    pre_target:
+      description: Previous-day market open through target-day 01:59:59 PT
+      start: previous_day_market_open
+      end_local: '01:59:59'
+    target_02_10:
+      start_local: '02:00:00'
+      end_local: '10:59:59'
+    target_11_13:
+      start_local: '11:00:00'
+      end_local: '13:59:59'
+    target_14_16:
+      start_local: '14:00:00'
+      end_local: '16:59:59'
+    target_17_close:
+      start_local: '17:00:00'
+      end: market_close
+
+stage_priors:
+  pre_target:
+    ecmwf_ifs: 0.23
+    gfs013: 0.28
+    gfs_seamless: 0.17
+    nam: 0.14
+    nbm: 0.18
+  target_02_10:
+    ecmwf_ifs: 0.22
+    gfs013: 0.27
+    gfs_seamless: 0.18
+    nam: 0.15
+    nbm: 0.18
+  target_11_13:
+    ecmwf_ifs: 0.20
+    gfs013: 0.21
+    gfs_seamless: 0.24
+    nam: 0.17
+    nbm: 0.18
+  target_14_16:
+    ecmwf_ifs: 0.20
+    gfs013: 0.18
+    gfs_seamless: 0.20
+    nam: 0.27
+    nbm: 0.15
+  target_17_close:
+    ecmwf_ifs: 0.21
+    gfs013: 0.19
+    gfs_seamless: 0.23
+    nam: 0.22
+    nbm: 0.15
+
+fixed_baseline_prior:
+  ecmwf_ifs: 0.20
+  gfs013: 0.25
+  gfs_seamless: 0.20
+  nam: 0.15
+  nbm: 0.20
+
+performance_scoring:
+  proper_score: logarithmic
+  probability_source: per_model_posterior_mean
+  realized_probability_clip_min: 0.01
+  realized_probability_clip_max: 0.99
+  aggregate_intrastage_evaluations_to_one_date_score: true
+  intrastage_aggregation: arithmetic_mean_log_loss
+  maximum_prior_settled_target_dates: 120
+  recency_half_life_target_dates: 45.0
+  minimum_stage_dates_for_reliability: 15
+  minimum_stage_effective_sample_size_for_reliability: 10.0
+  shrinkage_dates_to_uniform: 30.0
+  reliability_eta: 1.0
+  uniform_score: log_number_of_verified_outcomes
+  current_target_date_must_be_excluded: true
+
+caps:
+  individual_model_max: 0.35
+  family_max:
+    GFS: 0.45
+  nbm_max_by_eligible_completed_dates:
+    below_10: 0.00
+    10_to_29: 0.10
+    30_to_59: 0.20
+    60_plus: 0.25
+
+eligibility:
+  minimum_models_for_trade_probability: 4
+  minimum_independent_families: 3
+  unavailable_weight: 0.0
+  research_only_weight: 0.0
+
+persistence:
+  save_fixed_baseline_counterfactual: true
+  save_stage_prior_counterfactual: true
+  save_stage_reliability_primary: true
+  save_weight_decomposition: true
+  save_source_score_date_ids: true
+
+safety:
+  live_trading_enabled: false
+  canary_enabled: false
+  taker_enabled: false
+  order_submission_reachable: false

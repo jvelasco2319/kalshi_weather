@@ -53,6 +53,8 @@ from kalshi_weather.reporting import (
     write_text_report,
 )
 from kalshi_weather.signal_room.cli import run_dashboard
+from kalshi_weather.signal_room.repository import SignalRoomReadRepository
+from kalshi_weather.signal_room.service import SignalRoomService, _code_revision
 from kalshi_weather.strategy_current.config import load_strategy_config
 from kalshi_weather.strategy_current.promotion import (
     PromotionEvidence,
@@ -60,6 +62,11 @@ from kalshi_weather.strategy_current.promotion import (
     render_promotion_report,
 )
 from kalshi_weather.strategy_current.replay import chronological_replay
+from kalshi_weather.strategy_current.stage_analysis import (
+    backfill_stage_performance,
+    replay_stage_weighting,
+)
+from kalshi_weather.strategy_current.stage_weighting import load_stage_weight_config
 from kalshi_weather.strategy_current.shadow_runtime import (
     ShadowOrderSink,
     incomplete_capture_decision,
@@ -551,9 +558,73 @@ def strategy_shadow_run(
     _emit_report(payload, json_output=json_output)
 
 
+@app.command("strategy-backfill-stage-performance")
+def strategy_backfill_stage_performance(
+    journal_path: str = typer.Option(
+        "journals/lax_model_validation.sqlite", "--journal-path"
+    ),
+    weighting_config: str | None = typer.Option(None, "--weighting-config"),
+    dry_run: bool = typer.Option(False, "--dry-run"),
+    json_output: bool = typer.Option(False, "--json"),
+) -> None:
+    """Build idempotent date-level model scores from settled recorder snapshots."""
+    try:
+        payload = backfill_stage_performance(
+            journal_path,
+            weighting_config=load_stage_weight_config(weighting_config),
+            code_revision=_code_revision(),
+            dry_run=dry_run,
+        )
+    except Exception as exc:  # noqa: BLE001
+        console.print(f"Stage-performance backfill failed: {exc}")
+        raise typer.Exit(1) from exc
+    _emit_report(payload, json_output=json_output)
+
+
+@app.command("strategy-stage-weight-status")
+def strategy_stage_weight_status(
+    journal_path: str = typer.Option(
+        "journals/lax_model_validation.sqlite", "--journal-path"
+    ),
+    target_date: str = typer.Option("auto", "--target-date"),
+    weighting_config: str | None = typer.Option(None, "--weighting-config"),
+    json_output: bool = typer.Option(False, "--json"),
+) -> None:
+    """Show the immutable stage-weight snapshot used by Signal Room."""
+    try:
+        target = (
+            current_lax_market_date()
+            if target_date == "auto"
+            else date.fromisoformat(target_date)
+        )
+        service = SignalRoomService(
+            repository=SignalRoomReadRepository(journal_path),
+            stage_weight_config=load_stage_weight_config(weighting_config),
+        )
+        snapshot = service.latest_snapshot(target_date=target)
+        weighting = (snapshot.probability_lab or {}).get("weighting")
+        payload = {
+            "target_date": target.isoformat(),
+            "evaluation_id": (snapshot.probability_lab or {}).get("evaluation_id"),
+            "weighting": weighting,
+            "order_submission_reachable": snapshot.strategy.order_submission_reachable,
+        }
+    except Exception as exc:  # noqa: BLE001
+        console.print(f"Stage-weight status failed: {exc}")
+        raise typer.Exit(1) from exc
+    _emit_report(payload, json_output=json_output)
+
+
 @app.command("strategy-replay")
 def strategy_replay(
     strategy_config: str | None = typer.Option(None, "--strategy-config"),
+    journal_path: str | None = typer.Option(None, "--journal-path"),
+    weighting_config: str | None = typer.Option(None, "--weighting-config"),
+    weighting_modes: str = typer.Option(
+        "fixed_baseline,stage_prior_only,stage_reliability",
+        "--weighting-modes",
+    ),
+    bootstrap_samples: int = typer.Option(2000, "--bootstrap-samples"),
     json_output: bool = typer.Option(False, "--json"),
 ) -> None:
     """Replay current-strategy source events without treating candles as executable."""
@@ -564,6 +635,29 @@ def strategy_replay(
         "mode": config.mode,
         "replay": report.to_dict(),
     }
+    if journal_path is not None:
+        try:
+            stage_config = load_stage_weight_config(weighting_config)
+            payload["stage_performance_backfill"] = backfill_stage_performance(
+                journal_path,
+                weighting_config=stage_config,
+                code_revision=_code_revision(),
+            )
+            payload["stage_weighting"] = replay_stage_weighting(
+                journal_path,
+                modes=tuple(
+                    value.strip()
+                    for value in weighting_modes.split(",")
+                    if value.strip()
+                ),
+                weighting_config=stage_config,
+                strategy_config=config,
+                code_revision=_code_revision(),
+                bootstrap_samples=bootstrap_samples,
+            )
+        except Exception as exc:  # noqa: BLE001
+            console.print(f"Stage-weighting replay failed: {exc}")
+            raise typer.Exit(1) from exc
     _emit_report(payload, json_output=json_output)
 
 

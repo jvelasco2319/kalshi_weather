@@ -1,0 +1,121 @@
+package: klax-stage-adaptive-weighting-2026-07-13
+repository: C:\Users\jarve\Documents\Codex\kalshi_weather
+safety:
+  mode: shadow
+  live_trading_enabled: false
+  canary_enabled: false
+  taker_enabled: false
+  order_submission_reachable: false
+phases:
+  - id: P0
+    name: Repository audit and baseline
+    depends_on: []
+    outputs:
+      - docs/klax_stage_weighting_repo_audit.md
+      - baseline test and lint results
+      - existing module reuse map
+    exit_criteria:
+      - no production behavior changed
+      - all existing weighting and explainability paths identified
+  - id: P1
+    name: Configuration, schemas, and persistence
+    depends_on: [P0]
+    outputs:
+      - validated stage-weight configuration
+      - additive persistence migration or equivalent immutable child records
+      - explainability schema extension
+      - configuration hash/versioning
+    exit_criteria:
+      - old evaluations remain readable
+      - new fields are immutable and tied to evaluation_id
+  - id: P2
+    name: Stage classifier and stage priors
+    depends_on: [P1]
+    outputs:
+      - deterministic America/Los_Angeles stage classifier
+      - post-boundary transition blending
+      - stage-prior provider
+      - boundary and DST tests
+    exit_criteria:
+      - all times map to exactly one stage
+      - stage priors sum to one
+  - id: P3
+    name: Walk-forward performance history
+    depends_on: [P2]
+    outputs:
+      - one date-level score per model/date/stage
+      - idempotent backfill command
+      - recency weights and effective sample size
+      - no-look-ahead audit fields
+    exit_criteria:
+      - current target date is excluded
+      - multiple intrastage evaluations do not multiply date weight
+  - id: P4
+    name: Adaptive weight engine
+    depends_on: [P3]
+    outputs:
+      - fixed, stage-prior, and stage-reliability weights
+      - shrinkage and reliability multipliers
+      - individual, family, and NBM caps
+      - deterministic redistribution
+      - unit and property tests
+    exit_criteria:
+      - weights sum to one
+      - all caps hold
+      - unavailable models receive zero
+  - id: P5
+    name: Strategy evaluator integration
+    depends_on: [P4]
+    outputs:
+      - primary shadow mode selection
+      - counterfactual probability mixtures
+      - immutable weight snapshots
+      - stable reason and readiness codes
+    exit_criteria:
+      - forecast distributions are unchanged by weighting
+      - one evaluation produces all three modes atomically
+  - id: P6
+    name: Probability Lab integration
+    depends_on: [P5]
+    outputs:
+      - stage/weight status in header
+      - weight attribution table
+      - weights-over-market-stage chart
+      - equation trace for weighting
+      - live and replay wiring
+      - responsive screenshots
+    exit_criteria:
+      - UI uses backend fields only
+      - Command Center and Lab show the same evaluation_id
+  - id: P7
+    name: Chronological replay and comparison
+    depends_on: [P5]
+    outputs:
+      - fixed versus stage-prior versus stage-reliability report
+      - metrics by stage and season
+      - calibration and uncertainty analysis
+    exit_criteria:
+      - all scoring is walk-forward
+      - no mode is promoted from a single day
+  - id: P8
+    name: Live shadow smoke test
+    depends_on: [P6, P7]
+    outputs:
+      - at least one live immutable evaluation
+      - current stage and weights for each model
+      - source/capture health
+      - safety proof
+    exit_criteria:
+      - no order path reachable
+      - dashboard updates atomically
+  - id: P9
+    name: Handoff
+    depends_on: [P8]
+    outputs:
+      - operator runbook
+      - implementation report
+      - deviations file
+      - commands and test results
+    exit_criteria:
+      - shadow-only deployment ready
+      - canary/live remain disabled

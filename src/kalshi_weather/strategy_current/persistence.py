@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from decimal import Decimal
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, Mapping
 
 from kalshi_weather.strategy_current.config import StrategyConfig
 from kalshi_weather.strategy_current.registry import canonicalize_model_key, source_history_key
@@ -254,6 +254,69 @@ CREATE TABLE IF NOT EXISTS strategy_current_capture_manifests (
     schema_valid INTEGER NOT NULL,
     status TEXT NOT NULL,
     details_json TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS strategy_stage_performance (
+    strategy_id TEXT NOT NULL,
+    weighting_revision TEXT NOT NULL,
+    weighting_config_hash TEXT NOT NULL,
+    model_key TEXT NOT NULL,
+    target_date_local TEXT NOT NULL,
+    stage_id TEXT NOT NULL,
+    outcome_map_hash TEXT NOT NULL,
+    realized_market_ticker TEXT NOT NULL,
+    realized_bracket_index INTEGER NOT NULL,
+    evaluation_count INTEGER NOT NULL,
+    mean_log_loss REAL NOT NULL,
+    mean_brier_score REAL NOT NULL,
+    mean_absolute_temperature_error REAL,
+    mean_temperature_bias REAL,
+    source_evaluation_ids_json TEXT NOT NULL,
+    settled_at_utc TEXT NOT NULL,
+    created_at_utc TEXT NOT NULL,
+    code_revision TEXT NOT NULL,
+    PRIMARY KEY (
+        strategy_id,
+        weighting_revision,
+        model_key,
+        target_date_local,
+        stage_id,
+        outcome_map_hash
+    )
+);
+CREATE INDEX IF NOT EXISTS idx_strategy_stage_performance_asof
+ON strategy_stage_performance(
+    strategy_id,
+    weighting_revision,
+    model_key,
+    stage_id,
+    target_date_local,
+    settled_at_utc
+);
+
+CREATE TABLE IF NOT EXISTS strategy_stage_weight_evaluations (
+    evaluation_id TEXT PRIMARY KEY,
+    strategy_id TEXT NOT NULL,
+    source_snapshot_id INTEGER,
+    target_date_local TEXT NOT NULL,
+    evaluated_at_utc TEXT NOT NULL,
+    stage_id TEXT NOT NULL,
+    primary_mode TEXT NOT NULL,
+    readiness_status TEXT NOT NULL,
+    strategy_config_hash TEXT NOT NULL,
+    weighting_revision TEXT NOT NULL,
+    weighting_config_hash TEXT NOT NULL,
+    code_revision TEXT NOT NULL,
+    weight_snapshot_json TEXT NOT NULL,
+    evaluation_payload_json TEXT NOT NULL,
+    created_at_utc TEXT NOT NULL,
+    UNIQUE(source_snapshot_id, weighting_revision)
+);
+CREATE INDEX IF NOT EXISTS idx_strategy_stage_weight_evaluations_asof
+ON strategy_stage_weight_evaluations(
+    strategy_id,
+    target_date_local,
+    evaluated_at_utc
 );
 """
 
@@ -526,6 +589,233 @@ class StrategyCurrentStore:
         )
         self.conn.commit()
 
+    def save_stage_performance_rows(self, rows: list[Mapping[str, Any]]) -> int:
+        for row in rows:
+            model_key = canonicalize_model_key(str(row["model_key"]))
+            source_ids = row.get("source_evaluation_ids")
+            if source_ids is None:
+                source_ids = row.get("source_evaluation_ids_json") or []
+            if isinstance(source_ids, str):
+                source_ids = json.loads(source_ids)
+            self.conn.execute(
+                """
+                INSERT INTO strategy_stage_performance (
+                    strategy_id,
+                    weighting_revision,
+                    weighting_config_hash,
+                    model_key,
+                    target_date_local,
+                    stage_id,
+                    outcome_map_hash,
+                    realized_market_ticker,
+                    realized_bracket_index,
+                    evaluation_count,
+                    mean_log_loss,
+                    mean_brier_score,
+                    mean_absolute_temperature_error,
+                    mean_temperature_bias,
+                    source_evaluation_ids_json,
+                    settled_at_utc,
+                    created_at_utc,
+                    code_revision
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT (
+                    strategy_id,
+                    weighting_revision,
+                    model_key,
+                    target_date_local,
+                    stage_id,
+                    outcome_map_hash
+                ) DO UPDATE SET
+                    weighting_config_hash = excluded.weighting_config_hash,
+                    realized_market_ticker = excluded.realized_market_ticker,
+                    realized_bracket_index = excluded.realized_bracket_index,
+                    evaluation_count = excluded.evaluation_count,
+                    mean_log_loss = excluded.mean_log_loss,
+                    mean_brier_score = excluded.mean_brier_score,
+                    mean_absolute_temperature_error = excluded.mean_absolute_temperature_error,
+                    mean_temperature_bias = excluded.mean_temperature_bias,
+                    source_evaluation_ids_json = excluded.source_evaluation_ids_json,
+                    settled_at_utc = excluded.settled_at_utc,
+                    created_at_utc = excluded.created_at_utc,
+                    code_revision = excluded.code_revision
+                """,
+                (
+                    str(row["strategy_id"]),
+                    str(row["weighting_revision"]),
+                    str(row["weighting_config_hash"]),
+                    model_key,
+                    _date_text(row.get("target_date_local") or row["target_date"]),
+                    str(row["stage_id"]),
+                    str(row["outcome_map_hash"]),
+                    str(row["realized_market_ticker"]),
+                    int(row["realized_bracket_index"]),
+                    int(row["evaluation_count"]),
+                    float(row["mean_log_loss"]),
+                    float(row["mean_brier_score"]),
+                    _float_or_none(row.get("mean_absolute_temperature_error")),
+                    _float_or_none(row.get("mean_temperature_bias")),
+                    _json_dumps(list(source_ids)),
+                    _datetime_text(row["settled_at_utc"]),
+                    _datetime_text(row.get("created_at_utc") or datetime.now(timezone.utc)),
+                    str(row["code_revision"]),
+                ),
+            )
+        self.conn.commit()
+        return len(rows)
+
+    def load_stage_performance_rows(
+        self,
+        *,
+        strategy_id: str,
+        weighting_revision: str,
+        before_target_date: str | date,
+        settled_by: datetime,
+        model_key: str | None = None,
+        stage_id: str | None = None,
+        outcome_map_hash: str | None = None,
+    ) -> list[dict[str, Any]]:
+        clauses = [
+            "strategy_id = ?",
+            "weighting_revision = ?",
+            "target_date_local < ?",
+            "settled_at_utc <= ?",
+        ]
+        params: list[Any] = [
+            strategy_id,
+            weighting_revision,
+            _date_text(before_target_date),
+            _iso(settled_by),
+        ]
+        if model_key is not None:
+            clauses.append("model_key = ?")
+            params.append(canonicalize_model_key(model_key))
+        if stage_id is not None:
+            clauses.append("stage_id = ?")
+            params.append(stage_id)
+        if outcome_map_hash is not None:
+            clauses.append("outcome_map_hash = ?")
+            params.append(outcome_map_hash)
+        rows = self.conn.execute(
+            f"""
+            SELECT *
+            FROM strategy_stage_performance
+            WHERE {' AND '.join(clauses)}
+            ORDER BY target_date_local DESC, model_key, stage_id
+            """,
+            params,
+        ).fetchall()
+        output: list[dict[str, Any]] = []
+        for value in rows:
+            row = dict(value)
+            row["source_evaluation_ids"] = json.loads(row["source_evaluation_ids_json"])
+            output.append(row)
+        return output
+
+    def save_stage_weight_evaluation(
+        self,
+        snapshot: Mapping[str, Any],
+        *,
+        source_snapshot_id: int | None,
+        evaluation_payload: Mapping[str, Any] | None = None,
+    ) -> str:
+        evaluation_id = str(snapshot["evaluationId"])
+        snapshot_json = _json_dumps(snapshot)
+        payload_json = _json_dumps(evaluation_payload or {})
+        existing = self.conn.execute(
+            """
+            SELECT source_snapshot_id, weight_snapshot_json, evaluation_payload_json
+            FROM strategy_stage_weight_evaluations
+            WHERE evaluation_id = ?
+            """,
+            (evaluation_id,),
+        ).fetchone()
+        if existing is not None:
+            if (
+                existing["source_snapshot_id"] != source_snapshot_id
+                or existing["weight_snapshot_json"] != snapshot_json
+                or existing["evaluation_payload_json"] != payload_json
+            ):
+                raise ValueError("immutable stage-weight evaluation payload changed")
+            return "existing"
+        audit = snapshot.get("_audit") if isinstance(snapshot.get("_audit"), Mapping) else {}
+        try:
+            self.conn.execute(
+                """
+                INSERT INTO strategy_stage_weight_evaluations (
+                    evaluation_id,
+                    strategy_id,
+                    source_snapshot_id,
+                    target_date_local,
+                    evaluated_at_utc,
+                    stage_id,
+                    primary_mode,
+                    readiness_status,
+                    strategy_config_hash,
+                    weighting_revision,
+                    weighting_config_hash,
+                    code_revision,
+                    weight_snapshot_json,
+                    evaluation_payload_json,
+                    created_at_utc
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    evaluation_id,
+                    str(snapshot["strategyId"]),
+                    source_snapshot_id,
+                    str(snapshot["targetDate"]),
+                    str(snapshot["evaluatedAt"]),
+                    str(snapshot["stage"]["stageId"]),
+                    str(snapshot["primaryMode"]),
+                    str(snapshot["status"]),
+                    str(audit.get("strategyConfigHash") or "unknown"),
+                    str(snapshot["weightingRevision"]),
+                    str(snapshot["weightingConfigHash"]),
+                    str(audit.get("codeRevision") or "unknown"),
+                    snapshot_json,
+                    payload_json,
+                    _utc_now_text(),
+                ),
+            )
+        except sqlite3.IntegrityError as exc:
+            raise ValueError(
+                "source snapshot already has a different immutable weighting evaluation"
+            ) from exc
+        self.conn.commit()
+        return "recorded"
+
+    def load_stage_weight_evaluation(
+        self,
+        evaluation_id: str,
+    ) -> dict[str, Any] | None:
+        row = self.conn.execute(
+            """
+            SELECT *
+            FROM strategy_stage_weight_evaluations
+            WHERE evaluation_id = ?
+            """,
+            (evaluation_id,),
+        ).fetchone()
+        return _stage_weight_evaluation_row(row)
+
+    def load_stage_weight_evaluation_for_snapshot(
+        self,
+        source_snapshot_id: int,
+        weighting_revision: str,
+    ) -> dict[str, Any] | None:
+        row = self.conn.execute(
+            """
+            SELECT *
+            FROM strategy_stage_weight_evaluations
+            WHERE source_snapshot_id = ? AND weighting_revision = ?
+            """,
+            (source_snapshot_id, weighting_revision),
+        ).fetchone()
+        return _stage_weight_evaluation_row(row)
+
 
 def validate_trade_pull(records: list[PublicTradeRecord], *, cursor_exhausted: bool) -> None:
     if records and not cursor_exhausted:
@@ -580,6 +870,23 @@ def _iso_or_none(value: datetime | None) -> str | None:
 
 def _date_text(value: str | date) -> str:
     return value.isoformat() if isinstance(value, date) else str(value)
+
+
+def _datetime_text(value: str | datetime) -> str:
+    return _iso(value) if isinstance(value, datetime) else str(value)
+
+
+def _float_or_none(value: Any) -> float | None:
+    return None if value is None else float(value)
+
+
+def _stage_weight_evaluation_row(row: sqlite3.Row | None) -> dict[str, Any] | None:
+    if row is None:
+        return None
+    output = dict(row)
+    output["weight_snapshot"] = json.loads(output["weight_snapshot_json"])
+    output["evaluation_payload"] = json.loads(output["evaluation_payload_json"])
+    return output
 
 
 def _json_dumps(payload: Any) -> str:

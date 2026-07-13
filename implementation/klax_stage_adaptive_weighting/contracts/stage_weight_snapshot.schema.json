@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.klax/schemas/stage_weight_snapshot-1.0.0.json",
+  "title": "KLAX stage-adaptive model-weight snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "evaluationId",
+    "strategyId",
+    "weightingRevision",
+    "weightingConfigHash",
+    "evaluatedAt",
+    "targetDate",
+    "primaryMode",
+    "stage",
+    "status",
+    "models",
+    "familyTotals",
+    "counterfactuals"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "evaluationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strategyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "weightingRevision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "weightingConfigHash": {
+      "type": "string",
+      "minLength": 8
+    },
+    "evaluatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "targetDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "primaryMode": {
+      "enum": [
+        "fixed_baseline",
+        "stage_prior_only",
+        "stage_reliability"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PRIOR_ONLY",
+        "PARTIAL",
+        "READY",
+        "BLOCKED"
+      ]
+    },
+    "stage": {
+      "$ref": "#/$defs/stage"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/modelWeight"
+      }
+    },
+    "familyTotals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "counterfactuals": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/counterfactual"
+      }
+    }
+  },
+  "$defs": {
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stageId",
+        "transitionFromStage",
+        "transitionAlpha",
+        "transitionMinutes"
+      ],
+      "properties": {
+        "stageId": {
+          "enum": [
+            "pre_target",
+            "target_02_10",
+            "target_11_13",
+            "target_14_16",
+            "target_17_close"
+          ]
+        },
+        "transitionFromStage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transitionAlpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "transitionMinutes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "modelWeight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelKey",
+        "family",
+        "available",
+        "eligible",
+        "fixedPrior",
+        "stagePrior",
+        "stageHistoryDates",
+        "stageNEff",
+        "stageLogLoss",
+        "shrunkLogLoss",
+        "reliabilityMultiplier",
+        "preCapWeight",
+        "individualCapApplied",
+        "familyCapApplied",
+        "maturityCap",
+        "maturityCapApplied",
+        "finalWeight",
+        "weightingStatus",
+        "exclusionReason"
+      ],
+      "properties": {
+        "modelKey": {
+          "enum": [
+            "ecmwf_ifs",
+            "gfs013",
+            "gfs_seamless",
+            "nam",
+            "nbm"
+          ]
+        },
+        "family": {
+          "enum": [
+            "ECMWF",
+            "GFS",
+            "NAM",
+            "NBM"
+          ]
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "eligible": {
+          "type": "boolean"
+        },
+        "fixedPrior": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "stagePrior": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "stageHistoryDates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stageNEff": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stageLogLoss": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "shrunkLogLoss": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reliabilityMultiplier": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "preCapWeight": {
+          "type": "number",
+          "minimum": 0
+        },
+        "individualCapApplied": {
+          "type": "boolean"
+        },
+        "familyCapApplied": {
+          "type": "boolean"
+        },
+        "maturityCap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maturityCapApplied": {
+          "type": "boolean"
+        },
+        "finalWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "weightingStatus": {
+          "enum": [
+            "ready",
+            "prior_only",
+            "research_only",
+            "unavailable",
+            "ineligible"
+          ]
+        },
+        "exclusionReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "counterfactual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "isPrimary",
+        "weights"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "fixed_baseline",
+            "stage_prior_only",
+            "stage_reliability"
+          ]
+        },
+        "isPrimary": {
+          "type": "boolean"
+        },
+        "weights": {
+          "type": "object",
+          "required": [
+            "ecmwf_ifs",
+            "gfs013",
+            "gfs_seamless",
+            "nam",
+            "nbm"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ecmwf_ifs": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "gfs013": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "gfs_seamless": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "nam": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "nbm": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "selectedMarketTicker": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selectedSide": {
+          "enum": [
+            "yes",
+            "no",
+            null
+          ]
+        },
+        "selectedPTrade": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

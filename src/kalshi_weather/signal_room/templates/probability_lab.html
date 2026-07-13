@@ -70,6 +70,14 @@
       </div>
     </section>
 
+    <section class="weighting-status" aria-label="Adaptive weighting status">
+      <div><span>Market stage</span><strong id="weightStage">--</strong></div>
+      <div><span>Weighting mode</span><strong id="weightMode">--</strong></div>
+      <div><span>Weighting revision</span><strong id="weightRevision">--</strong></div>
+      <div><span>Stage transition state</span><strong id="weightTransition">--</strong></div>
+      <div><span>History readiness</span><strong id="weightReadiness">--</strong></div>
+    </section>
+
     <section class="lab-hero" aria-label="Selected contract summary">
       <article class="lab-hero-card primary">
         <div class="eyebrow">Conservative trade probability</div>
@@ -103,6 +111,36 @@
       </article>
     </section>
 
+    <div class="weighting-grid">
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>Model weights through the market</h2>
+            <p>Persisted final effective weight by immutable evaluation, with PT stage boundaries.</p>
+          </div>
+          <span class="source-pill" id="weightHistorySource">Backend history</span>
+        </div>
+        <div class="legend" id="weightLegend"></div>
+        <div class="chart lab-chart-large" id="weightHistoryChart" role="img" aria-label="Model weights through the market"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>Current-stage attribution</h2>
+            <p>Backend-provided influence path for the selected model.</p>
+          </div>
+          <span class="source-pill" id="attributionModel">--</span>
+        </div>
+        <div class="attribution" id="weightAttribution"></div>
+        <div class="counterfactual-head">
+          <h3>Counterfactual comparison</h3>
+          <span id="counterfactualContract">--</span>
+        </div>
+        <div class="counterfactuals" id="counterfactualComparison"></div>
+      </section>
+    </div>
+
     <main>
       <div class="lab-grid-main">
         <div class="stack">
@@ -122,7 +160,7 @@
             <div class="section-head">
               <div>
                 <h2>Model contribution ledger</h2>
-                <p>Live state, correction, corrected point, maturity, effective weight, and selected-bracket probability.</p>
+                <p>Stage history, reliability, cap path, final influence, and selected-bracket probability.</p>
               </div>
               <span class="source-pill">5-model mixture</span>
             </div>
