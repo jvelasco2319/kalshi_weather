@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$Root = "C:\Users\jarve\Documents\Codex\kalshi_weather"
+$Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $LogDir = Join-Path $Root "logs\kalshi_history"
 New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 

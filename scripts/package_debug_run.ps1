@@ -1,8 +1,8 @@
 param(
   [string]$RunId = "",
   [switch]$Latest,
-  [string]$DebugRoot = "C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\debug",
-  [string]$ArchiveRoot = "C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\archives",
+  [string]$DebugRoot = (Join-Path $PSScriptRoot "..\reports\trader_agent\debug"),
+  [string]$ArchiveRoot = (Join-Path $PSScriptRoot "..\reports\trader_agent\archives"),
   [bool]$IncludeSqlite = $true,
   [bool]$IncludeTerminalLog = $true,
   [bool]$IncludeConfigs = $true,

@@ -52,7 +52,7 @@ from kalshi_weather.reporting import (
     write_json_report,
     write_text_report,
 )
-from kalshi_weather.signal_room.cli import run_dashboard
+from kalshi_weather.runtime_setup import ensure_runtime_directories
 from kalshi_weather.strategy_current.config import load_strategy_config
 from kalshi_weather.strategy_current.promotion import (
     PromotionEvidence,
@@ -211,6 +211,17 @@ def _prediction_context(settings: Settings, series: str, station: str) -> dict[s
         "forecast": forecast,
         "probs": probs,
     }
+
+
+@app.command("init-runtime")
+def init_runtime(
+    root: str | None = typer.Option(None, "--root", help="Repository root; auto-detected by default"),
+) -> None:
+    """Create writable data, cache, journal, log, and report directories."""
+    paths = ensure_runtime_directories(root)
+    console.print("Runtime directories ready:")
+    for path in paths:
+        console.print(f"  {path}")
 
 
 @app.command()
@@ -599,6 +610,16 @@ def strategy_dashboard(
     sample_fixture: str | None = typer.Option(None, "--sample-fixture"),
 ) -> None:
     """Serve the read-only KLAX Signal Room dashboard locally."""
+    try:
+        from kalshi_weather.signal_room.cli import run_dashboard
+    except ModuleNotFoundError as exc:
+        if exc.name in {"fastapi", "jinja2", "uvicorn"}:
+            console.print(
+                "Dashboard dependencies are not installed. "
+                'Run `python -m pip install -e ".[dashboard]"`.'
+            )
+            raise typer.Exit(1) from exc
+        raise
     run_dashboard(
         host=host,
         port=port,
@@ -611,6 +632,50 @@ def strategy_dashboard(
         sqlite_path=sqlite_path,
         sample_fixture=sample_fixture,
     )
+
+
+@app.command("trader-zip-run")
+def trader_zip_run(
+    run_id: str | None = typer.Option(None, "--run-id"),
+    latest: bool = typer.Option(False, "--latest"),
+    debug_root: str | None = typer.Option(None, "--debug-root"),
+    archive_root: str | None = typer.Option(None, "--archive-root"),
+    include_sqlite: bool = typer.Option(True, "--include-sqlite/--no-include-sqlite"),
+    include_terminal_log: bool = typer.Option(
+        True, "--include-terminal-log/--no-include-terminal-log"
+    ),
+    include_configs: bool = typer.Option(True, "--include-configs/--no-include-configs"),
+    include_reports: bool = typer.Option(True, "--include-reports/--no-include-reports"),
+    include_final_reports: bool = typer.Option(
+        True, "--include-final-reports/--no-include-final-reports"
+    ),
+    open_folder: bool = typer.Option(False, "--open-folder"),
+) -> None:
+    """Create a review-safe ZIP for a paper-trading debug run."""
+    from kalshi_weather.debug_packager import create_debug_package
+
+    try:
+        result = create_debug_package(
+            run_id=run_id,
+            latest=latest,
+            debug_root=debug_root,
+            archive_root=archive_root,
+            include_sqlite=include_sqlite,
+            include_terminal_log=include_terminal_log,
+            include_configs=include_configs,
+            include_reports=include_reports,
+            include_final_reports=include_final_reports,
+        )
+    except (FileNotFoundError, ValueError) as exc:
+        console.print(f"Debug package failed: {exc}")
+        raise typer.Exit(1) from exc
+
+    console.print(f"Complete review package created: {result.archive_path}")
+    console.print(f"Upload this file: {result.archive_path}")
+    if open_folder:
+        import webbrowser
+
+        webbrowser.open(result.archive_path.parent.resolve().as_uri())
 
 
 @app.command("predict-once")

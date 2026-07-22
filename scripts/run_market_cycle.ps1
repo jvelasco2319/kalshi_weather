@@ -2,7 +2,7 @@ param(
   [string]$Series = "KXHIGHLAX",
   [string]$Station = "KLAX",
   [string]$TargetDate = "",
-  [string]$DebugRoot = "C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\debug",
+  [string]$DebugRoot = (Join-Path $PSScriptRoot "..\reports\trader_agent\debug"),
   [string]$ProfileConfig = "configs/trader_time_profiles_lifecycle.yaml",
   [string]$ProbabilityBlendConfig = "configs/probability_blend_defaults.yaml",
   [string]$CycleMode = "continuous",

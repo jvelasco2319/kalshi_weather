@@ -7,17 +7,36 @@ forecast guidance to estimate probabilities for Kalshi temperature brackets.
 All execution is fake-money simulation. There is no live Kalshi order placement
 code in this package.
 
-## Setup
+## Windows Quick Start
+
+Requirements: Git and Python 3.11 or newer.
 
 ```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
-python -m pip install -e ".[dev]"
-copy .env.example .env
-python -m pytest
-python -m ruff check .
+git clone https://github.com/jvelasco2319/kalshi_weather.git
+cd kalshi_weather
+powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap_windows.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 
-Update `.env` with a descriptive `NWS_USER_AGENT` before daily use.
+The bootstrap installs the CLI, dashboard, NAM/NBM Herbie stack, and development
+tools. It also creates `.env` plus the local `data`, cache, journal, log, and
+report directories. Update `.env` with a descriptive `NWS_USER_AGENT` before
+daily use.
+
+For a runtime-only install, add `-WithoutDevTools` to the bootstrap command.
+
+Manual setup is also supported:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev,full]"
+copy .env.example .env
+python -m kalshi_weather.cli init-runtime
+python -m pytest tests/test_portability.py tests/test_cli.py tests/test_runtime_paths.py tests/test_signal_room_api.py
+python -m ruff check .
+```
 
 ## Commands
 
@@ -46,6 +65,8 @@ kalshi-weather replay --snapshot-dir data/snapshots
 kalshi-weather calibration-report --station KLAX
 kalshi-weather residual-report --station KLAX
 kalshi-weather paper-report
+kalshi-weather record-weather-market-loop --target-date auto --interval-seconds 900 --journal-path journals/lax_model_validation.sqlite --jsonl-path journals/lax_model_validation.jsonl --models ecmwf_ifs,gfs013,gfs_seamless,nam,nbm
+kalshi-weather strategy-dashboard --mode live --event auto --port 8765
 ```
 
 The module form also works after installation:
@@ -80,6 +101,13 @@ This package is paper-trading only.
 - No API keys are needed for current market-data commands.
 - `.env`, private keys, SQLite files, and snapshots are ignored by git.
 
+## Runtime Data
+
+A clone contains empty runtime directory markers, but never another user's
+databases, journals, logs, forecasts, or credentials. `bootstrap_windows.ps1`
+and `kalshi-weather init-runtime` are both safe to rerun if these directories
+are deleted. The application creates parent directories again before writing.
+
 ## Known Limitations
 
 - Some configured Open-Meteo model identifiers may be rejected by the selected endpoint. Phase 2 requests each model separately, records successes/failures, and uses the generic fallback only when every model-specific request fails.
@@ -88,12 +116,6 @@ This package is paper-trading only.
 - Paper state resume/reset is implemented; paper reports still leave hold-time and mark-to-market P&L unavailable until more fill/quote history is captured.
 
 ## Phase 2 Notes
-
-The intended canonical project directory is:
-
-```powershell
-C:\Users\jarve\Documents\Codex\kalshi_weather
-```
 
 Phase 2 adds:
 
@@ -126,8 +148,9 @@ outcomes by accident.
 Get-Content .\HANDOFF_ZIP_CHECK.txt
 ```
 
-The zip intentionally excludes `.env`, `.git`, `.venv`, runtime `data/`,
-SQLite files, caches, snapshots, and key material.
+The zip intentionally excludes `.env`, `.git`, `.venv`, generated runtime
+data, SQLite files, caches, snapshots, and key material. Run
+`scripts\bootstrap_windows.ps1` after extracting it.
 
 ## Phase 4-7 POC Workflow
 

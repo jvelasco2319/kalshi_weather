@@ -29,7 +29,7 @@ import xarray as xr
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
-BOT_REPO = Path(r"C:\Users\jarve\Documents\Codex\kalshi_weather")
+BOT_REPO = Path(__file__).resolve().parents[1]
 BOT_SRC = BOT_REPO / "src"
 if str(BOT_SRC) not in sys.path:
     sys.path.insert(0, str(BOT_SRC))
@@ -43,7 +43,6 @@ from kalshi_weather.data.herbie_client import (  # noqa: E402
 from kalshi_weather.model.lax_high_temp import (  # noqa: E402
     LAX_LATITUDE,
     LAX_LONGITUDE,
-    LAX_TIMEZONE,
     lax_climate_day_utc,
 )
 
@@ -56,7 +55,6 @@ from build_klax_model_estimate_run_history import (  # noqa: E402
     availability_lag,
     build_run_requests,
     read_json,
-    raw_run_estimate_for_target,
     timestamp_to_pt_label,
 )
 from build_klax_temperature_history import parse_date_arg, resolve_location  # noqa: E402

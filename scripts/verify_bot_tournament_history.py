@@ -18,11 +18,9 @@ PT = ZoneInfo("America/Los_Angeles")
 UTC = ZoneInfo("UTC")
 
 
-DEFAULT_RUN_DIR = Path(
-    r"C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\debug"
-    r"\model_tournament_kxhighlax_2026-07-07_20260707_072206"
-)
-DEFAULT_SAVED_HTML = Path(r"C:\Users\jarve\OneDrive\Pictures\Kalshi Weather Model Tournament.html")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_RUN_DIR = REPO_ROOT / "reports" / "trader_agent" / "debug" / "model_tournament_kxhighlax_2026-07-07_20260707_072206"
+DEFAULT_SAVED_HTML = REPO_ROOT / "artifacts" / "Kalshi Weather Model Tournament.html"
 DEFAULT_OUTPUT_DIR = Path("data/processed/klax_temperature_history")
 
 
@@ -267,7 +265,6 @@ def main() -> int:
 
     run_dir = args.run_dir
     state = json.loads((run_dir / "model_tournament_state.json").read_text(encoding="utf-8"))
-    dashboard_state = state.get("dashboard") or {}
     saved_html_state = extract_saved_html_state(args.saved_html)
     estimate_jsonl = load_jsonl(run_dir / "model_estimate_history.jsonl")
     observation_jsonl = load_jsonl(run_dir / "temperature_observations.jsonl")

@@ -7,7 +7,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$Root = "C:\Users\jarve\Documents\Codex\kalshi_weather"
+$Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $PowerShell = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 function New-KalshiWeatherTask {

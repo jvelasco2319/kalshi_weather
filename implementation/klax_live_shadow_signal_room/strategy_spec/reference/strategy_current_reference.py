@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal, ROUND_CEILING
 from math import exp, log
-from statistics import median
 from typing import Callable, Iterable, Mapping, Sequence
 
 from scipy.stats import beta as beta_distribution

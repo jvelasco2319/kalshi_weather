@@ -34,7 +34,7 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-BOT_REPO = Path(r"C:\Users\jarve\Documents\Codex\kalshi_weather")
+BOT_REPO = Path(__file__).resolve().parents[1]
 BOT_SRC = BOT_REPO / "src"
 if str(BOT_SRC) not in sys.path:
     sys.path.insert(0, str(BOT_SRC))
@@ -48,7 +48,6 @@ from kalshi_weather.data.herbie_client import (  # noqa: E402
 from kalshi_weather.model.lax_high_temp import (  # noqa: E402
     LAX_LATITUDE,
     LAX_LONGITUDE,
-    LAX_TIMEZONE,
     lax_climate_day_utc,
 )
 
@@ -75,7 +74,6 @@ from build_klax_temperature_history import (  # noqa: E402
     build_session,
     fetch_noaa_actuals,
     parse_date_arg,
-    parse_model_override,
     resolve_location,
 )
 

@@ -4,7 +4,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = "C:\Users\jarve\Documents\Codex\kalshi_weather"
+$Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 Set-Location -LiteralPath $Root
 
 if (Test-Path -LiteralPath ".\.venv\Scripts\Activate.ps1") {

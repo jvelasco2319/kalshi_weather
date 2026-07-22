@@ -9,10 +9,36 @@ from pathlib import Path
 from typing import Any
 
 
-CANONICAL_REPO_ROOT = r"C:\Users\jarve\Documents\Codex\kalshi_weather"
-CANONICAL_ARTIFACT_ROOT = r"C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent"
-CANONICAL_DEBUG_ROOT = r"C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\debug"
-CANONICAL_ARCHIVE_ROOT = r"C:\Users\jarve\Documents\Codex\kalshi_weather\reports\trader_agent\archives"
+def _discover_repo_root() -> Path:
+    source_root = Path(__file__).resolve().parents[2]
+    if (source_root / "pyproject.toml").is_file():
+        return source_root
+
+    current = Path.cwd().resolve()
+    for candidate in (current, *current.parents):
+        if (candidate / "pyproject.toml").is_file() and (
+            candidate / "src" / "kalshi_weather"
+        ).is_dir():
+            return candidate
+    return current
+
+
+def _path_from_env(name: str, default: Path, *, base: Path | None = None) -> Path:
+    value = os.getenv(name)
+    path = Path(value).expanduser() if value else default
+    if not path.is_absolute():
+        path = (base or Path.cwd()) / path
+    return path.resolve()
+
+
+_DEFAULT_REPO_ROOT = _discover_repo_root()
+_DEFAULT_ARTIFACT_ROOT = _DEFAULT_REPO_ROOT / "reports" / "trader_agent"
+
+# Retained as strings for compatibility with older scripts that import these names.
+CANONICAL_REPO_ROOT = str(_DEFAULT_REPO_ROOT)
+CANONICAL_ARTIFACT_ROOT = str(_DEFAULT_ARTIFACT_ROOT)
+CANONICAL_DEBUG_ROOT = str(_DEFAULT_ARTIFACT_ROOT / "debug")
+CANONICAL_ARCHIVE_ROOT = str(_DEFAULT_ARTIFACT_ROOT / "archives")
 
 _LATEST_RUN_FILENAME = "_LATEST_RUN.txt"
 
@@ -22,19 +48,23 @@ class NonCanonicalPathError(ValueError):
 
 
 def get_repo_root() -> Path:
-    return Path(CANONICAL_REPO_ROOT)
+    return _path_from_env("KALSHI_WEATHER_REPO_ROOT", _DEFAULT_REPO_ROOT)
 
 
 def get_artifact_root() -> Path:
-    return Path(CANONICAL_ARTIFACT_ROOT)
+    return _path_from_env(
+        "KALSHI_WEATHER_ARTIFACT_ROOT",
+        get_repo_root() / "reports" / "trader_agent",
+        base=get_repo_root(),
+    )
 
 
 def get_debug_root() -> Path:
-    return Path(CANONICAL_DEBUG_ROOT)
+    return get_artifact_root() / "debug"
 
 
 def get_archive_root() -> Path:
-    return Path(CANONICAL_ARCHIVE_ROOT)
+    return get_artifact_root() / "archives"
 
 
 def sanitize_run_id(run_id: str) -> str:

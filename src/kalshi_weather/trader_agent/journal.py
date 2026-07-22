@@ -618,7 +618,6 @@ class SqliteTraderJournal:
                         "fill_price_mode": fill_price_mode,
                         "fill_price_source": "taker_ask_rejected",
                     }
-            quantity = int(order.get("quantity") or 0)
             fill_price = market_price
             fill_check = {
                 "fillable": True,

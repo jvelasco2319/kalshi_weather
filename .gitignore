@@ -10,9 +10,12 @@ __pycache__/
 .handoff_tmp/
 .tmp/
 .tmp_pytest_*/
+.wheel-audit/
+/build/
 
 # Virtual envs
 .venv/
+.venv*/
 venv/
 
 # Secrets
@@ -20,15 +23,21 @@ venv/
 *.pem
 *.key
 
-# Runtime data
-/data/*.db
-/data/*.sqlite
-/data/raw/
-/data/snapshots/
-/logs/
-/journals/
-/reports/
-/data/
+# Runtime data (keep only directory markers in git)
+/data/*
+!/data/.gitkeep
+!/data/herbie_cache/
+/data/herbie_cache/*
+!/data/herbie_cache/.gitkeep
+!/data/snapshots/
+/data/snapshots/*
+!/data/snapshots/.gitkeep
+/logs/*
+!/logs/.gitkeep
+/journals/*
+!/journals/.gitkeep
+/reports/*
+!/reports/.gitkeep
 *.log
 kalshi_weather_handoff_latest.zip
 HANDOFF_ZIP_CHECK.txt

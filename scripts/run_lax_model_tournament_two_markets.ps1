@@ -1,5 +1,5 @@
 param(
-  [string]$RepoRoot = "C:\Users\jarve\Documents\Codex\kalshi_weather",
+  [string]$RepoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path,
   [string]$Series = "KXHIGHLAX",
   [string]$Station = "KLAX",
   [string]$CurrentTargetDate = "",

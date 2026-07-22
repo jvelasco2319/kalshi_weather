@@ -9,6 +9,8 @@ from typing import Any
 import yaml
 from dotenv import load_dotenv
 
+from kalshi_weather.runtime_paths import get_repo_root
+
 
 @dataclass(frozen=True)
 class Settings:
@@ -130,7 +132,8 @@ def _weights_setting(env_name: str, value: Any, default: dict[str, float]) -> di
     return default
 
 
-def load_yaml(path: Path = Path("config/settings.example.yaml")) -> dict[str, Any]:
+def load_yaml(path: Path | None = None) -> dict[str, Any]:
+    path = path or get_repo_root() / "config" / "settings.example.yaml"
     if not path.exists():
         return {}
     with path.open("r", encoding="utf-8") as f:
