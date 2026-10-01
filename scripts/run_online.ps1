@@ -17,9 +17,12 @@ if ($Loop) {
     $InitialArguments = @("-m", "kalshi_swarm.cli", "snapshot", "--output-dir", "artifacts\online")
     if ($TargetDate) { $InitialArguments += @("--date", $TargetDate) }
     & $Python @InitialArguments
+    if ($LASTEXITCODE -ne 0) { throw "The initial current-data snapshot failed; the watch loop was not started." }
     if (-not $NoOpen) { Start-Process (Resolve-Path "artifacts\online\dashboard.html") }
     & $Python @Arguments
+    if ($LASTEXITCODE -ne 0) { throw "The current-data watch loop stopped with an error." }
 } else {
     & $Python @Arguments
+    if ($LASTEXITCODE -ne 0) { throw "The current-data snapshot failed; no dashboard was opened." }
     if (-not $NoOpen) { Start-Process (Resolve-Path "artifacts\online\dashboard.html") }
 }
