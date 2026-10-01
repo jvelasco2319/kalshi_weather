@@ -15,10 +15,16 @@ if (-not $PythonCommand) { throw "Python 3.11 or newer is required. Install it f
 $PythonVersion = & $PythonCommand @PythonPrefix -c "import sys; print('.'.join(map(str, sys.version_info[:3])))"
 if ([version]$PythonVersion -lt [version]"3.11.0") { throw "Python 3.11 or newer is required; found $PythonVersion." }
 & $PythonCommand @PythonPrefix -m venv .venv
+if ($LASTEXITCODE -ne 0) { throw "Creating the Python environment failed." }
 $VenvPython = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 & $VenvPython -m pip install --upgrade pip
+if ($LASTEXITCODE -ne 0) { throw "Updating pip failed. Check the internet connection and rerun setup." }
 & $VenvPython -m pip install -e ".[online,dev]"
+if ($LASTEXITCODE -ne 0) { throw "Installing the project failed. Check the internet connection and rerun setup." }
 & $VenvPython -m kalshi_swarm.verify
-& $VenvPython -m pytest -q --basetemp .test-artifacts
+if ($LASTEXITCODE -ne 0) { throw "Frozen-model verification failed." }
+& $VenvPython -m pytest -q --basetemp .test-artifacts -p no:cacheprovider
+if ($LASTEXITCODE -ne 0) { throw "Automated tests failed; no current-data run was started." }
 & $VenvPython -m kalshi_swarm.cli snapshot --output-dir "artifacts\online"
+if ($LASTEXITCODE -ne 0) { throw "The current-data snapshot failed. Check the public-service connection and rerun setup." }
 Write-Host "Setup complete. Open artifacts\online\dashboard.html or run .\scripts\run_online.ps1." -ForegroundColor Green
