@@ -119,6 +119,16 @@ def score_record(record: dict[str, Any]) -> dict[str, Any]:
     if not date:
         raise InputError("record date is required")
     vectors = model_probabilities(record["base_probabilities"], record.get("pressure_gradient_hpa"))
+    overrides = record.get("historical_model_probabilities") or {}
+    if not isinstance(overrides, dict):
+        raise InputError(f"historical_model_probabilities must be an object for {date}")
+    for name, probabilities in overrides.items():
+        if name not in vectors:
+            raise InputError(f"unknown historical model override {name!r} for {date}")
+        vectors[name] = normalize(probabilities)
+    unavailable = record.get("unavailable_models") or {}
+    if not isinstance(unavailable, dict):
+        raise InputError(f"unavailable_models must be an object for {date}")
     outcome = record.get("outcome_index")
     if outcome is not None:
         outcome = int(outcome)
@@ -127,6 +137,12 @@ def score_record(record: dict[str, Any]) -> dict[str, Any]:
     quotes = list(record.get("quotes") or [])
     models: dict[str, Any] = {}
     for name, probabilities in vectors.items():
+        if name in unavailable:
+            models[name] = {
+                "probabilities": None,
+                "decision": {"status": "UNAVAILABLE", "reason": str(unavailable[name])},
+            }
+            continue
         decision = select_no_trade(probabilities, quotes) if quotes else {"status": "ABSTAIN", "reason": "quotes_unavailable"}
         if outcome is not None:
             decision = dict(decision)
@@ -143,6 +159,7 @@ def score_record(record: dict[str, Any]) -> dict[str, Any]:
     return {
         "date": date,
         "source": record.get("source", "normalized_history"),
+        "evidence_scope": record.get("evidence_scope"),
         "pressure_gradient_hpa": record.get("pressure_gradient_hpa"),
         "pressure_state": pressure_state(record.get("pressure_gradient_hpa")),
         "outcome_index": outcome,
@@ -155,15 +172,23 @@ def evaluate(records: list[dict[str, Any]]) -> dict[str, Any]:
     if not records:
         raise InputError("history is empty")
     days = [score_record(record) for record in records]
+    common_forecast_days = [
+        day for day in days
+        if all("brier" in day["models"][name]["decision"] for name in ("V5B", "V8", "V10"))
+    ]
     summaries: dict[str, Any] = {}
     for name in ("V5B", "V8", "V10"):
         decisions = [day["models"][name]["decision"] for day in days]
+        available = [row for row in decisions if row["status"] != "UNAVAILABLE"]
         scored = [row for row in decisions if "brier" in row]
         trades = [row for row in decisions if row["status"] == "SELECTED" and "net_profit_dollars" in row]
         outlay = sum(row["entry_outlay_dollars"] for row in trades)
         profit = sum(row["net_profit_dollars"] for row in trades)
+        common = [day["models"][name]["decision"] for day in common_forecast_days]
         summaries[name] = {
             "dates": len(days),
+            "available_dates": len(available),
+            "unavailable_dates": len(days) - len(available),
             "forecast_scored_dates": len(scored),
             "selected_trades": len(trades),
             "wins": sum(bool(row.get("won")) for row in trades),
@@ -174,15 +199,31 @@ def evaluate(records: list[dict[str, Any]]) -> dict[str, Any]:
             "mean_brier": sum(row["brier"] for row in scored) / len(scored) if scored else None,
             "mean_log_loss": sum(row["log_loss"] for row in scored) / len(scored) if scored else None,
             "modal_accuracy": sum(bool(row["modal_hit"]) for row in scored) / len(scored) if scored else None,
+            "common_forecast_scored_dates": len(common),
+            "common_mean_brier": sum(row["brier"] for row in common) / len(common) if common else None,
+            "common_mean_log_loss": sum(row["log_loss"] for row in common) / len(common) if common else None,
+            "common_modal_accuracy": sum(bool(row["modal_hit"]) for row in common) / len(common) if common else None,
         }
-    ranking = sorted(
+    forecast_ranking = sorted(
         summaries,
         key=lambda name: (
-            summaries[name]["aggregate_realized_return"] is not None,
-            summaries[name]["aggregate_realized_return"] or -999.0,
-            -(summaries[name]["mean_brier"] or 999.0),
+            summaries[name]["common_mean_brier"] is None,
+            summaries[name]["common_mean_brier"] if summaries[name]["common_mean_brier"] is not None else math.inf,
+            name,
         ),
+    )
+    return_ranking = sorted(
+        (name for name in summaries if summaries[name]["aggregate_realized_return"] is not None),
+        key=lambda name: (summaries[name]["aggregate_realized_return"], name),
         reverse=True,
     )
-    return {"schema_version": "kalshi-swarm-three-model-evaluation-v1", "summaries": summaries, "ranking": ranking, "days": days}
+    return {
+        "schema_version": "kalshi-swarm-three-model-evaluation-v2",
+        "summaries": summaries,
+        "ranking": forecast_ranking,
+        "forecast_ranking": forecast_ranking,
+        "return_ranking": return_ranking,
+        "common_forecast_date_count": len(common_forecast_days),
+        "days": days,
+    }
 

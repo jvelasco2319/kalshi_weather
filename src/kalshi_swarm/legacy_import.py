@@ -26,12 +26,40 @@ def convert(research_root: str | Path, output: str | Path) -> int:
     sys.path.insert(0, str(root))
     from v5b.evaluation import load_development  # type: ignore
     from v8.regime_calibration import load_development_records  # type: ignore
-    from v10.evaluate_combinations import build_features  # type: ignore
+    from v10.evaluate_combinations import build_features, candidate_catalog, walk_forward  # type: ignore
 
     context = load_development(root)
-    feature_rows = build_features(root, load_development_records(root)[0])
-    gradients = {item["record"].climate_date: item["observed_pressure_gradient_hpa"] for item in feature_rows}
-    records: list[dict[str, Any]] = []
+    development_records = load_development_records(root)[0]
+    feature_rows = build_features(root, development_records)
+    config = json.loads((root / "configs" / "v10_meteorological_combinations.json").read_text(encoding="utf-8"))
+    catalog = candidate_catalog(config["feature_blocks"], config["combination_rule"]["conditional_blend_weights"])
+    predictions = walk_forward(feature_rows, catalog)
+    raw_by_date = {record.climate_date: record for record in development_records}
+    v8_by_date = {row["climate_date"]: row for row in predictions["V8_CONTROL"]}
+    v10_by_date = {row["climate_date"]: row for row in predictions["V10-pressure_and_flow-W75"]}
+    if set(v8_by_date) != set(v10_by_date) or len(v8_by_date) != 329:
+        raise RuntimeError("V8/V10 walk-forward probability history differs")
+
+    by_date: dict[str, dict[str, Any]] = {}
+    for day in sorted(v8_by_date):
+        raw = raw_by_date[day]
+        v8_row = v8_by_date[day]
+        v10_row = v10_by_date[day]
+        by_date[day] = {
+            "date": day,
+            "base_probabilities": list(raw.raw_probabilities),
+            "pressure_gradient_hpa": v10_row["observed_pressure_gradient_hpa"],
+            "outcome_index": int(raw.outcome_position),
+            "quotes": [],
+            "historical_model_probabilities": {
+                "V5B": list(raw.raw_probabilities),
+                "V8": list(v8_row["probabilities"]),
+                "V10": list(v10_row["probabilities"]),
+            },
+            "source": "v10_walk_forward_development_probability_only",
+            "evidence_scope": "EXPOSED_DEVELOPMENT_PROBABILITY_ONLY",
+        }
+
     for day in context["dates"]:
         all_rows = context["rows_by_date"][day]
         yes_rows = sorted(
@@ -55,14 +83,23 @@ def convert(research_root: str | Path, output: str | Path) -> int:
             quote = by_contract[row["market_ticker"]]
             quote.update({"bracket_index": index, "label": row.get("market_subtitle") or row["market_ticker"]})
             quotes.append(quote)
-        records.append({
+        execution_record = {
             "date": day,
             "base_probabilities": [context["probabilities"][(day, row["market_ticker"])] for row in yes_rows],
-            "pressure_gradient_hpa": gradients.get(day),
             "outcome_index": winners[0],
             "quotes": quotes,
             "source": "verified_v5b_development_import",
-        })
+            "evidence_scope": "EXPOSED_DEVELOPMENT_EXECUTION",
+        }
+        if day in by_date:
+            by_date[day]["quotes"] = quotes
+            by_date[day]["evidence_scope"] = "EXPOSED_DEVELOPMENT_PROBABILITY_AND_EXECUTION"
+        else:
+            execution_record["unavailable_models"] = {
+                "V10": "pressure feature unavailable for the execution-evidence period"
+            }
+            by_date[day] = execution_record
+    records = [by_date[day] for day in sorted(by_date)]
     target = Path(output)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text("".join(json.dumps(row, separators=(",", ":")) + "\n" for row in records), encoding="utf-8")
@@ -75,7 +112,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output", default="data/history.jsonl")
     args = parser.parse_args(argv)
     count = convert(args.research_root, args.output)
-    print(f"Imported {count} verified historical dates into {Path(args.output).resolve()}")
+    print(f"Imported {count} historical dates with separated probability and execution evidence into {Path(args.output).resolve()}")
     return 0
 
 
