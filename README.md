@@ -262,3 +262,15 @@ Inspect the CLI:
 ```powershell
 kalshi-weather --help
 ```
+
+## Offline Swarm Research
+
+The [`offline_research`](offline_research/) directory contains the separate multi-agent,
+offline research program developed through V3-V10. It includes the deterministic colony
+architecture, acquisition and validation tools, frozen campaign protocols, model code,
+tests, research reports, and the handoff prompt for continuing the work on another computer.
+
+Large weather archives, paid market data, generated campaign runs, credentials, and local
+virtual environments are intentionally excluded from Git. See
+[`offline_research/NEW_CHAT_HANDOFF_PROMPT.md`](offline_research/NEW_CHAT_HANDOFF_PROMPT.md)
+and [`offline_research/README.md`](offline_research/README.md) before running the research.

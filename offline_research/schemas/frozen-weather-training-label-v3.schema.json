@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://klax.local/schemas/frozen-weather-training-label-v3.schema.json",
+  "title": "KLAX V3 frozen weather-training target row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "partition", "data_role", "climate_date", "station",
+    "reported_high_f", "settlement_source_sha256", "label_role"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "partition": {"const": "weather_training"},
+    "data_role": {"const": "weather_model_training_label"},
+    "climate_date": {"type": "string", "format": "date"},
+    "station": {"const": "KLAX"},
+    "reported_high_f": {"type": "integer", "minimum": -100, "maximum": 150},
+    "settlement_source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "label_role": {"const": "fitting_only_not_scored_evaluation"}
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "repository": "https://github.com/ciel-ravencourt/weather_data_collector",
+  "observed_tree_commit": "a82f8aee0afecf568b3ce16f339c0bd7201773b8",
+  "acquisition": "authenticated browser individual raw downloads",
+  "recorded_at_utc": "2026-09-25T01:34:29.455588+00:00",
+  "scope": "source files and README; excludes example datasets and git history",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 79,
+      "sha256": "9a1505763762228b79f4ff2bcb50b62c22033fecd6a80c27bbc1602094ee6763"
+    },
+    {
+      "path": "config.py",
+      "bytes": 608,
+      "sha256": "80b6a7bd8028a4a3dc7dcd422945cf538c0d9a6022a16f573577752ca16f0554"
+    },
+    {
+      "path": "ensemble\\ensemble.py",
+      "bytes": 2829,
+      "sha256": "3209067cf62ab4d72d18da8f676c5443b9f91bd16d77d913db5695bc43ff0b89"
+    },
+    {
+      "path": "probability\\distribution.py",
+      "bytes": 3433,
+      "sha256": "5aecc11ce30085d7dbe2535f7537f3303a9436e40c493a45bafa16147131705b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4969,
+      "sha256": "f8355e2971274d1ff34ecc1f21fa0d921c499ea2558ac5f94a8b6449d6403e8e"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 44,
+      "sha256": "738e16549b352bd33914832dd6214ad51e42ab1170a55e0a25cb547868ad8594"
+    },
+    {
+      "path": "schema.py",
+      "bytes": 1581,
+      "sha256": "794b1263cd27a2a7f2842792b12c8742f825e98c884882c4484c966c88e73fbf"
+    },
+    {
+      "path": "scripts\\generate_dataset.py",
+      "bytes": 2261,
+      "sha256": "302fc8f87532583ce8e1d8a235607ced0f2db88f3d7f36e518df4669a3572544"
+    },
+    {
+      "path": "weather_pipeline.py",
+      "bytes": 15208,
+      "sha256": "0c3e032b71538efe6b2903fa9fb5e2ec1a1901c6243038cdb38e3393ab3fc4fc"
+    }
+  ]
+}

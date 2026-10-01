@@ -1,0 +1,68 @@
+{
+  "schema_version": "v5b-untouched-confirmation-plan-v1",
+  "primary_strategy": {
+    "campaign_id": "v5b-development-20260927T183845017734Z",
+    "candidate_id": "c4d9b5adac5b672b56850f7f840bce1b266ad06a8925849dde7af5a9a1ec5b6d",
+    "strategy_freeze_path": "runs/campaigns_v5b/v5b-development-20260927T183845017734Z/strategy-freeze.json"
+  },
+  "confirmation_windows": [
+    {
+      "date_start": "2026-05-09",
+      "date_end": "2026-05-31",
+      "role": "pre-development-level-2"
+    },
+    {
+      "date_start": "2026-08-04",
+      "date_end": "2026-08-31",
+      "role": "sealed-v5a-holdout"
+    },
+    {
+      "date_start": "2026-09-01",
+      "date_end": "2026-09-27",
+      "role": "post-development-level-2"
+    }
+  ],
+  "station": "KLAX",
+  "series_ticker": "KXHIGHLAX",
+  "decision_time_utc": "18:00:00",
+  "minimum_selected_days_before_label_open": 30,
+  "evaluation_gates": {
+    "minimum_aggregate_net_return": 0.1,
+    "minimum_positive_folds": 4,
+    "minimum_worst_fold_return": -0.1,
+    "adverse_fill_stress_cents": 2,
+    "require_positive_adverse_fill_return": true,
+    "require_positive_best_day_removed_return": true,
+    "require_brier_no_worse_than_frozen_reference": true
+  },
+  "input_policy": {
+    "weather_models": [
+      "HRRR",
+      "GEFS"
+    ],
+    "weather_availability_policy_id": "max_nominal_plus_6h_archived_last_modified_v2",
+    "market_source": "Probalytics historical Kalshi full-depth order books",
+    "allowed_execution_grades": [
+      "A",
+      "B_PLUS",
+      "B"
+    ],
+    "grade_b_or_b_plus_are_verified_fills": false,
+    "exact_event_rules_required": true,
+    "exact_historical_fee_schedule_required": true
+  },
+  "outcome_policy": {
+    "freeze_universe_before_outcomes": true,
+    "freeze_selections_before_outcomes": true,
+    "open_outcomes_once": true,
+    "allow_strategy_substitution_after_outcomes": false,
+    "allow_parameter_search_after_outcomes": false
+  },
+  "network_policy": {
+    "finite_historical_acquisition_only": true,
+    "offline_scoring_only": true,
+    "live_feeds": false,
+    "paper_orders": false,
+    "live_orders": false
+  }
+}

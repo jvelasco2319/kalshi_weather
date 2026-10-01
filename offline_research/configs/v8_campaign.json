@@ -1,0 +1,68 @@
+{
+  "schema_version": "klax-v8-probability-repair-and-replay-v1",
+  "campaign_id": "v8-offline-20260930T004226Z",
+  "registered_at_utc": "2026-09-30T00:42:26.9248027Z",
+  "scope": "KLAX daily-high weather probability repair and strict offline Kalshi replay",
+  "forecast_development": {
+    "period": ["2025-01-05", "2025-12-31"],
+    "primary_period": ["2025-02-04", "2025-12-31"],
+    "status": "EXPOSED_DEVELOPMENT_ONLY",
+    "finite_candidate_count": 104,
+    "probability_spec": "v8/probability_repair_spec.json",
+    "probability_spec_sha256": "1680176e4bf30ed9fa08391989e7fad95bd0af5081808e121cba9eccaf8d967e",
+    "probability_result": "runs/v8/probability-repair/results.json",
+    "probability_result_sha256": "f801b2e4cd01282fae5ecb12242114b352fbe5f0acc867c684bb443947f7dfb1"
+  },
+  "frozen_leader": {
+    "candidate_id": "rolling_confusion-alpha-2-w-0.75",
+    "family": "rolling_confusion",
+    "dirichlet_alpha_per_output_bracket": 2.0,
+    "base_probability_weight": 0.25,
+    "conditional_confusion_weight": 0.75,
+    "fit_population": "all 359 scorable 2025 dates after finite-catalog selection",
+    "application_rule": "fixed mapping for every 2026 replay prediction; no 2026 label updates"
+  },
+  "forward_stability_replay": {
+    "period": ["2026-07-30", "2026-09-27"],
+    "primary_period": ["2026-08-04", "2026-09-27"],
+    "status": "PREVIOUSLY_EXPOSED_CAUSAL_STABILITY_EVIDENCE",
+    "decision_time_utc": "18:00:00",
+    "arrival_delay_seconds": 5,
+    "execution_evidence": "strict paid Grade-A book or abstain",
+    "frozen_v7i_input": "runs/replays/v7i-historical-20260730-20260927/prediction-order-freeze.json",
+    "frozen_v7i_input_sha256": "1bf8d25629a5e408f79522809867e9735fd94e1c8cfd67dc526fdee226a35f63"
+  },
+  "forecast_gates": {
+    "zero_realized_probability_count": 0,
+    "brier_below_frozen_v7y": true,
+    "brier_below_uniform": true,
+    "log_loss_below_frozen_v7y": true,
+    "log_loss_below_uniform": true,
+    "minimum_better_chronological_folds_of_five": 4
+  },
+  "economic_research_screen": {
+    "minimum_filled_days": 30,
+    "minimum_aggregate_return": 0.1,
+    "minimum_positive_folds_of_five": 4,
+    "bootstrap_one_sided_confidence": 0.95,
+    "bootstrap_block_days": 3,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20260930,
+    "require_bootstrap_lower_bound_above_zero": true,
+    "adverse_entry_stress_cents": 2,
+    "require_positive_stress_return": true,
+    "require_positive_best_trade_removed_return": true
+  },
+  "promotion_gate": {
+    "minimum_genuinely_new_grade_a_days": 100,
+    "one_shot": true,
+    "available_in_this_campaign": false
+  },
+  "safety": {
+    "network_allowed": false,
+    "paper_orders_allowed": false,
+    "live_orders_allowed": false,
+    "current_or_live_market_feed_allowed": false,
+    "claims_of_untouched_confirmation_allowed": false
+  }
+}

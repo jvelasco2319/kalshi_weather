@@ -1,0 +1,76 @@
+{
+  "schema_version": "klax-v7-six-week-shadow-v1",
+  "campaign_family": "v7_six_week_outcome_blind_shadow",
+  "registration_date": "2026-09-28",
+  "target_start": "2026-09-29",
+  "target_end": "2026-11-09",
+  "target_date_count": 42,
+  "market_series": "KXHIGHLAX",
+  "decision_time_utc": "18:00:00",
+  "arrival_delay_seconds": 5,
+  "training_state": {
+    "start": "2026-06-01",
+    "end": "2026-08-03",
+    "date_count": 64,
+    "target_updates_allowed": false
+  },
+  "methods": [
+    {"id": "v5b_causal_no", "class": "primary", "side_policy": "NO"},
+    {"id": "v6_gefs_spread_equal_blend_no", "class": "primary", "side_policy": "NO"},
+    {"id": "diagnostic_nam_only", "class": "primary_challenger", "side_policy": "YES"},
+    {"id": "friend_exact_primary_gfs_nam_nbm", "class": "secondary", "side_policy": "YES"},
+    {"id": "v5f_cross_family_stack", "class": "secondary", "side_policy": "NO"},
+    {"id": "diagnostic_gfs_only", "class": "secondary_diagnostic", "side_policy": "YES"},
+    {"id": "diagnostic_nbm_only", "class": "secondary_diagnostic", "side_policy": "YES"}
+  ],
+  "execution": {
+    "quantity_contracts": 1,
+    "selection_snapshot_offset_seconds": 0,
+    "fill_snapshot_offset_seconds": 5,
+    "maximum_quote_age_ms": 5000,
+    "minimum_displayed_ask_quantity": 1,
+    "require_verified_state": true,
+    "require_contiguous_sequence": true,
+    "require_noncrossed_book": true,
+    "price_increment_cents": 1,
+    "primary_evidence_grade": "A",
+    "hold_to_settlement": true
+  },
+  "evaluation": {
+    "fold_count": 3,
+    "fold_days": 14,
+    "bootstrap_kind": "circular_moving_block",
+    "bootstrap_block_days": 3,
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260928,
+    "one_sided_confidence": 0.95,
+    "minimum_aggregate_return": 0.10,
+    "minimum_positive_folds": 2,
+    "require_bootstrap_lower_bound_above_zero": true,
+    "require_positive_two_cent_stress": true,
+    "require_positive_best_day_removed": true,
+    "minimum_grade_a_days_for_final_confirmation": 100,
+    "six_week_result_is_preliminary": true
+  },
+  "sources": {
+    "weather_primary": ["HRRR", "GEFS"],
+    "weather_friend": ["GFS", "NAM", "NBM"],
+    "market_depth": "Probalytics historical Kalshi full-depth order books",
+    "settlement": "contract-specific source and resolved market outcome"
+  },
+  "bound_source_files": [
+    "past7_replay/audited.py",
+    "past7_replay/engine.py",
+    "configs/friend_method_exact_test.json",
+    "configs/v5f_stacked.json",
+    "configs/v6_campaign.json",
+    "runs/campaigns_v5b/v5b-development-20260927T183845017734Z/strategy-freeze.json",
+    "runs/campaigns_v6/v6-development-20260927T214208879719Z/candidates/6c7dcb09ece3c69cee32e0bcba5de4c5ed34632bcc7274e0e1e7d76be199d896.json"
+  ],
+  "network_policy": "finite_archive_acquisition_after_each_target_decision_only",
+  "continuous_live_feed_allowed": false,
+  "outcomes_before_freeze_allowed": false,
+  "paper_orders_allowed": false,
+  "live_orders_allowed": false,
+  "order_authorization_count": 0
+}

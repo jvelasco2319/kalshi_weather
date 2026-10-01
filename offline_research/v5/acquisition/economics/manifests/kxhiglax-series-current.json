@@ -1,0 +1,20 @@
+{
+  "actual_orders_placed": false,
+  "protected_confirmation_labels_read": false,
+  "retrieved_at_utc": "2026-09-27T14:19:17.185017Z",
+  "series": {
+    "contract_terms_url": "https://assets.kalshi.com/contract_terms/GLOBALTEMPERATURE.pdf",
+    "contract_url": "https://assets.kalshi.com/regulatory/product-certifications/GLOBALTEMPERATURE.pdf",
+    "fee_multiplier": 1,
+    "fee_type": "quadratic",
+    "last_updated_ts": "2026-09-17T13:14:20.095313Z",
+    "settlement_sources": [
+      {
+        "name": "The Weather Company",
+        "url": "https://weather.com/kalshi"
+      }
+    ],
+    "ticker": "KXHIGHLAX"
+  },
+  "url": "https://external-api.kalshi.com/trade-api/v2/series/KXHIGHLAX"
+}

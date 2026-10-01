@@ -1,0 +1,116 @@
+{
+  "acquisition": {
+    "climate": [
+      "CLILAX",
+      "NOAA_NCEI_reconciliation"
+    ],
+    "execution_free_sources": [
+      "PMXT",
+      "public_research_datasets",
+      "free_vendor_schema_samples"
+    ],
+    "kalshi": [
+      "market_metadata",
+      "one_minute_candles",
+      "public_trades"
+    ],
+    "paid_or_authenticated_sources_authorized": false,
+    "weather": {
+      "models": [
+        "HRRR",
+        "GEFS"
+      ],
+      "priority_end": "2026-08-31",
+      "priority_start": "2026-06-01",
+      "remaining_end": "2026-05-31",
+      "remaining_start": "2025-07-01"
+    }
+  },
+  "authorization": "User explicitly authorized downloading whatever missing data is available, relaxing the 90% coverage requirement, and starting a campaign with available evidence.",
+  "broker_connectivity": false,
+  "campaign_family": "v5p-partial-evidence",
+  "colonies": [
+    "execution_evidence",
+    "fee_and_settlement_integrity",
+    "frozen_probability_validation",
+    "sample_and_regime_robustness"
+  ],
+  "coverage_policy": {
+    "minimum_complete_eligible_days_for_scoring": 1,
+    "minimum_percent_for_campaign_start": 0.0,
+    "must_report_actual_coverage": true,
+    "no_coverage_based_promotion_to_v5": true,
+    "original_v5_90_percent_gate_applies": false
+  },
+  "evidence_grades": {
+    "A": "replayable timestamped L2 with quantities and continuity",
+    "B": "one-minute aggregated quote and assumed fill",
+    "B_PLUS": "sparse historical full-book snapshot with size",
+    "C": "public trade print diagnostic"
+  },
+  "frozen_candidate": {
+    "candidate_id": "v4-candidate-a779fd17e7b160650c8f",
+    "fitted_model_sha256": "9bf8b1ba469b1c7258108f5dd11c67c2822e7487edff5c819688d37319574f93",
+    "model_state_sha256": "7c677c1264115b39d73c70cfb7162b9be138ae1c9df9ac30df472426f2a57fd3",
+    "research_plan_sha256": "a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461"
+  },
+  "goal_document": "docs/V5P_PARTIAL_EVIDENCE_CAMPAIGN_GOAL.md",
+  "goal_document_sha256": "278c80cbf9b4bab045d2007925fbbff079cb256fa2a94b314581e409b9f232a0",
+  "historical_acquisition_allowed": true,
+  "iteration": {
+    "development_only": true,
+    "no_refund_on_resume": true,
+    "pareto_objectives": [
+      "net_return",
+      "calibration",
+      "temporal_stability",
+      "evidence_quality"
+    ],
+    "proposal_verification_criticism_synthesis": true,
+    "wall_clock_seconds": 43200
+  },
+  "live_feeds": false,
+  "live_orders": false,
+  "maximum_window": {
+    "calendar_days": 427,
+    "date_end": "2026-08-31",
+    "date_start": "2025-07-01"
+  },
+  "offline_only_after_acquisition": true,
+  "paper_orders": false,
+  "protected_data": {
+    "holdout_sealed_until_freeze": true,
+    "orders_authorized": false,
+    "outcome_blind_universe_first": true
+  },
+  "registered_at_utc": "2026-09-27T00:00:00Z",
+  "sample_labels": {
+    "10_29": "PRELIMINARY_PARTIAL_EVIDENCE",
+    "1_9": "ANECDOTAL_PARTIAL_EVIDENCE",
+    "30_plus": "SUPPORTED_PARTIAL_EVIDENCE"
+  },
+  "schema_version": "klax-v5p-partial-evidence-campaign-v1",
+  "split_policy": {
+    "development_fraction": 0.7,
+    "freeze_before_outcome_read": true,
+    "holdout_evaluations_maximum": 1,
+    "holdout_fraction": 0.3,
+    "method": "chronological"
+  },
+  "target": {
+    "decision_time_utc": "18:00",
+    "expected_net_return_screen": 0.1,
+    "quantity_contracts_primary": 1,
+    "series": "KXHIGHLAX",
+    "station": "KLAX"
+  },
+  "terminal_labels": [
+    "PARTIAL_EVIDENCE_POSITIVE_AT_OR_ABOVE_10PCT",
+    "PARTIAL_EVIDENCE_POSITIVE_BELOW_TARGET",
+    "PARTIAL_EVIDENCE_NO_EDGE",
+    "PARTIAL_EVIDENCE_INCONCLUSIVE_SMALL_SAMPLE",
+    "PARTIAL_EVIDENCE_INCONCLUSIVE_EXECUTION_PROXY",
+    "PROBABILITY_VALIDATION_FAILED",
+    "INTEGRITY_FAILURE"
+  ]
+}

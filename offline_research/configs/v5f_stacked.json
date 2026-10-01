@@ -1,0 +1,17 @@
+{
+  "schema_version": "v5-successor-config-v1",
+  "version": "V5F",
+  "method": "fixed_stacked_probability",
+  "description": "Blend frozen HRRR/GEFS probabilities 50/50 with the fixed heavy-tail GFS/NAM/NBM probabilities before applying the frozen V5B NO selector.",
+  "common_scoring_dates": 44,
+  "warmup_dates": 20,
+  "allow_network": false,
+  "allow_orders": false,
+  "allow_protected_labels": false,
+  "parameters": {
+    "v5b_weight": 0.50,
+    "friend_heavy_tail_weight": 0.50,
+    "wide_component_weight": 0.20,
+    "wide_sigma_multiplier": 2.0
+  }
+}

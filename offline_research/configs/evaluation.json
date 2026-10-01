@@ -1,0 +1,77 @@
+{
+  "version": "historical-pilot-v1",
+  "registered_at_utc": "2026-09-25T01:34:29.461658+00:00",
+  "status": "preregistered_before_any_return_analysis",
+  "model_fit_cutoff_utc": "2025-01-05T00:00:00Z",
+  "training_label_source": "NWS_CLILAX_latest_final_revision_available_before_fit_cutoff",
+  "minimum_forecast_coverage_fraction": "0.95",
+  "weather_acquisition_must_be_terminal": true,
+  "coverage_policy_note": "Registered during source validation before forecast scores or returns were inspected. All731 dates must be attempted; missing or contradicted files are quarantined. Each core partition requires at least95percent model-pair coverage, with exclusions disclosed.",
+  "scope": "LAX daily high, purchased binary contracts held to settlement",
+  "weather_training": [
+    "2024-01-01",
+    "2024-12-31"
+  ],
+  "selection": [
+    "2025-01-05",
+    "2025-06-30"
+  ],
+  "protected_final": [
+    "2025-07-01",
+    "2025-12-31"
+  ],
+  "climatology_training": [
+    "2020-01-01",
+    "2024-12-31"
+  ],
+  "climate_day": "fixed_PST_UTC_minus_08",
+  "station": {
+    "icao": "KLAX",
+    "ncei": "USW00023174",
+    "latitude": 33.93816,
+    "longitude": -118.3866
+  },
+  "forecast_initialization_hour_utc": 0,
+  "availability_delay_hours": 6,
+  "availability_status": "conservative_assumption_pending_source_verification",
+  "decision_hour_utc": 14,
+  "execution_delay_seconds": 60,
+  "max_quote_age_seconds": 3660,
+  "price_convention": "last_completed_hour_yes_ask_close_or_one_minus_yes_bid_close",
+  "evidence_grade": "B",
+  "fill_assumption": "assumed_fill_at_hourly_summary_plus_slippage_no_historical_depth",
+  "target_expected_net_return": "0.10",
+  "reference_quantity": 1,
+  "max_entries_per_weather_day": 1,
+  "selection_rule": "highest_expected_net_ROI_then_ticker_then_side",
+  "fee_scenario": {
+    "name": "historical_proxy_not_verified_2025",
+    "rate": "0.07",
+    "rounding": "0.01",
+    "historical_verified": false,
+    "source": "https://www.cftc.gov/sites/default/files/filings/orgrules/22/09/rule091222kexdcm003.pdf"
+  },
+  "slippage_per_contract": "0.01",
+  "sensitivity_slippage": [
+    "0.00",
+    "0.02",
+    "0.05"
+  ],
+  "sensitivity_fee_rate": [
+    "0.07",
+    "0.10"
+  ],
+  "sensitivity_quantities": [
+    1,
+    10
+  ],
+  "minimum_training_days": 100,
+  "minimum_selected_weather_days_for_inference": 30,
+  "minimum_final_opportunity_days_for_inference": 30,
+  "bootstrap_unit": "weather_day",
+  "bootstrap_seed": 1790299255,
+  "bootstrap_samples": 2000,
+  "discovery_primary_metric": "selection_CRPS_with_Brier_and_calibration_review",
+  "economic_claim": "No executable edge claim; historical assumed-fill scenario only",
+  "predeclared_narrowing": "Kalshi series coverage is 361 days in 2025. Weather calibration uses 2024 independently. Economics covers one year and cannot establish year-round robustness across years."
+}

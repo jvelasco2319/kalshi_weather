@@ -1,0 +1,239 @@
+{
+  "schema_version": "klax-v5-execution-acquisition-research-v1",
+  "research_date": "2026-09-27",
+  "campaign": {
+    "series": "KXHIGHLAX",
+    "requested_start": "2025-07-01",
+    "requested_end": "2026-08-31",
+    "calendar_days": 427,
+    "registered_minimum_event_window_coverage": 0.9,
+    "registered_minimum_selected_trades": 30
+  },
+  "safety": {
+    "documentation_only": true,
+    "market_data_downloaded": false,
+    "credentials_used": false,
+    "live_feed_opened": false,
+    "orders_created": false,
+    "protected_confirmation_labels_read": false
+  },
+  "sources": [
+    {
+      "source_id": "kalshi-official-historical-api",
+      "provider": "Kalshi",
+      "source_class": "official_exchange_api",
+      "url": "https://docs.kalshi.com/llms.txt",
+      "access": "Public market history; authentication for member orders and fills",
+      "retention_or_coverage": "Moving cutoff separates current and historical stores; no historical order-book route is documented",
+      "fields_or_capabilities": [
+        "historical markets",
+        "historical candlesticks",
+        "historical public trades",
+        "authenticated member orders",
+        "authenticated member fills",
+        "historical positions"
+      ],
+      "promotion_capability": "NO_HISTORICAL_BOOK",
+      "notes": "The official historical endpoint inventory contains no order-book snapshots or deltas."
+    },
+    {
+      "source_id": "kalshi-official-current-rest-book",
+      "provider": "Kalshi",
+      "source_class": "official_exchange_api",
+      "url": "https://docs.kalshi.com/api-reference/market/get-market-orderbook",
+      "access": "Authenticated GET with a Kalshi API key",
+      "retention_or_coverage": "Current state only; no historical timestamp parameter",
+      "fields_or_capabilities": [
+        "yes and no bid price levels",
+        "fixed-point quantity at each price",
+        "configurable depth up to 100 levels or all levels"
+      ],
+      "promotion_capability": "FORWARD_CAPTURE_ONLY",
+      "notes": "Could support a prospective recorder, which is outside the registered offline campaign and cannot backfill the requested window."
+    },
+    {
+      "source_id": "kalshi-official-websocket-book",
+      "provider": "Kalshi",
+      "source_class": "official_exchange_api",
+      "url": "https://docs.kalshi.com/websockets/orderbook-updates",
+      "access": "Authenticated WebSocket handshake",
+      "retention_or_coverage": "Real-time subscription only",
+      "fields_or_capabilities": [
+        "initial full orderbook_snapshot",
+        "incremental orderbook_delta",
+        "subscription sequence number",
+        "market ticker and market id",
+        "price, signed quantity delta, side",
+        "delta ts and ts_ms"
+      ],
+      "promotion_capability": "FORWARD_CAPTURE_ONLY",
+      "notes": "The documented snapshot has no own exchange timestamp; each delta has ts/ts_ms. Completeness requires sequence monitoring and resnapshot handling."
+    },
+    {
+      "source_id": "kalshi-authenticated-member-history",
+      "provider": "Kalshi",
+      "source_class": "official_account_scoped_api",
+      "urls": [
+        "https://docs.kalshi.com/api-reference/historical/get-historical-fills",
+        "https://docs.kalshi.com/api-reference/historical/get-historical-orders"
+      ],
+      "access": "Member-owned Kalshi API key and signed read requests; paginate historical and current-database routes across the moving cutoff",
+      "retention_or_coverage": "Account-scoped archived fills and canceled/fully executed orders; exact oldest retained date is not promised on the reviewed pages",
+      "fields_or_capabilities": [
+        "fill_id, trade_id, order_id, market ticker",
+        "side, price, executed quantity, match time",
+        "is_taker and fee_cost",
+        "order status, original/fill/remaining quantity",
+        "created_time, last_update_time, maker/taker costs and fees"
+      ],
+      "what_it_proves": "Realized execution and charged cost for the member's exact submitted order",
+      "what_it_does_not_prove": "Counterfactual fill for an unsubmitted signal, public queue state, full depth, or alternative latency",
+      "promotion_capability": "ONLY_FOR_MATCHING_ACTUAL_ORDERS",
+      "current_campaign_applicability": "NONE_CAMPAIGN_ORDERS_ABSENT"
+    },
+    {
+      "source_id": "cryptostruct-kxhighlax-archive",
+      "provider": "CryptoStruct GmbH",
+      "source_class": "commercial_vendor_archive",
+      "urls": [
+        "https://cryptostruct.com/prediction-markets/kalshi-kxhighlax",
+        "https://docs.cryptostruct.com/market-data-api/protocol/",
+        "https://cryptostruct.com/pricing",
+        "https://cryptostruct.com/license"
+      ],
+      "access": "Self-service day bundles; advertised EUR 1 per KXHIGHLAX series-day; free out-of-window sample available",
+      "documented_coverage": "March 2026 through September 2026; exact first March day must be confirmed",
+      "requested_window_overlap_upper_bound_days": 184,
+      "requested_window_overlap_upper_bound_fraction": 0.4309,
+      "fields_or_capabilities": [
+        "tick-by-tick trades",
+        "Level-2 snapshots and updates",
+        "price and quantity",
+        "adapter receive timestamp",
+        "exchange timestamp when venue provides one",
+        "previous/current event-id chain"
+      ],
+      "license": "Perpetual internal-use license for purchased files; raw redistribution prohibited; vendor says venue-specific conditions currently none",
+      "promotion_capability": "TECHNICALLY_PLAUSIBLE_PARTIAL_WINDOW_ONLY",
+      "required_probe": [
+        "exact first KXHIGHLAX date",
+        "per-day and per-contract completeness manifest",
+        "Kalshi-specific exchange timestamp capability",
+        "sequence-gap and reconnect records",
+        "five-second arrival-state reconstruction"
+      ]
+    },
+    {
+      "source_id": "probalytics-kalshi-orderbook",
+      "provider": "Probalytics / Norven Oy",
+      "source_class": "commercial_vendor_archive",
+      "urls": [
+        "https://www.probalytics.io/platforms/kalshi",
+        "https://www.probalytics.io/architecture",
+        "https://www.probalytics.io/pricing",
+        "https://www.probalytics.io/legal/terms"
+      ],
+      "access": "Orderbook plan advertised at USD 249/month; 3-day trial covers the most recent 7 days; ClickHouse, REST, or Parquet",
+      "documented_coverage": "Kalshi binary order book from 2026-05-09 through August 2026",
+      "requested_window_overlap_upper_bound_days": 115,
+      "requested_window_overlap_upper_bound_fraction": 0.2693,
+      "fields_or_capabilities": [
+        "full bid and ask arrays with size",
+        "millisecond source timestamp",
+        "indexed_at receipt timestamp",
+        "book-state hash and path index",
+        "state and continuity labels",
+        "native Kalshi ticker"
+      ],
+      "collection_claim": "Four redundant venue collectors, sequence-gap detection, automatic resnapshot, indefinite retention",
+      "license": "Terms permit trading and research; redistribution restricted; Kalshi data described as sourced from the public API",
+      "promotion_capability": "TECHNICALLY_PLAUSIBLE_PARTIAL_WINDOW_ONLY",
+      "required_probe": [
+        "confirm KXHIGHLAX inclusion on every requested day after 2026-05-09",
+        "export per-market continuity incidents",
+        "verify source timestamp semantics against Kalshi delta ts_ms",
+        "verify the five-second arrival lookup and immutable export hashes"
+      ]
+    },
+    {
+      "source_id": "pmxt-free-hourly-kalshi-archive",
+      "provider": "pmxt",
+      "source_class": "public_research_archive",
+      "url": "https://archive.pmxt.dev/Kalshi",
+      "access": "Free Parquet downloads",
+      "documented_coverage": "Visible Kalshi order-book files from June 2026; no published KXHIGHLAX 2025 coverage found",
+      "fields_or_capabilities": [
+        "hourly order-book snapshots",
+        "Parquet delivery"
+      ],
+      "promotion_capability": "INSUFFICIENT_WINDOW_AND_FREQUENCY",
+      "notes": "Hourly snapshots cannot reconstruct the registered five-second arrival book, and the visible archive begins too late."
+    },
+    {
+      "source_id": "huggingface-kalshi-orderbook-alpha",
+      "provider": "lerchen3 / Hugging Face",
+      "source_class": "public_research_live_capture",
+      "url": "https://huggingface.co/datasets/lerchen3/kalshi-orderbook-alpha",
+      "access": "Public dataset, license marked other",
+      "documented_coverage": "Recent live capture; no documented 2025 history and no guaranteed KXHIGHLAX inclusion",
+      "fields_or_capabilities": [
+        "snapshot and delta records",
+        "top-200 rolling universe",
+        "top-three book levels",
+        "receipt and exchange timestamps when present"
+      ],
+      "promotion_capability": "INSUFFICIENT_DOCUMENTED_COVERAGE",
+      "notes": "Universe changes every ten minutes and is selected by recent volume; KXHIGHLAX coverage and continuity are not guaranteed."
+    }
+  ],
+  "negative_vendor_findings": [
+    {
+      "provider": "PredictionMarketBench",
+      "url": "https://github.com/Oddpool/PredictionMarketBench",
+      "reason": "Public MIT benchmark has one January 2026 weather episode for KXHIGHNY, not KXHIGHLAX; useful only as a replay-format reference"
+    },
+    {
+      "provider": "DepthFeed",
+      "url": "https://kalshipricedata.com/docs",
+      "reason": "Documented Kalshi tick coverage begins 2026-08-07 and is a rolling crypto subset, not KXHIGHLAX weather"
+    },
+    {
+      "provider": "ZenHodl",
+      "url": "https://zenhodl.net/kalshi-historical-data",
+      "reason": "Documented archive begins June 2026 and covers sports ticker families, not KXHIGHLAX"
+    }
+  ],
+  "barrier_assessment": {
+    "publicly_documented_full_window_source_found": false,
+    "best_documented_calendar_coverage_upper_bound_fraction": 0.4309,
+    "coverage_gate_can_be_met_from_found_vendor_archives": false,
+    "member_history_can_retroactively_validate_unsubmitted_campaign_orders": false,
+    "exact_path_to_clear": "Obtain a Kalshi-supplied or contractually authorized KXHIGHLAX L2 archive reaching at least 90% of registered event windows, or keep the V5 execution gate blocked.",
+    "official_contact": "institutional@kalshi.com"
+  },
+  "local_evidence_paths": [
+    "src/klax_lab/acquire_kalshi.py",
+    "data/manifests/v3_minute_kalshi.json",
+    "reports/v4-quote-evidence-audit.md",
+    "v5/artifacts/current-execution-evidence-audit.json",
+    "v5/artifacts/current-execution-readiness-verdict.json"
+  ],
+  "unverified_contact_leads": [
+    {
+      "lead_id": "reddit-claimed-kalshi-distribution-license-2026-09-22",
+      "url": "https://www.reddit.com/r/Kalshi/comments/1wmupvd/does_anyone_need_historic_orderbook_depth/",
+      "claim": "Anonymous poster says they recently received a Kalshi data-distribution license and can sell historical order-book depth.",
+      "missing_verification": [
+        "legal entity and contact identity",
+        "Kalshi license confirmation",
+        "KXHIGHLAX inclusion",
+        "first captured date",
+        "price-level depth",
+        "timestamp semantics",
+        "sequence and gap evidence",
+        "pricing and internal-research rights"
+      ],
+      "usable_as_evidence": false
+    }
+  ]
+}

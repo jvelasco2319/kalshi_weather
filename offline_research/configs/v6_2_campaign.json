@@ -1,0 +1,26 @@
+{
+  "schema_version": "klax-v6.2-corrected-forecast-first-v1",
+  "campaign_family": "v6_2_corrected_forecast_first",
+  "development_start": "2026-06-01",
+  "development_end": "2026-08-03",
+  "decision_time_utc": "18:00",
+  "arrival_delay_seconds": 5,
+  "development_wall_seconds": 10800,
+  "outer_folds": 5,
+  "development_forecast_scored_dates": 44,
+  "minimum_market_relative_paired_dates": 20,
+  "minimum_market_relative_positive_folds": 4,
+  "log_loss_epsilon": 1e-12,
+  "bootstrap": {"kind":"circular_moving_block","block_length_days":3,"resamples":10000,"seed":20260928,"one_sided_confidence":0.95},
+  "development_economics": {"mode":"DIAGNOSTIC_ONLY","available_grade_a_days":7},
+  "future_confirmation": {"minimum_grade_a_days":100,"minimum_selected_days_per_fold":15,"one_shot":true},
+  "allow_network": false,
+  "allow_confirmation_labels": false,
+  "allow_orders": false,
+  "catalog_ids": [
+    "S00_UNIFORM_CONTROL","S01_SOURCE_SEASON_CLIMATOLOGY","S02_HRRR_SOURCE_SPECIFIC","S03_GEFS_SOURCE_SPECIFIC","S04_CALIBRATED_HRRR_GEFS","S05_LOCAL_OBSERVATION_CORRECTION","S06_REGIME_CONDITIONAL_ENSEMBLE",
+    "M00_MARKET_ONLY_CONTROL","M01_MARKET_PLUS_CALIBRATED_WEATHER","M02_SOURCE_SPECIFIC_RESIDUAL","M03_MARKET_ENTROPY_DISAGREEMENT","M04_ADJACENT_BRACKET_RELATIVE_VALUE","M05_FORECAST_REVISION_1200_1500_1800",
+    "E00_PRICE_ONLY_CONTROL","E01_YES_VALUE_POLICY","E02_NO_VALUE_POLICY","E03_ADJACENT_PAIR_POLICY","E04_REVISION_ARRIVAL_POLICY","E05_SIZE_AND_LATENCY_CONSERVATIVE",
+    "A00_PRIOR_DAY_WEATHER","A01_LAGGED_MARKET","A02_BLOCK_SHUFFLED_LABELS","A03_DATE_SHIFTED_FORECASTS","A04_SETTLEMENT_SOURCE_SWAP","A05_RANDOMIZED_CONTRACT_MAPPING","A06_FROZEN_FAILED_V5B","A07_SYNTHETIC_OUTCOME_LEAK_SENTINEL"
+  ]
+}

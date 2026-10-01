@@ -1,0 +1,7 @@
+{
+  "actual_orders_placed": false,
+  "protected_confirmation_labels_read": false,
+  "retrieved_at_utc": "2026-09-27T14:19:17.185017Z",
+  "series_fee_change_arr": [],
+  "url": "https://external-api.kalshi.com/trade-api/v2/series/fee_changes?series_ticker=KXHIGHLAX&show_historical=true"
+}

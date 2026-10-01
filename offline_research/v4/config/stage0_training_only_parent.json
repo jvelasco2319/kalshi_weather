@@ -1,0 +1,30 @@
+{
+  "compiled_manifest_path": "runs/campaigns_v3/v3-offline-20260926T164700000Z-r2/candidates/primary/0d00e08500335af79d211ffb9be3e5fa8918270c7836d42654fca38ca833b4c9/compiled_manifest.json",
+  "compiled_manifest_sha256": "3b0803d726da17db280204afa5e0fc21165528788d6ada1c53df00f9524f1ac9",
+  "feature_partition": "development_calibration_features_only_2025-01-05_through_2025-02-03",
+  "fitted_model_sha256": "8ecf37bd58455893e840b782c8fd2259adb339e414fd3de9a1e5f89247bee019",
+  "fitted_model_state_sha256": "3c68e2e3e74a93104eda887e1d5e84986e6bdc28b8a0a5e6ecec1ae19dbfe6c0",
+  "forbidden_operators": [
+    "calibration",
+    "market_residual",
+    "conformal",
+    "abstention",
+    "fit",
+    "scoring"
+  ],
+  "permitted_prediction_path": "fitted_candidate_model_from_state_then_base_probabilities_only",
+  "profit_calculated": false,
+  "protected_final_read": false,
+  "registration_sha256": "4c2204d58552e7f3febddef80086708cf73aece399045e69bfe29c73bc70ee51",
+  "registration_version": "klax-v4-stage0-training-only-parent-v1",
+  "required_model_contract": {
+    "contract_count": 6,
+    "market_residual_operator": "none",
+    "probability_family": "quantile_brackets",
+    "regime_model": "pooled"
+  },
+  "settlement_labels_read": false,
+  "source_campaign_id": "v3-offline-20260926T164700000Z-r2",
+  "source_campaign_root": "runs/campaigns_v3/v3-offline-20260926T164700000Z-r2",
+  "source_plan_sha256": "0d00e08500335af79d211ffb9be3e5fa8918270c7836d42654fca38ca833b4c9"
+}

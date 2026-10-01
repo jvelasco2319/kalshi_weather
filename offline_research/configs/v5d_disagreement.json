@@ -1,0 +1,15 @@
+{
+  "schema_version": "v5-successor-config-v1",
+  "version": "V5D",
+  "method": "disagreement_abstention",
+  "description": "Apply the frozen V5B NO selector only when V5B and GFS/NAM/NBM bracket probabilities differ by no more than 15 points and the exact-model daily-high range is no more than 6F.",
+  "common_scoring_dates": 44,
+  "warmup_dates": 20,
+  "allow_network": false,
+  "allow_orders": false,
+  "allow_protected_labels": false,
+  "parameters": {
+    "maximum_probability_gap": 0.15,
+    "maximum_source_high_range_f": 6.0
+  }
+}

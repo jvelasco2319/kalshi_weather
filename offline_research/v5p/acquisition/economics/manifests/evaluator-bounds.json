@@ -1,0 +1,244 @@
+{
+  "campaign": "V5P_PARTIAL_EVIDENCE",
+  "evaluator_policy": {
+    "may_access_protected_confirmation_labels": false,
+    "may_claim_verified_profitability": false,
+    "may_place_orders": false,
+    "may_run_research": true,
+    "may_use_network_during_replay": false,
+    "rebate_credit_usd": 0,
+    "required_fill_model": "marketable/taker execution with quote-depth evidence; assumed fills remain non-promotable",
+    "required_participant_class": "direct Kalshi exchange participant, or bind every additional FCM/broker fee from contemporaneous account evidence"
+  },
+  "evidence": [
+    {
+      "authority": "v5p_public_source_manifest",
+      "bytes": 7226,
+      "path": "v5p/acquisition/economics/manifests/source-manifest.json",
+      "purpose": "Inventory of the bounded public acquisition and its safety declarations.",
+      "sha256": "a5d7a57f8a41ee2d729cdcfad314cff1a6100cc36ce94b57e519523019b97cc2"
+    },
+    {
+      "authority": "internet_archive_cdx_index",
+      "bytes": 6777,
+      "path": "v5p/acquisition/economics/sources/cdx-kalshi-com-docs-kalshi-fee-schedule-pdf.json",
+      "purpose": "Snapshot index for the official Kalshi fee-schedule URL; 37 captures from 2025-01-08 through 2026-06-12.",
+      "sha256": "16e68f85d2c776f26da6bc619ce709e9b3d406b1725bd397c165f17b6e179283"
+    },
+    {
+      "authority": "kalshi_official",
+      "bytes": 281129,
+      "path": "v5p/acquisition/economics/sources/kalshi-fee-schedule-effective-2026-07-07.pdf",
+      "purpose": "Official July 7, 2026 fee, rounding, default multiplier, settlement-fee, and FCM disclosure schedule.",
+      "sha256": "c326a69f596a11e8f8be2620402d39a8d4823920c21cc97c93a114d862699601"
+    },
+    {
+      "authority": "kalshi_api_docs",
+      "bytes": 263482,
+      "path": "v5p/acquisition/economics/sources/kalshi-fee-rounding-current.html",
+      "purpose": "Official fill- and order-level fee-rounding documentation and account-precision distinction.",
+      "sha256": "5b313acdde1a49ceca21390b5a25d7a8769c95c3d584a8b7577c46318fd2dc2f"
+    },
+    {
+      "authority": "kalshi_public_api",
+      "bytes": 28,
+      "path": "v5p/acquisition/economics/sources/kxhiglax-series-fee-history.json",
+      "purpose": "Current official historical series fee-change response; returned an empty change array.",
+      "sha256": "6780c8eb7edbb5e1ca3b15166f17cef054befacb2cc8f4bc479c54074a9a2c18"
+    },
+    {
+      "authority": "cftc_product_certification",
+      "bytes": 331186,
+      "path": "v5p/acquisition/economics/sources/cftc-laxhigh-certification.pdf",
+      "purpose": "LAXHIGH settlement source, threshold semantics, schedule, and payout evidence.",
+      "sha256": "c4576450fa76576d05768999506ab1580e1de7e0c95227e5a471c22c3ec03413"
+    },
+    {
+      "authority": "kalshi_product_certification",
+      "bytes": 267225,
+      "path": "v5p/acquisition/economics/sources/kalshi-globaltemperature-certification.pdf",
+      "purpose": "GLOBALTEMPERATURE initial-listing date, source hierarchy, threshold semantics, and payout evidence.",
+      "sha256": "44fe7807bd884def6f2890813220a746802ac7bd3791d17c69607dbf66ba03fc"
+    },
+    {
+      "authority": "frozen_v5_upstream_manifest",
+      "bytes": 10490,
+      "path": "v5/acquisition/economics/manifests/source-manifest.json",
+      "purpose": "Content-addressed upstream inventory; referenced without modifying frozen V5.",
+      "sha256": "dd3cf79f3318b85d4a16b2c0fbee630765717e7a0b94d8c55d1fab88c8bd6c4c"
+    },
+    {
+      "authority": "kalshi_public_api_frozen_v5_capture",
+      "bytes": 336996,
+      "path": "v5/acquisition/economics/manifests/kxhiglax-event-metadata.json",
+      "purpose": "604 bounded event metadata records and historical settlement-source evidence.",
+      "sha256": "65d86b270602b44cf6806c88bf6c78edc1109aa566c5bb6a41bdf6c4a19be72c"
+    },
+    {
+      "authority": "kalshi_public_api_frozen_v5_capture",
+      "bytes": 136453,
+      "path": "v5/acquisition/economics/manifests/kxhiglax-event-fee-changes.json",
+      "purpose": "604 event-level fee-history queries, all successful and without an event override.",
+      "sha256": "5f76033c82f1c791c984cc0bd719dec95952e5e95ebf09c40e6583f7c79e9b77"
+    },
+    {
+      "authority": "archived_kalshi_primary",
+      "bytes": 205511,
+      "path": "v5/acquisition/economics/sources/kalshi-fee-schedule-capture-2025-07-08.pdf",
+      "purpose": "Official schedule captured July 8, 2025.",
+      "sha256": "96e69427580a5868499fd6c80f5d1384deb4e94ba0df22b6b19031e25899b9ea"
+    },
+    {
+      "authority": "archived_kalshi_primary",
+      "bytes": 213935,
+      "path": "v5/acquisition/economics/sources/kalshi-fee-schedule-capture-2025-09-17.pdf",
+      "purpose": "Official schedule captured September 17, 2025.",
+      "sha256": "419de709d2a453d6c36586a54d3cb9264182ace597578688d69ea932d7496255"
+    },
+    {
+      "authority": "archived_kalshi_primary",
+      "bytes": 216788,
+      "path": "v5/acquisition/economics/sources/kalshi-fee-schedule-capture-2025-10-08.pdf",
+      "purpose": "Official schedule stating an October 1, 2025 effective date.",
+      "sha256": "97f534a6a50a4e4b3af41a11b9a79cc8330397055acc84879f31638146b0347b"
+    },
+    {
+      "authority": "archived_kalshi_primary",
+      "bytes": 214972,
+      "path": "v5/acquisition/economics/sources/kalshi-fee-schedule-capture-2026-02-14.pdf",
+      "purpose": "Official schedule stating a February 5, 2026 effective date.",
+      "sha256": "b1a37aa734771f42929ccd9ba90ab845e07303f03f549f1c2f493c08b13d2fc9"
+    },
+    {
+      "authority": "cftc_filing",
+      "bytes": 109720,
+      "path": "v5/acquisition/economics/sources/cftc-vip-termination-and-replacement-2025-08-31.pdf",
+      "purpose": "Proof that the January 2025 proposed rebate never took effect, plus replacement-program conditions.",
+      "sha256": "434035546a015bebee7e7d3cd5f56fbbbdc873c039d85b2e490dab2d40dad4bd"
+    },
+    {
+      "authority": "cftc_filing",
+      "bytes": 128180,
+      "path": "v5/acquisition/economics/sources/cftc-vip-update-2026-08-04.pdf",
+      "purpose": "August 2026 incentive update and its notice/account-dependence.",
+      "sha256": "fd18b677a0a3b1fbbf01615f148eaa4e9d92ebc0bbe4c303903f586a35f4be7c"
+    }
+  ],
+  "fee_formula": {
+    "currency": "USD",
+    "maker": "0.0175 * contract_count * price_dollars * (1 - price_dollars)",
+    "price_domain": "0 <= price_dollars <= 1",
+    "taker": "0.07 * contract_count * price_dollars * (1 - price_dollars)"
+  },
+  "fee_periods": [
+    {
+      "date_end": "2025-07-07",
+      "date_start": "2025-07-01",
+      "evaluator_action": "EXCLUDE",
+      "maker_multiplier": null,
+      "reason": "No saved authoritative schedule is effective for these seven target dates; later continuity and the 2022 filing are insufficient for VERIFIED_EXACT.",
+      "rounding": null,
+      "taker_multiplier": null
+    },
+    {
+      "basis": "July 8 and September 17 archived official schedules; KXHIGHLAX is absent from their enumerated maker-fee series.",
+      "date_end": "2025-09-30",
+      "date_start": "2025-07-08",
+      "evaluator_action": "ALLOW_TAKER_DIRECT_ONLY_WITH_FILL_EVIDENCE",
+      "exactness": "schedule_exact_at_date_granularity",
+      "maker_multiplier": 0,
+      "rounding": "ceil total order fee to the next whole cent",
+      "taker_multiplier": 1
+    },
+    {
+      "basis": "October 1 and February 5 effective schedules; maker applicability was delegated to a changing page. Empty current official series/event fee histories corroborate no override but do not substitute for an immutable page snapshot.",
+      "date_end": "2026-07-06",
+      "date_start": "2025-10-01",
+      "evaluator_action": "ALLOW_TAKER_DIRECT_ONLY_WITH_FILL_EVIDENCE; EXCLUDE_MAKER",
+      "exactness": "taker_schedule_exact_at_date_granularity; maker_applicability_unresolved",
+      "maker_multiplier": null,
+      "rounding": "ceil total order fee to the next whole cent",
+      "taker_multiplier": 1
+    },
+    {
+      "basis": "Official schedule last updated and effective July 7, 2026; KXHIGHLAX is absent from non-standard fees, so defaults apply.",
+      "date_end": "2026-08-31",
+      "date_start": "2026-07-07",
+      "evaluator_action": "ALLOW_TAKER_DIRECT_ONLY_WITH_FILL_EVIDENCE",
+      "exactness": "schedule_exact_at_date_granularity",
+      "maker_multiplier": 0,
+      "rounding": "round upward so fee plus positionCost aligns to one centicent ($0.0001)",
+      "taker_multiplier": 1
+    }
+  ],
+  "promotion_ready": false,
+  "public_gap_resolution": {
+    "event_rule_transition": "UNRESOLVED",
+    "historical_maker_applicability_2025_10_01_to_2026_07_06": "UNRESOLVED",
+    "historical_taker_fee_from_2025_07_08": "CLEARED_FOR_DIRECT_TAKER_TRADES",
+    "july_2026_kxhiglax_default_multipliers": "CLEARED",
+    "july_2026_schedule_and_rounding": "CLEARED"
+  },
+  "rebate_binding": {
+    "credited_amount_usd": 0,
+    "exact_for_evaluator": true,
+    "reason": "The January 2025 proposal never took effect. Later programs require contemporaneous market designation, participant eligibility, volume, notice, and award evidence that is absent; the fail-closed value is zero."
+  },
+  "remaining_unresolvable_public_gaps": [
+    {
+      "id": "FEE_2025_07_01_TO_07_07",
+      "impact": "Exclude seven target dates from exact economics evaluation.",
+      "needed_evidence": "An authoritative fee schedule effective for July 1-7, 2025."
+    },
+    {
+      "id": "MAKER_2025_10_01_TO_2026_07_06",
+      "impact": "Exclude maker fills in this interval; taker fills remain evaluable.",
+      "needed_evidence": "Immutable historical maker-fee applicability page or trade/account fee record."
+    },
+    {
+      "id": "EVENT_RULE_REVISION",
+      "impact": "Ordinary payout semantics may be explored, but no candidate can receive the strict promotion verdict.",
+      "needed_evidence": "Per-event contract terms/revision or authoritative transition notice mapping KXHIGHLAX events to LAXHIGH versus GLOBALTEMPERATURE."
+    },
+    {
+      "id": "PARTICIPANT_AND_EXECUTION_FACTS",
+      "impact": "No simulated trade is promotable from public data alone.",
+      "needed_evidence": "Order arrival, quote depth, fill, maker/taker role, direct-vs-FCM class, account precision, and actual additional intermediary fees."
+    },
+    {
+      "id": "VIP_ENTITLEMENT",
+      "impact": "Credit zero rebate.",
+      "needed_evidence": "Contemporaneous designation, participant eligibility, volume, notice, and award record."
+    }
+  ],
+  "safety": {
+    "actual_orders_placed": false,
+    "frozen_v5_modified": false,
+    "historical_replay_network_allowed": false,
+    "private_account_data_read": false,
+    "protected_confirmation_labels_read": false
+  },
+  "schema_version": "klax-v5p-economics-evaluator-bounds-v1",
+  "self_sha256": "977f8c478e633cdaec20f6fe1fdf88997cca9771deb604300719bef95284d399",
+  "series_ticker": "KXHIGHLAX",
+  "settlement_binding": {
+    "common_threshold_semantics": {
+      "above": "strictly greater than",
+      "below": "strictly less than",
+      "between": "inclusive endpoints"
+    },
+    "exact_event_rule_revision_bound": false,
+    "exchange_settlement_fee_usd": 0,
+    "historical_source_observed_for_all_604_bounded_events": "NWS Los Angeles Airport daily climatological report",
+    "ordinary_winning_contract_payout_usd": 1,
+    "promotion_action": "FAIL_CLOSED_UNTIL_EXACT_EVENT_RULE_REVISION_IS_BOUND",
+    "reason": "Historical event objects expose settlement sources but not their contract-rule URL/revision. The December 8, 2025 GLOBALTEMPERATURE certification's initial-listing date does not prove the event-by-event KXHIGHLAX transition from LAXHIGH.",
+    "semantic_equivalence_research_usable": true
+  },
+  "status": "RESEARCH_USABLE_WITH_EXCLUSIONS",
+  "strict_verdict": "FEE_OR_SETTLEMENT_EVIDENCE_INCOMPLETE",
+  "target_period": {
+    "date_end": "2026-08-31",
+    "date_start": "2025-07-01"
+  }
+}

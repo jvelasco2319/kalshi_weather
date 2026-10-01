@@ -1,0 +1,24 @@
+{
+  "station": "KLAX",
+  "dates": ["2024-01-01", "2025-12-31"],
+  "sources": ["preferred_collector_NOAA_archives", "NOAA_NCEI_daily", "Kalshi_historical_markets_one_minute_candles_and_public_trades", "NWS_archived_climate_reports"],
+  "weather_max_bytes": 50000000000,
+  "weather_pilot_max_bytes": 250000000,
+  "kalshi_max_bytes": 500000000,
+  "max_requests_per_second": 2,
+  "kalshi_market_data": {
+    "metadata_endpoint_type": "historical_markets_metadata",
+    "candlestick_endpoint_type": "historical_market_candlesticks_1m",
+    "candlestick_period_minutes": 1,
+    "public_trade_endpoint_type": "historical_public_trades",
+    "public_trade_page_limit": 1000,
+    "max_trade_pages_per_contract": 100,
+    "include_block_and_non_block_trades": true,
+    "preserve_fixed_point_quantities": true,
+    "historical_orderbook_depth_available": false,
+    "execution_evidence_policy": "Candles and public prints support historical market-state research only; without historical depth they do not establish that a hypothetical order would fill."
+  },
+  "retain_raw": true,
+  "historical_only": true,
+  "live_feed": false
+}

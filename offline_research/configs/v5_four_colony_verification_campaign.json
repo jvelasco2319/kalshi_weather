@@ -1,0 +1,390 @@
+{
+  "schema_version": "klax-v5-four-colony-goal-v1",
+  "campaign_family": "v5_four_colony_offline_verification",
+  "registered_at_utc": "2026-09-27T00:00:00Z",
+  "status": "GOAL_REGISTERED_PENDING_IMPLEMENTATION_AND_READINESS",
+  "workspace": "C:\\Users\\darks\\Documents\\Codex\\kalshi\\_weather\\_llm",
+  "goal_document": "docs/V5_FOUR_COLONY_VERIFICATION_CAMPAIGN_GOAL.md",
+  "goal_document_sha256": "8956e36c9f1afde241e1c6e65e753906f2ad8ba96ef2d696d502bfeecaab942d",
+  "scientific_question": "Does the frozen HRRR/GEFS LAX temperature-bracket probability leader identify a genuine executable Kalshi inefficiency at 18:00 UTC, or is the result an artifact of sparse proxy-priced trades, uncertain costs, unstable calibration, or a small temporal sample?",
+  "offline_only": true,
+  "live_or_paper_orders_authorized": false,
+  "prospective_live_collection_authorized": false,
+  "network_policy": {
+    "historical_acquisition": "finite_date_bounded_only",
+    "experiment_execution": "network_denied",
+    "live_feeds": false,
+    "websocket_recorders": false,
+    "latest_price_fetches": false
+  },
+  "target": {
+    "series": "KXHIGHLAX",
+    "station": "KLAX",
+    "settlement_target": "daily_max_integer_f",
+    "settlement_timezone": "America/Los_Angeles",
+    "decision_time_utc": "18:00",
+    "minimum_expected_net_return_per_selected_trade": 0.1,
+    "minimum_confirmation_capital_weighted_return": 0.1,
+    "quantity_contracts_primary": 1,
+    "maximum_positions_per_event": 1
+  },
+  "frozen_probability_leader": {
+    "candidate_id": "v4-candidate-a779fd17e7b160650c8f",
+    "research_plan_sha256": "a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461",
+    "fitted_model_sha256": "9bf8b1ba469b1c7258108f5dd11c67c2822e7487edff5c819688d37319574f93",
+    "model_state_sha256": "7c677c1264115b39d73c70cfb7162b9be138ae1c9df9ac30df472426f2a57fd3",
+    "source_artifact": "runs/campaigns_v4/v4-offline-20260926T212122609Z/candidates/primary/a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461/compiled_manifest.json",
+    "forecast_source_set": "hrrr_gefs_summary",
+    "feature_set": "temperature_only",
+    "probability_family": "quantile_brackets",
+    "calibration_operator": "isotonic_bracket",
+    "regime_model": "pooled",
+    "market_residual_model": "none",
+    "decision_policy": {
+      "entry_price_band_cents": [5, 80],
+      "maximum_interval_width_f": 4.0,
+      "maximum_price_age_minutes": 15,
+      "maximum_spread_cents": 5,
+      "allowed_sides": ["YES", "NO"],
+      "minimum_expected_net_return": 0.1
+    },
+    "transfer_requirements": {
+      "new_transfer_identity_required": true,
+      "refit_performed": false,
+      "retraining_permitted": false,
+      "recalibration_permitted": false,
+      "feature_selection_permitted": false,
+      "threshold_adjustment_permitted": false,
+      "decision_time_change_permitted": false,
+      "promotable_candidate_identity_limit": 1
+    }
+  },
+  "prior_evidence": {
+    "development_period": {
+      "date_start": "2025-02-04",
+      "date_end": "2025-06-30",
+      "scored_events": 145
+    },
+    "assumed_fill_trade_count": 13,
+    "assumed_fill_distinct_days": 13,
+    "assumed_fill_total_entry_outlay_dollars": 4.7,
+    "assumed_fill_total_net_profit_dollars": 3.3,
+    "assumed_fill_capital_weighted_return": 0.7021276595744681,
+    "assumed_fill_mean_trade_return": 0.46919324981079,
+    "assumed_fill_bootstrap_lower_95": 0.30434782608695654,
+    "assumed_fill_stress_return": 0.5873015873015873,
+    "assumed_fill_return_after_best_day_removal": 0.5486725663716814,
+    "candidate_crps": 0.6594683883625514,
+    "reference_crps": 0.9833535954859873,
+    "candidate_brier": 0.8226837628273114,
+    "reference_brier": 1.1019490232365527,
+    "fold_capital_weighted_returns": [
+      1.4096385542168675,
+      1.2222222222222223,
+      0.7482517482517482,
+      -1.0,
+      -1.0
+    ],
+    "historical_fee_status": "historical_proxy_not_verified_2025",
+    "frozen_snapshot_count": 3150,
+    "historical_depth_snapshot_count": 0,
+    "hypothetical_fill_supported_snapshot_count": 0,
+    "interpretation": "PROMISING_PROBABILITY_SIGNAL_NOT_VERIFIED_TRADING_EDGE"
+  },
+  "partitions": {
+    "weather_training": {
+      "date_start": "2024-01-01",
+      "date_end": "2024-12-30",
+      "role": "exposed_frozen_training"
+    },
+    "calibration_prefix": {
+      "date_start": "2025-01-05",
+      "date_end": "2025-02-03",
+      "role": "exposed_frozen_calibration"
+    },
+    "prior_development": {
+      "date_start": "2025-02-04",
+      "date_end": "2025-06-30",
+      "role": "reproduction_and_diagnostics_only"
+    },
+    "existing_protected": {
+      "date_start": "2025-07-01",
+      "date_end": "2025-12-31",
+      "role": "sealed_confirmation_pool"
+    },
+    "new_historical_acquisition": {
+      "date_start": "2026-01-01",
+      "date_end": "2026-08-31",
+      "role": "sealed_confirmation_pool_after_outcome_blind_eligibility"
+    },
+    "combined_confirmation_pool": {
+      "date_start": "2025-07-01",
+      "date_end": "2026-08-31",
+      "maximum_calendar_days": 427,
+      "eligible_dates_frozen_before_outcome_access": true,
+      "chronological_fold_count": 5
+    }
+  },
+  "protected_label_barrier": {
+    "selected_trade_set_frozen_before_labels": true,
+    "minimum_selected_trades": 30,
+    "minimum_distinct_settlement_days": 30,
+    "minimum_selected_trades_per_fold": 5,
+    "minimum_scored_probability_events": 120,
+    "minimum_scored_probability_events_per_fold": 20,
+    "failure_label_on_sample_shortfall": "INSUFFICIENT_SAMPLE_BEFORE_LABEL_READ",
+    "protected_labels_remain_sealed_on_failure": true
+  },
+  "agent_system": {
+    "maximum_concurrent_agent_slots": 4,
+    "use_all_slots_when_independent_work_exists": true,
+    "deterministic_controller_consumes_agent_slot": false,
+    "local_inference_process_limit": 1,
+    "primary_assignments": [
+      {
+        "slot": 1,
+        "colony": "execution_evidence"
+      },
+      {
+        "slot": 2,
+        "colony": "fee_and_settlement_integrity"
+      },
+      {
+        "slot": 3,
+        "colony": "frozen_probability_validation"
+      },
+      {
+        "slot": 4,
+        "colony": "sample_and_regime_robustness"
+      }
+    ],
+    "cross_review_rotation": [
+      {
+        "reviewer": "execution_evidence",
+        "target": "frozen_probability_validation"
+      },
+      {
+        "reviewer": "frozen_probability_validation",
+        "target": "sample_and_regime_robustness"
+      },
+      {
+        "reviewer": "sample_and_regime_robustness",
+        "target": "fee_and_settlement_integrity"
+      },
+      {
+        "reviewer": "fee_and_settlement_integrity",
+        "target": "execution_evidence"
+      }
+    ],
+    "self_verification_permitted": false,
+    "duplicate_discovery_work_permitted": false
+  },
+  "budgets": {
+    "evidence_epochs": 5,
+    "primary_colony_tasks_per_epoch": 4,
+    "core_colony_tasks": 20,
+    "local_model_call_limit": 60,
+    "maximum_charged_retries_per_task": 2,
+    "registered_deterministic_evaluation_variant_limit": 32,
+    "wall_clock_seconds_after_readiness": 43200,
+    "acquisition_and_readiness_outside_scientific_clock": true,
+    "consumed_calls_or_time_refunded_on_resume": false
+  },
+  "barriers": [
+    "registration",
+    "source_capability",
+    "development_reproduction",
+    "outcome_blind_transfer_readiness",
+    "cross_review",
+    "one_shot_confirmation",
+    "terminal_synthesis"
+  ],
+  "colonies": {
+    "execution_evidence": {
+      "objective": "Determine whether one contract was executable at a contemporaneous observed price and size after the registered delay.",
+      "primary_order_type": "one_contract_marketable_ioc_limit",
+      "signal_to_arrival_seconds_primary": 5,
+      "signal_to_arrival_seconds_sensitivities": [30, 60],
+      "minimum_outcome_blind_event_window_coverage": 0.9,
+      "promotion_sources": [
+        "actual_member_order_and_fill",
+        "contemporaneous_gap_free_orderbook_snapshot_and_deltas",
+        "timestamped_high_frequency_full_book_with_size"
+      ],
+      "diagnostic_only_sources": [
+        "one_minute_candles",
+        "public_trade_prints"
+      ],
+      "prohibited_fill_inference": [
+        "candle_touch",
+        "public_trade_substitution",
+        "passive_queue_assumption",
+        "forward_fill_through_sequence_gap"
+      ],
+      "primary_pass_label": "PROVISIONAL_EXECUTION_SUPPORTED",
+      "failure_labels": [
+        "EXECUTION_EVIDENCE_UNAVAILABLE",
+        "BOOK_RECONSTRUCTION_INVALID",
+        "EXECUTABLE_EDGE_DISAPPEARS",
+        "INSUFFICIENT_EXECUTABLE_SAMPLE",
+        "EXECUTION_EDGE_UNSTABLE",
+        "DATA_INTEGRITY_FAILURE"
+      ]
+    },
+    "fee_and_settlement_integrity": {
+      "objective": "Bind every selected trade to exact historical fees, rounding, rebates, contract rules, payout, and settlement costs.",
+      "exact_binding_required_for_every_selected_trade": true,
+      "unproven_rebate_treatment": "zero",
+      "unproven_liquidity_role_treatment": "blocks_promotion",
+      "conservative_fee_envelope_role": "diagnostic_only",
+      "historical_rule_revision_verified_required": true,
+      "exceptional_event_branch_required": true,
+      "independent_decimal_replication_required": true,
+      "primary_pass_label": "VERIFIED_EXACT",
+      "failure_labels": [
+        "FEE_SOURCE_MISSING",
+        "FEE_EFFECTIVE_PERIOD_GAP",
+        "FEE_EFFECTIVE_PERIOD_OVERLAP",
+        "FEE_PRODUCT_SCOPE_UNPROVEN",
+        "LIQUIDITY_ROLE_UNPROVEN",
+        "REBATE_ELIGIBILITY_UNPROVEN",
+        "FEE_ROUNDING_SCOPE_AMBIGUOUS",
+        "RECORDED_FEE_MISMATCH",
+        "SETTLEMENT_RULE_REVISION_UNVERIFIED",
+        "SETTLEMENT_SOURCE_MISSING",
+        "CONTRACT_INTERVAL_GAP_OR_OVERLAP",
+        "MULTIPLE_OR_ZERO_EVENT_WINNERS",
+        "CLILAX_KALSHI_DISAGREEMENT",
+        "EXCEPTIONAL_EVENT_UNMODELED",
+        "PAYOUT_MULTIPLIER_UNVERIFIED",
+        "SETTLEMENT_COST_UNVERIFIED",
+        "ECONOMIC_LEDGER_MISMATCH"
+      ]
+    },
+    "frozen_probability_validation": {
+      "objective": "Determine whether the frozen HRRR/GEFS probability leader retains skill, calibration, and timing integrity on later dates.",
+      "primary_score": "paired_discrete_ordered_bracket_crps_improvement",
+      "secondary_scores": [
+        "multiclass_brier",
+        "clipped_multiclass_log_loss",
+        "classwise_reliability_error",
+        "realized_bracket_probability",
+        "sharpness",
+        "entropy",
+        "exact_zero_one_frequency",
+        "probability_mass_conservation"
+      ],
+      "probability_sum_tolerance": 1e-10,
+      "log_loss_probability_clip": 1e-6,
+      "aggregate_crps_improvement_required": true,
+      "paired_bootstrap_lower_95_above_zero_required": true,
+      "brier_no_worse_required": true,
+      "crps_improving_folds_minimum": 4,
+      "brier_no_worse_folds_minimum": 4,
+      "final_two_folds_no_worse_required": true,
+      "overall_reliability_error_maximum": 0.1,
+      "selected_subset_reliability_error_maximum": 0.15,
+      "calibration_jackknife": {
+        "leave_one_calibration_day_out_refits": 30,
+        "median_absolute_purchased_probability_change_maximum": 0.05,
+        "p95_absolute_purchased_probability_change_maximum": 0.15,
+        "screen_selection_jaccard_minimum": 0.7,
+        "diagnostic_only": true
+      },
+      "availability_sensitivities_hours": [8, 12],
+      "primary_pass_label": "FROZEN_PROBABILITY_SIGNAL_CONFIRMED",
+      "failure_labels": [
+        "FROZEN_PROBABILITY_SIGNAL_REJECTED",
+        "INSUFFICIENT_PROBABILITY_EVIDENCE",
+        "INTEGRITY_FAILURE"
+      ]
+    },
+    "sample_and_regime_robustness": {
+      "objective": "Determine whether performance is broad and stable across independent dates, folds, months, sides, prices, uncertainty, and weather regimes.",
+      "chronological_fold_count": 5,
+      "profitable_folds_minimum": 4,
+      "bootstrap_resamples_minimum": 10000,
+      "ordinary_day_bootstrap_lower_95_above_zero_required": true,
+      "moving_block_bootstrap_days": 3,
+      "moving_block_bootstrap_lower_95_above_zero_required": true,
+      "best_day_removal_return_positive_required": true,
+      "leave_one_fold_out_return_positive_required": true,
+      "registered_stress_return_positive_required": true,
+      "registered_breakdowns": [
+        "chronological_fold",
+        "calendar_month",
+        "season",
+        "purchase_side",
+        "entry_price_band",
+        "bracket_width",
+        "forecast_confidence",
+        "weather_regime",
+        "availability_grade"
+      ],
+      "post_outcome_subgroup_promotion_permitted": false,
+      "correlated_v4_variants_treated_as_one_signal_family": true,
+      "primary_pass_label": "SAMPLE_AND_REGIME_EVIDENCE_CONFIRMED",
+      "failure_labels": [
+        "INSUFFICIENT_SAMPLE_BEFORE_LABEL_READ",
+        "TEMPORAL_INSTABILITY",
+        "REGIME_CONCENTRATION_REQUIRES_NEW_CAMPAIGN",
+        "STATISTICAL_REPLICATION_FAILURE",
+        "INTEGRITY_FAILURE"
+      ]
+    }
+  },
+  "confirmation_gates": {
+    "every_selected_trade_expected_net_return_minimum": 0.1,
+    "aggregate_capital_weighted_realized_return_minimum": 0.1,
+    "profitable_folds_minimum": 4,
+    "ordinary_day_bootstrap_lower_95_above_zero": true,
+    "three_day_moving_block_bootstrap_lower_95_above_zero": true,
+    "best_day_removal_return_positive": true,
+    "leave_one_fold_out_return_positive": true,
+    "registered_cost_and_price_stress_return_positive": true,
+    "exact_execution_evidence_for_every_trade": true,
+    "exact_fee_and_settlement_binding_for_every_trade": true,
+    "independent_reproduction_required": true,
+    "critic_nonrejection_required": true
+  },
+  "terminal_labels": [
+    "ROBUST_EXECUTABLE_POSITIVE_AT_OR_ABOVE_10PCT",
+    "EXECUTABLE_POSITIVE_BELOW_TARGET",
+    "NO_ROBUST_EDGE",
+    "INSUFFICIENT_EXECUTION_EVIDENCE",
+    "INSUFFICIENT_SAMPLE_BEFORE_LABEL_READ",
+    "FEE_OR_SETTLEMENT_EVIDENCE_INCOMPLETE",
+    "PROBABILITY_VALIDATION_FAILED",
+    "INTEGRITY_FAILURE"
+  ],
+  "controller_resilience": {
+    "typed_task_schemas_required": true,
+    "agent_prose_is_authoritative_state": false,
+    "optional_synthesis_failure_is_terminal": false,
+    "deterministic_failure_record_after_retry_exhaustion": true,
+    "atomic_recovery_state": true,
+    "content_addressed_recovery_state": true,
+    "preserve_absolute_deadline_on_resume": true,
+    "preserve_candidate_and_data_bindings_on_resume": true,
+    "duplicate_process_forbidden": true,
+    "completion_based_on_validated_artifacts": true
+  },
+  "protected_data_policy": {
+    "discovery_agents_can_read_confirmation_labels": false,
+    "confirmation_label_read_authorized_before_all_readiness_gates": false,
+    "one_shot_label_read_maximum": 1,
+    "failed_confirmation_can_feed_discovery": false,
+    "protected_read_attempt_must_be_denied_and_logged": true
+  },
+  "completion_definition": [
+    "implementation_and_registration_frozen",
+    "finite_acquisition_completed_or_capability_stop_documented",
+    "four_colony_verdicts_validated",
+    "protected_interval_evaluated_once_or_remains_sealed_under_prelabel_stop",
+    "independent_replication_and_adversarial_review_completed",
+    "exactly_one_terminal_label_issued",
+    "all_controlling_artifacts_saved_and_hash_bound",
+    "zero_live_or_paper_orders"
+  ]
+}
+

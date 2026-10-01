@@ -1,0 +1,115 @@
+{
+  "schema_version": "klax-v5a-paid-depth-registration-v1",
+  "campaign_family": "v5a_paid_depth_92_day_partial_verification",
+  "registered_at_utc": "2026-09-27T16:00:00Z",
+  "status": "REGISTERED_PENDING_OUTCOME_BLIND_READINESS",
+  "authorization": "The user authorized the paid Probalytics historical archive and explicitly reduced the new campaign strictness to use the 92-day June-August 2026 window.",
+  "offline_only": true,
+  "paid_historical_source_authorized": true,
+  "live_or_paper_orders_authorized": false,
+  "prospective_live_collection_authorized": false,
+  "target": {
+    "series": "KXHIGHLAX",
+    "station": "KLAX",
+    "decision_time_utc": "18:00",
+    "quantity_contracts_primary": 1,
+    "expected_net_return_screen": 0.1,
+    "frozen_candidate_id": "v4-candidate-a779fd17e7b160650c8f"
+  },
+  "source_window": {
+    "date_start": "2026-06-01",
+    "date_end": "2026-08-31",
+    "calendar_days": 92,
+    "expected_primary_rows": 976
+  },
+  "execution_grading": {
+    "arrival_delay_seconds": 5,
+    "grade_a_max_quote_age_ms": 5000,
+    "grade_b_plus_max_quote_age_ms": 60000,
+    "grade_a_requires_verified_state": true,
+    "grade_a_requires_contiguous_sequence": true,
+    "minimum_displayed_ask_quantity_contracts": 1,
+    "grade_b_plus_is_promotion_grade": false
+  },
+  "unchanged_v5_gates": {
+    "minimum_scored_probability_events": 120,
+    "minimum_scored_probability_events_per_fold": 20,
+    "minimum_event_window_coverage": 0.9,
+    "minimum_selected_trades": 30,
+    "minimum_selected_days": 30,
+    "minimum_selected_trades_per_fold": 5,
+    "exact_execution_evidence_for_every_selected_trade": true,
+    "exact_fee_and_settlement_binding_for_every_selected_trade": true
+  },
+  "relaxed_campaign_policy": {
+    "minimum_probability_dates": 92,
+    "grade_b_plus_allowed": true,
+    "grade_b_candle_fallback_allowed": true,
+    "dates_without_execution_price_may_abstain": true,
+    "selected_trade_sample_labels": {
+      "1_9": "ANECDOTAL_PARTIAL_EVIDENCE",
+      "10_29": "PRELIMINARY_PARTIAL_EVIDENCE",
+      "30_plus": "SUPPORTED_PARTIAL_EVIDENCE"
+    },
+    "verified_fill_claim_requires_grade_a": true,
+    "original_v5_promotion_claim_permitted": false
+  },
+  "bindings": {
+    "goal_document": {
+      "path": "docs/V5A_PAID_DEPTH_READINESS_GOAL.md",
+      "sha256": "714c54aa6ae800029e25c01d7a9950331c256acf6ff1ebc46f408202517a7d46"
+    },
+    "parent_v5_registration": {
+      "path": "configs/v5_four_colony_verification_campaign.json",
+      "sha256": "f285210dba0ee391989ceb3b1ab8ce41985898cfa99d8bf04c397d199d2955d3"
+    },
+    "parent_v5p_registration": {
+      "path": "configs/v5p_partial_evidence_campaign.json",
+      "sha256": "c92c08e1f550d303f62af129e22ed489df7acc5a1c04d98c21fb99eb53dfa29e"
+    },
+    "paid_normalization_manifest": {
+      "path": "data/normalized/v5p_probalytics_full_history_20260601_20260831/manifest.json",
+      "sha256": "0ca098bd8951a002638e390f2aae64c1f2384ab1e7077dbfadf10ef157a8a2eb"
+    },
+    "paid_top_of_book": {
+      "path": "data/normalized/v5p_probalytics_full_history_20260601_20260831/target_top_of_book.parquet",
+      "sha256": "4fad49324295fc2dd5de83dc37333f04cbd9b674f78cc1e7f9f30280ee619da7"
+    },
+    "paid_raw_validation": {
+      "path": "data/raw/v5p/probalytics/full_history_20260601_20260831/validation.json",
+      "sha256": "12bd9d0629da508bd81122dfbad57b02c20110c9ad0b58d744f84c099836e8fa"
+    },
+    "economics_bounds": {
+      "path": "v5p/acquisition/economics/manifests/evaluator-bounds.json",
+      "sha256": "9d708d0e5f967ce9a562200c2e46f883a261c23e1e1c200e764a862916ed57d8"
+    },
+    "event_rules_outcome_blind": {
+      "path": "data/manifests/v5a_event_rules_outcome_blind.json",
+      "sha256": "c7899d81a1c4ed80b6bf56be373721a853a3fabd3b96b976f5737209602060da"
+    },
+    "probalytics_safe_ticker_discovery": {
+      "path": "data/raw/v5a/probalytics_market_tickers_safe.json",
+      "sha256": "14de2897db3c9b8cd9382aca2e02e8a8dfd67e1f0ee12bbf9dd3c5df67c34713"
+    },
+    "kalshi_coverage": {
+      "path": "data/raw/v5p/kalshi_workspace/data/manifests/kalshi_coverage.json",
+      "sha256": "ec940ca85245e3f5893277d5a1301157760c1a4e9c58397b430294ffe8fdfdb2"
+    }
+  },
+  "runtime_inputs": {
+    "acquisition_state": "runs/v5p_acquisition/v5p-historical-20250701-20260831/recovery-state.json"
+  },
+  "protected_data_policy": {
+    "outcome_blind_universe_first": true,
+    "protected_labels_remain_sealed_until_freeze": true,
+    "protected_label_read_maximum": 1,
+    "failed_confirmation_can_feed_discovery": false
+  },
+  "safety": {
+    "historical_replay_network_allowed": false,
+    "live_feed_allowed": false,
+    "paper_orders_allowed": false,
+    "live_orders_allowed": false,
+    "credentials_may_be_persisted": false
+  }
+}

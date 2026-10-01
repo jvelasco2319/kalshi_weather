@@ -1,0 +1,137 @@
+{
+  "amendment_version": "klax-v4.1-continuation-amendment-v1",
+  "campaign_id_prefix": "v4-1-offline-",
+  "change": "continue_after_singleton_nonproposal_parser_incident",
+  "source_campaign": {
+    "campaign_id": "v4-offline-20260926T212122609Z",
+    "readiness_sha256": "d8c2410517c4931db413e1a7b2fee80f284fb0b678101fd16e1c247b031fa5ad",
+    "ticket_sha256": "df259ed5d11ca6846b9f9a6dd765f0594f734c879ec4dd619268931f0f4d1cb5",
+    "claim_sha256": "4a68c462dbdb16225aa3f7ecef72a0c5921607523ef87af7d8d7306bf2d1603c",
+    "recovery_file_sha256": "d631a281a9004c1ded5fb3ac7b504a16224307492ea276d0dcc516efd41f89d0",
+    "recovery_state_sha256": "b4e1576fbb9ba5822182f877239e8657636c3f49e07f8e4b8005185ee2fa987b",
+    "stderr_sha256": "d39743ed7793f8e9d9e678541fb0096f128c192c288c45ce0720da9f0092747f",
+    "controller_process_sha256": "5c031a53b6bf19a3e8cc66a9079c8ecf28a747c8fecad0894c6ba0a01bad7a47"
+  },
+  "continuation_import_manifest": "data/manifests/v4_1_continuation_import.json",
+  "old_same_ticket_resume_permitted": false,
+  "incident": {
+    "task_id": "v4-e007-s11",
+    "plan_sha256": "568bf0bb0164850f246724f70f4df899848435dff2ebfa782ce114df5733b744",
+    "model_call_numbers": [
+      84,
+      85,
+      86
+    ],
+    "attempts_charged": 3,
+    "raw_stdout_sha256": "d3ecbc80e9887626fb366e25c6f94daae7173e0921ae6f80d1e129e08e44a9b5",
+    "raw_action": "abstain",
+    "raw_seed_index": 0,
+    "classification": "MODEL_NOMINATION_FAILED",
+    "scientific_evidence_created": false
+  },
+  "protocol_repair": {
+    "repair_version": "klax-v4.1-singleton-nonproposal-normalization-v1",
+    "rule": "singleton_reject_or_abstain_seed_zero_to_null",
+    "eligible_mode": "candidate_nomination",
+    "eligible_seed_plan_count": 1,
+    "eligible_actions": [
+      "reject",
+      "abstain"
+    ],
+    "eligible_raw_seed_index": 0,
+    "normalized_seed_index": null,
+    "semantic_action_must_be_preserved": true,
+    "raw_and_normalized_hashes_required": true,
+    "proposal_creation_permitted": false,
+    "plan_mutation_permitted": false
+  },
+  "incident_fallback": {
+    "disposition": "HOST_EXACT_PLAN_FALLBACK",
+    "authorized_plan_sha256": "568bf0bb0164850f246724f70f4df899848435dff2ebfa782ce114df5733b744",
+    "model_calls_charged": 0,
+    "model_response_fabrication_permitted": false,
+    "admit_only_after_reconciling_call_86_failed": true,
+    "next_actual_inference_call_number": 87
+  },
+  "future_candidate_protocol_exhaustion": {
+    "eligible_failure_type": "completed_candidate_response_parser_or_schema_error",
+    "maximum_charged_attempts": 3,
+    "disposition_after_exact_exhaustion": "HOST_EXACT_PLAN_FALLBACK",
+    "fallback_model_calls_charged": 0,
+    "exact_preallocated_task_plan_digest_and_raw_attempt_hashes_required": true,
+    "runtime_or_infrastructure_failure_eligible": false,
+    "synthesis_failure_eligible": false,
+    "scientific_evidence_created": false
+  },
+  "cumulative_budget": {
+    "maximum_distinct_executed_candidates": 3072,
+    "consumed_distinct_executed_candidates": 82,
+    "remaining_distinct_executed_candidates": 2990,
+    "maximum_local_model_calls": 3300,
+    "consumed_local_model_calls": 86,
+    "remaining_local_model_calls": 3214,
+    "maximum_reserved_context_tokens": 54067200,
+    "consumed_reserved_context_tokens": 1409024,
+    "remaining_reserved_context_tokens": 52658176,
+    "maximum_epochs": 256,
+    "current_epoch": 7,
+    "completed_epochs": 6,
+    "maximum_wall_seconds": 43200,
+    "consumed_wall_seconds_floor": 1669,
+    "consumed_transient_retry_calls": 2,
+    "remaining_candidate_nomination_call_reservation": 2989,
+    "remaining_synthesis_call_reservation": 63,
+    "remaining_transient_retry_call_reservation": 162
+  },
+  "context_accounting": {
+    "reserved_tokens_per_model_call": 16384,
+    "recovery_requires_exact_calls_times_reservation": true,
+    "terminal_scheduler_binds_actual_reserved_tokens": true,
+    "refund_permitted": false
+  },
+  "terminal_publication": {
+    "base_v4_artifacts_staged_outside_campaign_output": true,
+    "v4_1_independent_scheduler_verification_required_before_commit": true,
+    "summary_json_is_atomic_final_commit_marker": true,
+    "summary_only_or_hash_invalid_terminal_is_complete": false,
+    "controller_validates_manifest_and_terminal_artifact_hashes": true
+  },
+  "time_boundary": {
+    "original_started_at_utc": "2026-09-26T21:23:25.261434+00:00",
+    "absolute_deadline_at_utc": "2026-09-27T09:23:25.261434+00:00",
+    "downtime_refund_permitted": false,
+    "deadline_extension_permitted": false
+  },
+  "continuation_position": {
+    "source_phase": "EXECUTING_EPOCH",
+    "current_epoch": 7,
+    "completed_candidates_in_current_epoch": 10,
+    "fallback_task_id": "v4-e007-s11",
+    "next_task_id": "v4-e007-s12",
+    "next_queue_index_after_fallback": 11
+  },
+  "unchanged_contract": {
+    "research_plan_language": "klax-research-plan-v4",
+    "fixed_plan_universe_count": 3072,
+    "fixed_decision_times_utc": [
+      "13:30",
+      "15:00",
+      "18:00"
+    ],
+    "data_bundle_version": "4d91f524c0aff05135d67b01d26835df6325c28ff6a30e09ae368d2437c0614e",
+    "data_bundle_sha256": "d9c6677790b9788a94b72254d655a6a2cb4b41e4c6c467f2327858d73744bdca",
+    "promotion_gates_changed": false,
+    "replication_or_critic_gates_changed": false,
+    "protected_final_access_changed": false,
+    "outcome_driven_change": false
+  },
+  "safety": {
+    "source_campaign_mutation_permitted": false,
+    "network_permitted": false,
+    "protected_final_read": false,
+    "actual_orders_authorized": false,
+    "actual_orders_placed": false,
+    "profit_claimed": false,
+    "ticket_or_launch_authorized_by_this_amendment": false
+  }
+}

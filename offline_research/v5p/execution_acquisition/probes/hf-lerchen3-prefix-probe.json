@@ -1,0 +1,1653 @@
+{
+  "schema_version": 1,
+  "probed_at_utc": "2026-09-27T14:34:20.881073+00:00",
+  "source": "lerchen3/kalshi-orderbook-alpha",
+  "method": "HTTP Range bytes=0-65535 then partial gzip decompression; capability screen only",
+  "files_total": 164,
+  "declared_bytes_total": 3471950518,
+  "probe_bytes_total": 10747904,
+  "kxhighlax_prefix_hits": 10,
+  "any_kxhigh_prefix_hits": 10,
+  "rows": [
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T022023.251189Z_ip-172-31-3-129_04de9e.jsonl.gz",
+      "declared_bytes": 26009864,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 791887,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "890fa74ff9ffb7aa39a772510ed897d830ffb56b3007f9eb192089438d07c4e3"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T022523.296675Z_ip-172-31-3-129_f9616e.jsonl.gz",
+      "declared_bytes": 67944837,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 509788,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "97479901e7d47d26d571fa84988e9233644450b297ec81d5cb8db94091405ea8"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T022802.195407Z_ip-172-31-3-129_5460e1.jsonl.gz",
+      "declared_bytes": 69106452,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 587297,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ca045fcf8f5f7e7aa5ec8541767f9ef869aade084aaf84b186434c5f9af6a630"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T023018.532199Z_ip-172-31-3-129_81630c.jsonl.gz",
+      "declared_bytes": 69139698,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 496813,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "163062108193811f2b37919b54c4b279dce2e4a5ea1327d7a9a61fe3706fbc5e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T023240.256013Z_ip-172-31-3-129_98b415.jsonl.gz",
+      "declared_bytes": 68117533,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 505002,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d3197a591d3b55a5dfc59f53415ccc9dece5b9dfb819d7740c78794efd30a531"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T023456.569561Z_ip-172-31-3-129_50db72.jsonl.gz",
+      "declared_bytes": 59965899,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 524979,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "48ac05bd7397c79afe037677e734772c190c3973120832984ffbe9f6009842d3"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T023643.137774Z_ip-172-31-3-129_6c297a.jsonl.gz",
+      "declared_bytes": 68889918,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 488024,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3b54403e27e07a9bae915d512697bfc3d32e4ed67a96a009c30c95ac6de72c0a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T023842.827028Z_ip-172-31-3-129_e1d9fc.jsonl.gz",
+      "declared_bytes": 67241627,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 551449,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "82cb62675d3053d384ed4a2d9221b9a2b5427ba32632b14e41828452d470676a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T024048.345029Z_ip-172-31-3-129_44c640.jsonl.gz",
+      "declared_bytes": 69186152,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 596793,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "57323b1eea305f04d637d5d85b182554ecb4719a5b588a3d3afb591bace85c3a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T024249.072705Z_ip-172-31-3-129_abce9a.jsonl.gz",
+      "declared_bytes": 69522651,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 544315,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "57416723c40ef4035833189f3aefbb57b8b6c5b156432ec2e22a3f1cf42f0af6"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T024448.218443Z_ip-172-31-3-129_633c3b.jsonl.gz",
+      "declared_bytes": 67410745,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 586039,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "eadb03aeca8df6397108e54942b5ab772cf11bef06ea85bc43cac17a317ef1d5"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T024651.836112Z_ip-172-31-3-129_efc183.jsonl.gz",
+      "declared_bytes": 60218701,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 551706,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "60da20efe16809341699976e5b598d3bd7ceb2155122bbd8300e5d6ada945af4"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T024830.888776Z_ip-172-31-3-129_bb4f2e.jsonl.gz",
+      "declared_bytes": 68686460,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 477376,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "118e2b432c555e1df717a076b16a140a3146e973d27e02cac4fbe218cd523d6d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T025023.747132Z_ip-172-31-3-129_79e323.jsonl.gz",
+      "declared_bytes": 68678878,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 540742,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "fe6f2d811e64b42fdf7f84697892fc559f34987a572fe77266235784162cc66d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T025238.694036Z_ip-172-31-3-129_92508b.jsonl.gz",
+      "declared_bytes": 67939864,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 518647,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ea989231f82178e1f450d6dd09f66a15c6e88b51559228b89cd9b99eded2dd85"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T025427.641378Z_ip-172-31-3-129_1955e5.jsonl.gz",
+      "declared_bytes": 68370914,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 541604,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e9e4ba38796e2facf5c7120ebd511c5222af2306fb2333c80e8f251267739517"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T025621.581139Z_ip-172-31-3-129_bf9c12.jsonl.gz",
+      "declared_bytes": 66260479,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 519301,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "d16d3a8c1a90956a9ee9ea2403428515feaede3a89e9cfa26f7ea23a63a77662"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T025834.750326Z_ip-172-31-3-129_bb3449.jsonl.gz",
+      "declared_bytes": 60064081,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 515318,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d3e8f2c6e33b38ec2aedf9c0b2ef9fb5ff63ef56d1e61724e33ad2a13af547ba"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T030024.879178Z_ip-172-31-3-129_1a9da8.jsonl.gz",
+      "declared_bytes": 70585115,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 514707,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "79efc2ff4b947a894ab91c7beb97c1214e0eaae12a54cb747b6f92948940a2d6"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T030242.411151Z_ip-172-31-3-129_7e4b80.jsonl.gz",
+      "declared_bytes": 69375274,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 477607,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "88fd1d0f6c5d8c0158d5ca1675554c9720445cf5de5ad5105d2e75859bfc2b49"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T030503.057391Z_ip-172-31-3-129_148079.jsonl.gz",
+      "declared_bytes": 68033436,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 545646,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "43c9d6a115cda868d2679d86310d2841c23c29308a83428aed208166d62d432a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T030727.272158Z_ip-172-31-3-129_27a39a.jsonl.gz",
+      "declared_bytes": 66517961,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 524930,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1420ba42cdcb75b36d26f9fbc1840c80318626f665d1843c33a2e9d8b0f1fec5"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T030954.635514Z_ip-172-31-3-129_c838ea.jsonl.gz",
+      "declared_bytes": 59965276,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 600881,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d15e3a31e816e339af20153556a1931d50cfa186ccb886efb5722d325a3d676c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T031131.795031Z_ip-172-31-3-129_a84e64.jsonl.gz",
+      "declared_bytes": 70852818,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 526979,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "b8916bc81b0fd2c28a5d81fa45bd4858d4407d42fd1affac18b92bfc253538d4"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T031347.518567Z_ip-172-31-3-129_453f0d.jsonl.gz",
+      "declared_bytes": 69637435,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 504848,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "4c6178cd8a8b64dcce5ee39cf437a37be8f186e85df2d444455d3324c7ca74dc"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T031606.419107Z_ip-172-31-3-129_94a4a9.jsonl.gz",
+      "declared_bytes": 68655989,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 646152,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "c83ef5c20837de90c4e14f3900f7ae5225435e7fd4ee786dcd36185078fb5438"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T031823.823490Z_ip-172-31-3-129_753a65.jsonl.gz",
+      "declared_bytes": 67810309,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 522515,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "4a57eeb3d4a970cf0db216d14de24019a62c93ff8e4ef7876248c17f63938cea"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T032057.498127Z_ip-172-31-3-129_9d1f4b.jsonl.gz",
+      "declared_bytes": 58964848,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 547356,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1fa5d6a1d7726642dcff0c1e1aaa45630262b7f45580bf09c182a7f7c3afd984"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T032247.941043Z_ip-172-31-3-129_bed8cb.jsonl.gz",
+      "declared_bytes": 65332327,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 665872,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "cd9af4c80af711a6b581aaeefbb906b13434c7be05f61487064f0fd97652071e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T032507.389089Z_ip-172-31-3-129_a47771.jsonl.gz",
+      "declared_bytes": 66693319,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 601062,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "73e192c77f9ec6a8d2299fad9c29d497e7dc40050142589c28402c07f050c644"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T032747.297891Z_ip-172-31-3-129_ec8af7.jsonl.gz",
+      "declared_bytes": 66363884,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 501025,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "329b53eb55f10cba07d466a2d7c16829d19231eb2d66d502a2ace475f34b0768"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T033114.190355Z_ip-172-31-3-129_3c3b35.jsonl.gz",
+      "declared_bytes": 15948404,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 239658,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "b0417ef5ff80f25f5925e9e024d937ce5a8fe1857517cd17888552cd75d1f7dd"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T033614.226016Z_ip-172-31-3-129_a82a7b.jsonl.gz",
+      "declared_bytes": 1651230,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 653749,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f17146f8c118b0ce90458b9a8da2c1d535e8aa4f9fd0119700aac6600a6f0dca"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T033650.530314Z_ip-172-31-3-129_f61a97.jsonl.gz",
+      "declared_bytes": 19122720,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 244826,
+      "contains_kxhighlax": true,
+      "contains_any_kxhigh": true,
+      "probe_sha256": "272e63f595c90e80daef3cb962735afe3f13d00c65cf1a065a44cab5d2a70faf"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T034150.557834Z_ip-172-31-3-129_991e94.jsonl.gz",
+      "declared_bytes": 19017249,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 590041,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1dabd811b79a8f7675bd7dc79bc98cf1781ede56daba7246005f43b393d6e838"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T034650.588266Z_ip-172-31-3-129_17a307.jsonl.gz",
+      "declared_bytes": 26400277,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 574914,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "bc84f50318be3024a11353b249fb03a0004f0f5104ed168ea77012b4e1b5931e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T035150.597919Z_ip-172-31-3-129_dfa13e.jsonl.gz",
+      "declared_bytes": 23883574,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 724094,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "5e1086ecb569e58a8510665ce18fa04f269f0b94b9db89ba7c27e15d1eefde99"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T035650.635031Z_ip-172-31-3-129_656e3e.jsonl.gz",
+      "declared_bytes": 23775930,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 697649,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "107186c17666663280db444b2327c72a83ce366d82283d50f921ec7960e826e9"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T040150.643112Z_ip-172-31-3-129_78089e.jsonl.gz",
+      "declared_bytes": 20093369,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 680028,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e896f15c0997670142feefab689b4c7a89bd31b2a4d4a50f3ace931e26e0dfe1"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T040650.678002Z_ip-172-31-3-129_e9e8aa.jsonl.gz",
+      "declared_bytes": 22675469,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 585665,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f651fda1a2290cabb781e05be2d60eb778f4c6bee1fcefd4cb4b86418954caf9"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T041150.689381Z_ip-172-31-3-129_12e012.jsonl.gz",
+      "declared_bytes": 23852100,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 556999,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c8688e58aae95d12d7b530eb83edb5a6a0ea9e6fd2b3d03cc930a98c44147b71"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T041650.721660Z_ip-172-31-3-129_21bbf4.jsonl.gz",
+      "declared_bytes": 23678732,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 593752,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "4b75d857b6dfa1b9ddfab8bb7b4e852520b0c3a0153fdc2a0f40e16e24712f56"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T042150.768328Z_ip-172-31-3-129_f17107.jsonl.gz",
+      "declared_bytes": 30281337,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 749296,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c6d1fd49cbecaeb8127532a8190512012dc77076ca2935ada467180b36cb2e90"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T042650.785009Z_ip-172-31-3-129_8418bc.jsonl.gz",
+      "declared_bytes": 20598639,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 771728,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "705476711cfab8e6a90d821a41402c19968295332fb27b81ca56e541c467cae1"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T043150.795950Z_ip-172-31-3-129_89870a.jsonl.gz",
+      "declared_bytes": 24579234,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 684323,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f459421b6ebccf8de41893931587e778e13a2b8abf66d94d5c61275d1fec5984"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T043650.810976Z_ip-172-31-3-129_433ac9.jsonl.gz",
+      "declared_bytes": 37487269,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 740539,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "01b51c49c33fa33927ea016e1230d1b3bed8d4970a35c5663df316820150f426"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T044150.829444Z_ip-172-31-3-129_8eda77.jsonl.gz",
+      "declared_bytes": 36224445,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 922509,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "adcbc71b5f19c1eeadf5825ee1c2493e55e519c3945e67383eaf23bd142966ed"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T044650.839324Z_ip-172-31-3-129_38a3fe.jsonl.gz",
+      "declared_bytes": 25181211,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 714842,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "cfa47f19c3890fc95c47ef5230315b08e2049ca2c0bda8045a077a5793cd1179"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T045150.847912Z_ip-172-31-3-129_62d225.jsonl.gz",
+      "declared_bytes": 30152879,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 678015,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "bcfa00b2ec7ba723e366b89e720a09898a107b1330d89a4b63b512eb4c793a7f"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T045650.856193Z_ip-172-31-3-129_37101a.jsonl.gz",
+      "declared_bytes": 26384692,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 691435,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f7d7ea42cd358bbe5baf397ab07065f6f450c8a9df987a56ab7fd0943abc8588"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T050150.869643Z_ip-172-31-3-129_30fa38.jsonl.gz",
+      "declared_bytes": 27083272,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 626630,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9d43f067c8ecde038977e7bb72d8d59027b3c2dec59c1af570f11d161b7a7097"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T050650.896448Z_ip-172-31-3-129_80816d.jsonl.gz",
+      "declared_bytes": 30895706,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 787332,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "a09fe063c316144ebb8754aac097a06a3564ec4721ce2dfb1edaeab31d0725c0"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T051150.924135Z_ip-172-31-3-129_b6c5d4.jsonl.gz",
+      "declared_bytes": 14015171,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 690248,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "df6914bebcfcf0b60d9b4dab2399a99c6ad0d307da2ee1da60137f02db72bb29"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T051650.951435Z_ip-172-31-3-129_bb73b1.jsonl.gz",
+      "declared_bytes": 11837361,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 564365,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "82b71aa9c0a1c134dc586bb6165e8ef063ee9e07b19d990d79134c5d999bb356"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T052150.970707Z_ip-172-31-3-129_ee5909.jsonl.gz",
+      "declared_bytes": 11805461,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 642971,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3c1fe34acc75cdd3a9138e549ee15c70da9dcedd38ed25513167f7125e8ac40d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T052650.988041Z_ip-172-31-3-129_eb565b.jsonl.gz",
+      "declared_bytes": 18910667,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 746291,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f9d1f499d50209afdd4a210b957daf0b8119c448d688f1de47544f119e340491"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T053151.018752Z_ip-172-31-3-129_e45e3b.jsonl.gz",
+      "declared_bytes": 13769113,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 587295,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e80bd6ffe5a64985ca3c299b7ee2f37729a6b47badd67a604aeaf975c524d123"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T053651.040896Z_ip-172-31-3-129_fc5f55.jsonl.gz",
+      "declared_bytes": 14296956,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 682520,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c6ddbc482df18ad6e6660fbf52c9e15236e49f425c1b836672c3d8ecd81916ee"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T054151.059005Z_ip-172-31-3-129_aa0a27.jsonl.gz",
+      "declared_bytes": 14989869,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 740745,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e4dff754968c32f9441c54d448f8fc37345e2c942c787c98300ac4ba30a71a6e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T054651.083842Z_ip-172-31-3-129_01710e.jsonl.gz",
+      "declared_bytes": 21748883,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 707334,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "b523c6c0a054c7c9331ef7a42d2ad2f26061bdc2f79e64441c1d38dd8d855e63"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T055151.105758Z_ip-172-31-3-129_70756c.jsonl.gz",
+      "declared_bytes": 29951324,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 684054,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "578659a8bd775512db059316edf7cee1d3c49c62e592e4899e2379a63284c8ae"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T055651.148899Z_ip-172-31-3-129_696e07.jsonl.gz",
+      "declared_bytes": 14629468,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 739209,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9a781644a4979697ad61c2aba2b1618e185ca207a78fb47c80d09c6affa4d886"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T060151.195612Z_ip-172-31-3-129_dd48fd.jsonl.gz",
+      "declared_bytes": 22506492,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 745721,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e05cecfa815390075a14c741ae0d1154c2647e1e465cacff55a441dbc3848b2d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T060651.212541Z_ip-172-31-3-129_e76d63.jsonl.gz",
+      "declared_bytes": 14295270,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 731869,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "2890b3aa63d436f031cbe0856ab37be9556f8153ccdfc4ad1af62db57b698f6c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T061151.250674Z_ip-172-31-3-129_6f632e.jsonl.gz",
+      "declared_bytes": 19606349,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 715119,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "383c199a452484e73530fcbb96192bfe44ecdc8230c79d08ce2716a6e36bc427"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T061651.291348Z_ip-172-31-3-129_5c53f5.jsonl.gz",
+      "declared_bytes": 10101070,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 777663,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "4153bab6a507709d5eac213c09007401f61c33fe77aa3238b4bb838899bac3dd"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T062151.312249Z_ip-172-31-3-129_fa7edf.jsonl.gz",
+      "declared_bytes": 17154473,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 677847,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "0176d637c1457822680958ab0199611a5adc018195c973a6877c7797217337de"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T062651.336459Z_ip-172-31-3-129_757f8f.jsonl.gz",
+      "declared_bytes": 13266669,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 802624,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "99f5865234094023ea70c73b2ffcd11a5034b43544897721a2e5cbf6e7d082df"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T063151.346314Z_ip-172-31-3-129_053fbc.jsonl.gz",
+      "declared_bytes": 6917760,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 709558,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "33873abdf2634bee73b5256deee547faa090f36e427fe018f9f550d276cd1b3c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T063651.364352Z_ip-172-31-3-129_419ca4.jsonl.gz",
+      "declared_bytes": 7122534,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 696765,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e7485b757d48b26009188f83bbb098d4fba399ec6c14d4747875df5ac94fa9ff"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T064151.386048Z_ip-172-31-3-129_e6796e.jsonl.gz",
+      "declared_bytes": 12793793,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 700643,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "95092b05e6c80e1409b2742d02c7902a838fbf5df6abdeaf7fb0f288793d39af"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T064651.397121Z_ip-172-31-3-129_5175e1.jsonl.gz",
+      "declared_bytes": 10683674,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 764312,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "a085a4a243dbebc9b04d885c80e0ec74f1c4d8fa284f1031559c3cfe22eca944"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T065151.416736Z_ip-172-31-3-129_f4f92a.jsonl.gz",
+      "declared_bytes": 10761236,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 717041,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "6d371cd6d9d4605574a562663372c274fc703aabda3792fe53c2d5ba20a01832"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T065651.443352Z_ip-172-31-3-129_160ad7.jsonl.gz",
+      "declared_bytes": 10670509,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 778871,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3269f11881cddb5de05817edd77793b8a0328b7d6ffe0be2c77d125d9e3a44ca"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T070151.453111Z_ip-172-31-3-129_746596.jsonl.gz",
+      "declared_bytes": 7475885,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 670032,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "4bc61d69478c368f98ae378646df050648e0503e5c2ddc40240d5f1e75b6d7a6"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T070651.470374Z_ip-172-31-3-129_fda2e1.jsonl.gz",
+      "declared_bytes": 12423309,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 772927,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "278dc16a9c875abfb0400277cb89d0ee876d2c2dc90a6975202ea5e5135eee43"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T071151.501897Z_ip-172-31-3-129_22b494.jsonl.gz",
+      "declared_bytes": 9407259,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 798125,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c8b3ef6eb095068e38f830b159872d42cc686d5376c4c663d75c9ca287efb6cf"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T071651.531646Z_ip-172-31-3-129_82df55.jsonl.gz",
+      "declared_bytes": 6255648,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 714841,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f34fc65a434949e3f8f94b8940cf8b65cb6b6dd48f4d42cfd2d8bb03bfd9f7af"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T072151.544169Z_ip-172-31-3-129_a3b08d.jsonl.gz",
+      "declared_bytes": 6527858,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 657980,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1ba8c9b2480b90ca6ab3cb030ab86dce4eaf3cfc75d5d58b4c797dee5575c1a1"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T072651.560749Z_ip-172-31-3-129_940977.jsonl.gz",
+      "declared_bytes": 10208170,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 666810,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "14b9fceb3ec8aa806a791459201baea5454f5218092d04243a2531fd348d3134"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T073151.574364Z_ip-172-31-3-129_989774.jsonl.gz",
+      "declared_bytes": 7850991,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 620010,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "be4b8875300b1d1cef80b396264fe4d2e857f5e221297c3aaae8f814afa23d04"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T073651.583725Z_ip-172-31-3-129_06bc17.jsonl.gz",
+      "declared_bytes": 10502253,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 718923,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "a59352210b677de789bdd135df641441934aadac5f204f774c4b71e608107081"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T074151.598019Z_ip-172-31-3-129_d3b3f7.jsonl.gz",
+      "declared_bytes": 8136897,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 716046,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3c17fba1e2e95ff92147ec7b0afa572304db4345f72842bfb8c883dee712dedb"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T074651.605059Z_ip-172-31-3-129_a772ad.jsonl.gz",
+      "declared_bytes": 9655848,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 633454,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "0f06bad57747903038922f9ec828afb9fe9e28503715ee6c50c14c8dcdf8f0ba"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T075151.630320Z_ip-172-31-3-129_b80a8a.jsonl.gz",
+      "declared_bytes": 14906818,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 733572,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "594570d0b29d747ed3b40b346aab1bd3b85221342ca6ac97b0db06d77afe9fd6"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T075651.657997Z_ip-172-31-3-129_5be091.jsonl.gz",
+      "declared_bytes": 6645892,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 844103,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "dfcf30fb20ff6c709e26b27fd8d33832ccefe85adaa41aa1ded34693b340ee6b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T080151.683881Z_ip-172-31-3-129_4ada65.jsonl.gz",
+      "declared_bytes": 4719945,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 835494,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f231a4f6f3cbe0f2de76892ed1f03b0519577a24e9180014b5ad2d0838fe62f6"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T080651.697726Z_ip-172-31-3-129_ebde78.jsonl.gz",
+      "declared_bytes": 7270059,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 736547,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "7c691a6996e1e1d85194ab00d62c9a7e8107d20393fadf6b5da34da19684acfd"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T081151.714368Z_ip-172-31-3-129_df4643.jsonl.gz",
+      "declared_bytes": 7313489,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 763139,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1e40438ce8662d3a7b6fe2107c92739012ac9cea0b6ec2155d28d8b9ac9aee68"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T081651.729055Z_ip-172-31-3-129_f0993a.jsonl.gz",
+      "declared_bytes": 2147199,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 571770,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "cd6812f10775c14dc5ff1d9078d6fc07498fa9f03a42c7223d776120b52072ae"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T082151.744577Z_ip-172-31-3-129_b1ef24.jsonl.gz",
+      "declared_bytes": 7090735,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 826941,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f90842d0f57c5f32f374b9cbb3087b7522e2c589ce4a470789e71e52bd084559"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T082651.761668Z_ip-172-31-3-129_e85afa.jsonl.gz",
+      "declared_bytes": 4032642,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 852510,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "fdac4b69f6f3c3f626e08df23a908517b561373c664621b260714e20102deb36"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T083151.780486Z_ip-172-31-3-129_eace39.jsonl.gz",
+      "declared_bytes": 3027721,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 715032,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c17ff5eea859c4a09c1af0e4f43db0d92d0b036b567c16e15470b80e315e2a73"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T083651.797523Z_ip-172-31-3-129_143e6c.jsonl.gz",
+      "declared_bytes": 2560789,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 612172,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "7a62e6e40f21a809da608df52ddb3d0dadf8b8279f59b8eba9850d16d898cb23"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T084151.816482Z_ip-172-31-3-129_466857.jsonl.gz",
+      "declared_bytes": 5169313,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 650635,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "412ce9efd625a77793cc26052698c0881cbb43c7f49582264b97d13ba91f1148"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T084651.917258Z_ip-172-31-3-129_7c6c90.jsonl.gz",
+      "declared_bytes": 3504158,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 764930,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "20d3ddda58ee006905a44144b1b655c76c6756ae649c88bf213af0cbe9cc6926"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T085151.971582Z_ip-172-31-3-129_1120fd.jsonl.gz",
+      "declared_bytes": 7136009,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 624892,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "74c12bdbf282fbd86dc2b87b7bf2996eb09e0fc13b50322e6b3bfc5b10c48df5"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T085651.989298Z_ip-172-31-3-129_aff914.jsonl.gz",
+      "declared_bytes": 2725234,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 750232,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "0a79b8d28bbadfbfbf6ab3a388048adb13ba27e99cc42252068677b63bb6b23c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T090151.999989Z_ip-172-31-3-129_75cb01.jsonl.gz",
+      "declared_bytes": 1951684,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 665708,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f8a268d11d6957858cd0d1af648e6d3ec15e7a554a22e259f9af3216dca1d7dc"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T090652.009608Z_ip-172-31-3-129_369b7e.jsonl.gz",
+      "declared_bytes": 2673854,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 777409,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "18c7fbdd05d5045b8c70b343e8c23d3918307237a45dc0f3318661ac4b449fcf"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T091152.044774Z_ip-172-31-3-129_008959.jsonl.gz",
+      "declared_bytes": 2230244,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 761108,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ba1ba95a9927985251258696db45ec2ebb0868812c6673c032346bc7e25886ae"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T091652.064034Z_ip-172-31-3-129_d062d5.jsonl.gz",
+      "declared_bytes": 2387312,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 620704,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c4f35822d31f2976c985e2ee56f756dcb543ee81c08004b7a013928e02d36a37"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T092152.070766Z_ip-172-31-3-129_cf244a.jsonl.gz",
+      "declared_bytes": 2530783,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 781409,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "88461b933e419a3c3d236fbcfa1ec2fe1c1354d74a9b3e5cf5451c21521acef4"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T092652.093903Z_ip-172-31-3-129_aec224.jsonl.gz",
+      "declared_bytes": 2692660,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 620802,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9b6fe21358c2e2e41b70877be22cdcbd192c8d593229fe1a9d81f0acf90e93cf"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T093152.109850Z_ip-172-31-3-129_96f811.jsonl.gz",
+      "declared_bytes": 1817074,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 615516,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9a3c152ea75e607bddb9fcf913dc9e983bda502d1be5a243a02d44ad2915295b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T093652.210296Z_ip-172-31-3-129_c4ffad.jsonl.gz",
+      "declared_bytes": 6804128,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 512987,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "020a314a358014b1a66804d4bf1e0bb59a7c3479156ac9599a832379908b4632"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T094152.224924Z_ip-172-31-3-129_1dde92.jsonl.gz",
+      "declared_bytes": 2975227,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 880887,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e0d86e41c3a6b5089e93222dbaf88f8eb2a654fb64af60db7c4a5cb54ed087ae"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T094652.267126Z_ip-172-31-3-129_c6cf03.jsonl.gz",
+      "declared_bytes": 3626376,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 648834,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "12a6fff685f760bf1d35ffbc2eb0dbc84a6e818236f69a882da4974dd134c748"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T095152.277519Z_ip-172-31-3-129_33c041.jsonl.gz",
+      "declared_bytes": 4863650,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 776033,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d674c1d6da55486d543ef6b848d3d9cff42357ce25b81985378380353f1d91b3"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T095652.310310Z_ip-172-31-3-129_23b043.jsonl.gz",
+      "declared_bytes": 3570490,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 789653,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "adcb88995d096a473e3cffbc401388676ed112b56acfa3d7ded8b09f1acba185"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T100152.322027Z_ip-172-31-3-129_9261d2.jsonl.gz",
+      "declared_bytes": 3549598,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 774242,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "8de0d66d9a92e98a0dc08f4dcd44ff72be0cd23698ac0a8a4da8f3f01125a1a2"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T100652.328686Z_ip-172-31-3-129_1741a8.jsonl.gz",
+      "declared_bytes": 5777456,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 781363,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "7ff21d495fb40dd853466e5755815ee6835f97f2d16342d3d9e5f90c1dce2181"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T101152.346434Z_ip-172-31-3-129_3cac55.jsonl.gz",
+      "declared_bytes": 4085349,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 799976,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9e4af6dc2033d9328a04b2592e53fa964237a7c67b2c3c5565b088397004d149"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T101652.354277Z_ip-172-31-3-129_f299eb.jsonl.gz",
+      "declared_bytes": 3049850,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 742228,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ac063938bac69a97ebb08fe89f0cc5fbd1153b4b78b87aece185edbbf9a6ce6e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T102152.364109Z_ip-172-31-3-129_ba3bd8.jsonl.gz",
+      "declared_bytes": 2994456,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 650290,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "956dcbfbe10c32023cf7a1f51a63f2206c7678b48fd123654012a4b04952da80"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T102652.392931Z_ip-172-31-3-129_ca7009.jsonl.gz",
+      "declared_bytes": 2938459,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 773372,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3fba390ec25602df0d000bb09a860744b251ab7c9f5926049d44ffbb46722d6b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T103152.409942Z_ip-172-31-3-129_8c3e37.jsonl.gz",
+      "declared_bytes": 3133833,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 678008,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "24a5d659629c5e76f43ee8f334414ce7be50754176c0f3be3f96689415d3bf08"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T103652.416204Z_ip-172-31-3-129_cee0b4.jsonl.gz",
+      "declared_bytes": 3204471,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 731661,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "7674e48ea00c107e02688bfa0695bbf6b967480f60f90edd7e5aab0f832557bc"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T104152.426925Z_ip-172-31-3-129_ae6275.jsonl.gz",
+      "declared_bytes": 3954937,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 641058,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "9c5068c58d0c31b52c86f25ed0bd6cc978511809c13f4a5b8bc0ca267d20e55d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T104652.440484Z_ip-172-31-3-129_b61af3.jsonl.gz",
+      "declared_bytes": 3554571,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 738993,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3e517b9164963eb14f5807d097db06e3df7c15033b854147ebe71fb75c03dfc2"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T105152.449866Z_ip-172-31-3-129_31ebb2.jsonl.gz",
+      "declared_bytes": 5111676,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 698478,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "0767f6d0fa89d03b162bed538b2d90d6e5b2e77e81fd38868a2a1cca57b2d913"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T105652.464368Z_ip-172-31-3-129_eb172d.jsonl.gz",
+      "declared_bytes": 3376167,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 601467,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "5c66df9ed5892964c7eca2fe74a984f5f407ebc34153c9b0c0cd765481cea847"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T110152.497081Z_ip-172-31-3-129_18fd5c.jsonl.gz",
+      "declared_bytes": 3074110,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 651434,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "b5a75f495ef9318ec9902816340b2044b11df1c7a2e26e38608b70eedabec105"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T110652.504437Z_ip-172-31-3-129_4d00ae.jsonl.gz",
+      "declared_bytes": 3896014,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 564411,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "c8bc0ccd0bb6e5560befb6d115b944af033463c046acbf8e0caa24e36e55abd0"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T111152.540487Z_ip-172-31-3-129_305784.jsonl.gz",
+      "declared_bytes": 4770044,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 636587,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "6d4318a56629374f3d248a77ccd5d26e6ef844cc60891b2cb1a1663e023c6246"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T111652.550625Z_ip-172-31-3-129_892ab7.jsonl.gz",
+      "declared_bytes": 5553403,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 700897,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "23c514c19e11092d5ca64862b32a984b49127739476498ef33a6af15d7e42915"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T112152.558262Z_ip-172-31-3-129_4d137a.jsonl.gz",
+      "declared_bytes": 5112811,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 635714,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "984b740d8c6ad76e2a2229b26c620dc54f3057553a1ea3eab13fd61be8a05e3a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T112652.584584Z_ip-172-31-3-129_05a86e.jsonl.gz",
+      "declared_bytes": 6365942,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 770268,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "136a668f689b64e7a9d9877ed758ad9ae1a1b8f3f60bf0a86ae99233c2f1d99b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T113152.594066Z_ip-172-31-3-129_bf09a3.jsonl.gz",
+      "declared_bytes": 3760503,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 719877,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "805c433e596e04454b3f64e7868198384e91423032273c17c4b078adc6ce2cbc"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T113652.603895Z_ip-172-31-3-129_d27d1d.jsonl.gz",
+      "declared_bytes": 8522107,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 631185,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "91c087a9dd6f8590167b815d334e9f8265181bf2c802b7f315e9fa72c99faa59"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T114152.631917Z_ip-172-31-3-129_bacc00.jsonl.gz",
+      "declared_bytes": 5541562,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 797594,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1b4c7afe72484581859053766c3fd9b504bb341fd3ee818de0a04d54eff9e37a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T114652.641962Z_ip-172-31-3-129_1792a4.jsonl.gz",
+      "declared_bytes": 3367717,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 627579,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "eca9b5d5322c6d49fde6fef707fbc9d0959ffdb35582833bc42209924719c593"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T115152.690475Z_ip-172-31-3-129_99f83b.jsonl.gz",
+      "declared_bytes": 3385667,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 718757,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d36764ea976d31479338169e6135f9256024d9abf0351c5de50da030a478fd8b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T115652.711058Z_ip-172-31-3-129_afdb2f.jsonl.gz",
+      "declared_bytes": 2998612,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 633791,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "8b46fa87f467339145dedbbd5e32d731e4c1c4311dece7a7fd41d1d87f84db10"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T120152.731214Z_ip-172-31-3-129_7c2c24.jsonl.gz",
+      "declared_bytes": 3831142,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 521959,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "24f13b05136c6629a761454028d73142092906d3093b5e9d527fbd2739e49c4c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T120652.755899Z_ip-172-31-3-129_fcd519.jsonl.gz",
+      "declared_bytes": 5094987,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 653308,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f087a6185b210a2bcc6d8a4f6d9422b6fea1ca39561b7bf54ac9b4985fcceab9"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T121152.775327Z_ip-172-31-3-129_34db5e.jsonl.gz",
+      "declared_bytes": 4700714,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 737144,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1d0e4867e50ea695f6269aaca1fa272d0565328adca93ac502db8e3ad5cb062f"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T121652.814005Z_ip-172-31-3-129_eb3cfd.jsonl.gz",
+      "declared_bytes": 5632896,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 650585,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "eef71f3194bfe9e7f4e0b7a62b40230d3a6992d89c14e3afdf0d8c7c9ce8f150"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T122152.828279Z_ip-172-31-3-129_f42b33.jsonl.gz",
+      "declared_bytes": 12649389,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 783768,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "b7fb2907fab184392bc4398f3cc3a0e7bc29133b5479a17193f21223f6d35c7c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T122652.847145Z_ip-172-31-3-129_ace00c.jsonl.gz",
+      "declared_bytes": 9670986,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 793715,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "db073b5dd556598883d68a7bf1cc8b6fd4377ba339d4759e49ab0d04f31cb73d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T123152.863866Z_ip-172-31-3-129_2e0738.jsonl.gz",
+      "declared_bytes": 5901130,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 700308,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "0b907ff59c4809052ee14bdb253a9f38fc37258f5940c899344dd7238c9a6159"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T123652.873320Z_ip-172-31-3-129_e8d6d1.jsonl.gz",
+      "declared_bytes": 5369432,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 665266,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "1e696d8abcca74e744aab3cbf222ddb6e77978de9a8b9a052e22ed181ddd883d"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T124152.887440Z_ip-172-31-3-129_bb45da.jsonl.gz",
+      "declared_bytes": 8405372,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 653828,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "fa44d2a9e1da8092e844acf815c387dd8f1119a46f3640faceb0177496c27aa4"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T124652.920447Z_ip-172-31-3-129_77ee48.jsonl.gz",
+      "declared_bytes": 7923192,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 662032,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "6b246513a849021b7fb26a8a1b74d338931a893ef6112074a2869e710ae85a49"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T125152.934352Z_ip-172-31-3-129_3c14c3.jsonl.gz",
+      "declared_bytes": 17514374,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 649171,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "2eba440ed42569426b16b94b120ca0f309aa9acf0f27fec717e6669c8223e045"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T125652.955767Z_ip-172-31-3-129_efbfe6.jsonl.gz",
+      "declared_bytes": 13415532,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 705168,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "d48abc192a08e333c942f9489d3a846d731f0e63f02ca5bedaa7bdf11391289e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T130153.007364Z_ip-172-31-3-129_dd544d.jsonl.gz",
+      "declared_bytes": 10822799,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 707377,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "8a06dda92a8f2b5de203948aa0bbae0c43f9f9e5138976b8813cf49aaa168ec9"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T130653.015443Z_ip-172-31-3-129_672db5.jsonl.gz",
+      "declared_bytes": 10379345,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 582551,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "6110b74491bc5fe3ec219fb73ee15ad426f530ae5ff73b54c1bad08475bdf84b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T131153.038369Z_ip-172-31-3-129_979115.jsonl.gz",
+      "declared_bytes": 10112157,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 834533,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ffdfd2cbb69d6aabd2845d6263ac7649fcf48dabe801a8b6be00673bce861147"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T131653.049145Z_ip-172-31-3-129_644225.jsonl.gz",
+      "declared_bytes": 8902522,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 750192,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "565db3c96d09af1dc88159d5ae469ee2db471c2b814b511631d6dfa28e4b861c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T132153.102482Z_ip-172-31-3-129_82034f.jsonl.gz",
+      "declared_bytes": 7894851,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 600694,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "bcf1402bb80630b168ef74e757148441fa60a550d6f88be3299b1c23a3d8f302"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T132653.127693Z_ip-172-31-3-129_554b6c.jsonl.gz",
+      "declared_bytes": 8481167,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 791830,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "e3ef8ff1a143386f3b6ee191627feb66b5bfa08fc490b95fe24c235482f64ae3"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T133153.144549Z_ip-172-31-3-129_bc3491.jsonl.gz",
+      "declared_bytes": 7386714,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 646824,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "3d4725a9428405a07e3bd889f9cc4aeb80775bc4afc1ef8bd0ec1b74ebac996c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T133653.167340Z_ip-172-31-3-129_22638a.jsonl.gz",
+      "declared_bytes": 13997247,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 616978,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "94dcd6bb7b78480a5c2af73c742cfd0654d2f797a33b97618fe932d4808c34e8"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T134153.184793Z_ip-172-31-3-129_841691.jsonl.gz",
+      "declared_bytes": 11899401,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 612737,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "20f09c4434cb67ba3334eaa679b96d61de9441fcb1bd789acf25a37b13c4dfdb"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T134653.199222Z_ip-172-31-3-129_e85443.jsonl.gz",
+      "declared_bytes": 9921305,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 548413,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "f67f3259dab876ba74ede77d9566600befa9dd4acfe6a2431223ec2aed06387e"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T135153.210486Z_ip-172-31-3-129_44c4a4.jsonl.gz",
+      "declared_bytes": 8696480,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 569700,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "2927e222e5ff0e8c447e9e50fcc06b92e1e06c2eb283623fa3a2106bf3c6e63b"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T135653.221918Z_ip-172-31-3-129_11d455.jsonl.gz",
+      "declared_bytes": 9687995,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 626918,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "17b49bd7d953739d9153ee0d9bed9a33801252146b3dd29ed934bf9d5ffb6e14"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T140153.232951Z_ip-172-31-3-129_93adc5.jsonl.gz",
+      "declared_bytes": 13317830,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 783963,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ae9dac3db1ea13e0de9261eaadac20ce44321647d25734019fe6bbb36b6aa17a"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T140653.261648Z_ip-172-31-3-129_12fc04.jsonl.gz",
+      "declared_bytes": 18219361,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 648148,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "fe543875eb21e68989424155f57b6e054710c9d6d606e09116afae0c27adfea1"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T141153.293563Z_ip-172-31-3-129_b6eb33.jsonl.gz",
+      "declared_bytes": 17338048,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 700060,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "591ce095bf2ba04c3f4aa63cf9e80636572317f59cab7dc7b7bd51dcff04362c"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T141653.314373Z_ip-172-31-3-129_fe0144.jsonl.gz",
+      "declared_bytes": 15906996,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 695210,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "ead06c0201c04c06bad302630df1b05cbb5b814ae625d9903635b11ba5d6d3ff"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T142153.347537Z_ip-172-31-3-129_5a194c.jsonl.gz",
+      "declared_bytes": 19487904,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 691368,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "2e1ce4e73ccb1c2ac1395d63c69f1e41badb543566e26dea4a33532ce2517119"
+    },
+    {
+      "path": "data/2026/07/19/kalshi_orderbooks_20260719T142653.376876Z_ip-172-31-3-129_33191b.jsonl.gz",
+      "declared_bytes": 1147748,
+      "probe_status": 206,
+      "probe_bytes": 65536,
+      "decompressed_probe_bytes": 633871,
+      "contains_kxhighlax": false,
+      "contains_any_kxhigh": false,
+      "probe_sha256": "928387acafeba112816e357c77f2feef405065be924a384ad5520f5f96c29d22"
+    }
+  ]
+}

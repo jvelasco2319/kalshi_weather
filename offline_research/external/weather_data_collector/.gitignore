@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+data/raw
+*.grib2
+*.grb2
+
+.venv/
+venv/
+ENV/
+env/

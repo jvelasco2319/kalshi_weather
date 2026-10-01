@@ -1,0 +1,140 @@
+{
+  "actual_orders_placed": false,
+  "campaign": "V5P_PUBLIC_EVIDENCE",
+  "cdx_results": [],
+  "cftc_discovered_links": [
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/58722",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/58809",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/58818",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/59202",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/59481",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/59569",
+    "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules/59574"
+  ],
+  "failures": [
+    {
+      "error": "GET failed: https://web.archive.org/cdx/search/cdx?url=kalshi.com/docs/kalshi-fee-schedule.pdf&output=json&filter=statuscode:200&from=2025&to=2026: HTTP Error 503: Service Unavailable",
+      "url": "https://web.archive.org/cdx/search/cdx?url=kalshi.com/docs/kalshi-fee-schedule.pdf&output=json&filter=statuscode:200&from=2025&to=2026"
+    },
+    {
+      "error": "GET failed: https://web.archive.org/cdx/search/cdx?url=kalshi.com/fee-schedule&output=json&filter=statuscode:200&from=2025&to=2026: The read operation timed out",
+      "url": "https://web.archive.org/cdx/search/cdx?url=kalshi.com/fee-schedule&output=json&filter=statuscode:200&from=2025&to=2026"
+    },
+    {
+      "error": "GET failed: https://web.archive.org/cdx/search/cdx?url=kalshi.com/regulatory/fee-schedule&output=json&filter=statuscode:200&from=2025&to=2026: HTTP Error 503: Service Unavailable",
+      "url": "https://web.archive.org/cdx/search/cdx?url=kalshi.com/regulatory/fee-schedule&output=json&filter=statuscode:200&from=2025&to=2026"
+    },
+    {
+      "error": "GET failed: https://web.archive.org/cdx/search/cdx?url=external-api.kalshi.com/trade-api/v2/series/KXHIGHLAX&output=json&filter=statuscode:200&from=2025&to=2026: The read operation timed out",
+      "url": "https://web.archive.org/cdx/search/cdx?url=external-api.kalshi.com/trade-api/v2/series/KXHIGHLAX&output=json&filter=statuscode:200&from=2025&to=2026"
+    },
+    {
+      "error": "GET failed: https://web.archive.org/cdx/search/cdx?url=trading-api.kalshi.com/trade-api/v2/series/KXHIGHLAX&output=json&filter=statuscode:200&from=2025&to=2026: HTTP Error 503: Service Unavailable",
+      "url": "https://web.archive.org/cdx/search/cdx?url=trading-api.kalshi.com/trade-api/v2/series/KXHIGHLAX&output=json&filter=statuscode:200&from=2025&to=2026"
+    }
+  ],
+  "historical_replay_network_allowed": false,
+  "network_used_for_bounded_acquisition": true,
+  "private_account_data_read": false,
+  "protected_confirmation_labels_read": false,
+  "retrieved_at_utc": "2026-09-27T14:37:24.128333Z",
+  "schema_version": "klax-v5p-public-economics-acquisition-v1",
+  "scope": [
+    "July 2026 fee/rounding",
+    "historical maker applicability",
+    "KXHIGHLAX contract-rule transition"
+  ],
+  "self_sha256": "cb071089ead9f7d50f53d09435d094c42d9d8197f10f359978461f5bf82d22d0",
+  "source_count": 9,
+  "sources": [
+    {
+      "authority": "cftc_filing_index",
+      "bytes": 43713,
+      "path": "sources/cftc-kex-rule-filings-2025-12_to_2026-01.html",
+      "sha256": "a740eee80257f6eeaf7460c61973fff3be0e1bf2798621f2a03823ce19461db2",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationRules"
+    },
+    {
+      "authority": "cftc_product_certification",
+      "bytes": 331186,
+      "content_type": "application/pdf",
+      "final_url": "https://www.cftc.gov/sites/default/files/filings/ptc/24/12/ptc12042410310.pdf",
+      "path": "sources/cftc-laxhigh-certification.pdf",
+      "sha256": "c4576450fa76576d05768999506ab1580e1de7e0c95227e5a471c22c3ec03413",
+      "status": "200",
+      "url": "https://www.cftc.gov/sites/default/files/filings/ptc/24/12/ptc12042410310.pdf"
+    },
+    {
+      "authority": "kalshi_api_docs",
+      "bytes": 263482,
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://docs.kalshi.com/getting_started/fee_rounding",
+      "path": "sources/kalshi-fee-rounding-current.html",
+      "sha256": "5b313acdde1a49ceca21390b5a25d7a8769c95c3d584a8b7577c46318fd2dc2f",
+      "status": "200",
+      "url": "https://docs.kalshi.com/getting_started/fee_rounding"
+    },
+    {
+      "authority": "kalshi_official",
+      "bytes": 281129,
+      "content_type": "application/pdf",
+      "final_url": "https://kalshi.com/docs/kalshi-fee-schedule.pdf",
+      "path": "sources/kalshi-fee-schedule-effective-2026-07-07.pdf",
+      "sha256": "c326a69f596a11e8f8be2620402d39a8d4823920c21cc97c93a114d862699601",
+      "status": "200",
+      "url": "https://kalshi.com/docs/kalshi-fee-schedule.pdf"
+    },
+    {
+      "authority": "kalshi_official",
+      "bytes": 117561,
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://kalshi.com/fee-schedule",
+      "path": "sources/kalshi-fee-schedule-page-current.html",
+      "preserved_existing_capture": true,
+      "sha256": "b2f7346ee8ac9a3cac026ac3192c2f4da95a07cd7ba217adb8e2b8959cb5aa19",
+      "status": "200",
+      "url": "https://kalshi.com/fee-schedule"
+    },
+    {
+      "authority": "kalshi_product_certification",
+      "bytes": 267225,
+      "content_type": "application/pdf",
+      "final_url": "https://assets.kalshi.com/regulatory/product-certifications/GLOBALTEMPERATURE.pdf",
+      "path": "sources/kalshi-globaltemperature-certification.pdf",
+      "sha256": "44fe7807bd884def6f2890813220a746802ac7bd3791d17c69607dbf66ba03fc",
+      "status": "200",
+      "url": "https://assets.kalshi.com/regulatory/product-certifications/GLOBALTEMPERATURE.pdf"
+    },
+    {
+      "authority": "kalshi_official",
+      "bytes": 162105,
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://kalshi.com/regulatory/fee-schedule",
+      "path": "sources/kalshi-regulatory-fee-schedule-current.html",
+      "preserved_existing_capture": true,
+      "sha256": "e277c6b149d974c52c65962313d9bd6bb33cae2bd8f2e3b94012552eb15832e7",
+      "status": "200",
+      "url": "https://kalshi.com/regulatory/fee-schedule"
+    },
+    {
+      "authority": "kalshi_public_api",
+      "bytes": 1538,
+      "content_type": "application/json",
+      "final_url": "https://external-api.kalshi.com/trade-api/v2/series/KXHIGHLAX",
+      "path": "sources/kxhiglax-series-current.json",
+      "sha256": "0e09e26ed8627e1fedcd068e32f8c50d4e46d82796bddfd9ebf71e7c9004830f",
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/series/KXHIGHLAX"
+    },
+    {
+      "authority": "kalshi_public_api",
+      "bytes": 28,
+      "content_type": "application/json; charset=utf-8",
+      "final_url": "https://external-api.kalshi.com/trade-api/v2/series/fee_changes?series_ticker=KXHIGHLAX&show_historical=true",
+      "path": "sources/kxhiglax-series-fee-history.json",
+      "sha256": "6780c8eb7edbb5e1ca3b15166f17cef054befacb2cc8f4bc479c54074a9a2c18",
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/series/fee_changes?series_ticker=KXHIGHLAX&show_historical=true"
+    }
+  ]
+}

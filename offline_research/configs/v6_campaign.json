@@ -1,0 +1,139 @@
+{
+  "schema_version": "v6-multi-method-tournament-v1",
+  "status": "IMPLEMENTED_TESTED_NOT_REGISTERED",
+  "max_rounds": 4,
+  "max_epochs": 4,
+  "max_unique_candidates": 36,
+  "wall_seconds": 14400,
+  "minimum_elapsed_before_scientific_finish_seconds": 10800,
+  "early_scientific_finish_requires": "VERIFIED_FINITE_EXHAUSTION_CERTIFICATE",
+  "safety_abort_and_user_stop_override_minimum_elapsed": true,
+  "max_concurrent_workers": 3,
+  "coordinator_slots": 1,
+  "max_total_active_agents": 4,
+  "groups": [
+    "conditional_uncertainty",
+    "incremental_market_information",
+    "decision_execution",
+    "null_adversarial"
+  ],
+  "round_allocation": {
+    "target_slots": 9,
+    "initial_slots": {
+      "conditional_uncertainty": 2,
+      "incremental_market_information": 2,
+      "decision_execution": 2,
+      "null_adversarial": 3
+    },
+    "minimum_null_verification_slots": 3,
+    "minimum_other_group_slots": 1,
+    "maximum_any_group_slots": 4,
+    "adaptive_evidence_priority": [
+      "cross_reviewed_precursor_gain",
+      "cross_reviewed_falsification",
+      "cross_reviewed_pareto_improvement"
+    ],
+    "ties": [
+      "fewer_prior_allocated_slots",
+      "group_id_ascending"
+    ],
+    "fill_unused_slots_required": false
+  },
+  "minimum_actual_reviewers": 2,
+  "minimum_distinct_reviewing_groups": 2,
+  "deny_self_group_review": true,
+  "terminal_review_required": true,
+  "minimum_selected_days": 30,
+  "minimum_realized_return": 0.1,
+  "minimum_expected_return": 0.1,
+  "minimum_positive_folds": 4,
+  "minimum_worst_fold_return": -0.1,
+  "minimum_evidence_quality": 0.65,
+  "stress_cents": 2,
+  "require_positive_stress": true,
+  "require_positive_best_day_removed": true,
+  "require_brier_no_worse_than_baseline": true,
+  "brier_tolerance": 1e-12,
+  "evidence_quality_weights": {
+    "A": 1.0,
+    "B_PLUS": 0.65,
+    "B": 0.3
+  },
+  "development_date_count": 64,
+  "warmup_date_count": 20,
+  "common_scoring_date_count": 44,
+  "scoring_date_policy": "fixed_first20_warmup_then_all44_development_dates",
+  "scoring_start_date": "2026-06-21",
+  "scoring_end_date": "2026-08-03",
+  "minimum_available_prior_labels": 20,
+  "precursor_gate": {
+    "method_forecast_count": 44,
+    "minimum_residual_count": 10,
+    "require_brier_no_worse_than_inherited": true
+  },
+  "decision_time_utc": "18:00:00",
+  "historical_execution_arrival_delay_seconds": 5,
+  "maximum_selected_contracts_per_day": 1,
+  "contract_quantity": 1,
+  "calibration_reference": "inherited_calibrated_probabilities_on_identical_44_scoring_dates",
+  "reference_controls": [
+    "inherited_calibrated_probability_chain",
+    "frozen_prior_policy"
+  ],
+  "max_distinct_behavioral_winners": 3,
+  "winner_requires_all_gates": true,
+  "diagnostic_leaders_separate": true,
+  "ranking": [
+    "failed_gate_count_ascending",
+    "selected_days_at_least_30_descending",
+    "positive_fold_count_descending",
+    "worst_nonempty_fold_return_descending",
+    "aggregate_realized_net_return_descending",
+    "evidence_quality_score_descending",
+    "fingerprint_ascending"
+  ],
+  "behavioral_fingerprint_fields": [
+    "climate_date",
+    "market_ticker",
+    "contract_side",
+    "quantity",
+    "entry_price_cents",
+    "fee_dollars",
+    "execution_evidence_grade",
+    "abstention"
+  ],
+  "finite_exhaustion": {
+    "catalog_must_be_bound_before_registration": true,
+    "allowed_accounting_states": [
+      "evaluated",
+      "canonical_duplicate",
+      "objective_prerequisite_blocked"
+    ],
+    "require_every_member_accounted": true,
+    "require_no_pending_work": true,
+    "require_terminal_independent_review": true,
+    "subjective_no_more_ideas_qualifies": false,
+    "candidate_budget_exhaustion_alone_qualifies": false
+  },
+  "confirmation_policy": "SEPARATE_UNTOUCHED_PERIOD_REQUIRED_V5A_HOLDOUT_RESERVED",
+  "one_shot_confirmation_only": true,
+  "allow_network": false,
+  "allow_orders": false,
+  "allow_protected_labels": false,
+  "allow_credentials": false,
+  "allow_live_feeds": false,
+  "allow_purchases": false,
+  "actual_agent_reasoning": "Named agents propose methods, precursor tests and cross-reviews; deterministic calculations are never counted as reasoning calls.",
+  "binding_files": [
+    "GOALS.md",
+    "docs/V6_MULTI_METHOD_TOURNAMENT_GOAL.md",
+    "schemas/v6-method.schema.json"
+  ],
+  "registration_requires_additional_bindings": [
+    "finite_method_catalog_or_enumerator",
+    "controller_and_evaluator_code",
+    "compiler_and_exhaustion_verifier",
+    "frozen_input_inventory",
+    "baseline_definitions"
+  ]
+}

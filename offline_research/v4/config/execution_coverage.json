@@ -1,0 +1,256 @@
+{
+  "budget": {
+    "maximum_candidates_per_epoch": 12,
+    "maximum_distinct_candidates": 3072,
+    "maximum_epochs": 256,
+    "maximum_local_inference_concurrency": 1,
+    "maximum_local_model_calls": 3300,
+    "maximum_paid_api_dollars": 0,
+    "maximum_wall_seconds": 43200
+  },
+  "colonies": {
+    "adversarial_alternatives": {
+      "may_propose": "registered stricter challenge or falsification only",
+      "may_receive": "hash-bound compact intermediate digest",
+      "problem_variant": "Challenge Pareto claims, leakage, assumed fills, concentration, and branch validity."
+    },
+    "ensemble_probability": {
+      "may_propose": "registered cross-model combination only",
+      "may_receive": "hash-bound compact intermediate digest plus two explicit parent identities",
+      "problem_variant": "Cross-pollinate probability models and calibration while preserving probability conservation."
+    },
+    "execution_abstention": {
+      "may_propose": "registered execution-control follow-up only",
+      "may_receive": "hash-bound compact intermediate digest",
+      "problem_variant": "Find executable observed-as-of opportunities under fixed costs and the 10 percent per-trade screen."
+    },
+    "local_weather": {
+      "may_propose": "registered local-weather track or independent alternative only",
+      "may_receive": "hash-bound compact intermediate digest",
+      "problem_variant": "Test as-of local weather and regime variants for forecast validity before economic use."
+    },
+    "market_behavior": {
+      "may_propose": "registered market or timing follow-up only",
+      "may_receive": "hash-bound compact intermediate digest",
+      "problem_variant": "Explain the observed quote, spread, price-band, and staleness funnel without inventing liquidity."
+    },
+    "settlement_measurement": {
+      "may_propose": "registered plan and measurement challenge only",
+      "may_receive": "hash-bound compact intermediate digest",
+      "problem_variant": "Falsify settlement mapping, reporting precision, and target-label assumptions without changing the target."
+    }
+  },
+  "cross_pollination": {
+    "candidate_nomination_call_reservation": 3072,
+    "digest_required_fields": [
+      "candidate_ids",
+      "pareto_front",
+      "falsified_branches",
+      "principal_bottlenecks",
+      "uncertainties",
+      "compact_evidence",
+      "previous_digest_sha256",
+      "prior_synthesis_artifact_sha256"
+    ],
+    "host_digest_every_epochs": 1,
+    "local_model_synthesis_every_epochs": 4,
+    "maximum_local_model_synthesis_calls": 64,
+    "next_adaptive_prompt_must_bind_prior_digest": true,
+    "transient_retry_call_reservation": 164
+  },
+  "easier_subproblem_ladder": [
+    "forecast_validity",
+    "observed_opportunity_availability",
+    "economic_return",
+    "robustness"
+  ],
+  "epoch_allocation": {
+    "adaptive_parent_ranking": "accepted-trades-then-control-funnel-depth-then-forecast-skill-then-plan-sha256",
+    "adversarial_challenge": 2,
+    "cross_track_or_cross_control_combine": 1,
+    "evidence_guided_deepen": 2,
+    "forced_coverage": 6,
+    "forced_slots_cannot_be_reassigned": true,
+    "independent_alternative": 1,
+    "prefix_balance_rule": "six-plan prefixes cover all three decision times and rotate all four levels of every four-level execution factor",
+    "roi_only_parent_ranking_forbidden": true
+  },
+  "execution_factorial": {
+    "decision_times_utc": [
+      "13:30",
+      "15:00",
+      "18:00"
+    ],
+    "design": "four-model-full-execution-factorial-interleaved-v1",
+    "entry_price_bands_cents": [
+      [
+        5,
+        80
+      ],
+      [
+        10,
+        85
+      ],
+      [
+        15,
+        90
+      ],
+      [
+        20,
+        95
+      ]
+    ],
+    "fixed_controls": {
+      "allowed_sides": "BOTH",
+      "entry_threshold": 0.1,
+      "maximum_positions_per_event": 1,
+      "minimum_candle_volume": 0,
+      "uncertainty_buffer": 0.0
+    },
+    "maximum_interval_widths_f": [
+      4.0,
+      6.0,
+      8.0,
+      12.0
+    ],
+    "maximum_price_age_minutes": [
+      1,
+      5,
+      15,
+      60
+    ],
+    "maximum_spread_cents": [
+      5,
+      10,
+      15,
+      25
+    ],
+    "model_tracks": [
+      {
+        "abstention_operator": "fixed_uncertainty_buffer",
+        "calibration_operator": "isotonic_bracket",
+        "feature_set": "temperature_only",
+        "forecast_source_set": "hrrr_gefs_summary",
+        "market_residual_model": "none",
+        "minimum_regime_training_days": 30,
+        "name": "v3_fixed_quantile_isotonic",
+        "probability_family": "quantile_brackets",
+        "regime_model": "pooled"
+      },
+      {
+        "abstention_operator": "fixed_uncertainty_buffer",
+        "calibration_operator": "isotonic_bracket",
+        "feature_set": "full_local_weather",
+        "forecast_source_set": "hrrr_gefs_summary",
+        "market_residual_model": "none",
+        "minimum_regime_training_days": 90,
+        "name": "regime_conditioned_quantile_isotonic",
+        "probability_family": "quantile_brackets",
+        "regime_model": "coastal_synoptic_classifier"
+      },
+      {
+        "abstention_operator": "fixed_uncertainty_buffer",
+        "calibration_operator": "isotonic_bracket",
+        "feature_set": "full_local_weather",
+        "forecast_source_set": "hrrr_gefs_summary",
+        "market_residual_model": "regularized_logit",
+        "minimum_regime_training_days": 90,
+        "name": "regularized_market_residual_combination",
+        "probability_family": "quantile_brackets",
+        "regime_model": "coastal_synoptic_classifier"
+      },
+      {
+        "abstention_operator": "split_conformal",
+        "calibration_operator": "isotonic_bracket",
+        "feature_set": "full_local_weather",
+        "forecast_source_set": "hrrr_gefs_summary",
+        "market_residual_model": "none",
+        "minimum_regime_training_days": 90,
+        "name": "non_gaussian_ensemble_mixture",
+        "probability_family": "gaussian_mixture",
+        "regime_model": "coastal_synoptic_classifier"
+      }
+    ],
+    "registered_plan_count": 3072
+  },
+  "execution_semantics": {
+    "age_spread_and_price_band_contributions_required": true,
+    "broader_controls_may_not_create_or_forward_fill_quotes": true,
+    "fees_and_adverse_price_stress_unchanged_from_v3": true,
+    "fill_rule": "observed_ask_or_conservative_proxy",
+    "market_snapshot_rule": "last_completed_one_minute_candle_at_or_before_decision",
+    "missing_or_stale_quote_promotion_eligible": false,
+    "missing_quote_treatment": "abstain",
+    "promotion_fill_rule": "fully_observed_ask_with_observed_bid_timestamp_and_availability",
+    "proxy_or_assumed_fill_promotion_eligible": false,
+    "spread_treatment": "abstain_when_observed_spread_exceeds_registered_cap",
+    "stale_quote_treatment": "abstain_when_older_than_registered_age_cap"
+  },
+  "frozen_data_bundle": {
+    "decision_time_amendment_path": "v4/config/decision_time_amendment.json",
+    "decision_time_amendment_sha256": "1d0d1cad0dd375086071b5af1a58435c6a1ef61a9714042b79bfb66163c42f04",
+    "file_sha256": "7434455a132992cb2dcf966f09cd02c73c5dc5b651ad35952ff0b31a6bda61c1",
+    "folds_id": "1df2eaae3618dbeca0edcdb5b011e111a41ec0d68ba18e9a9e49b8f7dff561ed",
+    "path": "data/manifests/v4_data_bundle_1330_1500_1800.json",
+    "sha256": "d9c6677790b9788a94b72254d655a6a2cb4b41e4c6c467f2327858d73744bdca",
+    "version": "4d91f524c0aff05135d67b01d26835df6325c28ff6a30e09ae368d2437c0614e"
+  },
+  "gate_bindings": {
+    "development_promotion_gates_sha256": "455672358d874be5ad90b171f3baaedafa7ef3714f6cd9dbbc1c941a6741bb56",
+    "minimum_expected_net_return_for_each_selected_trade": 0.1,
+    "minimum_primary_capital_weighted_net_return": 0.1,
+    "partition_contract_sha256": "8b92f44b393a9a3b25299910ff277cbe7daa0d0b5620446b638c229706a3c786",
+    "require_critic_nonrejection": true,
+    "require_independent_numerical_replication": true,
+    "source_goal": "configs/v3_goal.json"
+  },
+  "independent_verifier_obligations": [
+    "candidate_identity",
+    "selected_opportunities",
+    "entry_prices_and_fees",
+    "payouts_and_returns",
+    "chronological_folds",
+    "stratified_bootstrap",
+    "forecast_scores",
+    "scheduler_factorial_coverage",
+    "epoch_quota_enforcement",
+    "protected_final_denials"
+  ],
+  "registration_version": "klax-v4-execution-coverage-v2",
+  "safety": {
+    "actual_profit_claim": false,
+    "live_or_paper_orders": false,
+    "offline_historical_replay_only": true,
+    "protected_final_authorized": false,
+    "protected_final_read": false
+  },
+  "scope": "development_only",
+  "series": "KXHIGHLAX",
+  "source_campaign": {
+    "campaign_id": "v3-offline-20260926T164700000Z-r2",
+    "campaign_root": "runs/campaigns_v3/v3-offline-20260926T164700000Z-r2",
+    "candidate_register_sha256": "c002c59f63e714c2c60abfb04dde53cc5db7eafb296219dee058312d0c2ea120",
+    "expected_conclusion": "NO_IMPROVEMENT_WITHIN_REGISTERED_BUDGET",
+    "recovery_state_sha256": "c8293e835f1b642a4f04b1f3738a5adbecf7fc7504121b743e3b5fddcecbd789",
+    "summary_sha256": "c09ca2ec72b9eb3c4bef8c87b416e87cfefe7e84cf05d281bc7b69ce3d090a6a"
+  },
+  "station": "KLAX",
+  "stopping_semantics": {
+    "first_positive_backtest_alone_is_not_a_stop": true,
+    "no_test_until_profit": true,
+    "robust_positive_milestone": "all promotion gates pass except aggregate development return may be strictly between zero and 0.10; record as nonchampion and stop only for review",
+    "stop_at_wall_time_or_any_registered_budget": true,
+    "stop_on_valid_champion": true
+  },
+  "worker_protocol": {
+    "candidate_nomination_calls_charged": true,
+    "candidate_options": "host_curated_whole_registered_plans_only",
+    "maximum_transient_retries_per_task": 2,
+    "network_permitted": false,
+    "nomination_fallback": "admit_same_host_registered_whole_plan_only_after_all_charged_attempts_reject_or_abstain",
+    "protected_final_read": false,
+    "protocol": "klax-research-proposal-v4",
+    "synthesis_calls_charged": true,
+    "synthesis_fallback_permitted": false
+  }
+}

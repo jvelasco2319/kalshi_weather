@@ -1,0 +1,3641 @@
+{
+  "actual_orders_placed": false,
+  "date_end": "2026-08-31",
+  "date_start": "2025-01-01",
+  "event_count": 604,
+  "event_fee_changes": [
+    {
+      "event_ticker": "KXHIGHLAX-25APR01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25APR30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25APR30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25AUG31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25AUG31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25DEC31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25DEC31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25FEB28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25FEB28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JAN31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JAN31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUL31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUL31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25JUN30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25JUN30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAR31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAR31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25MAY31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25MAY31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25NOV30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25NOV30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25OCT31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25OCT31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-25SEP30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-25SEP30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26APR30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26APR30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26AUG31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26AUG31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26FEB28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26FEB28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JAN31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JAN31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUL31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUL31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26JUN30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26JUN30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAR31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAR31&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY01",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY01&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY02",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY02&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY03",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY03&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY04",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY04&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY05",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY05&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY06",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY06&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY07",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY07&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY08",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY08&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY09",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY09&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY10",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY10&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY11",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY11&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY12",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY12&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY13",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY13&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY14",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY14&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY15",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY15&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY16",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY16&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY17",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY17&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY18",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY18&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY19",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY19&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY20",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY20&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY21",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY21&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY22",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY22&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY23",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY23&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY24",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY24&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY25",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY25&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY26",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY26&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY27",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY27&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY28",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY28&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY29",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY29&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY30",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY30&limit=1000"
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26MAY31",
+      "fee_changes": [],
+      "status": "200",
+      "url": "https://external-api.kalshi.com/trade-api/v2/events/fee_changes?event_ticker=KXHIGHLAX-26MAY31&limit=1000"
+    }
+  ],
+  "events_with_fee_changes": 0,
+  "failed_event_request_count": 0,
+  "failures": [],
+  "protected_confirmation_labels_read": false,
+  "retrieved_at_utc": "2026-09-27T14:19:17.185017Z",
+  "schema_version": "klax-v5-economics-official-acquisition-v1",
+  "self_sha256": "a9d37050b832b94f9396a34ede7f73164036f6af4b4f4b98fd80506190ad90a8",
+  "series_ticker": "KXHIGHLAX",
+  "successful_event_request_count": 604
+}
