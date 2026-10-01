@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kalshi-swarm-setup"
 version = "1.0.0"
-description = "Clean V5B, V8, and V10 KLAX weather-market research runner"
+description = "Clean V5B, V8, and V10 KLAX weather-market offline and current-data runner"
 requires-python = ">=3.11"
 dependencies = []
 

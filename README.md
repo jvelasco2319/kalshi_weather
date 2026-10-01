@@ -1,66 +1,68 @@
-# KLAX Swarm Setup — Offline
+# KLAX Swarm Setup — Online Current-Data Test
 
-This branch is the clean historical-test package for the three retained methods:
+This branch runs the same three retained research methods against the currently open Kalshi Los Angeles high-temperature market:
 
-1. **V5B** — the original calibrated HRRR/GEFS probabilities plus the strict NO-side trade filter.
-2. **V8** — V5B with the frozen six-bracket confusion-matrix probability repair.
-3. **V10** — V8 with the frozen KLAX-versus-KDAG pressure-flow adjustment.
+1. **V5B** — current HRRR/GEFS bracket probabilities plus the strict NO-side trade filter.
+2. **V8** — the frozen six-bracket probability repair.
+3. **V10** — V8 plus the frozen KLAX-versus-KDAG pressure-flow adjustment.
 
-It never connects to a current market and never places an order. Every run writes a JSON result and a visual HTML report.
+It fetches current public data and writes paper recommendations. **It cannot place orders:** the package contains no account credentials, order endpoint, or order-writing function.
 
 ## 1. Clone this branch
 
 ```powershell
-git clone --branch swarm_setup_offline --single-branch https://github.com/jvelasco2319/kalshi_weather.git
+git clone --branch swarm_setup_online --single-branch https://github.com/jvelasco2319/kalshi_weather.git
 cd kalshi_weather
 ```
 
-Requirements: Windows, Git, and Python 3.11 or newer.
+Requirements: Windows, Git, Python 3.11 or newer, and internet access.
 
-## 2. Set it up and import history
-
-If the full research folder is available on this computer:
+## 2. Set it up
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 `
-  -ResearchRoot 'C:\Users\darks\Documents\Codex\kalshi\_weather\_llm'
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_online.ps1
 ```
 
-If the history is on the shared computer, use its network path:
+The setup creates `.venv`, installs the small dependency set, verifies the three frozen configurations, runs the tests, and takes one current snapshot.
+
+## 3. Run one current snapshot
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 `
-  -ResearchRoot '\\192.168.1.193\Kalshi\_weather\_llm'
+powershell -ExecutionPolicy Bypass -File .\scripts\run_online.ps1
 ```
 
-The setup creates `.venv`, installs the package, verifies all three frozen configurations, and converts the verified historical cache into `data\history.jsonl`. The paid/raw source files stay outside Git.
+The dashboard opens automatically at `artifacts\online\dashboard.html`.
 
-To check the program before copying real history:
+To test a specific currently open date:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 -UseSample
+.\scripts\run_online.ps1 -TargetDate '2026-10-02'
 ```
 
-## 3. Run all three methods
+## 4. Keep the dashboard updating
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\run_offline.ps1
+.\scripts\run_online.ps1 -Loop -IntervalSeconds 60
 ```
 
-The browser report opens automatically. Results are saved here:
+Leave the PowerShell window open. Stop it with `Ctrl+C`.
 
-- `artifacts\offline\report.html` — the graphic
-- `artifacts\offline\results.json` — every probability, decision, and score
+## What the graphic shows
 
-## 4. Read the output correctly
+- V5B, V8, and V10 action or abstention
+- selected NO contract, model win probability, and fee-adjusted expected return
+- HRRR high, GEFS ensemble mean/range, and their disagreement
+- KLAX-minus-KDAG pressure gradient and V10 regime
+- all six bracket probabilities and Kalshi top-of-book prices
+- quote timestamps, the frozen 18:00 UTC test window, and the zero-order safety state
 
-The graphic shows each model's selected trades, win rate, net profit, realized return, Brier score, latest action, pressure regime, and evidence grade. A positive historical result is evidence for a future confirmation test; it is not proof that the return will continue.
+Raw snapshots are appended to `artifacts\online\journal.jsonl`; the latest machine-readable result is `artifacts\online\latest.json`.
 
-Only rows marked **Grade A** represent complete historical order-book evidence. Grade B/B+ results are useful sensitivity checks, not verified fills. V10 was fitted on exposed development data and still needs genuinely new confirmation.
+## Fair-test rule
 
-## Input and troubleshooting
+The runner works at any time, but only snapshots within five minutes of **18:00 UTC** are tagged as on-time tests comparable to the historical research. Other runs are observation-only.
 
-- Historical file format: [docs/HISTORY_FORMAT.md](docs/HISTORY_FORMAT.md)
-- Prompt for another ChatGPT/Codex session: [docs/CHATGPT_SETUP_PROMPT.md](docs/CHATGPT_SETUP_PROMPT.md)
-- The current-data version is the `swarm_setup_online` branch.
+Current HRRR/GEFS probabilities use a documented transfer approximation from public Open-Meteo feeds. V8 and V10 use the exact frozen transforms. Do not interpret results as an untouched confirmation until a new, preregistered sample is settled.
+
+The historical-only version is the `swarm_setup_offline` branch. A setup prompt for another ChatGPT/Codex session is in [docs/CHATGPT_SETUP_PROMPT.md](docs/CHATGPT_SETUP_PROMPT.md).
 

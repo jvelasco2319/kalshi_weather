@@ -82,7 +82,7 @@ def select_no_trade(probabilities: Iterable[float], quotes: list[dict[str, Any]]
         ask = _number(quote, "no_ask_cents")
         bid = _number(quote, "no_bid_cents")
         grade = str(quote.get("evidence_grade", "UNAVAILABLE")).upper()
-        if ask is None or bid is None or grade not in {"A", "B_PLUS", "B"}:
+        if ask is None or bid is None or grade not in {"A", "B_PLUS", "B", "LIVE"}:
             continue
         spread = ask - bid
         if not 5 <= ask <= 80 or not 0 <= spread <= 5:
