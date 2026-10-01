@@ -1,4 +1,5 @@
 from kalshi_swarm.engine import fee_dollars, model_probabilities, pressure_state, select_no_trade
+from kalshi_swarm.verify import verify_frozen
 
 
 def test_three_models_are_valid_and_distinct():
@@ -18,4 +19,8 @@ def test_pressure_boundaries_and_fee_rounding():
 def test_selector_abstains_when_forecast_has_no_clear_mode():
     result = select_no_trade([1 / 6] * 6, [])
     assert result == {"status": "ABSTAIN", "reason": "probability_gap_below_0.10"}
+
+
+def test_frozen_artifact_hashes_and_identities():
+    assert set(verify_frozen()) == {"V5B", "V8", "V10"}
 
