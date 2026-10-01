@@ -1,6 +1,6 @@
 # Research swarm accurate
 
-This branch extends the original research swarm template using the supplied Research Swarm Architecture and Prompt Template handbook, version 1.0 dated 1 October 2026. Real agents or people propose and review work; Python manages durable tasks, versioned evidence, resource reservations, numerical checks and scoped decision records.
+This branch extends the original research swarm template using the supplied [Research Swarm Architecture and Prompt Template handbook](docs/Research_Swarm_Architecture_and_Prompt_Template.docx), version 1.0 dated 1 October 2026. The original Word document is included unchanged. Real agents or people propose and review work; Python manages durable tasks, versioned evidence, resource reservations, numerical checks and scoped decision records.
 
 It includes four initial research colonies, hourly and evidence-triggered reflection, child colonies, resource reallocation, task leases and fencing, separate scientific states, an evidence graph, two persistent memory scopes, and a visual report. The included example is **synthetic regression**, not a Kalshi strategy or a scientific finding. The original published template remains on `research_swarm_template`.
 

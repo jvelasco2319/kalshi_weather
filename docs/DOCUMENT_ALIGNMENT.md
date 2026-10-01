@@ -1,8 +1,8 @@
 # Alignment with the supplied research handbook
 
-Reference: Research Swarm Architecture and Prompt Template, version 1.0, 1 October 2026. Source SHA-256: `d6b8844884c9f0d3bd95bb067f74cb84fd2bf3266aab343a0984b655affb92f3`.
+Reference: [Research Swarm Architecture and Prompt Template](Research_Swarm_Architecture_and_Prompt_Template.docx), version 1.0, 1 October 2026. Source SHA-256: `d6b8844884c9f0d3bd95bb067f74cb84fd2bf3266aab343a0984b655affb92f3`.
 
-This branch implements the handbook's proposed design where the local controller can enforce it. The source document remains outside the public repository. Its cited research motivates the proposal; this implementation does not independently reproduce those papers, OpenAI's internal system, or their reported performance.
+This branch implements the handbook's proposed design where the local controller can enforce it. The original source document is included unchanged in this folder. Its cited research motivates the proposal; this implementation does not independently reproduce those papers, OpenAI's internal system, or their reported performance.
 
 | Handbook sections | Change in this branch | Enforcement or remaining boundary |
 |---|---|---|
