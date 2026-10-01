@@ -25,7 +25,7 @@ Run this from the cloned folder:
 powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1
 ```
 
-That single command creates the Python environment, verifies V5B/V8/V10, loads the bundled 329-date public-derived history, runs all three methods, and creates the graphic. No account, API key, paid subscription, or separate dataset is required.
+That single command creates the Python environment, verifies V5B/V8/V10, runs the automated tests, loads the bundled 329-date public-derived history, runs all three methods, and creates the graphic. No account, API key, paid subscription, or separate dataset is required.
 
 Open:
 

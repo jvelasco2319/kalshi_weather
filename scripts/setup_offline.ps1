@@ -23,10 +23,11 @@ if ([version]$PythonVersion -lt [version]"3.11.0") { throw "Python 3.11 or newer
 & $PythonCommand @PythonPrefix -m venv .venv
 $VenvPython = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 & $VenvPython -m pip install --upgrade pip
-$InstallTarget = if ($ResearchRoot) { ".[legacy-import]" } else { "." }
+$InstallTarget = if ($ResearchRoot) { ".[legacy-import,dev]" } else { ".[dev]" }
 & $VenvPython -m pip install -e $InstallTarget
 
 & $VenvPython -m kalshi_swarm.verify
+& $VenvPython -m pytest -q --basetemp .test-artifacts -p no:cacheprovider
 
 if ($HistoryFile) {
     New-Item -ItemType Directory -Force data | Out-Null
