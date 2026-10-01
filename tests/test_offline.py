@@ -14,3 +14,13 @@ def test_sample_runs_and_creates_graphic(tmp_path: Path):
     assert report.is_file()
     assert "Return comparison" in report.read_text(encoding="utf-8")
 
+
+def test_bundled_history_is_self_contained_probability_evidence():
+    records = load_records("examples/history.public-development.jsonl")
+    assert len(records) == 329
+    assert all(row["source"] == "v10_walk_forward_development_probability_only" for row in records)
+    assert all(not row.get("quotes") for row in records)
+    result = evaluate(records)
+    assert result["common_forecast_date_count"] == 329
+    assert result["return_ranking"] == []
+
