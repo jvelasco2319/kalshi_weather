@@ -1,0 +1,39 @@
+{
+  "campaign_id": "v5b-development-20260927T183845017734Z",
+  "candidate_id": "c4d9b5adac5b672b56850f7f840bce1b266ad06a8925849dde7af5a9a1ec5b6d",
+  "candidate_sha256": "6d2e676a9fc2de442127192a6ad0f0bf702b25a6ef918b66ec4a4168f7bd1071",
+  "confirmation_status": "BLOCKED_NO_SEPARATE_UNTOUCHED_PERIOD",
+  "frozen_at": "2026-09-27T18:53:06.433931+00:00",
+  "holdout_access_authorized": false,
+  "orders": 0,
+  "parameters": {
+    "additional_adverse_price_cents": 0,
+    "allowed_grades": [
+      "A",
+      "B_PLUS",
+      "B"
+    ],
+    "allowed_sides": [
+      "NO"
+    ],
+    "calibration": "none",
+    "calibration_min_days": 10,
+    "calibration_strength": 20.0,
+    "maximum_entropy": 1.0,
+    "maximum_price_cents": 80,
+    "maximum_spread_cents": 5,
+    "minimum_expected_net_return": 0.1,
+    "minimum_price_cents": 5,
+    "minimum_probability_gap": 0.1,
+    "neighbor_smoothing": 0.0,
+    "probability_haircut": 0.0,
+    "probability_power": 1.0,
+    "probability_source": "calibrated",
+    "selection_mode": "expected_profit",
+    "tail_policy": "all",
+    "uniform_blend": 0.0
+  },
+  "registration_sha256": "314f04681aa0b37f24dd9f4a407ab7856c863399db5b29e6e233388538d223b3",
+  "self_sha256": "fd06b6448109ad4bbff3a35d7814412783fc68e9b9b54572a227acd9caef5980",
+  "ten_percent_confirmed": false
+}

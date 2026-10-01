@@ -1,288 +1,66 @@
-# Kalshi Weather
+# KLAX Swarm Setup — Offline
 
-Local fake-money tools for watching Kalshi Los Angeles high-temperature markets.
+This branch is the clean historical-test package for the three retained methods:
 
-The easiest thing to run is the model tournament dashboard. It tracks the current
-LA high-temperature market and the next market at the same time, then shows both
-in one browser page with tabs.
+1. **V5B** — the original calibrated HRRR/GEFS probabilities plus the strict NO-side trade filter.
+2. **V8** — V5B with the frozen six-bracket confusion-matrix probability repair.
+3. **V10** — V8 with the frozen KLAX-versus-KDAG pressure-flow adjustment.
 
-This project is fake-money-only by default. It does not place real Kalshi orders.
+It never connects to a current market and never places an order. Every run writes a JSON result and a visual HTML report.
 
-## Offline swarm research
-
-The V1-V10 historical research system is in [`offline_research/`](offline_research/). On a second Windows computer, clone this `swarm` branch and run its portable setup:
+## 1. Clone this branch
 
 ```powershell
-git clone --branch swarm_vanilla_v10 --single-branch https://github.com/jvelasco2319/kalshi_weather.git
-cd .\kalshi_weather\offline_research
-powershell -ExecutionPolicy Bypass -File .\scripts\setup_research_machine.ps1 -Mode Auto -MirrorPath '\\192.168.1.193\Kalshi\_weather\_llm' -Workers 8
-```
-
-The launcher restores exact data from the private network share, creates the Python environment, audits coverage, and resumes missing public downloads. See [`offline_research/docs/PORTABLE_SETUP_AND_DATA.md`](offline_research/docs/PORTABLE_SETUP_AND_DATA.md) for paid Probalytics and optional local-model switches. It does not start a campaign or place orders.
-
-## What You Get
-
-- KLAX/LAX temperature observations.
-- Weather model high-temperature estimates.
-- Kalshi `KXHIGHLAX` temperature bracket prices.
-- A local HTML dashboard for current and next-day markets.
-- Fake model-tournament results and P/L for research.
-
-## Requirements
-
-- Windows PowerShell 5.1 or newer.
-- Python 3.11 or newer.
-- Git.
-- Internet access.
-
-Optional for direct NOAA/Herbie models:
-
-- Conda or mamba.
-- `eccodes`, `cfgrib`, `xarray`, and `herbie-data`.
-
-Open-Meteo models work without the optional NOAA setup.
-
-## Install
-
-Open PowerShell and run:
-
-```powershell
-git clone https://github.com/jvelasco2319/kalshi_weather.git
+git clone --branch swarm_setup_offline --single-branch https://github.com/jvelasco2319/kalshi_weather.git
 cd kalshi_weather
-
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
 ```
 
-If PowerShell blocks local scripts, run this once in the same PowerShell window:
+Requirements: Windows, Git, and Python 3.11 or newer.
+
+## 2. Set it up and import history
+
+If the full research folder is available on this computer:
 
 ```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 `
+  -ResearchRoot 'C:\Users\darks\Documents\Codex\kalshi\_weather\_llm'
 ```
 
-Create your local environment file:
+If the history is on the shared computer, use its network path:
 
 ```powershell
-copy .env.example .env
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 `
+  -ResearchRoot '\\192.168.1.193\Kalshi\_weather\_llm'
 ```
 
-Then open `.env` and keep real trading disabled:
+The setup creates `.venv`, installs the package, verifies all three frozen configurations, and converts the verified historical cache into `data\history.jsonl`. The paid/raw source files stay outside Git.
 
-```text
-KALSHI_ENABLE_REAL_ORDERS=false
-```
-
-It is also helpful to set a user agent for weather APIs:
-
-```text
-NWS_USER_AGENT=kalshi-weather-research/0.1 your_email@example.com
-```
-
-Verify the install:
+To check the program before copying real history:
 
 ```powershell
-kalshi-weather --help
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 -UseSample
 ```
 
-## Optional NOAA / Herbie Setup
-
-You can skip this at first. The dashboard can run with Open-Meteo models.
-
-To try direct NOAA/Herbie support:
+## 3. Run all three methods
 
 ```powershell
-.\scripts\install_direct_noaa_models.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\run_offline.ps1
 ```
 
-If that fails on Windows, conda is usually easier:
+The browser report opens automatically. Results are saved here:
 
-```powershell
-conda install -c conda-forge eccodes cfgrib
-python -m pip install herbie-data xarray
-```
+- `artifacts\offline\report.html` — the graphic
+- `artifacts\offline\results.json` — every probability, decision, and score
 
-## Run Two Markets With Tabs
+## 4. Read the output correctly
 
-This is the main easy-use command. It starts:
+The graphic shows each model's selected trades, win rate, net profit, realized return, Brier score, latest action, pressure regime, and evidence grade. A positive historical result is evidence for a future confirmation test; it is not proof that the return will continue.
 
-- one dashboard for today's LA high-temperature market,
-- one dashboard for tomorrow's LA high-temperature market,
-- one tabbed HTML page that shows both.
+Only rows marked **Grade A** represent complete historical order-book evidence. Grade B/B+ results are useful sensitivity checks, not verified fills. V10 was fitted on exposed development data and still needs genuinely new confirmation.
 
-From the repo folder:
+## Input and troubleshooting
 
-```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
+- Historical file format: [docs/HISTORY_FORMAT.md](docs/HISTORY_FORMAT.md)
+- Prompt for another ChatGPT/Codex session: [docs/CHATGPT_SETUP_PROMPT.md](docs/CHATGPT_SETUP_PROMPT.md)
+- The current-data version is the `swarm_setup_online` branch.
 
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -CurrentDashboardPort 8766 `
-  -NextDashboardPort 8767 `
-  -TabbedDashboardPort 8768 `
-  -IntervalSeconds 60 `
-  -CheckEverySeconds 60
-```
-
-Open this in your browser:
-
-```text
-http://127.0.0.1:8768/lax_model_tournament_tabs.html
-```
-
-The tabbed page updates automatically. When the local date rolls forward, the
-script starts the new target date and the HTML page adds/updates tabs from its
-manifest.
-
-Leave the PowerShell window open while you want the dashboard running.
-
-Stop it with:
-
-```text
-Ctrl+C
-```
-
-## Direct Dashboard URLs
-
-If you want to open the individual dashboards directly:
-
-```text
-http://127.0.0.1:8766/dashboard.html
-http://127.0.0.1:8767/dashboard.html
-```
-
-The combined tab page is usually easier:
-
-```text
-http://127.0.0.1:8768/lax_model_tournament_tabs.html
-```
-
-## Useful Run Options
-
-Run only today and tomorrow, without automatic date rolling:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoAutoRollDates `
-  -CurrentTargetDate "2026-07-07" `
-  -NextTargetDate "2026-07-08"
-```
-
-Keep yesterday visible too:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -RetainPastDays 1
-```
-
-Run more future days:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -DaysAhead 2
-```
-
-Turn off cached model values and recompute every loop:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoCachedModels `
-  -ForceModelRecomputeEveryIteration
-```
-
-Use the slower direct NOAA/Herbie mode every loop:
-
-```powershell
-.\scripts\run_lax_model_tournament_two_markets.ps1 `
-  -NoaaModelMode full_recompute_each_iteration
-```
-
-## Where Files Are Saved
-
-Dashboard tab files:
-
-```text
-reports\trader_agent\dashboard_tabs\
-```
-
-Model tournament run files:
-
-```text
-reports\trader_agent\debug\<run_id>\
-```
-
-Common files:
-
-- `terminal_output.txt`
-- `dashboard.html`
-- model tournament JSON/SQLite outputs
-- generated report/debug files
-
-Runtime reports and ZIP packages are ignored by git.
-
-## Troubleshooting
-
-If `.\scripts\...` is not recognized, you are probably not in the repo folder:
-
-```powershell
-cd C:\Users\jarve\Documents\Codex\kalshi_weather
-```
-
-If the dashboard does not load:
-
-1. Make sure the PowerShell script is still running.
-2. Open `http://127.0.0.1:8768/lax_model_tournament_tabs.html`.
-3. Try the direct ports: `8766` and `8767`.
-4. Hard refresh the browser.
-
-If weather downloads fail:
-
-- Check your internet connection.
-- Let the script retry on the next loop.
-- Try Open-Meteo/current models first before setting up NOAA/Herbie.
-
-If your laptop sleeps or loses Wi-Fi:
-
-- Set Windows sleep to `Never` while plugged in.
-- Keep the lid open or change lid-close behavior.
-- Keep PowerShell running.
-
-## Safety Notes
-
-- This repo is for fake-money research.
-- Keep `KALSHI_ENABLE_REAL_ORDERS=false`.
-- Do not commit `.env`, API keys, runtime data, SQLite files, logs, or ZIPs.
-- The model tournament dashboard is read-only and local to your machine.
-
-## Developer Commands
-
-Run tests:
-
-```powershell
-python -m pytest -q
-```
-
-Run lint:
-
-```powershell
-python -m ruff check .
-```
-
-Inspect the CLI:
-
-```powershell
-kalshi-weather --help
-```
-
-## Offline Swarm Research
-
-The [`offline_research`](offline_research/) directory contains the separate multi-agent,
-offline research program developed through V3-V10. It includes the deterministic colony
-architecture, acquisition and validation tools, frozen campaign protocols, model code,
-tests, research reports, and the handoff prompt for continuing the work on another computer.
-
-Large weather archives, paid market data, generated campaign runs, credentials, and local
-virtual environments are intentionally excluded from Git. See
-[`offline_research/NEW_CHAT_HANDOFF_PROMPT.md`](offline_research/NEW_CHAT_HANDOFF_PROMPT.md)
-and [`offline_research/README.md`](offline_research/README.md) before running the research.

@@ -1,0 +1,205 @@
+{
+  "confirmation_protocol": {
+    "adverse_entry_stress_cents": 2,
+    "bootstrap_block_days": 3,
+    "bootstrap_one_sided_confidence": 0.95,
+    "chronological_folds": 5,
+    "expected_net_return_per_trade_target": 0.1,
+    "minimum_capital_weighted_return_after_fees": 0.1,
+    "minimum_filled_trades": 40,
+    "minimum_genuinely_new_grade_a_days": 100,
+    "minimum_positive_folds": 4,
+    "one_shot": true,
+    "report_unweighted_mean_realized_return_per_trade": true,
+    "require_bootstrap_lower_bound_above_zero": true,
+    "require_expected_vs_realized_calibration_check": true,
+    "require_positive_best_trade_removed_return": true,
+    "require_positive_stress_return": true,
+    "retuning_before_or_after_confirmation_score_allowed": false
+  },
+  "evidence_boundary": {
+    "development_2025": "EXPOSED",
+    "future_confirmation": "MUST_BE_GENUINELY_NEW_AND_OUTCOME_BLINDED",
+    "replay_2026_07_30_through_2026_09_27": "EXPOSED"
+  },
+  "frozen_at_utc": "2026-09-30T01:15:51.752790+00:00",
+  "prior_replay_result": {
+    "promotion_passed": false,
+    "ten_percent_expected_return_per_trade_confirmed": false
+  },
+  "probability_model": {
+    "base_probability_weight": 0.25,
+    "candidate_id": "rolling_confusion-alpha-2-w-0.75",
+    "conditional_confusion_weight": 0.75,
+    "conditional_distributions_by_base_modal_position": [
+      [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      [
+        0.14864864864864866,
+        0.33783783783783783,
+        0.24324324324324326,
+        0.14864864864864866,
+        0.06756756756756757,
+        0.05405405405405406
+      ],
+      [
+        0.058823529411764705,
+        0.19117647058823528,
+        0.38235294117647056,
+        0.19117647058823528,
+        0.1323529411764706,
+        0.04411764705882353
+      ],
+      [
+        0.024691358024691357,
+        0.024691358024691357,
+        0.24691358024691357,
+        0.49382716049382713,
+        0.1728395061728395,
+        0.037037037037037035
+      ],
+      [
+        0.17142857142857143,
+        0.05714285714285714,
+        0.22857142857142856,
+        0.24285714285714285,
+        0.22857142857142856,
+        0.07142857142857142
+      ],
+      [
+        0.023809523809523808,
+        0.031746031746031744,
+        0.09523809523809523,
+        0.24603174603174602,
+        0.3492063492063492,
+        0.25396825396825395
+      ]
+    ],
+    "dirichlet_alpha_per_output_bracket": 2.0,
+    "fit_population": {
+      "date_count": 359,
+      "end": "2025-12-31",
+      "start": "2025-01-05",
+      "status": "EXPOSED_2025_DEVELOPMENT"
+    },
+    "future_outcome_updates_allowed": false,
+    "method": "modal-position confusion recalibration",
+    "modal_confusion_counts_with_dirichlet_prior": [
+      [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      [
+        11.0,
+        25.0,
+        18.0,
+        11.0,
+        5.0,
+        4.0
+      ],
+      [
+        4.0,
+        13.0,
+        26.0,
+        13.0,
+        9.0,
+        3.0
+      ],
+      [
+        2.0,
+        2.0,
+        20.0,
+        40.0,
+        14.0,
+        3.0
+      ],
+      [
+        12.0,
+        4.0,
+        16.0,
+        17.0,
+        16.0,
+        5.0
+      ],
+      [
+        3.0,
+        4.0,
+        12.0,
+        31.0,
+        44.0,
+        32.0
+      ]
+    ],
+    "regime_overlay_enabled": false,
+    "underlying_signal": "frozen six-bracket V7Y HRRR/GEFS probabilities"
+  },
+  "safety": {
+    "current_or_live_market_feed_authorized": false,
+    "live_orders_authorized": false,
+    "network_use_during_replay": false,
+    "paper_orders_authorized": false
+  },
+  "schema_version": "klax-v8-primary-strategy-freeze-v1",
+  "self_sha256": "a227b8f72ad040c2411fe63d3863d1b9c9c11121c6df5fce2fadb198ea2379fd",
+  "source_bindings": {
+    "configs/v8_campaign.json": "b3497fae8959bf24ab1a9af56ce3aa08dfd783aec7272946149d8d6fbac16b6e",
+    "past7_replay/audited.py": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c",
+    "past7_replay/engine.py": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9",
+    "runs/campaigns_v5b/v5b-development-20260927T183845017734Z/strategy-freeze.json": "5ca774da1094cb359b2be58f8b9a8d420dd5ae8058261d31b59ed79be51a3279",
+    "runs/campaigns_v8/v8-offline-20260930T004226Z/probability-order-freeze.json": "0cdc8dc2449d3965841ec5a49e0aa026d2d08c56850a509428f8a5dfd47c4847",
+    "runs/v8/probability-repair/results.json": "f801b2e4cd01282fae5ecb12242114b352fbe5f0acc867c684bb443947f7dfb1",
+    "v8/economic_replay.py": "9fae68d0bb01ef08592cb86f6efb43d6512db18ee132c7ec470530fc50cfac6f",
+    "v8/probability_repair.py": "2ddf3e32752ee97b44f40d3d740d410596ecf17c4baf47964762494ed28e9e22",
+    "v8/probability_repair_spec.json": "1680176e4bf30ed9fa08391989e7fad95bd0af5081808e121cba9eccaf8d967e"
+  },
+  "status": "FROZEN_FOR_GENUINELY_NEW_GRADE_A_CONFIRMATION",
+  "strategy_id": "v8-klax-primary-rolling-confusion-no-v1",
+  "trade_policy": {
+    "arrival_delay_seconds": 5,
+    "decision_time_utc": "18:00:00",
+    "eligible_side": "NO",
+    "execution_evidence_required": "GRADE_A_FULL_BOOK",
+    "fees": "EXACT_EVENT_SPECIFIC_HISTORICAL_OR_REGISTERED_FEE_RULE",
+    "missing_or_invalid_execution_evidence": "ABSTAIN",
+    "one_order_maximum_per_weather_day": true,
+    "position_exit": "HOLD_TO_SETTLEMENT",
+    "selector": "frozen V5B expected-profit selector",
+    "selector_parameters": {
+      "additional_adverse_price_cents": 0,
+      "allowed_grades": [
+        "A",
+        "B_PLUS",
+        "B"
+      ],
+      "allowed_sides": [
+        "NO"
+      ],
+      "calibration": "none",
+      "calibration_min_days": 10,
+      "calibration_strength": 20.0,
+      "maximum_entropy": 1.0,
+      "maximum_price_cents": 80,
+      "maximum_spread_cents": 5,
+      "minimum_expected_net_return": 0.1,
+      "minimum_price_cents": 5,
+      "minimum_probability_gap": 0.1,
+      "neighbor_smoothing": 0.0,
+      "probability_haircut": 0.0,
+      "probability_power": 1.0,
+      "probability_source": "calibrated",
+      "selection_mode": "expected_profit",
+      "tail_policy": "all",
+      "uniform_blend": 0.0
+    }
+  }
+}
