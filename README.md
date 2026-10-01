@@ -31,7 +31,7 @@ The setup creates `.venv`, installs the small dependency set, verifies the three
 powershell -ExecutionPolicy Bypass -File .\scripts\run_online.ps1
 ```
 
-The dashboard opens automatically at `artifacts\online\dashboard.html`.
+The new snapshot is written first, then the dashboard opens automatically at `artifacts\online\dashboard.html`.
 
 To test a specific currently open date:
 
@@ -65,4 +65,6 @@ The runner works at any time, but only snapshots within five minutes of **18:00 
 Current HRRR/GEFS probabilities use a documented transfer approximation from public Open-Meteo feeds. V8 and V10 use the exact frozen transforms. Do not interpret results as an untouched confirmation until a new, preregistered sample is settled.
 
 The historical-only version is the `swarm_setup_offline` branch. A setup prompt for another ChatGPT/Codex session is in [docs/CHATGPT_SETUP_PROMPT.md](docs/CHATGPT_SETUP_PROMPT.md).
+
+If setup says Python is missing, install 64-bit Python 3.11 or newer from python.org and select **Add Python to PATH**. If setup cannot reach one of the public services, check the internet connection and rerun the same command; no partial run can place an order.
 

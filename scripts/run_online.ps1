@@ -13,8 +13,13 @@ $CommandName = if ($Loop) { "watch" } else { "snapshot" }
 $Arguments = @("-m", "kalshi_swarm.cli", $CommandName, "--output-dir", "artifacts\online")
 if ($TargetDate) { $Arguments += @("--date", $TargetDate) }
 if ($Loop) { $Arguments += @("--interval-seconds", $IntervalSeconds) }
-if (-not $NoOpen) {
-    if (-not (Test-Path "artifacts\online\dashboard.html")) { & $Python -m kalshi_swarm.cli snapshot --output-dir "artifacts\online" }
-    Start-Process (Resolve-Path "artifacts\online\dashboard.html")
+if ($Loop) {
+    $InitialArguments = @("-m", "kalshi_swarm.cli", "snapshot", "--output-dir", "artifacts\online")
+    if ($TargetDate) { $InitialArguments += @("--date", $TargetDate) }
+    & $Python @InitialArguments
+    if (-not $NoOpen) { Start-Process (Resolve-Path "artifacts\online\dashboard.html") }
+    & $Python @Arguments
+} else {
+    & $Python @Arguments
+    if (-not $NoOpen) { Start-Process (Resolve-Path "artifacts\online\dashboard.html") }
 }
-& $Python @Arguments
