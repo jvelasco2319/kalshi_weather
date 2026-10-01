@@ -10,6 +10,12 @@ import sys
 
 from .artifacts import IntegrityError, canonical, checked, digest, filehash, lease, read, utcnow, write
 from .reflection import allocate, apply_reflection, due, effective_spec, family, initial_state, start_if_due, validate_policy
+from .contract import scope_instruction, validate_contract
+from .evidence import assert_usable, candidate_record, claim_index, initialize_evidence, review_records, state_for
+from .resources import budget_status, initialize_budget, reconcile, reserve
+from .store import audit
+from .tasks import enqueue
+from uuid import uuid4
 
 
 OPS = {"<=": operator.le, ">=": operator.ge, "<": operator.lt, ">": operator.gt}
@@ -21,10 +27,9 @@ def code_bindings(root):
 
 
 def validate_spec(spec):
-    required = {"schema_version", "problem_id", "objective", "scope", "adapter", "development_data",
-                "primary_metric", "gates", "parameter_space", "colonies", "budget", "seeds", "reflection",
+    required = {"schema_version", "problem_id", "objective", "scope", "colonies", "budget", "reflection",
                 "research_questions", "colony_briefs"}
-    if required - spec.keys() or spec["schema_version"] != "research-swarm-problem-v1":
+    if required - spec.keys() or spec["schema_version"] != "research-swarm-problem-v2":
         raise ValueError("Incomplete problem contract; use config/example_problem.json")
     if len(set(spec["colonies"])) < 3 or "falsification" not in spec["colonies"]:
         raise ValueError("Require at least three distinct colonies including falsification")
@@ -40,26 +45,34 @@ def validate_spec(spec):
             raise ValueError("An easier problem needs an explicit test of transfer to the main problem")
     if set(spec["colony_briefs"]) != set(spec["colonies"]) or any(not brief.strip() for brief in spec["colony_briefs"].values()):
         raise ValueError("Every initial colony needs a distinct research brief")
-    if not spec["parameter_space"] or any(not values for values in spec["parameter_space"].values()):
+    mode = spec.get("execution_mode", "numeric")
+    if mode not in ("numeric", "artifact"):
+        raise ValueError("Choose numeric or artifact execution mode")
+    if mode == "numeric" and {"adapter", "development_data", "primary_metric", "gates", "parameter_space", "seeds"} - spec.keys():
+        raise ValueError("Numerical campaigns require an adapter, data, metrics, gates and experiment language")
+    if mode == "artifact" and any(spec.get(key) for key in ("adapter", "parameter_space", "seeds")):
+        raise ValueError("Artifact campaigns must not silently run numerical seeds or an adapter")
+    if mode == "numeric" and (not spec["parameter_space"] or any(not values for values in spec["parameter_space"].values())):
         raise ValueError("Register a nonempty finite parameter space")
-    for values in spec["parameter_space"].values():
+    for values in spec.get("parameter_space", {}).values():
         if len({canonical(value) for value in values}) != len(values):
             raise ValueError("Parameter choices must not contain canonical duplicates")
         if any(type(value) not in (str, int, float, bool, type(None)) for value in values):
             raise ValueError("Parameter choices must be JSON scalars")
-    if spec["primary_metric"]["direction"] not in ("minimize", "maximize"):
+    if mode == "numeric" and spec["primary_metric"]["direction"] not in ("minimize", "maximize"):
         raise ValueError("Unknown primary metric direction")
-    if not spec["gates"]:
+    if mode == "numeric" and not spec["gates"]:
         raise ValueError("At least one machine-checkable gate is required")
-    for gate in spec["gates"]:
+    for gate in spec.get("gates", []):
         if gate["operator"] not in OPS or not math.isfinite(float(gate["threshold"])):
             raise ValueError("Invalid metric gate")
     for key in ("max_epochs", "max_candidates", "candidates_per_epoch", "wall_seconds", "task_seconds", "max_agent_tasks"):
         if type(spec["budget"].get(key)) is not int or spec["budget"][key] <= 0:
             raise ValueError(f"Budget {key} must be a positive integer")
-    if not spec["seeds"]:
+    if mode == "numeric" and not spec["seeds"]:
         raise ValueError("Register at least one baseline/seed")
     validate_policy(spec["reflection"])
+    validate_contract(spec)
     if spec["reflection"]["max_total_colonies"] < len(spec["colonies"]):
         raise ValueError("Colony cap cannot be below the initial colony count")
     canonical(spec)  # Reject NaN and nonserializable values.
@@ -104,32 +117,48 @@ def initialize(root, spec_path, run_dir):
             raise ValueError("Campaign already registered; use status or resume, never reset it")
         spec = read(spec_path)
         validate_spec(spec)
-        for hypothesis in spec["seeds"]:
+        for hypothesis in spec.get("seeds", []):
             validate_hypothesis(hypothesis, spec)
-        if importlib.util.find_spec(spec["adapter"]) is None:
-            raise ValueError("Adapter module is not installed")
-        data = (root / spec["development_data"]).resolve()
-        if root not in data.parents or not data.is_file():
-            raise ValueError("Development data must be a local file inside the project")
         frozen_data = run_dir / "development-input.json"
-        frozen_data.write_bytes(data.read_bytes())
+        artifact_bindings = {}
+        if spec.get("execution_mode", "numeric") == "numeric":
+            if importlib.util.find_spec(spec["adapter"]) is None:
+                raise ValueError("Adapter module is not installed")
+            data = (root / spec["development_data"]).resolve()
+            if root not in data.parents or not data.is_file():
+                raise ValueError("Development data must be a local file inside the project")
+            frozen_data.write_bytes(data.read_bytes())
+            module_path = Path(importlib.util.find_spec(spec["adapter"]).origin).resolve()
+            if root / "src" not in module_path.parents:
+                raise ValueError("Put the approved adapter under this project's src directory before registration")
+        else:
+            for filename in spec.get("artifact_inputs", []):
+                source = (root / filename).resolve()
+                if root not in source.parents or not source.is_file():
+                    raise ValueError("Initial artifact inputs must be local files inside the project")
+                relative = "inputs/" + filehash(source)
+                copied = run_dir / relative
+                copied.parent.mkdir(parents=True, exist_ok=True)
+                copied.write_bytes(source.read_bytes())
+                artifact_bindings[relative] = filehash(copied)
+            write(frozen_data, {"artifact_inputs": artifact_bindings}, sealed=False)
         bound_code = code_bindings(root)
-        module_path = Path(importlib.util.find_spec(spec["adapter"]).origin).resolve()
-        if root / "src" not in module_path.parents:
-            raise ValueError("Put the approved adapter under this project's src directory before registration")
         started_at = utcnow()
         registration = write(run_dir / "registration.json", {
             "campaign_id": spec["problem_id"] + "-" + utcnow().strftime("%Y%m%dT%H%M%S%fZ"),
             "created_at": started_at.isoformat(), "deadline": (started_at + timedelta(seconds=spec["budget"]["wall_seconds"])).isoformat(),
             "project_root": str(root), "spec": spec, "code_bindings": bound_code,
             "development_sha256": filehash(frozen_data), "confirmation_consumed": False,
+            "artifact_input_bindings": artifact_bindings,
         })
         state = write(run_dir / "state.json", {
             "campaign_id": registration["campaign_id"], "status": "READY", "epoch": 0,
-            "attempt_count": 0, "duplicates_skipped": 0, "queue": spec["seeds"],
+            "attempt_count": 0, "duplicates_skipped": 0, "queue": spec.get("seeds", []),
             "last_candidates": [], "reviewed_epochs": [], "confirmation_consumed": False,
             **initial_state(spec, started_at),
         })
+        initialize_budget(run_dir, registration)
+        initialize_evidence(run_dir, registration)
         _prompts(run_dir, spec, state)
         _report(run_dir, registration, state, {})
         return state
@@ -144,6 +173,9 @@ def verify(run_dir):
         raise IntegrityError("Registered code changed; create a separately registered successor")
     if filehash(run_dir / "development-input.json") != registration["development_sha256"]:
         raise IntegrityError("Frozen development input changed")
+    if any(not (run_dir / path).is_file() or filehash(run_dir / path) != sha for path, sha in registration.get("artifact_input_bindings", {}).items()):
+        raise IntegrityError("Frozen artifact input changed")
+    audit(run_dir)
     results = {}
     for path in sorted((run_dir / "candidates").glob("*.json")):
         result = checked(path)
@@ -179,9 +211,18 @@ def _prompts(run_dir, spec, state):
     if state["reviewed_epochs"]:
         synthesis = checked(run_dir / "syntheses" / f"{state['reviewed_epochs'][-1]:02}.json")
         shared = canonical({"synthesis": synthesis["synthesis"], "lessons": synthesis["lessons"]})
+    elif spec.get("execution_mode") == "artifact":
+        shared = canonical([{"id": claim["id"], "version": claim["version"], "claim": claim["payload"]["claim"],
+                             "states": claim["payload"]["axes"], "applicability": claim["applicability"]} for claim in claim_index(run_dir)])
     for colony in (name for name, details in state["colonies"].items() if details["status"] == "ACTIVE"):
         details = state["colonies"][colony]
         role = spec["colony_briefs"].get(colony, details.get("research_question", "Follow the parent family's evidence"))
+        task_role = "reviewer" if colony in ("measurement", "falsification") else "research"
+        task_id = f"epoch-{state['epoch']:02}-{colony}-" + digest({"status": state["status"], "shared": shared, "reflection": state["reflection_count"]})[:12]
+        enqueue(run_dir, {"id": task_id, "objective": role, "role": task_role, "colony": colony,
+                "dependencies": [], "evidence": list(state["last_candidates"]), "tools": spec["runtime"]["allowed_tools"],
+                "max_units": 10 * spec["runtime"]["operation_units"], "depth": min(1, spec["runtime"]["max_delegation_depth"]),
+                "completion_rule": "Submit a bounded evidence packet and durable hashed artifacts; controller acknowledgment completes delivery."})
         text = f"""# Research task: {colony}
 
 Objective: {spec['objective']}
@@ -192,6 +233,10 @@ Registered questions: {canonical(spec['research_questions'])}
 Shared findings from the latest review: {shared}
 Next hourly checkpoint: {state['next_reflection_at']}.
 Hosted task concurrency ceiling: {spec['budget']['max_agent_tasks']}; the host must enforce this ceiling.
+Durable task ID: {task_id}. Claim it through the runtime before dispatch; work only in its attempt workspace.
+Contract: {spec['contract']['id']} version {spec['contract']['version']}.
+Domain instructions: {scope_instruction(spec['contract']['mode'])}
+Permission boundary: {spec['runtime']['permission_boundary']}. Tool names are an allowlist the host must enforce.
 
 Read registration.json, this colony's role in docs/COLONIES.md, existing candidate artifacts,
 and report.html. Propose a causal mechanism, its strongest counter-explanation, needed
@@ -223,8 +268,14 @@ def _worker(registration, run_dir, parameters, prefix, remaining, replicate_path
     timeout = min(registration["spec"]["budget"]["task_seconds"], remaining)
     if timeout <= 0:
         raise TimeoutError("Campaign deadline passed")
-    process = subprocess.run(command, cwd=registration["project_root"], capture_output=True, text=True,
-                             timeout=timeout, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    reservation = "local-" + prefix
+    units = registration["spec"]["runtime"]["operation_units"]
+    reserve(run_dir, reservation, "verification" if replicate_path or data_path else "research", units)
+    try:
+        process = subprocess.run(command, cwd=registration["project_root"], capture_output=True, text=True,
+                                 timeout=timeout, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    finally:
+        reconcile(run_dir, reservation, conservative=True)  # Local credits, including failed invocations.
     if process.returncode:
         raise ValueError("Deterministic worker failed: " + process.stderr[-2000:])
     return checked(output_path), output_path
@@ -242,15 +293,22 @@ def _gates(spec, result):
             for gate in spec["gates"]]
 
 
-def _remaining(registration):
-    return (datetime.fromisoformat(registration["deadline"]) - utcnow()).total_seconds()
+def _remaining(registration, *, research=False):
+    reserve_seconds = registration["spec"]["runtime"]["reporting_seconds"]
+    if research:
+        reserve_seconds += registration["spec"]["runtime"]["shutdown_seconds"]
+    return (datetime.fromisoformat(registration["deadline"]) - timedelta(seconds=reserve_seconds) - utcnow()).total_seconds()
 
 
 def run_epoch(run_dir):
     run_dir = Path(run_dir).resolve()
     with lease(run_dir):
+        if (run_dir / "investigation-completion.json").exists():
+            raise ValueError("Investigation was delivered; register a successor before new experiments")
         registration, state, existing = verify(run_dir)
         spec = effective_spec(registration["spec"], state)
+        if spec.get("execution_mode") == "artifact":
+            raise ValueError("Artifact campaigns use durable tasks, claim review and configured checks instead of numerical epochs")
         if state["status"] == "READY" and (state["epoch"] >= spec["budget"]["max_epochs"] or state["attempt_count"] >= spec["budget"]["max_candidates"]):
             state["status"] = "BUDGET_EXHAUSTED"
             write(run_dir / "state.json", state)
@@ -261,7 +319,7 @@ def run_epoch(run_dir):
             return state
         if state["status"] != "READY":
             raise ValueError("Campaign is not READY; read status and supply real independent reviews")
-        if _remaining(registration) <= 0:
+        if _remaining(registration, research=True) <= 0:
             state["status"] = "BUDGET_EXHAUSTED"
             write(run_dir / "state.json", state)
             _report(run_dir, registration, state, existing)
@@ -272,6 +330,7 @@ def run_epoch(run_dir):
         proposals.sort(key=lambda h: (-sum(parent in supported for parent in h["parents"]), h["id"]))
         novel, known = [], set(existing)
         for h in proposals:
+            assert_usable(run_dir, h["parents"])
             fingerprint = validate_hypothesis(h, spec, existing)
             candidate_id = "candidate-" + fingerprint
             if candidate_id in known:
@@ -288,7 +347,7 @@ def run_epoch(run_dir):
             if due(state):
                 deferred += selected[index:]
                 break
-            if state["attempt_count"] >= spec["budget"]["max_candidates"] or _remaining(registration) <= 0:
+            if state["attempt_count"] >= spec["budget"]["max_candidates"] or _remaining(registration, research=True) <= 0:
                 deferred.append(h)
                 continue
             candidate_id = "candidate-" + digest(h["parameters"])
@@ -300,7 +359,7 @@ def run_epoch(run_dir):
             write(run_dir / "state.json", state)
             error, result, gates, replicated = None, {}, [], False
             try:
-                result, result_path = _worker(registration, run_dir, h["parameters"], candidate_id, _remaining(registration))
+                result, result_path = _worker(registration, run_dir, h["parameters"], candidate_id, _remaining(registration, research=True))
                 gates = _gates(spec, result)
                 reproduction, _ = _worker(registration, run_dir, h["parameters"], candidate_id + "-replica",
                                           _remaining(registration), replicate_path=result_path)
@@ -317,6 +376,7 @@ def run_epoch(run_dir):
                 "completed_at": utcnow().isoformat(),
             })
             existing[candidate_id] = entry
+            candidate_record(run_dir, entry)
             state["allocations_used"][h["colony"]] += 1
             state["last_candidates"].append(candidate_id)
             allocation.append({"candidate_id": candidate_id, "colony": h["colony"], "parents": h["parents"]})
@@ -381,7 +441,9 @@ def review(run_dir, packet_path):
         proposals = packet.get("proposals", [])
         for h in proposals:
             validate_hypothesis(h, effective_spec(registration["spec"], state), results)
+            assert_usable(run_dir, h["parents"])
         reviewed = write(run_dir / "reviews" / f"{state['epoch']:02}.json", {**packet, "campaign_id": state["campaign_id"]})
+        review_records(run_dir, reviewed, results)
         write(run_dir / "syntheses" / f"{state['epoch']:02}.json", {
             "campaign_id": state["campaign_id"], "epoch": state["epoch"], "review_sha256": reviewed["self_sha256"],
             "synthesis": packet["synthesis"], "lessons": packet["lessons"],
@@ -400,6 +462,8 @@ def review(run_dir, packet_path):
 
 
 def ranking(registration, results):
+    if not results or registration["spec"].get("execution_mode") == "artifact":
+        return []
     metric = registration["spec"]["primary_metric"]
     direction = 1 if metric["direction"] == "minimize" else -1
     return sorted(results.values(), key=lambda row: (
@@ -423,6 +487,7 @@ def freeze(run_dir, candidate_id):
             raise ValueError("Complete final independent review before freezing")
         if candidate_id not in results or not results[candidate_id]["all_gates_passed"]:
             raise ValueError("Only a reproduced all-gate development candidate can be frozen")
+        assert_usable(run_dir, [candidate_id])
         questions = {q["id"]: q for q in registration["spec"]["research_questions"]}
         if questions[results[candidate_id]["hypothesis"]["question_id"]]["kind"] != "main":
             raise ValueError("An easier-problem result must transfer to the main question before freezing")
@@ -440,6 +505,9 @@ def confirm(run_dir, data_path, authorized=False):
     with lease(run_dir):
         registration, state, results = verify(run_dir)
         frozen = checked(run_dir / "strategy-freeze.json")
+        assert_usable(run_dir, [frozen["candidate_id"]])
+        if _remaining(registration) <= 0:
+            raise ValueError("Final evaluation is outside the registered time reserve; register a separate confirmation effort")
         if state["confirmation_consumed"] or (run_dir / "confirmation-claim.json").exists():
             raise ValueError("Confirmation was already consumed; never test an alternative on the same final set")
         if frozen["registration_sha256"] != registration["self_sha256"] or frozen["candidate_sha256"] != results[frozen["candidate_id"]]["self_sha256"]:
@@ -456,9 +524,9 @@ def confirm(run_dir, data_path, authorized=False):
         try:
             if not data_path.is_file() or filehash(data_path) == registration["development_sha256"]:
                 raise ValueError("Confirmation must be a separate local dataset; claim remains consumed")
-            result, path = _worker(registration, run_dir, frozen["parameters"], "confirmation", registration["spec"]["budget"]["task_seconds"], data_path=data_path)
+            result, path = _worker(registration, run_dir, frozen["parameters"], "confirmation", min(_remaining(registration), registration["spec"]["budget"]["task_seconds"]), data_path=data_path)
             gates = _gates(registration["spec"], result)
-            replica, _ = _worker(registration, run_dir, frozen["parameters"], "confirmation-replica", registration["spec"]["budget"]["task_seconds"], replicate_path=path, data_path=data_path)
+            replica, _ = _worker(registration, run_dir, frozen["parameters"], "confirmation-replica", min(_remaining(registration), registration["spec"]["budget"]["task_seconds"]), replicate_path=path, data_path=data_path)
             passed = all(g["passed"] for g in gates) and replica.get("verified") is True
             conclusion = "CONFIRMATION_GATES_PASSED" if passed else "CONFIRMATION_GATES_FAILED"
             final = {"result": result, "gates": gates, "replication_verified": replica.get("verified") is True,
@@ -478,15 +546,22 @@ def status(run_dir):
                                    "metrics": row["result"].get("metrics"), "behavior_sha256": row["behavior_sha256"]}
                                   for row in ranking(registration, results)],
             "confirmation_consumed": state["confirmation_consumed"],
+            "candidate_states": {identifier: state_for(run_dir, identifier) for identifier in results},
+            "resources": budget_status(run_dir),
+            "investigation_completion": checked(Path(run_dir) / "investigation-completion.json") if (Path(run_dir) / "investigation-completion.json").exists() else None,
             "next_reflection_at": state["next_reflection_at"], "reflection_due": due(state),
             "reflection_count": state["reflection_count"], "colonies": state["colonies"]}
 
 
-def request_reflection(run_dir):
+def request_reflection(run_dir, trigger=None):
     run_dir = Path(run_dir).resolve()
     with lease(run_dir):
         registration, state, results = verify(run_dir)
-        if state["status"] != "AWAITING_REFLECTION" and not start_if_due(run_dir, registration, state, results):
+        results = checkpoint_results(run_dir, registration, results)
+        if trigger is not None:
+            if trigger.get("kind") not in ("breakthrough", "contradiction", "dependency_change") or not trigger.get("reason") or not trigger.get("candidate_ids") or any(key not in results for key in trigger["candidate_ids"]):
+                raise ValueError("Event checkpoint needs a meaningful trigger and real candidate evidence")
+        if state["status"] != "AWAITING_REFLECTION" and not start_if_due(run_dir, registration, state, results, trigger):
             raise ValueError("Hourly reflection is not due or the campaign is already terminal")
         _report(run_dir, registration, state, results)
         return checked(run_dir / "reflections" / f"{state['reflection_count'] + 1:02}-request.json")
@@ -496,7 +571,8 @@ def reflect(run_dir, packet_path):
     run_dir = Path(run_dir).resolve()
     with lease(run_dir):
         registration, state, results = verify(run_dir)
-        decision = apply_reflection(run_dir, registration, state, results, read(packet_path))
+        checkpoint = checkpoint_results(run_dir, registration, results)
+        decision = apply_reflection(run_dir, registration, state, checkpoint, read(packet_path))
         _prompts(run_dir, registration["spec"], state)
         _report(run_dir, registration, state, results)
         return decision
@@ -525,13 +601,43 @@ def resume(run_dir):
 
 
 def catalog_accounting(registration, results):
+    if registration["spec"].get("execution_mode") == "artifact":
+        return {"catalog_size": None, "attempted": len(results), "unexamined": None, "exhaustive": False}
     names = sorted(registration["spec"]["parameter_space"])
     total = math.prod(len(registration["spec"]["parameter_space"][name]) for name in names)
     return {"catalog_size": total, "attempted": len(results), "unexamined": total - len(results),
             "exhaustive": len(results) == total and all(not row["error"] for row in results.values())}
 
 
+def checkpoint_results(run_dir, registration, results):
+    if registration["spec"].get("execution_mode") != "artifact":
+        return results
+    snapshot = {}
+    for claim in claim_index(run_dir):
+        body = claim["payload"]
+        accepted = body["axes"]["acceptance"] == "accepted" and claim["applicability"] == "active"
+        snapshot[claim["id"]] = {"candidate_id": claim["id"], "self_sha256": claim["sha256"], "hypothesis": {"id": claim["id"], **body["hypothesis"]},
+            "behavior_sha256": body["artifact_sha256"], "error": None, "replication_verified": body["axes"]["verification"] == "passed",
+            "all_gates_passed": accepted, "gates": [{"passed": accepted}], "result": {"metrics": {"accepted_findings": int(accepted)}}}
+    return snapshot
+
+
 def _report(run_dir, registration, state, results):
     from .report import render
+    if registration["spec"].get("execution_mode") == "artifact":
+        results = {}  # Artifact findings have their own claim table, not a numerical leaderboard.
     accounting = catalog_accounting(registration, results)
-    render(run_dir / "report.html", registration, state, ranking(registration, results), accounting)
+    reservation = "report-" + uuid4().hex
+    units = registration["spec"]["runtime"]["operation_units"]
+    reserve(run_dir, reservation, "reporting", units)
+    reconcile(run_dir, reservation, conservative=True)  # Declared credit is incurred even if rendering fails.
+    render(run_dir / "report.html", registration, state, ranking(registration, results), accounting,
+           {key: state_for(run_dir, key) for key in results}, budget_status(run_dir), claim_index(run_dir))
+
+
+def refresh_report(run_dir):
+    run_dir = Path(run_dir).resolve()
+    with lease(run_dir):
+        registration, state, results = verify(run_dir)
+        _report(run_dir, registration, state, results)
+        return {"report": str(run_dir / "report.html"), "claims": len(claim_index(run_dir))}

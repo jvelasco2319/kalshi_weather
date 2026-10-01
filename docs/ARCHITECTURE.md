@@ -1,6 +1,23 @@
 # Architecture and the attributes we preserve
 
-The loop is: register the question and checks → propose different explanations → evaluate → independently reproduce and challenge → synthesize findings → continue, fork, combine or reject → periodically reallocate → freeze a selection → separately confirm → report the limits.
+The loop is: freeze the contract and capabilities → plan dependencies → claim bounded tasks → explore and persist original evidence → screen and review → run configured checks → synthesize → reallocate → record scoped decisions → separately report investigation completion. Numerical campaigns also support a frozen one-shot confirmation.
+
+`research_swarm_accurate` extends the original template using the supplied handbook. The document-to-code map and remaining external boundaries are in [DOCUMENT_ALIGNMENT.md](DOCUMENT_ALIGNMENT.md).
+
+```mermaid
+flowchart TD
+    C[Versioned problem contract] --> O[Coordinator and operational plan]
+    O --> R[Runtime queue and resource reservations]
+    R --> W[Bounded research workers]
+    R --> P[Independent review]
+    R --> V[Configured verification environment]
+    W --> E[Versioned evidence and dependency graph]
+    P --> E
+    V --> E
+    E --> O
+    E --> A[Scoped acceptance authority]
+    A --> F[Final delivery and unresolved work]
+```
 
 ## Inspiration and provenance
 
@@ -39,4 +56,8 @@ Every lesson has `SUPPORTED`, `REJECTED` or `UNRESOLVED` status and cites artifa
 
 A separate verifier is a workflow similarity to formal proof checking, but statistical results can deteriorate on new conditions even after confirmation. A finite catalog can find improvements within its registered language; it cannot establish that every possible method has been considered. Hashes detect unintended changes, not malicious rewriting of both data and hashes. Trusted adapters still need real permission controls.
 
-There is no autonomous hosted-agent service in this package. The accompanying host protocol supplies that orchestration and must honestly report which agents actually ran.
+There is no autonomous hosted-agent service in this package. The accompanying host protocol supplies real launches, tool permissions, provider usage and cancellation receipts. The local SQLite runtime controls admitted ownership, fencing, budgets and durable submissions. It must honestly report which agents actually ran and what the host enforced.
+
+The runtime separates execution, research outcome, review, verification, acceptance and applicability. Default accepted-claim decisions are blocked while the protected boundary is unconfigured. Numerical gate passes still inform ranking but do not grant scientific acceptance. Evidence dependencies, quarantine and per-record revalidation protect the use of shared findings; originals and earlier decisions remain auditable.
+
+Three memory scopes are represented by attempt-local contexts, project evidence and separate method records. Plans can change while the contract stays frozen. Main/easier question transfers require an explicit new test, and meaningful contradictions can trigger reflection before the scheduled hour without shifting it.

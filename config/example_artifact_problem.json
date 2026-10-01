@@ -1,0 +1,42 @@
+{
+  "schema_version": "research-swarm-problem-v2", "execution_mode": "artifact",
+  "problem_id": "architecture-evidence-demo",
+  "objective": "Determine which claims the bundled architecture documentation actually supports, with explicit limitations.",
+  "scope": "Local artifact-workflow demonstration; no provider evaluation or independent scientific finding is claimed.",
+  "artifact_inputs": ["README.md", "docs/DOCUMENT_ALIGNMENT.md"],
+  "contract": {
+    "id": "architecture-evidence-contract", "version": 1, "mode": "literature",
+    "definitions": ["A supported claim has a precise original artifact locator and correctly stated scope."],
+    "assumptions": ["The bundled documentation describes this package; it is not an independent evaluation."],
+    "exclusions": ["No claim that this architecture is optimal or reproduces an internal research system."],
+    "novelty": "not_required", "deliverables": ["Source-linked claim register", "Unresolved checks and limitations"],
+    "acceptance_authority": "project-owner", "verifier_authority": "independent-domain-checker",
+    "required_checks": ["original_source_support", "scope_and_contradictions"],
+    "acceptance_scope": "Only what the pinned local documentation and inspected implementation establish."
+  },
+  "runtime": {
+    "topology": "coordinator", "coordinator_slots": 1, "max_explorers": 3, "max_delegation_depth": 1,
+    "lease_seconds": 900, "max_attempts": 2, "shutdown_seconds": 30, "reporting_seconds": 30,
+    "allowed_tools": ["read_registered_evidence", "write_attempt_workspace", "propose_experiment"],
+    "models": [], "permission_boundary": "unconfigured", "budget_enforcement": "local_credits_only",
+    "budget_units": "Local operation credits; not provider currency or tokens",
+    "allocations": {"research": 700, "verification": 250, "reporting": 50}, "operation_units": 1
+  },
+  "colonies": ["formulations", "mechanisms", "measurement", "falsification"],
+  "colony_briefs": {
+    "formulations": "Identify exact claims, scope and a simpler evidence question.",
+    "mechanisms": "Inspect the implementation and locate evidence for proposed mechanisms.",
+    "measurement": "Check source locators, versions and limits of software tests.",
+    "falsification": "Find unsupported extrapolations, contradictions and missing acceptance boundaries."
+  },
+  "research_questions": [
+    {"id": "main", "kind": "main", "statement": "What does the supplied package actually establish?"},
+    {"id": "documentation-check", "kind": "surrogate", "statement": "Which claims have exact source locators?",
+     "transfer_test": "Inspect the corresponding implementation and checks before transferring a documented claim to the main conclusion."}
+  ],
+  "reflection": {"interval_seconds": 3600, "exploration_share": 0.20, "adversarial_share": 0.20,
+                 "max_total_colonies": 8, "minimum_distinct_trials_to_retire": 3,
+                 "failed_checkpoints_to_retire": 2, "max_winner_groups": 2},
+  "budget": {"max_epochs": 3, "max_candidates": 8, "candidates_per_epoch": 4,
+             "wall_seconds": 10800, "task_seconds": 60, "max_agent_tasks": 4}
+}

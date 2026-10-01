@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "research-swarm-template"
-version = "1.0.0"
+version = "2.0.0"
 description = "Bounded, evidence-driven research campaigns with real agent review"
 requires-python = ">=3.11"
 dependencies = []

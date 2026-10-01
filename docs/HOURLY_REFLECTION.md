@@ -16,6 +16,8 @@ Default allocation after review:
 
 Without a qualifying winner, the nonadversarial 80% is shared across research colonies. Shares guide available queued experiments over time, not guaranteed CPU utilization or paid model spend. A colony with no executable proposal does not force the host to invent busywork. Adversarial review itself is mandatory regardless of how many adversarial experiment proposals are queued.
 
+These family percentages divide research experiment slots. The separate 25% verification and 5% reporting reserves divide the global local-credit budget. They are different levels of allocation, not percentages to add together.
+
 ## Retirement and new colonies
 
 A retirement requires at least three distinct reproduced trials and two checkpoints with **new** failed evidence, no reproduced all-gate candidate, no positive gain over the registered baseline, a reason, and two independent nonfamily reviews of the artifacts. Re-reading identical failures does not count as a second failed checkpoint. A small sample or unavailable inputs do not establish a useless direction.
@@ -29,3 +31,5 @@ A child requires an active parent, reproduced all-gate parent candidates, a dist
 Reflection packets bind the exact sealed request and its candidate hashes. Requests and decisions remain under `reflections`. The next checkpoint stays anchored to the original schedule. If review takes longer than an interval, missed intervals are recorded rather than triggering repeated empty reviews.
 
 No reflection refunds attempts, extends the absolute deadline, changes frozen inputs/source/gates, grants confirmation-data access, or creates new model capacity. The CLI is a controller, not a timer daemon; the host must invoke it at task boundaries and at least hourly while research is ongoing.
+
+An early checkpoint can use a packet with `kind` (`breakthrough`, `contradiction`, `dependency_change`), a concrete `reason` and actual `candidate_ids`. Submit it with `reflection --packet ...`. Early review does not postpone the next scheduled hour. Candidate versions and applicability states are pinned alongside artifact hashes; changes during review require a transparent checkpoint repair/reclassification rather than silently using a stale scorecard. Artifact-only campaigns use their claim records, and quarantined evidence is excluded.

@@ -53,7 +53,7 @@ def family(state, name):
 
 
 def scorecard(registration, state, results):
-    metric = registration["spec"]["primary_metric"]
+    metric = registration["spec"].get("primary_metric", {"name": "accepted_findings", "direction": "maximize"})
     baseline_ids = set(registration["spec"].get("baseline_hypothesis_ids", []))
     baseline_values = [row["result"]["metrics"][metric["name"]] for row in results.values()
                        if row["hypothesis"]["id"] in baseline_ids and row["replication_verified"] and not row["error"]]
@@ -80,15 +80,19 @@ def scorecard(registration, state, results):
     return diagnostics
 
 
-def start_if_due(run_dir, registration, state, results):
-    if state["status"] not in ("READY", "AWAITING_REVIEW") or not due(state) or utcnow() >= datetime.fromisoformat(registration["deadline"]):
+def start_if_due(run_dir, registration, state, results, trigger=None):
+    if state["status"] not in ("READY", "AWAITING_REVIEW") or (not due(state) and trigger is None) or utcnow() >= datetime.fromisoformat(registration["deadline"]):
         return False
+    from .evidence import state_for
+    evidence_states = {key: state_for(run_dir, key) for key in results}
+    usable_results = {key: value for key, value in results.items() if evidence_states[key]["applicability"] == "active"}
     index = state["reflection_count"] + 1
     checkpoint = write(run_dir / "reflections" / f"{index:02}-request.json", {
         "campaign_id": state["campaign_id"], "checkpoint": index, "requested_at": utcnow().isoformat(),
         "scheduled_at": state["next_reflection_at"], "epoch": state["epoch"],
         "input_candidate_hashes": {key: value["self_sha256"] for key, value in sorted(results.items())},
-        "scorecard": scorecard(registration, state, results),
+        "evidence_states": evidence_states, "trigger": trigger or {"kind": "hourly"},
+        "scorecard": scorecard(registration, state, usable_results),
     })
     state["pre_reflection_status"] = state["status"]
     state["status"] = "AWAITING_REFLECTION"
@@ -126,6 +130,9 @@ def apply_reflection(run_dir, registration, state, results, packet):
         raise ValueError("Reflection packet must bind the exact pending request")
     if request["input_candidate_hashes"] != {key: value["self_sha256"] for key, value in sorted(results.items())}:
         raise ValueError("Reflection evidence changed after the request")
+    from .evidence import state_for
+    if request["evidence_states"] != {key: state_for(run_dir, key) for key in results}:
+        raise ValueError("Evidence versions or applicability changed after the checkpoint")
     reviews = packet.get("reviews", [])
     review_state = deepcopy(state)  # Reviewer eligibility is fixed before any retirement.
     if len({review.get("reviewer_id") for review in reviews if review.get("reviewer_id")}) < 2:
@@ -201,7 +208,7 @@ def apply_reflection(run_dir, registration, state, results, packet):
     adversarial = [name for name in active if family(state, name) == "falsification"]
     research = [name for name in active if name not in adversarial]
     eligible = [name for name in research if name in cards and cards[name]["passing_candidate_ids"]]
-    metric = registration["spec"]["primary_metric"]
+    metric = registration["spec"].get("primary_metric", {"name": "accepted_findings", "direction": "maximize"})
     direction = 1 if metric["direction"] == "minimize" else -1
     eligible.sort(key=lambda name: (-len(cards[name]["passing_candidate_ids"]), direction * cards[name]["best_metric"], name))
     winner_families = []
@@ -225,7 +232,7 @@ def apply_reflection(run_dir, registration, state, results, packet):
             state["colonies"][name]["resource_share"] += exploit / len(winner_families) / len(group)
     scheduled = datetime.fromisoformat(request["scheduled_at"])
     now = utcnow()
-    elapsed_intervals = max(1, math.floor((now - scheduled).total_seconds() / policy["interval_seconds"]) + 1)
+    elapsed_intervals = max(0 if request["trigger"]["kind"] != "hourly" else 1, math.floor((now - scheduled).total_seconds() / policy["interval_seconds"]) + 1)
     state["next_reflection_at"] = (scheduled + timedelta(seconds=elapsed_intervals * policy["interval_seconds"])).isoformat()
     state["reflection_count"] = index
     state["status"] = state.pop("pre_reflection_status")
@@ -234,7 +241,7 @@ def apply_reflection(run_dir, registration, state, results, packet):
         "campaign_id": state["campaign_id"], "checkpoint": index, "request_sha256": request["self_sha256"],
         "packet": packet, "changes": changed, "winning_families": winner_families,
         "resource_shares": {name: value["resource_share"] for name, value in state["colonies"].items()},
-        "completed_at": now.isoformat(), "missed_intervals": elapsed_intervals - 1,
+        "completed_at": now.isoformat(), "missed_intervals": max(0, elapsed_intervals - 1),
         "review_duration_seconds": max(0, (now - datetime.fromisoformat(state.pop("reflection_started_at"))).total_seconds()),
         "deadline_extended": False, "counters_refunded": False,
     })

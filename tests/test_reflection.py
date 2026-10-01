@@ -180,3 +180,13 @@ def test_checkpoint_at_candidate_boundary_defers_task_without_counting_empty_epo
     assert value["status"] == "AWAITING_REFLECTION"
     assert value["attempt_count"] == value["epoch"] == 0
     assert len(value["queue"]) == 2
+
+
+def test_breakthrough_checkpoint_keeps_the_original_hourly_schedule(tmp_path):
+    directory = new_run(tmp_path)
+    before = status(directory)["next_reflection_at"]
+    candidate = checked(directory / "state.json")["last_candidates"][0]
+    request = request_reflection(directory, {"kind": "contradiction", "reason": "TEST FIXTURE ONLY: examine a competing explanation", "candidate_ids": [candidate]})
+    assert request["trigger"]["kind"] == "contradiction"
+    reflect_packet(directory, reflection_packet(directory))
+    assert status(directory)["next_reflection_at"] == before
