@@ -23,7 +23,7 @@ $VenvPython = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 & $VenvPython -m pip install --upgrade pip
 & $VenvPython -m pip install -e ".[legacy-import]"
 
-& $VenvPython -c "import json,pathlib; [json.loads(p.read_text(encoding='utf-8-sig')) for p in pathlib.Path('config').glob('frozen_*.json')]; print('Frozen V5B, V8, and V10 configurations verified.')"
+& $VenvPython -m kalshi_swarm.verify
 
 if ($HistoryFile) {
     New-Item -ItemType Directory -Force data | Out-Null
