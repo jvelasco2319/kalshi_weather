@@ -16,7 +16,7 @@ if (-not $PythonCommand) { throw "Python 3.11 or newer is required. Install it f
 $VenvPython = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 & $VenvPython -m pip install --upgrade pip
 & $VenvPython -m pip install -e ".[online,dev]"
-& $VenvPython -c "import json,pathlib; [json.loads(p.read_text(encoding='utf-8-sig')) for p in pathlib.Path('config').glob('frozen_*.json')]; print('Frozen V5B, V8, and V10 configurations verified.')"
+& $VenvPython -m kalshi_swarm.verify
 & $VenvPython -m pytest -q --basetemp .test-artifacts
 & $VenvPython -m kalshi_swarm.cli snapshot --output-dir "artifacts\online"
 Write-Host "Setup complete. Open artifacts\online\dashboard.html or run .\scripts\run_online.ps1." -ForegroundColor Green
