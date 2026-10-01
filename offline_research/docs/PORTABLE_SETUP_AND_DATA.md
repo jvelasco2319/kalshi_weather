@@ -14,6 +14,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_research_machine.ps1 -M
 
 `Auto` first copies missing files from the original computer's network share. It then creates `.venv`, installs the pinned dependencies, audits each source, and resumes only incomplete public downloads. Re-running the same command is supported: verified files are skipped and partial downloaders resume from their saved caches.
 
+Keep at least 90 GB free for the complete data and run archive, or about 105 GB when also transferring the local model and runtime. The launcher warns when the destination drive is below that level.
+
 The two computers must be on the same private network and the original computer must be awake. If its address changes, replace `192.168.1.193` with the original computer's current IPv4 address. Windows may ask for the share credentials that were created on the original computer.
 
 ## Paid Probalytics depth

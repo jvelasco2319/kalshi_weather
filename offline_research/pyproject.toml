@@ -7,7 +7,7 @@ name = "klax-lab"
 version = "0.1.0"
 description = "Historical-only Kalshi LAX weather research"
 requires-python = ">=3.12"
-dependencies = ["numpy>=2.3", "requests>=2.34", "eccodes>=2.48", "pyarrow>=25"]
+dependencies = ["numpy>=2.3", "pandas>=3.0", "requests>=2.34", "eccodes>=2.48", "pyarrow>=25"]
 
 [project.scripts]
 klax-lab = "klax_lab.cli:main"

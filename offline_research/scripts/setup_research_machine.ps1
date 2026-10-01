@@ -24,6 +24,13 @@ if ($Workers -lt 1 -or $Workers -gt 16) {
     throw 'Workers must be between 1 and 16.'
 }
 
+$driveName = (Split-Path -Qualifier $projectRoot).TrimEnd(':')
+$drive = Get-PSDrive -Name $driveName -ErrorAction SilentlyContinue
+$recommendedFree = if ($IncludeLocalModel) { 105GB } else { 90GB }
+if ($null -ne $drive -and $drive.Free -lt $recommendedFree) {
+    Write-Warning ("The full archive may need {0:N0} GB free; this drive currently has {1:N1} GB." -f ($recommendedFree / 1GB), ($drive.Free / 1GB))
+}
+
 if ($Mode -in @('Auto', 'MirrorOnly')) {
     if (Test-Path -LiteralPath $MirrorPath -PathType Container) {
         $restoreArguments = @(
