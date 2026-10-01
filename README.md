@@ -13,7 +13,7 @@ This project is fake-money-only by default. It does not place real Kalshi orders
 The V1-V10 historical research system is in [`offline_research/`](offline_research/). On a second Windows computer, clone this `swarm` branch and run its portable setup:
 
 ```powershell
-git clone --branch swarm --single-branch https://github.com/jvelasco2319/kalshi_weather.git
+git clone --branch swarm_vanilla_v10 --single-branch https://github.com/jvelasco2319/kalshi_weather.git
 cd .\kalshi_weather\offline_research
 powershell -ExecutionPolicy Bypass -File .\scripts\setup_research_machine.ps1 -Mode Auto -MirrorPath '\\192.168.1.193\Kalshi\_weather\_llm' -Workers 8
 ```
