@@ -33,7 +33,12 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_offline.ps1 `
   -ResearchRoot '\\192.168.1.193\Kalshi\_weather\_llm'
 ```
 
-The setup creates `.venv`, installs the package, verifies all three frozen configurations, and converts the verified historical cache into `data\history.jsonl`. The paid/raw source files stay outside Git.
+The setup creates `.venv`, installs the package, verifies all three frozen configurations, and converts the research cache into `data\history.jsonl`. The import keeps two evidence sets separate:
+
+- **329 common forecast dates:** exact causal walk-forward V5B, V8, and V10 probabilities.
+- **64 execution dates:** historical quote evidence for V5B and V8. V10 is shown as unavailable because its pressure history does not overlap these dates.
+
+The paid/raw source files stay outside Git.
 
 To check the program before copying real history:
 
@@ -54,9 +59,11 @@ The browser report opens automatically. Results are saved here:
 
 ## 4. Read the output correctly
 
-The graphic shows each model's selected trades, win rate, net profit, realized return, Brier score, latest action, pressure regime, and evidence grade. A positive historical result is evidence for a future confirmation test; it is not proof that the return will continue.
+The graphic shows each model's selected trades, win rate, net profit, realized return, common-date Brier score, latest action, pressure regime, and evidence grade. It ranks forecast accuracy only on dates shared by all three methods. It ranks simulated return only for methods with execution evidence.
 
 Only rows marked **Grade A** represent complete historical order-book evidence. Grade B/B+ results are useful sensitivity checks, not verified fills. V10 was fitted on exposed development data and still needs genuinely new confirmation.
+
+The imported history is exposed development evidence. A positive result is a research lead for a future forward test; it does not prove that the return will continue.
 
 ## Input and troubleshooting
 
