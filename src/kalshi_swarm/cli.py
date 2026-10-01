@@ -32,7 +32,8 @@ def main(argv: list[str] | None = None) -> int:
         report_path = render_report(result, output / "report.html", title="KLAX Offline V5B · V8 · V10")
         print(f"Results: {result_path.resolve()}")
         print(f"Graphic: {report_path.resolve()}")
-        print("Ranking: " + " > ".join(result["ranking"]))
+        print("Forecast ranking: " + " > ".join(result["forecast_ranking"]))
+        print("Return ranking: " + (" > ".join(result["return_ranking"]) or "no executable trades"))
         return 0
     if args.command in {"snapshot", "watch"}:
         from .online import snapshot, watch as run_watch

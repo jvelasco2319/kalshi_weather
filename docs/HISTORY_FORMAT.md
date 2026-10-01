@@ -26,5 +26,7 @@ Use one JSON object per date in a `.jsonl` file. Brackets must be ordered from c
 
 Required fields are `date` and six `base_probabilities`. Add `outcome_index` to score forecast accuracy. Add all six `quotes` to simulate the trade filter. Add `pressure_gradient_hpa` for V10; missing pressure is treated as neutral.
 
+Imported research history may also contain `historical_model_probabilities`, which stores the exact causal walk-forward probability vector produced on that date, and `unavailable_models`, which prevents scoring a method when its required historical input did not exist. Do not remove these fields: they keep probability evidence separate from execution evidence.
+
 Valid evidence grades are `A`, `B_PLUS`, and `B`. The engine abstains if price, spread, evidence, probability-gap, or expected-return requirements fail.
 
