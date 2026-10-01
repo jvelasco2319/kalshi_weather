@@ -1,0 +1,45 @@
+{
+  "schema_version": "research-swarm-problem-v1",
+  "problem_id": "synthetic-regression-demo",
+  "objective": "Test whether a fixed predictor improves synthetic regression error across four ordered groups.",
+  "scope": "Software demonstration using synthetic exposed development data; not real research evidence.",
+  "adapter": "research_swarm.adapters.example",
+  "development_data": "examples/synthetic_development.json",
+  "primary_metric": {"name": "mse", "direction": "minimize", "units": "squared target units"},
+  "gates": [
+    {"metric": "mse", "operator": "<=", "threshold": 0.25},
+    {"metric": "worst_group_mse", "operator": "<=", "threshold": 0.5},
+    {"metric": "sample_count", "operator": ">=", "threshold": 16}
+  ],
+  "parameter_space": {"slope": [1.0, 1.5, 2.0, 2.5], "bias": [0.0, 0.5]},
+  "colonies": ["formulations", "mechanisms", "measurement", "falsification"],
+  "colony_briefs": {
+    "formulations": "Define the main question, controls and alternative formulations.",
+    "mechanisms": "Test scale and bias explanations; use a simpler scale check as a stepping stone.",
+    "measurement": "Check numerical reproduction, group consistency and what the measurements establish.",
+    "falsification": "Try counter-explanations, negative controls and tests that can overturn the leader."
+  },
+  "research_questions": [
+    {"id": "main", "kind": "main", "statement": "Can a predictor pass both overall and worst-group error gates?"},
+    {"id": "scale-check", "kind": "surrogate", "statement": "Does correcting the predictor's slope explain the overall error?",
+     "transfer_test": "Carry the slope hypothesis into the main question and check every group, bias alternatives and all gates."}
+  ],
+  "baseline_hypothesis_ids": ["demo-baseline"],
+  "reflection": {"interval_seconds": 3600, "exploration_share": 0.20, "adversarial_share": 0.20,
+                 "max_total_colonies": 8, "minimum_distinct_trials_to_retire": 3,
+                 "failed_checkpoints_to_retire": 2, "max_winner_groups": 2},
+  "budget": {"max_epochs": 3, "max_candidates": 8, "candidates_per_epoch": 4,
+             "wall_seconds": 10800, "task_seconds": 60, "max_agent_tasks": 4},
+  "seeds": [
+    {"id": "demo-baseline", "colony": "formulations", "question_id": "main", "title": "Unit-slope control",
+     "mechanism": "A unit slope is the simple baseline that a useful successor must improve.",
+     "counter_hypothesis": "The target has a different slope, so the baseline is misspecified.",
+     "parameters": {"slope": 1.0, "bias": 0.0}, "parents": [],
+     "falsification_plan": "Compare overall and worst-group error against registered gates."},
+    {"id": "demo-partial-slope", "colony": "mechanisms", "question_id": "scale-check", "title": "Moderate slope correction",
+     "mechanism": "Increase the slope partway to test whether scale mismatch explains residuals.",
+     "counter_hypothesis": "Bias or group shifts could explain the apparent improvement.",
+     "parameters": {"slope": 1.5, "bias": 0.0}, "parents": [],
+     "falsification_plan": "Inspect chronological groups and independently reproduce every residual."}
+  ]
+}
