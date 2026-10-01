@@ -8,6 +8,18 @@ in one browser page with tabs.
 
 This project is fake-money-only by default. It does not place real Kalshi orders.
 
+## Offline swarm research
+
+The V1-V10 historical research system is in [`offline_research/`](offline_research/). On a second Windows computer, clone this `swarm` branch and run its portable setup:
+
+```powershell
+git clone --branch swarm --single-branch https://github.com/jvelasco2319/kalshi_weather.git
+cd .\kalshi_weather\offline_research
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_research_machine.ps1 -Mode Auto -MirrorPath '\\192.168.1.193\Kalshi\_weather\_llm' -Workers 8
+```
+
+The launcher restores exact data from the private network share, creates the Python environment, audits coverage, and resumes missing public downloads. See [`offline_research/docs/PORTABLE_SETUP_AND_DATA.md`](offline_research/docs/PORTABLE_SETUP_AND_DATA.md) for paid Probalytics and optional local-model switches. It does not start a campaign or place orders.
+
 ## What You Get
 
 - KLAX/LAX temperature observations.
