@@ -29,6 +29,9 @@ live captures and user journals are not published to GitHub.
 ## What you can see
 
 - V10's most likely temperature range, estimated chance, and saved time.
+- **V10 before the trade**: saved latest-run monitoring previews and their
+  HRRR/GEFS issue times. Before the daily forecast is available, the outlook
+  and probability comparison show the newest monitoring preview.
 - Actual LAX temperatures alongside the latest captured HRRR and GEFS mean
   runs, their issue/save times and temperature error scores. A second tab shows
   **GFS, GFS Seamless, NAM, and NBM** beside the same observations.
@@ -59,11 +62,27 @@ nearest LAX report within 30 minutes and require capture before that report.
 | Today's Kalshi prices | Every 30 seconds |
 | Tomorrow's market and airport reports | Every 15 minutes |
 | New HRRR/GEFS run availability | Every 15 minutes; already saved runs are not downloaded again |
+| V10 monitoring preview | Once a new complete HRRR or GEFS run is captured; separate history, never eligible for automatic trades |
 | Other-model comparison snapshot | Daily at/after 6 AM Pacific |
 | UI refresh | Every 15 minutes outside 10 AM–5 PM Pacific; every minute within that window |
 | V10 staging | 17:45 UTC, 15 minutes before the cutoff |
 | Daily V10 decision | 18:00 UTC: 11 AM PDT / 10 AM PST |
 | Pending settlements | Hourly, beginning at noon Pacific the next day |
+
+Monitoring previews keep the frozen V10 fitted weights and pressure transform,
+but use an experimental latest-run input policy. The original valid-time grid
+is retained: four HRRR temperatures and eight GEFS mean/spread pairs. Future
+samples use the latest complete captured cycle; samples already in the past
+retain earlier forecasts, bootstrapping from the original 06Z HRRR/00Z GEFS
+cycles on first startup. Missing required temperatures or ensemble spread means
+no new preview. Actual issue and receipt times are preserved, and pressure
+reports retain the 15-minute availability lag and original selection window.
+
+The registered daily forecast still uses its fixed 06Z HRRR/00Z GEFS inputs
+at 18:00 UTC. Only that on-time forecast can feed the automatic fake-trade
+selector. Monitoring previews cannot overwrite it or enter daily accuracy or
+trade results. Official collection takes priority near the cutoff; new-run
+checks resume afterwards. Neither the model nor its fitted tables are retuned.
 
 Manual refresh displays new results immediately. Slow non-market source jobs
 are deferred around the decision cutoff. Failed requests preserve the last

@@ -129,11 +129,16 @@ function quoteTicker(quote) {
 function quoteLabel(quote) {
   return quote.label || quote.bracket_label || quoteTicker(quote);
 }
+function displayedForecast() {
+  const official = state.forecast || {};
+  if (official.kind === 'primary' && !official.excluded) return official;
+  return state.monitoring_forecast && state.monitoring_forecast.latest || official;
+}
 function forecastMatchesMarket() {
-  return state && state.forecast && state.market && state.forecast.date === state.market.date;
+  return state && state.market && displayedForecast().date === state.market.date;
 }
 function forecastProbability(ticker) {
-  const forecast = state.forecast || {};
+  const forecast = displayedForecast();
   if (!forecastMatchesMarket() || !Array.isArray(forecast.tickers) || !Array.isArray(forecast.probabilities)) return null;
   return number(forecast.probabilities[forecast.tickers.indexOf(ticker)]);
 }
@@ -271,14 +276,14 @@ function forecastWaitStatus() {
 }
 
 function renderOverview() {
-  const forecast = state.forecast || {};
+  const forecast = displayedForecast();
   const market = state.market || {};
   const quotes = marketQuotes();
   const index = topIndex(forecast.probabilities);
   const kind = forecast.kind || 'none';
   const isPrimary = kind === 'primary' && !forecast.excluded;
   const waiting = index < 0 ? forecastWaitStatus() : null;
-  write('forecast-kind', index < 0 ? waiting ? waiting.kind : 'No forecast' : isPrimary ? 'Saved test forecast' : 'Preview \u00b7 excluded from test');
+  write('forecast-kind', index < 0 ? waiting ? waiting.kind : 'No forecast' : isPrimary ? 'Saved test forecast' : kind === 'monitor' ? 'Monitoring preview' : 'Preview \u00b7 excluded from test');
   $('forecast-kind').className = 'pill ' + (isPrimary ? 'primary-pill' : 'preview-pill');
   let forecastLabel = '\u2014';
   if (index >= 0) {
@@ -288,7 +293,7 @@ function renderOverview() {
   }
   write('forecast-bracket', forecastLabel);
   write('forecast-description', index < 0 ? waiting ? waiting.description : 'No V10 forecast is saved yet.' : percent(forecast.probabilities[index]) + ' chance \u00b7 most likely range' + (!forecastMatchesMarket() ? ' for ' + dateText(forecast.date) : ''));
-  write('forecast-time', index < 0 ? waiting ? waiting.detail : 'Load a preview or collect a test forecast.' : 'Captured ' + fullTimeText(forecast.created_at_utc) + (forecast.decision_at_utc ? ' \u00b7 cutoff ' + timeText(forecast.decision_at_utc) : ''));
+  write('forecast-time', index < 0 ? waiting ? waiting.detail : 'Load a preview or collect a test forecast.' : 'Captured ' + fullTimeText(forecast.created_at_utc) + (forecast.decision_at_utc ? ' \u00b7 ' + (kind === 'monitor' ? 'fake-trade check ' : 'cutoff ') + timeText(forecast.decision_at_utc) : ''));
 
   const obs = validSeries(state.weather && state.weather.observations);
   const latest = obs.length ? obs[obs.length - 1] : null;
@@ -308,7 +313,7 @@ function renderOverview() {
 function renderBrackets() {
   const quotes = marketQuotes();
   const market = state.market || {};
-  const forecast = state.forecast || {};
+  const forecast = displayedForecast();
   const tbody = $('bracket-rows');
   tbody.replaceChildren();
   if (!quotes.length) {
@@ -342,7 +347,7 @@ function renderBrackets() {
   drawProbabilityComparison(quotes, probabilities);
   write('probability-date', dateText(market.date || state.date));
   const availableForecast = topIndex(forecast.probabilities) >= 0;
-  write('probability-subtitle', availableForecast && !forecastMatchesMarket() ? 'The saved forecast is for ' + dateText(forecast.date) + '. It is not compared with this market.' : availableForecast && (forecast.kind !== 'primary' || forecast.excluded) ? 'V10 preview \u00b7 excluded from the test. Captured ' + fullTimeText(forecast.created_at_utc) + '.' : 'Compare V10\'s chance with the market, then see the quoted entry price.');
+  write('probability-subtitle', availableForecast && !forecastMatchesMarket() ? 'The saved forecast is for ' + dateText(forecast.date) + '. It is not compared with this market.' : forecast.kind === 'monitor' ? 'Monitoring preview from newer runs \u00b7 excluded from daily scores and trade decisions. Captured ' + fullTimeText(forecast.created_at_utc) + '.' : availableForecast && (forecast.kind !== 'primary' || forecast.excluded) ? 'V10 preview \u00b7 excluded from the test. Captured ' + fullTimeText(forecast.created_at_utc) + '.' : 'Compare V10\'s chance with the market, then see the quoted entry price.');
   write('market-probability-note', probabilities ? 'Market chance is the normalized midpoint of complete two-sided YES quotes.' : 'Market probability unavailable: at least one range lacks a valid two-sided quote. Missing quotes stay blank.');
 }
 
@@ -765,13 +770,33 @@ function renderTest() {
   write('reference-note', state.reference_sha ? 'Layout inspired by your GitHub main UI (' + String(state.reference_sha).slice(0, 7) + '), reduced to one page.' : 'One page for the market, weather, and recorded trades.');
 }
 
+function renderMonitoring() {
+  const monitoring = state.monitoring_forecast || {};
+  const history = Array.isArray(monitoring.history) ? monitoring.history : [];
+  write('monitoring-summary', history.length ? history.length + ' saved preview' + (history.length === 1 ? '' : 's') + ' \u00b7 last ' + timeText(history[history.length - 1].created_at_utc) : 'Waiting for the first estimate');
+  write('monitoring-note', 'Each new complete HRRR or GEFS run triggers a V10 preview with the same saved weights and newer forecast inputs. This timing is experimental. The automatic fake-trade check stays at 18:00 UTC (' + timeText(state.date + 'T18:00:00Z') + ' today) and uses the official daily forecast. Earlier forecast samples are retained once their target time passes. Official capture takes priority near the cutoff.');
+  const pressure = monitoring.latest && monitoring.latest.pressure_evidence;
+  if (pressure) $('monitoring-note').textContent += pressure.pressure_missing ? ' Pressure was unavailable for the latest preview; V10\'s saved neutral adjustment was used.' : ' Latest pressure adjustment: ' + pressure.pressure_and_flow + '.';
+  write('monitoring-error', monitoring.error || ''); show('monitoring-error', Boolean(monitoring.error));
+  const rows = $('monitoring-rows'); rows.replaceChildren();
+  history.slice().reverse().forEach(saved => {
+    const index = topIndex(saved.probabilities), row = element('tr');
+    [fullTimeText(saved.created_at_utc), fullTimeText(saved.source_cycles.hrrr), fullTimeText(saved.source_cycles.gefs), saved.labels[index] || saved.tickers[index], percent(saved.probabilities[index])].forEach(value => row.append(element('td', '', value)));
+    rows.append(row);
+  });
+  if (!history.length) {
+    const row = element('tr'), cell = element('td', 'empty-table', 'No monitoring estimate saved yet. New runs are checked every 15 minutes.');
+    cell.colSpan = 5; row.append(cell); rows.append(row);
+  }
+}
+
 function render() {
   renderStatus();
   renderAutomaticPractice();
-  const renderKey = JSON.stringify([state.market, state.tomorrow_market, state.month, state.monitoring_months, state.forecast, state.weather, state.trades, state.test, state.reference_sha]);
+  const renderKey = JSON.stringify([state.market, state.tomorrow_market, state.month, state.monitoring_months, state.forecast, state.monitoring_forecast, state.weather, state.trades, state.test, state.reference_sha]);
   if (renderKey === lastRenderKey) {if ($('trade-dialog').open) updateTradeForm(); return;}
   lastRenderKey = renderKey;
-  renderOverview(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderHourlyForecasts(); renderComparison(); renderAccounts(); renderTrades(); renderTest();
+  renderOverview(); renderMonitoring(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderHourlyForecasts(); renderComparison(); renderAccounts(); renderTrades(); renderTest();
   if ($('trade-dialog').open) updateTradeForm();
 }
 async function parseResponse(response) {

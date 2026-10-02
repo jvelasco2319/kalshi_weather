@@ -25,6 +25,7 @@ from v10_online.transport import KALSHI, PublicClient
 from v10_online.weather import OBS_ENDPOINT, OBS_FIELDS, STATIONS
 from .comparison import ComparisonStore
 from .hourly_forecasts import HourlyForecastStore
+from .monitoring_forecast import MonitoringForecastStore
 from . import practice
 from .journal_lock import journal_lock
 from .monitoring import tomorrow_day, month_progress, month_ids
@@ -187,7 +188,7 @@ def _weather_context(body, day, receipt):
 
 
 class DashboardService:
-    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None, hourly_forecast_store=None):
+    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None, hourly_forecast_store=None, monitoring_forecast_store=None):
         self.root = Path(root).resolve()
         self._now = now or (lambda: datetime.now(UTC))
         self._client_factory = client_factory or (lambda archive: PublicClient(
@@ -197,6 +198,7 @@ class DashboardService:
         self._registration = self._registration_check(self.root)
         self._comparison = comparison_store or ComparisonStore(self.root, now=self._now)
         self._hourly_forecasts = hourly_forecast_store or HourlyForecastStore(self.root, now=self._now)
+        self._monitoring_forecasts = monitoring_forecast_store or MonitoringForecastStore(self.root, now=self._now)
         self._markets = {}
         self._market_bindings = {}
         self._weather_bindings = {}
@@ -811,6 +813,7 @@ class DashboardService:
                       for month_id in month_ids(now, self._registration["config"])]
             notice = self._notice or ("Diagnostic preview; excluded from the daily forecast test." if forecast["kind"] == "preview" else None)
             return {"now_utc": now.isoformat(), "date": day, "market": market, "forecast": forecast,
+                    "monitoring_forecast": self._monitoring_forecasts.state(day),
                     "weather": weather, "trades": self._trades(now), "test": deepcopy(self._test),
                     "automatic_practice": self.automatic_practice_state(now),
                     "tomorrow_market": tomorrow, "month": month, "monitoring_months": months,
@@ -824,7 +827,21 @@ class DashboardService:
         if action == "comparison":
             return self._comparison.refresh(day)
         if action == "forecasts":
-            return self._hourly_forecasts.refresh(day)
+            result = self._hourly_forecasts.refresh(day)
+            with self._lock:
+                live = self._hourly_forecasts.state(day, [])
+                market = deepcopy(self._markets.get(day, {}))
+                market_bindings = deepcopy(self._market_bindings.get(day, {}))
+                weather_bindings = deepcopy(self._weather_bindings) if self._observed.get("date") == day else {}
+            try:
+                monitor = self._monitoring_forecasts.refresh(day, live["models"], market.get("contracts", []),
+                    [q["label"] for q in market.get("quotes", [])],
+                    market_bindings=market_bindings, weather_bindings=weather_bindings)
+                result["monitoring_status"] = monitor["status"]
+            except Exception:
+                # A missing monitoring input must not back off independent curve checks.
+                result["monitoring_status"] = "MONITORING_INPUT_UNAVAILABLE"
+            return result
         if action == "preview":
             result = runner.preview(self.root, day)
         elif action == "run":

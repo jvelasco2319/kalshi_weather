@@ -156,7 +156,7 @@ class AutomaticTracking:
         # Display forecasts check for new cycles independently. Leave a margin
         # for the frozen daily capture; this job never calls the V10 runner.
         cutoff = datetime.fromisoformat(now.astimezone(PACIFIC).date().isoformat()+"T18:00:00+00:00")
-        if "hourly_forecasts" in state.get("weather", {}) and not cutoff-timedelta(minutes=30) <= now <= cutoff+timedelta(minutes=3):
+        if "hourly_forecasts" in state.get("weather", {}) and not cutoff-timedelta(minutes=21) <= now <= cutoff+timedelta(minutes=3):
             with self._lock:
                 due = now >= datetime.fromisoformat(self._hourly_forecasts["next_at_utc"])
             if due:

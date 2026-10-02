@@ -31,3 +31,9 @@
 @media(max-width:760px){.tracking-strip{align-items:flex-start;gap:12px}.tracking-strip button{padding:8px;font-size:11px;min-height:36px}.weather-context-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.weather-context-metrics strong{font-size:15px}.quote-exit{max-width:140px;margin-left:auto;font-size:9px}}
 @media(max-width:760px){.probability-chart{grid-template-columns:34px minmax(0,1fr);padding-bottom:54px}.probability-axis,.probability-plot{height:185px}.probability-axis span{font-size:10px;right:9px}.probability-groups{gap:4px}.probability-pair{gap:6px;padding:0 1px}.probability-value{font-size:9px}.probability-range{font-size:10px;line-height:1.35}.entry-price-heading{align-items:flex-start;font-size:11px}.entry-price-heading span:last-child{max-width:150px;font-size:9px;text-align:right}}
 @media(max-width:420px){.probability-chart{grid-template-columns:30px minmax(0,1fr)}.probability-groups{gap:2px}.probability-pair{gap:5px}.probability-value{font-size:8px}.probability-range{font-size:9px}.entry-price-table th:first-child{width:50%}.entry-price-table .quote-column{width:25%}}
+/* The preview history stays compact and scrolls on small screens. */
+.monitoring-content { display: block; }
+.monitoring-content p { margin: 0 0 12px; }
+.monitoring-content .table-scroll { overflow-x: auto; }
+#monitoring-details { margin-bottom: 20px; }
+#monitoring-rows td { white-space: nowrap; padding: 10px 12px; font-size: 12px; }
