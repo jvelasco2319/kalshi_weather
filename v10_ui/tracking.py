@@ -42,6 +42,9 @@ class AutomaticTracking:
                                "completed_count": 0, "consecutive_failures": 0, "error": None}
                          for name, interval in CADENCES.items()}
         self._daily = {}
+        self._hourly_forecasts = {"interval_seconds": 900, "next_at_utc": now.isoformat(),
+                                  "last_attempt_at_utc": None, "last_success_at_utc": None,
+                                  "completed_count": 0, "consecutive_failures": 0, "error": None}
         self._model = {"action": None, "last_attempt_at_utc": None, "error": None}
         self._practice_error = None
         self.source_running = None
@@ -78,7 +81,8 @@ class AutomaticTracking:
                     "timezone": "America/Los_Angeles", "ui_interval_seconds": display_interval(now),
                     "ui_next_at_utc": next_boundary(now, display_interval(now)).isoformat(),
                     "source_running": self.source_running,
-                    "sources": {key: dict(value) for key, value in self._sources.items()},
+                    "sources": {**{key: dict(value) for key, value in self._sources.items()},
+                                "forecasts": dict(self._hourly_forecasts)},
                     "daily_forecast": dict(self._model), "practice_error": self._practice_error,
                     "continues_without_browser": True}
 
@@ -122,7 +126,7 @@ class AutomaticTracking:
         # checking settlements. Check the file directly; do not wait for that
         # network job or for a browser refresh to finish.
         with self.app.lock:
-            available = not self.app.automatic_busy and (not self.app.job["busy"] or self.app.job["action"] in {"run", "comparison", "preview"})
+            available = not self.app.automatic_busy and (not self.app.job["busy"] or self.app.job["action"] in {"run", "comparison", "preview", "forecasts"})
             if available:
                 try:
                     self.app.service.evaluate_automatic_practice()
@@ -149,6 +153,21 @@ class AutomaticTracking:
                             self._daily[key] = {"count": attempt["count"]+1,
                                                 "next": now+timedelta(seconds=60 if action == "run" else 3600)}
                             self._model = {"action": action, "last_attempt_at_utc": now.isoformat(), "error": None}
+        # Display forecasts check for new cycles independently. Leave a margin
+        # for the frozen daily capture; this job never calls the V10 runner.
+        cutoff = datetime.fromisoformat(now.astimezone(PACIFIC).date().isoformat()+"T18:00:00+00:00")
+        if "hourly_forecasts" in state.get("weather", {}) and not cutoff-timedelta(minutes=30) <= now <= cutoff+timedelta(minutes=3):
+            with self._lock:
+                due = now >= datetime.fromisoformat(self._hourly_forecasts["next_at_utc"])
+            if due:
+                with self._lock:
+                    self._hourly_forecasts["last_attempt_at_utc"] = now.isoformat()
+                    self._hourly_forecasts["next_at_utc"] = next_boundary(now, 900).isoformat()
+                try:
+                    self.app.start("forecasts", automatic=True)
+                except RuntimeError:
+                    with self._lock:
+                        self._hourly_forecasts["next_at_utc"] = now.isoformat()
         # Weather is separate from prices: 30-second price checks do not redownload weather.
         cutoff = datetime.fromisoformat(now.astimezone(PACIFIC).date().isoformat()+"T18:00:00+00:00")
         critical_window = cutoff-timedelta(minutes=2) <= now <= cutoff+timedelta(minutes=2)
@@ -170,7 +189,7 @@ class AutomaticTracking:
                     source["next_at_utc"] = next_boundary(now, source["interval_seconds"]).isoformat()
                 continue
             with self.app.lock:
-                if self.app.closed or self.app.automatic_busy or (self.app.job["busy"] and self.app.job["action"] not in {"run", "comparison", "preview"}):
+                if self.app.closed or self.app.automatic_busy or (self.app.job["busy"] and self.app.job["action"] not in {"run", "comparison", "preview", "forecasts"}):
                     return
                 self.app.automatic_busy = True
             with self._lock:
@@ -199,6 +218,17 @@ class AutomaticTracking:
             return
 
     def completed(self, action, error):
+        if action == "forecasts":
+            now = self._now()
+            with self._lock:
+                source = self._hourly_forecasts
+                if error:
+                    source["consecutive_failures"] += 1
+                    source["error"] = error
+                    source["next_at_utc"] = (now+timedelta(seconds=min(3600, 600*2**min(3, source["consecutive_failures"]-1)))).isoformat()
+                else:
+                    source.update(last_success_at_utc=now.isoformat(), completed_count=source["completed_count"]+1,
+                                  consecutive_failures=0, error=None, next_at_utc=next_boundary(now, 900).isoformat())
         with self._lock:
             if action in {"run", "comparison"}:
                 self._model["error"] = error

@@ -24,6 +24,7 @@ from v10_online.storage import hash_file, read_verified, write_immutable
 from v10_online.transport import KALSHI, PublicClient
 from v10_online.weather import OBS_ENDPOINT, OBS_FIELDS, STATIONS
 from .comparison import ComparisonStore
+from .hourly_forecasts import HourlyForecastStore
 from . import practice
 from .journal_lock import journal_lock
 from .monitoring import tomorrow_day, month_progress, month_ids
@@ -186,7 +187,7 @@ def _weather_context(body, day, receipt):
 
 
 class DashboardService:
-    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None):
+    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None, hourly_forecast_store=None):
         self.root = Path(root).resolve()
         self._now = now or (lambda: datetime.now(UTC))
         self._client_factory = client_factory or (lambda archive: PublicClient(
@@ -195,6 +196,7 @@ class DashboardService:
         self._registration_check = registration_check or runner.registration
         self._registration = self._registration_check(self.root)
         self._comparison = comparison_store or ComparisonStore(self.root, now=self._now)
+        self._hourly_forecasts = hourly_forecast_store or HourlyForecastStore(self.root, now=self._now)
         self._markets = {}
         self._market_bindings = {}
         self._weather_bindings = {}
@@ -796,6 +798,7 @@ class DashboardService:
                                          if r.get("climate_date") == day and r.get("field_id") == "temperature_2m" and r.get("model") == model
                                          and r.get("member_id") == member and not r.get("is_missing")], key=lambda r: r["time"])
             weather["comparison"] = self._comparison.state(day, weather["observations"])
+            weather["hourly_forecasts"] = self._hourly_forecasts.state(day, weather["observations"])
             tomorrow = deepcopy(self._markets.get(tomorrow_day(now), {"date": tomorrow_day(now), "quotes": [], "status": "unavailable", "updated_at_utc": None}))
             tomorrow.pop("raw_markets", None)
             tomorrow.pop("contracts", None)
@@ -820,6 +823,8 @@ class DashboardService:
             return self.refresh()
         if action == "comparison":
             return self._comparison.refresh(day)
+        if action == "forecasts":
+            return self._hourly_forecasts.refresh(day)
         if action == "preview":
             result = runner.preview(self.root, day)
         elif action == "run":

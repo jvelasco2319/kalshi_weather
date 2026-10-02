@@ -38,13 +38,14 @@ class Application:
         return value
 
     def start(self, action: str, *, automatic=False):
-        if action not in {"refresh", "preview", "run", "results", "comparison"}:
-            raise ValueError("Choose refresh, preview, run, results or comparison")
+        if action not in {"refresh", "preview", "run", "results", "comparison", "forecasts"}:
+            raise ValueError("Choose refresh, preview, run, results, comparison or forecasts")
         messages = {"refresh": "Updating public market prices and weather observations...",
                     "preview": "Collecting a weather preview. This can take a minute...",
                     "run": "Collecting today's fixed test forecast. Capture may wait for the cutoff...",
                     "results": "Checking completed test dates for settlement...",
-                    "comparison": "Saving GFS, GFS Seamless, NAM and NBM temperatures..."}
+                    "comparison": "Saving GFS, GFS Seamless, NAM and NBM temperatures...",
+                    "forecasts": "Checking available HRRR and GEFS forecast runs..."}
         with self.lock:
             if self.closed or self.job["busy"] or (self.automatic_busy and not automatic):
                 raise RuntimeError("An update is already running. Please wait for it to finish.")
@@ -62,7 +63,8 @@ class Application:
             messages = {"refresh": "Prices and observations updated.",
                         "preview": "Preview saved. It is excluded from test results.",
                         "results": "Test settlement check complete.",
-                        "comparison": "Other-model forecasts saved. Missing feeds are marked below."}
+                        "comparison": "Other-model forecasts saved. Missing feeds are marked below.",
+                        "forecasts": "HRRR and GEFS forecast check complete."}
             message = messages.get(action, str(status).replace("_", " ").capitalize())
             with self.lock:
                 self.job = {"busy": False, "action": action, "message": message, "error": None}

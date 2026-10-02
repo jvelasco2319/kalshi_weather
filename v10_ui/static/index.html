@@ -52,11 +52,15 @@
       <div class="main-grid">
         <section class="card temperature-card" aria-labelledby="temperature-heading">
           <div class="card-heading"><div><h2 id="temperature-heading">Temperature through the day</h2><p id="temperature-description">Actual readings beside the two weather forecasts.</p></div><span class="unit-label">&deg;F</span></div>
-          <div class="graph-tabs" role="tablist" aria-label="Weather model graph"><button id="v10-graph-tab" type="button" role="tab" aria-selected="true" aria-controls="v10-graph-panel" tabindex="0" data-graph="v10">V10 inputs</button><button id="comparison-graph-tab" type="button" role="tab" aria-selected="false" aria-controls="comparison-graph-panel" tabindex="-1" data-graph="comparison">Other models</button></div>
+          <div class="graph-tabs" role="tablist" aria-label="Weather model graph"><button id="v10-graph-tab" type="button" role="tab" aria-selected="true" aria-controls="v10-graph-panel" tabindex="0" data-graph="v10">HRRR + GEFS</button><button id="comparison-graph-tab" type="button" role="tab" aria-selected="false" aria-controls="comparison-graph-panel" tabindex="-1" data-graph="comparison">Other models</button></div>
           <div id="v10-graph-panel" role="tabpanel" aria-labelledby="v10-graph-tab" tabindex="0">
-            <div class="chart-legend" aria-label="Chart legend"><span><i class="legend-dot observed-dot"></i>Observed</span><span><i class="legend-line hrrr-line"></i>HRRR forecast</span><span><i class="legend-line gefs-line"></i>GEFS forecast</span></div>
+            <div class="chart-legend" aria-label="Chart legend"><span><i class="legend-dot observed-dot"></i>Observed</span><span><i class="legend-line hrrr-line"></i>HRRR forecast</span><span><i class="legend-line gefs-line"></i>GEFS mean</span></div>
             <div id="temperature-chart" class="temperature-chart" role="img" aria-label="Temperature chart loading"><div class="chart-empty"><span class="empty-icon">~</span><strong>No weather readings yet</strong><span>Refresh the market to load observations.</span></div></div>
             <p class="chart-note" id="weather-note">Forecast lines are weather inputs; the V10 probabilities are shown below.</p>
+            <div class="comparison-chart-actions"><button class="text-button" type="button" data-action="forecasts">Check HRRR + GEFS <span aria-hidden="true">&rarr;</span></button><p>New runs checked every 15 minutes.</p></div>
+            <div class="comparison-score-heading"><span>Today's average temperature error <span class="comparison-score-unit">(&deg;F)</span></span><span>Lower is better</span></div>
+            <div id="hourly-forecast-scores" class="comparison-scores"></div>
+            <p class="chart-note comparison-rules">The curves show the latest complete captured runs. Error scores use the first saved forecast for each time, matched only to later observations. These updates do not change the daily V10 prediction.</p>
           </div>
           <div id="comparison-graph-panel" role="tabpanel" aria-labelledby="comparison-graph-tab" tabindex="0" hidden>
             <div id="comparison-legend" class="chart-legend" aria-label="Other model chart legend"><span><i class="legend-dot observed-dot"></i>Observed</span></div>

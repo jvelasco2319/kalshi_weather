@@ -103,6 +103,45 @@ def test_prices_repeat_at_30_seconds_without_redownloading_weather(clocked):
     assert app.service.calls[-3:] == ["weather", "market", "tomorrow"]
 
 
+def test_live_forecast_checks_repeat_at_quarter_hour_and_keep_prices_running(clocked):
+    app, tracking, clock = clocked
+    original_state = app.service.state
+    def state():
+        value = original_state()
+        value["weather"]["hourly_forecasts"] = {"models": []}
+        return value
+    app.service.state = state
+    tracking.tick()
+    assert app.starts == ["forecasts"]
+    tracking.tick()
+    assert "market" in app.service.calls  # Background prices continue during weather downloads.
+    app.job = {"busy": False, "action": None}
+    tracking.completed("forecasts", None)
+    clock[0] += timedelta(minutes=14, seconds=59)
+    tracking.tick()
+    assert app.starts == ["forecasts"]
+    clock[0] += timedelta(seconds=1)
+    tracking.tick()
+    assert app.starts == ["forecasts", "forecasts"]
+    assert tracking.state()["sources"]["forecasts"]["interval_seconds"] == 900
+
+
+def test_live_forecast_check_leaves_daily_capture_window_clear(clocked):
+    app, tracking, clock = clocked
+    original_state = app.service.state
+    def state():
+        value = original_state()
+        value["weather"]["hourly_forecasts"] = {"models": []}
+        return value
+    app.service.state = state
+    clock[0] = datetime(2026, 10, 2, 17, 40, tzinfo=timezone.utc)
+    tracking.tick()
+    assert not app.starts
+    clock[0] = datetime(2026, 10, 2, 17, 45, tzinfo=timezone.utc)
+    tracking.tick()
+    assert app.starts == ["run"]
+
+
 def test_source_collection_continues_during_fixed_forecast_wait(clocked):
     app, tracking, _ = clocked
     app.job = {"busy": True, "action": "run"}

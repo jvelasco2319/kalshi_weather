@@ -210,7 +210,7 @@ function renderTracking() {
   const enabled = Boolean(tracking.enabled && tracking.running);
   const interval = tracking.ui_interval_seconds === 60 ? 'every minute' : 'every 15 minutes';
   write('tracking-status', enabled ? 'Automatic tracking on \u00b7 screen updates ' + interval : 'Automatic tracking paused');
-  write('tracking-timing', 'Screen refreshed ' + timeText(screenUpdatedAt) + ' \u00b7 next ' + timeText(nextScreenRefresh(new Date()).toISOString()) + '. Today\'s prices every 30 seconds; tomorrow\'s market and weather every 15 minutes. 10 AM\u20135 PM Pacific: screen updates every minute.');
+  write('tracking-timing', 'Screen refreshed ' + timeText(screenUpdatedAt) + ' \u00b7 next ' + timeText(nextScreenRefresh(new Date()).toISOString()) + '. Today\'s prices every 30 seconds; tomorrow\'s market, weather and new HRRR/GEFS runs checked every 15 minutes. 10 AM\u20135 PM Pacific: screen updates every minute.');
   write('tracking-toggle', enabled ? 'Pause tracking' : 'Resume tracking');
   $('tracking-toggle').disabled = !state.tracking;
   const errors = Object.entries(tracking.sources || {}).filter(([, source]) => source.error).map(([name, source]) => name + ': ' + source.error);
@@ -424,8 +424,11 @@ function drawTemperature(comparisonView = false) {
     ...comparisonModels().map((model, index) => ({name: model.label || model.id || 'Unnamed model', data: comparisonMatchesDay() ? validSeries(model.points) : [], color: comparisonColor(model, index), width: 2, dashed: true, alias: Boolean(model.alias_of)}))
   ] : [
     {name: 'Observed', data: validSeries(weather.observations), color: '#66dfc2', width: 3, dashed: false},
-    {name: 'HRRR forecast', data: validSeries(weather.hrrr), color: '#88aefb', width: 2, dashed: true},
-    {name: 'GEFS forecast', data: validSeries(weather.gefs), color: '#edc77f', width: 2, dashed: true}
+    ...['hrrr', 'gefs'].map(id => {
+      const feed = weather.hourly_forecasts || {};
+      const model = (feed.models || []).find(m => m.id === id) || {};
+      return {name: id === 'hrrr' ? 'HRRR forecast' : 'GEFS mean', data: feed.date === state.date ? validSeries(model.points) : [], color: id === 'hrrr' ? '#88aefb' : '#edc77f', width: 2, dashed: true};
+    })
   ];
   const points = series.flatMap(s => s.data);
   container.replaceChildren();
@@ -478,10 +481,28 @@ function drawTemperature(comparisonView = false) {
   container.append(svg);
   container.setAttribute('aria-label', 'Temperature over time in Pacific time. ' + series.map(s => s.name + ': ' + s.data.length + ' points').join('. ') + '. Observed range ' + temperature(series[0].data.length ? Math.min(...series[0].data.map(p => p.temperature_f)) : null) + ' to ' + temperature(series[0].data.length ? Math.max(...series[0].data.map(p => p.temperature_f)) : null) + '.');
   const dates = new Set(points.map(p => dateFormatter.format(validTime(p.time))));
-  const waiting = !comparisonView && !series[1].data.length && !series[2].data.length ? forecastWaitStatus() : null;
-  const scheduleNote = waiting && waiting.collectionStart ? ' HRRR/GEFS lines appear after today\'s inputs are collected; automatic collection starts at ' + timeText(waiting.collectionStart) + '.' : '';
-  const note = 'Forecast lines are weather inputs, not the V10 probability forecast.' + scheduleNote + (dates.size > 1 ? ' Points span ' + [...dates].join(' and ') + '.' : '') + (weather.updated_at_utc ? ' Data saved ' + fullTimeText(weather.updated_at_utc) + '.' : '');
+  const live = weather.hourly_forecasts || {};
+  const note = 'Latest available weather forecasts. HRRR runs hourly; GEFS mean runs every six hours. V10 keeps its fixed daily inputs.' + (live.updated_at_utc ? ' Last forecast check ' + fullTimeText(live.updated_at_utc) + '.' : ' Waiting for the first forecast check.') + (dates.size > 1 ? ' Points span ' + [...dates].join(' and ') + '.' : '');
   if (!comparisonView) write('weather-note', note);
+}
+
+function renderHourlyForecasts() {
+  const feed = state.weather && state.weather.hourly_forecasts || {};
+  const rows = $('hourly-forecast-scores'); rows.replaceChildren();
+  (feed.models || []).forEach(model => {
+    const row = element('div', 'comparison-score');
+    const name = element('span', 'comparison-score-name');
+    const dot = element('i', 'legend-dot'); dot.style.backgroundColor = model.color;
+    name.append(dot, document.createTextNode(model.label || model.id));
+    const error = number(model.metrics && model.metrics.mae_f);
+    const matched = number(model.metrics && model.metrics.matched_points) || 0;
+    row.append(name, element('strong', 'comparison-score-value' + (matched ? '' : ' muted'), matched && error !== null ? error.toFixed(2) + '\u00b0' : '\u2014'));
+    const available = Array.isArray(model.points) && model.points.length;
+    const detail = (available ? 'Issued ' + fullTimeText(model.issue_time_utc) + ' \u00b7 saved ' + timeText(model.retrieved_at_utc) : model.message || 'Forecast not available yet') + (matched ? ' \u00b7 ' + matched + ' matched readings' : ' \u00b7 no score yet') + (model.retained_previous_run ? ' \u00b7 keeping the last available run' : '');
+    row.append(element('div', 'comparison-score-detail' + (available ? '' : ' warning'), detail));
+    rows.append(row);
+  });
+  if (!(feed.models || []).length) rows.append(element('p', 'comparison-empty', 'Waiting for the first HRRR/GEFS forecast check.'));
 }
 
 function renderComparison() {
@@ -540,7 +561,7 @@ function renderComparison() {
 
 function selectGraph(view, focus = false) {
   selectedGraph = view === 'comparison' ? 'comparison' : 'v10';
-  write('temperature-description', selectedGraph === 'v10' ? 'Actual readings beside the two weather forecasts.' : 'The same actual readings beside the comparison forecasts.');
+  write('temperature-description', selectedGraph === 'v10' ? 'Actual readings beside the latest HRRR and GEFS forecasts.' : 'The same actual readings beside the comparison forecasts.');
   ['v10', 'comparison'].forEach(kind => {
     const button = $(kind + '-graph-tab');
     const selected = kind === selectedGraph;
@@ -750,7 +771,7 @@ function render() {
   const renderKey = JSON.stringify([state.market, state.tomorrow_market, state.month, state.monitoring_months, state.forecast, state.weather, state.trades, state.test, state.reference_sha]);
   if (renderKey === lastRenderKey) {if ($('trade-dialog').open) updateTradeForm(); return;}
   lastRenderKey = renderKey;
-  renderOverview(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderComparison(); renderAccounts(); renderTrades(); renderTest();
+  renderOverview(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderHourlyForecasts(); renderComparison(); renderAccounts(); renderTrades(); renderTest();
   if ($('trade-dialog').open) updateTradeForm();
 }
 async function parseResponse(response) {
@@ -782,7 +803,7 @@ async function runAction(action) {
   actionError = '';
   localBusy = true;
   renderStatus();
-  write('job-banner', action === 'preview' ? 'Loading a weather preview. This can take a minute; the preview will be excluded from the test.' : action === 'comparison' ? 'Saving the other weather-model forecasts. Scores will use later observations only.' : action === 'run' ? 'Collecting the frozen test forecast within its registered cutoff...' : action === 'results' ? 'Checking official results for saved test forecasts...' : 'Refreshing public market quotes and LAX observations...');
+  write('job-banner', action === 'forecasts' ? 'Checking for new HRRR and GEFS weather forecasts...' : action === 'preview' ? 'Loading a weather preview. This can take a minute; the preview will be excluded from the test.' : action === 'comparison' ? 'Saving the other weather-model forecasts. Scores will use later observations only.' : action === 'run' ? 'Collecting the frozen test forecast within its registered cutoff...' : action === 'results' ? 'Checking official results for saved test forecasts...' : 'Refreshing public market quotes and LAX observations...');
   show('job-banner', true);
   try {
     await parseResponse(await fetch('/api/action', {method: 'POST', credentials: 'same-origin', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({action, token: state.session_token})}));

@@ -29,7 +29,8 @@ live captures and user journals are not published to GitHub.
 ## What you can see
 
 - V10's most likely temperature range, estimated chance, and saved time.
-- Actual LAX temperatures alongside HRRR/GEFS, with a second chart tab for
+- Actual LAX temperatures alongside the latest captured HRRR and GEFS mean
+  runs, their issue/save times and temperature error scores. A second tab shows
   **GFS, GFS Seamless, NAM, and NBM** beside the same observations.
 - Clouds, cloud ceiling, wind, pressure difference, and temperature trend.
 - V10 versus Kalshi implied probabilities for the six ranges, plus YES/NO
@@ -45,6 +46,11 @@ live captures and user journals are not published to GitHub.
 GFS Seamless uses the same NOAA GFS run, not an independent model. Comparison
 errors count only forecasts saved before their matching observations. These
 curves and current weather displays do not refit or revise V10.
+The HRRR/GEFS graph uses independent public NOAA captures, not V10 previews.
+Only new complete runs are downloaded; an unavailable new run leaves the last
+available curve visible. Scores retain the first saved forecast for each valid
+time, so newer runs cannot rewrite earlier errors. Observation matches use the
+nearest LAX report within 30 minutes and require capture before that report.
 
 ## Automatic timing
 
@@ -52,6 +58,7 @@ curves and current weather displays do not refit or revise V10.
 | --- | --- |
 | Today's Kalshi prices | Every 30 seconds |
 | Tomorrow's market and airport reports | Every 15 minutes |
+| New HRRR/GEFS run availability | Every 15 minutes; already saved runs are not downloaded again |
 | Other-model comparison snapshot | Daily at/after 6 AM Pacific |
 | UI refresh | Every 15 minutes outside 10 AM–5 PM Pacific; every minute within that window |
 | V10 staging | 17:45 UTC, 15 minutes before the cutoff |
@@ -61,6 +68,10 @@ curves and current weather displays do not refit or revise V10.
 Manual refresh displays new results immediately. Slow non-market source jobs
 are deferred around the decision cutoff. Failed requests preserve the last
 successful values, show an error, and use bounded retries.
+HRRR publishes hourly runs; GEFS publishes 00/06/12/18 UTC runs, with publication
+delays. Each display capture is bounded to 100 requests, 128 MiB and three
+minutes. Automatic display captures are deferred from 30 minutes before the
+V10 cutoff until three minutes after it so the daily decision keeps priority.
 
 The registered window is **October 2, 2026–January 9, 2027**. October monitoring
 covers **October 2–31: 30 eligible dates**. October 1's late preview is excluded.

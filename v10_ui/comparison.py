@@ -79,7 +79,7 @@ class _NoRedirect(HTTPRedirectHandler):
 
 
 class ComparisonClient:
-    def __init__(self, archive, *, max_requests=100, max_bytes=256*1024*1024, deadline_seconds=600):
+    def __init__(self, archive, *, max_requests=100, max_bytes=256*1024*1024, deadline_seconds=600, url_validator=validate_url):
         self.archive = Path(archive)
         self.max_requests = min(int(max_requests), 100)
         self.max_bytes = min(int(max_bytes), 256*1024*1024)
@@ -87,9 +87,10 @@ class ComparisonClient:
         self.receipts = []
         self.requests = self.bytes = 0
         self._opener = build_opener(ProxyHandler({}), _NoRedirect())
+        self._validate_url = url_validator
 
     def fetch(self, url, *, maximum_bytes, headers=None):
-        validate_url(url)
+        self._validate_url(url)
         supplied = dict(headers or {})
         if url.endswith(".idx"):
             if supplied:
