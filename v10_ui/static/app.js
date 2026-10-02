@@ -247,6 +247,29 @@ function renderWeatherContext() {
   write('weather-context-note', 'Pressure difference = LAX minus Daggett' + (context.daggett ? ' (Daggett report ' + timeText(context.daggett.observed_at_utc) + ')' : '') + '. Reports retain a 15-minute availability delay. The high in saved readings is preliminary; settlement follows Kalshi\'s official result. These conditions do not change the fixed V10 prediction.');
 }
 
+function forecastWaitStatus() {
+  const test = state.test || {};
+  const day = state.date;
+  if (!day || !test.first_date || !test.last_date || day < test.first_date || day > test.last_date) return null;
+  const cutoff = validTime(day + 'T18:00:00Z');
+  const now = validTime(state.now_utc) || new Date();
+  if (!cutoff) return null;
+  const starts = new Date(cutoff.getTime() - 15 * 60000);
+  if (now < cutoff && state.tracking && state.tracking.enabled === false) {
+    return {kind: 'Tracking paused', description: "Today's V10 forecast has not been collected.", detail: 'Resume tracking before ' + timeText(cutoff.toISOString()) + ' to collect the scheduled forecast.'};
+  }
+  if (now < new Date(cutoff.getTime() + 60000) && state.job && state.job.busy && state.job.action === 'run') {
+    return {kind: 'Collecting forecast', description: "Today's V10 inputs are being collected.", detail: 'Daily decision: ' + timeText(cutoff.toISOString()) + '. The saved forecast appears after the cutoff.'};
+  }
+  if (now < cutoff) {
+    return {kind: 'Scheduled', description: "Today's V10 forecast is scheduled for " + timeText(cutoff.toISOString()) + '.', detail: 'Automatic collection starts at ' + timeText(starts.toISOString()) + '. Market prices and observations update separately.', collectionStart: starts.toISOString()};
+  }
+  if (now < new Date(cutoff.getTime() + 60000)) {
+    return {kind: 'Awaiting forecast', description: 'Waiting for the on-time forecast to be saved.', detail: 'Daily decision: ' + timeText(cutoff.toISOString()) + '. Publication is allowed for one minute after the cutoff.'};
+  }
+  return {kind: 'No saved forecast', description: 'No on-time V10 forecast was saved for today.', detail: "Today's cutoff was " + timeText(cutoff.toISOString()) + '. A later preview is excluded from the daily test.'};
+}
+
 function renderOverview() {
   const forecast = state.forecast || {};
   const market = state.market || {};
@@ -254,7 +277,8 @@ function renderOverview() {
   const index = topIndex(forecast.probabilities);
   const kind = forecast.kind || 'none';
   const isPrimary = kind === 'primary' && !forecast.excluded;
-  write('forecast-kind', index < 0 ? 'No forecast' : isPrimary ? 'Saved test forecast' : 'Preview \u00b7 excluded from test');
+  const waiting = index < 0 ? forecastWaitStatus() : null;
+  write('forecast-kind', index < 0 ? waiting ? waiting.kind : 'No forecast' : isPrimary ? 'Saved test forecast' : 'Preview \u00b7 excluded from test');
   $('forecast-kind').className = 'pill ' + (isPrimary ? 'primary-pill' : 'preview-pill');
   let forecastLabel = '\u2014';
   if (index >= 0) {
@@ -263,8 +287,8 @@ function renderOverview() {
     forecastLabel = Array.isArray(forecast.labels) && forecast.labels[index] ? forecast.labels[index] : quote ? quoteLabel(quote) : ticker || 'Range unavailable';
   }
   write('forecast-bracket', forecastLabel);
-  write('forecast-description', index < 0 ? 'No V10 forecast is saved yet.' : percent(forecast.probabilities[index]) + ' chance \u00b7 most likely range' + (!forecastMatchesMarket() ? ' for ' + dateText(forecast.date) : ''));
-  write('forecast-time', index < 0 ? 'Load a preview or collect a test forecast.' : 'Captured ' + fullTimeText(forecast.created_at_utc) + (forecast.decision_at_utc ? ' \u00b7 cutoff ' + timeText(forecast.decision_at_utc) : ''));
+  write('forecast-description', index < 0 ? waiting ? waiting.description : 'No V10 forecast is saved yet.' : percent(forecast.probabilities[index]) + ' chance \u00b7 most likely range' + (!forecastMatchesMarket() ? ' for ' + dateText(forecast.date) : ''));
+  write('forecast-time', index < 0 ? waiting ? waiting.detail : 'Load a preview or collect a test forecast.' : 'Captured ' + fullTimeText(forecast.created_at_utc) + (forecast.decision_at_utc ? ' \u00b7 cutoff ' + timeText(forecast.decision_at_utc) : ''));
 
   const obs = validSeries(state.weather && state.weather.observations);
   const latest = obs.length ? obs[obs.length - 1] : null;
@@ -454,7 +478,9 @@ function drawTemperature(comparisonView = false) {
   container.append(svg);
   container.setAttribute('aria-label', 'Temperature over time in Pacific time. ' + series.map(s => s.name + ': ' + s.data.length + ' points').join('. ') + '. Observed range ' + temperature(series[0].data.length ? Math.min(...series[0].data.map(p => p.temperature_f)) : null) + ' to ' + temperature(series[0].data.length ? Math.max(...series[0].data.map(p => p.temperature_f)) : null) + '.');
   const dates = new Set(points.map(p => dateFormatter.format(validTime(p.time))));
-  const note = 'Forecast lines are weather inputs, not the V10 probability forecast.' + (dates.size > 1 ? ' Points span ' + [...dates].join(' and ') + '.' : '') + (weather.updated_at_utc ? ' Data saved ' + fullTimeText(weather.updated_at_utc) + '.' : '');
+  const waiting = !comparisonView && !series[1].data.length && !series[2].data.length ? forecastWaitStatus() : null;
+  const scheduleNote = waiting && waiting.collectionStart ? ' HRRR/GEFS lines appear after today\'s inputs are collected; automatic collection starts at ' + timeText(waiting.collectionStart) + '.' : '';
+  const note = 'Forecast lines are weather inputs, not the V10 probability forecast.' + scheduleNote + (dates.size > 1 ? ' Points span ' + [...dates].join(' and ') + '.' : '') + (weather.updated_at_utc ? ' Data saved ' + fullTimeText(weather.updated_at_utc) + '.' : '');
   if (!comparisonView) write('weather-note', note);
 }
 
@@ -505,6 +531,8 @@ function renderComparison() {
   });
   if (!models.length) scores.append(element('p', 'comparison-empty', 'No comparison forecasts saved. Refresh other models to load the available feeds.'));
   let notice = typeof comparison.notice === 'string' ? comparison.notice : Array.isArray(comparison.notice) ? comparison.notice.join(' ') : models.length ? 'The same LAX observations are shown in both views.' : 'Comparison models have not been loaded yet.';
+  const currentHour = Number(new Intl.DateTimeFormat('en-US', {timeZone: PT, hour: '2-digit', hourCycle: 'h23'}).format(validTime(state.now_utc) || new Date()));
+  if (!models.some(model => validSeries(model.points).length) && currentHour < 6 && state.tracking && state.tracking.enabled) notice += ' Automatic comparison capture starts at 6 AM PT.';
   if (!comparisonMatchesDay()) notice = 'Comparison forecasts are for ' + dateText(comparison.date) + ', so they are not plotted against today\'s observations. ' + notice;
   write('comparison-notice', notice);
   drawTemperature(true);
@@ -656,8 +684,9 @@ function renderTomorrow() {
   const quotes = Array.isArray(market.quotes) ? market.quotes : [];
   const receipt = market.updated_at_utc ? ' Last check ' + fullTimeText(market.updated_at_utc) + '.' : '';
   const available = market.status === 'open' && quotes.length === 6;
+  const notOpenYet = quotes.length === 6 && quotes.every(q => q.status === 'initialized');
   const fresh = available && quotes.every(q => q.fresh);
-  write('tomorrow-status', (available ? (fresh ? 'Market available \u00b7 six ranges saved.' : 'Saved prices need a new check.') : market.status === 'not_listed' ? 'Not listed yet. The automatic check will keep looking.' : market.status === 'unavailable' ? 'Waiting for the first automatic check.' : 'Market is ' + (market.status || 'unavailable') + '.') + receipt);
+  write('tomorrow-status', (notOpenYet ? 'Listed; trading has not opened yet. Prices will appear when Kalshi opens this market.' : available ? (fresh ? 'Market available \u00b7 six ranges saved.' : 'Saved prices need a new check.') : market.status === 'not_listed' ? 'Not listed yet. The automatic check will keep looking.' : market.status === 'unavailable' ? 'Waiting for the first automatic check.' : 'Market is ' + (market.status || 'unavailable') + '.') + receipt);
   show('tomorrow-details', quotes.length > 0);
   const rows = $('tomorrow-rows'); rows.replaceChildren();
   quotes.forEach(q => {
