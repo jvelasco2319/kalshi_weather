@@ -56,11 +56,11 @@ class Application:
     def _perform(self, action: str):
         try:
             if action == "refresh":
-                result = self.service.refresh()
+                result = self.service.refresh_with_history()
             else:
                 result = self.service.execute(action)
             status = result.get("status", "Complete") if isinstance(result, dict) else "Complete"
-            messages = {"refresh": "Prices and observations updated.",
+            messages = {"refresh": "Prices updated. Previous-day recovery is shown under Recovered days.",
                         "preview": "Preview saved. It is excluded from test results.",
                         "results": "Test settlement check complete.",
                         "comparison": "Other-model forecasts saved. Missing feeds are marked below.",
@@ -86,6 +86,8 @@ class Application:
         with self.lock:
             self.closed = True
         self.tracking.close()
+        if hasattr(self.service, "close"):
+            self.service.close()
 
 
 def make_server(root: Path, port=8770, service=None):

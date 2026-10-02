@@ -18,6 +18,8 @@ let followManualJob = false;
 let screenUpdatedAt = null;
 let pollRequested = false;
 let selectedMonitoringMonth = null;
+let selectedResults = 'live';
+let selectedRecoveryMonth = 'all';
 
 function nextScreenRefresh(now) {
   const hour = Number(new Intl.DateTimeFormat('en-US', {timeZone: PT, hour: '2-digit', hourCycle: 'h23'}).format(now));
@@ -28,7 +30,7 @@ function scheduleNextPoll() {
   clearTimeout(pollTimer);
   if (document.hidden) return;
   const now = new Date();
-  const delay = followManualJob && state && state.job && state.job.busy ? 5000 : Math.max(500, nextScreenRefresh(now) - now);
+  const delay = state && ((followManualJob && state.job && state.job.busy) || (state.recovery && state.recovery.busy)) ? 5000 : Math.max(500, nextScreenRefresh(now) - now);
   pollTimer = setTimeout(pollState, delay);
 }
 
@@ -790,13 +792,71 @@ function renderMonitoring() {
   }
 }
 
+function selectResults(kind, focus = false) {
+  selectedResults = kind;
+  ['live', 'recovered'].forEach(value => {
+    const active = value === kind;
+    $(value + '-results-tab').setAttribute('aria-selected', String(active));
+    $(value + '-results-tab').tabIndex = active ? 0 : -1;
+    show(value + '-results-panel', active);
+  });
+  if (focus) $(kind + '-results-tab').focus();
+}
+
+function renderRecovery() {
+  const recovery = state.recovery || {}, all = recovery.days || [], summary = recovery.summary || {};
+  const months = [...new Set(all.map(r => r.date.slice(0, 7)))].sort();
+  const select = $('recovery-month'); select.replaceChildren();
+  const option = element('option', '', 'All recovered days'); option.value = 'all'; select.append(option);
+  months.forEach(month => {const item = element('option', '', new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric', timeZone: 'UTC'}).format(new Date(month + '-01T12:00:00Z'))); item.value = month; select.append(item);});
+  if (selectedRecoveryMonth !== 'all' && !months.includes(selectedRecoveryMonth)) selectedRecoveryMonth = 'all';
+  select.value = selectedRecoveryMonth;
+  const days = all.filter(r => selectedRecoveryMonth === 'all' || r.date.startsWith(selectedRecoveryMonth));
+  const recovered = days.filter(r => r.forecast_range), scored = days.filter(r => typeof r.correct === 'boolean');
+  const trades = days.filter(r => number(r.estimated_pnl) !== null);
+  const pnl = trades.reduce((total, r) => total + r.estimated_pnl, 0);
+  write('recovery-count', recovered.length + ' / ' + days.length);
+  write('recovery-scored', scored.length);
+  write('recovery-accuracy', scored.length ? percent(scored.filter(r => r.correct).length / scored.length) : '\u2014');
+  const knownNoEntry = recovered.length > 0 && days.every(r => r.trade_status === 'SKIPPED');
+  write('recovery-pnl', trades.length || knownNoEntry ? signedMoney(pnl) : '\u2014'); pnlClass($('recovery-pnl'), trades.length || knownNoEntry ? pnl : null);
+  write('recovery-progress', recovery.busy ? 'Recovering ' + dateText(recovery.current_date) + ' \u00b7 ' + recovery.completed + ' of ' + recovery.total + ' checks finished. You can keep using today\'s market.' : recovery.message || 'Refresh market to recover previous days.');
+  write('recovery-account', 'Replay account across all recovered dates: ' + money(summary.cash === undefined ? 100 : summary.cash) + ' available cash \u00b7 starts at $100, up to 10% per entry including fees. ' + (summary.incomplete ? 'Incomplete: unknown trade days are omitted from this scenario.' : 'Uses recovered quote estimates; historical fills are unverified.'));
+  const unknown = days.filter(r => r.trade_status === 'UNAVAILABLE').length;
+  write('recovery-coverage', (days.length ? dateText(days[0].date) + ' through ' + dateText(days.at(-1).date) + '. ' : '') + unknown + ' day' + (unknown === 1 ? '' : 's') + ' with unavailable trade evidence; ' + (recovered.length - scored.length) + ' waiting for an official result. Recovered forecasts are excluded from the recorded live test.');
+  const rows = $('recovery-rows'); rows.replaceChildren();
+  days.slice().reverse().forEach(day => {
+    const row = element('tr'), result = element('td');
+    result.append(element('strong', '', day.forecast_range ? 'V10: ' + day.forecast_range + ' (' + percent(day.chance) + ')' : 'Forecast unavailable'));
+    result.append(element('span', 'recovery-sub', 'Official: ' + (day.official_range ? (day.reported_high_f !== null ? day.reported_high_f + '\u00b0F \u00b7 ' : '') + day.official_range : 'Pending')));
+    if (typeof day.correct === 'boolean') result.append(element('span', day.correct ? 'recovery-sub positive' : 'recovery-sub', day.correct ? 'Correct top range' : 'Different top range'));
+    const decision = element('td');
+    decision.append(element('strong', '', day.trade_status === 'ESTIMATED_ENTRY' ? 'Estimated NO \u00b7 ' + day.quantity + ' contracts' : day.trade_status === 'SKIPPED' ? 'Skipped' : 'Unavailable'));
+    if (day.trade_range) decision.append(element('span', 'recovery-sub', day.trade_range + ' at ' + cents(day.entry_price)));
+    const detail = element('details', 'recovery-row-details'); detail.append(element('summary', '', 'Details'));
+    detail.append(element('p', '', day.error || day.reason || 'Waiting for recovery'));
+    if (day.entry_cost !== null) detail.append(element('p', '', 'Entry cost ' + money(day.entry_cost) + ', including ' + money(day.entry_fee) + ' estimated fee. Quantity and arrival price are assumed.'));
+    if (day.brier !== undefined) detail.append(element('p', '', 'Forecast Brier score ' + day.brier.toFixed(3) + '; log loss ' + (day.log_loss === null ? 'infinite' : day.log_loss.toFixed(3)) + '. Lower is better.'));
+    if (day.recovered_at_utc) detail.append(element('p', '', 'Recovered ' + fullTimeText(day.recovered_at_utc) + '. Fixed 18 UTC prediction; unchanged V10 weights.'));
+    decision.append(detail);
+    const value = element('td', '', day.estimated_pnl !== null ? signedMoney(day.estimated_pnl) : day.trade_status === 'SKIPPED' ? 'No entry' : '\u2014'); pnlClass(value, day.estimated_pnl);
+    row.append(element('td', '', dateText(day.date)), result, decision, value); rows.append(row);
+  });
+  if (!days.length) {const row = element('tr'), cell = element('td', 'empty-table', 'Previous days will appear here after Refresh market.'); cell.colSpan = 4; row.append(cell); rows.append(row);}
+  const history = recovery.history || [];
+  // Overall equity history is shown only without a month filter; settlement can
+  // occur on a later date, so filtering by timestamp would misassign outcomes.
+  show('recovery-chart', selectedRecoveryMonth === 'all' && history.length >= 2);
+  if (selectedRecoveryMonth === 'all' && history.length >= 2) drawSmallLine($('recovery-chart'), history, 'Estimated cumulative replay profit / loss', '#88aefb', signedMoney);
+}
+
 function render() {
   renderStatus();
   renderAutomaticPractice();
-  const renderKey = JSON.stringify([state.market, state.tomorrow_market, state.month, state.monitoring_months, state.forecast, state.monitoring_forecast, state.weather, state.trades, state.test, state.reference_sha]);
+  const renderKey = JSON.stringify([state.market, state.tomorrow_market, state.month, state.monitoring_months, state.forecast, state.monitoring_forecast, state.weather, state.trades, state.test, state.recovery, state.reference_sha]);
   if (renderKey === lastRenderKey) {if ($('trade-dialog').open) updateTradeForm(); return;}
   lastRenderKey = renderKey;
-  renderOverview(); renderMonitoring(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderHourlyForecasts(); renderComparison(); renderAccounts(); renderTrades(); renderTest();
+  renderOverview(); renderMonitoring(); renderWeatherContext(); renderBrackets(); renderTomorrow(); renderMonth(); drawTemperature(); renderHourlyForecasts(); renderComparison(); renderAccounts(); renderTrades(); renderTest(); renderRecovery();
   if ($('trade-dialog').open) updateTradeForm();
 }
 async function parseResponse(response) {
@@ -826,6 +886,7 @@ async function pollState() {
 async function runAction(action) {
   if (!state || localBusy || (state.job && state.job.busy)) return;
   actionError = '';
+  if (action === 'refresh') selectResults('recovered');
   localBusy = true;
   renderStatus();
   write('job-banner', action === 'forecasts' ? 'Checking for new HRRR and GEFS weather forecasts...' : action === 'preview' ? 'Loading a weather preview. This can take a minute; the preview will be excluded from the test.' : action === 'comparison' ? 'Saving the other weather-model forecasts. Scores will use later observations only.' : action === 'run' ? 'Collecting the frozen test forecast within its registered cutoff...' : action === 'results' ? 'Checking official results for saved test forecasts...' : 'Refreshing public market quotes and LAX observations...');
@@ -942,5 +1003,14 @@ $('tracking-toggle').addEventListener('click', async () => {
   finally {$('tracking-toggle').disabled = false;}
 });
 $('monitoring-month').addEventListener('change', () => {selectedMonitoringMonth = $('monitoring-month').value; renderMonth();});
+$('recovery-month').addEventListener('change', () => {selectedRecoveryMonth = $('recovery-month').value; renderRecovery();});
+document.querySelectorAll('[data-results]').forEach(button => {
+  button.addEventListener('click', () => selectResults(button.dataset.results));
+  button.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    selectResults(event.key === 'Home' ? 'live' : event.key === 'End' ? 'recovered' : selectedResults === 'live' ? 'recovered' : 'live', true);
+  });
+});
 pollState();
 document.addEventListener('visibilitychange', () => {if (!document.hidden) pollState(); else clearTimeout(pollTimer);});

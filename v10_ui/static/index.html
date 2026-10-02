@@ -125,7 +125,9 @@
       </section>
 
       <section class="card test-card" aria-labelledby="test-heading">
-        <div class="card-heading"><div><h2 id="test-heading">V10's real-world test</h2><p>Only forecasts saved before the cutoff count. Previews stay out.</p></div><button class="text-button" type="button" data-action="results">Check results <span aria-hidden="true">&rarr;</span></button></div>
+        <div class="card-heading"><div><h2 id="test-heading">V10 results</h2><p>Daily forecast accuracy and trade results.</p></div><button class="text-button" type="button" data-action="results">Check live results <span aria-hidden="true">&rarr;</span></button></div>
+        <div class="graph-tabs" role="tablist" aria-label="V10 results"><button id="live-results-tab" type="button" role="tab" aria-selected="true" aria-controls="live-results-panel" tabindex="0" data-results="live">Recorded live</button><button id="recovered-results-tab" type="button" role="tab" aria-selected="false" aria-controls="recovered-results-panel" tabindex="-1" data-results="recovered">Recovered days</button></div>
+        <div id="live-results-panel" role="tabpanel" aria-labelledby="live-results-tab" tabindex="0">
         <div class="test-metrics"><div><strong id="test-forecasts">0</strong><span>Forecasts saved</span></div><div><strong id="test-settled">0</strong><span>Days settled</span></div><div><strong id="test-pending">0</strong><span>Waiting for result</span></div><div><strong id="test-accuracy">&mdash;</strong><span>Top-range accuracy</span></div></div>
         <div id="test-chart" class="test-chart" hidden></div>
         <p class="test-note" id="test-note">No scored days yet. Forecast accuracy and trade profit are measured separately.</p>
@@ -135,6 +137,17 @@
           <div class="month-metrics"><span>Forecasts saved <strong id="month-forecasts">0</strong></span><span>Automatic fake trades <strong id="month-trades">0</strong></span><span>Settled fake profit / loss <strong id="month-pnl">&mdash;</strong></span></div>
           <p id="month-coverage" class="chart-note"></p>
           <details><summary>See each day's check</summary><div class="bracket-table-wrap"><table class="bracket-table month-table"><thead><tr><th scope="col">Date</th><th scope="col">Forecast</th><th scope="col">Fake trade</th><th scope="col">Forecast result</th><th scope="col">Fake profit / loss</th></tr></thead><tbody id="month-rows"></tbody></table></div></details>
+        </div>
+        </div>
+        <div id="recovered-results-panel" role="tabpanel" aria-labelledby="recovered-results-tab" tabindex="0" hidden>
+          <div class="month-heading recovery-heading"><strong>Catch up after time offline</strong><select id="recovery-month" aria-label="Recovered results month"><option value="all">All recovered days</option></select></div>
+          <p id="recovery-progress" class="recovery-progress" role="status">Refresh market to recover previous days.</p>
+          <div class="test-metrics"><div><strong id="recovery-count">0</strong><span>Days recovered</span></div><div><strong id="recovery-scored">0</strong><span>Official results</span></div><div><strong id="recovery-accuracy">&mdash;</strong><span>Top-range accuracy</span></div><div><strong id="recovery-pnl">&mdash;</strong><span>Estimated replay P/L</span></div></div>
+          <p id="recovery-account" class="test-note"></p>
+          <div id="recovery-chart" class="test-chart" hidden></div>
+          <p id="recovery-coverage" class="chart-note"></p>
+          <div class="table-scroll"><table class="recovery-table"><thead><tr><th scope="col">Day</th><th scope="col">V10 / official range</th><th scope="col">Replay decision</th><th scope="col">Estimated P/L</th></tr></thead><tbody id="recovery-rows"></tbody></table></div>
+          <details class="recovery-assumptions"><summary>How recovery works</summary><p>Refresh market downloads missed days from the start of the test month through yesterday. Saved inputs are reused after a restart; missing inputs are retried on the next refresh. Larger gaps recover in the background.</p><p>V10 uses its unchanged weights, the day's 06 UTC HRRR and 00 UTC GEFS runs, and pressure observations available under its fixed cutoff policy. Recovery calculates the official 18 UTC daily prediction. Earlier monitoring previews are not reconstructed.</p><p>Trade estimates assume entry at the historical one-minute quote close at 18 UTC and enough contracts to buy, with fees estimated from current series settings. The actual price five seconds later and historical quantity are unknown. Missing evidence stays unavailable.</p><p>The replay account starts at $100 and uses up to 10% of available cash including fees. It waits for settlement before reusing payouts. Recovery stays separate from recorded live forecasts and the practice account. These results cannot prove what would have filled while your computer was off.</p></details>
         </div>
       </section>
 

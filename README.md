@@ -45,6 +45,9 @@ live captures and user journals are not published to GitHub.
 - **Monthly monitoring** of forecasts, automatic entries, skips, missed
   checks, forecast results, and settled fake profit/loss. Expand each day's
   status or select an earlier month to inspect its saved history.
+- **Recovered days**, beside Recorded live in the V10 results card. It shows
+  a daily forecast/result table, accuracy, hypothetical NO entries or skips,
+  and a separate replay account. Choose a month when several months accumulate.
 
 GFS Seamless uses the same NOAA GFS run, not an independent model. Comparison
 errors count only forecasts saved before their matching observations. These
@@ -91,6 +94,47 @@ HRRR publishes hourly runs; GEFS publishes 00/06/12/18 UTC runs, with publicatio
 delays. Each display capture is bounded to 100 requests, 128 MiB and three
 minutes. Automatic display captures are deferred from 30 minutes before the
 V10 cutoff until three minutes after it so the daily decision keeps priority.
+
+## Catch up after the computer was off
+
+Click **Refresh market** after starting the server. Alongside today's refresh,
+it recovers past days from **October 1, 2026 through yesterday**, capped at the
+registered January 9, 2027 end date. A separate background worker downloads
+the exact archived 06 UTC HRRR and 00 UTC GEFS temperature inputs, collects
+pre-cutoff pressure reports, and runs the unchanged frozen V10 daily prediction
+at 18 UTC. Earlier latest-run monitoring previews are not reconstructed.
+If a valid on-time live forecast already exists, recovery reuses its bound
+weather inputs and verifies an identical V10 prediction instead of downloading
+replacement weather data.
+The button opens **V10 results → Recovered days**. Several days appear as rows;
+two or more settled estimated entries also produce a cumulative P/L graph.
+
+Final results come from Kalshi's six final binary market settlements. Recovery
+uses the public historical endpoint when older markets or candles move out of
+the live API. Forecasts and trade selections are saved before scoring, and
+actual archive receipt times are never backdated. Historical metadata can
+already contain outcomes, so this reconstruction is not an independent blind
+confirmation or an on-time live capture. It never writes into the prospective
+forecast directory or the existing practice/real trade journal.
+
+Trade estimates use the one-minute bid/ask close ending at 18 UTC, NO-only
+economic screens, and the fee settings fetched during recovery. Historical
+quantity, the five-second arrival quote, exact historical fees and actual fills
+are unverified. The replay assumes enough quantity and uses a separate $100
+account with up to 10% of available cash per entry including estimated fees;
+cash from a payout cannot fund a decision before its settlement timestamp.
+Unknown quote days remain unavailable. They are omitted from the available-day
+account scenario and make its coverage incomplete, rather than counting as
+zero profit or an algorithmic skip. Forecast scores still work on those days.
+
+Sealed forecasts, selections, settlements, receipts and partial input caches
+live under `runs/v10_ui/recovery/`, excluded from Git. A restart reuses saved
+inputs; the next refresh retries missing inputs and pending settlements. One
+worker runs at a time, for at most 30 minutes per refresh, with each day bounded
+to 96 requests, 128 MiB and four minutes. Recovery pauses from 17:30 through
+18:03 UTC to prioritize the live daily test. Refresh again to resume. While
+recovery is running, its visible progress refreshes every five seconds; the
+normal UI schedule is unchanged afterwards.
 
 The registered window is **October 2, 2026–January 9, 2027**. October monitoring
 covers **October 2–31: 30 eligible dates**. October 1's late preview is excluded.

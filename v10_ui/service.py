@@ -26,6 +26,7 @@ from v10_online.weather import OBS_ENDPOINT, OBS_FIELDS, STATIONS
 from .comparison import ComparisonStore
 from .hourly_forecasts import HourlyForecastStore
 from .monitoring_forecast import MonitoringForecastStore
+from .recovery import RecoveryStore
 from . import practice
 from .journal_lock import journal_lock
 from .monitoring import tomorrow_day, month_progress, month_ids
@@ -188,7 +189,7 @@ def _weather_context(body, day, receipt):
 
 
 class DashboardService:
-    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None, hourly_forecast_store=None, monitoring_forecast_store=None):
+    def __init__(self, root, *, now=None, client_factory=None, registration_check=None, comparison_store=None, hourly_forecast_store=None, monitoring_forecast_store=None, recovery_store=None):
         self.root = Path(root).resolve()
         self._now = now or (lambda: datetime.now(UTC))
         self._client_factory = client_factory or (lambda archive: PublicClient(
@@ -199,6 +200,7 @@ class DashboardService:
         self._comparison = comparison_store or ComparisonStore(self.root, now=self._now)
         self._hourly_forecasts = hourly_forecast_store or HourlyForecastStore(self.root, now=self._now)
         self._monitoring_forecasts = monitoring_forecast_store or MonitoringForecastStore(self.root, now=self._now)
+        self._recovery = recovery_store or RecoveryStore(self.root, self._registration["config"], now=self._now)
         self._markets = {}
         self._market_bindings = {}
         self._weather_bindings = {}
@@ -817,7 +819,17 @@ class DashboardService:
                     "weather": weather, "trades": self._trades(now), "test": deepcopy(self._test),
                     "automatic_practice": self.automatic_practice_state(now),
                     "tomorrow_market": tomorrow, "month": month, "monitoring_months": months,
+                    "recovery": self._recovery.state(),
                     "notice": notice, "reference_sha": REFERENCE_SHA, "orders": 0}
+
+    def refresh_with_history(self):
+        # Manual refresh starts an independent, finite worker. Automatic live
+        # tracking never invokes recovery and stays responsive during downloads.
+        self._recovery.start()
+        return self.refresh()
+
+    def close(self):
+        self._recovery.close()
 
     def execute(self, action, day=None):
         day = day or self._day()

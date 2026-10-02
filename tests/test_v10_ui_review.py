@@ -25,6 +25,9 @@ class _IsolatedService:
         self.release.wait(3)
         return {"status": "REFRESHED"}
 
+    def refresh_with_history(self):
+        return self.refresh()
+
     def execute(self, action):
         return {"status": action.upper()}
 
@@ -168,7 +171,7 @@ def journal_service(tmp_path, monkeypatch):
     monkeypatch.setattr(service.runner, "report", lambda root: {
         "forecast_count": 0, "settled_count": 0, "pending_count": 0})
     clock = [datetime(2026, 10, 1, 22, tzinfo=timezone.utc)]
-    check = lambda root: {"self_sha256": "isolated-test", "config": {}}
+    check = lambda root: {"self_sha256": "isolated-test", "config": {"date_start": "2026-10-02", "date_end": "2027-01-09"}}
     dashboard = service.DashboardService(tmp_path, now=lambda: clock[0], registration_check=check)
     contracts = []
     shapes = [("less", None, 79, "T79"), ("between", 79, 80, "B79.5"),

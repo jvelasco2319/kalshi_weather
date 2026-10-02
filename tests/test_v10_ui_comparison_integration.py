@@ -31,7 +31,7 @@ def svc(tmp_path, monkeypatch):
     monkeypatch.setattr(ui.runner, "report", lambda root: {
         "forecast_count": 0, "settled_count": 0, "pending_count": 0})
     comparison = Comparison()
-    registration = lambda root: {"self_sha256": "fixture", "config": {}}
+    registration = lambda root: {"self_sha256": "fixture", "config": {"date_start": "2026-10-02", "date_end": "2027-01-09"}}
     service = ui.DashboardService(tmp_path, now=lambda: NOW,
                                   registration_check=registration,
                                   comparison_store=comparison)
