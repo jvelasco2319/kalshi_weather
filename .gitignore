@@ -12,3 +12,18 @@ artifacts/
 logs/
 offline_research/
 
+# V10 captures, private practice journal, and restored runtime inputs
+runs/
+work/
+data/
+.env.*
+!.env.example
+*.pem
+*.key
+*.sqlite
+*.sqlite3
+*.db
+build/
+dist/
+pip-ephem-wheel-cache*/
+

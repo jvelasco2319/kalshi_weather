@@ -1,0 +1,27 @@
+{
+  "acquisition_manifest_self_sha256": "ed7c8e7f84d096a09f16b285da80c86f7452faa1c53c86ff11840ade8b2800f9",
+  "acquisition_protocol_self_sha256": "99ef913f8c0219217f06bbf7ec33c5466a99aa7dd8b290af6967cac75b13e7e0",
+  "candidate_count": 193,
+  "catalog_expansion_allowed": false,
+  "feature_block_count": 6,
+  "frozen_at_utc": "2026-09-30T02:42:18.072151+00:00",
+  "input_bindings": {
+    "configs/v10_meteorological_combinations.json": "dc1e573420705ee3f95da7d36570ba6d8065de146d035c47b6bf96668f7c0ad0",
+    "data/manifests/v10_meteorology.json": "60676c2c74459efd257858218497870d4caac1948ccdbb936373a6f6f66a0c35",
+    "data/normalized/v10_meteorology/observations.parquet": "4c68077237d2f7f4fe7aaa50ef271a9bd72c85a88ef5ad2d8ec4781b50de1ca1",
+    "data/normalized/v10_meteorology/weather_features.parquet": "cdbae02a48eb9b15645a13ec1dfedc66136e3b0a5bdeb070c69a40ed2c2a2ef5",
+    "runs/v10/frozen-acquisition-protocol/protocol-freeze.json": "7aa4b700c4edbea4c5eda0e6a938ae4b0814b5b3a017884c85ed40e3751ae3f7",
+    "v10/evaluate_combinations.py": "3e6f65b416ed7a2935aa060c8059c074edbdad5121610379314f8567c41ad9e2",
+    "v10/scoring_freeze.py": "7a736a4358539c9388b59b15a1b676ca1b4a29f28cc077a2b1460dab1ea1e176"
+  },
+  "live_orders_placed": 0,
+  "market_data_read_by_v10": false,
+  "network_allowed_during_scoring": false,
+  "paper_orders_placed": 0,
+  "schema_version": "klax-v10-frozen-scoring-protocol-v1",
+  "self_sha256": "159938b537c1315c7cab605fa7877351aae56bde457780c337d0c5aec18d79d9",
+  "settlement_labels_read_by_v10": false,
+  "status": "FROZEN_BEFORE_V10_LABEL_READ",
+  "v10_candidate_scored": false,
+  "v10_promotion_authorized": false
+}

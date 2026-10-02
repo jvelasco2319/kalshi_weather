@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>V10 Weather | LAX</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="masthead">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 20a7 7 0 1 1 13-4"/><path d="M16 5v3M6 10l2 2M26 10l-2 2M4 18h3"/><path d="M11 24h13a4 4 0 0 0 0-8h-1a6 6 0 0 0-11 2 3 3 0 0 0-1 6Z"/></svg></div>
+        <div><h1>V10 Weather</h1><p>LAX daily high <span class="separator">/</span> <span id="market-date">Loading market</span></p></div>
+      </div>
+      <div class="header-actions">
+        <span class="pill quiet-pill"><span class="read-dot"></span> Read-only</span>
+        <button id="refresh-button" class="button button-secondary" type="button" data-action="refresh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M5.2 8a7 7 0 0 1 11.5-3L20 8M4 16l3.3 3A7 7 0 0 0 18.8 16"/></svg><span>Refresh market</span></button>
+      </div>
+    </header>
+
+    <div id="connection-status" class="connection-line"><span class="status-dot"></span><span id="connection-text">Loading saved data...</span><span class="connection-extra">All times Pacific</span></div>
+    <div class="tracking-strip" aria-label="Automatic tracking"><div><strong id="tracking-status">Checking automatic tracking...</strong><p id="tracking-timing"></p><p id="tracking-error" class="tracking-warning" hidden></p></div><button id="tracking-toggle" class="button button-secondary" type="button">Pause tracking</button></div>
+    <div id="job-banner" class="notice job-notice" role="status" hidden></div>
+    <div id="error-banner" class="notice error-notice" role="alert" hidden></div>
+    <div id="data-notice" class="notice" hidden></div>
+
+    <main>
+      <section class="overview" aria-label="At a glance">
+        <article class="overview-card forecast-overview">
+          <div class="eyebrow"><span class="mini-dot teal-dot"></span> V10 outlook <span id="forecast-kind" class="pill preview-pill">No forecast</span></div>
+          <div class="headline-value" id="forecast-bracket">&mdash;</div>
+          <p class="metric-description" id="forecast-description">A forecast will appear when data is available.</p>
+          <p class="metric-footnote" id="forecast-time">No saved forecast</p>
+        </article>
+        <article class="overview-card">
+          <div class="eyebrow">Observed at LAX</div>
+          <div class="headline-value" id="observed-temperature">&mdash;</div>
+          <p class="metric-description" id="observed-description">Waiting for observations</p>
+          <p class="metric-footnote" id="observed-time">Actual readings, not a forecast</p>
+        </article>
+        <article class="overview-card">
+          <div class="eyebrow">Market outlook</div>
+          <div class="headline-value market-value" id="market-bracket">&mdash;</div>
+          <p class="metric-description" id="market-description">Waiting for market prices</p>
+          <p class="metric-footnote" id="market-time">Public Kalshi quotes</p>
+        </article>
+      </section>
+
+      <div class="main-grid">
+        <section class="card temperature-card" aria-labelledby="temperature-heading">
+          <div class="card-heading"><div><h2 id="temperature-heading">Temperature through the day</h2><p id="temperature-description">Actual readings beside the two weather forecasts.</p></div><span class="unit-label">&deg;F</span></div>
+          <div class="graph-tabs" role="tablist" aria-label="Weather model graph"><button id="v10-graph-tab" type="button" role="tab" aria-selected="true" aria-controls="v10-graph-panel" tabindex="0" data-graph="v10">V10 inputs</button><button id="comparison-graph-tab" type="button" role="tab" aria-selected="false" aria-controls="comparison-graph-panel" tabindex="-1" data-graph="comparison">Other models</button></div>
+          <div id="v10-graph-panel" role="tabpanel" aria-labelledby="v10-graph-tab" tabindex="0">
+            <div class="chart-legend" aria-label="Chart legend"><span><i class="legend-dot observed-dot"></i>Observed</span><span><i class="legend-line hrrr-line"></i>HRRR forecast</span><span><i class="legend-line gefs-line"></i>GEFS forecast</span></div>
+            <div id="temperature-chart" class="temperature-chart" role="img" aria-label="Temperature chart loading"><div class="chart-empty"><span class="empty-icon">~</span><strong>No weather readings yet</strong><span>Refresh the market to load observations.</span></div></div>
+            <p class="chart-note" id="weather-note">Forecast lines are weather inputs; the V10 probabilities are shown below.</p>
+          </div>
+          <div id="comparison-graph-panel" role="tabpanel" aria-labelledby="comparison-graph-tab" tabindex="0" hidden>
+            <div id="comparison-legend" class="chart-legend" aria-label="Other model chart legend"><span><i class="legend-dot observed-dot"></i>Observed</span></div>
+            <div id="comparison-chart" class="temperature-chart" role="img" aria-label="Other model temperature chart loading"></div>
+            <p class="chart-note" id="comparison-notice">Comparison models have not been loaded yet.</p>
+            <div class="comparison-chart-actions"><button class="text-button" type="button" data-action="comparison">Refresh other models <span aria-hidden="true">&rarr;</span></button><p>Saves today's available forecasts.</p></div>
+            <div class="comparison-score-heading"><span><span id="comparison-score-label">Today's average temperature error</span> <span class="comparison-score-unit">(&deg;F)</span></span><span>Lower is better</span></div>
+            <div id="comparison-scores" class="comparison-scores"></div>
+            <p id="comparison-rules" class="chart-note comparison-rules">Only readings after the forecast was saved count. Models report at different intervals, so matched reading counts can differ. Today's readings cannot establish a winning model. These comparisons do not change V10.</p>
+          </div>
+        </section>
+
+        <section class="card account-card" aria-labelledby="practice-heading">
+          <div class="card-heading"><div><h2 id="practice-heading">Practice account</h2><p>Hypothetical entries. No orders are sent.</p></div><span class="pill quiet-pill">Practice</span></div>
+          <div class="account-value" id="practice-equity">$100.00</div>
+          <p class="account-value-caption" id="practice-equity-note">Starting balance</p>
+          <div class="account-metrics"><div><span>Available cash</span><strong id="practice-cash">$100.00</strong></div><div><span>Next entry limit</span><strong id="practice-budget">$10.00</strong></div><div><span>Open profit / loss</span><strong id="practice-open-pnl">&mdash;</strong></div><div><span>Settled profit / loss</span><strong id="practice-settled-pnl">&mdash;</strong></div></div>
+          <div id="practice-unpriced" class="inline-warning" hidden></div>
+          <div class="auto-practice" aria-label="Automatic fake trades">
+            <strong id="auto-practice-status">Automatic fake trades</strong>
+            <p id="auto-practice-detail">Waiting for the next daily forecast.</p>
+            <details><summary>What makes a trade eligible?</summary><p>V10's top two temperature ranges must be at least 10 percentage points apart. NO trades only, priced 5&ndash;80&cent;, with a spread of at most 5&cent; and enough quoted size. Estimated return after fees must be at least 10%.</p><p>One automatic entry per day, using up to 10% of available cash including fees, held to settlement. A fresh quote is required within two minutes of the cutoff. Pause tracking to pause fake trades too.</p></details>
+          </div>
+          <button id="record-trade-button" class="button button-primary full-width" type="button"><span>Record a trade</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          <p class="microcopy">Each practice entry uses up to 10% of available cash. Real trades can be recorded separately.</p>
+        </section>
+      </div>
+
+      <section class="card weather-context-card" aria-labelledby="weather-context-heading">
+        <div class="card-heading"><div><h2 id="weather-context-heading">Weather conditions</h2><p id="weather-context-time">Waiting for LAX reports</p></div><span class="unit-label">Observed</span></div>
+        <div class="weather-context-metrics"><div><span>Clouds</span><strong id="context-clouds">&mdash;</strong></div><div><span>Cloud ceiling</span><strong id="context-ceiling">&mdash;</strong></div><div><span>Wind</span><strong id="context-wind">&mdash;</strong></div><div><span>Pressure difference</span><strong id="context-pressure">&mdash;</strong></div><div><span>Temperature trend</span><strong id="context-trend">&mdash;</strong></div></div>
+        <p id="weather-context-note" class="chart-note">These readings add context; the official V10 prediction stays fixed.</p>
+      </section>
+
+      <section class="card market-card" aria-labelledby="probability-heading">
+        <div class="card-heading"><div><h2 id="probability-heading">Where the high could land</h2><p id="probability-subtitle">Compare V10's chance with the market, then see the quoted entry price.</p></div><span id="quote-status" class="pill quiet-pill">No quotes</span></div>
+        <div class="probability-legend"><span><i class="legend-line forecast-line"></i>V10 chance</span><span><i class="legend-line market-line"></i>Kalshi implied chance</span><span id="probability-date" class="price-key"></span></div>
+        <div id="probability-chart" class="probability-chart" role="img" tabindex="0" aria-label="Probability comparison loading"></div>
+        <p id="probability-chart-note" class="chart-note"></p>
+        <div class="entry-price-heading"><span>Quoted entry and exit prices</span><span>YES = inside the range / NO = outside</span></div>
+        <div class="bracket-table-wrap"><table class="bracket-table entry-price-table"><thead><tr><th scope="col">High temperature</th><th scope="col" class="quote-column">Buy YES</th><th scope="col" class="quote-column">Buy NO</th></tr></thead><tbody id="bracket-rows"><tr><td colspan="3" class="empty-table">Market ranges are loading...</td></tr></tbody></table></div>
+        <div class="market-footnote"><p id="market-probability-note">Market chance needs valid two-sided quotes in every range.</p><p>Prices are public snapshots. A quote is not a completed trade.</p></div>
+      </section>
+
+      <section class="card tomorrow-card" aria-labelledby="tomorrow-heading">
+        <div class="card-heading"><div><h2 id="tomorrow-heading">Tomorrow's market</h2><p id="tomorrow-status">Waiting for the first automatic check.</p></div><span id="tomorrow-date" class="pill quiet-pill"></span></div>
+        <p class="chart-note">Checked every 15 minutes. Prices are saved ahead of time; V10 evaluates this market at tomorrow's daily cutoff.</p>
+        <details id="tomorrow-details"><summary>See tomorrow's prices</summary><div class="bracket-table-wrap"><table class="bracket-table entry-price-table"><thead><tr><th scope="col">High temperature</th><th scope="col">Buy YES</th><th scope="col">Buy NO</th></tr></thead><tbody id="tomorrow-rows"></tbody></table></div></details>
+      </section>
+
+      <section class="card trades-card" aria-labelledby="trades-heading">
+        <div class="card-heading"><div><h2 id="trades-heading">How our trades are doing</h2><p id="trades-subtitle">Practice and manually recorded real trades stay separate.</p></div><span id="trade-count" class="pill quiet-pill">0 entries</span></div>
+        <div id="manual-summary" class="manual-summary" hidden><span>Recorded real trades</span><strong id="manual-summary-pnl">&mdash;</strong><span id="manual-summary-detail"></span></div>
+        <div id="trade-history-chart" class="trade-history-chart" hidden></div>
+        <div id="trade-list" class="trade-list"><div class="trade-empty"><div class="empty-trade-icon" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M5 21V7M5 21h18M9 17l5-5 4 2 5-7"/></svg></div><div><strong>No trades recorded yet</strong><p>Start with a practice entry, or enter a trade you already made on Kalshi.</p></div><button id="empty-record-button" class="button button-secondary" type="button">Record first trade</button></div></div>
+        <p class="chart-note" id="trade-mark-note">Open values use the quoted exit bid when enough size is available. They are estimates, not realized profit.</p>
+      </section>
+
+      <section class="card test-card" aria-labelledby="test-heading">
+        <div class="card-heading"><div><h2 id="test-heading">V10's real-world test</h2><p>Only forecasts saved before the cutoff count. Previews stay out.</p></div><button class="text-button" type="button" data-action="results">Check results <span aria-hidden="true">&rarr;</span></button></div>
+        <div class="test-metrics"><div><strong id="test-forecasts">0</strong><span>Forecasts saved</span></div><div><strong id="test-settled">0</strong><span>Days settled</span></div><div><strong id="test-pending">0</strong><span>Waiting for result</span></div><div><strong id="test-accuracy">&mdash;</strong><span>Top-range accuracy</span></div></div>
+        <div id="test-chart" class="test-chart" hidden></div>
+        <p class="test-note" id="test-note">No scored days yet. Forecast accuracy and trade profit are measured separately.</p>
+        <div class="month-progress" aria-label="Monthly monitoring">
+          <div class="month-heading"><strong id="month-title">This month's monitoring</strong><select id="monitoring-month" aria-label="Monitoring month"></select></div>
+          <p id="month-summary"></p>
+          <div class="month-metrics"><span>Forecasts saved <strong id="month-forecasts">0</strong></span><span>Automatic fake trades <strong id="month-trades">0</strong></span><span>Settled fake profit / loss <strong id="month-pnl">&mdash;</strong></span></div>
+          <p id="month-coverage" class="chart-note"></p>
+          <details><summary>See each day's check</summary><div class="bracket-table-wrap"><table class="bracket-table month-table"><thead><tr><th scope="col">Date</th><th scope="col">Forecast</th><th scope="col">Fake trade</th><th scope="col">Forecast result</th><th scope="col">Fake profit / loss</th></tr></thead><tbody id="month-rows"></tbody></table></div></details>
+        </div>
+      </section>
+
+      <details class="details-card">
+        <summary><span>Data &amp; test controls</span><span class="details-hint">Sources, timing, forecast tools</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></summary>
+        <div class="details-content"><div class="details-copy"><h3>One frozen model</h3><p>V10 combines HRRR and GEFS temperatures with its saved pressure adjustment. New market results are measured without changing the model.</p><h3>Today's contract</h3><p id="source-description">Settlement follows the source and rules in the current Kalshi contract.</p><h3>Forecast timing</h3><p id="cutoff-description">The daily test cutoff is 18:00 UTC. A forecast collected late is a preview and cannot count in the test.</p><p id="source-times" class="microcopy"></p></div><div class="details-actions"><h3>Forecast tools</h3><p>A full preview downloads weather data and can take a minute. It is always excluded from the test.</p><button class="button button-secondary" type="button" data-action="preview">Load a new preview</button><button class="button button-secondary" type="button" data-action="run">Collect today's test forecast</button><p id="capture-guidance" class="microcopy">Test collection follows the fixed cutoff. These controls never place an order.</p><p id="reference-note" class="microcopy"></p></div></div>
+      </details>
+    </main>
+    <footer><span><span class="footer-mark">V10</span> Weather research</span><span>Public data <span class="separator">/</span> Practice &amp; manual journal <span class="separator">/</span> No account connection</span></footer>
+  </div>
+
+  <dialog id="trade-dialog" aria-labelledby="trade-dialog-heading">
+    <form id="trade-form">
+      <div class="dialog-heading"><div><div class="eyebrow">Trade journal</div><h2 id="trade-dialog-heading">Record a trade</h2></div><button id="close-dialog-button" class="icon-button" type="button" aria-label="Close trade form"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <p class="dialog-description">Keep track of an entry here. This does not send an order to Kalshi.</p>
+      <label for="trade-mode">Type of entry</label><select id="trade-mode" name="mode"><option value="practice">Practice - hypothetical</option><option value="manual">Real trade - already made on Kalshi</option></select>
+      <div id="practice-form-note" class="form-info">Practice starts at $100 and uses up to 10% of available cash per entry.</div>
+      <label for="trade-ticker">Temperature range</label><select id="trade-ticker" name="ticker" required><option value="">Choose a range</option></select>
+      <label for="trade-side">Your position</label><select id="trade-side" name="side"><option value="yes">YES - the high is inside this range</option><option value="no">NO - the high is outside this range</option></select>
+      <div id="practice-entry-preview" class="entry-preview"><span>Current quoted entry</span><strong id="practice-entry-price">&mdash;</strong><span id="practice-entry-budget">Up to $10.00</span></div>
+      <div id="manual-fields" hidden><div class="form-row"><div><label for="trade-quantity">Contracts purchased</label><input id="trade-quantity" type="number" name="quantity" min="1" step="1" inputmode="numeric" placeholder="e.g. 10"></div><div><label for="trade-entry-price">Entry price, cents</label><input id="trade-entry-price" type="number" name="entry_price" min="0" max="100" step="0.01" inputmode="decimal" placeholder="e.g. 35"></div></div><label for="trade-entry-fee">Total entry fee, dollars</label><input id="trade-entry-fee" type="number" name="entry_fee" min="0" step="0.0001" inputmode="decimal" placeholder="e.g. 0.16"><label for="trade-executed-time">Actual entry time, Pacific (optional)</label><input id="trade-executed-time" type="datetime-local" name="executed_at_utc"><p class="microcopy">Enter the actual price, quantity, and total fee from today's completed trade. Tracks entries held to settlement. Your account is not connected.</p></div>
+      <div id="trade-form-error" class="form-error" role="alert" hidden></div>
+      <button id="save-trade-button" class="button button-primary full-width" type="submit">Record practice entry</button>
+      <p id="trade-form-disclaimer" class="microcopy dialog-disclaimer">The price and fee estimate are hypothetical. A displayed quote does not demonstrate a fill.</p>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

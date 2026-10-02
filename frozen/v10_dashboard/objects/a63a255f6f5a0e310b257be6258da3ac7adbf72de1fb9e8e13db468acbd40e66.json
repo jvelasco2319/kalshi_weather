@@ -1,0 +1,357 @@
+{
+  "block_marginal_analysis": {
+    "ensemble_uncertainty": {
+      "best_single_block_accuracy": 0.3586626139817629,
+      "best_single_block_brier": 0.744125455638765,
+      "best_single_block_candidate_id": "V10-ensemble_uncertainty-W50",
+      "best_single_block_log_loss": 1.5017137561438458,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": 0.0013476619751180395,
+      "mean_log_loss_change_when_added": 0.003030731876788264,
+      "mean_modal_accuracy_change_when_added": -0.008580293819655522,
+      "median_brier_change_when_added": 0.0017431487245162525,
+      "passing_candidates_containing_block": 19
+    },
+    "forecast_marine": {
+      "best_single_block_accuracy": 0.3525835866261398,
+      "best_single_block_brier": 0.7493266684753205,
+      "best_single_block_candidate_id": "V10-forecast_marine-W25",
+      "best_single_block_log_loss": 1.5122482530999053,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": 0.0024389908324965576,
+      "mean_log_loss_change_when_added": 0.0036804472522623415,
+      "mean_modal_accuracy_change_when_added": -0.0035777608915906825,
+      "median_brier_change_when_added": 0.001824746588621029,
+      "passing_candidates_containing_block": 19
+    },
+    "inversion_and_moisture": {
+      "best_single_block_accuracy": 0.3586626139817629,
+      "best_single_block_brier": 0.7471886019482946,
+      "best_single_block_candidate_id": "V10-inversion_and_moisture-W50",
+      "best_single_block_log_loss": 1.5104154349826016,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": -0.0005292087490901427,
+      "mean_log_loss_change_when_added": -0.0001150832316652838,
+      "mean_modal_accuracy_change_when_added": 0.0002849544072948326,
+      "median_brier_change_when_added": -0.00031662243881225294,
+      "passing_candidates_containing_block": 31
+    },
+    "observed_marine": {
+      "best_single_block_accuracy": 0.3556231003039514,
+      "best_single_block_brier": 0.7466119070416491,
+      "best_single_block_candidate_id": "V10-observed_marine-W50",
+      "best_single_block_log_loss": 1.5051756396095581,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": -0.0003995605801730487,
+      "mean_log_loss_change_when_added": -0.003189929905487302,
+      "mean_modal_accuracy_change_when_added": -0.0031978216818642374,
+      "median_brier_change_when_added": -0.00036065105054711166,
+      "passing_candidates_containing_block": 30
+    },
+    "pressure_and_flow": {
+      "best_single_block_accuracy": 0.3799392097264438,
+      "best_single_block_brier": 0.7342769117969061,
+      "best_single_block_candidate_id": "V10-pressure_and_flow-W75",
+      "best_single_block_log_loss": 1.4845525475361436,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": -0.003185075973018009,
+      "mean_log_loss_change_when_added": -0.0032418456907167665,
+      "mean_modal_accuracy_change_when_added": 0.00978343465045593,
+      "median_brier_change_when_added": -0.002302961033494255,
+      "passing_candidates_containing_block": 37
+    },
+    "season": {
+      "best_single_block_accuracy": 0.3708206686930091,
+      "best_single_block_brier": 0.7455746114781928,
+      "best_single_block_candidate_id": "V10-season-W50",
+      "best_single_block_log_loss": 1.5103940640760578,
+      "matched_pair_count": 96,
+      "mean_brier_change_when_added": 4.2145833609024776e-05,
+      "mean_log_loss_change_when_added": 0.0025128157468592128,
+      "mean_modal_accuracy_change_when_added": 0.006110688956433639,
+      "median_brier_change_when_added": 9.115498155554125e-05,
+      "passing_candidates_containing_block": 23
+    }
+  },
+  "candidate_count": 193,
+  "conclusion": "METEOROLOGICAL_INCREMENT_PASSED_ALL_DEVELOPMENT_GATES",
+  "input_bindings": {
+    "configs/v10_meteorological_combinations.json": "dc1e573420705ee3f95da7d36570ba6d8065de146d035c47b6bf96668f7c0ad0",
+    "data/manifests/v10_meteorology.json": "60676c2c74459efd257858218497870d4caac1948ccdbb936373a6f6f66a0c35",
+    "data/normalized/v10_meteorology/observations.parquet": "4c68077237d2f7f4fe7aaa50ef271a9bd72c85a88ef5ad2d8ec4781b50de1ca1",
+    "data/normalized/v10_meteorology/weather_features.parquet": "cdbae02a48eb9b15645a13ec1dfedc66136e3b0a5bdeb070c69a40ed2c2a2ef5",
+    "runs/replays/v7y-hrrr-gefs-calendar-2025/prediction-freeze.json": "3c6b3f62293d0639c1a4dae16b89c6c29d5b9d79a30ba01d6cd1bda87bf20c48",
+    "runs/replays/v7y-hrrr-gefs-calendar-2025/scored-days.csv": "7f4f222aa5af897d3797a7b88f3bdb8de01cc637a0150a73de7747915d333c92",
+    "runs/replays/v7y-hrrr-gefs-calendar-2025/summary.json": "539b35b70de3cb2283ce90e0e97cdf7b4dd0ebdeebeaa206e34cd7c581761978",
+    "runs/v10/frozen-scoring-protocol/scoring-freeze.json": "50e1380294e72e7bad4303360a4246a795fc265d527289f127568cc3600fdb0a",
+    "v10/evaluate_combinations.py": "3e6f65b416ed7a2935aa060c8059c074edbdad5121610379314f8567c41ad9e2"
+  },
+  "leader": {
+    "blocks": [
+      "pressure_and_flow"
+    ],
+    "brier_bootstrap_lower_95": -0.030020535346005225,
+    "brier_bootstrap_upper_95": -0.0027624129381199664,
+    "candidate_id": "V10-pressure_and_flow-W75",
+    "date_count": 329,
+    "gates": {
+      "brier_below_v8": true,
+      "brier_bootstrap_upper_below_zero": true,
+      "log_bootstrap_upper_below_zero": true,
+      "log_loss_below_v8": true,
+      "minimum_four_brier_improving_folds": true,
+      "minimum_four_log_improving_folds": true,
+      "modal_accuracy_nondecline": true,
+      "no_zero_probability_outcomes": true
+    },
+    "improving_brier_folds": 5,
+    "improving_log_loss_folds": 5,
+    "log_bootstrap_lower_95": -0.06612005581060025,
+    "log_bootstrap_upper_95": -0.0027377605521673514,
+    "mean_brier_difference_vs_v8": -0.01638908996871476,
+    "mean_log_loss": 1.4845525475361436,
+    "mean_log_loss_difference_vs_v8": -0.03429222838426827,
+    "mean_multiclass_brier": 0.7342769117969061,
+    "mean_true_bracket_probability": 0.274586662537913,
+    "modal_bracket_accuracy": 0.3799392097264438,
+    "passes_all_gates": true,
+    "weight": 0.75,
+    "zero_true_probability_count": 0
+  },
+  "limitations": [
+    "calendar 2025 is repeatedly exposed development data",
+    "candidate-level intervals do not remove winner-selection bias across 192 correlated candidates",
+    "observed-report availability uses a conservative observed-time-plus-15-minute proxy",
+    "HRRR 925 hPa temperature substitutes for the unavailable registered 950 hPa field",
+    "probability accuracy does not establish executable Kalshi returns"
+  ],
+  "live_orders_placed": 0,
+  "market_data_read_by_v10": false,
+  "multiple_comparison_context": {
+    "bootstrap_intervals_are_candidate_level_not_familywise_adjusted": true,
+    "catalog_was_frozen_before_data_acquisition": true,
+    "correlated_noncontrol_candidates": 192,
+    "development_winner_requires_new_confirmation": true
+  },
+  "network_used_during_scoring": false,
+  "noncontrol_candidate_count": 192,
+  "observed_input_coverage": {
+    "dates_without_kdag_asof_report": 6,
+    "dates_without_klax_asof_report": 0,
+    "dates_without_observed_pressure_gradient": 6,
+    "primary_dates": 329
+  },
+  "paper_orders_placed": 0,
+  "passing_candidate_count": 53,
+  "patterns_under_v8": {
+    "ensemble_uncertainty": {
+      "high": {
+        "date_count": 61,
+        "mean_log_loss": 1.7445152286302634,
+        "mean_multiclass_brier": 0.8227508228907126,
+        "mean_true_bracket_probability": 0.22052982863059803,
+        "modal_bracket_accuracy": 0.29508196721311475,
+        "zero_true_probability_count": 0
+      },
+      "low": {
+        "date_count": 151,
+        "mean_log_loss": 1.4819860314335724,
+        "mean_multiclass_brier": 0.737372469467946,
+        "mean_true_bracket_probability": 0.26593801062962547,
+        "modal_bracket_accuracy": 0.36423841059602646,
+        "zero_true_probability_count": 0
+      },
+      "medium": {
+        "date_count": 117,
+        "mean_log_loss": 1.448757363973504,
+        "mean_multiclass_brier": 0.7302399273068031,
+        "mean_true_bracket_probability": 0.2740033752756551,
+        "modal_bracket_accuracy": 0.3504273504273504,
+        "zero_true_probability_count": 0
+      }
+    },
+    "forecast_marine": {
+      "morning_low_cloud_clears": {
+        "date_count": 112,
+        "mean_log_loss": 1.566082156390873,
+        "mean_multiclass_brier": 0.7625928012054723,
+        "mean_true_bracket_probability": 0.2583776134034168,
+        "modal_bracket_accuracy": 0.3392857142857143,
+        "zero_true_probability_count": 0
+      },
+      "no_strong_low_cloud_signal": {
+        "date_count": 152,
+        "mean_log_loss": 1.4797693715121265,
+        "mean_multiclass_brier": 0.7392827899183395,
+        "mean_true_bracket_probability": 0.26734434346770736,
+        "modal_bracket_accuracy": 0.35526315789473684,
+        "zero_true_probability_count": 0
+      },
+      "persistent_low_cloud": {
+        "date_count": 65,
+        "mean_log_loss": 1.5288274660337609,
+        "mean_multiclass_brier": 0.7567344119736736,
+        "mean_true_bracket_probability": 0.24758032539257493,
+        "modal_bracket_accuracy": 0.3384615384615385,
+        "zero_true_probability_count": 0
+      }
+    },
+    "inversion_and_moisture": {
+      "no_inversion_or_missing": {
+        "date_count": 245,
+        "mean_log_loss": 1.4974149342611554,
+        "mean_multiclass_brier": 0.7434646253370167,
+        "mean_true_bracket_probability": 0.2646024731702604,
+        "modal_bracket_accuracy": 0.35918367346938773,
+        "zero_true_probability_count": 0
+      },
+      "other_inversion": {
+        "date_count": 77,
+        "mean_log_loss": 1.5526790254880176,
+        "mean_multiclass_brier": 0.7565724810747794,
+        "mean_true_bracket_probability": 0.25632234627654715,
+        "modal_bracket_accuracy": 0.33766233766233766,
+        "zero_true_probability_count": 0
+      },
+      "strong_moist_inversion": {
+        "date_count": 7,
+        "mean_log_loss": 1.8967124887507225,
+        "mean_multiclass_brier": 0.9377429043660259,
+        "mean_true_bracket_probability": 0.15756106696909283,
+        "modal_bracket_accuracy": 0.0,
+        "zero_true_probability_count": 0
+      }
+    },
+    "observed_marine": {
+      "cleared": {
+        "date_count": 112,
+        "mean_log_loss": 1.467504673297211,
+        "mean_multiclass_brier": 0.7307104841645112,
+        "mean_true_bracket_probability": 0.27026187196554147,
+        "modal_bracket_accuracy": 0.38392857142857145,
+        "zero_true_probability_count": 0
+      },
+      "none_or_missing": {
+        "date_count": 157,
+        "mean_log_loss": 1.5150004859161006,
+        "mean_multiclass_brier": 0.7504987138481589,
+        "mean_true_bracket_probability": 0.261722949249942,
+        "modal_bracket_accuracy": 0.3375796178343949,
+        "zero_true_probability_count": 0
+      },
+      "persistent": {
+        "date_count": 60,
+        "mean_log_loss": 1.624738859661668,
+        "mean_multiclass_brier": 0.7883540380050518,
+        "mean_true_bracket_probability": 0.23845868944016738,
+        "modal_bracket_accuracy": 0.3,
+        "zero_true_probability_count": 0
+      }
+    },
+    "pressure_and_flow": {
+      "neutral": {
+        "date_count": 117,
+        "mean_log_loss": 1.5499709328782387,
+        "mean_multiclass_brier": 0.7717219770476877,
+        "mean_true_bracket_probability": 0.2510530162823826,
+        "modal_bracket_accuracy": 0.2905982905982906,
+        "zero_true_probability_count": 0
+      },
+      "offshore": {
+        "date_count": 40,
+        "mean_log_loss": 1.8842661246752541,
+        "mean_multiclass_brier": 0.8777444568279712,
+        "mean_true_bracket_probability": 0.19798791143416172,
+        "modal_bracket_accuracy": 0.175,
+        "zero_true_probability_count": 0
+      },
+      "onshore": {
+        "date_count": 172,
+        "mean_log_loss": 1.4126900415351826,
+        "mean_multiclass_brier": 0.7067899127511105,
+        "mean_true_bracket_probability": 0.2812478761417811,
+        "modal_bracket_accuracy": 0.42441860465116277,
+        "zero_true_probability_count": 0
+      }
+    },
+    "season": {
+      "fall": {
+        "date_count": 91,
+        "mean_log_loss": 1.629064763382212,
+        "mean_multiclass_brier": 0.7878032452604338,
+        "mean_true_bracket_probability": 0.24614610110356586,
+        "modal_bracket_accuracy": 0.31868131868131866,
+        "zero_true_probability_count": 0
+      },
+      "spring": {
+        "date_count": 92,
+        "mean_log_loss": 1.5135460021760856,
+        "mean_multiclass_brier": 0.7480155177524306,
+        "mean_true_bracket_probability": 0.25264450420445483,
+        "modal_bracket_accuracy": 0.3804347826086957,
+        "zero_true_probability_count": 0
+      },
+      "summer": {
+        "date_count": 90,
+        "mean_log_loss": 1.3427470630435037,
+        "mean_multiclass_brier": 0.6897445431680397,
+        "mean_true_bracket_probability": 0.2968872648800092,
+        "modal_bracket_accuracy": 0.4111111111111111,
+        "zero_true_probability_count": 0
+      },
+      "winter": {
+        "date_count": 56,
+        "mean_log_loss": 1.6314566059985534,
+        "mean_multiclass_brier": 0.7925818347114755,
+        "mean_true_bracket_probability": 0.23758768986350734,
+        "modal_bracket_accuracy": 0.23214285714285715,
+        "zero_true_probability_count": 0
+      }
+    }
+  },
+  "schema_version": "klax-v10-all-meteorological-combinations-result-v1",
+  "self_sha256": "fdd16175e2ffa00ad529974ed8d7fdb5abac8aab1685766289cd0248adc2626d",
+  "status": "COMPLETE_EXPOSED_DEVELOPMENT_ONLY",
+  "top_ten_candidate_ids": [
+    "V10-pressure_and_flow-W75",
+    "V10-pressure_and_flow-W50",
+    "V10-pressure_and_flow+inversion_and_moisture+ensemble_uncertainty-W75",
+    "V10-pressure_and_flow+inversion_and_moisture-W50",
+    "V10-observed_marine+pressure_and_flow+inversion_and_moisture-W50",
+    "V10-observed_marine+pressure_and_flow+inversion_and_moisture+ensemble_uncertainty-W75",
+    "V10-pressure_and_flow+inversion_and_moisture+ensemble_uncertainty-W50",
+    "V10-observed_marine+pressure_and_flow-W50",
+    "V10-observed_marine+pressure_and_flow+inversion_and_moisture+ensemble_uncertainty-W50",
+    "V10-pressure_and_flow+ensemble_uncertainty-W50"
+  ],
+  "v8_control": {
+    "blocks": [],
+    "brier_bootstrap_lower_95": 0.0,
+    "brier_bootstrap_upper_95": 0.0,
+    "candidate_id": "V8_CONTROL",
+    "date_count": 329,
+    "gates": {
+      "brier_below_v8": false,
+      "brier_bootstrap_upper_below_zero": false,
+      "log_bootstrap_upper_below_zero": false,
+      "log_loss_below_v8": false,
+      "minimum_four_brier_improving_folds": false,
+      "minimum_four_log_improving_folds": false,
+      "modal_accuracy_nondecline": true,
+      "no_zero_probability_outcomes": true
+    },
+    "improving_brier_folds": 0,
+    "improving_log_loss_folds": 0,
+    "log_bootstrap_lower_95": 0.0,
+    "log_bootstrap_upper_95": 0.0,
+    "mean_brier_difference_vs_v8": 0.0,
+    "mean_log_loss": 1.5188447759204118,
+    "mean_log_loss_difference_vs_v8": 0.0,
+    "mean_multiclass_brier": 0.750666001765621,
+    "mean_true_bracket_probability": 0.2603870944036218,
+    "modal_bracket_accuracy": 0.3465045592705167,
+    "passes_all_gates": false,
+    "weight": 0.0,
+    "zero_true_probability_count": 0
+  }
+}

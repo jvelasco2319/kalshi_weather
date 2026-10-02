@@ -1,0 +1,1542 @@
+{
+  "all_gate_candidate_count": 55,
+  "baselines": {
+    "identity": {
+      "brier_better_than_identity_fold_count": 0,
+      "candidate_id": "identity",
+      "date_count": 329,
+      "family": "identity",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 6.413057942513208,
+          "mean_multiclass_brier": 0.865744127645037,
+          "mean_true_bracket_probability": 0.2957514495705753,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 10
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 4.402926943046614,
+          "mean_multiclass_brier": 0.7762155803966919,
+          "mean_true_bracket_probability": 0.3410357108753626,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 6
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4413668180372348,
+          "mean_multiclass_brier": 0.735591265783355,
+          "mean_true_bracket_probability": 0.34409203854479686,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 9.890915417870461,
+          "mean_multiclass_brier": 0.9315514431348281,
+          "mean_true_bracket_probability": 0.25917508555059543,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 17
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 10.91308901339855,
+          "mean_multiclass_brier": 0.9858098019680693,
+          "mean_true_bracket_probability": 0.24464620182010977,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 19
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": false,
+        "aggregate_log_loss_beats_identity_and_uniform": false,
+        "brier_improves_at_least_four_folds": false,
+        "log_loss_improves_at_least_four_folds": false,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": false
+      },
+      "log_loss_better_than_identity_fold_count": 0,
+      "mean_log_loss": 6.612876738476131,
+      "mean_multiclass_brier": 0.8589618915550205,
+      "mean_true_bracket_probability": 0.29694371018323545,
+      "minimum_probability": 0.0,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {},
+      "passes_all_development_gates": false,
+      "rank": 104,
+      "zero_true_probability_count": 52
+    },
+    "uniform_six_bracket": {
+      "mean_log_loss": 1.791759469228055,
+      "mean_multiclass_brier": 0.8333333333333334
+    }
+  },
+  "candidate_count": 104,
+  "data_status": "2025_OUTCOMES_ALREADY_EXPOSED_NOT_CONFIRMATORY",
+  "descriptive_bootstrap": {
+    "brier_delta_leader_minus_identity": {
+      "ci_95": [
+        -0.13988542374248567,
+        -0.0768982280477541
+      ],
+      "mean": -0.10829588978939954
+    },
+    "draws": 20000,
+    "interpretation": "post-selection descriptive paired bootstrap; not untouched confirmation",
+    "log_loss_delta_leader_minus_identity": {
+      "ci_95": [
+        -6.389888237520572,
+        -3.855947937246448
+      ],
+      "mean": -5.09403196255572
+    },
+    "seed": 20260929
+  },
+  "economic_result": null,
+  "family_leaders": [
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "cauchy-2-w-0.4",
+      "date_count": 329,
+      "family": "cauchy",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5940177981763946,
+          "mean_multiclass_brier": 0.7857256993661781,
+          "mean_true_bracket_probability": 0.26127939869440586,
+          "minimum_probability": 0.021130585987966702,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4734114770019517,
+          "mean_multiclass_brier": 0.7208692484531718,
+          "mean_true_bracket_probability": 0.28750437498144227,
+          "minimum_probability": 0.025036802818608,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3797041104589627,
+          "mean_multiclass_brier": 0.7040039191001072,
+          "mean_true_bracket_probability": 0.2934970340226217,
+          "minimum_probability": 0.02124528673306631,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7225919459609584,
+          "mean_multiclass_brier": 0.828237672965415,
+          "mean_true_bracket_probability": 0.2375551612930415,
+          "minimum_probability": 0.021203706624978252,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8167327878063873,
+          "mean_multiclass_brier": 0.8583424907425795,
+          "mean_true_bracket_probability": 0.2272097407320636,
+          "minimum_probability": 0.021203706624978252,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5973015747189385,
+      "mean_multiclass_brier": 0.7794166879089532,
+      "mean_true_bracket_probability": 0.2614095363010989,
+      "minimum_probability": 0.021130585987966702,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "scale": 2.0,
+        "weight": 0.4
+      },
+      "passes_all_development_gates": true,
+      "rank": 15,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "exponential-2-w-0.4",
+      "date_count": 329,
+      "family": "exponential",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6053537046055464,
+          "mean_multiclass_brier": 0.7907535894039578,
+          "mean_true_bracket_probability": 0.2648610897781889,
+          "minimum_probability": 0.016450493632816723,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4775494234539073,
+          "mean_multiclass_brier": 0.7229267292912585,
+          "mean_true_bracket_probability": 0.2922435982401506,
+          "minimum_probability": 0.020900681168141973,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3772862238158097,
+          "mean_multiclass_brier": 0.7053917244418029,
+          "mean_true_bracket_probability": 0.2980303278899633,
+          "minimum_probability": 0.0166384695757389,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7435215558590944,
+          "mean_multiclass_brier": 0.8356014103897842,
+          "mean_true_bracket_probability": 0.2398379749311636,
+          "minimum_probability": 0.016588169936838065,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8441584120905936,
+          "mean_multiclass_brier": 0.8672764307674898,
+          "mean_true_bracket_probability": 0.22911182886212145,
+          "minimum_probability": 0.016588169936838065,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.609586691197086,
+      "mean_multiclass_brier": 0.7843706345714875,
+      "mean_true_bracket_probability": 0.2648168298192298,
+      "minimum_probability": 0.016450493632816723,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "scale": 2.0,
+        "weight": 0.4
+      },
+      "passes_all_development_gates": true,
+      "rank": 20,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "floor-0.1",
+      "date_count": 329,
+      "family": "floor",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6414492958496942,
+          "mean_multiclass_brier": 0.8001437239391123,
+          "mean_true_bracket_probability": 0.23828141473507372,
+          "minimum_probability": 0.07142857142857142,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.577714163985539,
+          "mean_multiclass_brier": 0.7329117925426193,
+          "mean_true_bracket_probability": 0.272473069629773,
+          "minimum_probability": 0.07353963838664812,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.5044663866823844,
+          "mean_multiclass_brier": 0.7201355211650232,
+          "mean_true_bracket_probability": 0.27157311132319484,
+          "minimum_probability": 0.07341197822141561,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7574755805321307,
+          "mean_multiclass_brier": 0.8319836152509154,
+          "mean_true_bracket_probability": 0.2206020330490498,
+          "minimum_probability": 0.07142857142857142,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8204646650367071,
+          "mean_multiclass_brier": 0.8648163933210813,
+          "mean_true_bracket_probability": 0.21026390485123783,
+          "minimum_probability": 0.07142857142857142,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 4,
+      "mean_log_loss": 1.6603713579995634,
+      "mean_multiclass_brier": 0.7899673718130653,
+      "mean_true_bracket_probability": 0.24265195076624516,
+      "minimum_probability": 0.07142857142857142,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "floor": 0.1
+      },
+      "passes_all_development_gates": true,
+      "rank": 24,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 0,
+      "candidate_id": "identity",
+      "date_count": 329,
+      "family": "identity",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 6.413057942513208,
+          "mean_multiclass_brier": 0.865744127645037,
+          "mean_true_bracket_probability": 0.2957514495705753,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 10
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 4.402926943046614,
+          "mean_multiclass_brier": 0.7762155803966919,
+          "mean_true_bracket_probability": 0.3410357108753626,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 6
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4413668180372348,
+          "mean_multiclass_brier": 0.735591265783355,
+          "mean_true_bracket_probability": 0.34409203854479686,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 9.890915417870461,
+          "mean_multiclass_brier": 0.9315514431348281,
+          "mean_true_bracket_probability": 0.25917508555059543,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 17
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 10.91308901339855,
+          "mean_multiclass_brier": 0.9858098019680693,
+          "mean_true_bracket_probability": 0.24464620182010977,
+          "minimum_probability": 0.0,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 19
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": false,
+        "aggregate_log_loss_beats_identity_and_uniform": false,
+        "brier_improves_at_least_four_folds": false,
+        "log_loss_improves_at_least_four_folds": false,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": false
+      },
+      "log_loss_better_than_identity_fold_count": 0,
+      "mean_log_loss": 6.612876738476131,
+      "mean_multiclass_brier": 0.8589618915550205,
+      "mean_true_bracket_probability": 0.29694371018323545,
+      "minimum_probability": 0.0,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {},
+      "passes_all_development_gates": false,
+      "rank": 104,
+      "zero_true_probability_count": 52
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "power-0.5-eps-0.02",
+      "date_count": 329,
+      "family": "power",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5587870085096198,
+          "mean_multiclass_brier": 0.7649935339237904,
+          "mean_true_bracket_probability": 0.24240418915658735,
+          "minimum_probability": 0.06100499347803174,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.5023297579107513,
+          "mean_multiclass_brier": 0.733999573841971,
+          "mean_true_bracket_probability": 0.25794871560933585,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.419130135907031,
+          "mean_multiclass_brier": 0.7139019926183426,
+          "mean_true_bracket_probability": 0.26427914847096734,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7131875933616272,
+          "mean_multiclass_brier": 0.811350324921582,
+          "mean_true_bracket_probability": 0.21855015831165694,
+          "minimum_probability": 0.06100499347803174,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7534532133955407,
+          "mean_multiclass_brier": 0.829499036447296,
+          "mean_true_bracket_probability": 0.21165146175692282,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.589470522161313,
+      "mean_multiclass_brier": 0.7707663858412553,
+      "mean_true_bracket_probability": 0.23895628647113817,
+      "minimum_probability": 0.06066878758038095,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "epsilon": 0.02,
+        "power": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 8,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_climatology-prior-36-w-0.5",
+      "date_count": 329,
+      "family": "rolling_climatology",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6027436577770602,
+          "mean_multiclass_brier": 0.7785264963965434,
+          "mean_true_bracket_probability": 0.24835623652026248,
+          "minimum_probability": 0.03461538461538462,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4868384807459136,
+          "mean_multiclass_brier": 0.7313310562548935,
+          "mean_true_bracket_probability": 0.2609300642907591,
+          "minimum_probability": 0.02806122448979592,
+          "modal_bracket_accuracy": 0.48484848484848486,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3485323636573712,
+          "mean_multiclass_brier": 0.6935128250135958,
+          "mean_true_bracket_probability": 0.28033630290862876,
+          "minimum_probability": 0.02099236641221374,
+          "modal_bracket_accuracy": 0.5,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6948644346626112,
+          "mean_multiclass_brier": 0.799659065811482,
+          "mean_true_bracket_probability": 0.2278375009958642,
+          "minimum_probability": 0.020754716981132074,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8361343716428606,
+          "mean_multiclass_brier": 0.8305771785791929,
+          "mean_true_bracket_probability": 0.2168676234525391,
+          "minimum_probability": 0.024242424242424242,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5937955462075588,
+      "mean_multiclass_brier": 0.7666854424294229,
+      "mean_true_bracket_probability": 0.24686101465827134,
+      "minimum_probability": 0.020754716981132074,
+      "modal_bracket_accuracy": 0.3708206686930091,
+      "params": {
+        "prior": 36.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 3,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_confusion-alpha-2-w-0.75",
+      "date_count": 329,
+      "family": "rolling_confusion",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5514027813026035,
+          "mean_multiclass_brier": 0.7644818628195913,
+          "mean_true_bracket_probability": 0.2491133175889139,
+          "minimum_probability": 0.02631578947368421,
+          "modal_bracket_accuracy": 0.2923076923076923,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4141541009492136,
+          "mean_multiclass_brier": 0.7019148710313979,
+          "mean_true_bracket_probability": 0.27495859482640433,
+          "minimum_probability": 0.025423728813559324,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3025545016576003,
+          "mean_multiclass_brier": 0.6834864802624245,
+          "mean_true_bracket_probability": 0.3009010323076643,
+          "minimum_probability": 0.019230769230769232,
+          "modal_bracket_accuracy": 0.42424242424242425,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6413199139592352,
+          "mean_multiclass_brier": 0.7930434349729579,
+          "mean_true_bracket_probability": 0.24381563620602276,
+          "minimum_probability": 0.014150943396226415,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6852858848452579,
+          "mean_multiclass_brier": 0.8106126909698235,
+          "mean_true_bracket_probability": 0.23297607628888092,
+          "minimum_probability": 0.012195121951219513,
+          "modal_bracket_accuracy": 0.25757575757575757,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5188447759204118,
+      "mean_multiclass_brier": 0.7506660017656209,
+      "mean_true_bracket_probability": 0.2603870944036218,
+      "minimum_probability": 0.012195121951219513,
+      "modal_bracket_accuracy": 0.3465045592705167,
+      "params": {
+        "prior": 12.0,
+        "weight": 0.75
+      },
+      "passes_all_development_gates": true,
+      "rank": 1,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "uniform-0.4",
+      "date_count": 329,
+      "family": "uniform",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5931157631101982,
+          "mean_multiclass_brier": 0.7830405234916705,
+          "mean_true_bracket_probability": 0.24411753640901182,
+          "minimum_probability": 0.06666666666666667,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.524645329325387,
+          "mean_multiclass_brier": 0.7290738010559683,
+          "mean_true_bracket_probability": 0.2712880931918842,
+          "minimum_probability": 0.06666666666666667,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4451698293396842,
+          "mean_multiclass_brier": 0.7129820105138386,
+          "mean_true_bracket_probability": 0.2731218897935448,
+          "minimum_probability": 0.06666666666666667,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7391101391180044,
+          "mean_multiclass_brier": 0.8242878117975856,
+          "mean_true_bracket_probability": 0.22217171799702393,
+          "minimum_probability": 0.06666666666666667,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7907101744854665,
+          "mean_multiclass_brier": 0.8507946851681856,
+          "mean_true_bracket_probability": 0.21345438775873252,
+          "minimum_probability": 0.06666666666666667,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 4,
+      "mean_log_loss": 1.6186275555376495,
+      "mean_multiclass_brier": 0.7800266334051876,
+      "mean_true_bracket_probability": 0.2448328927766079,
+      "minimum_probability": 0.06666666666666667,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "alpha": 0.4
+      },
+      "passes_all_development_gates": true,
+      "rank": 16,
+      "zero_true_probability_count": 0
+    }
+  ],
+  "input_bindings": {
+    "data/manifests/climate_2024-01-01_2026-01-08.json": "bb67cee671fd659e7407f9c55b4cdf5cc156fc711f81898e6a0eb75859deae70",
+    "data/raw/climate/CLILAX_2024-01-01_2026-01-08.zip": "3763a628ba7b2765573f2c732a4f0c3ffdb54fb141186e218ed1c0993688300e",
+    "runs/replays/v7y-hrrr-gefs-calendar-2025/prediction-freeze.json": "3c6b3f62293d0639c1a4dae16b89c6c29d5b9d79a30ba01d6cd1bda87bf20c48",
+    "runs/replays/v7y-hrrr-gefs-calendar-2025/summary.json": "539b35b70de3cb2283ce90e0e97cdf7b4dd0ebdeebeaa206e34cd7c581761978"
+  },
+  "leader": {
+    "brier_better_than_identity_fold_count": 5,
+    "candidate_id": "rolling_confusion-alpha-2-w-0.75",
+    "date_count": 329,
+    "family": "rolling_confusion",
+    "folds": [
+      {
+        "date_count": 65,
+        "mean_log_loss": 1.5514027813026035,
+        "mean_multiclass_brier": 0.7644818628195913,
+        "mean_true_bracket_probability": 0.2491133175889139,
+        "minimum_probability": 0.02631578947368421,
+        "modal_bracket_accuracy": 0.2923076923076923,
+        "zero_true_probability_count": 0
+      },
+      {
+        "date_count": 66,
+        "mean_log_loss": 1.4141541009492136,
+        "mean_multiclass_brier": 0.7019148710313979,
+        "mean_true_bracket_probability": 0.27495859482640433,
+        "minimum_probability": 0.025423728813559324,
+        "modal_bracket_accuracy": 0.4696969696969697,
+        "zero_true_probability_count": 0
+      },
+      {
+        "date_count": 66,
+        "mean_log_loss": 1.3025545016576003,
+        "mean_multiclass_brier": 0.6834864802624245,
+        "mean_true_bracket_probability": 0.3009010323076643,
+        "minimum_probability": 0.019230769230769232,
+        "modal_bracket_accuracy": 0.42424242424242425,
+        "zero_true_probability_count": 0
+      },
+      {
+        "date_count": 66,
+        "mean_log_loss": 1.6413199139592352,
+        "mean_multiclass_brier": 0.7930434349729579,
+        "mean_true_bracket_probability": 0.24381563620602276,
+        "minimum_probability": 0.014150943396226415,
+        "modal_bracket_accuracy": 0.2878787878787879,
+        "zero_true_probability_count": 0
+      },
+      {
+        "date_count": 66,
+        "mean_log_loss": 1.6852858848452579,
+        "mean_multiclass_brier": 0.8106126909698235,
+        "mean_true_bracket_probability": 0.23297607628888092,
+        "minimum_probability": 0.012195121951219513,
+        "modal_bracket_accuracy": 0.25757575757575757,
+        "zero_true_probability_count": 0
+      }
+    ],
+    "gates": {
+      "aggregate_brier_beats_identity_and_uniform": true,
+      "aggregate_log_loss_beats_identity_and_uniform": true,
+      "brier_improves_at_least_four_folds": true,
+      "log_loss_improves_at_least_four_folds": true,
+      "modal_accuracy_preserved": true,
+      "nonzero_outcomes": true
+    },
+    "log_loss_better_than_identity_fold_count": 5,
+    "mean_log_loss": 1.5188447759204118,
+    "mean_multiclass_brier": 0.7506660017656209,
+    "mean_true_bracket_probability": 0.2603870944036218,
+    "minimum_probability": 0.012195121951219513,
+    "modal_bracket_accuracy": 0.3465045592705167,
+    "params": {
+      "prior": 12.0,
+      "weight": 0.75
+    },
+    "passes_all_development_gates": true,
+    "rank": 1,
+    "zero_true_probability_count": 0
+  },
+  "limitations": [
+    "All 2025 outcomes were exposed before V8 and are development evidence only.",
+    "Candidate selection and bootstrap use the same exposed year, so improvement is not independent confirmation.",
+    "This component repairs forecast probabilities only; it does not estimate prices, fees, fills, or return."
+  ],
+  "live_orders_placed": 0,
+  "market_prices_read": false,
+  "network_used": false,
+  "paper_orders_placed": 0,
+  "partition": {
+    "chronological_warmup_end": "2025-02-03",
+    "chronological_warmup_start": "2025-01-05",
+    "excluded_dates": {
+      "2025-06-10": "no_complete_CLILAX_report_available_at_settlement",
+      "2025-06-11": "no_complete_CLILAX_report_available_at_settlement"
+    },
+    "primary_date_count": 329,
+    "primary_end": "2025-12-31",
+    "primary_start": "2025-02-04",
+    "rolling_calibrators_use_only_strictly_prior_outcomes": true,
+    "warmup_date_count": 30
+  },
+  "schema_version": "v8-probability-repair-development-v1",
+  "self_sha256": "74ecbad4933f0038fd3a6d9fbf0e1a9bcbd9ff4fb3c4d3a0af33d4fb72a84f40",
+  "spec_binding": {
+    "path": "v8/probability_repair_spec.json",
+    "sha256": "1680176e4bf30ed9fa08391989e7fad95bd0af5081808e121cba9eccaf8d967e"
+  },
+  "status": "COMPLETE_DEVELOPMENT_ONLY",
+  "top_candidates": [
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_confusion-alpha-2-w-0.75",
+      "date_count": 329,
+      "family": "rolling_confusion",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5514027813026035,
+          "mean_multiclass_brier": 0.7644818628195913,
+          "mean_true_bracket_probability": 0.2491133175889139,
+          "minimum_probability": 0.02631578947368421,
+          "modal_bracket_accuracy": 0.2923076923076923,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4141541009492136,
+          "mean_multiclass_brier": 0.7019148710313979,
+          "mean_true_bracket_probability": 0.27495859482640433,
+          "minimum_probability": 0.025423728813559324,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3025545016576003,
+          "mean_multiclass_brier": 0.6834864802624245,
+          "mean_true_bracket_probability": 0.3009010323076643,
+          "minimum_probability": 0.019230769230769232,
+          "modal_bracket_accuracy": 0.42424242424242425,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6413199139592352,
+          "mean_multiclass_brier": 0.7930434349729579,
+          "mean_true_bracket_probability": 0.24381563620602276,
+          "minimum_probability": 0.014150943396226415,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6852858848452579,
+          "mean_multiclass_brier": 0.8106126909698235,
+          "mean_true_bracket_probability": 0.23297607628888092,
+          "minimum_probability": 0.012195121951219513,
+          "modal_bracket_accuracy": 0.25757575757575757,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5188447759204118,
+      "mean_multiclass_brier": 0.7506660017656209,
+      "mean_true_bracket_probability": 0.2603870944036218,
+      "minimum_probability": 0.012195121951219513,
+      "modal_bracket_accuracy": 0.3465045592705167,
+      "params": {
+        "prior": 12.0,
+        "weight": 0.75
+      },
+      "passes_all_development_gates": true,
+      "rank": 1,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_confusion-prior-36-w-0.5",
+      "date_count": 329,
+      "family": "rolling_confusion",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5657595965259874,
+          "mean_multiclass_brier": 0.7742499005044131,
+          "mean_true_bracket_probability": 0.25035090527689596,
+          "minimum_probability": 0.037037037037037035,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.458147421627466,
+          "mean_multiclass_brier": 0.7118339703446824,
+          "mean_true_bracket_probability": 0.2798385109355007,
+          "minimum_probability": 0.03614457831325301,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3469617792437103,
+          "mean_multiclass_brier": 0.6929565995618261,
+          "mean_true_bracket_probability": 0.29594359328495756,
+          "minimum_probability": 0.029411764705882353,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.692945171569894,
+          "mean_multiclass_brier": 0.8143977322138728,
+          "mean_true_bracket_probability": 0.23989246788208154,
+          "minimum_probability": 0.023076923076923078,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7441858406606998,
+          "mean_multiclass_brier": 0.8384862615873901,
+          "mean_true_bracket_probability": 0.23007769629158686,
+          "minimum_probability": 0.02040816326530612,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5615873186592888,
+      "mean_multiclass_brier": 0.7663609870440723,
+      "mean_true_bracket_probability": 0.2592475943982085,
+      "minimum_probability": 0.02040816326530612,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "prior": 36.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 2,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_climatology-prior-36-w-0.5",
+      "date_count": 329,
+      "family": "rolling_climatology",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6027436577770602,
+          "mean_multiclass_brier": 0.7785264963965434,
+          "mean_true_bracket_probability": 0.24835623652026248,
+          "minimum_probability": 0.03461538461538462,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4868384807459136,
+          "mean_multiclass_brier": 0.7313310562548935,
+          "mean_true_bracket_probability": 0.2609300642907591,
+          "minimum_probability": 0.02806122448979592,
+          "modal_bracket_accuracy": 0.48484848484848486,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3485323636573712,
+          "mean_multiclass_brier": 0.6935128250135958,
+          "mean_true_bracket_probability": 0.28033630290862876,
+          "minimum_probability": 0.02099236641221374,
+          "modal_bracket_accuracy": 0.5,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.6948644346626112,
+          "mean_multiclass_brier": 0.799659065811482,
+          "mean_true_bracket_probability": 0.2278375009958642,
+          "minimum_probability": 0.020754716981132074,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8361343716428606,
+          "mean_multiclass_brier": 0.8305771785791929,
+          "mean_true_bracket_probability": 0.2168676234525391,
+          "minimum_probability": 0.024242424242424242,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5937955462075588,
+      "mean_multiclass_brier": 0.7666854424294229,
+      "mean_true_bracket_probability": 0.24686101465827134,
+      "minimum_probability": 0.020754716981132074,
+      "modal_bracket_accuracy": 0.3708206686930091,
+      "params": {
+        "prior": 36.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 3,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_confusion-prior-18-w-0.5",
+      "date_count": 329,
+      "family": "rolling_confusion",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5612366843506444,
+          "mean_multiclass_brier": 0.7765268549300404,
+          "mean_true_bracket_probability": 0.2591985188700148,
+          "minimum_probability": 0.023809523809523808,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4320934317610952,
+          "mean_multiclass_brier": 0.7070707660602968,
+          "mean_true_bracket_probability": 0.29083852643968283,
+          "minimum_probability": 0.023076923076923078,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3121633120116512,
+          "mean_multiclass_brier": 0.6878810733002897,
+          "mean_true_bracket_probability": 0.3088829530131663,
+          "minimum_probability": 0.017857142857142856,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7128710286667082,
+          "mean_multiclass_brier": 0.8191405121755212,
+          "mean_true_bracket_probability": 0.24612226580057311,
+          "minimum_probability": 0.013392857142857142,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7651043670774411,
+          "mean_multiclass_brier": 0.8437999794502734,
+          "mean_true_bracket_probability": 0.23482333915345704,
+          "minimum_probability": 0.011627906976744186,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5566799565073162,
+      "mean_multiclass_brier": 0.7668545270989476,
+      "mean_true_bracket_probability": 0.2679997911775228,
+      "minimum_probability": 0.011627906976744186,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "prior": 18.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 4,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_climatology-prior-18-w-0.5",
+      "date_count": 329,
+      "family": "rolling_climatology",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.619193903994034,
+          "mean_multiclass_brier": 0.7811793743196204,
+          "mean_true_bracket_probability": 0.2528357717851203,
+          "minimum_probability": 0.022727272727272728,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4830322605928905,
+          "mean_multiclass_brier": 0.7323605212210541,
+          "mean_true_bracket_probability": 0.2616946909377108,
+          "minimum_probability": 0.02247191011235955,
+          "modal_bracket_accuracy": 0.48484848484848486,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3390757143287924,
+          "mean_multiclass_brier": 0.6920008557687564,
+          "mean_true_bracket_probability": 0.28243597322338704,
+          "minimum_probability": 0.01639344262295082,
+          "modal_bracket_accuracy": 0.5,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7044290901686363,
+          "mean_multiclass_brier": 0.7995473460671246,
+          "mean_true_bracket_probability": 0.22876365977907856,
+          "minimum_probability": 0.016194331983805668,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.850615337615549,
+          "mean_multiclass_brier": 0.8309754998881081,
+          "mean_true_bracket_probability": 0.21743269805528295,
+          "minimum_probability": 0.020833333333333332,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.599208700116108,
+      "mean_multiclass_brier": 0.7671702676144322,
+      "mean_true_bracket_probability": 0.24861978303262353,
+      "minimum_probability": 0.016194331983805668,
+      "modal_bracket_accuracy": 0.3708206686930091,
+      "params": {
+        "prior": 18.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 5,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_climatology-prior-6-w-0.5",
+      "date_count": 329,
+      "family": "rolling_climatology",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6510562990947608,
+          "mean_multiclass_brier": 0.784809355350613,
+          "mean_true_bracket_probability": 0.25753370136092696,
+          "minimum_probability": 0.009259259259259259,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4802318215422454,
+          "mean_multiclass_brier": 0.7333992504974929,
+          "mean_true_bracket_probability": 0.2623031730887047,
+          "minimum_probability": 0.018072289156626505,
+          "modal_bracket_accuracy": 0.48484848484848486,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.331924437217819,
+          "mean_multiclass_brier": 0.6909211528655289,
+          "mean_true_bracket_probability": 0.284045553585491,
+          "minimum_probability": 0.01293103448275862,
+          "modal_bracket_accuracy": 0.5,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.714199617959883,
+          "mean_multiclass_brier": 0.7995179377197469,
+          "mean_true_bracket_probability": 0.22944776456467889,
+          "minimum_probability": 0.01276595744680851,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8626756493270198,
+          "mean_multiclass_brier": 0.8312966949235102,
+          "mean_true_bracket_probability": 0.2178421796089001,
+          "minimum_probability": 0.018333333333333333,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.607886748207475,
+      "mean_multiclass_brier": 0.7679377522012287,
+      "mean_true_bracket_probability": 0.250212288341682,
+      "minimum_probability": 0.009259259259259259,
+      "modal_bracket_accuracy": 0.3708206686930091,
+      "params": {
+        "prior": 6.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 6,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_confusion-prior-6-w-0.5",
+      "date_count": 329,
+      "family": "rolling_confusion",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.572482947044548,
+          "mean_multiclass_brier": 0.7845241560543921,
+          "mean_true_bracket_probability": 0.2735799587815156,
+          "minimum_probability": 0.00980392156862745,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4047171609200773,
+          "mean_multiclass_brier": 0.7047090872930935,
+          "mean_true_bracket_probability": 0.3056851716736852,
+          "minimum_probability": 0.009433962264150943,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.2751457246638076,
+          "mean_multiclass_brier": 0.6840194068919643,
+          "mean_true_bracket_probability": 0.32351591213740744,
+          "minimum_probability": 0.006944444444444444,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7635152189573675,
+          "mean_multiclass_brier": 0.8255627710777784,
+          "mean_true_bracket_probability": 0.2523088870113956,
+          "minimum_probability": 0.005,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8102496384313682,
+          "mean_multiclass_brier": 0.8502459964239966,
+          "mean_true_bracket_probability": 0.2392348842178439,
+          "minimum_probability": 0.004273504273504274,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5652000686750411,
+      "mean_multiclass_brier": 0.7697675666105364,
+      "mean_true_bracket_probability": 0.2788810266062627,
+      "minimum_probability": 0.004273504273504274,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "prior": 6.0,
+        "weight": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 7,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "power-0.5-eps-0.02",
+      "date_count": 329,
+      "family": "power",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5587870085096198,
+          "mean_multiclass_brier": 0.7649935339237904,
+          "mean_true_bracket_probability": 0.24240418915658735,
+          "minimum_probability": 0.06100499347803174,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.5023297579107513,
+          "mean_multiclass_brier": 0.733999573841971,
+          "mean_true_bracket_probability": 0.25794871560933585,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.419130135907031,
+          "mean_multiclass_brier": 0.7139019926183426,
+          "mean_true_bracket_probability": 0.26427914847096734,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7131875933616272,
+          "mean_multiclass_brier": 0.811350324921582,
+          "mean_true_bracket_probability": 0.21855015831165694,
+          "minimum_probability": 0.06100499347803174,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7534532133955407,
+          "mean_multiclass_brier": 0.829499036447296,
+          "mean_true_bracket_probability": 0.21165146175692282,
+          "minimum_probability": 0.06066878758038095,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.589470522161313,
+      "mean_multiclass_brier": 0.7707663858412553,
+      "mean_true_bracket_probability": 0.23895628647113817,
+      "minimum_probability": 0.06066878758038095,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "epsilon": 0.02,
+        "power": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 8,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "rolling_climatology-prior-36-w-0.4",
+      "date_count": 329,
+      "family": "rolling_climatology",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.6163851770952196,
+          "mean_multiclass_brier": 0.7869720461281692,
+          "mean_true_bracket_probability": 0.25783527913032506,
+          "minimum_probability": 0.027692307692307697,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.4814063777724389,
+          "mean_multiclass_brier": 0.728744014602112,
+          "mean_true_bracket_probability": 0.2769511936076798,
+          "minimum_probability": 0.022448979591836737,
+          "modal_bracket_accuracy": 0.48484848484848486,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3389295121330642,
+          "mean_multiclass_brier": 0.6929101269139911,
+          "mean_true_bracket_probability": 0.2930874500358624,
+          "minimum_probability": 0.016793893129770993,
+          "modal_bracket_accuracy": 0.5,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7358936855114566,
+          "mean_multiclass_brier": 0.8148452167298457,
+          "mean_true_bracket_probability": 0.23410501790681043,
+          "minimum_probability": 0.01660377358490566,
+          "modal_bracket_accuracy": 0.2878787878787879,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.8892767855384482,
+          "mean_multiclass_brier": 0.8500027114925425,
+          "mean_true_bracket_probability": 0.22242333912605322,
+          "minimum_probability": 0.019393939393939394,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.6123661286755204,
+      "mean_multiclass_brier": 0.7746575063862353,
+      "mean_true_bracket_probability": 0.25687755376326415,
+      "minimum_probability": 0.01660377358490566,
+      "modal_bracket_accuracy": 0.3708206686930091,
+      "params": {
+        "prior": 36.0,
+        "weight": 0.4
+      },
+      "passes_all_development_gates": true,
+      "rank": 9,
+      "zero_true_probability_count": 0
+    },
+    {
+      "brier_better_than_identity_fold_count": 5,
+      "candidate_id": "power-0.5-eps-0.01",
+      "date_count": 329,
+      "family": "power",
+      "folds": [
+        {
+          "date_count": 65,
+          "mean_log_loss": 1.5576716373143782,
+          "mean_multiclass_brier": 0.7680495607385908,
+          "mean_true_bracket_probability": 0.2536551596813644,
+          "minimum_probability": 0.04558331269627576,
+          "modal_bracket_accuracy": 0.3076923076923077,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.485515104358644,
+          "mean_multiclass_brier": 0.7325861750527581,
+          "mean_true_bracket_probability": 0.2714154198407529,
+          "minimum_probability": 0.04530175665163358,
+          "modal_bracket_accuracy": 0.4696969696969697,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.3785883336146778,
+          "mean_multiclass_brier": 0.7079395559819636,
+          "mean_true_bracket_probability": 0.27864072164977255,
+          "minimum_probability": 0.04530175665163358,
+          "modal_bracket_accuracy": 0.4090909090909091,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7476677891647034,
+          "mean_multiclass_brier": 0.8216640712240213,
+          "mean_true_bracket_probability": 0.2259142663125987,
+          "minimum_probability": 0.04558331269627576,
+          "modal_bracket_accuracy": 0.2727272727272727,
+          "zero_true_probability_count": 0
+        },
+        {
+          "date_count": 66,
+          "mean_log_loss": 1.7961377533582699,
+          "mean_multiclass_brier": 0.8432772302725637,
+          "mean_true_bracket_probability": 0.21805440650632532,
+          "minimum_probability": 0.04530175665163358,
+          "modal_bracket_accuracy": 0.22727272727272727,
+          "zero_true_probability_count": 0
+        }
+      ],
+      "gates": {
+        "aggregate_brier_beats_identity_and_uniform": true,
+        "aggregate_log_loss_beats_identity_and_uniform": true,
+        "brier_improves_at_least_four_folds": true,
+        "log_loss_improves_at_least_four_folds": true,
+        "modal_accuracy_preserved": true,
+        "nonzero_outcomes": true
+      },
+      "log_loss_better_than_identity_fold_count": 5,
+      "mean_log_loss": 1.5932238575628879,
+      "mean_multiclass_brier": 0.7747235428421722,
+      "mean_true_bracket_probability": 0.2495234745401591,
+      "minimum_probability": 0.04530175665163358,
+      "modal_bracket_accuracy": 0.3373860182370821,
+      "params": {
+        "epsilon": 0.01,
+        "power": 0.5
+      },
+      "passes_all_development_gates": true,
+      "rank": 10,
+      "zero_true_probability_count": 0
+    }
+  ]
+}

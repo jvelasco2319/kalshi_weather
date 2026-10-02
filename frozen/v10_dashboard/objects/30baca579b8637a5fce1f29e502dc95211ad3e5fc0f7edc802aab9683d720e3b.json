@@ -1,0 +1,77 @@
+{
+  "all_18_single_block_candidates": {
+    "brier": {
+      "best_candidate_id": "V10-pressure_and_flow-W75",
+      "best_observed_mean_difference": -0.01638908996871476,
+      "family_candidate_count": 18,
+      "familywise_adjusted_p_value": 0.017149142542872857,
+      "familywise_null_lower_5_percent_critical_value": -0.013494356969213993,
+      "passes_one_sided_familywise_5_percent": true
+    },
+    "log_loss": {
+      "best_candidate_id": "V10-pressure_and_flow-W75",
+      "best_observed_mean_difference": -0.03429222838426827,
+      "family_candidate_count": 18,
+      "familywise_adjusted_p_value": 0.0431978401079946,
+      "familywise_null_lower_5_percent_critical_value": -0.03344439851928266,
+      "passes_one_sided_familywise_5_percent": true
+    }
+  },
+  "all_192_candidates": {
+    "brier": {
+      "best_candidate_id": "V10-observed_marine+pressure_and_flow+inversion_and_moisture-W75",
+      "best_observed_mean_difference": -0.01672311575555074,
+      "family_candidate_count": 192,
+      "familywise_adjusted_p_value": 0.03294835258237088,
+      "familywise_null_lower_5_percent_critical_value": -0.015560642154157584,
+      "passes_one_sided_familywise_5_percent": true
+    },
+    "log_loss": {
+      "best_candidate_id": "V10-observed_marine+pressure_and_flow+inversion_and_moisture-W75",
+      "best_observed_mean_difference": -0.03491741148744539,
+      "family_candidate_count": 192,
+      "familywise_adjusted_p_value": 0.06384680765961702,
+      "familywise_null_lower_5_percent_critical_value": -0.03662008804045118,
+      "passes_one_sided_familywise_5_percent": false
+    }
+  },
+  "block_days": 7,
+  "input_bindings": {
+    "configs/v10_meteorological_combinations.json": "dc1e573420705ee3f95da7d36570ba6d8065de146d035c47b6bf96668f7c0ad0",
+    "runs/v10/all-meteorological-combinations/summary.json": "a63a255f6f5a0e310b257be6258da3ac7adbf72de1fb9e8e13db468acbd40e66",
+    "v10/multiple_comparison_audit.py": "e91d0be6b4952886d2c01527d76d74590a93c4912e5dd339a1722defb30a92d9"
+  },
+  "interpretation_rule": "both Brier and log-loss families must pass their one-sided 5% familywise tests",
+  "limitations": [
+    "this audit was specified after viewing the V10 candidate-level result",
+    "calendar 2025 remains repeatedly exposed development data",
+    "the centered block bootstrap approximates familywise selection risk and is not an untouched confirmation"
+  ],
+  "market_data_read": false,
+  "method": "centered paired circular seven-day block bootstrap of the minimum mean difference across a correlated candidate family",
+  "network_used": false,
+  "orders_placed": 0,
+  "sample_count": 20000,
+  "schema_version": "klax-v10-posthoc-multiple-comparison-audit-v1",
+  "seed": 20261001,
+  "self_sha256": "70d121b65831094256bc6d9d6d0a2f9893ec535805d9e235cb6ecf86c1ad6cb7",
+  "status": "COMPLETE_POSTHOC_AUDIT",
+  "three_predeclared_pressure_only_weights": {
+    "brier": {
+      "best_candidate_id": "V10-pressure_and_flow-W75",
+      "best_observed_mean_difference": -0.01638908996871476,
+      "family_candidate_count": 3,
+      "familywise_adjusted_p_value": 0.009849507524623768,
+      "familywise_null_lower_5_percent_critical_value": -0.011400237893592175,
+      "passes_one_sided_familywise_5_percent": true
+    },
+    "log_loss": {
+      "best_candidate_id": "V10-pressure_and_flow-W75",
+      "best_observed_mean_difference": -0.03429222838426827,
+      "family_candidate_count": 3,
+      "familywise_adjusted_p_value": 0.01949902504874756,
+      "familywise_null_lower_5_percent_critical_value": -0.027130938950499787,
+      "passes_one_sided_familywise_5_percent": true
+    }
+  }
+}

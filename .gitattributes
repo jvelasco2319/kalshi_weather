@@ -1,0 +1,27 @@
+# Keep registered scientific inputs byte-for-byte across platforms.
+frozen/v10_dashboard/** -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+configs/v10_online.json -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+configs/v7y_hrrr_gefs_availability_policy.json -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+configs/v8_campaign.json -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+past7_replay/audited.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+past7_replay/engine.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/candidate_model_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/domain.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/features_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/forecast_models_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/ordinal_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/probability_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/provenance.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+src/klax_lab/regimes_v3.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10/freeze_candidate.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/__init__.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/__main__.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/markets.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/model.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/runner.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/storage.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/transport.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v10_online/weather.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v8/economic_replay.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v8/probability_repair.py -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+v8/probability_repair_spec.json -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol

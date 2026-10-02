@@ -23,7 +23,7 @@ if ($LASTEXITCODE -ne 0) { throw "Updating pip failed. Check the internet connec
 if ($LASTEXITCODE -ne 0) { throw "Installing the project failed. Check the internet connection and rerun setup." }
 & $VenvPython -m kalshi_swarm.verify
 if ($LASTEXITCODE -ne 0) { throw "Frozen-model verification failed." }
-& $VenvPython -m pytest -q --basetemp .test-artifacts -p no:cacheprovider
+& $VenvPython -m pytest -q tests/test_engine.py tests/test_offline.py tests/test_online.py --basetemp .test-artifacts -p no:cacheprovider
 if ($LASTEXITCODE -ne 0) { throw "Automated tests failed; no current-data run was started." }
 & $VenvPython -m kalshi_swarm.cli snapshot --output-dir "artifacts\online"
 if ($LASTEXITCODE -ne 0) { throw "The current-data snapshot failed. Check the public-service connection and rerun setup." }

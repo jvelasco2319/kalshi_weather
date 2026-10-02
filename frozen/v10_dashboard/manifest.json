@@ -1,0 +1,80 @@
+{
+  "input_bindings": {
+    "configs/v10_online.json": "0f262b6c5a32948ca6d17bc320ef74d7e2cb42109c8301de304c95c62cd9269f",
+    "configs/v7y_hrrr_gefs_availability_policy.json": "f4955ca34495584dccb24ab3a47e2c720d935629f342cd80b8b6489639133e93",
+    "configs/v8_campaign.json": "b3497fae8959bf24ab1a9af56ce3aa08dfd783aec7272946149d8d6fbac16b6e",
+    "past7_replay/audited.py": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c",
+    "past7_replay/engine.py": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9",
+    "runs/campaigns_v4/v4-offline-20260926T212122609Z/candidates/primary/a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461/compiled_manifest.json": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f",
+    "runs/campaigns_v5b/v5b-development-20260927T183845017734Z/strategy-freeze.json": "5ca774da1094cb359b2be58f8b9a8d420dd5ae8058261d31b59ed79be51a3279",
+    "runs/campaigns_v8/v8-offline-20260930T004226Z/probability-order-freeze.json": "0cdc8dc2449d3965841ec5a49e0aa026d2d08c56850a509428f8a5dfd47c4847",
+    "runs/v10/all-meteorological-combinations/multiple-comparison-audit.json": "30baca579b8637a5fce1f29e502dc95211ad3e5fc0f7edc802aab9683d720e3b",
+    "runs/v10/all-meteorological-combinations/summary.json": "a63a255f6f5a0e310b257be6258da3ac7adbf72de1fb9e8e13db468acbd40e66",
+    "runs/v10/frozen-development-candidate/candidate-freeze.json": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a",
+    "runs/v10/frozen-scoring-protocol/scoring-freeze.json": "50e1380294e72e7bad4303360a4246a795fc265d527289f127568cc3600fdb0a",
+    "runs/v8/frozen-primary-strategy/strategy-freeze.json": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317",
+    "runs/v8/probability-repair/results.json": "f801b2e4cd01282fae5ecb12242114b352fbe5f0acc867c684bb443947f7dfb1",
+    "src/klax_lab/candidate_model_v3.py": "ac5b3ed84b429260da82158ea7f21712505067cbc52a9d5fd7583367d05663fc",
+    "src/klax_lab/domain.py": "7e6e3ff53ad55f88e5b1cf13c3d53445237a4c460b905f56582f5a23988adba0",
+    "src/klax_lab/features_v3.py": "ca0ac79202b6c00c3ae9ad3e8e7b6a54b42fb24b4128f9c6fb2207b13d5aafa7",
+    "src/klax_lab/forecast_models_v3.py": "3e3abccd9647ade5df9918a9c46e694ef4beea048a15d3f04c9be33c06ddd081",
+    "src/klax_lab/ordinal_v3.py": "86d039ab3a77c442622213c02fcc0baa749d17c102d16459e7a886eeaa34115d",
+    "src/klax_lab/probability_v3.py": "2811ef2b7ac082f068d06d90f72e9bc6e3fc1f586c3acc26b8e15204bf08d059",
+    "src/klax_lab/provenance.py": "0735f35c5335f75f6ba881a62a3c1f8380e47b2e917d17430899d9cd738a92ba",
+    "src/klax_lab/regimes_v3.py": "a5cb14e78a4bd44ca29a99877eef94ea033d70ea50f2cfd0081617093c99930c",
+    "v10/freeze_candidate.py": "33a4cfbb9e6db1d2260635ef4205b8c803dc4d8326e985003f6b604b8a2ce2c4",
+    "v10_online/__init__.py": "85e0ef80689b769292c3fdd11ea96690eeac79841cd3e3cfe76026400d3c9ec6",
+    "v10_online/__main__.py": "aba42690318cc69143c85111104b7bec36ef234a898e404d07caab6ec92a5d0a",
+    "v10_online/markets.py": "dc2393514a6a78b3d01d2ca58da5d50c283bbfe0f8daa09bfbdb6fdcabf25efa",
+    "v10_online/model.py": "71515df7df520669e1ca9fa998095a28ecf524d64f7542e70e7815e0791bc72e",
+    "v10_online/runner.py": "1a25a34bad58dddcd80ae7bc9a3340293449d5ab34530c93790595f306cc2a65",
+    "v10_online/storage.py": "b922ac97153f2d56d1a837c74d468fb2d3ccf0a5d4c25419147ec327312ae724",
+    "v10_online/transport.py": "5856b1013a576b28809e018309f6ef13fc9edfd0dbaf04114f3c19f457a01200",
+    "v10_online/weather.py": "33b96e1d92b2cc11de3bee5db1fcc765f800ef57a92cf812ea278cdcd35b5ba7",
+    "v8/economic_replay.py": "9fae68d0bb01ef08592cb86f6efb43d6512db18ee132c7ec470530fc50cfac6f",
+    "v8/probability_repair.py": "2ddf3e32752ee97b44f40d3d740d410596ecf17c4baf47964762494ed28e9e22",
+    "v8/probability_repair_spec.json": "1680176e4bf30ed9fa08391989e7fad95bd0af5081808e121cba9eccaf8d967e"
+  },
+  "raw_data_included": false,
+  "runtime_assets": {
+    "runs/campaigns_v4/v4-offline-20260926T212122609Z/candidates/primary/a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461/compiled_manifest.json": {
+      "sha256": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f",
+      "source": "frozen/v10_dashboard/objects/e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f.json"
+    },
+    "runs/campaigns_v5b/v5b-development-20260927T183845017734Z/strategy-freeze.json": {
+      "sha256": "5ca774da1094cb359b2be58f8b9a8d420dd5ae8058261d31b59ed79be51a3279",
+      "source": "frozen/v10_dashboard/objects/5ca774da1094cb359b2be58f8b9a8d420dd5ae8058261d31b59ed79be51a3279.json"
+    },
+    "runs/campaigns_v8/v8-offline-20260930T004226Z/probability-order-freeze.json": {
+      "sha256": "0cdc8dc2449d3965841ec5a49e0aa026d2d08c56850a509428f8a5dfd47c4847",
+      "source": "frozen/v10_dashboard/objects/0cdc8dc2449d3965841ec5a49e0aa026d2d08c56850a509428f8a5dfd47c4847.json"
+    },
+    "runs/v10/all-meteorological-combinations/multiple-comparison-audit.json": {
+      "sha256": "30baca579b8637a5fce1f29e502dc95211ad3e5fc0f7edc802aab9683d720e3b",
+      "source": "frozen/v10_dashboard/objects/30baca579b8637a5fce1f29e502dc95211ad3e5fc0f7edc802aab9683d720e3b.json"
+    },
+    "runs/v10/all-meteorological-combinations/summary.json": {
+      "sha256": "a63a255f6f5a0e310b257be6258da3ac7adbf72de1fb9e8e13db468acbd40e66",
+      "source": "frozen/v10_dashboard/objects/a63a255f6f5a0e310b257be6258da3ac7adbf72de1fb9e8e13db468acbd40e66.json"
+    },
+    "runs/v10/frozen-development-candidate/candidate-freeze.json": {
+      "sha256": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a",
+      "source": "frozen/v10_dashboard/objects/c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a.json"
+    },
+    "runs/v10/frozen-scoring-protocol/scoring-freeze.json": {
+      "sha256": "50e1380294e72e7bad4303360a4246a795fc265d527289f127568cc3600fdb0a",
+      "source": "frozen/v10_dashboard/objects/50e1380294e72e7bad4303360a4246a795fc265d527289f127568cc3600fdb0a.json"
+    },
+    "runs/v8/frozen-primary-strategy/strategy-freeze.json": {
+      "sha256": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317",
+      "source": "frozen/v10_dashboard/objects/b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317.json"
+    },
+    "runs/v8/probability-repair/results.json": {
+      "sha256": "f801b2e4cd01282fae5ecb12242114b352fbe5f0acc867c684bb443947f7dfb1",
+      "source": "frozen/v10_dashboard/objects/f801b2e4cd01282fae5ecb12242114b352fbe5f0acc867c684bb443947f7dfb1.json"
+    }
+  },
+  "runtime_registration_included": false,
+  "schema_version": "v10-dashboard-portable-inputs-v1",
+  "trade_journals_included": false
+}
