@@ -781,7 +781,7 @@ function renderMonitoring() {
   const rows = $('monitoring-rows'); rows.replaceChildren();
   history.slice().reverse().forEach(saved => {
     const index = topIndex(saved.probabilities), row = element('tr');
-    [fullTimeText(saved.created_at_utc), fullTimeText(saved.source_cycles.hrrr), fullTimeText(saved.source_cycles.gefs), saved.labels[index] || saved.tickers[index], percent(saved.probabilities[index])].forEach(value => row.append(element('td', '', value)));
+    [timeText(saved.created_at_utc), fullTimeText(saved.source_cycles.hrrr).replace(/, \d{4},/, ','), fullTimeText(saved.source_cycles.gefs).replace(/, \d{4},/, ','), saved.labels[index] || saved.tickers[index], percent(saved.probabilities[index])].forEach(value => row.append(element('td', '', value)));
     rows.append(row);
   });
   if (!history.length) {

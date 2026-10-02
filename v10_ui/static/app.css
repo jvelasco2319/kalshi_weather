@@ -36,4 +36,7 @@
 .monitoring-content p { margin: 0 0 12px; }
 .monitoring-content .table-scroll { overflow-x: auto; }
 #monitoring-details { margin-bottom: 20px; }
-#monitoring-rows td { white-space: nowrap; padding: 10px 12px; font-size: 12px; }
+.monitoring-content .bracket-table { table-layout: auto; }
+.monitoring-content .bracket-table th:first-child { width: auto; }
+.monitoring-content .bracket-table th { white-space: nowrap; padding: 10px 6px; }
+#monitoring-rows td { white-space: nowrap; padding: 10px 6px; font-size: 12px; }
