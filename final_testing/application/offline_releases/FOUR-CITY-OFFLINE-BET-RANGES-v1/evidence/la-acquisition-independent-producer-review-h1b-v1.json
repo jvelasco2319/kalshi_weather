@@ -1,0 +1,163 @@
+{
+  "schema": "LA_OFFLINE_WEATHER_ACQUISITION_H1B_STATIC_PRODUCER_REVIEW_V1",
+  "passes": true,
+  "scope": "SOURCE_BOUND_FIXED_OCTOBER_WEATHER_PRODUCER_ONLY",
+  "actual_receipt_created_utc": "2026-10-13T03:50:51.078498+00:00",
+  "producer_code_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_acquisition.py",
+    "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4",
+    "bytes": 31381
+  },
+  "predecessor_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-v1.json",
+    "sha256": "b94a7d2b431dfe50ffe494f320cc75ebd9c9716c2bb0910a33d068e8a5482fd9",
+    "bytes": 2767
+  },
+  "preserved_original_producer_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-producer-ffac05cd.py",
+    "sha256": "ffac05cd35c8665b7d3dac52f19e1fd83d9038bbe85c1745cabb54bedf09e9d2",
+    "bytes": 26090
+  },
+  "dependency_manifest_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-dependencies-h1b-v1.json",
+    "sha256": "9d8ddfa7059414930b06c0ecdd414c142873265eae9de383376a6cd009c2aa62",
+    "bytes": 44854
+  },
+  "inherited_source_pin_rows_exactly_unchanged": 167,
+  "source_product_registration": {
+    "primary_documentation_url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?help=",
+    "report_type_mapping": {
+      "1": "HFMETAR",
+      "3": "Routine",
+      "4": "Specials"
+    },
+    "requested_native_report_types": [
+      "3",
+      "4"
+    ],
+    "excluded_raw_product_token": "MADISHF",
+    "registration": "ROOT_AUTHORIZED_H1B_SOURCE_PRODUCT_AMENDMENT",
+    "weights_or_model_math_changed": false
+  },
+  "guard_fixture_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-h1b-source-fixture-v1.json",
+    "sha256": "debf33a0b1e0c20f27725585ff4c0268e8909404c9bbb34187d2d6e0ebb4a59b",
+    "bytes": 3891
+  },
+  "actual_raw_source_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\history\\la\\2026-10-12\\acquisition-20261013T032701053784\\weather\\2026-10-12\\latest-forecasts.json",
+      "sha256": "a7a919262372c2a7c15f73e26093e1c12007054cdf51e168873428d6805a2e51",
+      "bytes": 48067
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\history\\la\\2026-10-12\\acquisition-20261013T032701053784\\dated-metar.csv",
+      "sha256": "910d10cc07529d802778b3a7bc3c91c67aa7f510112011a7450cc805f9a7dc54",
+      "bytes": 229122
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\history\\la\\2026-10-12\\acquisition-20261013T032701053784\\dated-metar.receipt.json",
+      "sha256": "1189df6e73b908beadf316cdaa34df3a148c5a77e2ad340b68499d46bdb0a5e9",
+      "bytes": 888
+    }
+  ],
+  "normalization_companion_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\h1b-source-fixtures-v1\\actual-normalized\\dated-metar.excluded-context.json",
+    "sha256": "fffee0d8774cbdac37e0c475764cf621125dd6485cbf2388209d8e08fc9b65f8",
+    "bytes": 984665
+  },
+  "actual_counts": {
+    "source_records": 1633,
+    "native_admitted_station_times": 61,
+    "outside_physical_day": 79,
+    "excluded_hfmetar_products": 1493,
+    "conflicting_admitted_ordinary_rows": 0
+  },
+  "independent_source_checks": {
+    "unchanged_function_asts": [
+      "_cached",
+      "_canonical",
+      "_fixed",
+      "_math_rows",
+      "_ns",
+      "_pin",
+      "_read",
+      "_save",
+      "_utc",
+      "_verify_collection",
+      "dependencies",
+      "source_parity_fixture"
+    ],
+    "changed_function_asts": [
+      "_metar",
+      "ensure_forecasts"
+    ],
+    "new_function": "_prior_collection",
+    "fixed_model_math_and_dependencies_unchanged": true,
+    "raw_csv_and_companion_counts_checked_without_prediction": true,
+    "ordinary_current_day_conflicts_still_block": true,
+    "original_actual_capture_clocks_preserved": true,
+    "no_return_based_source_selection": true
+  },
+  "fixed_math_parity_reuse": {
+    "permitted": true,
+    "mode": "IMMUTABLE_PRIOR_FIXED_MATH_FIXTURE_REUSE",
+    "exact_saved_math_fixture_pin": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-source-fixture-attempt-v3.json",
+      "sha256": "0453ace4ed4844dd5f42c2dbef57bb1d519de81be54e6b0ccbcf5c0459d62ab2",
+      "bytes": 46220
+    },
+    "actually_executed_old_code_pin": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_acquisition.py",
+      "sha256": "a20ee77b8bbfe7e2e3925fb9cbe61031452ac6830d53af5d857d827241638662",
+      "bytes": 20601
+    },
+    "current_producer_pin": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_acquisition.py",
+      "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4",
+      "bytes": 31381
+    },
+    "basis": "Prior accepted five-vector result plus exact unchanged _math_rows/_fixed/dependency identities.",
+    "seeding": "A source-only caller may assign a copy of this immutable accepted fixture to _PARITY before ensure_forecasts; retain its original code pin and execution clock.",
+    "new_test_success_claimed": false,
+    "duplicate_old_forecast_calls_required": false
+  },
+  "bounded_next_step": {
+    "climate_day": "2026-10-12",
+    "forecast_rows": 5,
+    "profiles": [
+      "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "F6_HYBRID_STAGED5",
+      "V8D_NO18_SETTLEMENT"
+    ],
+    "retained_actual_capture_reuse_permitted": true,
+    "new_model_fits_permitted": false,
+    "financial_scoring_permitted_by_this_receipt": false,
+    "book_readiness_required_before_economics": true
+  },
+  "checked_h1_money_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-h1-completed-money-review-v1.json",
+    "sha256": "faf376007239a2e9222f4074226cbab44e7275f997bc0f8b64e857b03cd40afa",
+    "bytes": 17335
+  },
+  "oct04_gap_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct04-acquisition-gap-review-v1.json",
+    "sha256": "70447edc88889343e8ef8a788e4ef6ea2ec66d347c94e80719a2a75e9236843a",
+    "bytes": 60450
+  },
+  "qualifications": [
+    "Producer qualified once by source review; no independent per-day review is invented.",
+    "Current F6 earlier-than-creation dates remain retrospective counterfactual, not actual deployment or unseen validation.",
+    "NWS physical probabilities remain conditional with respect to TWC settlement target.",
+    "Forecast parity is not financial, private-delivery or real-fill proof.",
+    "H1B changes METAR product/source admission, not the saved weights or forecast mathematics.",
+    "Routine/special report types3/4 and explicit MADISHF exclusions are a root-authorized source policy; preserved raw companions make exclusions inspectable.",
+    "The native physical day is08UTC-to08UTC, and differs from the possible civil settlement day.",
+    "Retained earlier1\u201311 scores and H1/H1A reviews are not overwritten or reclassified.",
+    "Oct12 native books are not yet authenticated/supported; this receipt is not economic admission.",
+    "Oct4 genuine stale entry evidence remains UNKNOWN; this weather repair does not resolve it."
+  ],
+  "downloads_by_this_review": 0,
+  "inference_calls_by_this_review": 0,
+  "financial_runs_by_this_review": 0
+}

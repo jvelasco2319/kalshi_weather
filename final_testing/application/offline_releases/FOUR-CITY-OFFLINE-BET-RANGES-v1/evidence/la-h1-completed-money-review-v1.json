@@ -1,0 +1,466 @@
+{
+  "schema": "LA_H1_INDEPENDENT_MONEY_REVIEW_V1",
+  "passes": true,
+  "scope": "COMPLETED_DIAGNOSTIC_CONDITIONAL_CASH_LEDGER_AND_NULL_MASKS",
+  "actual_review_created_utc": "2026-10-13T03:42:49.472975+00:00",
+  "raw_output_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\la-copied-unaccepted-la-copied-diagnostic-1791862018676183900.json",
+    "sha256": "3d9eea9f23e57e6734cd8f516e0c82555034c21f6ba497ec21ceb695e00b146d",
+    "bytes": 3464697
+  },
+  "reused_auditor_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\validation.py",
+      "sha256": "59ebd2183d547e8d845d52a03266ad895873ea027c2ac0159aee823b7697b6e5",
+      "bytes": 17886
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-all-model-simulation-20261011\\validation\\legacy_audit.py",
+      "sha256": "bc267cd8d1bf5329fb5aa4c000e842d72bf5c14f943721d908bedbdd23ceb09e",
+      "bytes": 13540
+    }
+  ],
+  "profiles": [
+    {
+      "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "passes": true,
+      "known_cash": "94.61",
+      "conditional_recorded_net": "-5.39",
+      "full_ending_cash": null,
+      "last_complete_climate_day": "2026-10-03",
+      "first_unresolved_reason": "UNSUPPORTED_NO_TRADE_EVIDENCE",
+      "complete_calendar_days": 3,
+      "positive_money_receipts": 3,
+      "purchased_contracts": 208,
+      "fees": "0.57",
+      "closed_episode_wins": 1,
+      "closed_episode_losses": 2,
+      "partial_terminal_rows": 0,
+      "daily_budget_fraction": ".10",
+      "calendar_cash_checks": [
+        {
+          "day": "2026-10-01",
+          "cutoff_utc": "2026-10-02T07:00:00.000000000Z",
+          "cash": "96.67",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-02",
+          "cutoff_utc": "2026-10-03T07:00:00.000000000Z",
+          "cash": "87.43",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-03",
+          "cutoff_utc": "2026-10-04T07:00:00.000000000Z",
+          "cash": "94.61",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-04",
+          "cutoff_utc": "2026-10-05T07:00:00.000000000Z",
+          "cash": "94.61",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        }
+      ],
+      "cash_fee_basis_reconciliation": {
+        "passed": true,
+        "cash": "94.61",
+        "realized_net": "-5.39",
+        "fees": "0.57",
+        "open_cost_basis": "0",
+        "checked_money_rows": 6,
+        "unknown_arrival_rows": 0,
+        "partial_terminal_rows": 0,
+        "daily_buy_spend": {
+          "2026-10-01": "3.33",
+          "2026-10-02": "9.24",
+          "2026-10-03": "3.82"
+        },
+        "holdings": [
+          {
+            "ticker": "KXHIGHLAX-26OCT01-B83.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT02-B85.5",
+            "side": "NO",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT03-B95.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          }
+        ],
+        "equity_basis": "cash_plus_remaining_acquisition_basis_not_liquidation_value"
+      }
+    },
+    {
+      "profile_id": "F6_HYBRID_STAGED5",
+      "passes": true,
+      "known_cash": "104.52",
+      "conditional_recorded_net": "4.52",
+      "full_ending_cash": null,
+      "last_complete_climate_day": "2026-10-11",
+      "first_unresolved_reason": "NATIVE_ARCHIVE_WEATHER_NOT_READY: Conflicting simultaneous authentic METAR reports: KLAX 2026-10-11T14:10:00+00:00",
+      "complete_calendar_days": 11,
+      "positive_money_receipts": 11,
+      "purchased_contracts": 157,
+      "fees": "1.130000",
+      "closed_episode_wins": 2,
+      "closed_episode_losses": 5,
+      "partial_terminal_rows": 1,
+      "daily_budget_fraction": ".05",
+      "calendar_cash_checks": [
+        {
+          "day": "2026-10-01",
+          "cutoff_utc": "2026-10-02T07:00:00.000000000Z",
+          "cash": "100",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-02",
+          "cutoff_utc": "2026-10-03T07:00:00.000000000Z",
+          "cash": "95.72",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-03",
+          "cutoff_utc": "2026-10-04T07:00:00.000000000Z",
+          "cash": "111.34",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-04",
+          "cutoff_utc": "2026-10-05T07:00:00.000000000Z",
+          "cash": "111.34",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-05",
+          "cutoff_utc": "2026-10-06T07:00:00.000000000Z",
+          "cash": "108.64",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-06",
+          "cutoff_utc": "2026-10-07T07:00:00.000000000Z",
+          "cash": "106.85",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-07",
+          "cutoff_utc": "2026-10-08T07:00:00.000000000Z",
+          "cash": "111.20",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-08",
+          "cutoff_utc": "2026-10-09T07:00:00.000000000Z",
+          "cash": "109.67",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-09",
+          "cutoff_utc": "2026-10-10T07:00:00.000000000Z",
+          "cash": "104.52",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-10",
+          "cutoff_utc": "2026-10-11T07:00:00.000000000Z",
+          "cash": "104.52",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-11",
+          "cutoff_utc": "2026-10-12T07:00:00.000000000Z",
+          "cash": "104.52",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        }
+      ],
+      "cash_fee_basis_reconciliation": {
+        "passed": true,
+        "cash": "104.52",
+        "realized_net": "4.52",
+        "fees": "1.130000",
+        "open_cost_basis": "0",
+        "checked_money_rows": 20,
+        "unknown_arrival_rows": 0,
+        "partial_terminal_rows": 1,
+        "daily_buy_spend": {
+          "2026-10-01": "0",
+          "2026-10-02": "4.28",
+          "2026-10-03": "1.38",
+          "2026-10-04": "0",
+          "2026-10-05": "2.70",
+          "2026-10-06": "1.79",
+          "2026-10-07": "2.65",
+          "2026-10-08": "1.53",
+          "2026-10-09": "5.15"
+        },
+        "holdings": [
+          {
+            "ticker": "KXHIGHLAX-26OCT01-T79",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT02-B87.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT03-B95.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT04-B97.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT05-B97.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT06-B94.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT07-B87.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT08-B83.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          },
+          {
+            "ticker": "KXHIGHLAX-26OCT09-B79.5",
+            "side": "YES",
+            "quantity": 0,
+            "basis": "0"
+          }
+        ],
+        "equity_basis": "cash_plus_remaining_acquisition_basis_not_liquidation_value"
+      }
+    },
+    {
+      "profile_id": "V8D_NO18_SETTLEMENT",
+      "passes": true,
+      "known_cash": "150.1253",
+      "conditional_recorded_net": "50.1253",
+      "full_ending_cash": null,
+      "last_complete_climate_day": "2026-10-11",
+      "first_unresolved_reason": "NATIVE_ARCHIVE_WEATHER_NOT_READY: Conflicting simultaneous authentic METAR reports: KLAX 2026-10-11T14:10:00+00:00",
+      "complete_calendar_days": 11,
+      "positive_money_receipts": 5,
+      "purchased_contracts": 262,
+      "fees": "2.664700",
+      "closed_episode_wins": 3,
+      "closed_episode_losses": 2,
+      "partial_terminal_rows": 0,
+      "daily_budget_fraction": ".10",
+      "calendar_cash_checks": [
+        {
+          "day": "2026-10-01",
+          "cutoff_utc": "2026-10-02T07:00:00.000000000Z",
+          "cash": "100",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-02",
+          "cutoff_utc": "2026-10-03T07:00:00.000000000Z",
+          "cash": "90.0001",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-03",
+          "cutoff_utc": "2026-10-04T07:00:00.000000000Z",
+          "cash": "124.0001",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-04",
+          "cutoff_utc": "2026-10-05T07:00:00.000000000Z",
+          "cash": "124.0001",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-05",
+          "cutoff_utc": "2026-10-06T07:00:00.000000000Z",
+          "cash": "124.0001",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-06",
+          "cutoff_utc": "2026-10-07T07:00:00.000000000Z",
+          "cash": "111.8293",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-07",
+          "cutoff_utc": "2026-10-08T07:00:00.000000000Z",
+          "cash": "100.8208",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-08",
+          "cutoff_utc": "2026-10-09T07:00:00.000000000Z",
+          "cash": "120.8208",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-09",
+          "cutoff_utc": "2026-10-10T07:00:00.000000000Z",
+          "cash": "108.8361",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-10",
+          "cutoff_utc": "2026-10-11T07:00:00.000000000Z",
+          "cash": "108.8361",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        },
+        {
+          "day": "2026-10-11",
+          "cutoff_utc": "2026-10-12T07:00:00.000000000Z",
+          "cash": "98.1253",
+          "source_clock_scope": "Native call sidecar or legacy recorded now_ns; not a private payout receipt"
+        }
+      ],
+      "cash_fee_basis_reconciliation": {
+        "cash": "150.1253",
+        "available_cash": "150.1253",
+        "reserved_cash": "0",
+        "open_basis": "0",
+        "realized_net": "50.1253",
+        "fees": "2.664700",
+        "principal_bought": "53.210000",
+        "gross_buy_spend": "55.8747",
+        "purchased_contracts": 262,
+        "sold_contracts": 0,
+        "positive_fill_reports": 5,
+        "completed_episode_wins": 3,
+        "completed_episode_losses": 2,
+        "completed_episode_zero_net": 0,
+        "full_ledger_closed_drawdown": "15.1640",
+        "unknown_arrivals": [],
+        "conditional_ledger_net": "50.1253",
+        "recorded_cash_change": "50.1253",
+        "return_status": "CONDITIONAL_RECORDED_CASH_LEDGER",
+        "spend_by_day": {
+          "2026-10-02": "9.9999",
+          "2026-10-06": "12.1708",
+          "2026-10-07": "11.0085",
+          "2026-10-09": "11.9847",
+          "2026-10-11": "10.7108"
+        },
+        "positions": [],
+        "steps": [
+          {
+            "index": 0,
+            "cash": "90.0001",
+            "open_basis": "9.9999",
+            "realized_net": "0"
+          },
+          {
+            "index": 1,
+            "cash": "124.0001",
+            "open_basis": "0",
+            "realized_net": "24.0001"
+          },
+          {
+            "index": 2,
+            "cash": "111.8293",
+            "open_basis": "12.1708",
+            "realized_net": "24.0001"
+          },
+          {
+            "index": 3,
+            "cash": "111.8293",
+            "open_basis": "0",
+            "realized_net": "11.8293"
+          },
+          {
+            "index": 4,
+            "cash": "100.8208",
+            "open_basis": "11.0085",
+            "realized_net": "11.8293"
+          },
+          {
+            "index": 5,
+            "cash": "120.8208",
+            "open_basis": "0",
+            "realized_net": "20.8208"
+          },
+          {
+            "index": 6,
+            "cash": "108.8361",
+            "open_basis": "11.9847",
+            "realized_net": "20.8208"
+          },
+          {
+            "index": 7,
+            "cash": "108.8361",
+            "open_basis": "0",
+            "realized_net": "8.8361"
+          },
+          {
+            "index": 8,
+            "cash": "98.1253",
+            "open_basis": "10.7108",
+            "realized_net": "8.8361"
+          },
+          {
+            "index": 9,
+            "cash": "150.1253",
+            "open_basis": "0",
+            "realized_net": "50.1253"
+          }
+        ],
+        "actual_fill_or_complete_opportunity_claim": false,
+        "accounting": "Legacy aggregate raw fee rounded total outlay/proceeds; no F6 accumulator or rebate",
+        "precision": "0.0001"
+      }
+    }
+  ],
+  "source_pin_transport": {
+    "original_native_aliases": 28,
+    "all_actual_equal_declared": true,
+    "accepted_hash_verification": "MATCHED_DECLARED_ACCEPTED_PIN",
+    "required_fix": "Add canonical sha256 alias while retaining native original fields; do not recalculate or rewrite hashes."
+  },
+  "independent_source_depth_review": "Complementary C review pending; this receipt independently proves money/basis/fees/timing masks, not all quote identities.",
+  "qualifications": [
+    "F3 stops at Oct4 missing no-trade evidence; only Oct1\u20133 completed conditional cash.",
+    "F6/V8D have completed Oct1\u201311; Oct12 is missing source, not a zero-profit day.",
+    "Full ending balances and monthly returns remain null for all3.",
+    "The three known cash figures cover different prefixes and must not be reported as a completed common-period portfolio return.",
+    "Wins/losses here count fully closed contract episodes; all native partial closings aggregate fee-inclusive basis.",
+    "Civil-midnight cash is separate from native before-next-entry payouts; private actual availability unproved.",
+    "Historical fills, target equivalence and account precision remain conditional; no common joint-capacity proof.",
+    "Initial unaccepted outer-response failure and diagnostic rerun remain distinct attempts; this audits the retained diagnostic only."
+  ],
+  "financial_replays_by_this_review": 0,
+  "new_forecasts_by_this_review": 0,
+  "network_calls_by_this_review": 0
+}

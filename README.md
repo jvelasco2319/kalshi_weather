@@ -8,6 +8,10 @@
 > opens on port **9020**. The older LA instructions below describe the original
 > application and use different launchers and dependencies.
 
+For a button-by-button guide to **City overview**, **Bets & wallets**, and
+**Offline history**, see the
+[dashboard walkthroughs](final_testing/README.md#button-by-button-walkthroughs).
+
 The [24-slide presentation](presentations/four-city-paper-strategies/output/Four_City_Paper_Strategies_With_Results.pptx)
 explains the strategies by city and the September and October 1–11, 2026 paper
 replay results, including partial results and data limitations.

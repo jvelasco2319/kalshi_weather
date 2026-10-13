@@ -50,7 +50,89 @@ Setup and launch scripts work from other folders too when called by their full
 paths. The `.venv`, restored assets, caches and new runtime results are local
 generated files. Keep the included asset packs; a fresh clone needs them.
 
-## Use Offline History
+## Button-by-button walkthroughs
+
+The page has three tabs: **City overview**, **Bets & wallets**, and
+**Offline history**. Keep the dashboard server running while using them.
+
+### City overview: watch today's weather and paper bets
+
+1. Click **City overview**.
+2. Click a city card: **Los Angeles**, **New York**, **Miami**, or **Phoenix**.
+3. Use **Frozen model / trader** to choose the model you want to inspect.
+   All saved traders keep running when you change this view.
+4. Read the numbers above the graphs: the latest temperature, highest hourly
+   reading, selected model's estimated daily high, and its paper wallet cash.
+5. Look at **Temperature through the day**. The green line shows recorded
+   station readings. Once a paper buy fills, colored shading shows the
+   whole-degree daily-high outcomes that pay that bet, beginning at its fill
+   time. Each model has its own color; the selected model's shading is stronger.
+   **YES** shades the purchased bracket. **NO** shades the outcomes outside it.
+   The legend names the model, side, bracket and contract quantity.
+6. Look at **Model distribution & market prices** to compare the selected
+   model's bracket probabilities with Kalshi's YES bid prices.
+7. Click **Refresh data ↻** when you want a fresh capture of the public readings
+   and market quotes. The page also updates automatically while the server runs.
+
+Shading represents a bet on the **final daily high**. The temperature line shows
+hourly readings. Pending or unconfirmed orders are not shaded. With no filled
+paper bets, the graph says so. Missing bracket definitions remain unavailable.
+
+### Bets & wallets: check money and order status
+
+1. Click **Bets & wallets**.
+2. Find the card for the city and strategy you want. This tab shows **all nine
+   separate paper wallets**, each originally starting at $100.
+3. Read **Cash balance**, **Realized profit / loss**, **Cash available**,
+   **Reserved for pending buys**, and **Fees paid** on that card.
+4. Read the strategy's buying and selling rules below those numbers, followed
+   by the count of open and completed positions.
+5. Scroll down to **Paper orders**. Each row identifies the wallet, contract,
+   YES/NO side, quantity and current order status.
+6. Expand **Exact frozen identity** on a wallet card if you want its saved
+   strategy and model identifiers.
+
+Cash available is uncommitted paper money. Realized profit/loss comes from
+completed positions; open positions still await an exit or settlement.
+`UNKNOWN` means a simulated fill cannot yet be confirmed. An empty order table
+means no paper orders have been recorded. These controls display the automated
+paper traders; they do not place real Kalshi orders.
+
+### Offline history: download and replay missing days
+
+1. Click **Offline history**.
+2. If the connection button says **Connect Probalytics**, connect once using
+   the instructions below. **Probalytics connected · remembered** means the
+   saved connection is ready.
+3. Click **Download & analyze missing days**. It checks dates from
+   **October 1, 2026 through the date of your click**, downloads available
+   missing inputs, and runs the saved strategies in date order.
+4. Wait for the completion message near the top. Figures update automatically
+   while it runs; leaving this tab open is optional while the server runs.
+5. Use the **City** dropdown to choose one city, or leave **All four cities**
+   selected.
+6. Click **View daily results** on a strategy card. This selects that strategy
+   and scrolls to its graphs. You can also use the **Strategy** dropdown.
+7. Expand **Selected strategy: daily record & sources** for its daily numbers,
+   or **Pending or uncertain strategy-days** to see what is missing.
+8. Click **Download saved results** to save a JSON copy of the displayed history.
+
+Results appear in these places:
+
+- **Top summary:** complete-history cash, known supported cash, and counts of
+  complete versus pending analyses.
+- **Strategy cards:** cash, wins/losses, contracts purchased and fees.
+- **Known cash through time:** the selected strategy's supported cash path.
+- **Trade gains & losses by entry day:** supported closed-trade profit/loss
+  after fees, assigned to the day the trade began.
+- **Daily record & sources:** detailed dates, cash, trade results and source notes.
+
+A **—** complete balance means required evidence is missing. **Known supported
+cash** is the supported portion of the simulation, not a complete return for
+every day. A *strategy-day* is one strategy's analysis of one date, so one
+calendar date can appear several times across different strategies.
+
+## Offline History connection and behavior
 
 Open **Offline History**, then select **Download & analyze missing days**. The
 history starts on **October 1, 2026** and runs through the date of your click.
@@ -198,6 +280,21 @@ instructions and experimental launchers remain available for their original
 application.
 
 ## Updating an earlier paper installation
+
+For the shaded-bet graph and walkthrough update, stop the launcher, pull the
+branch, and run:
+
+```powershell
+git pull origin final_testing_temp
+.\final_testing\setup.ps1 -SkipInstall
+.\.venv\Scripts\python.exe -B -m final_testing.tools.migrate_ui_application_wallets
+.\final_testing\Start.ps1
+```
+
+This UI-only upgrade verifies unchanged model and trader code and preserves
+all wallet cash, reservations, orders, positions, history and shared capacity.
+It refuses an upgrade that changes the trading code or controls. A fresh
+installation has no previous wallet records to migrate.
 
 Stop its launcher first. Run setup to verify the new code and original assets.
 If the new launcher reports that an existing paper ledger belongs to the previous

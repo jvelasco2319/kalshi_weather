@@ -1,0 +1,13 @@
+{
+  "passes": true,
+  "ui_only_model_weights_native_traders_and_wallet_controls_unchanged": true,
+  "live_manifest_sha256": "09cd8907bdf1722c3e2a0e1c6f45dae7b9ffe19623eaf99e6e290ce6153e9eb4",
+  "offline_manifest_sha256": "5e06b1a45593b4972a1f60d8808113f41ff1154f7d0c1a495bf2d061015c8c46",
+  "native_vendor_files_preserved": 132,
+  "real_orders": 0,
+  "new_fits": 0,
+  "payout_and_fill_timing_chart_checks_passed": true,
+  "active_wallet_migration_tests_passed": true,
+  "source": "Filled current-day paper positions joined to their city\u2019s exact normalized contracts",
+  "semantics": "YES inside bracket; NO outside bracket; whole-degree outcome cells; starts at recorded first fill; pending and unknown orders excluded"
+}
