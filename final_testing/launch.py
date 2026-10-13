@@ -14,6 +14,7 @@ import time
 import webbrowser
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 
 
 def configuration():
@@ -40,6 +41,11 @@ def main():
     if sys.platform != 'win32' or sys.version_info[:2] != (3, 12):
         raise SystemExit('Use Windows Python 3.12 for this frozen first release.')
     config = configuration()
+    from final_testing.tools.install_application import install as verify_application
+    verify_application(ROOT)
+    model_root=str(ROOT/config['application_online'])
+    offline_root=str(ROOT/config['application_offline'])
+    runtime_root=str(ROOT/config['application_runtime'])
     online_port = args.online_port or config['online_port']
     offline_port = args.offline_port or config['offline_port']
     if online_port == offline_port or any(not 1024 <= p <= 65535 for p in (online_port, offline_port)):
@@ -53,11 +59,11 @@ def main():
     (ROOT/'runtime').mkdir(exist_ok=True)
     children = []
     entries = [('online','tempdesk.server',[
-        '--release',config['model_legacy_root'],
-        '--runtime',config['runtime_legacy_root']+'/online', '--port',str(online_port)]),
+        '--release',model_root,
+        '--runtime',runtime_root+'/online', '--port',str(online_port)]),
         ('offline','tempdesk.offline_server',[
-        '--app-root',config['offline_legacy_root'],'--release',config['model_legacy_root'],
-        '--runtime',config['runtime_legacy_root']+'/offline-history','--port',str(offline_port)])]
+        '--app-root',offline_root,'--release',model_root,
+        '--runtime',runtime_root+'/offline-history','--port',str(offline_port)])]
     try:
         for mode,module,options in entries:
             children.append(subprocess.Popen([sys.executable,'-B','-m',module,*options],

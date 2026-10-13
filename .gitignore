@@ -45,6 +45,8 @@ CHATGPT_*.txt
 /final_testing/.cache/
 /final_testing/.venv/
 /final_testing/runtime/
+/final_testing/application/releases/*/vendor/
+/final_testing/application/runtime/
 .DS_Store
 Thumbs.db
 .vscode/

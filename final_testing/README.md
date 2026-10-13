@@ -77,13 +77,14 @@ unknown is different from a day when the rules chose not to trade.**
 
 | City | Paper strategies |
 | --- | --- |
-| Los Angeles | F3 V10 forecast exit; F6 hybrid staged safety; V8D NO at 18 UTC |
+| Los Angeles | F3 V10; F6 hybrid staged safety; V8D NO at 18 UTC — prospective impossible-only exits |
 | New York | Conservative P09; targeted SAFE5 |
 | Miami | Selected calibrated model; original RAW model |
 | Phoenix | Four-law ensemble quarter-Kelly; V19 temperature-set quarter-Kelly |
 
-Each retains its saved first-buy time, spending limits, fees, whole-contract
-quantities and sell rules. Some use a 5% budget. Phoenix uses its saved
+Each retains its saved first-buy time, spending limits, fees and whole-contract
+quantities. The new online LA exit overlay is described below; saved historical
+replays retain their original exit rules. Some use a 5% budget. Phoenix uses its saved
 quarter-Kelly sizing capped at 10%. Nine separate wallet simulations do not
 prove that all nine orders could fill together against the same market book.
 
@@ -106,11 +107,42 @@ October sources contain gaps; this package does not claim every date or strategy
 has a complete result. Dates requiring a later month's unregistered checkpoint
 remain pending. The button does not fit a replacement model.
 
-The physical forecasts target NWS weather measurements. Current markets use
-The Weather Company settlement target, and equivalence has not been established.
-**Online paper entries retain that pause.** Monitoring and the explicitly
-labeled conditional history remain available; neither proves future profit or
-actual historical fills.
+### Weather Company feed and LA impossible-only exits
+
+The current application reads **The Weather Company's public Kalshi portal**
+at [weather.com/kalshi](https://weather.com/kalshi) for all four cities when
+their actual market rules name that provider. It uses the matching KLAX, KNYC,
+KMIA and KPHX station, records receipt times and source hashes, and displays
+published hourly Fahrenheit values without inventing temperatures. The climate
+day uses local standard time, including the daylight-saving offset. A TWC outage
+remains unavailable; it never silently replaces that feed with NWS readings.
+
+**LA checks every 30 seconds while the server runs.** This does not mean the
+source publishes new temperatures every 30 seconds. The three LA paper wallets
+attempt to sell only a position invalidated by a matching official,
+non-preliminary **completed daily report**, and only while the market is open
+with positive supported buyer bids. Partial sales are allowed. Unsold contracts
+remain open; increasingly unlikely positions are held. The former F3 soft
+forecast exit is disabled in this prospective application.
+
+A fixed-range NO is still possible while the day's high can rise above that
+range. An hourly reading marked `settled` is settled for its **hour**, not the
+daily high. Preliminary observations do not trigger an impossible-position sale.
+Daily reports usually arrive after trading closes, so this strict rule **does
+not provide a dependable intraday rescue exit**. Even official reports can have
+material revisions under the market rules; they are not labeled irrevocable.
+
+The saved weather models still predict the original NWS physical target. A feed
+switch does not retrain or validate them against TWC settlement, and the existing
+target-equivalence and native fee checks still pause unsupported online entries.
+The UI states this explicitly. Monitoring and conditional history remain
+available; neither proves future profit or actual historical fills.
+
+Application code is under `final_testing/application`, with new sealed online
+and offline releases. Setup restores unchanged native vendor bytes from the
+original asset packs into those releases. Original models, source-map identities,
+archives and results remain unchanged. The new application's runtime wallets are
+separate from those of the original archived application.
 
 ## What is portable
 

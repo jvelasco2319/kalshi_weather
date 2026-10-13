@@ -1,0 +1,26 @@
+{
+  "passes": true,
+  "application_model_sha256": "0a471d4dfd7670e429db6b74808a64fbe7ebdf471e82d74dee2b798bce3c9426",
+  "application_offline_sha256": "afdcf2d785b8074576f5539587d641622b572971e35d803bb81f540e51344601",
+  "full_source_tests": 150,
+  "portable_setup_exit_feed_tests": 30,
+  "portable_mount_tests": 16,
+  "city_profiles": {
+    "la": 3,
+    "ny": 2,
+    "miami": 2,
+    "phoenix": 2
+  },
+  "live_public_observation_provider": "THE_WEATHER_COMPANY",
+  "live_probe_date": "2026-10-13",
+  "all_four_live_sources_worked": true,
+  "today_daily_report_status": "no_report",
+  "native_vendor_files_unchanged": 132,
+  "offline_replay_modules_byte_identical": 12,
+  "paper_only": true,
+  "real_orders": 0,
+  "new_fits": 0,
+  "model_weights_changed": false,
+  "online_target_equivalence_gate_preserved": true,
+  "claim": "Implementation and source checks, not a performance or fill guarantee."
+}

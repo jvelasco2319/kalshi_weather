@@ -40,7 +40,10 @@ def install():
         if actual!=config[hash_key]:
             raise RuntimeError('A registered frozen release differs from this deployment.')
     app_key = 'offline_legacy_root' if os.environ.get('TEMP_DESK_PORTABLE_MODE') == 'offline' else 'model_legacy_root'
-    app = physical(config[app_key])
+    from final_testing.tools.install_application import install as verify_application
+    verify_application(Path(os.environ['TEMP_DESK_PORTABLE_ROOT']), quiet=True, restore=False)
+    # Verification must stay silent in city workers whose stdout is JSON only.
+    app = Path(os.environ['TEMP_DESK_PORTABLE_ROOT']) / config['application_offline' if os.environ.get('TEMP_DESK_PORTABLE_MODE') == 'offline' else 'application_online']
     if str(app) not in sys.path:
         sys.path.insert(0, str(app))
     bridge = importlib.import_module('tempdesk.bridge')

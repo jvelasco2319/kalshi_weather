@@ -1,0 +1,172 @@
+{
+  "release_id": "FOUR-CITY-OFFLINE-TWC-EXIT-v1",
+  "created_ns": 1791918717731362800,
+  "files": [
+    {
+      "path": "LA-IMPOSSIBLE-EXIT-README.txt",
+      "bytes": 1941,
+      "sha256": "28225d00464b4049e18e1ea485dfa88d1f5a7acaa1e731c25212849c9720bbb2"
+    },
+    {
+      "path": "static/app.js",
+      "bytes": 13131,
+      "sha256": "d69d4913c1dafb63a9ba912efd10bb1ee04619141d0a27112f87726bd04d9356"
+    },
+    {
+      "path": "static/index.html",
+      "bytes": 1391,
+      "sha256": "b695617f64482c5f55cb7b354df6ea9c48932ef19f0815c43b9c44a239c54c43"
+    },
+    {
+      "path": "static/offline.js",
+      "bytes": 15684,
+      "sha256": "6c3ce9b95e3015b00e158e717b1c2a58de9131e0ee8377b3cdbe69a34feacd84"
+    },
+    {
+      "path": "static/styles.css",
+      "bytes": 7261,
+      "sha256": "5f15b264b4c6a9e9acb69bb7bfefd1915d8480dcf8d1877c5873016ee4f4b5df"
+    },
+    {
+      "path": "tempdesk/__init__.py",
+      "bytes": 75,
+      "sha256": "4697c8bf197906e4c28f716fba9c3b67e8b08e53dee194875ea4e480815a3f40"
+    },
+    {
+      "path": "tempdesk/adapters/__init__.py",
+      "bytes": 69,
+      "sha256": "475b7f4a5a208612c9fa2157cc14053f7b2c1bf9cd1947722975796df7db1295"
+    },
+    {
+      "path": "tempdesk/adapters/la.py",
+      "bytes": 2448,
+      "sha256": "bb19f2907f1f0632f0273fc0809337da120349b56e80c5d2f62b0801f6fcd0e8"
+    },
+    {
+      "path": "tempdesk/adapters/miami.py",
+      "bytes": 37771,
+      "sha256": "ef423c0c7a2ebfad919f6c8201572bb1dff681fbc2b18e5f91126c88bf96483e"
+    },
+    {
+      "path": "tempdesk/adapters/ny.py",
+      "bytes": 38075,
+      "sha256": "c34879fadbacfc229f3b18a123cb6c571e94b45a41bcb361733fef7bcf77721d"
+    },
+    {
+      "path": "tempdesk/adapters/phoenix.py",
+      "bytes": 31379,
+      "sha256": "fdb3c199b682afee2cb19afaaed89081741d5bd4ef534ba6d70a2aa5de5e7c0a"
+    },
+    {
+      "path": "tempdesk/bridge.py",
+      "bytes": 3151,
+      "sha256": "5465e5cca13ba97587e73fc461270d2a99a9181ce452fb324b23919750a8c106"
+    },
+    {
+      "path": "tempdesk/impossible_exit.py",
+      "bytes": 7042,
+      "sha256": "9535375fd3efc9f05790075a5d8a0a07da65b728ecfebbaa1cbdda3486cf1960"
+    },
+    {
+      "path": "tempdesk/la_impossible_native.py",
+      "bytes": 5187,
+      "sha256": "0d82370c68de39f14b6b0a8aab928bc2c9d387baa7ea0f03d33ffdcffc3e9b3b"
+    },
+    {
+      "path": "tempdesk/ledger.py",
+      "bytes": 14950,
+      "sha256": "6e49b7d3921ba699c6448ffc08251b40068fd493ec6da462a4ba37921cb16d15"
+    },
+    {
+      "path": "tempdesk/offline_history.py",
+      "bytes": 13417,
+      "sha256": "0b1359e3035d00fdfdcebab20ceca558aa34e3ef664eabeea1a9e420260b5d2c"
+    },
+    {
+      "path": "tempdesk/offline_la.py",
+      "bytes": 23419,
+      "sha256": "b549a4eec9839dc629203e18a0d85c3d940326e3bff13732b31875569750b883"
+    },
+    {
+      "path": "tempdesk/offline_la_acquisition.py",
+      "bytes": 31381,
+      "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4"
+    },
+    {
+      "path": "tempdesk/offline_la_fee.py",
+      "bytes": 17892,
+      "sha256": "d9d82ecece84cb4f23143b2df57421ac488e7d703801f187fc888e2e7e3cdb74"
+    },
+    {
+      "path": "tempdesk/offline_la_native.py",
+      "bytes": 38729,
+      "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672"
+    },
+    {
+      "path": "tempdesk/offline_la_weather.py",
+      "bytes": 21284,
+      "sha256": "2644add4f68da2c5e3ec82e57336534b8049f72c9197bee8dffc3f6666272ff3"
+    },
+    {
+      "path": "tempdesk/offline_miami.py",
+      "bytes": 37320,
+      "sha256": "c7b2f80a43f9639aaf7db22a7eb28d8b90c28d73d6c29b8bae1b4fc50fc92bf9"
+    },
+    {
+      "path": "tempdesk/offline_ny.py",
+      "bytes": 31979,
+      "sha256": "d4edd874aad5584f91606fd0d8314211e0419b6f9081c1ebec57012612cbadf3"
+    },
+    {
+      "path": "tempdesk/offline_phoenix.py",
+      "bytes": 38365,
+      "sha256": "be50205d5fadc4597c9cd64260ed69c45404a5b27b982699a359033b1033e6ce"
+    },
+    {
+      "path": "tempdesk/offline_server.py",
+      "bytes": 8239,
+      "sha256": "5d45ef534444c320eae5726fdddee87870bf395138ab653bc2e91865f2e82a1c"
+    },
+    {
+      "path": "tempdesk/offline_sources.py",
+      "bytes": 11025,
+      "sha256": "611a81bedca1bbf6cc5c63f01939d69ff91d0c4678de9e52fc52c201643aa4da"
+    },
+    {
+      "path": "tempdesk/offline_worker.py",
+      "bytes": 1494,
+      "sha256": "8a8e3f08095981c525cde6c24cc75838c78cb852155d637b914411bc17315c05"
+    },
+    {
+      "path": "tempdesk/public_data.py",
+      "bytes": 9932,
+      "sha256": "175c17b6a07744bcd5348ed69db17dca94f0eb565c036a16120df05026b936ca"
+    },
+    {
+      "path": "tempdesk/server.py",
+      "bytes": 2601,
+      "sha256": "22acab4f39e03536b730f5d571a4ec9b9d1f0d4e74f3082a6355d3c6284e62c3"
+    },
+    {
+      "path": "tempdesk/service.py",
+      "bytes": 23855,
+      "sha256": "66c29a6f6b5ddcec08410e42dc57770b8ba93ddab449b50286812471ffd42db9"
+    },
+    {
+      "path": "tempdesk/twc.py",
+      "bytes": 5970,
+      "sha256": "9e2d8008ac62da245f03624fa154ba6e4029559835b27984c08c0e26b3ac809d"
+    }
+  ],
+  "model_release_path": "REPO_RELATIVE:final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1",
+  "model_manifest_sha256": "0a471d4dfd7670e429db6b74808a64fbe7ebdf471e82d74dee2b798bce3c9426",
+  "initial_day": "2026-10-01",
+  "initial_cash_per_strategy": 100,
+  "offline_only": true,
+  "mode": "CONDITIONAL_ARCHIVE_REPLAY",
+  "online_current_unchanged": true,
+  "python": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Scripts\\python.exe",
+  "python_sha256": "5fc3c5244b5eef01a82fbefd1932d1382b79c72fe6e64ffe8df1e3ce3643f02f",
+  "parent_release_id": "FOUR-CITY-OFFLINE-H1B-20261012",
+  "parent_manifest_sha256": "d47c3684706e0e5c47cd62a3edcccedd8eeb4a7cf46bd2138b69e8ac0655bdfb"
+}

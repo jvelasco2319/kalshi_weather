@@ -8,6 +8,11 @@ import shutil
 import sys
 import tempfile
 import zipfile
+import sys
+
+# Setup invokes this trusted local installer with -I, which excludes its script
+# directory from imports. Admit only the sibling application installer.
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -52,6 +57,8 @@ def install(root=ROOT):
             raise ValueError('Existing frozen file changed: '+name)
     if ready:
         print('All frozen assets are already restored and verified.')
+        from install_application import install as install_application
+        install_application(root)
         return {'files':len(records),'reused':True}
     cache = root/'final_testing/.cache';cache.mkdir(parents=True,exist_ok=True)
     archive_path = cache/'frozen-assets.zip'
@@ -90,6 +97,8 @@ def install(root=ROOT):
                 raise ValueError('Restored asset does not match original bytes')
             temporary.replace(target)
     print(f'Restored {len(records)} original source/model/offline asset files.')
+    from install_application import install as install_application
+    install_application(root)
     return {'files':len(records),'reused':False}
 
 
