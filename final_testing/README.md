@@ -132,11 +132,23 @@ Daily reports usually arrive after trading closes, so this strict rule **does
 not provide a dependable intraday rescue exit**. Even official reports can have
 material revisions under the market rules; they are not labeled irrevocable.
 
-The saved weather models still predict the original NWS physical target. A feed
-switch does not retrain or validate them against TWC settlement, and the existing
-target-equivalence and native fee checks still pause unsupported online entries.
-The UI states this explicitly. Monitoring and conditional history remain
-available; neither proves future profit or actual historical fills.
+The saved weather weights still predict the original station climate high.
+The repaired application now checks at least three recent completed days,
+including yesterday, against independently retrieved NWS and TWC official
+reports for each city's exact station. All four cities matched on seven days
+in the October 13 check. This admits a clearly labeled daily-report mapping
+for paper testing; it does not prove future source equivalence or calibrate
+the weights anew against TWC. Changed or missing evidence blocks entries.
+
+Public series fees are checked against the official quadratic schedule and
+fresh multiplier/fee-change receipts. Original paper rounding is preserved;
+private-account fees and actual fills remain unproven. NOAA retries, retained
+market definitions, resident workers and preparation before publication repair
+the operational blockers. Phoenix can also read its own generated weather
+files. V8D uses the first second of 18 UTC with actual processing times.
+Earlier missed trade clocks cannot be recovered as online trades. Monitoring
+and the separate Offline History tab retain their own timing labels.
+See [LIVE_REPAIRS.md](LIVE_REPAIRS.md) for the precise repair scope.
 
 Application code is under `final_testing/application`, with new sealed online
 and offline releases. Setup restores unchanged native vendor bytes from the
@@ -176,3 +188,18 @@ For focused deployment tests after setup:
 Use this guide's launcher for the four-city package. The repository's older LA
 instructions and experimental launchers remain available for their original
 application.
+
+## Updating an earlier paper installation
+
+Stop its launcher first. Run setup to verify the new code and original assets.
+If the new launcher reports that an existing paper ledger belongs to the previous
+application, this explicit command preserves **unused** wallets at $100 each:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m final_testing.tools.migrate_unused_application_wallets
+```
+
+The command refuses wallets with orders, positions, fees, losses or completed
+history. It keeps a backup and records the migration. Active paper histories
+need a separate migration; they are never reset by this helper. The offline
+history and its saved financial calculation modules remain unchanged.

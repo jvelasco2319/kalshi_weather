@@ -1,0 +1,1317 @@
+{
+  "schema": "LA_OFFLINE_INDEPENDENT_PRE_SCORE_REVIEW_H1B_V1",
+  "passes": true,
+  "scope": "FROZEN_LA_OFFLINE_OCTOBER_NATIVE_TRIO",
+  "actual_receipt_created_utc": "2026-10-13T04:12:08.672823+00:00",
+  "code_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la.py",
+      "sha256": "b549a4eec9839dc629203e18a0d85c3d940326e3bff13732b31875569750b883",
+      "bytes": 23419
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_native.py",
+      "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672",
+      "bytes": 38729
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_weather.py",
+      "sha256": "2644add4f68da2c5e3ec82e57336534b8049f72c9197bee8dffc3f6666272ff3",
+      "bytes": 21284
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_acquisition.py",
+      "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4",
+      "bytes": 31381
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_fee.py",
+      "sha256": "d9d82ecece84cb4f23143b2df57421ac488e7d703801f187fc888e2e7e3cdb74",
+      "bytes": 17892
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_sources.py",
+      "sha256": "611a81bedca1bbf6cc5c63f01939d69ff91d0c4678de9e52fc52c201643aa4da",
+      "bytes": 11025
+    }
+  ],
+  "dependency_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-all-model-simulation-20261011\\market\\original-policy-adapter-v1.py",
+      "sha256": "57523749ec5893d8933d48c07c433add646e1be795626183ca359f559c2ce17f",
+      "bytes": 21275
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\market\\oct11_sources_v1.py",
+      "sha256": "82b26e034a9fac0eadf1ce8aa3f6e32f8ecb6e2f61ea6909ed4b54a0d664db9c",
+      "bytes": 13322
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\market.py",
+      "sha256": "ab2ec8d18bdd383b58287e8cad21f5b2ffda118e6e2b3a7ad318d500f11ca6a0",
+      "bytes": 12973
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\weather.py",
+      "sha256": "b87f830ec05d618e2dd3eb529a8b41ea7ad55b0d8be9551dcfc53dabca0ebbd7",
+      "bytes": 11204
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\legacy_adapter.py",
+      "sha256": "84b00f6c7bddbe0d729b2cd2f541bb37c9fa8404e61885c22452d8db95a813fd",
+      "bytes": 16044
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F3_V10_PHYSICAL_FORECAST_EXIT.json",
+      "sha256": "8f9e7e11076db1c893df189392f5401693a6ee251dc33c70781d1d3278d5a2ab",
+      "bytes": 250947
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F6_HYBRID_STAGED5.json",
+      "sha256": "52848665895b7abfc4f1afa5ccd00acc4fcf1d62714f892cc07047aaf2d52c8a",
+      "bytes": 1534642
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\trader\\f3_execution.py",
+      "sha256": "ec856a948f21d24125a185afa6e11cc42728258316cd2d0567e75400c3cedd33",
+      "bytes": 7078
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\engine.py",
+      "sha256": "953212aec1433b1ba924711c3a77e11afd294dfa31b3b145517c546186398664",
+      "bytes": 45642
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\native_books.py",
+      "sha256": "d950ed7a4dd27981e62398277a5b0c4146af365a4cc5d82cd5e264a27ba057e9",
+      "bytes": 15077
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\replay.py",
+      "sha256": "552bc883d73701a88d5cfe5945ba12ca363d3f864d5e80ef75cd798b8d8f50d1",
+      "bytes": 15487
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\engine.py",
+      "sha256": "ce978ee6d195b8d1616af36a1e02482717f0bbcc3df81fcb563fface68d2a977",
+      "bytes": 52447
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\native_books.py",
+      "sha256": "f9f6beda4f0796d2795ca3fa4adc53b4c61a4ab3833116302204fb15dbf0c86d",
+      "bytes": 15078
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\replay.py",
+      "sha256": "b4b55b8a80e24fdf7627294ad1b8e466616046459317df75d5730ccb7609f122",
+      "bytes": 15661
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\research.py",
+      "sha256": "f89599fb63d32fc407c83e541ec5b11bc1bf14bb00fba152ba21fdba68b3d25b",
+      "bytes": 25088
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f3_execution.py",
+      "sha256": "868751d176c6c1000d565444ecb8d2b7ea38ed7cbc484c02b9f9c717b18b1372",
+      "bytes": 7158
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f4_execution.py",
+      "sha256": "912ad039e009cb35002f36ee0c41eb78ac85710f5b29cadb812c0c0025f7f9f7",
+      "bytes": 11865
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\retained_transition_v4.py",
+      "sha256": "35489b50281a9456fe8a7a0eadf4736b60e42d5b1cfc8eafa5a88670663c6ba4",
+      "bytes": 15627
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\engine.py",
+      "sha256": "a3e80d08332d40c601fd169dd22f5e915ffb951e9968108d2b3359ea6a184494",
+      "bytes": 28649
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies.py",
+      "sha256": "72c1b43a120e19315c334307273a65f5ac80255af9ede2b29e51d2c19bb32e6b",
+      "bytes": 34706
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v2.py",
+      "sha256": "52a5956f48ad3e3889a35d21e02e369d001f7990c016ed41a8e51436700598bc",
+      "bytes": 8574
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v3.py",
+      "sha256": "049a92c3d34889abf741714c2878fa4725c51d87c70e46bbb1919e998d71c2a1",
+      "bytes": 495
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\entry-exit-matrix-20261006\\composed_policy_v1.py",
+      "sha256": "5c2bbec07f6eac2a49a88729d3c84f729abe3e78fa3027b62350869ff12fd1a5",
+      "bytes": 2119
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\forecast_adapter.py",
+      "sha256": "f66778c5502228d0ee3e7deaf1ec052cb9b61efa7791772d91bb072eececf5b3",
+      "bytes": 23348
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\live_inputs.py",
+      "sha256": "7000dcc12fb7bffcfb87e3fd9e5dec54e2f28dcbafa329c3522416ab34db93f1",
+      "bytes": 10009
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\source_gate.py",
+      "sha256": "ebc33da90966f1d114117aa0027f2866148f6fb768c0544b57a76bccc44032df",
+      "bytes": 3765
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\external-source-pins-v1.json",
+      "sha256": "4c357f2871099e3b20f5dc2912ba8b6d6c5e40888fde399bdc9c36c1857395ca",
+      "bytes": 51292
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\build_adapter.py",
+      "sha256": "18f07b9bbfd8cd42d06318fee4093ed0dab62ec3cb5a1f364754f1513872e7bf",
+      "bytes": 23997
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\f3-probability-adapter.json",
+      "sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167",
+      "bytes": 26474
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v8d\\confidence-gap-20261002\\static-2025-calibration.json",
+      "sha256": "302e45607d84cfae2540316d9da5f14ff78466365dc1e41a79f550b069b1d88d",
+      "bytes": 4120
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\optional_pressure.py",
+      "sha256": "a4148988f2f44fb01d58ce3954513a1ecb7cded79203494fa113948de330902c",
+      "bytes": 11509
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\checkpoint-2026-10.json",
+      "sha256": "0bb969ebab1184fdc79c17492b4470392a5012b261a6003b7f64baa01fe5011e",
+      "bytes": 65394
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\optional_pressure.py",
+      "sha256": "56f46d1a94f61721516264b0ad69cafcb3d91e1ded54a99accf06144df7aabfc",
+      "bytes": 13066
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\checkpoint-2026-10.json",
+      "sha256": "5ee96f9f56151ee9b46a06504637166abd16af1b7ee8aee3e6d661093815b10f",
+      "bytes": 66043
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\checkpoint-hybrid-2026-10.json",
+      "sha256": "3c3c0992305b4d3bc6c0068bae00fd27c42da7caf5b87911c72345aeb04cbda3",
+      "bytes": 1209
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\__init__.py",
+      "sha256": "535b6e115e4a448a67999c46adb60425e33e7eb9723935f52512a46506ec9000",
+      "bytes": 145
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\model.py",
+      "sha256": "818a3856ce3a6d596c7ecb49abd354a3886bd422d3e4b67df741c7ea8ef93677",
+      "bytes": 22108
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\__init__.py",
+      "sha256": "3469ffcdf2621bb9c9367e47b1da81e66f190fda067defe58ad3497e47cedf1c",
+      "bytes": 97
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\domain.py",
+      "sha256": "7e6e3ff53ad55f88e5b1cf13c3d53445237a4c460b905f56582f5a23988adba0",
+      "bytes": 6571
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\regimes_v3.py",
+      "sha256": "a5cb14e78a4bd44ca29a99877eef94ea033d70ea50f2cfd0081617093c99930c",
+      "bytes": 14495
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\features_v3.py",
+      "sha256": "ca0ac79202b6c00c3ae9ad3e8e7b6a54b42fb24b4128f9c6fb2207b13d5aafa7",
+      "bytes": 12685
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\probability_v3.py",
+      "sha256": "2811ef2b7ac082f068d06d90f72e9bc6e3fc1f586c3acc26b8e15204bf08d059",
+      "bytes": 18754
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\forecast_models_v3.py",
+      "sha256": "3e3abccd9647ade5df9918a9c46e694ef4beea048a15d3f04c9be33c06ddd081",
+      "bytes": 10912
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\ordinal_v3.py",
+      "sha256": "86d039ab3a77c442622213c02fcc0baa749d17c102d16459e7a886eeaa34115d",
+      "bytes": 14976
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\provenance.py",
+      "sha256": "0735f35c5335f75f6ba881a62a3c1f8380e47b2e917d17430899d9cd738a92ba",
+      "bytes": 2403
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\models.py",
+      "sha256": "0f4a7dd184309ad945e5939905a6547e52028fe58ed69be37c897452929b4b3c",
+      "bytes": 3104
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\candidates.py",
+      "sha256": "6d9a0dd0bdfb9a19f1046087a963c52e3d2d214df17bbbc202393a8b0683504f",
+      "bytes": 5554
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\research_plan.py",
+      "sha256": "b1c092b1cbee4776b3b77a9ca98d0e85f7cfb2279f51b7039e42d111ae6ef30f",
+      "bytes": 17344
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\research_plan_v3.py",
+      "sha256": "37de8aaf7659bb7e6c5ab49636a9242db6a5144bc598b4534a71d432f8d71bcb",
+      "bytes": 21040
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\candidate_model_v3.py",
+      "sha256": "ac5b3ed84b429260da82158ea7f21712505067cbc52a9d5fd7583367d05663fc",
+      "bytes": 24785
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\paper_inference.py",
+      "sha256": "5914b150129898a3a1c59f681e6a6171bf8f83f2f6ac259413b27723da5a27c9",
+      "bytes": 14235
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v8\\frozen-primary-strategy\\strategy-freeze.json",
+      "sha256": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317",
+      "bytes": 6251
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\campaigns_v4\\v4-offline-20260926T212122609Z\\candidates\\primary\\a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461\\compiled_manifest.json",
+      "sha256": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f",
+      "bytes": 8993
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v10\\frozen-development-candidate\\candidate-freeze.json",
+      "sha256": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a",
+      "bytes": 15869
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\checkpoint-2026-10.json",
+      "sha256": "53b1669f05b54692da08de3e4c48caf2379e7e8e8563fd3305fa9dea7d8358cf",
+      "bytes": 22354
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\demo\\LA-F6-PALMDALE-DEMO-v3\\live_weather.py",
+      "sha256": "c6f543b3e13b3638f0b800c4eb78634bd3e0787542855f407a88da7d072f3a0e",
+      "bytes": 14309
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\freeze\\plan-v1.json",
+      "sha256": "8651badd09583b75094fbbc0d9eb627b935bb332015335dc3332952734421dbc",
+      "bytes": 30041
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\clean-preoct-training-projection.json",
+      "sha256": "d8d2539dd6eb6ec95e467878fea97292ea25973e9af5cf8064e489b5620802a5",
+      "bytes": 10126684
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\data\\normalized\\v10_meteorology\\observations.parquet",
+      "sha256": "4c68077237d2f7f4fe7aaa50ef271a9bd72c85a88ef5ad2d8ec4781b50de1ca1",
+      "bytes": 1105627
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\weather\\historical-frames-v2.json",
+      "sha256": "9b3cfe987c4aef34965d5acc7860f8fbf28fa23417597930ac3d4406ad2e6199",
+      "bytes": 15393059
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-01\\observations.json",
+      "sha256": "eca5d5343877604ad692137908fe7900b481d66b26f8b0c6ba7b07749b721f86",
+      "bytes": 23450
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-02\\observations.json",
+      "sha256": "791d868df83625c6830140c2744699bc537548b8507324fc31aa371d6bc83e47",
+      "bytes": 38804
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-03\\observations.json",
+      "sha256": "1a572fa0c52e2acfe24152a924e0d7cc2bb5e24042e2ea7a761e3f698e4d5320",
+      "bytes": 15774
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-04\\observations.json",
+      "sha256": "2b64a8697f6ed8d34f0474475e977058427b99ea3ba930a2059dff6bc20c25b6",
+      "bytes": 18778
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-05\\observations.json",
+      "sha256": "4b24df0338d1514cd32bce78dd6dab22f4409b9c88f9a417102057c5d63172a8",
+      "bytes": 34950
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-06\\observations.json",
+      "sha256": "88c80ac91ac8720690cb1baa2b357adf99745e85c494d8e328485db16e0d9e64",
+      "bytes": 10594
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-07\\observations.json",
+      "sha256": "f52c23406b3d60101dd56321033e3b3971be23da695d9cc446f7e1d5d3f9d408",
+      "bytes": 11422
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-08\\observations.json",
+      "sha256": "b079c84fa3745fcb54b28b0be6c929d66e493d74113ccab0a6288d2125a49a46",
+      "bytes": 10327
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-09\\observations.json",
+      "sha256": "793e4a9e289aa42e6ce0be15550be96be999d6c9696c3572c90a224477c5cdb5",
+      "bytes": 24785
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-10\\observations.json",
+      "sha256": "2247a371f58e2ba6e0ae02f318b7352637fa100390d2107f54b999766a9ab7c8",
+      "bytes": 10003
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-11\\observations.json",
+      "sha256": "fe03cff671f4d320c5945e38cf4297692189a3887a58ead5482086def37df3cc",
+      "bytes": 9462
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-12\\observations.json",
+      "sha256": "f30c8e645b7c43ee008c06cd13b0daea4316a904c2efde28a159eff8dff4dbb8",
+      "bytes": 10290
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-13\\observations.json",
+      "sha256": "3524477c2583d15f7c79c3ac112eba5b60b9ca205c1639b9e0b3ad102b1c7f62",
+      "bytes": 24380
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-14\\observations.json",
+      "sha256": "65fd35721f69b3747349b7ef960bd54a1784e129a895903bee647436245d7e42",
+      "bytes": 24390
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-15\\observations.json",
+      "sha256": "c85b02ed9d4c3f0dfcdf103a6a9cc6579c6083c29b95cc978738d7e5a5271c88",
+      "bytes": 10064
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-16\\observations.json",
+      "sha256": "0a60178f5847626e0a6dfd806e7bcf345484496f4d8d53571a218c4eca6ec0f7",
+      "bytes": 9251
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-17\\observations.json",
+      "sha256": "2d187d7c9dea9ef1a08f4eaa9febcbaf8de3905b3d6a51b9c75809d08d4be6a5",
+      "bytes": 24557
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-18\\observations.json",
+      "sha256": "e1aaffcdbf132a1b70381cfa508ad87fb74c9aa56c74286a4a6e287e821dae7b",
+      "bytes": 10345
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-19\\observations.json",
+      "sha256": "7456c6fbe64463bb12295d8bfdaeb83362557960f00bc07b227a0d7412624de3",
+      "bytes": 11354
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-20\\observations.json",
+      "sha256": "5e59aefba867140f64bd30759383d43557e1bfbc0f083b452bf6f1e36510a3a2",
+      "bytes": 24773
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-21\\observations.json",
+      "sha256": "da634650aa40b75c0902c7da5553d3d1616e0aa8d9887838e2fde2b94379d755",
+      "bytes": 12290
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-22\\observations.json",
+      "sha256": "551684abfb85d2662d02b3eb03a16a6dc4f86613d1bea38c5da4899adf7f8aa5",
+      "bytes": 14683
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-23\\observations.json",
+      "sha256": "f13c7663729900e04f2fdcfb8f4b4a39a8b41afde74eda632b38ee31b2dbd03a",
+      "bytes": 33234
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-24\\observations.json",
+      "sha256": "e33a239c432a7524e511ca6f04356c93789933512b83fd3a6ad1b0a2df0abd15",
+      "bytes": 12511
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-25\\observations.json",
+      "sha256": "71a61523082d37b23c891984a2ac732da19c1720207578809ebffc39db12b5ed",
+      "bytes": 10227
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-26\\observations.json",
+      "sha256": "5ce81acfd0fac3ea86490e0ebea45486c774d4ed49eb6e90dc1744cb4eea05c8",
+      "bytes": 10555
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-27\\observations.json",
+      "sha256": "b12bd4767ecafef6162494fa1c5fcafc25de53e8d1ed2cd402a42f31b7b8ebf0",
+      "bytes": 24568
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-28\\observations.json",
+      "sha256": "b89ada28699b9133f5072efe97580234eb9b1536413a9d5ab6e95c48a8442a4d",
+      "bytes": 10450
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-29\\observations.json",
+      "sha256": "3b6e87c73712666e9a6e5c4a831dc711a25ba0e69fc38204876a35cbab53b59f",
+      "bytes": 10016
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-30\\observations.json",
+      "sha256": "dccb385473f3da2b962c2fdd1d8dccc421987faf51dc4f73d4d9d211c8349ad6",
+      "bytes": 24381
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-31\\observations.json",
+      "sha256": "922a779c708928330ade81436f90656b6293825a92782d663e43ba8bb990dab5",
+      "bytes": 9989
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-01\\observations.json",
+      "sha256": "00d6470a9c874278c5d351d1cdf5d210efd485b88f9af03eca55ce799404a865",
+      "bytes": 24367
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-02\\observations.json",
+      "sha256": "8d133b43702d89bbac6638cbbbc491b7fc6162efbbea419853b74ceffe34605b",
+      "bytes": 8363
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-03\\observations.json",
+      "sha256": "0a8bfd66fcc94d42533463cdb4da7a47e1699b1dc82766bc6aadfcd8e66f9726",
+      "bytes": 10455
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-04\\observations.json",
+      "sha256": "0c87220964000024b78378370de57a3756b331f638d4630d1677ff70ab89a3d7",
+      "bytes": 24372
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-05\\observations.json",
+      "sha256": "a6697c8746d6b296165bc7eb3b5b44cb28cca080cb5a721bd38658ec2c213a7f",
+      "bytes": 24732
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-06\\observations.json",
+      "sha256": "722e37f35ec84da566ee356ef3cf5bbc2ae36d4f0ba4a0e5bf8a386297c0eb83",
+      "bytes": 13754
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-07\\observations.json",
+      "sha256": "89b6cac177401a5a78db5cc8c0a6d05180f73486d261c504b7bbc2dfe6b8c0f6",
+      "bytes": 11134
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-08\\observations.json",
+      "sha256": "8a61c045e6568062374c5a0090b2aa9ebb3d9036534feb867bee9d250c7915cb",
+      "bytes": 9996
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-09\\observations.json",
+      "sha256": "a4067d67ee4b5874fcec1a6265bc906d2d4b984a36878bef6321d52d44deec67",
+      "bytes": 10372
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-10\\observations.json",
+      "sha256": "185c34742a8e57bc618e265c2429831799e731924ccb1dd932e4648478c3eabe",
+      "bytes": 13511
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-11\\observations.json",
+      "sha256": "a43c3d3193d33c844448f03a59842cb4d2ca01968524b79efcc79edf50270210",
+      "bytes": 12639
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-12\\observations.json",
+      "sha256": "3d90bbb6ee2a4b2da829ee89ac7c52c91fd3d46220be9ad47f87e2cfe55fc969",
+      "bytes": 10545
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-13\\observations.json",
+      "sha256": "10e02dba235be9713d2611a8f97e844134c982f051fda49d68df4de1772581f6",
+      "bytes": 10117
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-14\\observations.json",
+      "sha256": "64f0c721be5a6e3631064f822bbaa49608c89e299d17fd8b1e6f862e63c8e76f",
+      "bytes": 11079
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-15\\observations.json",
+      "sha256": "8f653e577cda57a3ffac0b9dd5f8ac713139995e18648c334eb2c56a2a430e98",
+      "bytes": 10592
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-16\\observations.json",
+      "sha256": "6d3a90a57579eb1b96532cca803f857f34080acead05dc2f209a893647b5730b",
+      "bytes": 17854
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-17\\observations.json",
+      "sha256": "3ec011f6724e5d54a8e991f46a3892a5183c17e8a2a547538adc5528059dbe0d",
+      "bytes": 12671
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-18\\observations.json",
+      "sha256": "cf1b680f6a8f2afee4bdfbb028c36fd3c89d5b792e90e34c3936474a88be87e7",
+      "bytes": 10971
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-19\\observations.json",
+      "sha256": "972fc4625bb4ad0ae2ba1afaf733f1ce3698257c844c9c7d64e85b166661804d",
+      "bytes": 11639
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-20\\observations.json",
+      "sha256": "8a521441fdb8b1e176c7bb897f8bfaea77f8a74b8fb7615751ebf36bc4fedd5d",
+      "bytes": 10385
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-21\\observations.json",
+      "sha256": "e92857573ab9ba40632c537d95c24c0105598b63d318d1cbffc7906099b66609",
+      "bytes": 10006
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-22\\observations.json",
+      "sha256": "651d7f2c494f2b5257c03714ca77740c21fd9c1863bc6938116bdedce4df259e",
+      "bytes": 10278
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-23\\observations.json",
+      "sha256": "c2b1952f863ce52d93663fa0510adc495836323dcbc5f85166f7e44da27dbbaf",
+      "bytes": 10414
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-24\\observations.json",
+      "sha256": "8b26814dccd20e58059634466220e60d80e54bb44ac5c16867915afc37a7eccf",
+      "bytes": 10454
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-25\\observations.json",
+      "sha256": "ad25f39bed4ce0fef58c9b6b262565032add0459fb54a6c765985e2e799ce2ca",
+      "bytes": 10431
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-26\\observations.json",
+      "sha256": "fb9183d3aa7331acef3fbfa6163a9073d868e94fbeb4cb249cefa3dce1bed92f",
+      "bytes": 10496
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-27\\observations.json",
+      "sha256": "df148734c500e9b2f6048c968ffa915a33880c1a69db50460d22be0470dc9960",
+      "bytes": 10496
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-28\\observations.json",
+      "sha256": "5e3ac4d2cd470ea36541157c26b8dbab76405fa16d5fdb586749dd780dd34231",
+      "bytes": 10344
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-01\\observations.json",
+      "sha256": "a0e129eb3bf8c9518ee5f6df35c685decceeb84edb56735551274c9fd46d9682",
+      "bytes": 10235
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-02\\observations.json",
+      "sha256": "b033b0665fb25c75c6a95718c175df9195a72e94ffe20dc876923fde540b1f97",
+      "bytes": 10551
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-03\\observations.json",
+      "sha256": "e41a04fe3389e97db7cab638919c1cbd4a28911b4aadb6ecf4152f91179680da",
+      "bytes": 14442
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-04\\observations.json",
+      "sha256": "c9c39e3d7131a3fe70a697a59171e096942ce5016165f56b9ee5163c7d755db4",
+      "bytes": 11125
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-05\\observations.json",
+      "sha256": "17f072a03b7a9d6d0efcccc49b02fc8a541f934717794f2388458404b09ecead",
+      "bytes": 10260
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-06\\observations.json",
+      "sha256": "324b099c584d1e4fb3ece08a15ab6afaf433749486113a0e195658ae17099590",
+      "bytes": 10107
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-07\\observations.json",
+      "sha256": "435f48970c9fcf63a181082d8e93b66731d3b73bbf4f74ce1db67aa4f2644789",
+      "bytes": 10220
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-08\\observations.json",
+      "sha256": "909a9b64f810f2f53fe377640f1483edd76634c87070bf7dec582717545d7fdb",
+      "bytes": 10239
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-09\\observations.json",
+      "sha256": "3a9fa1500e84fc315e36828612bd65cfad85264d24a12c127c95bd4e90146473",
+      "bytes": 10237
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-10\\observations.json",
+      "sha256": "12037fa7593d3bc6d257865d8e735722a2aa936582d8c96cb1096e112a46a7c4",
+      "bytes": 12200
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-11\\observations.json",
+      "sha256": "d03ff13d72ef2d00cf6f1d309257ce807d0441a73f91694e2a38e9f05b898437",
+      "bytes": 10164
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-12\\observations.json",
+      "sha256": "890cda7afe27552aeed2a9fdf84b4c921029d77e4f152ad1ef4d97e61dffe291",
+      "bytes": 9988
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-13\\observations.json",
+      "sha256": "226780e6861821fa9b813e33047ba0383622888c0f2cf3e81200758151041560",
+      "bytes": 10239
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-14\\observations.json",
+      "sha256": "6968de59c587e7f7f7359cd25d1fabd3c3a48f563ed9c62f083a5043d5377c65",
+      "bytes": 10291
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-15\\observations.json",
+      "sha256": "334f2a9c5b0372beb52294ea71a8af6f0d168765eecad10c4a35be2ec692b7b7",
+      "bytes": 11149
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-16\\observations.json",
+      "sha256": "e74c38d7935795cac90a7f401c99160d84672a6c20dd454d833133d5a7f1fba0",
+      "bytes": 19544
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-17\\observations.json",
+      "sha256": "1326762e2e5bc76ad26fe82390bd138718b0c08299d75babdf37f24a3e3d2275",
+      "bytes": 10338
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-18\\observations.json",
+      "sha256": "8cbfd9f9369bbd3d3e9eb7ba4ce53f5b08f502e262264349d6c50412d8f2e96b",
+      "bytes": 10007
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-19\\observations.json",
+      "sha256": "7910625914a93bad7d1f93c0a9d1aec0debf61d88474c21945f699dfc360a293",
+      "bytes": 10122
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-20\\observations.json",
+      "sha256": "8ff5a99884b003731a156f9fdd23db7c9f347715c38aabe1a26f9d57915a1ebb",
+      "bytes": 9981
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-21\\observations.json",
+      "sha256": "0a58c5ccf99726ab0c529d7415fad5a0f1e07464834914413f8c869f0b0c7ad1",
+      "bytes": 10439
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-22\\observations.json",
+      "sha256": "e52788f0bd5db3895dc0bd0277bb2de4b5674d16d13ca431616de795ba86761f",
+      "bytes": 14162
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-23\\observations.json",
+      "sha256": "d44186b7df64d3c449d687d3792c3413c3c1bc0561c704b127ac01d43e4f1a5b",
+      "bytes": 13090
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-24\\observations.json",
+      "sha256": "956e4070ffec370443572c0efaae8fedd39c6d4d532b38db7e09d11b0bca90cb",
+      "bytes": 11965
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-25\\observations.json",
+      "sha256": "2348a1b2362b2a8eb49edc86d5592fca90687f03f88f76644c007fc34a2a3ab7",
+      "bytes": 11000
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-26\\observations.json",
+      "sha256": "c6a8b1f37e9a2ad7a6cc908b02671890cb5d51e56245576ada9947f23a8abacf",
+      "bytes": 13974
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-27\\observations.json",
+      "sha256": "17a26cd67b16d49330636f5ee19db767c90989f0d2ae292b4268af0d0ce41660",
+      "bytes": 15919
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-28\\observations.json",
+      "sha256": "a07265f95f2195b95dfd8744185fdfed105be131166dd85925df061a8bd12227",
+      "bytes": 12180
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-29\\observations.json",
+      "sha256": "692d9af221c270951226dae0ff14c85d208de366996f6b95a1648bfdf9b2166a",
+      "bytes": 19077
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-30\\observations.json",
+      "sha256": "a6078fc397be3b141dd53612998e534c0850c952a1434f5cebc85de7e10cdf5f",
+      "bytes": 17780
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-31\\observations.json",
+      "sha256": "08177671d19e524b0da1d2d45ff26369f131b2649b80261854da318db51617dc",
+      "bytes": 15490
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-01\\observations.json",
+      "sha256": "2298417f55623fd96f4fd18d5666525274b97b85bfb92f10fb81433a8ae3846e",
+      "bytes": 13732
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-02\\observations.json",
+      "sha256": "e0d40f639c43dda8c12fc8e8221702e353c34302d5bbbd8a2b211fe93545b23b",
+      "bytes": 10691
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-03\\observations.json",
+      "sha256": "bedb846ec6421224586343e7c693d5a1ec519e13c36b78d8e6b99ea661decc1e",
+      "bytes": 10441
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-04\\observations.json",
+      "sha256": "2b99939dd06d41ab22f097c2bed1ea3cdde8c66a73d20545fd77980f4fb4ea86",
+      "bytes": 10492
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-05\\observations.json",
+      "sha256": "8ff9b60891525bf9bcf573042b8d36f815ea68a99eb4c62c409b9638f04da511",
+      "bytes": 10406
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-06\\observations.json",
+      "sha256": "6475585de8be37c3eb3f789f9c36ea889fb975e28579bf665666586be9af758a",
+      "bytes": 10567
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-07\\observations.json",
+      "sha256": "032360571388c5044e3f282881411c756fb551df1cf886488df38ac90ff9708f",
+      "bytes": 10234
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-08\\observations.json",
+      "sha256": "be489feb7e93c913f73dfed787b29b7953c8703e90c48659579dea944a8115ac",
+      "bytes": 14148
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-09\\observations.json",
+      "sha256": "caf36be99785e5c6e2b75876a4d8aefb12db3f6b8a1273da489d8a495c1b8484",
+      "bytes": 16176
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-10\\observations.json",
+      "sha256": "db6d14809a1fa75e7e7332d3b9032d540e49b7ccafab366e462ba9230cdaec32",
+      "bytes": 14360
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-11\\observations.json",
+      "sha256": "16ba93075c3e0e7d1dc21a858cc83479e48d6e4f4325ed41ae42cdd3333bd8d2",
+      "bytes": 10544
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-12\\observations.json",
+      "sha256": "5f08422c69bccc5a962ef25c3f973db8ced5a32298f28032866afedd4dd22d19",
+      "bytes": 11305
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-13\\observations.json",
+      "sha256": "3a56820855035b97f61b902b1656b20d9d029677b2bd70297992e80aad6bac63",
+      "bytes": 10602
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-14\\observations.json",
+      "sha256": "e46d8a4adaa81abe61a71517a8be6f4f0488fbe7c5aae6a65213b75885523771",
+      "bytes": 10166
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-15\\observations.json",
+      "sha256": "edbd7e45b325a60005428b560580706ef31aea7da3d8aa2b8fa5689b0a11bdb2",
+      "bytes": 10259
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-16\\observations.json",
+      "sha256": "e455adc5611a93d17d6703e27a176ca01d7dbba447371969195610faeeb408fe",
+      "bytes": 8052
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-17\\observations.json",
+      "sha256": "80a27d6e4d074786491ccb247efbddd58f3f92e7309a307c65850bdd0c465481",
+      "bytes": 10530
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-18\\observations.json",
+      "sha256": "287817a16cd52d8155693f481373992bf7724c0201d3039bbbb1477dd0df7b92",
+      "bytes": 10180
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-19\\observations.json",
+      "sha256": "7a58a9ff6849fc0fe2bfe8c52900e2be583d8239ba23f75f8069b4a1cb4ca827",
+      "bytes": 11491
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-20\\observations.json",
+      "sha256": "4b39eab61300c9c7b1d1432d55e621941997a76ed945ee57feda1a4f5fb777ba",
+      "bytes": 12374
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-21\\observations.json",
+      "sha256": "c47ed517349d62efb8f761950d8471382e91bcfd01b3bf9f19e4166da497f73a",
+      "bytes": 13660
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-22\\observations.json",
+      "sha256": "68bb9859bbc358a7a9ac6d9169b54ab72781949e1ddd6687c2de1eb5efa6cb3f",
+      "bytes": 10564
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-23\\observations.json",
+      "sha256": "fe13005071250289eb29307a7b56766378a144e286f0b2861251b09d5dedfb66",
+      "bytes": 10568
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-24\\observations.json",
+      "sha256": "221f9d79599aab955ad656c3188997662a5878d8f9ce67712a627a0828702971",
+      "bytes": 10575
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-25\\observations.json",
+      "sha256": "48824107da777fb7a04598f6c9da39af4c4941dfb7e1806e668e73da7da03ec7",
+      "bytes": 11689
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-26\\observations.json",
+      "sha256": "e6b11e06817773608f204fea35efdcd8120b02107aebe6b6d28f2da3eccb5458",
+      "bytes": 12547
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-27\\observations.json",
+      "sha256": "8094353453f88e89565def891f9a47330b55c707a219cd3fdb57d945febd4d96",
+      "bytes": 10626
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-28\\observations.json",
+      "sha256": "8ceb370f0aa22adebff11d02de7122938f04fc05e3369d365be481ae1567f200",
+      "bytes": 10458
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-29\\observations.json",
+      "sha256": "fdfd2f9e71310125253c8213ac80e3473a5a620af95963719dfea6bd77b4a054",
+      "bytes": 10111
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-30\\observations.json",
+      "sha256": "052f549babd99e6919eeae159e57027d6c1fcaf9aabfa2813a9e1c1399cdc0f3",
+      "bytes": 11321
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\fit_preoct.py",
+      "sha256": "41eabd2f4871183a4923e6afc5144ef6ada771c8ce5895f8fde9c0d1356556bf",
+      "bytes": 12626
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\research_confidence.py",
+      "sha256": "2b84f12a969081909c0e0dd4849de59c24866c5b110431cf5af45cbc51f35e66",
+      "bytes": 25793
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\data\\palmdale-preoct-observations.json",
+      "sha256": "59c00276f91544ef49d4d77a88522f7111bdfac69e2581d9ed4463f9a9850ea2",
+      "bytes": 11028095
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\fit_preoct.py",
+      "sha256": "ab9fde849622cfd96692e6534cdda594b5c7dd932ad547178d997fac9cfc22a9",
+      "bytes": 13485
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\source-aligned-experiment\\training-dataset.json",
+      "sha256": "711c126f989930dc313d7d0ef3e6db8e858960dd68f4455e8b9ca723bec43105",
+      "bytes": 10144883
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\train.py",
+      "sha256": "bef4c0b527261614cdd489d2faa9752c9fd2a978aeb21cd15d7e1474c10b2e1a",
+      "bytes": 21101
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\weather\\oct11-original-weather-frame-v1.json",
+      "sha256": "09d82c6336d90d67e09100bfec1f084ccab1d7a41fbcb06b07e2b0d35521c3cf",
+      "bytes": 91056
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\weather\\modern-original-packets-v1.json",
+      "sha256": "493ed1d7b800be4963a782cca89108beb4da7eaf90a83be6fdf1b1bb843ce4c4",
+      "bytes": 347651
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\weather\\v8d-original18-packet-v1.json",
+      "sha256": "baf5530d781ceb285c1ce23640cc2ae31a233192561a89273db0ffb1a780894b",
+      "bytes": 67691
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\october-window\\f3-oct1-9-original-family-forecasts.json",
+      "sha256": "2bf39a7e2ba54ac4be74c429a8fe640339ac321e8097e4a4b7dfed00bb938c99",
+      "bytes": 534245
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\forecasts-Daggett_Palmdale.json",
+      "sha256": "f2d7d59771aba64b0b02fb0148331b0cc145fd82d7885479d12f81770013a55b",
+      "bytes": 2936135
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-all-model-simulation-20261011\\weather\\common18-model-packets-v2.json",
+      "sha256": "b2fa79f2cd14d92cf8a369ba2e808cbfb6c8cf53c8e55243c7ae892090635086",
+      "bytes": 4752495
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\data\\palmdale-october-observations.json",
+      "sha256": "05e0c1af065f0a2a3e7889356ca84f14e95c9503a3c31be544c4f030806dd15b",
+      "bytes": 167462
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\2026-10-07\\kalshi-nyc-generalization\\work\\multicity-oct10-11-20261011\\2026-10-10\\la\\la-today-predictions.json",
+      "sha256": "3ca91a0e56def80469828400a61b0274e168b940beeb21893fce320ad18bd6bc",
+      "bytes": 22621
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\2026-10-07\\kalshi-nyc-generalization\\work\\multicity-oct10-11-20261011\\2026-10-10\\la\\la-today-predictors.json",
+      "sha256": "e45bc107eea43b4ae876d25483c36dc748f8953f97ea36f2c477a2cd43a9129f",
+      "bytes": 248704
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\2026-10-07\\kalshi-nyc-generalization\\work\\multicity-oct10-11-20261011\\2026-10-10\\la\\kalshi-event.json",
+      "sha256": "2c9fa95c0dabd5aee81bbd9fdbd4e6fb7b57aacf56a1611bfe56f8c541d060f4",
+      "bytes": 18146
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\2026-10-07\\kalshi-nyc-generalization\\work\\multicity-oct10-11-20261011\\2026-10-10\\la\\contracts.json",
+      "sha256": "892f357db06a849bd6987dcdfc4a92570f9d251cf7c775958a7c785fc280442c",
+      "bytes": 1446
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\2026-10-07\\kalshi-nyc-generalization\\work\\multicity-oct10-11-20261011\\2026-10-10\\la\\la-source-receipts.json",
+      "sha256": "22ec0de5ae90e9c8e63826d132f2361461a4ad5f2d575e18c3a60ba8c7938368",
+      "bytes": 176054
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-f3-oct10-fixed-forecasts-v1.json",
+      "sha256": "58f210c274b4bfbb48c72e88ccb8922d43a831dfd2c6385c556f1ec10f27b363",
+      "bytes": 37513
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-weather-source-pins-v3.json",
+      "sha256": "8b11a6ba8f996eca89c05ac6dcbff5b645df5f6644a60c84f464a82d7654abb0",
+      "bytes": 47691
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\v5p\\acquisition\\economics\\manifests\\source-manifest.json",
+      "sha256": "a5d7a57f8a41ee2d729cdcfad314cff1a6100cc36ce94b57e519523019b97cc2",
+      "bytes": 7226
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-fee-temporal-producer-review-v1.json",
+      "sha256": "d4daf378b8194262a1ceabca0a7888adf68cd924d13684926a64fbfddf35b06e",
+      "bytes": 5239
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-v1.json",
+      "sha256": "b94a7d2b431dfe50ffe494f320cc75ebd9c9716c2bb0910a33d068e8a5482fd9",
+      "bytes": 2767
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-h1b-v1.json",
+      "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0",
+      "bytes": 8083
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct12-cached-weather-independent-review-h1b-v1.json",
+      "sha256": "b9d238f36d7b2426c60892cb44058c999309a6a9d2da308f6ed45f63a2fb3704",
+      "bytes": 4189
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-h1-completed-money-review-v1.json",
+      "sha256": "faf376007239a2e9222f4074226cbab44e7275f997bc0f8b64e857b03cd40afa",
+      "bytes": 17335
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct04-acquisition-gap-review-v1.json",
+      "sha256": "70447edc88889343e8ef8a788e4ef6ea2ec66d347c94e80719a2a75e9236843a",
+      "bytes": 60450
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\h1b-src-1791864607702443900\\result.json",
+      "sha256": "37d7b0e29b307bbeb2fb1796c727b54644319b99275348339a53604a173c2854",
+      "bytes": 1712
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la_native-h1a-before-source-repair.py",
+      "sha256": "f9133aaded5e6e17edcaf1e856f3f0b9f6584d29cf464c83877424173f9f7f44",
+      "bytes": 32202
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la-h1a-before-source-repair.py",
+      "sha256": "8c25dce26663c360f871fdade4a9b3974c061c5b38ad69db1b25583d5f57769e",
+      "bytes": 23415
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-dependencies-h1b-v1.json",
+      "sha256": "9d8ddfa7059414930b06c0ecdd414c142873265eae9de383376a6cd009c2aa62",
+      "bytes": 44854
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-source-independent-review-h1b-v1.json",
+      "sha256": "e7b0b2fe375886d24f6d48475c5cad1536fbf8944ac577f9c639881b3d5f20bd",
+      "bytes": 3230
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-core-independent-review-v1.json",
+      "sha256": "72f47d4714655448bd85a7ac508d22c36a8cdc9b0743bc3a82e79b2b8ef27b8c",
+      "bytes": 11613
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-weather-independent-source-review-v1.json",
+      "sha256": "00d9a94727a3e0c4eeb21bc980a9ed689cb7a73717ddf22e0c1be2ec2ea566c2",
+      "bytes": 2896
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-native-fixtures-v2.json",
+      "sha256": "f3ff05e1de974a9187d68281a4841307016edf38e7183eae95b66597066a0df9",
+      "bytes": 7857
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-weather-source-pins-v3.json",
+      "sha256": "8b11a6ba8f996eca89c05ac6dcbff5b645df5f6644a60c84f464a82d7654abb0",
+      "bytes": 47691
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-fee-temporal-producer-review-v1.json",
+      "sha256": "d4daf378b8194262a1ceabca0a7888adf68cd924d13684926a64fbfddf35b06e",
+      "bytes": 5239
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-v1.json",
+      "sha256": "b94a7d2b431dfe50ffe494f320cc75ebd9c9716c2bb0910a33d068e8a5482fd9",
+      "bytes": 2767
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-facade-fixture-edit-failure-v1.json",
+      "sha256": "f872344525a78faf1590d2d0103b1924a243d2283575208dd37556e96f274447",
+      "bytes": 566
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-h1b-v1.json",
+      "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0",
+      "bytes": 8083
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct12-cached-weather-independent-review-h1b-v1.json",
+      "sha256": "b9d238f36d7b2426c60892cb44058c999309a6a9d2da308f6ed45f63a2fb3704",
+      "bytes": 4189
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-h1-completed-money-review-v1.json",
+      "sha256": "faf376007239a2e9222f4074226cbab44e7275f997bc0f8b64e857b03cd40afa",
+      "bytes": 17335
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct04-acquisition-gap-review-v1.json",
+      "sha256": "70447edc88889343e8ef8a788e4ef6ea2ec66d347c94e80719a2a75e9236843a",
+      "bytes": 60450
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\h1b-src-1791864607702443900\\result.json",
+      "sha256": "37d7b0e29b307bbeb2fb1796c727b54644319b99275348339a53604a173c2854",
+      "bytes": 1712
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la_native-h1a-before-source-repair.py",
+      "sha256": "f9133aaded5e6e17edcaf1e856f3f0b9f6584d29cf464c83877424173f9f7f44",
+      "bytes": 32202
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la-h1a-before-source-repair.py",
+      "sha256": "8c25dce26663c360f871fdade4a9b3974c061c5b38ad69db1b25583d5f57769e",
+      "bytes": 23415
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-dependencies-h1b-v1.json",
+      "sha256": "9d8ddfa7059414930b06c0ecdd414c142873265eae9de383376a6cd009c2aa62",
+      "bytes": 44854
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-source-independent-review-h1b-v1.json",
+      "sha256": "e7b0b2fe375886d24f6d48475c5cad1536fbf8944ac577f9c639881b3d5f20bd",
+      "bytes": 3230
+    }
+  ],
+  "checks": [
+    "Independent fresh100wallets; chronological native cash/state/risk carry, no resets or duplicate ledgers.",
+    "Native whole quantities, frozen limits, partial BUY/SELL and source-age/depth controls retained.",
+    "F3/F6 cent and legacy aggregate4dp accounting remain separately labeled.",
+    "Daily cash delta differs from cumulative cash minus100; closed episodes use fee-inclusive basis.",
+    "Civil-midnight cash differs from later official payouts; duplicate credits idempotent and receipts causal.",
+    "Unsupported economic source/selected decision/ambiguous execution is UNKNOWN, not zero-profit no trade.",
+    "Resolved supported cash with missing alternative opportunities is explicitly conditional.",
+    "Ordinary unresolved holdings remain PENDING; unknown economic gaps stop complete compounded return.",
+    "Missing future source is inventoried without fabricating observations/first delivery; all calendar rows retained.",
+    "Copied six-file source guard, sealed main/fee review environment paths and pre-import originals guard.",
+    "New weather and fee producer code is source-qualified; dynamic captures are independently hash-validated by reviewed code.",
+    "H1B source-product admission, retained fixed-math fixture reuse and coverage-aware richer raw precedence independently reviewed.",
+    "Exact unchanged cash/fees/episodes/calendar/state AST reused; no duplicate monetary suite or real-date replay."
+  ],
+  "fixture_evidence": {
+    "facade": {
+      "tests": 16,
+      "passes": true,
+      "runtime_seconds": 0.192,
+      "observed_tool_chunk": "806fee",
+      "test_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tests\\test_offline_la.py",
+        "sha256": "6858c2610cf3df8b3eee45ee010508394a4406f3d5d78f139362c602a1aa4a8a",
+        "bytes": 17102
+      },
+      "actual_start_finish_exactly_recorded": false,
+      "scope": "Fixed stubs, copied guards and mocked source orchestration only"
+    },
+    "native": {
+      "checks": 13,
+      "scope": "SYNTHETIC_NATIVE_BRIDGE_ACTIONS_ONLY",
+      "receipt_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-native-fixtures-v2.json",
+        "sha256": "f3ff05e1de974a9187d68281a4841307016edf38e7183eae95b66597066a0df9",
+        "bytes": 7857
+      },
+      "executed_core_snapshot_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la_native-core-v1.py",
+        "sha256": "28b03263186c1cd7d4c686159803580da0bd846f6f934c7f5d17b6924f366f55",
+        "bytes": 31546
+      },
+      "reused_by_exact_financial_function_ast": [
+        "run_prepared",
+        "_closed_episode_totals",
+        "_calendar_cash"
+      ]
+    },
+    "weather": {
+      "saved_profile_days": 33,
+      "saved_forecasts": 55,
+      "source_guards": 10,
+      "exact_fixed_vector_matches": 5,
+      "h1b_producer_review_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-h1b-v1.json",
+        "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0",
+        "bytes": 8083
+      },
+      "new_oct12_payload_review_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct12-cached-weather-independent-review-h1b-v1.json",
+        "sha256": "b9d238f36d7b2426c60892cb44058c999309a6a9d2da308f6ed45f63a2fb3704",
+        "bytes": 4189
+      }
+    },
+    "h1b_source_amendment": {
+      "checks": 8,
+      "passes": true,
+      "receipt_pin": {
+        "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\h1b-src-1791864607702443900\\result.json",
+        "sha256": "37d7b0e29b307bbeb2fb1796c727b54644319b99275348339a53604a173c2854",
+        "bytes": 1712
+      },
+      "scope": "SYNTHETIC_SOURCE_COVERAGE_PRECEDENCE_ONLY",
+      "actual_market_data_admitted": false
+    }
+  },
+  "permitted_replay": {
+    "profiles": [
+      "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "F6_HYBRID_STAGED5",
+      "V8D_NO18_SETTLEMENT"
+    ],
+    "start_day": "2026-10-01",
+    "end_rule": "Actual requested Pacific day only, within fixed October; never future or November",
+    "starting_cash_each": "100",
+    "monthly_reset": false,
+    "maximum_active_city_children": 3,
+    "orders_sent": 0,
+    "new_fits": 0
+  },
+  "qualifications": [
+    "Conditional archival counterfactual, not blind October or historical live deployment.",
+    "Historical first-delivery, exchange fills, private payout timing and NWS/TWC equivalence unproved.",
+    "Current October F6 lineage is retained; September checkpoint is not substituted.",
+    "Covered payout clocks precede next entry; unsupported intraday prior-payout interleaving is a capability gap.",
+    "Incomplete/unknown return is null; actual known cash and reservations remain visible.",
+    "Sum of independent wallets is hypothetical; no common physical-capacity or annual profit proof.",
+    "Static producer reviews do not invent repeated independent daily reviews. Failed/null evidence remains retained.",
+    "H1B changes ordinary METAR product/source admission and archive-acquisition coverage, not model weights or native money methods.",
+    "The eight source fixtures are synthetic guard tests and do not certify actual newly downloaded books.",
+    "Future scoring requires all dynamic source/fee/forecast/payout gates; absent authentication remains PENDING/UNKNOWN rather than fabricated prices.",
+    "The already checked H1 known cash prefixes are94.61 throughOct3 forF3,104.52 throughOct11 forF6 and150.1253 throughOct11 forV8D; full endings remain null and are not a matched-period portfolio sum.",
+    "Oct4's actual12 stale current-entry clocks remain UNKNOWN unless authentic richer evidence resolves them; no successful repair or new score is claimed."
+  ],
+  "blocked_operations": [
+    "Real orders, live/F1F/CURRENT edits, new fits, relaxed frozen risk or uncapped economic search"
+  ],
+  "empirical_financial_runs_by_this_review": 0,
+  "predecessor_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-offline-independent-review-v1.json",
+    "sha256": "014239c6af86348e7b96036ff174a60249717634d510a09a0d5a9554d0afd82c",
+    "bytes": 62249
+  },
+  "h1b_changed_scope": {
+    "weather_producer": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-h1b-v1.json",
+      "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0",
+      "bytes": 8083
+    },
+    "new_forecast_payload": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct12-cached-weather-independent-review-h1b-v1.json",
+      "sha256": "b9d238f36d7b2426c60892cb44058c999309a6a9d2da308f6ed45f63a2fb3704",
+      "bytes": 4189
+    },
+    "market_source_review_path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-source-independent-review-h1b-v1.json",
+    "cash_review": {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-h1-completed-money-review-v1.json",
+      "sha256": "faf376007239a2e9222f4074226cbab44e7275f997bc0f8b64e857b03cd40afa",
+      "bytes": 17335
+    },
+    "old_financial_results_overwritten": false,
+    "new_economic_score_in_this_review": false,
+    "automatic_source_collection_registered": true,
+    "old_unresolved_masks_preserved": true
+  }
+}

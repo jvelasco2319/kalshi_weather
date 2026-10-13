@@ -17,12 +17,14 @@
   "new_runtime_requires_validation": true,
   "credentials_shared": false,
   "note": "Legacy names preserve sealed provenance. The deployment mount resolves them only to bundled files in this clone. No original PC fallback is permitted.",
-  "application_online": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1",
-  "application_offline": "final_testing/application/offline_releases/FOUR-CITY-OFFLINE-TWC-EXIT-v1",
+  "application_online": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1",
+  "application_offline": "final_testing/application/offline_releases/FOUR-CITY-OFFLINE-LIVE-REPAIRS-v1",
   "application_runtime": "final_testing/application/runtime",
-  "application_model_sha256": "0a471d4dfd7670e429db6b74808a64fbe7ebdf471e82d74dee2b798bce3c9426",
-  "application_offline_sha256": "afdcf2d785b8074576f5539587d641622b572971e35d803bb81f540e51344601",
-  "application_registration_sha256": "da04a7dc14967d93c0a24ce7a381fb3a7ff3ff613573d674b8e5a81e30e20b41",
+  "application_model_sha256": "9f46c7894e0c5ec3131cde89e4a888bb088ba54441e69970ade1bbc10f561fbc",
+  "application_offline_sha256": "a7fe1f217c5ae0c5487b35424123a7642907b0c8446f959e6698defb34dbca51",
+  "application_registration_sha256": "785e363dfa7ff35df57739a273945c9f6388ed66913ca824483e5a7fc3989d17",
   "prospective_la_exit_policy_changed": true,
-  "observation_source": "THE_WEATHER_COMPANY_PUBLIC_KALSHI_PORTAL"
+  "observation_source": "THE_WEATHER_COMPANY_PUBLIC_KALSHI_PORTAL",
+  "prospective_live_source_and_timing_repairs": true,
+  "target_mapping": "DATED_INDEPENDENT_CLI_PAIRING_PAPER_HYPOTHESIS_NOT_FUTURE_EQUIVALENCE_PROOF"
 }

@@ -1,0 +1,2110 @@
+{
+  "release_id": "FOUR-CITY-PAPER-LIVE-REPAIRS-v1",
+  "created_ns": 1791927068726942600,
+  "paper_only": true,
+  "actual_orders": 0,
+  "checkpoint_month": "2026-10",
+  "no_automatic_month_fallback": true,
+  "profiles": [
+    {
+      "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "initial_cash": "100",
+      "entry_utc": "17:00–20:00",
+      "daily_fraction": ".10",
+      "stages": [
+        ".10"
+      ],
+      "exit": "UPDATED_PROBABILITY",
+      "quote_age_seconds": 60,
+      "depth_fraction": ".50",
+      "fees": "RETAIL_CENT",
+      "latency_seconds": 5,
+      "city": "la",
+      "city_name": "Los Angeles",
+      "wallet_id": "la:F3_V10_PHYSICAL_FORECAST_EXIT",
+      "name": "V10 Â· forecast exit",
+      "daily_cap": ".10",
+      "rule_summary": "YES or NO, 17â€“20 UTC Â· up to 10% including fees Â· exit when the forecast edge fades"
+    },
+    {
+      "profile_id": "F6_HYBRID_STAGED5",
+      "initial_cash": "100",
+      "entry_utc": "17:00–20:00",
+      "daily_fraction": ".05",
+      "stages": [
+        ".025",
+        ".025"
+      ],
+      "exit": "OFFICIAL_SETTLEMENT",
+      "quote_age_seconds": 60,
+      "depth_fraction": ".50",
+      "fees": "RETAIL_CENT",
+      "latency_seconds": 5,
+      "city": "la",
+      "city_name": "Los Angeles",
+      "wallet_id": "la:F6_HYBRID_STAGED5",
+      "name": "Hybrid Â· staged safety",
+      "daily_cap": ".05",
+      "rule_summary": "YES or NO, 17â€“20 UTC Â· 2.5% + 2.5% Â· risk controls Â· hold to settlement"
+    },
+    {
+      "profile_id": "V8D_NO18_SETTLEMENT",
+      "initial_cash": "100",
+      "entry_utc": "18:00 only",
+      "daily_fraction": ".10",
+      "stages": [
+        ".10"
+      ],
+      "exit": "OFFICIAL_SETTLEMENT",
+      "quote_age_seconds": 1800,
+      "depth_fraction": "1",
+      "fees": "LEGACY_RAW_4DP",
+      "latency_seconds": 5,
+      "city": "la",
+      "city_name": "Los Angeles",
+      "wallet_id": "la:V8D_NO18_SETTLEMENT",
+      "name": "V8D Â· NO at 18 UTC",
+      "daily_cap": ".10",
+      "rule_summary": "NO at 18 UTC Â· up to 10% including fees Â· hold to settlement"
+    },
+    {
+      "profile_id": "CONSERVATIVE_P09",
+      "name": "Conservative P09",
+      "daily_fraction": "0.10",
+      "displayed_depth_fraction": "1",
+      "entry_local": "10:00",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "city": "ny",
+      "city_name": "New York",
+      "wallet_id": "ny:CONSERVATIVE_P09",
+      "daily_cap": ".10",
+      "rule_summary": "NO at 10am New York time Â· full 10% budget including fees Â· hold to settlement"
+    },
+    {
+      "profile_id": "SAFE5_TARGET_ONLY",
+      "name": "Targeted safety",
+      "daily_fraction": "0.05",
+      "stage_fraction": "0.025",
+      "displayed_depth_fraction": "0.50",
+      "entry_local": "10:00-13:00",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "closed_drawdown_stop": "0.10",
+      "city": "ny",
+      "city_name": "New York",
+      "wallet_id": "ny:SAFE5_TARGET_ONLY",
+      "daily_cap": ".05",
+      "rule_summary": "NO, 10amâ€“1pm New York time Â· 2.5% + 2.5% Â· half-depth and loss controls Â· settlement"
+    },
+    {
+      "profile_id": "SELECTED_CHAMPION",
+      "model_id": "MIAMI-IMPROVED-2026-10-SIMPLEX_MIX",
+      "weather_choice": "SIMPLEX_MIX",
+      "rule_id": "CHAMPION_PRICE10_65",
+      "minimum_price_cents": 10,
+      "maximum_price_cents": 65,
+      "minimum_probability_gap": 0.0,
+      "entry_local": "10:00 America/New_York",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "daily_cash_fraction": ".10",
+      "arrival_delay_seconds": 5,
+      "maximum_quote_age_seconds": 5,
+      "maximum_spread_cents": 5,
+      "minimum_expected_net_return": ".10",
+      "side": "NO",
+      "selection_mode": "expected_profit",
+      "allocation": "ranked whole-contract round robin",
+      "fill_policy": "full frozen quantity at native top or cancel",
+      "probability_haircut": 0,
+      "fee_rate": ".07",
+      "fee_quantum": ".0001",
+      "maximum_entropy": 1,
+      "climate_start_utc_hour": 5,
+      "checkpoint_month": "2026-10",
+      "clock_policy": "PUBLIC_REST_CLOCK_V1",
+      "decision_slot": "[native 10am anchor, anchor+1 second)",
+      "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+      "rest_timing_is_prospective_adaptation_not_archival_equivalence": true,
+      "city": "miami",
+      "city_name": "Miami",
+      "wallet_id": "miami:SELECTED_CHAMPION",
+      "name": "Selected calibrated model",
+      "daily_cap": ".10",
+      "rule_summary": "NO at 10am Miami time Â· 10â€“65Â¢ screen Â· full 10% budget including fees Â· settlement"
+    },
+    {
+      "profile_id": "RAW_ORIGINAL",
+      "model_id": "MIAMI-2026-10-PASTONLY-V10-RAW",
+      "weather_choice": "RAW",
+      "rule_id": "ORIGINAL_P09",
+      "minimum_price_cents": 5,
+      "maximum_price_cents": 80,
+      "minimum_probability_gap": 0.1,
+      "entry_local": "10:00 America/New_York",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "daily_cash_fraction": ".10",
+      "arrival_delay_seconds": 5,
+      "maximum_quote_age_seconds": 5,
+      "maximum_spread_cents": 5,
+      "minimum_expected_net_return": ".10",
+      "side": "NO",
+      "selection_mode": "expected_profit",
+      "allocation": "ranked whole-contract round robin",
+      "fill_policy": "full frozen quantity at native top or cancel",
+      "probability_haircut": 0,
+      "fee_rate": ".07",
+      "fee_quantum": ".0001",
+      "maximum_entropy": 1,
+      "climate_start_utc_hour": 5,
+      "checkpoint_month": "2026-10",
+      "clock_policy": "PUBLIC_REST_CLOCK_V1",
+      "decision_slot": "[native 10am anchor, anchor+1 second)",
+      "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+      "rest_timing_is_prospective_adaptation_not_archival_equivalence": true,
+      "city": "miami",
+      "city_name": "Miami",
+      "wallet_id": "miami:RAW_ORIGINAL",
+      "name": "Original RAW model",
+      "daily_cap": ".10",
+      "rule_summary": "NO at 10am Miami time Â· 5â€“80Â¢ screen Â· full 10% budget including fees Â· settlement"
+    },
+    {
+      "profile_id": "03-V10-Ensemble-Quarter-Kelly",
+      "family": "EQUAL_WEIGHT_SELECTED_LAW_ENSEMBLE",
+      "model_id": "PHOENIX-V9-EQUAL-WEIGHT-LAWS-2026-10",
+      "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+      "rule_id": "FIVE_CLOCK_NONMODAL_NO_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+      "static_forecast_utc": "17:00",
+      "entry_clocks_utc": [
+        "17:00",
+        "17:15",
+        "17:30",
+        "18:00",
+        "19:00"
+      ],
+      "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+      "side": "NO",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "city": "phoenix",
+      "city_name": "Phoenix",
+      "wallet_id": "phoenix:03-V10-Ensemble-Quarter-Kelly",
+      "name": "Four-law ensemble",
+      "daily_cap": ".10",
+      "rule_summary": "NO at five clocks from 10am Phoenix time Â· quarter-Kelly capped at 10% Â· settlement"
+    },
+    {
+      "profile_id": "01-V19-Temperature-Set-Quarter-Kelly",
+      "family": "RAW14_CONFORMAL_YES_SET",
+      "model_id": "PHOENIX-V5-HRRR14_23-2026-10-HRRR14_23-V2",
+      "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+      "rule_id": "FIVE_CLOCK_NONMODAL_NO_CONFORMAL_YES_SET_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+      "static_forecast_utc": "17:00",
+      "entry_clocks_utc": [
+        "17:00",
+        "17:15",
+        "17:30",
+        "18:00",
+        "19:00"
+      ],
+      "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+      "side": "NO",
+      "exit": "OFFICIAL_SETTLEMENT",
+      "city": "phoenix",
+      "city_name": "Phoenix",
+      "wallet_id": "phoenix:01-V19-Temperature-Set-Quarter-Kelly",
+      "name": "V19 temperature set",
+      "daily_cap": ".10",
+      "rule_summary": "NO outside the protected temperature set Â· quarter-Kelly capped at 10% Â· settlement"
+    }
+  ],
+  "descriptors": {
+    "ny": {
+      "city": "New York",
+      "station": "KNYC",
+      "series": "KXHIGHNY",
+      "profiles": [
+        {
+          "profile_id": "CONSERVATIVE_P09",
+          "name": "Conservative P09",
+          "daily_fraction": "0.10",
+          "displayed_depth_fraction": "1",
+          "entry_local": "10:00",
+          "exit": "OFFICIAL_SETTLEMENT"
+        },
+        {
+          "profile_id": "SAFE5_TARGET_ONLY",
+          "name": "Targeted safety",
+          "daily_fraction": "0.05",
+          "stage_fraction": "0.025",
+          "displayed_depth_fraction": "0.50",
+          "entry_local": "10:00-13:00",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "closed_drawdown_stop": "0.10"
+        }
+      ],
+      "timezone": "America/New_York",
+      "saved_live_month": "2026-10",
+      "forecast_snapshot_local": "10:00",
+      "no_automatic_new_month_checkpoint": true,
+      "paper_only": true,
+      "orders_sent": 0,
+      "qualifications": [
+        "Public books without event timestamps use actual receipt freshness only.",
+        "Temperature probabilities retain the saved whole-degree physical-day hypothesis.",
+        "Official binary outcome and cash availability are supplied by the common paper ledger.",
+        "Late/missing before-10am weather cannot become a timely historical issuance."
+      ]
+    },
+    "miami": {
+      "status": "AVAILABLE",
+      "city": "Miami",
+      "city_id": "miami",
+      "station": "KMIA",
+      "series": "KXHIGHMIA",
+      "timezone": "America/New_York",
+      "profiles": [
+        {
+          "profile_id": "SELECTED_CHAMPION",
+          "model_id": "MIAMI-IMPROVED-2026-10-SIMPLEX_MIX",
+          "weather_choice": "SIMPLEX_MIX",
+          "rule_id": "CHAMPION_PRICE10_65",
+          "minimum_price_cents": 10,
+          "maximum_price_cents": 65,
+          "minimum_probability_gap": 0.0,
+          "entry_local": "10:00 America/New_York",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "daily_cash_fraction": ".10",
+          "arrival_delay_seconds": 5,
+          "maximum_quote_age_seconds": 5,
+          "maximum_spread_cents": 5,
+          "minimum_expected_net_return": ".10",
+          "side": "NO",
+          "selection_mode": "expected_profit",
+          "allocation": "ranked whole-contract round robin",
+          "fill_policy": "full frozen quantity at native top or cancel",
+          "probability_haircut": 0,
+          "fee_rate": ".07",
+          "fee_quantum": ".0001",
+          "maximum_entropy": 1,
+          "climate_start_utc_hour": 5,
+          "checkpoint_month": "2026-10",
+          "clock_policy": "PUBLIC_REST_CLOCK_V1",
+          "decision_slot": "[native 10am anchor, anchor+1 second)",
+          "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+          "rest_timing_is_prospective_adaptation_not_archival_equivalence": true
+        },
+        {
+          "profile_id": "RAW_ORIGINAL",
+          "model_id": "MIAMI-2026-10-PASTONLY-V10-RAW",
+          "weather_choice": "RAW",
+          "rule_id": "ORIGINAL_P09",
+          "minimum_price_cents": 5,
+          "maximum_price_cents": 80,
+          "minimum_probability_gap": 0.1,
+          "entry_local": "10:00 America/New_York",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "daily_cash_fraction": ".10",
+          "arrival_delay_seconds": 5,
+          "maximum_quote_age_seconds": 5,
+          "maximum_spread_cents": 5,
+          "minimum_expected_net_return": ".10",
+          "side": "NO",
+          "selection_mode": "expected_profit",
+          "allocation": "ranked whole-contract round robin",
+          "fill_policy": "full frozen quantity at native top or cancel",
+          "probability_haircut": 0,
+          "fee_rate": ".07",
+          "fee_quantum": ".0001",
+          "maximum_entropy": 1,
+          "climate_start_utc_hour": 5,
+          "checkpoint_month": "2026-10",
+          "clock_policy": "PUBLIC_REST_CLOCK_V1",
+          "decision_slot": "[native 10am anchor, anchor+1 second)",
+          "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+          "rest_timing_is_prospective_adaptation_not_archival_equivalence": true
+        }
+      ],
+      "weather": {
+        "native_fields": 44,
+        "hrrr": "00 f005 + 06 f000..022",
+        "gefs": "00 avg/spr f003..030 every 3h",
+        "availability_minimum_hours_after_issue": 6,
+        "actual_local_receipts_required": true
+      },
+      "paper_only": true,
+      "order_api": false,
+      "new_fits": 0,
+      "blockers": [
+        "No November checkpoint fallback",
+        "Late data is monitoring only",
+        "NWS physical training versus current TWC payout equivalence remains conditional"
+      ]
+    },
+    "phoenix": {
+      "ok": true,
+      "city": "Phoenix",
+      "station": "KPHX",
+      "timezone": "America/Phoenix",
+      "checkpoint_month": "2026-10",
+      "series": "KXHIGHTPHX",
+      "profiles": [
+        {
+          "profile_id": "03-V10-Ensemble-Quarter-Kelly",
+          "family": "EQUAL_WEIGHT_SELECTED_LAW_ENSEMBLE",
+          "model_id": "PHOENIX-V9-EQUAL-WEIGHT-LAWS-2026-10",
+          "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+          "rule_id": "FIVE_CLOCK_NONMODAL_NO_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+          "static_forecast_utc": "17:00",
+          "entry_clocks_utc": [
+            "17:00",
+            "17:15",
+            "17:30",
+            "18:00",
+            "19:00"
+          ],
+          "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+          "side": "NO",
+          "exit": "OFFICIAL_SETTLEMENT"
+        },
+        {
+          "profile_id": "01-V19-Temperature-Set-Quarter-Kelly",
+          "family": "RAW14_CONFORMAL_YES_SET",
+          "model_id": "PHOENIX-V5-HRRR14_23-2026-10-HRRR14_23-V2",
+          "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+          "rule_id": "FIVE_CLOCK_NONMODAL_NO_CONFORMAL_YES_SET_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+          "static_forecast_utc": "17:00",
+          "entry_clocks_utc": [
+            "17:00",
+            "17:15",
+            "17:30",
+            "18:00",
+            "19:00"
+          ],
+          "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+          "side": "NO",
+          "exit": "OFFICIAL_SETTLEMENT"
+        }
+      ],
+      "fee_quantum": "0.0001",
+      "taker_fee_coefficient": "0.07",
+      "arrival_delay_seconds": 5,
+      "source_age_seconds": 5,
+      "new_fits": 0,
+      "orders_enabled": false,
+      "paper_only": true,
+      "late_clock_backdating": false,
+      "public_timing_mode": "PUBLIC_REST_CLOCK_V1",
+      "decision_processing_grace_seconds": 1,
+      "arrival_processing_grace_seconds": 1,
+      "decision_quotes_must_arrive_by_nominal_slot": true
+    },
+    "la": {
+      "status": "READY",
+      "city": "Los Angeles",
+      "station": "KLAX",
+      "paper_only": true,
+      "live_orders": 0,
+      "profiles": [
+        {
+          "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+          "initial_cash": "100",
+          "entry_utc": "17:00–20:00",
+          "daily_fraction": ".10",
+          "stages": [
+            ".10"
+          ],
+          "exit": "UPDATED_PROBABILITY",
+          "quote_age_seconds": 60,
+          "depth_fraction": ".50",
+          "fees": "RETAIL_CENT",
+          "latency_seconds": 5
+        },
+        {
+          "profile_id": "F6_HYBRID_STAGED5",
+          "initial_cash": "100",
+          "entry_utc": "17:00–20:00",
+          "daily_fraction": ".05",
+          "stages": [
+            ".025",
+            ".025"
+          ],
+          "exit": "OFFICIAL_SETTLEMENT",
+          "quote_age_seconds": 60,
+          "depth_fraction": ".50",
+          "fees": "RETAIL_CENT",
+          "latency_seconds": 5
+        },
+        {
+          "profile_id": "V8D_NO18_SETTLEMENT",
+          "initial_cash": "100",
+          "entry_utc": "18:00 only",
+          "daily_fraction": ".10",
+          "stages": [
+            ".10"
+          ],
+          "exit": "OFFICIAL_SETTLEMENT",
+          "quote_age_seconds": 1800,
+          "depth_fraction": "1",
+          "fees": "LEGACY_RAW_4DP",
+          "latency_seconds": 5
+        }
+      ],
+      "source_control": "PUBLIC_FULL_SNAPSHOT / RECEIPT_CLOCK, conditional paper execution",
+      "arrival": "PUBLIC_REST_ARRIVAL_V1: actual supported receipt after minimum5s, through120s; original schedule immutable, modern deadline is a new source timing guard",
+      "F3_publications": "Actual prospective17/18UTC packets only; minute checks reuse publication cache",
+      "F6_risk": "Persistent closed-equity10% drawdown pause, no automatic reset"
+    }
+  },
+  "workers": {
+    "ny": "tempdesk/adapters/ny.py",
+    "miami": "tempdesk/adapters/miami.py",
+    "phoenix": "tempdesk/adapters/phoenix.py",
+    "la": "tempdesk/adapters/la.py"
+  },
+  "files": [
+    {
+      "path": "source-map.json",
+      "bytes": 55021,
+      "sha256": "51ab62ad0affe8f35a970b1635f059a53796bb10f4c33868132d98d912dfcc3c"
+    },
+    {
+      "path": "static/app.js",
+      "bytes": 13482,
+      "sha256": "11dfa9e7f5096d35ee2000faff69b6227e9c459516e6902833b69ef41023f73a"
+    },
+    {
+      "path": "static/index.html",
+      "bytes": 1308,
+      "sha256": "05149dd356860479ecddf88cb83ea32a3b166be9fdc6ba3fb836ba369db7e473"
+    },
+    {
+      "path": "static/styles.css",
+      "bytes": 6027,
+      "sha256": "7201d51e03da6ace86f019746750265fe5d21b9f9d5330476c4e326585d45685"
+    },
+    {
+      "path": "tempdesk/__init__.py",
+      "bytes": 75,
+      "sha256": "4697c8bf197906e4c28f716fba9c3b67e8b08e53dee194875ea4e480815a3f40"
+    },
+    {
+      "path": "tempdesk/adapters/__init__.py",
+      "bytes": 69,
+      "sha256": "475b7f4a5a208612c9fa2157cc14053f7b2c1bf9cd1947722975796df7db1295"
+    },
+    {
+      "path": "tempdesk/adapters/la.py",
+      "bytes": 2601,
+      "sha256": "65ec918a6fe8c2ee36c5a6a038b986377bed1c37905281bf772121774e474c60"
+    },
+    {
+      "path": "tempdesk/adapters/miami.py",
+      "bytes": 39517,
+      "sha256": "013f0fa5c1bc46289e67a06bd830b27860d259e14904835d94bd48b32a4f6459"
+    },
+    {
+      "path": "tempdesk/adapters/ny.py",
+      "bytes": 39767,
+      "sha256": "f02ea6e44b69c0542ad7359e7a0321d7c411bb0bd73e24fdad95c9f0cee6d36a"
+    },
+    {
+      "path": "tempdesk/adapters/phoenix.py",
+      "bytes": 33262,
+      "sha256": "369408638f616de10ce8c3fec8d813e7c8c044b1e6c2807e3c6c329dcb232bf9"
+    },
+    {
+      "path": "tempdesk/bridge.py",
+      "bytes": 4011,
+      "sha256": "73dfa51270c23f9a0b7d04504c853b5e4250d10594a9504ee51bc81b91dd3c0c"
+    },
+    {
+      "path": "tempdesk/impossible_exit.py",
+      "bytes": 7042,
+      "sha256": "9535375fd3efc9f05790075a5d8a0a07da65b728ecfebbaa1cbdda3486cf1960"
+    },
+    {
+      "path": "tempdesk/integrity_cache.py",
+      "bytes": 945,
+      "sha256": "520a5729191a71b49a4353a391d0de718cdda361a7e22665fff892bf8353dc6e"
+    },
+    {
+      "path": "tempdesk/la_impossible_native.py",
+      "bytes": 5187,
+      "sha256": "0d82370c68de39f14b6b0a8aab928bc2c9d387baa7ea0f03d33ffdcffc3e9b3b"
+    },
+    {
+      "path": "tempdesk/la_live.py",
+      "bytes": 6252,
+      "sha256": "6fa46d3f2f1c964d4a2c4d43c63caa1be8e2d979a93ceed9d6ddd09d398b9ebc"
+    },
+    {
+      "path": "tempdesk/la_weather_repair.py",
+      "bytes": 3787,
+      "sha256": "bfba7c6a0e35de0730918a6376fba229a82208ee28df78b243a02e08df293b31"
+    },
+    {
+      "path": "tempdesk/ledger.py",
+      "bytes": 14950,
+      "sha256": "6e49b7d3921ba699c6448ffc08251b40068fd493ec6da462a4ba37921cb16d15"
+    },
+    {
+      "path": "tempdesk/live_worker.py",
+      "bytes": 2568,
+      "sha256": "2323e9c28dfc13d936c80ee462aad0911f06a9615b9bac35be491d158fc98f88"
+    },
+    {
+      "path": "tempdesk/offline_history.py",
+      "bytes": 13417,
+      "sha256": "0b1359e3035d00fdfdcebab20ceca558aa34e3ef664eabeea1a9e420260b5d2c"
+    },
+    {
+      "path": "tempdesk/offline_la.py",
+      "bytes": 23419,
+      "sha256": "b549a4eec9839dc629203e18a0d85c3d940326e3bff13732b31875569750b883"
+    },
+    {
+      "path": "tempdesk/offline_la_acquisition.py",
+      "bytes": 31381,
+      "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4"
+    },
+    {
+      "path": "tempdesk/offline_la_fee.py",
+      "bytes": 17892,
+      "sha256": "d9d82ecece84cb4f23143b2df57421ac488e7d703801f187fc888e2e7e3cdb74"
+    },
+    {
+      "path": "tempdesk/offline_la_native.py",
+      "bytes": 38729,
+      "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672"
+    },
+    {
+      "path": "tempdesk/offline_la_weather.py",
+      "bytes": 21284,
+      "sha256": "2644add4f68da2c5e3ec82e57336534b8049f72c9197bee8dffc3f6666272ff3"
+    },
+    {
+      "path": "tempdesk/offline_miami.py",
+      "bytes": 37320,
+      "sha256": "c7b2f80a43f9639aaf7db22a7eb28d8b90c28d73d6c29b8bae1b4fc50fc92bf9"
+    },
+    {
+      "path": "tempdesk/offline_ny.py",
+      "bytes": 31979,
+      "sha256": "d4edd874aad5584f91606fd0d8314211e0419b6f9081c1ebec57012612cbadf3"
+    },
+    {
+      "path": "tempdesk/offline_phoenix.py",
+      "bytes": 38365,
+      "sha256": "be50205d5fadc4597c9cd64260ed69c45404a5b27b982699a359033b1033e6ce"
+    },
+    {
+      "path": "tempdesk/offline_server.py",
+      "bytes": 8239,
+      "sha256": "5d45ef534444c320eae5726fdddee87870bf395138ab653bc2e91865f2e82a1c"
+    },
+    {
+      "path": "tempdesk/offline_sources.py",
+      "bytes": 11025,
+      "sha256": "611a81bedca1bbf6cc5c63f01939d69ff91d0c4678de9e52fc52c201643aa4da"
+    },
+    {
+      "path": "tempdesk/offline_worker.py",
+      "bytes": 1494,
+      "sha256": "8a8e3f08095981c525cde6c24cc75838c78cb852155d637b914411bc17315c05"
+    },
+    {
+      "path": "tempdesk/policy_receipts.py",
+      "bytes": 11852,
+      "sha256": "4301601edf6defe5ec8147ec6ec712612806bf209d549ff501a6ceb609f750a3"
+    },
+    {
+      "path": "tempdesk/public-policy-registration.json",
+      "bytes": 634,
+      "sha256": "8cdcd094d1c73777c3490cf47b388d53343205c459f0fe8349232a495f42e8d8"
+    },
+    {
+      "path": "tempdesk/public_data.py",
+      "bytes": 10812,
+      "sha256": "6978c29d88d4d9dcf7855f6a9016b366d936176737198631391c32d1d4fcc12d"
+    },
+    {
+      "path": "tempdesk/server.py",
+      "bytes": 2690,
+      "sha256": "247916447826897556cf1fb84feb0cd54470da7c74c283143568aa8ddf171b50"
+    },
+    {
+      "path": "tempdesk/service.py",
+      "bytes": 32472,
+      "sha256": "d7bb3301837403346f2e753667dd06056356151730f96c964191c18338cbe90e"
+    },
+    {
+      "path": "tempdesk/twc.py",
+      "bytes": 5970,
+      "sha256": "9e2d8008ac62da245f03624fa154ba6e4029559835b27984c08c0e26b3ac809d"
+    },
+    {
+      "path": "tempdesk/warm_bridge.py",
+      "bytes": 2526,
+      "sha256": "993fc9fd0560ecaf5093c08b052e073d0fd58c497f1ecc476adbc36038e03518"
+    },
+    {
+      "path": "tempdesk/weather_retry.py",
+      "bytes": 948,
+      "sha256": "32a11310dccd79ff80e36d7796e3850a383fe5d1377ec0b6f578c2c7e9e6a815"
+    },
+    {
+      "path": "vendor/05223c43a909/profile.json",
+      "bytes": 510,
+      "sha256": "dae55b64f6453573020fcb98138efc94931d566787f5a40bf6f5112ced63d0f3"
+    },
+    {
+      "path": "vendor/05223c43a909/saved-hrrr14-23-bundle-v3.json",
+      "bytes": 13408,
+      "sha256": "5061e54cdd563a2c3ab477dabeffa8ecbc282cafc302742b928942992ee961b5"
+    },
+    {
+      "path": "vendor/05223c43a909/saved_hrrr14_23_loader_v3.py",
+      "bytes": 7998,
+      "sha256": "0181858f5b27e780fd5137d70b3c7afc818c71837629cc276c2a20b7a39f6c58"
+    },
+    {
+      "path": "vendor/13295cd6cd96/canonical24-definition-only-registry-v1.json",
+      "bytes": 77693,
+      "sha256": "c9bd682dfb35cab79255526d7bcb64d56ee851954234dd9ddc77b4fc6d30ab8a"
+    },
+    {
+      "path": "vendor/1bced330d850/engine.py",
+      "bytes": 45642,
+      "sha256": "953212aec1433b1ba924711c3a77e11afd294dfa31b3b145517c546186398664"
+    },
+    {
+      "path": "vendor/1f5789087648/city-grid-geometry-v1.json",
+      "bytes": 35338,
+      "sha256": "a4ecfc7c3758b7d1c161d381849c22f23bcf436b2bac48a75559375db05a5afb"
+    },
+    {
+      "path": "vendor/1f5789087648/collect_and_summarize_kphx_v1.py",
+      "bytes": 10171,
+      "sha256": "1b382049c2ec8bc7f0dd7991c170f265c437b35f33eb3f9930e2335586373c8c"
+    },
+    {
+      "path": "vendor/1f5789087648/collect_hrrr14_points_v1.py",
+      "bytes": 15226,
+      "sha256": "9248878178169230897d68cd3725265d550379496956090677dfdbef030d10b8"
+    },
+    {
+      "path": "vendor/1f5789087648/collect_nyc_weather_v1.py",
+      "bytes": 23837,
+      "sha256": "b15bac0b4852c01f0fd5bb846e3f703babe67a33cc071a180ceedc1ed6c92917"
+    },
+    {
+      "path": "vendor/1f5789087648/collect_phoenix_temperatures_v1.py",
+      "bytes": 9664,
+      "sha256": "156e2a5fafd589360928fc3cdb2edece677910d7a0e7df645ae95d6530a42460"
+    },
+    {
+      "path": "vendor/1f5789087648/derive_kphx_same_report_atmosphere_v1.py",
+      "bytes": 8714,
+      "sha256": "254bd65191e3093dac70eccfa9c11429cb4598a03f7a3ca390edfec2f1aba5a3"
+    },
+    {
+      "path": "vendor/1f5789087648/hrrr-geometry.json",
+      "bytes": 9854,
+      "sha256": "b7f7d3c808270de8ef5c14067f0fa79031191f6e3f9d237458ae07354919af82"
+    },
+    {
+      "path": "vendor/1f5789087648/phoenix_point_helpers_v1.py",
+      "bytes": 8550,
+      "sha256": "977fb19cea619c48af26de3c36fd95d4ab46d2cf157fef33ac5b77eff79a014b"
+    },
+    {
+      "path": "vendor/1f5789087648/shared_weather_v2.py",
+      "bytes": 6619,
+      "sha256": "c8eca88a43de53957de526065d8ddd7a33087eaebed5fb487f24fddd7f2d1d96"
+    },
+    {
+      "path": "vendor/1f9c648746a4/checkpoint-2026-10.json",
+      "bytes": 66043,
+      "sha256": "5ee96f9f56151ee9b46a06504637166abd16af1b7ee8aee3e6d661093815b10f"
+    },
+    {
+      "path": "vendor/1f9c648746a4/checkpoint-hybrid-2026-10.json",
+      "bytes": 1209,
+      "sha256": "3c3c0992305b4d3bc6c0068bae00fd27c42da7caf5b87911c72345aeb04cbda3"
+    },
+    {
+      "path": "vendor/1f9c648746a4/optional_pressure.py",
+      "bytes": 13066,
+      "sha256": "56f46d1a94f61721516264b0ad69cafcb3d91e1ded54a99accf06144df7aabfc"
+    },
+    {
+      "path": "vendor/22a92bf702c3/engine.py",
+      "bytes": 28649,
+      "sha256": "a3e80d08332d40c601fd169dd22f5e915ffb951e9968108d2b3359ea6a184494"
+    },
+    {
+      "path": "vendor/22a92bf702c3/policies.py",
+      "bytes": 34706,
+      "sha256": "72c1b43a120e19315c334307273a65f5ac80255af9ede2b29e51d2c19bb32e6b"
+    },
+    {
+      "path": "vendor/22a92bf702c3/policies_v2.py",
+      "bytes": 8574,
+      "sha256": "52a5956f48ad3e3889a35d21e02e369d001f7990c016ed41a8e51436700598bc"
+    },
+    {
+      "path": "vendor/22a92bf702c3/policies_v3.py",
+      "bytes": 495,
+      "sha256": "049a92c3d34889abf741714c2878fa4725c51d87c70e46bbb1919e998d71c2a1"
+    },
+    {
+      "path": "vendor/3005be3670a3/live_weather.py",
+      "bytes": 14309,
+      "sha256": "c6f543b3e13b3638f0b800c4eb78634bd3e0787542855f407a88da7d072f3a0e"
+    },
+    {
+      "path": "vendor/3223b8bc4d20/no_qualification_filter_v10.py",
+      "bytes": 2652,
+      "sha256": "af5b49e766dc11f8f9e0183bccf51523f83ec6de41942877fa0d165a599c354b"
+    },
+    {
+      "path": "vendor/3789c80935c6/checkpoint-2026-10.json",
+      "bytes": 22354,
+      "sha256": "53b1669f05b54692da08de3e4c48caf2379e7e8e8563fd3305fa9dea7d8358cf"
+    },
+    {
+      "path": "vendor/3789c80935c6/paper_inference.py",
+      "bytes": 14235,
+      "sha256": "5914b150129898a3a1c59f681e6a6171bf8f83f2f6ac259413b27723da5a27c9"
+    },
+    {
+      "path": "vendor/42e27f27711b/candidate-freeze.json",
+      "bytes": 15869,
+      "sha256": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a"
+    },
+    {
+      "path": "vendor/4632697e03dd/city-grid-geometry-v1.json",
+      "bytes": 35338,
+      "sha256": "a4ecfc7c3758b7d1c161d381849c22f23bcf436b2bac48a75559375db05a5afb"
+    },
+    {
+      "path": "vendor/4632697e03dd/city-source-profiles-v1.json",
+      "bytes": 326402,
+      "sha256": "31b7013f80fc642f88e799a11edc4b89783f9936bd0f6e75f0304392b2646469"
+    },
+    {
+      "path": "vendor/4632697e03dd/collect_nyc_weather_v1.py",
+      "bytes": 23521,
+      "sha256": "9ddb74f2f4e00edbf6048173f7fc826ea70fce1e718456ec256ef613d8eb5a91"
+    },
+    {
+      "path": "vendor/4632697e03dd/extract_nyc_points_v2.py",
+      "bytes": 8268,
+      "sha256": "629ac3fe9ac0b23326bd2ab5a6494a90b3f9cb119147ad70a556023deee96b6c"
+    },
+    {
+      "path": "vendor/4632697e03dd/shared_weather_v1.py",
+      "bytes": 6255,
+      "sha256": "80118db6a723a82957aea1e0317b7c303b3b484baf219e9ea2a1332bb2b9a380"
+    },
+    {
+      "path": "vendor/4632697e03dd/shared_weather_v2.py",
+      "bytes": 6511,
+      "sha256": "244469d6fb6ff3dee7032497f398bb33366bfda4fdc8af334ad0acbb5f51a271"
+    },
+    {
+      "path": "vendor/476ca920378a/external-source-pins-v1.json",
+      "bytes": 51292,
+      "sha256": "4c357f2871099e3b20f5dc2912ba8b6d6c5e40888fde399bdc9c36c1857395ca"
+    },
+    {
+      "path": "vendor/476ca920378a/forecast_adapter.py",
+      "bytes": 23348,
+      "sha256": "f66778c5502228d0ee3e7deaf1ec052cb9b61efa7791772d91bb072eececf5b3"
+    },
+    {
+      "path": "vendor/476ca920378a/la_trio_cli.py",
+      "bytes": 2121,
+      "sha256": "4bc09975e8c9fc33246ff175f984a113608634feef6369a53c88c11f8db4b636"
+    },
+    {
+      "path": "vendor/476ca920378a/live_inputs.py",
+      "bytes": 10009,
+      "sha256": "7000dcc12fb7bffcfb87e3fd9e5dec54e2f28dcbafa329c3522416ab34db93f1"
+    },
+    {
+      "path": "vendor/476ca920378a/paper_trader_adapter.py",
+      "bytes": 38733,
+      "sha256": "dfa3fc0d8d7396d39ea9c2dd7f42906833c7f4bbcf1b82c5e979f808f101027d"
+    },
+    {
+      "path": "vendor/476ca920378a/source_gate.py",
+      "bytes": 3765,
+      "sha256": "ebc33da90966f1d114117aa0027f2866148f6fb768c0544b57a76bccc44032df"
+    },
+    {
+      "path": "vendor/48cfa7ba6f70/profile.json",
+      "bytes": 518,
+      "sha256": "23e37bb83343c920bec192b691ca99fe6db1cf18ec2b36759b26991c839f610e"
+    },
+    {
+      "path": "vendor/48cfa7ba6f70/saved-calibration-bundle.json",
+      "bytes": 19311,
+      "sha256": "b423f0fd42085734d6289b9c150e68e51454db9961fd6dbd8234d7d61ab25cce"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/__init__.py",
+      "bytes": 97,
+      "sha256": "3469ffcdf2621bb9c9367e47b1da81e66f190fda067defe58ad3497e47cedf1c"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/candidate_model_v3.py",
+      "bytes": 24785,
+      "sha256": "ac5b3ed84b429260da82158ea7f21712505067cbc52a9d5fd7583367d05663fc"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/candidates.py",
+      "bytes": 5554,
+      "sha256": "6d9a0dd0bdfb9a19f1046087a963c52e3d2d214df17bbbc202393a8b0683504f"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/domain.py",
+      "bytes": 6571,
+      "sha256": "7e6e3ff53ad55f88e5b1cf13c3d53445237a4c460b905f56582f5a23988adba0"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/features_v3.py",
+      "bytes": 12685,
+      "sha256": "ca0ac79202b6c00c3ae9ad3e8e7b6a54b42fb24b4128f9c6fb2207b13d5aafa7"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/forecast_models_v3.py",
+      "bytes": 10912,
+      "sha256": "3e3abccd9647ade5df9918a9c46e694ef4beea048a15d3f04c9be33c06ddd081"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/models.py",
+      "bytes": 3104,
+      "sha256": "0f4a7dd184309ad945e5939905a6547e52028fe58ed69be37c897452929b4b3c"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/ordinal_v3.py",
+      "bytes": 14976,
+      "sha256": "86d039ab3a77c442622213c02fcc0baa749d17c102d16459e7a886eeaa34115d"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/probability_v3.py",
+      "bytes": 18754,
+      "sha256": "2811ef2b7ac082f068d06d90f72e9bc6e3fc1f586c3acc26b8e15204bf08d059"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/provenance.py",
+      "bytes": 2403,
+      "sha256": "0735f35c5335f75f6ba881a62a3c1f8380e47b2e917d17430899d9cd738a92ba"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/regimes_v3.py",
+      "bytes": 14495,
+      "sha256": "a5cb14e78a4bd44ca29a99877eef94ea033d70ea50f2cfd0081617093c99930c"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/research_plan.py",
+      "bytes": 17344,
+      "sha256": "b1c092b1cbee4776b3b77a9ca98d0e85f7cfb2279f51b7039e42d111ae6ef30f"
+    },
+    {
+      "path": "vendor/4e28f437c4d5/research_plan_v3.py",
+      "bytes": 21040,
+      "sha256": "37de8aaf7659bb7e6c5ab49636a9242db6a5144bc598b4534a71d432f8d71bcb"
+    },
+    {
+      "path": "vendor/522f7b3fa62e/checkpoint-2026-10.json",
+      "bytes": 65394,
+      "sha256": "0bb969ebab1184fdc79c17492b4470392a5012b261a6003b7f64baa01fe5011e"
+    },
+    {
+      "path": "vendor/522f7b3fa62e/optional_pressure.py",
+      "bytes": 11509,
+      "sha256": "a4148988f2f44fb01d58ce3954513a1ecb7cded79203494fa113948de330902c"
+    },
+    {
+      "path": "vendor/534ff6a69396/plan-v1.json",
+      "bytes": 30041,
+      "sha256": "8651badd09583b75094fbbc0d9eb627b935bb332015335dc3332952734421dbc"
+    },
+    {
+      "path": "vendor/5603d332ee40/model.py",
+      "bytes": 22108,
+      "sha256": "818a3856ce3a6d596c7ecb49abd354a3886bd422d3e4b67df741c7ea8ef93677"
+    },
+    {
+      "path": "vendor/56cfc1d1abc1/ny_safe.py",
+      "bytes": 36767,
+      "sha256": "986ad78f732fc78eb120bec250df9a6cec987330b2664b110b0b16c9e8c6d21d"
+    },
+    {
+      "path": "vendor/5e787f87e93e/fitted-state.json",
+      "bytes": 2986053,
+      "sha256": "3d24d8f8aaf87ef4995172aa650a1adf576a21d1ff9d49abd626ee2b65afce70"
+    },
+    {
+      "path": "vendor/5e787f87e93e/selection.json",
+      "bytes": 5076,
+      "sha256": "a7ff6cc588af2cadf8a4a41406c0c99519374ec167e7eb0ea9d0cdfe92394b28"
+    },
+    {
+      "path": "vendor/68cbe893de37/ny_v10_contract_v1.py",
+      "bytes": 9466,
+      "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
+    },
+    {
+      "path": "vendor/68cbe893de37/ny_v10_math_v1.py",
+      "bytes": 10811,
+      "sha256": "2a7c79b1f96855fd6b2d5277cd76aa3b9decb354576727a391b31f004d52c4de"
+    },
+    {
+      "path": "vendor/717946334c85/static-2025-calibration.json",
+      "bytes": 4120,
+      "sha256": "302e45607d84cfae2540316d9da5f14ff78466365dc1e41a79f550b069b1d88d"
+    },
+    {
+      "path": "vendor/75ced8a4889e/2026-10-calibration.json",
+      "bytes": 6025856,
+      "sha256": "5860349b44f3afc8e23e66680b87e43825f6ce212a5a4d18121151102e74a96d"
+    },
+    {
+      "path": "vendor/75ced8a4889e/2026-10-original.json",
+      "bytes": 24868383,
+      "sha256": "65b54f4691eb6b186f89f09cb0f092ca78922413a7b54f1a8d5dbc2777f08390"
+    },
+    {
+      "path": "vendor/75ced8a4889e/2026-10-selection.json",
+      "bytes": 9036,
+      "sha256": "279d267b6382fb18ccfc1b98a1643eb7e857f4ebe7397642d7701dc97809a5cb"
+    },
+    {
+      "path": "vendor/79209281f679/law-state.json",
+      "bytes": 1517699,
+      "sha256": "91c037ca58a6790a89c99f7d61d7640757c5a43626bea7bf5424578fa58a2ad1"
+    },
+    {
+      "path": "vendor/79209281f679/selection.json",
+      "bytes": 5295,
+      "sha256": "fa9a9070469965a79f2c3352d82b4808e9d59572870d61fdd03f6203d919daa9"
+    },
+    {
+      "path": "vendor/8f8d7906bb93/october-checkpoints.json",
+      "bytes": 8894,
+      "sha256": "04cb0449e8d25740c44c275757808eec906eb9e288bcefe40be66a563fcb1763"
+    },
+    {
+      "path": "vendor/8f8d7906bb93/policy.py",
+      "bytes": 5778,
+      "sha256": "1bfa466feca61bd6ac5637771a20a6367eb7cbd32af5e0f29bf303a53a9fdfca"
+    },
+    {
+      "path": "vendor/8f8d7906bb93/profiles.json",
+      "bytes": 5354,
+      "sha256": "5c6440975d0e4eb699a8a38ecd70a4ece2a03fea3aa7a89f482b177eb8f86a93"
+    },
+    {
+      "path": "vendor/8f8d7906bb93/source-pins.json",
+      "bytes": 262695,
+      "sha256": "61fa4c116d941e97caba2f1b42211a03c5cf11de799f9c66fc77064716f98f90"
+    },
+    {
+      "path": "vendor/8f8d7906bb93/weather.py",
+      "bytes": 13655,
+      "sha256": "4aa72582aaf1b536ce6a186d29e028289959c01a85a11a20805b232ba690fa9b"
+    },
+    {
+      "path": "vendor/9064b839d21c/engine.py",
+      "bytes": 52447,
+      "sha256": "ce978ee6d195b8d1616af36a1e02482717f0bbcc3df81fcb563fface68d2a977"
+    },
+    {
+      "path": "vendor/92a73f85f6b0/p09_decimal_math.py",
+      "bytes": 51430,
+      "sha256": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9"
+    },
+    {
+      "path": "vendor/92a73f85f6b0/p09_order_math.py",
+      "bytes": 36066,
+      "sha256": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c"
+    },
+    {
+      "path": "vendor/92a73f85f6b0/p09_parameter_math.py",
+      "bytes": 14712,
+      "sha256": "459e97e2c7ddafc197160b4f7a25534db30a59dc36062f889b7de09ed4d0afec"
+    },
+    {
+      "path": "vendor/92a73f85f6b0/p09_policy.py",
+      "bytes": 7776,
+      "sha256": "36e41cff22d5e03a1ca0e939fc7a2c6872087c1afe8fb9c40674831c20d7a98e"
+    },
+    {
+      "path": "vendor/92a73f85f6b0/probability_transform.py",
+      "bytes": 25125,
+      "sha256": "f47b3a5302598d2786e221e19a23ec9ac5caf272f6f02c3d5f8fbabe71885048"
+    },
+    {
+      "path": "vendor/a1e6eb143446/manifest.json",
+      "bytes": 49193,
+      "sha256": "13364e0a116b40bec739db0681b71e2de3b7f1f23a4f392afad9080f34828e00"
+    },
+    {
+      "path": "vendor/a1e6eb143446/nyc-profile.json",
+      "bytes": 499,
+      "sha256": "396e731d52be9c09dababc44c7b6f9aac7b26ad966d5a417dffd77410614b28b"
+    },
+    {
+      "path": "vendor/a777c1ee9840/f3_execution.py",
+      "bytes": 7078,
+      "sha256": "ec856a948f21d24125a185afa6e11cc42728258316cd2d0567e75400c3cedd33"
+    },
+    {
+      "path": "vendor/ab199da7c278/ny_replay_kernel_v1.py",
+      "bytes": 17773,
+      "sha256": "3d521fafd508720bd32a20379f6c601b4e5b2ef87d2afad7c65811d8e203b2d7"
+    },
+    {
+      "path": "vendor/ab199da7c278/policy-registry-v1.json",
+      "bytes": 20505,
+      "sha256": "b828bc7650c26bc72763c7d7666b2328c74196c93017477564319d145f1b33c2"
+    },
+    {
+      "path": "vendor/ac399106ff20/compiled_manifest.json",
+      "bytes": 8993,
+      "sha256": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f"
+    },
+    {
+      "path": "vendor/ad07e406b12b/__init__.py",
+      "bytes": 145,
+      "sha256": "535b6e115e4a448a67999c46adb60425e33e7eb9723935f52512a46506ec9000"
+    },
+    {
+      "path": "vendor/ad07e406b12b/weather.py",
+      "bytes": 11204,
+      "sha256": "b87f830ec05d618e2dd3eb529a8b41ea7ad55b0d8be9551dcfc53dabca0ebbd7"
+    },
+    {
+      "path": "vendor/ad7977306a21/city_profile.py",
+      "bytes": 7353,
+      "sha256": "442cde5a1da8aba5ca6a7735536d76db2647902c20ea7227dfc6e199aad67a34"
+    },
+    {
+      "path": "vendor/ad7977306a21/city_v10_simplex_blend_v1.py",
+      "bytes": 7523,
+      "sha256": "fa1730fc9a4186f0a2b141a000985c6254ce5f6ad0f4fa2e2f79d2ff544d0506"
+    },
+    {
+      "path": "vendor/ad7977306a21/phoenix_monthly_models_v1.py",
+      "bytes": 25632,
+      "sha256": "de81a1fd58dae3e22ce39307e4c4963c2d98f4d3df9ef9fcad3a446b635e2869"
+    },
+    {
+      "path": "vendor/ad7977306a21/phoenix_source_model_base_v1.py",
+      "bytes": 12324,
+      "sha256": "411dfd1d8a97018e27c1a4660ab5f66975f497b5775ee5bf1a0b791a813d503f"
+    },
+    {
+      "path": "vendor/ad7977306a21/v10_contract_reference.py",
+      "bytes": 9466,
+      "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
+    },
+    {
+      "path": "vendor/ad7977306a21/v10_math_reference.py",
+      "bytes": 10815,
+      "sha256": "00b98c8f1ca5050813fcdfa4903f83cf1f54e022bac76d061e5cbc74bcea3294"
+    },
+    {
+      "path": "vendor/b12e3075763d/allocation_policy_v5.py",
+      "bytes": 6523,
+      "sha256": "fcdb7eda6b877ef59f0666ee258da0496414fdf09770d98bfb5716e00197b6df"
+    },
+    {
+      "path": "vendor/b12e3075763d/allocation_scheduled_entry_v5.py",
+      "bytes": 7108,
+      "sha256": "f5f6c146d729e2e0c7b124de212cebdcc5b8e9860d3e6b3effda613d2fd734cc"
+    },
+    {
+      "path": "vendor/b12e3075763d/generic_p09_side_v4.py",
+      "bytes": 6555,
+      "sha256": "29ac1fecd457d228e6f85fb23fc9d4845cb5194df1a07d6662169f3cad1357ec"
+    },
+    {
+      "path": "vendor/b1de43541e4f/2026-10-conformal-threshold.json",
+      "bytes": 874872,
+      "sha256": "189e1484518a02bba83e437334c847e7264e17c2ecef7650028038b303070625"
+    },
+    {
+      "path": "vendor/b49518a7ad7f/live_weather.py",
+      "bytes": 15358,
+      "sha256": "95b581f840e433590928a6c3495888fcca535946d20b3f231a2510769dd2f350"
+    },
+    {
+      "path": "vendor/ba910248c55f/composed_policy_v1.py",
+      "bytes": 2119,
+      "sha256": "5c2bbec07f6eac2a49a88729d3c84f729abe3e78fa3027b62350869ff12fd1a5"
+    },
+    {
+      "path": "vendor/bb75b12305f0/build_adapter.py",
+      "bytes": 23997,
+      "sha256": "18f07b9bbfd8cd42d06318fee4093ed0dab62ec3cb5a1f364754f1513872e7bf"
+    },
+    {
+      "path": "vendor/bb75b12305f0/f3-probability-adapter.json",
+      "bytes": 26474,
+      "sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167"
+    },
+    {
+      "path": "vendor/bb9db3de7e4a/selection.json",
+      "bytes": 8653,
+      "sha256": "b5830bae86d88b20bfc0d724539825f4bbf8f14f4f5d2af83bae65b2833395d3"
+    },
+    {
+      "path": "vendor/bcb0232a3222/allocation_policy_v5.py",
+      "bytes": 6842,
+      "sha256": "d426ade72be0e49c3d0ce6aa7362d1afb1b3802ed7cb149cb7eb70d03200613f"
+    },
+    {
+      "path": "vendor/bcb0232a3222/allocation_scheduled_entry_v5.py",
+      "bytes": 7108,
+      "sha256": "f5f6c146d729e2e0c7b124de212cebdcc5b8e9860d3e6b3effda613d2fd734cc"
+    },
+    {
+      "path": "vendor/bcb0232a3222/conformal_yes_set_v19.py",
+      "bytes": 2934,
+      "sha256": "370e7a4c36952439c9ba4b8b55b42269bcfaa43f4e512af0c9591f466a73fc63"
+    },
+    {
+      "path": "vendor/bcb0232a3222/generic_p09_side_v4.py",
+      "bytes": 6555,
+      "sha256": "29ac1fecd457d228e6f85fb23fc9d4845cb5194df1a07d6662169f3cad1357ec"
+    },
+    {
+      "path": "vendor/c04205c402ee/weather.py",
+      "bytes": 5185,
+      "sha256": "501b5e0b56bc8b7b42c71c7af818c0741e347fc15aeda8f324f469d5b29c6374"
+    },
+    {
+      "path": "vendor/c47215330dc1/F3_V10_PHYSICAL_FORECAST_EXIT.json",
+      "bytes": 250947,
+      "sha256": "8f9e7e11076db1c893df189392f5401693a6ee251dc33c70781d1d3278d5a2ab"
+    },
+    {
+      "path": "vendor/c47215330dc1/F6_HYBRID_STAGED5.json",
+      "bytes": 1534642,
+      "sha256": "52848665895b7abfc4f1afa5ccd00acc4fcf1d62714f892cc07047aaf2d52c8a"
+    },
+    {
+      "path": "vendor/cdd35b81bdd6/ensemble-state.json",
+      "bytes": 2576,
+      "sha256": "5894bef90e12a28cfca87b8f608bfe9ccf568ca81af43e74f1b76d9406605bbc"
+    },
+    {
+      "path": "vendor/d12169cb24ea/fitted-state.json",
+      "bytes": 14898542,
+      "sha256": "8253075639a313c443fa632d93eee7e5831a8f2c2da98344d4e04ff6902c994a"
+    },
+    {
+      "path": "vendor/d12169cb24ea/p09-settings.json",
+      "bytes": 15279,
+      "sha256": "39fb4fe0f32faf64735cc8333a4e5b34f8b50ec5679419b668e0677c4163254d"
+    },
+    {
+      "path": "vendor/d12169cb24ea/selection.json",
+      "bytes": 8762,
+      "sha256": "66d00e3a6284e5fb132ce75f46a34cf2c4df01915b8bd938463b799487c95107"
+    },
+    {
+      "path": "vendor/d58319ca54ec/saved-uncertainty-laws-bundle-v9-v2.json",
+      "bytes": 68421,
+      "sha256": "4541b70d4f45ffab418278fec5bcecc67861c11fe262677a3ce1d6f0d35a7e53"
+    },
+    {
+      "path": "vendor/d7be42be994d/p09_decimal_math.py",
+      "bytes": 51430,
+      "sha256": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9"
+    },
+    {
+      "path": "vendor/d7be42be994d/p09_order_math.py",
+      "bytes": 36066,
+      "sha256": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c"
+    },
+    {
+      "path": "vendor/d7be42be994d/p09_policy.py",
+      "bytes": 7776,
+      "sha256": "36e41cff22d5e03a1ca0e939fc7a2c6872087c1afe8fb9c40674831c20d7a98e"
+    },
+    {
+      "path": "vendor/d7be42be994d/probability_transform.py",
+      "bytes": 25125,
+      "sha256": "f47b3a5302598d2786e221e19a23ec9ac5caf272f6f02c3d5f8fbabe71885048"
+    },
+    {
+      "path": "vendor/db21c4e291d3/fitted-state.json",
+      "bytes": 13854897,
+      "sha256": "f1f16e56e54895534e7735a8b67fc0d535a75308320c27f828fcbce2d1dafcfc"
+    },
+    {
+      "path": "vendor/db21c4e291d3/p09-settings.json",
+      "bytes": 15307,
+      "sha256": "0ae9d916a83f3806f7641c556bc6c43ea12bdcf85b39c50b27a3568ae7fd4f9d"
+    },
+    {
+      "path": "vendor/db21c4e291d3/selection.json",
+      "bytes": 8196,
+      "sha256": "51719aaffa4f32098ec3dec37ec0c41cdf920e073b8ff6ec9883e74bf4cd993d"
+    },
+    {
+      "path": "vendor/dbaa9a249fe7/city_profile.py",
+      "bytes": 7353,
+      "sha256": "442cde5a1da8aba5ca6a7735536d76db2647902c20ea7227dfc6e199aad67a34"
+    },
+    {
+      "path": "vendor/dbaa9a249fe7/city_v10_simplex_blend_v1.py",
+      "bytes": 7523,
+      "sha256": "fa1730fc9a4186f0a2b141a000985c6254ce5f6ad0f4fa2e2f79d2ff544d0506"
+    },
+    {
+      "path": "vendor/dbaa9a249fe7/v10_contract_reference.py",
+      "bytes": 9466,
+      "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
+    },
+    {
+      "path": "vendor/dbaa9a249fe7/v10_math_reference.py",
+      "bytes": 10815,
+      "sha256": "00b98c8f1ca5050813fcdfa4903f83cf1f54e022bac76d061e5cbc74bcea3294"
+    },
+    {
+      "path": "vendor/dd0483fa652a/law-state.json",
+      "bytes": 1517903,
+      "sha256": "481540a8db1daf6f862d4bb9713cb6c3c84b61d49e1b0e13a9e6591a78a9c8c4"
+    },
+    {
+      "path": "vendor/dd0483fa652a/selection.json",
+      "bytes": 5297,
+      "sha256": "31672ef2c112321aca623e59feeb5fa22b764b1d931c2caf438e96a94c160d88"
+    },
+    {
+      "path": "vendor/e87fd652ad95/strategy-freeze.json",
+      "bytes": 6251,
+      "sha256": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317"
+    },
+    {
+      "path": "vendor/ebe56ea24e5d/f3_execution.py",
+      "bytes": 7158,
+      "sha256": "868751d176c6c1000d565444ecb8d2b7ea38ed7cbc484c02b9f9c717b18b1372"
+    },
+    {
+      "path": "vendor/ebe56ea24e5d/f4_execution.py",
+      "bytes": 11865,
+      "sha256": "912ad039e009cb35002f36ee0c41eb78ac85710f5b29cadb812c0c0025f7f9f7"
+    },
+    {
+      "path": "vendor/ec50cc65bf98/law-state.json",
+      "bytes": 1802229,
+      "sha256": "61d7329201052c39cd09eac99235e579ccd1871d2893f7fbb16a66ce7aa44803"
+    },
+    {
+      "path": "vendor/ec50cc65bf98/selection.json",
+      "bytes": 4244,
+      "sha256": "f38dce025bfe13afa443996db1d70029d8c9585fc46fa66ce175bcfb180ddeab"
+    }
+  ],
+  "initial_wallet_cash": "100",
+  "initial_total_cash": "900",
+  "local_only_external_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\data\\normalized\\v10_meteorology\\observations.parquet",
+      "sha256": "4c68077237d2f7f4fe7aaa50ef271a9bd72c85a88ef5ad2d8ec4781b50de1ca1"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-01\\observations.json",
+      "sha256": "eca5d5343877604ad692137908fe7900b481d66b26f8b0c6ba7b07749b721f86"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-02\\observations.json",
+      "sha256": "791d868df83625c6830140c2744699bc537548b8507324fc31aa371d6bc83e47"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-03\\observations.json",
+      "sha256": "1a572fa0c52e2acfe24152a924e0d7cc2bb5e24042e2ea7a761e3f698e4d5320"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-04\\observations.json",
+      "sha256": "2b64a8697f6ed8d34f0474475e977058427b99ea3ba930a2059dff6bc20c25b6"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-05\\observations.json",
+      "sha256": "4b24df0338d1514cd32bce78dd6dab22f4409b9c88f9a417102057c5d63172a8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-06\\observations.json",
+      "sha256": "88c80ac91ac8720690cb1baa2b357adf99745e85c494d8e328485db16e0d9e64"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-07\\observations.json",
+      "sha256": "f52c23406b3d60101dd56321033e3b3971be23da695d9cc446f7e1d5d3f9d408"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-08\\observations.json",
+      "sha256": "b079c84fa3745fcb54b28b0be6c929d66e493d74113ccab0a6288d2125a49a46"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-09\\observations.json",
+      "sha256": "793e4a9e289aa42e6ce0be15550be96be999d6c9696c3572c90a224477c5cdb5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-10\\observations.json",
+      "sha256": "2247a371f58e2ba6e0ae02f318b7352637fa100390d2107f54b999766a9ab7c8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-11\\observations.json",
+      "sha256": "fe03cff671f4d320c5945e38cf4297692189a3887a58ead5482086def37df3cc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-12\\observations.json",
+      "sha256": "f30c8e645b7c43ee008c06cd13b0daea4316a904c2efde28a159eff8dff4dbb8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-13\\observations.json",
+      "sha256": "3524477c2583d15f7c79c3ac112eba5b60b9ca205c1639b9e0b3ad102b1c7f62"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-14\\observations.json",
+      "sha256": "65fd35721f69b3747349b7ef960bd54a1784e129a895903bee647436245d7e42"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-15\\observations.json",
+      "sha256": "c85b02ed9d4c3f0dfcdf103a6a9cc6579c6083c29b95cc978738d7e5a5271c88"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-16\\observations.json",
+      "sha256": "0a60178f5847626e0a6dfd806e7bcf345484496f4d8d53571a218c4eca6ec0f7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-17\\observations.json",
+      "sha256": "2d187d7c9dea9ef1a08f4eaa9febcbaf8de3905b3d6a51b9c75809d08d4be6a5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-18\\observations.json",
+      "sha256": "e1aaffcdbf132a1b70381cfa508ad87fb74c9aa56c74286a4a6e287e821dae7b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-19\\observations.json",
+      "sha256": "7456c6fbe64463bb12295d8bfdaeb83362557960f00bc07b227a0d7412624de3"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-20\\observations.json",
+      "sha256": "5e59aefba867140f64bd30759383d43557e1bfbc0f083b452bf6f1e36510a3a2"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-21\\observations.json",
+      "sha256": "da634650aa40b75c0902c7da5553d3d1616e0aa8d9887838e2fde2b94379d755"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-22\\observations.json",
+      "sha256": "551684abfb85d2662d02b3eb03a16a6dc4f86613d1bea38c5da4899adf7f8aa5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-23\\observations.json",
+      "sha256": "f13c7663729900e04f2fdcfb8f4b4a39a8b41afde74eda632b38ee31b2dbd03a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-24\\observations.json",
+      "sha256": "e33a239c432a7524e511ca6f04356c93789933512b83fd3a6ad1b0a2df0abd15"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-25\\observations.json",
+      "sha256": "71a61523082d37b23c891984a2ac732da19c1720207578809ebffc39db12b5ed"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-26\\observations.json",
+      "sha256": "5ce81acfd0fac3ea86490e0ebea45486c774d4ed49eb6e90dc1744cb4eea05c8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-27\\observations.json",
+      "sha256": "b12bd4767ecafef6162494fa1c5fcafc25de53e8d1ed2cd402a42f31b7b8ebf0"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-28\\observations.json",
+      "sha256": "b89ada28699b9133f5072efe97580234eb9b1536413a9d5ab6e95c48a8442a4d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-29\\observations.json",
+      "sha256": "3b6e87c73712666e9a6e5c4a831dc711a25ba0e69fc38204876a35cbab53b59f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-30\\observations.json",
+      "sha256": "dccb385473f3da2b962c2fdd1d8dccc421987faf51dc4f73d4d9d211c8349ad6"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-01-31\\observations.json",
+      "sha256": "922a779c708928330ade81436f90656b6293825a92782d663e43ba8bb990dab5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-01\\observations.json",
+      "sha256": "00d6470a9c874278c5d351d1cdf5d210efd485b88f9af03eca55ce799404a865"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-02\\observations.json",
+      "sha256": "8d133b43702d89bbac6638cbbbc491b7fc6162efbbea419853b74ceffe34605b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-03\\observations.json",
+      "sha256": "0a8bfd66fcc94d42533463cdb4da7a47e1699b1dc82766bc6aadfcd8e66f9726"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-04\\observations.json",
+      "sha256": "0c87220964000024b78378370de57a3756b331f638d4630d1677ff70ab89a3d7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-05\\observations.json",
+      "sha256": "a6697c8746d6b296165bc7eb3b5b44cb28cca080cb5a721bd38658ec2c213a7f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-06\\observations.json",
+      "sha256": "722e37f35ec84da566ee356ef3cf5bbc2ae36d4f0ba4a0e5bf8a386297c0eb83"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-07\\observations.json",
+      "sha256": "89b6cac177401a5a78db5cc8c0a6d05180f73486d261c504b7bbc2dfe6b8c0f6"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-08\\observations.json",
+      "sha256": "8a61c045e6568062374c5a0090b2aa9ebb3d9036534feb867bee9d250c7915cb"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-09\\observations.json",
+      "sha256": "a4067d67ee4b5874fcec1a6265bc906d2d4b984a36878bef6321d52d44deec67"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-10\\observations.json",
+      "sha256": "185c34742a8e57bc618e265c2429831799e731924ccb1dd932e4648478c3eabe"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-11\\observations.json",
+      "sha256": "a43c3d3193d33c844448f03a59842cb4d2ca01968524b79efcc79edf50270210"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-12\\observations.json",
+      "sha256": "3d90bbb6ee2a4b2da829ee89ac7c52c91fd3d46220be9ad47f87e2cfe55fc969"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-13\\observations.json",
+      "sha256": "10e02dba235be9713d2611a8f97e844134c982f051fda49d68df4de1772581f6"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-14\\observations.json",
+      "sha256": "64f0c721be5a6e3631064f822bbaa49608c89e299d17fd8b1e6f862e63c8e76f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-15\\observations.json",
+      "sha256": "8f653e577cda57a3ffac0b9dd5f8ac713139995e18648c334eb2c56a2a430e98"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-16\\observations.json",
+      "sha256": "6d3a90a57579eb1b96532cca803f857f34080acead05dc2f209a893647b5730b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-17\\observations.json",
+      "sha256": "3ec011f6724e5d54a8e991f46a3892a5183c17e8a2a547538adc5528059dbe0d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-18\\observations.json",
+      "sha256": "cf1b680f6a8f2afee4bdfbb028c36fd3c89d5b792e90e34c3936474a88be87e7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-19\\observations.json",
+      "sha256": "972fc4625bb4ad0ae2ba1afaf733f1ce3698257c844c9c7d64e85b166661804d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-20\\observations.json",
+      "sha256": "8a521441fdb8b1e176c7bb897f8bfaea77f8a74b8fb7615751ebf36bc4fedd5d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-21\\observations.json",
+      "sha256": "e92857573ab9ba40632c537d95c24c0105598b63d318d1cbffc7906099b66609"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-22\\observations.json",
+      "sha256": "651d7f2c494f2b5257c03714ca77740c21fd9c1863bc6938116bdedce4df259e"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-23\\observations.json",
+      "sha256": "c2b1952f863ce52d93663fa0510adc495836323dcbc5f85166f7e44da27dbbaf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-24\\observations.json",
+      "sha256": "8b26814dccd20e58059634466220e60d80e54bb44ac5c16867915afc37a7eccf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-25\\observations.json",
+      "sha256": "ad25f39bed4ce0fef58c9b6b262565032add0459fb54a6c765985e2e799ce2ca"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-26\\observations.json",
+      "sha256": "fb9183d3aa7331acef3fbfa6163a9073d868e94fbeb4cb249cefa3dce1bed92f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-27\\observations.json",
+      "sha256": "df148734c500e9b2f6048c968ffa915a33880c1a69db50460d22be0470dc9960"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-02-28\\observations.json",
+      "sha256": "5e3ac4d2cd470ea36541157c26b8dbab76405fa16d5fdb586749dd780dd34231"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-01\\observations.json",
+      "sha256": "a0e129eb3bf8c9518ee5f6df35c685decceeb84edb56735551274c9fd46d9682"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-02\\observations.json",
+      "sha256": "b033b0665fb25c75c6a95718c175df9195a72e94ffe20dc876923fde540b1f97"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-03\\observations.json",
+      "sha256": "e41a04fe3389e97db7cab638919c1cbd4a28911b4aadb6ecf4152f91179680da"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-04\\observations.json",
+      "sha256": "c9c39e3d7131a3fe70a697a59171e096942ce5016165f56b9ee5163c7d755db4"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-05\\observations.json",
+      "sha256": "17f072a03b7a9d6d0efcccc49b02fc8a541f934717794f2388458404b09ecead"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-06\\observations.json",
+      "sha256": "324b099c584d1e4fb3ece08a15ab6afaf433749486113a0e195658ae17099590"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-07\\observations.json",
+      "sha256": "435f48970c9fcf63a181082d8e93b66731d3b73bbf4f74ce1db67aa4f2644789"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-08\\observations.json",
+      "sha256": "909a9b64f810f2f53fe377640f1483edd76634c87070bf7dec582717545d7fdb"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-09\\observations.json",
+      "sha256": "3a9fa1500e84fc315e36828612bd65cfad85264d24a12c127c95bd4e90146473"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-10\\observations.json",
+      "sha256": "12037fa7593d3bc6d257865d8e735722a2aa936582d8c96cb1096e112a46a7c4"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-11\\observations.json",
+      "sha256": "d03ff13d72ef2d00cf6f1d309257ce807d0441a73f91694e2a38e9f05b898437"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-12\\observations.json",
+      "sha256": "890cda7afe27552aeed2a9fdf84b4c921029d77e4f152ad1ef4d97e61dffe291"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-13\\observations.json",
+      "sha256": "226780e6861821fa9b813e33047ba0383622888c0f2cf3e81200758151041560"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-14\\observations.json",
+      "sha256": "6968de59c587e7f7f7359cd25d1fabd3c3a48f563ed9c62f083a5043d5377c65"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-15\\observations.json",
+      "sha256": "334f2a9c5b0372beb52294ea71a8af6f0d168765eecad10c4a35be2ec692b7b7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-16\\observations.json",
+      "sha256": "e74c38d7935795cac90a7f401c99160d84672a6c20dd454d833133d5a7f1fba0"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-17\\observations.json",
+      "sha256": "1326762e2e5bc76ad26fe82390bd138718b0c08299d75babdf37f24a3e3d2275"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-18\\observations.json",
+      "sha256": "8cbfd9f9369bbd3d3e9eb7ba4ce53f5b08f502e262264349d6c50412d8f2e96b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-19\\observations.json",
+      "sha256": "7910625914a93bad7d1f93c0a9d1aec0debf61d88474c21945f699dfc360a293"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-20\\observations.json",
+      "sha256": "8ff5a99884b003731a156f9fdd23db7c9f347715c38aabe1a26f9d57915a1ebb"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-21\\observations.json",
+      "sha256": "0a58c5ccf99726ab0c529d7415fad5a0f1e07464834914413f8c869f0b0c7ad1"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-22\\observations.json",
+      "sha256": "e52788f0bd5db3895dc0bd0277bb2de4b5674d16d13ca431616de795ba86761f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-23\\observations.json",
+      "sha256": "d44186b7df64d3c449d687d3792c3413c3c1bc0561c704b127ac01d43e4f1a5b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-24\\observations.json",
+      "sha256": "956e4070ffec370443572c0efaae8fedd39c6d4d532b38db7e09d11b0bca90cb"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-25\\observations.json",
+      "sha256": "2348a1b2362b2a8eb49edc86d5592fca90687f03f88f76644c007fc34a2a3ab7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-26\\observations.json",
+      "sha256": "c6a8b1f37e9a2ad7a6cc908b02671890cb5d51e56245576ada9947f23a8abacf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-27\\observations.json",
+      "sha256": "17a26cd67b16d49330636f5ee19db767c90989f0d2ae292b4268af0d0ce41660"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-28\\observations.json",
+      "sha256": "a07265f95f2195b95dfd8744185fdfed105be131166dd85925df061a8bd12227"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-29\\observations.json",
+      "sha256": "692d9af221c270951226dae0ff14c85d208de366996f6b95a1648bfdf9b2166a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-30\\observations.json",
+      "sha256": "a6078fc397be3b141dd53612998e534c0850c952a1434f5cebc85de7e10cdf5f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-03-31\\observations.json",
+      "sha256": "08177671d19e524b0da1d2d45ff26369f131b2649b80261854da318db51617dc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-01\\observations.json",
+      "sha256": "2298417f55623fd96f4fd18d5666525274b97b85bfb92f10fb81433a8ae3846e"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-02\\observations.json",
+      "sha256": "e0d40f639c43dda8c12fc8e8221702e353c34302d5bbbd8a2b211fe93545b23b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-03\\observations.json",
+      "sha256": "bedb846ec6421224586343e7c693d5a1ec519e13c36b78d8e6b99ea661decc1e"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-04\\observations.json",
+      "sha256": "2b99939dd06d41ab22f097c2bed1ea3cdde8c66a73d20545fd77980f4fb4ea86"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-05\\observations.json",
+      "sha256": "8ff9b60891525bf9bcf573042b8d36f815ea68a99eb4c62c409b9638f04da511"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-06\\observations.json",
+      "sha256": "6475585de8be37c3eb3f789f9c36ea889fb975e28579bf665666586be9af758a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-07\\observations.json",
+      "sha256": "032360571388c5044e3f282881411c756fb551df1cf886488df38ac90ff9708f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-08\\observations.json",
+      "sha256": "be489feb7e93c913f73dfed787b29b7953c8703e90c48659579dea944a8115ac"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-09\\observations.json",
+      "sha256": "caf36be99785e5c6e2b75876a4d8aefb12db3f6b8a1273da489d8a495c1b8484"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-10\\observations.json",
+      "sha256": "db6d14809a1fa75e7e7332d3b9032d540e49b7ccafab366e462ba9230cdaec32"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-11\\observations.json",
+      "sha256": "16ba93075c3e0e7d1dc21a858cc83479e48d6e4f4325ed41ae42cdd3333bd8d2"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-12\\observations.json",
+      "sha256": "5f08422c69bccc5a962ef25c3f973db8ced5a32298f28032866afedd4dd22d19"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-13\\observations.json",
+      "sha256": "3a56820855035b97f61b902b1656b20d9d029677b2bd70297992e80aad6bac63"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-14\\observations.json",
+      "sha256": "e46d8a4adaa81abe61a71517a8be6f4f0488fbe7c5aae6a65213b75885523771"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-15\\observations.json",
+      "sha256": "edbd7e45b325a60005428b560580706ef31aea7da3d8aa2b8fa5689b0a11bdb2"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-16\\observations.json",
+      "sha256": "e455adc5611a93d17d6703e27a176ca01d7dbba447371969195610faeeb408fe"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-17\\observations.json",
+      "sha256": "80a27d6e4d074786491ccb247efbddd58f3f92e7309a307c65850bdd0c465481"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-18\\observations.json",
+      "sha256": "287817a16cd52d8155693f481373992bf7724c0201d3039bbbb1477dd0df7b92"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-19\\observations.json",
+      "sha256": "7a58a9ff6849fc0fe2bfe8c52900e2be583d8239ba23f75f8069b4a1cb4ca827"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-20\\observations.json",
+      "sha256": "4b39eab61300c9c7b1d1432d55e621941997a76ed945ee57feda1a4f5fb777ba"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-21\\observations.json",
+      "sha256": "c47ed517349d62efb8f761950d8471382e91bcfd01b3bf9f19e4166da497f73a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-22\\observations.json",
+      "sha256": "68bb9859bbc358a7a9ac6d9169b54ab72781949e1ddd6687c2de1eb5efa6cb3f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-23\\observations.json",
+      "sha256": "fe13005071250289eb29307a7b56766378a144e286f0b2861251b09d5dedfb66"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-24\\observations.json",
+      "sha256": "221f9d79599aab955ad656c3188997662a5878d8f9ce67712a627a0828702971"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-25\\observations.json",
+      "sha256": "48824107da777fb7a04598f6c9da39af4c4941dfb7e1806e668e73da7da03ec7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-26\\observations.json",
+      "sha256": "e6b11e06817773608f204fea35efdcd8120b02107aebe6b6d28f2da3eccb5458"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-27\\observations.json",
+      "sha256": "8094353453f88e89565def891f9a47330b55c707a219cd3fdb57d945febd4d96"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-28\\observations.json",
+      "sha256": "8ceb370f0aa22adebff11d02de7122938f04fc05e3369d365be481ae1567f200"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-29\\observations.json",
+      "sha256": "fdfd2f9e71310125253c8213ac80e3473a5a620af95963719dfea6bd77b4a054"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\v10\\2026-ytd-20261002\\daily\\2026-04-30\\observations.json",
+      "sha256": "052f549babd99e6919eeae159e57027d6c1fcaf9aabfa2813a9e1c1399cdc0f3"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\demo\\LA-F6-PALMDALE-DEMO-v3\\live_weather.py",
+      "sha256": "c6f543b3e13b3638f0b800c4eb78634bd3e0787542855f407a88da7d072f3a0e"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\model.py",
+      "sha256": "818a3856ce3a6d596c7ecb49abd354a3886bd422d3e4b67df741c7ea8ef93677"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\source-aligned-experiment\\training-dataset.json",
+      "sha256": "711c126f989930dc313d7d0ef3e6db8e858960dd68f4455e8b9ca723bec43105"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-20261009\\weather\\train.py",
+      "sha256": "bef4c0b527261614cdd489d2faa9752c9fd2a978aeb21cd15d7e1474c10b2e1a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\engine.py",
+      "sha256": "953212aec1433b1ba924711c3a77e11afd294dfa31b3b145517c546186398664"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\weather\\historical-frames-v2.json",
+      "sha256": "9b3cfe987c4aef34965d5acc7860f8fbf28fa23417597930ac3d4406ad2e6199"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\trader\\f3_execution.py",
+      "sha256": "ec856a948f21d24125a185afa6e11cc42728258316cd2d0567e75400c3cedd33"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\build_adapter.py",
+      "sha256": "18f07b9bbfd8cd42d06318fee4093ed0dab62ec3cb5a1f364754f1513872e7bf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\f3-probability-adapter.json",
+      "sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\checkpoint-2026-10.json",
+      "sha256": "53b1669f05b54692da08de3e4c48caf2379e7e8e8563fd3305fa9dea7d8358cf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\clean-preoct-training-projection.json",
+      "sha256": "d8d2539dd6eb6ec95e467878fea97292ea25973e9af5cf8064e489b5620802a5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\paper_inference.py",
+      "sha256": "5914b150129898a3a1c59f681e6a6171bf8f83f2f6ac259413b27723da5a27c9"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\confidence\\research_confidence.py",
+      "sha256": "2b84f12a969081909c0e0dd4849de59c24866c5b110431cf5af45cbc51f35e66"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f3_execution.py",
+      "sha256": "868751d176c6c1000d565444ecb8d2b7ea38ed7cbc484c02b9f9c717b18b1372"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f4_execution.py",
+      "sha256": "912ad039e009cb35002f36ee0c41eb78ac85710f5b29cadb812c0c0025f7f9f7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\engine.py",
+      "sha256": "ce978ee6d195b8d1616af36a1e02482717f0bbcc3df81fcb563fface68d2a977"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\checkpoint-2026-10.json",
+      "sha256": "0bb969ebab1184fdc79c17492b4470392a5012b261a6003b7f64baa01fe5011e"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\fit_preoct.py",
+      "sha256": "41eabd2f4871183a4923e6afc5144ef6ada771c8ce5895f8fde9c0d1356556bf"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F5-OPTIONAL-PRESSURE-20261010\\optional_pressure.py",
+      "sha256": "a4148988f2f44fb01d58ce3954513a1ecb7cded79203494fa113948de330902c"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\checkpoint-2026-10.json",
+      "sha256": "5ee96f9f56151ee9b46a06504637166abd16af1b7ee8aee3e6d661093815b10f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\checkpoint-hybrid-2026-10.json",
+      "sha256": "3c3c0992305b4d3bc6c0068bae00fd27c42da7caf5b87911c72345aeb04cbda3"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\data\\palmdale-preoct-observations.json",
+      "sha256": "59c00276f91544ef49d4d77a88522f7111bdfac69e2581d9ed4463f9a9850ea2"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\fit_preoct.py",
+      "sha256": "ab9fde849622cfd96692e6534cdda594b5c7dd932ad547178d997fac9cfc22a9"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F6-PALMDALE-20261011\\optional_pressure.py",
+      "sha256": "56f46d1a94f61721516264b0ad69cafcb3d91e1ded54a99accf06144df7aabfc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\freeze\\plan-v1.json",
+      "sha256": "8651badd09583b75094fbbc0d9eb627b935bb332015335dc3332952734421dbc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\external-source-pins-v1.json",
+      "sha256": "4c357f2871099e3b20f5dc2912ba8b6d6c5e40888fde399bdc9c36c1857395ca"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\forecast_adapter.py",
+      "sha256": "f66778c5502228d0ee3e7deaf1ec052cb9b61efa7791772d91bb072eececf5b3"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\la_trio_cli.py",
+      "sha256": "4bc09975e8c9fc33246ff175f984a113608634feef6369a53c88c11f8db4b636"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\live_inputs.py",
+      "sha256": "7000dcc12fb7bffcfb87e3fd9e5dec54e2f28dcbafa329c3522416ab34db93f1"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\paper_trader_adapter.py",
+      "sha256": "dfa3fc0d8d7396d39ea9c2dd7f42906833c7f4bbcf1b82c5e979f808f101027d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\online\\LA_TRIO_UI_v1\\source_gate.py",
+      "sha256": "ebc33da90966f1d114117aa0027f2866148f6fb768c0544b57a76bccc44032df"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\campaigns_v4\\v4-offline-20260926T212122609Z\\candidates\\primary\\a779fd17e7b160650c8f65afceffb73434a9dacc56afad19672e596de5a97461\\compiled_manifest.json",
+      "sha256": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v10\\frozen-development-candidate\\candidate-freeze.json",
+      "sha256": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v8\\frozen-primary-strategy\\strategy-freeze.json",
+      "sha256": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-paper-freeze-20261008\\source-bytes\\runs\\v8d\\confidence-gap-20261002\\static-2025-calibration.json",
+      "sha256": "302e45607d84cfae2540316d9da5f14ff78466365dc1e41a79f550b069b1d88d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F3_V10_PHYSICAL_FORECAST_EXIT.json",
+      "sha256": "8f9e7e11076db1c893df189392f5401693a6ee251dc33c70781d1d3278d5a2ab"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F6_HYBRID_STAGED5.json",
+      "sha256": "52848665895b7abfc4f1afa5ccd00acc4fcf1d62714f892cc07047aaf2d52c8a"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\__init__.py",
+      "sha256": "3469ffcdf2621bb9c9367e47b1da81e66f190fda067defe58ad3497e47cedf1c"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\candidate_model_v3.py",
+      "sha256": "ac5b3ed84b429260da82158ea7f21712505067cbc52a9d5fd7583367d05663fc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\candidates.py",
+      "sha256": "6d9a0dd0bdfb9a19f1046087a963c52e3d2d214df17bbbc202393a8b0683504f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\domain.py",
+      "sha256": "7e6e3ff53ad55f88e5b1cf13c3d53445237a4c460b905f56582f5a23988adba0"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\features_v3.py",
+      "sha256": "ca0ac79202b6c00c3ae9ad3e8e7b6a54b42fb24b4128f9c6fb2207b13d5aafa7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\forecast_models_v3.py",
+      "sha256": "3e3abccd9647ade5df9918a9c46e694ef4beea048a15d3f04c9be33c06ddd081"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\models.py",
+      "sha256": "0f4a7dd184309ad945e5939905a6547e52028fe58ed69be37c897452929b4b3c"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\ordinal_v3.py",
+      "sha256": "86d039ab3a77c442622213c02fcc0baa749d17c102d16459e7a886eeaa34115d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\probability_v3.py",
+      "sha256": "2811ef2b7ac082f068d06d90f72e9bc6e3fc1f586c3acc26b8e15204bf08d059"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\provenance.py",
+      "sha256": "0735f35c5335f75f6ba881a62a3c1f8380e47b2e917d17430899d9cd738a92ba"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\regimes_v3.py",
+      "sha256": "a5cb14e78a4bd44ca29a99877eef94ea033d70ea50f2cfd0081617093c99930c"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\research_plan.py",
+      "sha256": "b1c092b1cbee4776b3b77a9ca98d0e85f7cfb2279f51b7039e42d111ae6ef30f"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\klax_lab\\research_plan_v3.py",
+      "sha256": "37de8aaf7659bb7e6c5ab49636a9242db6a5144bc598b4534a71d432f8d71bcb"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\__init__.py",
+      "sha256": "535b6e115e4a448a67999c46adb60425e33e7eb9723935f52512a46506ec9000"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\weather.py",
+      "sha256": "b87f830ec05d618e2dd3eb529a8b41ea7ad55b0d8be9551dcfc53dabca0ebbd7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\entry-exit-matrix-20261006\\composed_policy_v1.py",
+      "sha256": "5c2bbec07f6eac2a49a88729d3c84f729abe3e78fa3027b62350869ff12fd1a5"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\engine.py",
+      "sha256": "a3e80d08332d40c601fd169dd22f5e915ffb951e9968108d2b3359ea6a184494"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies.py",
+      "sha256": "72c1b43a120e19315c334307273a65f5ac80255af9ede2b29e51d2c19bb32e6b"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v2.py",
+      "sha256": "52a5956f48ad3e3889a35d21e02e369d001f7990c016ed41a8e51436700598bc"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v3.py",
+      "sha256": "049a92c3d34889abf741714c2878fa4725c51d87c70e46bbb1919e998d71c2a1"
+    }
+  ],
+  "LA_portability": "LOCAL_ONLY_EXTERNAL_HASH_BOUND_LOADERS_NO_FALLBACK",
+  "capacity_policy": "SAME_PHYSICAL_PRICE_OBSERVED_POSITIVE_SIZE_INCREMENT_ONLY_V1",
+  "source_policy": "ACTUAL_PUBLIC_RECEIPTS_DATED_INDEPENDENT_CLI_COMPARISON_PAPER_HYPOTHESIS_NO_BACKDATING",
+  "library_path": "C:/Users/jarve/Documents/Codex/2026-10-08/cos/work/python-deps",
+  "python": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Scripts\\python.exe",
+    "sha256": "5fc3c5244b5eef01a82fbefd1932d1382b79c72fe6e64ffe8df1e3ce3643f02f"
+  },
+  "runtime_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\eccodes.dll",
+      "bytes": 3819008,
+      "sha256": "d11f2a2e977eb1e89774475a40ece996fb37353fca9d08db518f88c732e87880"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\eccodes_memfs.dll",
+      "bytes": 47550464,
+      "sha256": "f05b76336a5031afc092cfdd979c5934d3589cf39ed6d905a88e489d698bc4d8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\_eccodes.cp312-win_amd64.pyd",
+      "bytes": 9728,
+      "sha256": "70e53e77b41047472aab223177f953cc067dcad23f0fd04dc7fe46e1cbc82bf0"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\aec.dll",
+      "bytes": 31232,
+      "sha256": "99dccaf5fe3e03f1dc47ebefb83fa7772754bfcb5bc002c517fec244b28884a8"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\libpng16.dll",
+      "bytes": 197632,
+      "sha256": "8e6c3766ab74de2b0a4f668c9dcab585d1f682980bb03dd2e27aece69944946d"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\openjp2.dll",
+      "bytes": 367616,
+      "sha256": "42d14edf48780c8c80d7f99b4d099592cf08a106693c81ee3ebb183087c69fb7"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\eccodes\\z.dll",
+      "bytes": 91648,
+      "sha256": "207abcb95b5e79f92d5ae33b38aabd391330590246ccc8abaaea14fed851eca9"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Lib\\site-packages\\gribapi\\bindings.py",
+      "bytes": 3847,
+      "sha256": "dac2ce039a40285abf1e1c0b52af98636ccf092d0349b8154c60a8e1e094e57c"
+    },
+    {
+      "path": "C:\\Users\\jarve\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\site-packages\\_cffi_backend.cp312-win_amd64.pyd",
+      "bytes": 196048,
+      "sha256": "a10f15b7715464f8fae65f48e97c67a925bb241d6ec2d61ba37e814bfd0bbccb"
+    }
+  ],
+  "runtime_environment": {
+    "ECCODES_DEFINITION_PATH": "/MEMFS/definitions",
+    "ECCODES_SAMPLES_PATH": "/MEMFS/samples",
+    "ECCODES_PYTHON_USE_FINDLIBS": "0"
+  },
+  "codec_policy": "SERIAL_ECCODES_NATIVE_DECODE_PARALLEL_PUBLIC_DOWNLOADS_V1",
+  "live_transport": "RESIDENT_HASH_BOUND_PAPER_WORKERS_v1",
+  "operational_repairs": "FOUR_CITY_LIVE_PAPER_REPAIRS_v1",
+  "la_exit_policy": {
+    "policy_id": "LA-IMPOSSIBLE-ONLY-EXIT-v1",
+    "check_interval_seconds": 30,
+    "scope": "LA prospective paper wallets only; historical offline policies unchanged",
+    "sell_only_irreversibly_impossible": true,
+    "soft_probability_exit_enabled": false,
+    "settlement_compatible_floor_required": true,
+    "current_floor_producer": "TWC_OFFICIAL_COMPLETED_DAILY_REPORT_ONLY",
+    "material_revisions_possible": true,
+    "partial_position_exit_allowed": true,
+    "native_entries_weights_and_budgets_unchanged": true
+  },
+  "parent_release_id": "FOUR-CITY-PAPER-TWC-EXIT-v1",
+  "parent_manifest_sha256": "0a471d4dfd7670e429db6b74808a64fbe7ebdf471e82d74dee2b798bce3c9426",
+  "local_repair_source_release": "FOUR-CITY-PAPER-F2H-20261013",
+  "local_repair_source_manifest_sha256": "64b6dbcd2bcef532a80db560acbf0222e13fdd72ac8fe5741c05cd0913e3985e"
+}

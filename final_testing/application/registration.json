@@ -1,671 +1,669 @@
 {
   "schema": 1,
-  "created_ns": 1791918718024357400,
+  "created_ns": 1791927069540493200,
   "native_copies": [
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/56cfc1d1abc1/ny_safe.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/56cfc1d1abc1/ny_safe.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/56cfc1d1abc1/ny_safe.py",
       "sha256": "986ad78f732fc78eb120bec250df9a6cec987330b2664b110b0b16c9e8c6d21d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ab199da7c278/ny_replay_kernel_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ab199da7c278/ny_replay_kernel_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ab199da7c278/ny_replay_kernel_v1.py",
       "sha256": "3d521fafd508720bd32a20379f6c601b4e5b2ef87d2afad7c65811d8e203b2d7"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ab199da7c278/policy-registry-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ab199da7c278/policy-registry-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ab199da7c278/policy-registry-v1.json",
       "sha256": "b828bc7650c26bc72763c7d7666b2328c74196c93017477564319d145f1b33c2"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/a1e6eb143446/manifest.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/a1e6eb143446/manifest.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/a1e6eb143446/manifest.json",
       "sha256": "13364e0a116b40bec739db0681b71e2de3b7f1f23a4f392afad9080f34828e00"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/68cbe893de37/ny_v10_math_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/68cbe893de37/ny_v10_math_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/68cbe893de37/ny_v10_math_v1.py",
       "sha256": "2a7c79b1f96855fd6b2d5277cd76aa3b9decb354576727a391b31f004d52c4de"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/68cbe893de37/ny_v10_contract_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/68cbe893de37/ny_v10_contract_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/68cbe893de37/ny_v10_contract_v1.py",
       "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/a1e6eb143446/nyc-profile.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/a1e6eb143446/nyc-profile.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/a1e6eb143446/nyc-profile.json",
       "sha256": "396e731d52be9c09dababc44c7b6f9aac7b26ad966d5a417dffd77410614b28b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/db21c4e291d3/fitted-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/db21c4e291d3/fitted-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/db21c4e291d3/fitted-state.json",
       "sha256": "f1f16e56e54895534e7735a8b67fc0d535a75308320c27f828fcbce2d1dafcfc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/db21c4e291d3/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/db21c4e291d3/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/db21c4e291d3/selection.json",
       "sha256": "51719aaffa4f32098ec3dec37ec0c41cdf920e073b8ff6ec9883e74bf4cd993d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/db21c4e291d3/p09-settings.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/db21c4e291d3/p09-settings.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/db21c4e291d3/p09-settings.json",
       "sha256": "0ae9d916a83f3806f7641c556bc6c43ea12bdcf85b39c50b27a3568ae7fd4f9d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d12169cb24ea/fitted-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d12169cb24ea/fitted-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d12169cb24ea/fitted-state.json",
       "sha256": "8253075639a313c443fa632d93eee7e5831a8f2c2da98344d4e04ff6902c994a"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d12169cb24ea/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d12169cb24ea/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d12169cb24ea/selection.json",
       "sha256": "66d00e3a6284e5fb132ce75f46a34cf2c4df01915b8bd938463b799487c95107"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d12169cb24ea/p09-settings.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d12169cb24ea/p09-settings.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d12169cb24ea/p09-settings.json",
       "sha256": "39fb4fe0f32faf64735cc8333a4e5b34f8b50ec5679419b668e0677c4163254d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/c04205c402ee/weather.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/c04205c402ee/weather.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/c04205c402ee/weather.py",
       "sha256": "501b5e0b56bc8b7b42c71c7af818c0741e347fc15aeda8f324f469d5b29c6374"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/shared_weather_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/shared_weather_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/shared_weather_v1.py",
       "sha256": "80118db6a723a82957aea1e0317b7c303b3b484baf219e9ea2a1332bb2b9a380"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/shared_weather_v2.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/shared_weather_v2.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/shared_weather_v2.py",
       "sha256": "244469d6fb6ff3dee7032497f398bb33366bfda4fdc8af334ad0acbb5f51a271"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/collect_nyc_weather_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/collect_nyc_weather_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/collect_nyc_weather_v1.py",
       "sha256": "9ddb74f2f4e00edbf6048173f7fc826ea70fce1e718456ec256ef613d8eb5a91"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/extract_nyc_points_v2.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/extract_nyc_points_v2.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/extract_nyc_points_v2.py",
       "sha256": "629ac3fe9ac0b23326bd2ab5a6494a90b3f9cb119147ad70a556023deee96b6c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/city-source-profiles-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/city-source-profiles-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/city-source-profiles-v1.json",
       "sha256": "31b7013f80fc642f88e799a11edc4b89783f9936bd0f6e75f0304392b2646469"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4632697e03dd/city-grid-geometry-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4632697e03dd/city-grid-geometry-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4632697e03dd/city-grid-geometry-v1.json",
       "sha256": "a4ecfc7c3758b7d1c161d381849c22f23bcf436b2bac48a75559375db05a5afb"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/48cfa7ba6f70/saved-calibration-bundle.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/48cfa7ba6f70/saved-calibration-bundle.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/48cfa7ba6f70/saved-calibration-bundle.json",
       "sha256": "b423f0fd42085734d6289b9c150e68e51454db9961fd6dbd8234d7d61ab25cce"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/48cfa7ba6f70/profile.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/48cfa7ba6f70/profile.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/48cfa7ba6f70/profile.json",
       "sha256": "23e37bb83343c920bec192b691ca99fe6db1cf18ec2b36759b26991c839f610e"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/75ced8a4889e/2026-10-original.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/75ced8a4889e/2026-10-original.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/75ced8a4889e/2026-10-original.json",
       "sha256": "65b54f4691eb6b186f89f09cb0f092ca78922413a7b54f1a8d5dbc2777f08390"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/75ced8a4889e/2026-10-calibration.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/75ced8a4889e/2026-10-calibration.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/75ced8a4889e/2026-10-calibration.json",
       "sha256": "5860349b44f3afc8e23e66680b87e43825f6ce212a5a4d18121151102e74a96d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/75ced8a4889e/2026-10-selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/75ced8a4889e/2026-10-selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/75ced8a4889e/2026-10-selection.json",
       "sha256": "279d267b6382fb18ccfc1b98a1643eb7e857f4ebe7397642d7701dc97809a5cb"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bb9db3de7e4a/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bb9db3de7e4a/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bb9db3de7e4a/selection.json",
       "sha256": "b5830bae86d88b20bfc0d724539825f4bbf8f14f4f5d2af83bae65b2833395d3"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dbaa9a249fe7/v10_contract_reference.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dbaa9a249fe7/v10_contract_reference.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dbaa9a249fe7/v10_contract_reference.py",
       "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dbaa9a249fe7/city_profile.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dbaa9a249fe7/city_profile.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dbaa9a249fe7/city_profile.py",
       "sha256": "442cde5a1da8aba5ca6a7735536d76db2647902c20ea7227dfc6e199aad67a34"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dbaa9a249fe7/city_v10_simplex_blend_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dbaa9a249fe7/city_v10_simplex_blend_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dbaa9a249fe7/city_v10_simplex_blend_v1.py",
       "sha256": "fa1730fc9a4186f0a2b141a000985c6254ce5f6ad0f4fa2e2f79d2ff544d0506"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dbaa9a249fe7/v10_math_reference.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dbaa9a249fe7/v10_math_reference.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dbaa9a249fe7/v10_math_reference.py",
       "sha256": "00b98c8f1ca5050813fcdfa4903f83cf1f54e022bac76d061e5cbc74bcea3294"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/13295cd6cd96/canonical24-definition-only-registry-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/13295cd6cd96/canonical24-definition-only-registry-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/13295cd6cd96/canonical24-definition-only-registry-v1.json",
       "sha256": "c9bd682dfb35cab79255526d7bcb64d56ee851954234dd9ddc77b4fc6d30ab8a"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/92a73f85f6b0/probability_transform.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/92a73f85f6b0/probability_transform.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/92a73f85f6b0/probability_transform.py",
       "sha256": "f47b3a5302598d2786e221e19a23ec9ac5caf272f6f02c3d5f8fbabe71885048"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/92a73f85f6b0/p09_parameter_math.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/92a73f85f6b0/p09_parameter_math.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/92a73f85f6b0/p09_parameter_math.py",
       "sha256": "459e97e2c7ddafc197160b4f7a25534db30a59dc36062f889b7de09ed4d0afec"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/92a73f85f6b0/p09_decimal_math.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/92a73f85f6b0/p09_decimal_math.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/92a73f85f6b0/p09_decimal_math.py",
       "sha256": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/92a73f85f6b0/p09_order_math.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/92a73f85f6b0/p09_order_math.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/92a73f85f6b0/p09_order_math.py",
       "sha256": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/92a73f85f6b0/p09_policy.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/92a73f85f6b0/p09_policy.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/92a73f85f6b0/p09_policy.py",
       "sha256": "36e41cff22d5e03a1ca0e939fc7a2c6872087c1afe8fb9c40674831c20d7a98e"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/b49518a7ad7f/live_weather.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/b49518a7ad7f/live_weather.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/b49518a7ad7f/live_weather.py",
       "sha256": "95b581f840e433590928a6c3495888fcca535946d20b3f231a2510769dd2f350"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/8f8d7906bb93/october-checkpoints.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/8f8d7906bb93/october-checkpoints.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/8f8d7906bb93/october-checkpoints.json",
       "sha256": "04cb0449e8d25740c44c275757808eec906eb9e288bcefe40be66a563fcb1763"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d7be42be994d/p09_decimal_math.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d7be42be994d/p09_decimal_math.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d7be42be994d/p09_decimal_math.py",
       "sha256": "c6dc3ac811becfd954b9d31b6f236f2654c8cf4469a13bcd29d196966124fab9"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d7be42be994d/p09_order_math.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d7be42be994d/p09_order_math.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d7be42be994d/p09_order_math.py",
       "sha256": "40473ffb4e1ea5548879c3cc75e314b8b069f6434cbcd7aa41da6cbcbab3237c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d7be42be994d/p09_policy.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d7be42be994d/p09_policy.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d7be42be994d/p09_policy.py",
       "sha256": "36e41cff22d5e03a1ca0e939fc7a2c6872087c1afe8fb9c40674831c20d7a98e"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d7be42be994d/probability_transform.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d7be42be994d/probability_transform.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d7be42be994d/probability_transform.py",
       "sha256": "f47b3a5302598d2786e221e19a23ec9ac5caf272f6f02c3d5f8fbabe71885048"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/5e787f87e93e/fitted-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/5e787f87e93e/fitted-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/5e787f87e93e/fitted-state.json",
       "sha256": "3d24d8f8aaf87ef4995172aa650a1adf576a21d1ff9d49abd626ee2b65afce70"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/5e787f87e93e/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/5e787f87e93e/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/5e787f87e93e/selection.json",
       "sha256": "a7ff6cc588af2cadf8a4a41406c0c99519374ec167e7eb0ea9d0cdfe92394b28"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/city_profile.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/city_profile.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/city_profile.py",
       "sha256": "442cde5a1da8aba5ca6a7735536d76db2647902c20ea7227dfc6e199aad67a34"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/city_v10_simplex_blend_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/city_v10_simplex_blend_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/city_v10_simplex_blend_v1.py",
       "sha256": "fa1730fc9a4186f0a2b141a000985c6254ce5f6ad0f4fa2e2f79d2ff544d0506"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/phoenix_monthly_models_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/phoenix_monthly_models_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/phoenix_monthly_models_v1.py",
       "sha256": "de81a1fd58dae3e22ce39307e4c4963c2d98f4d3df9ef9fcad3a446b635e2869"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/phoenix_source_model_base_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/phoenix_source_model_base_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/phoenix_source_model_base_v1.py",
       "sha256": "411dfd1d8a97018e27c1a4660ab5f66975f497b5775ee5bf1a0b791a813d503f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/v10_contract_reference.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/v10_contract_reference.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/v10_contract_reference.py",
       "sha256": "6b9f5c9c0ee86b0e4faa22e02e7a42bcfb7db92811bf9903dfe775c9d0a5931b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad7977306a21/v10_math_reference.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad7977306a21/v10_math_reference.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad7977306a21/v10_math_reference.py",
       "sha256": "00b98c8f1ca5050813fcdfa4903f83cf1f54e022bac76d061e5cbc74bcea3294"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/05223c43a909/profile.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/05223c43a909/profile.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/05223c43a909/profile.json",
       "sha256": "dae55b64f6453573020fcb98138efc94931d566787f5a40bf6f5112ced63d0f3"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/05223c43a909/saved-hrrr14-23-bundle-v3.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/05223c43a909/saved-hrrr14-23-bundle-v3.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/05223c43a909/saved-hrrr14-23-bundle-v3.json",
       "sha256": "5061e54cdd563a2c3ab477dabeffa8ecbc282cafc302742b928942992ee961b5"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/05223c43a909/saved_hrrr14_23_loader_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/05223c43a909/saved_hrrr14_23_loader_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/05223c43a909/saved_hrrr14_23_loader_v3.py",
       "sha256": "0181858f5b27e780fd5137d70b3c7afc818c71837629cc276c2a20b7a39f6c58"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bcb0232a3222/allocation_policy_v5.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bcb0232a3222/allocation_policy_v5.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bcb0232a3222/allocation_policy_v5.py",
       "sha256": "d426ade72be0e49c3d0ce6aa7362d1afb1b3802ed7cb149cb7eb70d03200613f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bcb0232a3222/allocation_scheduled_entry_v5.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bcb0232a3222/allocation_scheduled_entry_v5.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bcb0232a3222/allocation_scheduled_entry_v5.py",
       "sha256": "f5f6c146d729e2e0c7b124de212cebdcc5b8e9860d3e6b3effda613d2fd734cc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bcb0232a3222/conformal_yes_set_v19.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bcb0232a3222/conformal_yes_set_v19.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bcb0232a3222/conformal_yes_set_v19.py",
       "sha256": "370e7a4c36952439c9ba4b8b55b42269bcfaa43f4e512af0c9591f466a73fc63"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bcb0232a3222/generic_p09_side_v4.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bcb0232a3222/generic_p09_side_v4.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bcb0232a3222/generic_p09_side_v4.py",
       "sha256": "29ac1fecd457d228e6f85fb23fc9d4845cb5194df1a07d6662169f3cad1357ec"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/b1de43541e4f/2026-10-conformal-threshold.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/b1de43541e4f/2026-10-conformal-threshold.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/b1de43541e4f/2026-10-conformal-threshold.json",
       "sha256": "189e1484518a02bba83e437334c847e7264e17c2ecef7650028038b303070625"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/cdd35b81bdd6/ensemble-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/cdd35b81bdd6/ensemble-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/cdd35b81bdd6/ensemble-state.json",
       "sha256": "5894bef90e12a28cfca87b8f608bfe9ccf568ca81af43e74f1b76d9406605bbc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dd0483fa652a/law-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dd0483fa652a/law-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dd0483fa652a/law-state.json",
       "sha256": "481540a8db1daf6f862d4bb9713cb6c3c84b61d49e1b0e13a9e6591a78a9c8c4"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/dd0483fa652a/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/dd0483fa652a/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/dd0483fa652a/selection.json",
       "sha256": "31672ef2c112321aca623e59feeb5fa22b764b1d931c2caf438e96a94c160d88"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/79209281f679/law-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/79209281f679/law-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/79209281f679/law-state.json",
       "sha256": "91c037ca58a6790a89c99f7d61d7640757c5a43626bea7bf5424578fa58a2ad1"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/79209281f679/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/79209281f679/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/79209281f679/selection.json",
       "sha256": "fa9a9070469965a79f2c3352d82b4808e9d59572870d61fdd03f6203d919daa9"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ec50cc65bf98/law-state.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ec50cc65bf98/law-state.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ec50cc65bf98/law-state.json",
       "sha256": "61d7329201052c39cd09eac99235e579ccd1871d2893f7fbb16a66ce7aa44803"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ec50cc65bf98/selection.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ec50cc65bf98/selection.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ec50cc65bf98/selection.json",
       "sha256": "f38dce025bfe13afa443996db1d70029d8c9585fc46fa66ce175bcfb180ddeab"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/d58319ca54ec/saved-uncertainty-laws-bundle-v9-v2.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/d58319ca54ec/saved-uncertainty-laws-bundle-v9-v2.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/d58319ca54ec/saved-uncertainty-laws-bundle-v9-v2.json",
       "sha256": "4541b70d4f45ffab418278fec5bcecc67861c11fe262677a3ce1d6f0d35a7e53"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/b12e3075763d/allocation_policy_v5.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/b12e3075763d/allocation_policy_v5.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/b12e3075763d/allocation_policy_v5.py",
       "sha256": "fcdb7eda6b877ef59f0666ee258da0496414fdf09770d98bfb5716e00197b6df"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/b12e3075763d/allocation_scheduled_entry_v5.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/b12e3075763d/allocation_scheduled_entry_v5.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/b12e3075763d/allocation_scheduled_entry_v5.py",
       "sha256": "f5f6c146d729e2e0c7b124de212cebdcc5b8e9860d3e6b3effda613d2fd734cc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/b12e3075763d/generic_p09_side_v4.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/b12e3075763d/generic_p09_side_v4.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/b12e3075763d/generic_p09_side_v4.py",
       "sha256": "29ac1fecd457d228e6f85fb23fc9d4845cb5194df1a07d6662169f3cad1357ec"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/3223b8bc4d20/no_qualification_filter_v10.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/3223b8bc4d20/no_qualification_filter_v10.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/3223b8bc4d20/no_qualification_filter_v10.py",
       "sha256": "af5b49e766dc11f8f9e0183bccf51523f83ec6de41942877fa0d165a599c354b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/city-grid-geometry-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/city-grid-geometry-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/city-grid-geometry-v1.json",
       "sha256": "a4ecfc7c3758b7d1c161d381849c22f23bcf436b2bac48a75559375db05a5afb"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/collect_and_summarize_kphx_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/collect_and_summarize_kphx_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/collect_and_summarize_kphx_v1.py",
       "sha256": "1b382049c2ec8bc7f0dd7991c170f265c437b35f33eb3f9930e2335586373c8c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/collect_hrrr14_points_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/collect_hrrr14_points_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/collect_hrrr14_points_v1.py",
       "sha256": "9248878178169230897d68cd3725265d550379496956090677dfdbef030d10b8"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/collect_nyc_weather_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/collect_nyc_weather_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/collect_nyc_weather_v1.py",
       "sha256": "b15bac0b4852c01f0fd5bb846e3f703babe67a33cc071a180ceedc1ed6c92917"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/collect_phoenix_temperatures_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/collect_phoenix_temperatures_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/collect_phoenix_temperatures_v1.py",
       "sha256": "156e2a5fafd589360928fc3cdb2edece677910d7a0e7df645ae95d6530a42460"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/derive_kphx_same_report_atmosphere_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/derive_kphx_same_report_atmosphere_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/derive_kphx_same_report_atmosphere_v1.py",
       "sha256": "254bd65191e3093dac70eccfa9c11429cb4598a03f7a3ca390edfec2f1aba5a3"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/hrrr-geometry.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/hrrr-geometry.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/hrrr-geometry.json",
       "sha256": "b7f7d3c808270de8ef5c14067f0fa79031191f6e3f9d237458ae07354919af82"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/phoenix_point_helpers_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/phoenix_point_helpers_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/phoenix_point_helpers_v1.py",
       "sha256": "977fb19cea619c48af26de3c36fd95d4ab46d2cf157fef33ac5b77eff79a014b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f5789087648/shared_weather_v2.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f5789087648/shared_weather_v2.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f5789087648/shared_weather_v2.py",
       "sha256": "c8eca88a43de53957de526065d8ddd7a33087eaebed5fb487f24fddd7f2d1d96"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/8f8d7906bb93/policy.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/8f8d7906bb93/policy.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/8f8d7906bb93/policy.py",
       "sha256": "1bfa466feca61bd6ac5637771a20a6367eb7cbd32af5e0f29bf303a53a9fdfca"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/8f8d7906bb93/profiles.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/8f8d7906bb93/profiles.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/8f8d7906bb93/profiles.json",
       "sha256": "5c6440975d0e4eb699a8a38ecd70a4ece2a03fea3aa7a89f482b177eb8f86a93"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/8f8d7906bb93/source-pins.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/8f8d7906bb93/source-pins.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/8f8d7906bb93/source-pins.json",
       "sha256": "61fa4c116d941e97caba2f1b42211a03c5cf11de799f9c66fc77064716f98f90"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/8f8d7906bb93/weather.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/8f8d7906bb93/weather.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/8f8d7906bb93/weather.py",
       "sha256": "4aa72582aaf1b536ce6a186d29e028289959c01a85a11a20805b232ba690fa9b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1bced330d850/engine.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1bced330d850/engine.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1bced330d850/engine.py",
       "sha256": "953212aec1433b1ba924711c3a77e11afd294dfa31b3b145517c546186398664"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/a777c1ee9840/f3_execution.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/a777c1ee9840/f3_execution.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/a777c1ee9840/f3_execution.py",
       "sha256": "ec856a948f21d24125a185afa6e11cc42728258316cd2d0567e75400c3cedd33"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/9064b839d21c/engine.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/9064b839d21c/engine.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/9064b839d21c/engine.py",
       "sha256": "ce978ee6d195b8d1616af36a1e02482717f0bbcc3df81fcb563fface68d2a977"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ebe56ea24e5d/f3_execution.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ebe56ea24e5d/f3_execution.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ebe56ea24e5d/f3_execution.py",
       "sha256": "868751d176c6c1000d565444ecb8d2b7ea38ed7cbc484c02b9f9c717b18b1372"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ebe56ea24e5d/f4_execution.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ebe56ea24e5d/f4_execution.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ebe56ea24e5d/f4_execution.py",
       "sha256": "912ad039e009cb35002f36ee0c41eb78ac85710f5b29cadb812c0c0025f7f9f7"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad07e406b12b/weather.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad07e406b12b/weather.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad07e406b12b/weather.py",
       "sha256": "b87f830ec05d618e2dd3eb529a8b41ea7ad55b0d8be9551dcfc53dabca0ebbd7"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/c47215330dc1/F3_V10_PHYSICAL_FORECAST_EXIT.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/c47215330dc1/F3_V10_PHYSICAL_FORECAST_EXIT.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/c47215330dc1/F3_V10_PHYSICAL_FORECAST_EXIT.json",
       "sha256": "8f9e7e11076db1c893df189392f5401693a6ee251dc33c70781d1d3278d5a2ab"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/c47215330dc1/F6_HYBRID_STAGED5.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/c47215330dc1/F6_HYBRID_STAGED5.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/c47215330dc1/F6_HYBRID_STAGED5.json",
       "sha256": "52848665895b7abfc4f1afa5ccd00acc4fcf1d62714f892cc07047aaf2d52c8a"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/22a92bf702c3/engine.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/22a92bf702c3/engine.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/22a92bf702c3/engine.py",
       "sha256": "a3e80d08332d40c601fd169dd22f5e915ffb951e9968108d2b3359ea6a184494"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/22a92bf702c3/policies.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/22a92bf702c3/policies.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/22a92bf702c3/policies.py",
       "sha256": "72c1b43a120e19315c334307273a65f5ac80255af9ede2b29e51d2c19bb32e6b"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/22a92bf702c3/policies_v2.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/22a92bf702c3/policies_v2.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/22a92bf702c3/policies_v2.py",
       "sha256": "52a5956f48ad3e3889a35d21e02e369d001f7990c016ed41a8e51436700598bc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/22a92bf702c3/policies_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/22a92bf702c3/policies_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/22a92bf702c3/policies_v3.py",
       "sha256": "049a92c3d34889abf741714c2878fa4725c51d87c70e46bbb1919e998d71c2a1"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ba910248c55f/composed_policy_v1.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ba910248c55f/composed_policy_v1.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ba910248c55f/composed_policy_v1.py",
       "sha256": "5c2bbec07f6eac2a49a88729d3c84f729abe3e78fa3027b62350869ff12fd1a5"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/paper_trader_adapter.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/paper_trader_adapter.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/paper_trader_adapter.py",
       "sha256": "dfa3fc0d8d7396d39ea9c2dd7f42906833c7f4bbcf1b82c5e979f808f101027d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/la_trio_cli.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/la_trio_cli.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/la_trio_cli.py",
       "sha256": "4bc09975e8c9fc33246ff175f984a113608634feef6369a53c88c11f8db4b636"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/forecast_adapter.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/forecast_adapter.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/forecast_adapter.py",
       "sha256": "f66778c5502228d0ee3e7deaf1ec052cb9b61efa7791772d91bb072eececf5b3"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/live_inputs.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/live_inputs.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/live_inputs.py",
       "sha256": "7000dcc12fb7bffcfb87e3fd9e5dec54e2f28dcbafa329c3522416ab34db93f1"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/source_gate.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/source_gate.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/source_gate.py",
       "sha256": "ebc33da90966f1d114117aa0027f2866148f6fb768c0544b57a76bccc44032df"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/476ca920378a/external-source-pins-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/476ca920378a/external-source-pins-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/476ca920378a/external-source-pins-v1.json",
       "sha256": "4c357f2871099e3b20f5dc2912ba8b6d6c5e40888fde399bdc9c36c1857395ca"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bb75b12305f0/build_adapter.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bb75b12305f0/build_adapter.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bb75b12305f0/build_adapter.py",
       "sha256": "18f07b9bbfd8cd42d06318fee4093ed0dab62ec3cb5a1f364754f1513872e7bf"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/bb75b12305f0/f3-probability-adapter.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/bb75b12305f0/f3-probability-adapter.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/bb75b12305f0/f3-probability-adapter.json",
       "sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/717946334c85/static-2025-calibration.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/717946334c85/static-2025-calibration.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/717946334c85/static-2025-calibration.json",
       "sha256": "302e45607d84cfae2540316d9da5f14ff78466365dc1e41a79f550b069b1d88d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/522f7b3fa62e/optional_pressure.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/522f7b3fa62e/optional_pressure.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/522f7b3fa62e/optional_pressure.py",
       "sha256": "a4148988f2f44fb01d58ce3954513a1ecb7cded79203494fa113948de330902c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/522f7b3fa62e/checkpoint-2026-10.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/522f7b3fa62e/checkpoint-2026-10.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/522f7b3fa62e/checkpoint-2026-10.json",
       "sha256": "0bb969ebab1184fdc79c17492b4470392a5012b261a6003b7f64baa01fe5011e"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f9c648746a4/optional_pressure.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f9c648746a4/optional_pressure.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f9c648746a4/optional_pressure.py",
       "sha256": "56f46d1a94f61721516264b0ad69cafcb3d91e1ded54a99accf06144df7aabfc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f9c648746a4/checkpoint-2026-10.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f9c648746a4/checkpoint-2026-10.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f9c648746a4/checkpoint-2026-10.json",
       "sha256": "5ee96f9f56151ee9b46a06504637166abd16af1b7ee8aee3e6d661093815b10f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/1f9c648746a4/checkpoint-hybrid-2026-10.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/1f9c648746a4/checkpoint-hybrid-2026-10.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/1f9c648746a4/checkpoint-hybrid-2026-10.json",
       "sha256": "3c3c0992305b4d3bc6c0068bae00fd27c42da7caf5b87911c72345aeb04cbda3"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ad07e406b12b/__init__.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ad07e406b12b/__init__.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ad07e406b12b/__init__.py",
       "sha256": "535b6e115e4a448a67999c46adb60425e33e7eb9723935f52512a46506ec9000"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/5603d332ee40/model.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/5603d332ee40/model.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/5603d332ee40/model.py",
       "sha256": "818a3856ce3a6d596c7ecb49abd354a3886bd422d3e4b67df741c7ea8ef93677"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/__init__.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/__init__.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/__init__.py",
       "sha256": "3469ffcdf2621bb9c9367e47b1da81e66f190fda067defe58ad3497e47cedf1c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/domain.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/domain.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/domain.py",
       "sha256": "7e6e3ff53ad55f88e5b1cf13c3d53445237a4c460b905f56582f5a23988adba0"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/regimes_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/regimes_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/regimes_v3.py",
       "sha256": "a5cb14e78a4bd44ca29a99877eef94ea033d70ea50f2cfd0081617093c99930c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/features_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/features_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/features_v3.py",
       "sha256": "ca0ac79202b6c00c3ae9ad3e8e7b6a54b42fb24b4128f9c6fb2207b13d5aafa7"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/probability_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/probability_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/probability_v3.py",
       "sha256": "2811ef2b7ac082f068d06d90f72e9bc6e3fc1f586c3acc26b8e15204bf08d059"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/forecast_models_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/forecast_models_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/forecast_models_v3.py",
       "sha256": "3e3abccd9647ade5df9918a9c46e694ef4beea048a15d3f04c9be33c06ddd081"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/ordinal_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/ordinal_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/ordinal_v3.py",
       "sha256": "86d039ab3a77c442622213c02fcc0baa749d17c102d16459e7a886eeaa34115d"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/provenance.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/provenance.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/provenance.py",
       "sha256": "0735f35c5335f75f6ba881a62a3c1f8380e47b2e917d17430899d9cd738a92ba"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/models.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/models.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/models.py",
       "sha256": "0f4a7dd184309ad945e5939905a6547e52028fe58ed69be37c897452929b4b3c"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/candidates.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/candidates.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/candidates.py",
       "sha256": "6d9a0dd0bdfb9a19f1046087a963c52e3d2d214df17bbbc202393a8b0683504f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/research_plan.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/research_plan.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/research_plan.py",
       "sha256": "b1c092b1cbee4776b3b77a9ca98d0e85f7cfb2279f51b7039e42d111ae6ef30f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/research_plan_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/research_plan_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/research_plan_v3.py",
       "sha256": "37de8aaf7659bb7e6c5ab49636a9242db6a5144bc598b4534a71d432f8d71bcb"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/4e28f437c4d5/candidate_model_v3.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/4e28f437c4d5/candidate_model_v3.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/4e28f437c4d5/candidate_model_v3.py",
       "sha256": "ac5b3ed84b429260da82158ea7f21712505067cbc52a9d5fd7583367d05663fc"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/3789c80935c6/paper_inference.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/3789c80935c6/paper_inference.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/3789c80935c6/paper_inference.py",
       "sha256": "5914b150129898a3a1c59f681e6a6171bf8f83f2f6ac259413b27723da5a27c9"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/e87fd652ad95/strategy-freeze.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/e87fd652ad95/strategy-freeze.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/e87fd652ad95/strategy-freeze.json",
       "sha256": "b9320be7018c74b8f36904ad6021e7b46b065bbc3c7baad92e0315387a862317"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/ac399106ff20/compiled_manifest.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/ac399106ff20/compiled_manifest.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/ac399106ff20/compiled_manifest.json",
       "sha256": "e1bcdfff09602cf63b0c598c8c320ceb931ce49afefc119f58a0da3d2f11cd0f"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/42e27f27711b/candidate-freeze.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/42e27f27711b/candidate-freeze.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/42e27f27711b/candidate-freeze.json",
       "sha256": "c0a48855fee8a5a67a06c6fb4b7423eda369c6d08879e86f9a0d9128cbed817a"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/3789c80935c6/checkpoint-2026-10.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/3789c80935c6/checkpoint-2026-10.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/3789c80935c6/checkpoint-2026-10.json",
       "sha256": "53b1669f05b54692da08de3e4c48caf2379e7e8e8563fd3305fa9dea7d8358cf"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/3005be3670a3/live_weather.py",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/3005be3670a3/live_weather.py",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/3005be3670a3/live_weather.py",
       "sha256": "c6f543b3e13b3638f0b800c4eb78634bd3e0787542855f407a88da7d072f3a0e"
     },
     {
       "source": "final_testing/assets/d/releases/FOUR-CITY-PAPER-F1F-20261012/vendor/534ff6a69396/plan-v1.json",
-      "target": "final_testing/application/releases/FOUR-CITY-PAPER-TWC-EXIT-v1/vendor/534ff6a69396/plan-v1.json",
+      "target": "final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1/vendor/534ff6a69396/plan-v1.json",
       "sha256": "8651badd09583b75094fbbc0d9eb627b935bb332015335dc3332952734421dbc"
     }
   ],
-  "model_weights_changed": false,
-  "native_entries_changed": false,
-  "offline_native_replays_changed": false,
-  "source_map_sha256": "51ab62ad0affe8f35a970b1635f059a53796bb10f4c33868132d98d912dfcc3c",
-  "notes": "Code-only prospective application update; native assets and original archived application remain unchanged."
+  "source_model_mapping_unchanged": true,
+  "paper_only": true,
+  "model_weights_changed": false
 }
