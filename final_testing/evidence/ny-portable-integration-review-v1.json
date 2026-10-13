@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "reviewer": "NY independent portable integration review",
+  "completed_utc": "2026-10-13T12:48:35.845741+00:00",
+  "status": "STATIC_REVIEW_PASS_ACTUAL_ALL_CITY_PARITY_PENDING",
+  "files": [
+    {
+      "path": "final_testing/portable/runtime_binding.py",
+      "sha256": "a58735cac71aea02087efa080545b1759dfc02e01ca0bcac6394d270d0540e25"
+    },
+    {
+      "path": "final_testing/launch.py",
+      "sha256": "78c88488b98e5ba300abcfa9d36f33bb17edf197d94e5411f8943d9efd26ee30"
+    },
+    {
+      "path": "final_testing/worker_check.py",
+      "sha256": "e22f4ff367a78675ddcaf42cd5e1cdac515d4b15c0902cfcbb5a31b4623efa00"
+    },
+    {
+      "path": "final_testing/README.md",
+      "sha256": "b6755f36f0843f43738e1064cd82940e99997c68bd92e2c36c3f57ebac49dd0c"
+    },
+    {
+      "path": "final_testing/expected-history.json",
+      "sha256": "a511b2b64fa17360593e38ec301d0101e97575eb9d1219573ac50996bff0ce09"
+    },
+    {
+      "path": "final_testing/portable/mount.py",
+      "sha256": "1025e92a71afed26b6b4428c2bcc17e2f6c08207f495a31f7cebb956a1e8d418"
+    },
+    {
+      "path": "final_testing/portable/sitecustomize.py",
+      "sha256": "92275c0a0dd7c6a970ded940c0b7603f2bd3735d71a9646f203fcdd9101863f2"
+    }
+  ],
+  "checked": [
+    "both accepted manifest digests before runtime admission",
+    "exact17installed package versions and honest current interpreter identity",
+    "native Release source/accounting verify preserved",
+    "real launcher strips filesystem-only marker; independent localports9015/9020",
+    "exact9wallet and daily baseline comparison, not all-unknown job success",
+    "October1\u201312 expected-history identities and nonzero913contracts",
+    "WindowsPython3.12/noreset/conditionalresults/TWCpause documentation",
+    "candidate path and bounded text credential detection without emitting values"
+  ],
+  "asset_metadata": {
+    "files": 1042,
+    "bytes": 838233340,
+    "missing": 0,
+    "credential_filename_matches": 0
+  },
+  "candidate_scan": {
+    "paths": 29,
+    "small_text_files": 23,
+    "private_key_aws_github_or_credential_assignment_alerts": 0,
+    "does_not_claim_binary_pack_content_secret_audit": true
+  },
+  "mount_reused_evidence": "runtime/portable-mount-review-v2.json",
+  "new_focused_regressions": [
+    {
+      "test": "current_windows_native_socket_and_metadata_bootstrap",
+      "runtime": "clean clone .venv",
+      "status": "PASS"
+    },
+    {
+      "test": "current_executable_identity_is_readonly_even_outside_relocated_repo",
+      "runtime": "clean clone .venv",
+      "status": "PASS"
+    }
+  ],
+  "actual_integration_reported_by_coordinator": {
+    "ny": "SAVED",
+    "miami": "SAVED",
+    "phoenix": "SAVED",
+    "la": "FAILED_MODULE_IMPORT_PENDING_ROOT_REPAIR"
+  },
+  "economic_replays_by_reviewer": 0,
+  "new_fits": 0,
+  "orders": 0,
+  "original_source_edits": 0
+}

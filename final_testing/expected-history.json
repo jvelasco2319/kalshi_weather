@@ -1,0 +1,1189 @@
+{
+  "schema": 1,
+  "start_day": "2026-10-01",
+  "end_day": "2026-10-12",
+  "mode": "CONDITIONAL_ARCHIVE_REPLAY",
+  "source_button_job": "20261012T211655-2a902dd5",
+  "profiles": {
+    "la:F3_V10_PHYSICAL_FORECAST_EXIT": {
+      "known_cash": "94.61",
+      "ending_cash": null,
+      "wins": 1,
+      "losses": 2,
+      "contracts": 208,
+      "fees": "0.57",
+      "reserved": "0.00",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "96.67",
+          "ending_cash": "96.67",
+          "contracts": 78,
+          "fees": "0.21",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-02",
+          "status": "COMPLETE",
+          "known_cash": "98.43",
+          "ending_cash": "98.43",
+          "contracts": 11,
+          "fees": "0.11",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "94.61",
+          "ending_cash": "94.61",
+          "contracts": 119,
+          "fees": "0.25",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-04",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "94.61",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "la:F6_HYBRID_STAGED5": {
+      "known_cash": "104.52",
+      "ending_cash": null,
+      "wins": 2,
+      "losses": 5,
+      "contracts": 157,
+      "fees": "1.130000",
+      "reserved": "0.00",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "100",
+          "ending_cash": "100",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "COMPLETE",
+          "known_cash": "112.72",
+          "ending_cash": "112.72",
+          "contracts": 17,
+          "fees": "0.23",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "111.34",
+          "ending_cash": "111.34",
+          "contracts": 43,
+          "fees": "0.09",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "111.34",
+          "ending_cash": "111.34",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "COMPLETE",
+          "known_cash": "108.64",
+          "ending_cash": "108.64",
+          "contracts": 15,
+          "fees": "0.15",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-06",
+          "status": "COMPLETE",
+          "known_cash": "113.85",
+          "ending_cash": "113.85",
+          "contracts": 7,
+          "fees": "0.10",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "COMPLETE",
+          "known_cash": "111.20",
+          "ending_cash": "111.20",
+          "contracts": 12,
+          "fees": "0.150000",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-08",
+          "status": "COMPLETE",
+          "known_cash": "109.67",
+          "ending_cash": "109.67",
+          "contracts": 12,
+          "fees": "0.090000",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-09",
+          "status": "COMPLETE",
+          "known_cash": "104.52",
+          "ending_cash": "104.52",
+          "contracts": 51,
+          "fees": "0.320000",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "104.52",
+          "ending_cash": "104.52",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "COMPLETE",
+          "known_cash": "104.52",
+          "ending_cash": "104.52",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "104.52",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "la:V8D_NO18_SETTLEMENT": {
+      "known_cash": "150.1253",
+      "ending_cash": null,
+      "wins": 3,
+      "losses": 2,
+      "contracts": 262,
+      "fees": "2.664700",
+      "reserved": "0",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "100",
+          "ending_cash": "100",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "COMPLETE",
+          "known_cash": "124.0001",
+          "ending_cash": "124.0001",
+          "contracts": 34,
+          "fees": "0.4799",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "124.0001",
+          "ending_cash": "124.0001",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "124.0001",
+          "ending_cash": "124.0001",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "COMPLETE",
+          "known_cash": "124.0001",
+          "ending_cash": "124.0001",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "COMPLETE",
+          "known_cash": "111.8293",
+          "ending_cash": "111.8293",
+          "contracts": 36,
+          "fees": "0.5508",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-07",
+          "status": "COMPLETE",
+          "known_cash": "120.8208",
+          "ending_cash": "120.8208",
+          "contracts": 20,
+          "fees": "0.348500",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "COMPLETE",
+          "known_cash": "120.8208",
+          "ending_cash": "120.8208",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "COMPLETE",
+          "known_cash": "108.8361",
+          "ending_cash": "108.8361",
+          "contracts": 120,
+          "fees": "0.714700",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "108.8361",
+          "ending_cash": "108.8361",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "COMPLETE",
+          "known_cash": "150.1253",
+          "ending_cash": "150.1253",
+          "contracts": 52,
+          "fees": "0.5708",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "150.1253",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "ny:CONSERVATIVE_P09": {
+      "known_cash": "117.494500",
+      "ending_cash": null,
+      "wins": 3,
+      "losses": 1,
+      "contracts": 45,
+      "fees": "0.755500",
+      "reserved": "0",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "92.725100",
+          "ending_cash": "92.725100",
+          "contracts": 12,
+          "fees": "0.194900",
+          "wins": 1,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-02",
+          "status": "COMPLETE",
+          "known_cash": "98.725100",
+          "ending_cash": "98.725100",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "98.725100",
+          "ending_cash": "98.725100",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "92.606300",
+          "ending_cash": "92.606300",
+          "contracts": 14,
+          "fees": "0.238800",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "COMPLETE",
+          "known_cash": "106.606300",
+          "ending_cash": "106.606300",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "COMPLETE",
+          "known_cash": "106.606300",
+          "ending_cash": "106.606300",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "COMPLETE",
+          "known_cash": "98.494500",
+          "ending_cash": "98.494500",
+          "contracts": 19,
+          "fees": "0.321800",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "COMPLETE",
+          "known_cash": "117.494500",
+          "ending_cash": "117.494500",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "COMPLETE",
+          "known_cash": "117.494500",
+          "ending_cash": "117.494500",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "117.494500",
+          "ending_cash": "117.494500",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "COMPLETE",
+          "known_cash": "117.494500",
+          "ending_cash": "117.494500",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "117.494500",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "ny:SAFE5_TARGET_ONLY": {
+      "known_cash": "100.00",
+      "ending_cash": null,
+      "wins": 0,
+      "losses": 0,
+      "contracts": 0,
+      "fees": "0",
+      "reserved": "0",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "COMPLETE",
+          "known_cash": "100.00",
+          "ending_cash": "100.00",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "100.00",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "miami:SELECTED_CHAMPION": {
+      "known_cash": "130.0101",
+      "ending_cash": null,
+      "wins": 3,
+      "losses": 3,
+      "contracts": 89,
+      "fees": "1.3399",
+      "reserved": "0.0000",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "UNKNOWN",
+          "known_cash": "98.8410",
+          "ending_cash": null,
+          "contracts": 3,
+          "fees": "0.0490",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-02",
+          "status": "UNKNOWN",
+          "known_cash": "89.4945",
+          "ending_cash": null,
+          "contracts": 20,
+          "fees": "0.3465",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "UNKNOWN",
+          "known_cash": "101.2640",
+          "ending_cash": null,
+          "contracts": 18,
+          "fees": "0.3105",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-04",
+          "status": "UNKNOWN",
+          "known_cash": "119.2640",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "UNKNOWN",
+          "known_cash": "119.2640",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "UNKNOWN",
+          "known_cash": "115.0580",
+          "ending_cash": null,
+          "contracts": 9,
+          "fees": "0.1560",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-07",
+          "status": "UNKNOWN",
+          "known_cash": "115.0580",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "UNKNOWN",
+          "known_cash": "109.5071",
+          "ending_cash": null,
+          "contracts": 14,
+          "fees": "0.2309",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-09",
+          "status": "UNKNOWN",
+          "known_cash": "109.5071",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "UNKNOWN",
+          "known_cash": "109.5071",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "UNKNOWN",
+          "known_cash": "105.0101",
+          "ending_cash": null,
+          "contracts": 25,
+          "fees": "0.2470",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "130.0101",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "miami:RAW_ORIGINAL": {
+      "known_cash": "122.7372",
+      "ending_cash": null,
+      "wins": 2,
+      "losses": 2,
+      "contracts": 67,
+      "fees": "0.9628",
+      "reserved": "0.0000",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "COMPLETE",
+          "known_cash": "100",
+          "ending_cash": "100",
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "UNKNOWN",
+          "known_cash": "91.1208",
+          "ending_cash": null,
+          "contracts": 19,
+          "fees": "0.3292",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "UNKNOWN",
+          "known_cash": "99.9005",
+          "ending_cash": null,
+          "contracts": 17,
+          "fees": "0.2603",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-04",
+          "status": "UNKNOWN",
+          "known_cash": "108.9005",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "UNKNOWN",
+          "known_cash": "108.9005",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "UNKNOWN",
+          "known_cash": "104.6945",
+          "ending_cash": null,
+          "contracts": 9,
+          "fees": "0.1560",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-07",
+          "status": "COMPLETE",
+          "known_cash": "104.6945",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "COMPLETE",
+          "known_cash": "104.6945",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "UNKNOWN",
+          "known_cash": "104.6945",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "UNKNOWN",
+          "known_cash": "104.6945",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "UNKNOWN",
+          "known_cash": "100.7372",
+          "ending_cash": null,
+          "contracts": 22,
+          "fees": "0.2173",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "UNKNOWN",
+          "known_cash": "122.7372",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "phoenix:03-V10-Ensemble-Quarter-Kelly": {
+      "known_cash": "104.8821",
+      "ending_cash": null,
+      "wins": 5,
+      "losses": 2,
+      "contracts": 72,
+      "fees": "1.1179",
+      "reserved": "0.0000",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "UNKNOWN",
+          "known_cash": "100",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "UNKNOWN",
+          "known_cash": "100",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "COMPLETE",
+          "known_cash": "96.9918",
+          "ending_cash": null,
+          "contracts": 11,
+          "fees": "0.1482",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "87.6030",
+          "ending_cash": null,
+          "contracts": 12,
+          "fees": "0.1488",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "COMPLETE",
+          "known_cash": "97.2240",
+          "ending_cash": null,
+          "contracts": 6,
+          "fees": "0.0990",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "COMPLETE",
+          "known_cash": "95.3338",
+          "ending_cash": null,
+          "contracts": 13,
+          "fees": "0.2202",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "UNKNOWN",
+          "known_cash": "108.3338",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "UNKNOWN",
+          "known_cash": "108.3338",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "COMPLETE",
+          "known_cash": "100.2139",
+          "ending_cash": null,
+          "contracts": 16,
+          "fees": "0.2799",
+          "wins": 0,
+          "losses": 1
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "99.6664",
+          "ending_cash": null,
+          "contracts": 1,
+          "fees": "0.0175",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "COMPLETE",
+          "known_cash": "91.8821",
+          "ending_cash": null,
+          "contracts": 13,
+          "fees": "0.2043",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "PENDING",
+          "known_cash": "104.8821",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    },
+    "phoenix:01-V19-Temperature-Set-Quarter-Kelly": {
+      "known_cash": "103.0637",
+      "ending_cash": null,
+      "wins": 2,
+      "losses": 0,
+      "contracts": 13,
+      "fees": "0.1663",
+      "reserved": "0.0000",
+      "days": [
+        {
+          "day": "2026-10-01",
+          "status": "UNKNOWN",
+          "known_cash": "100",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-02",
+          "status": "UNKNOWN",
+          "known_cash": "100",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-03",
+          "status": "UNKNOWN",
+          "known_cash": "100",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-04",
+          "status": "COMPLETE",
+          "known_cash": "90.6112",
+          "ending_cash": null,
+          "contracts": 12,
+          "fees": "0.1488",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-05",
+          "status": "UNKNOWN",
+          "known_cash": "102.6112",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-06",
+          "status": "UNKNOWN",
+          "known_cash": "102.6112",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-07",
+          "status": "UNKNOWN",
+          "known_cash": "102.6112",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-08",
+          "status": "UNKNOWN",
+          "known_cash": "102.6112",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-09",
+          "status": "UNKNOWN",
+          "known_cash": "102.6112",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-10",
+          "status": "COMPLETE",
+          "known_cash": "102.0637",
+          "ending_cash": null,
+          "contracts": 1,
+          "fees": "0.0175",
+          "wins": 1,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-11",
+          "status": "UNKNOWN",
+          "known_cash": "103.0637",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        },
+        {
+          "day": "2026-10-12",
+          "status": "PENDING",
+          "known_cash": "103.0637",
+          "ending_cash": null,
+          "contracts": 0,
+          "fees": "0",
+          "wins": 0,
+          "losses": 0
+        }
+      ]
+    }
+  },
+  "observed_source_only_not_future_returns": true
+}

@@ -1,0 +1,4 @@
+
+
+# Preserve checksummed portable assets byte-for-byte on every checkout.
+/final_testing/** -text whitespace=cr-at-eol

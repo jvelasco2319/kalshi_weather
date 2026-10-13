@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checked_ns": 1791900809686977000,
+  "source_model_release": "FOUR-CITY-PAPER-F1F-20261012",
+  "test_online_port": 18915,
+  "test_offline_port": 18920,
+  "proxy_reads_packaged_online_service": true,
+  "cities": 4,
+  "paper_wallets": 9,
+  "initial_and_current_online_cash": "900",
+  "online_fees": "0",
+  "actual_orders": 0,
+  "offline_profiles": 9,
+  "offline_calendar_days": 12,
+  "offline_job_status": "FINISHED",
+  "offline_job_failures": 0,
+  "browser_offline_history_visible": true,
+  "browser_online_wallets_visible": true,
+  "online_target_mismatch_pause_preserved": true,
+  "credentials_embedded": false
+}

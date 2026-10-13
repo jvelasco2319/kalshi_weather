@@ -1,0 +1,84 @@
+{
+  "schema": 3,
+  "completed_utc": "2026-10-13T14:06:07.940815+00:00",
+  "decision": "PROPOSAL_NOT_APPLIED_REPAIR_SOURCE_CLOSURE_AND_KEEP_EXACT_STATUS_PARITY",
+  "frozen_source_sha256": "c7b2f80a43f9639aaf7db22a7eb28d8b90c28d73d6c29b8bae1b4fc50fc92bf9",
+  "source_evidence_lines": [
+    379,
+    380,
+    384,
+    498,
+    499,
+    518,
+    519,
+    560,
+    567,
+    568
+  ],
+  "approved_scope": {
+    "city": "miami",
+    "day": "2026-10-12",
+    "profiles": [
+      "SELECTED_CHAMPION",
+      "RAW_ORIGINAL"
+    ],
+    "statuses": [
+      "UNKNOWN",
+      "PENDING"
+    ],
+    "new_reason": "NATIVE_44_FIELD_ARCHIVE_INCOMPLETE",
+    "filled_contracts": 0,
+    "financial_comparison": "EXACT_ALL_EXISTING_SCALARS_AND_DAILY_FIELDS_NO_TOLERANCE",
+    "full_history_balance": "REMAINS_NULL"
+  },
+  "required_qualification": [
+    "Uncertainty-class compatibility is not exact input/status identity",
+    "Different missing-source reason is possible; do not claim clock-only change",
+    "Retain actual old/new status/reason/source pointers; expected compact baseline does not record reasons",
+    "No execution-risklock exception or filled/unsettled-trade relaxation",
+    "No COMPLETE promotion and no known missing-input no-trade inference"
+  ],
+  "asset_followup": {
+    "earlier_observed_before_files": 1042,
+    "current_files": 1065,
+    "earlier_observed_added_files": 23,
+    "earlier_observed_existing_source_sha_changes": 0,
+    "added_original_paths": [
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/experiments/LA-F2-MAY-OCT9-20261010/sources/late-public-inputs/2026-10-07/markets.raw.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/experiments/LA-F2-MAY-OCT9-20261010/sources/late-public-inputs/2026-10-07/official-outcomes.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/experiments/LA-F2-MAY-OCT9-20261010/sources/late-public-inputs/2026-10-08/markets.raw.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/experiments/LA-F2-MAY-OCT9-20261010/sources/late-public-inputs/2026-10-08/official-outcomes.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/experiments/LA-F2-MAY-OCT9-20261010/trader/extend_replay.py",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-all-model-simulation-20261011/market/original-policy-case-manifest-v3.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-kalshi-direct-oct9-20261010/raw/markets.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/public/kalshi-event-current-v3.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/public/kalshi-series-current-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/public/public-source-receipts-v1.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/public/public-source-receipts-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/public/public-status-receipt-v3.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/source-index-v1.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/source-query-plan-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-000-030-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-030-060-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-060-090-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-090-120-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-120-150-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-150-180-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Los Angeles/runs/la-three-bot-oct11-20261012/market/visible-exports/la-oct11-180-181-exact-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi/_weather/_llm/runs/daily24-master-october-20261007/market/combined-market-source-index-v2.json",
+      "C:/Users/jarve/Documents/Codex/Kalshi/_weather/_llm/runs/october-entry-settlement-20261007/root-label-free-contracts-v1.json"
+    ],
+    "added_text_bytes_scanned": 18122538,
+    "credential_token_or_field_alerts": [],
+    "credentials_not_printed": true
+  },
+  "simulations": 0,
+  "fits": 0,
+  "source_edits": 0,
+  "prior_metadata_scan_race": "Retained relocation manifest changed1065 during scan; v1 live delta0 does not represent earlier observed23 additions",
+  "supersedes": "ny-miami-uncertainty-qa-review-v2.json",
+  "coordinator_diagnosis": "MiamiOct12 complete packet and88native receipts existed, but89source_parent_pins absent from export caused _weather_paths FileNotFound and recapture PENDING. Coordinator is exporting exact parents and restoring registered packet in clone-test runtime.",
+  "qa_exception_applied": false,
+  "required_final_acceptance": "Exact108daily statuses and all9wallet financial fields after authentic source repair; no blanket UNKNOWN/PENDING tolerance",
+  "new89parent_privacy_scan": "Not performed by this reviewer in this artifact; prior23file content scan remains valid."
+}

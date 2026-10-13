@@ -1,0 +1,94 @@
+{
+  "schema": 2,
+  "completed_utc": "2026-10-13T14:13:50.902865+00:00",
+  "status": "PASS_INDEPENDENT_EXACT_SAVED_REPLAY_COMPARISON",
+  "native_history_pin": {
+    "path": "final_testing/evidence/native-history.json",
+    "sha256": "98ee44d825858659f82cc973116c33b2a1e31a6b40de3b5461ed7922ec9c6e51"
+  },
+  "expected_history_pin": {
+    "path": "final_testing/expected-history.json",
+    "sha256": "a511b2b64fa17360593e38ec301d0101e97575eb9d1219573ac50996bff0ce09"
+  },
+  "profiles": 9,
+  "daily_rows": 108,
+  "exact_scalar_and_calendar_checks": 927,
+  "mismatches": [],
+  "status_counts": {
+    "COMPLETE": 59,
+    "UNKNOWN": 47,
+    "PENDING": 2
+  },
+  "all_cities_saved": {
+    "la": "SAVED",
+    "ny": "SAVED",
+    "miami": "SAVED",
+    "phoenix": "SAVED"
+  },
+  "job_failures": [],
+  "totals": {
+    "known_cash": "1027.442900",
+    "contracts": "913",
+    "fees": "8.707100",
+    "reserved": "0.0000"
+  },
+  "complete_all_history_balance": null,
+  "totals_qualification": "Known cash is independent conditional supported simulation cash; no shared-fill or full-history profit claim. Win units differ and are not aggregated.",
+  "no_uncertainty_qa_exception_applied": true,
+  "asset_registry": {
+    "files": 1154,
+    "bytes": 889427885,
+    "missing": []
+  },
+  "weather_parent_review": {
+    "parent_list_packet": "final_testing/assets/o/sources/miami/2026-10-12/weather/packet.json",
+    "source_parents_reviewed": 89,
+    "bytes_reviewed": 33072007,
+    "counts": {
+      "json_packet": 1,
+      "grib_native": 44,
+      "text_index_or_raw": 44
+    },
+    "parent_declared_sha_matches_manifest": true,
+    "source_url_hosts": [
+      "noaa-gefs-pds.s3.amazonaws.com",
+      "noaa-hrrr-bdp-pds.s3.amazonaws.com"
+    ],
+    "credential_alerts": [],
+    "binary_semantic_scope": "GRIB signatures only; index bytes and JSON public source URLs checked. No repeated decode/economics or universal binary secret-scan claim."
+  },
+  "bootstrap_pins": [
+    {
+      "path": "final_testing/portable/mount.py",
+      "sha256": "51d88f1c89184340d88fd13910710a872033ad06c2edeb53ea1db51a023d2b5f"
+    },
+    {
+      "path": "final_testing/portable/sitecustomize.py",
+      "sha256": "92275c0a0dd7c6a970ded940c0b7603f2bd3735d71a9646f203fcdd9101863f2"
+    },
+    {
+      "path": "final_testing/portable/runtime_binding.py",
+      "sha256": "a58735cac71aea02087efa080545b1759dfc02e01ca0bcac6394d270d0540e25"
+    },
+    {
+      "path": "final_testing/launch.py",
+      "sha256": "78c88488b98e5ba300abcfa9d36f33bb17edf197d94e5411f8943d9efd26ee30"
+    },
+    {
+      "path": "final_testing/worker_check.py",
+      "sha256": "e22f4ff367a78675ddcaf42cd5e1cdac515d4b15c0902cfcbb5a31b4623efa00"
+    }
+  ],
+  "fresh_restore_evidence": {
+    "files": 1042,
+    "reused": false,
+    "root": "C:\\Users\\jarve\\Documents\\Codex\\kw-reloc-test",
+    "elapsed_seconds": 20.5,
+    "actual_fresh_restoration": true
+  },
+  "source_edits": 0,
+  "fits": 0,
+  "economic_replays_by_reviewer": 0,
+  "orders": 0,
+  "supersedes": "ny-final-portable-acceptance-v1.json"
+}

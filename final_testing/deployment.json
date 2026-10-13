@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "source_model_release": "FOUR-CITY-PAPER-F1F-20261012",
+  "source_model_manifest_sha256": "2bce4471615758e8a2b26f79c31ef51ff333ea5ce14cb5d04f465368417e2bbc",
+  "source_offline_release": "FOUR-CITY-OFFLINE-H1B-20261012",
+  "source_offline_manifest_sha256": "d47c3684706e0e5c47cd62a3edcccedd8eeb4a7cf46bd2138b69e8ac0655bdfb",
+  "model_legacy_root": "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Dashboard/releases/FOUR-CITY-PAPER-F1F-20261012",
+  "offline_legacy_root": "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Dashboard/offline_releases/FOUR-CITY-OFFLINE-H1B-20261012",
+  "runtime_legacy_root": "C:/Users/jarve/Documents/Codex/Kalshi Temp Bot/Dashboard/runtime",
+  "original_python_alias": "C:/Users/jarve/Documents/Codex/Kalshi/_weather/_llm/.venv/Scripts/python.exe",
+  "online_port": 9015,
+  "offline_port": 9020,
+  "start_day": "2026-10-01",
+  "paper_only": true,
+  "model_weights_changed": false,
+  "native_trading_rules_changed": false,
+  "new_runtime_requires_validation": true,
+  "credentials_shared": false,
+  "note": "Legacy names preserve sealed provenance. The deployment mount resolves them only to bundled files in this clone. No original PC fallback is permitted."
+}

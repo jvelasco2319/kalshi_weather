@@ -1,0 +1,246 @@
+{
+  "passes": true,
+  "action": "describe",
+  "results": {
+    "la": {
+      "status": "READY",
+      "city": "Los Angeles",
+      "station": "KLAX",
+      "paper_only": true,
+      "live_orders": 0,
+      "profiles": [
+        {
+          "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+          "initial_cash": "100",
+          "entry_utc": "17:00\u201320:00",
+          "daily_fraction": ".10",
+          "stages": [
+            ".10"
+          ],
+          "exit": "UPDATED_PROBABILITY",
+          "quote_age_seconds": 60,
+          "depth_fraction": ".50",
+          "fees": "RETAIL_CENT",
+          "latency_seconds": 5
+        },
+        {
+          "profile_id": "F6_HYBRID_STAGED5",
+          "initial_cash": "100",
+          "entry_utc": "17:00\u201320:00",
+          "daily_fraction": ".05",
+          "stages": [
+            ".025",
+            ".025"
+          ],
+          "exit": "OFFICIAL_SETTLEMENT",
+          "quote_age_seconds": 60,
+          "depth_fraction": ".50",
+          "fees": "RETAIL_CENT",
+          "latency_seconds": 5
+        },
+        {
+          "profile_id": "V8D_NO18_SETTLEMENT",
+          "initial_cash": "100",
+          "entry_utc": "18:00 only",
+          "daily_fraction": ".10",
+          "stages": [
+            ".10"
+          ],
+          "exit": "OFFICIAL_SETTLEMENT",
+          "quote_age_seconds": 1800,
+          "depth_fraction": "1",
+          "fees": "LEGACY_RAW_4DP",
+          "latency_seconds": 5
+        }
+      ],
+      "source_control": "PUBLIC_FULL_SNAPSHOT / RECEIPT_CLOCK, conditional paper execution",
+      "arrival": "PUBLIC_REST_ARRIVAL_V1: actual supported receipt after minimum5s, through120s; original schedule immutable, modern deadline is a new source timing guard",
+      "F3_publications": "Actual prospective17/18UTC packets only; minute checks reuse publication cache",
+      "F6_risk": "Persistent closed-equity10% drawdown pause, no automatic reset"
+    },
+    "ny": {
+      "city": "New York",
+      "station": "KNYC",
+      "series": "KXHIGHNY",
+      "profiles": [
+        {
+          "profile_id": "CONSERVATIVE_P09",
+          "name": "Conservative P09",
+          "daily_fraction": "0.10",
+          "displayed_depth_fraction": "1",
+          "entry_local": "10:00",
+          "exit": "OFFICIAL_SETTLEMENT"
+        },
+        {
+          "profile_id": "SAFE5_TARGET_ONLY",
+          "name": "Targeted safety",
+          "daily_fraction": "0.05",
+          "stage_fraction": "0.025",
+          "displayed_depth_fraction": "0.50",
+          "entry_local": "10:00\u201313:00",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "closed_drawdown_stop": "0.10"
+        }
+      ],
+      "timezone": "America/New_York",
+      "saved_live_month": "2026-10",
+      "forecast_snapshot_local": "10:00",
+      "no_automatic_new_month_checkpoint": true,
+      "paper_only": true,
+      "orders_sent": 0,
+      "qualifications": [
+        "Public books without event timestamps use actual receipt freshness only.",
+        "Temperature probabilities retain the saved whole-degree physical-day hypothesis.",
+        "Official binary outcome and cash availability are supplied by the common paper ledger.",
+        "Late/missing before-10am weather cannot become a timely historical issuance."
+      ]
+    },
+    "miami": {
+      "status": "AVAILABLE",
+      "city": "Miami",
+      "city_id": "miami",
+      "station": "KMIA",
+      "series": "KXHIGHMIA",
+      "timezone": "America/New_York",
+      "profiles": [
+        {
+          "profile_id": "SELECTED_CHAMPION",
+          "model_id": "MIAMI-IMPROVED-2026-10-SIMPLEX_MIX",
+          "weather_choice": "SIMPLEX_MIX",
+          "rule_id": "CHAMPION_PRICE10_65",
+          "minimum_price_cents": 10,
+          "maximum_price_cents": 65,
+          "minimum_probability_gap": 0.0,
+          "entry_local": "10:00 America/New_York",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "daily_cash_fraction": ".10",
+          "arrival_delay_seconds": 5,
+          "maximum_quote_age_seconds": 5,
+          "maximum_spread_cents": 5,
+          "minimum_expected_net_return": ".10",
+          "side": "NO",
+          "selection_mode": "expected_profit",
+          "allocation": "ranked whole-contract round robin",
+          "fill_policy": "full frozen quantity at native top or cancel",
+          "probability_haircut": 0,
+          "fee_rate": ".07",
+          "fee_quantum": ".0001",
+          "maximum_entropy": 1,
+          "climate_start_utc_hour": 5,
+          "checkpoint_month": "2026-10",
+          "clock_policy": "PUBLIC_REST_CLOCK_V1",
+          "decision_slot": "[native 10am anchor, anchor+1 second)",
+          "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+          "rest_timing_is_prospective_adaptation_not_archival_equivalence": true
+        },
+        {
+          "profile_id": "RAW_ORIGINAL",
+          "model_id": "MIAMI-2026-10-PASTONLY-V10-RAW",
+          "weather_choice": "RAW",
+          "rule_id": "ORIGINAL_P09",
+          "minimum_price_cents": 5,
+          "maximum_price_cents": 80,
+          "minimum_probability_gap": 0.1,
+          "entry_local": "10:00 America/New_York",
+          "exit": "OFFICIAL_SETTLEMENT",
+          "daily_cash_fraction": ".10",
+          "arrival_delay_seconds": 5,
+          "maximum_quote_age_seconds": 5,
+          "maximum_spread_cents": 5,
+          "minimum_expected_net_return": ".10",
+          "side": "NO",
+          "selection_mode": "expected_profit",
+          "allocation": "ranked whole-contract round robin",
+          "fill_policy": "full frozen quantity at native top or cancel",
+          "probability_haircut": 0,
+          "fee_rate": ".07",
+          "fee_quantum": ".0001",
+          "maximum_entropy": 1,
+          "climate_start_utc_hour": 5,
+          "checkpoint_month": "2026-10",
+          "clock_policy": "PUBLIC_REST_CLOCK_V1",
+          "decision_slot": "[native 10am anchor, anchor+1 second)",
+          "arrival_slot": "[actual decision+5 seconds, actual decision+6 seconds)",
+          "rest_timing_is_prospective_adaptation_not_archival_equivalence": true
+        }
+      ],
+      "weather": {
+        "native_fields": 44,
+        "hrrr": "00 f005 + 06 f000..022",
+        "gefs": "00 avg/spr f003..030 every 3h",
+        "availability_minimum_hours_after_issue": 6,
+        "actual_local_receipts_required": true
+      },
+      "paper_only": true,
+      "order_api": false,
+      "new_fits": 0,
+      "blockers": [
+        "No November checkpoint fallback",
+        "Late data is monitoring only",
+        "NWS physical training versus current TWC payout equivalence remains conditional"
+      ]
+    },
+    "phoenix": {
+      "ok": true,
+      "city": "Phoenix",
+      "station": "KPHX",
+      "timezone": "America/Phoenix",
+      "checkpoint_month": "2026-10",
+      "series": "KXHIGHTPHX",
+      "profiles": [
+        {
+          "profile_id": "03-V10-Ensemble-Quarter-Kelly",
+          "family": "EQUAL_WEIGHT_SELECTED_LAW_ENSEMBLE",
+          "model_id": "PHOENIX-V9-EQUAL-WEIGHT-LAWS-2026-10",
+          "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+          "rule_id": "FIVE_CLOCK_NONMODAL_NO_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+          "static_forecast_utc": "17:00",
+          "entry_clocks_utc": [
+            "17:00",
+            "17:15",
+            "17:30",
+            "18:00",
+            "19:00"
+          ],
+          "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+          "side": "NO",
+          "exit": "OFFICIAL_SETTLEMENT"
+        },
+        {
+          "profile_id": "01-V19-Temperature-Set-Quarter-Kelly",
+          "family": "RAW14_CONFORMAL_YES_SET",
+          "model_id": "PHOENIX-V5-HRRR14_23-2026-10-HRRR14_23-V2",
+          "point_state_sha256": "239b163caa457b161fa472967d219f26e2eceb2f67909fcca07d616ddd04aeef",
+          "rule_id": "FIVE_CLOCK_NONMODAL_NO_CONFORMAL_YES_SET_QUARTER_KELLY__HOLD_TO_SETTLEMENT",
+          "static_forecast_utc": "17:00",
+          "entry_clocks_utc": [
+            "17:00",
+            "17:15",
+            "17:30",
+            "18:00",
+            "19:00"
+          ],
+          "sizing": "QUARTER_KELLY_CAPPED_10_PERCENT_OPENING_CASH",
+          "side": "NO",
+          "exit": "OFFICIAL_SETTLEMENT"
+        }
+      ],
+      "fee_quantum": "0.0001",
+      "taker_fee_coefficient": "0.07",
+      "arrival_delay_seconds": 5,
+      "source_age_seconds": 5,
+      "new_fits": 0,
+      "orders_enabled": false,
+      "paper_only": true,
+      "late_clock_backdating": false,
+      "public_timing_mode": "PUBLIC_REST_CLOCK_V1",
+      "decision_processing_grace_seconds": 1,
+      "arrival_processing_grace_seconds": 1,
+      "decision_quotes_must_arrive_by_nominal_slot": true
+    }
+  },
+  "elapsed_seconds": 5.2746513,
+  "source_model_manifest_sha256": "2bce4471615758e8a2b26f79c31ef51ff333ea5ce14cb5d04f465368417e2bbc",
+  "new_fits": 0,
+  "real_orders": 0
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "prepared_for_branch": "final_testing_temp",
+  "source_files_models_weights_unchanged": true,
+  "runtime_binding": "HONEST_NEW_WINDOWS_PYTHON312_ENVIRONMENT",
+  "source_manifest_ids": [
+    "FOUR-CITY-PAPER-F1F-20261012",
+    "FOUR-CITY-OFFLINE-H1B-20261012"
+  ],
+  "unit_tests": {
+    "setup": 6,
+    "portable_mount": 16
+  },
+  "actual_native_city_descriptions": 4,
+  "actual_native_wallets_matched": 9,
+  "actual_calendar_strategy_rows_matched": 108,
+  "actual_replay_elapsed_seconds": 111.2984289,
+  "exact_status_exception_applied": false,
+  "missing_export_files": 0,
+  "restored_assets": 1154,
+  "original_asset_bytes": 889427885,
+  "lossless_pack_bytes": 205262613,
+  "local_service_smoke": "service-smoke.json",
+  "final_restoration_evidence": "final-asset-restoration.json",
+  "strict_complete_month_returns_claimed": false,
+  "actual_orders": 0,
+  "source_month": "2026-10",
+  "readme": "../README.md"
+}

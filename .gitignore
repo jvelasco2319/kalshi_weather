@@ -37,6 +37,14 @@ CHATGPT_*.txt
 *_OUTPUT.txt
 
 # OS/editor
+
+# Generated final-testing assets and independent runtime
+/final_testing/assets/*
+!/final_testing/assets/asset-manifest.json
+/runtime/
+/final_testing/.cache/
+/final_testing/.venv/
+/final_testing/runtime/
 .DS_Store
 Thumbs.db
 .vscode/

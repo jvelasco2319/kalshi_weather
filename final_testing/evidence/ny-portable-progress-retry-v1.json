@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "completed_utc": "2026-10-13T13:52:29.374701+00:00",
+  "status": "PASS_FOCUSED_FAULT_TESTS_ACTUAL_REPLAY_PENDING",
+  "source_file": "final_testing/portable/mount.py",
+  "source_sha256": "51d88f1c89184340d88fd13910710a872033ad06c2edeb53ea1db51a023d2b5f",
+  "tests_file": "tests/test_portable_mount.py",
+  "tests_sha256": "18b90ae86247068dd5c1537e8b92d3edf067bd0ac80f76e075449084a725ba57",
+  "command": "python -B -m unittest tests.test_portable_mount.PortableMountTests.test_mutable_progress_replace_retries_transient_windows_error_only tests.test_portable_mount.PortableMountTests.test_mutable_replace_retry_is_bounded_and_unrelated_paths_not_retried -v",
+  "tests_passed": 2,
+  "replace_policy": {
+    "operations": [
+      "os.replace"
+    ],
+    "destination": "mutable Dashboard/runtime overlay only",
+    "transient_windows_errors": [
+      5,
+      32
+    ],
+    "maximum_attempts": 6,
+    "maximum_sleep_seconds": 0.2,
+    "immutable_admission_precedes_retries": true
+  },
+  "proven": [
+    "transient faults followed by actual native file replacement with timestamp bytes unchanged",
+    "permanent transient fault stops at sixth attempt",
+    "unrelated path stops after one attempt",
+    "immutable target refused before native invocation"
+  ],
+  "source_asset_edits": 0,
+  "financial_replays": 0,
+  "arithmetic_changed": false,
+  "economic_timestamp_rewrite": false,
+  "actual_shared_file_race_verified": false
+}

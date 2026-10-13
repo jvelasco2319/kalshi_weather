@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "completed_utc": "2026-10-13T14:04:11.283089+00:00",
+  "decision": "CONDITIONAL_APPROVAL_SPECIFIC_UNCERTAIN_ZERO_CONTRACT_ROWS",
+  "frozen_source_sha256": "c7b2f80a43f9639aaf7db22a7eb28d8b90c28d73d6c29b8bae1b4fc50fc92bf9",
+  "source_evidence_lines": [
+    379,
+    380,
+    384,
+    498,
+    499,
+    518,
+    519,
+    560,
+    567,
+    568
+  ],
+  "approved_scope": {
+    "city": "miami",
+    "day": "2026-10-12",
+    "profiles": [
+      "SELECTED_CHAMPION",
+      "RAW_ORIGINAL"
+    ],
+    "statuses": [
+      "UNKNOWN",
+      "PENDING"
+    ],
+    "new_reason": "NATIVE_44_FIELD_ARCHIVE_INCOMPLETE",
+    "filled_contracts": 0,
+    "financial_comparison": "EXACT_ALL_EXISTING_SCALARS_AND_DAILY_FIELDS_NO_TOLERANCE",
+    "full_history_balance": "REMAINS_NULL"
+  },
+  "required_qualification": [
+    "Uncertainty-class compatibility is not exact input/status identity",
+    "Different missing-source reason is possible; do not claim clock-only change",
+    "Retain actual old/new status/reason/source pointers; expected compact baseline does not record reasons",
+    "No execution-risklock exception or filled/unsettled-trade relaxation",
+    "No COMPLETE promotion and no known missing-input no-trade inference"
+  ],
+  "asset_followup": {
+    "before_files": 1065,
+    "current_files": 1065,
+    "added_files": 0,
+    "changed_existing_sha256_count": 0,
+    "added_original_paths": [],
+    "added_text_bytes_scanned": 0,
+    "credential_token_or_field_alerts": [],
+    "credentials_not_printed": true
+  },
+  "simulations": 0,
+  "fits": 0,
+  "source_edits": 0
+}

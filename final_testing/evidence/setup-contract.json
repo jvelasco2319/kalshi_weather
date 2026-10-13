@@ -1,0 +1,164 @@
+{
+  "schema": "PORTABLE_FRIEND_SETUP_CONTRACT_V1",
+  "recorded_utc": "2026-10-13T12:45:09.356276+00:00",
+  "status": "SETUP_DEPENDENCIES_AND_DOCUMENTATION_VERIFIED_MODEL_BOOTSTRAP_PENDING",
+  "branch": "final_testing_temp",
+  "python_baseline": "64-bit Windows CPython 3.12",
+  "repository_path_recommendation": {
+    "maximum_characters": 65,
+    "example": "C:/kw",
+    "reason": "Windows MAX_PATH when restoring sealed archives"
+  },
+  "commands": {
+    "clone": "git clone --branch final_testing_temp --single-branch https://github.com/jvelasco2319/kalshi_weather.git C:\\kw",
+    "setup": ".\\final_testing\\setup.ps1",
+    "prepared_environment_assets_only": ".\\final_testing\\setup.ps1 -SkipInstall",
+    "start": ".\\final_testing\\Start.ps1"
+  },
+  "ports": {
+    "online": 9015,
+    "combined_offline": 9020
+  },
+  "strategies": {
+    "total": 9,
+    "los_angeles": 3,
+    "new_york": 2,
+    "miami": 2,
+    "phoenix": 2
+  },
+  "history": {
+    "start_day": "2026-10-01",
+    "end_day": "button_click_date",
+    "initial_cash_per_wallet": "100",
+    "independent_wallets": true,
+    "monthly_reset": false,
+    "mode": "CONDITIONAL_ARCHIVE_REPLAY",
+    "missing_fill_or_source": "UNKNOWN_OR_PENDING",
+    "later_unregistered_checkpoint": "PENDING_CHECKPOINT_NOT_REGISTERED",
+    "full_complete_claim": false
+  },
+  "source_release": {
+    "model": "FOUR-CITY-PAPER-F1F-20261012",
+    "offline": "FOUR-CITY-OFFLINE-H1B-20261012",
+    "registered_month": "2026-10",
+    "frozen_date": "2026-10-12",
+    "weights_changed": false,
+    "native_rules_changed": false,
+    "retrospective_fixed_state_dates_explicit": true
+  },
+  "runtime": {
+    "observed_python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "installed_exact_pins": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.1",
+      "pyarrow": "25.0.1",
+      "requests": "2.34.2",
+      "eccodes": "2.48.0",
+      "findlibs": "0.1.3",
+      "tzdata": "2026.4",
+      "cffi": "2.1.1",
+      "attrs": "26.1.0",
+      "pycparser": "3.0",
+      "charset-normalizer": "3.5.2",
+      "idna": "3.20",
+      "certifi": "2026.7.22",
+      "urllib3": "2.8.0",
+      "python-dateutil": "2.9.0.post0",
+      "six": "1.17.0"
+    },
+    "verified_package_count": 17,
+    "system_site_packages": false,
+    "original_python_executable_hash_required": false
+  },
+  "verification": {
+    "setup_contract_tests": {
+      "count": 6,
+      "passes": true,
+      "evidence": "Root completed tests reported in task assignment; not repeated during documentation work."
+    },
+    "mount_tests": {
+      "count": 12,
+      "passes": true,
+      "receipt": "runtime/portable-mount-review-v2.json"
+    },
+    "documentation_checks": {
+      "final_testing_temp": true,
+      "65 characters": true,
+      "64-bit Python 3.12": true,
+      "9020": true,
+      "9015": true,
+      "-SkipInstall": true,
+      "October 1, 2026": true,
+      "nine paper trading": true,
+      "Probalytics read-only database login": true,
+      "October 12, 2026": true,
+      "pending": true,
+      "no original-PC": true,
+      "conditional historical": true,
+      "root_additive_pointer": true,
+      "no_original_author_path_in_new_guide": true,
+      "code_fences_balanced": true,
+      "mount_test_command_exists": true
+    },
+    "actual_model_bootstrap": "PENDING_COORDINATOR_DLL_CLOSURE",
+    "model_or_financial_parity_claimed_by_this_receipt": false
+  },
+  "assets": {
+    "inventory_files": 1042,
+    "inventory_bytes": 838233340,
+    "missing": [],
+    "original_identities_and_hashes_preserved": true,
+    "whole_old_research_archive_included": false,
+    "scope": "Current reproducible saved UI/model/trader/offline-history inputs plus read-only acquisition tools"
+  },
+  "credentials": {
+    "included": false,
+    "required_for_missing_historical_books": "Friend own Probalytics read-only database connection",
+    "storage": "Server RAM only; released on stop",
+    "kalshi_order_credentials_required": false
+  },
+  "qualification": {
+    "paper_only": true,
+    "real_orders": 0,
+    "new_fits": 0,
+    "online_entry_pause": "NWS_PHYSICAL_TARGET_TWC_EQUIVALENCE_UNPROVED",
+    "original_pc_fallback": false,
+    "full_year_claim": false,
+    "simultaneous_shared_book_fills_proven": false
+  },
+  "pins": [
+    {
+      "path": "final_testing/setup.py",
+      "sha256": "3b2bc5ce35476b25ad132f22adf93e175017e5be0279d9a788265a40e9987333"
+    },
+    {
+      "path": "final_testing/setup.ps1",
+      "sha256": "287b2956d47c5ffe0f01b801740140630054c45da582c2d3232bf2f171b1e136"
+    },
+    {
+      "path": "final_testing/Start.ps1",
+      "sha256": "b93a1dbf4439a5fcced53364d99318ae6a0caab87279559497d7814f2d38f2e8"
+    },
+    {
+      "path": "final_testing/requirements.txt",
+      "sha256": "e1199dee22e29eb6ca775dded387e2920debf8175cee0673b7c84c0f31a2ea62"
+    },
+    {
+      "path": "final_testing/README.md",
+      "sha256": "b6755f36f0843f43738e1064cd82940e99997c68bd92e2c36c3f57ebac49dd0c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "63bedeca4ccc963a42107fc31736392a0db29559b68d797ca44d7c755364f92d"
+    },
+    {
+      "path": "final_testing/tests/test_setup_contract.py",
+      "sha256": "6c681f3db6e3603f38bf9a6d78820b2594561eed16e120a9b616aa8769e9ff3d"
+    },
+    {
+      "path": "runtime/portable-mount-review-v2.json",
+      "sha256": "2323008d0d043e4afd084f9da90d73c8a0e3147568437517b8c45a0e2a2dde51"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "created_ns": 1791900360399038000,
+  "asset_manifest_sha256": "37714ee5d4d6ffbd58370a60e42cdcb49c9d3ea97ccf4bce31eb42b11c6a50fe",
+  "zip_sha256": "bcf83bfb62271d8cfde2bb606319a3922afde9aa81c3206adac83de8dd197b89",
+  "zip_bytes": 205262613,
+  "parts": [
+    {
+      "path": "frozen-assets.zip.part000",
+      "bytes": 33554432,
+      "sha256": "ab25b80d95384f2f14f7a3ccc1a8a464002754742be8d20c3e5d7cda9b281055"
+    },
+    {
+      "path": "frozen-assets.zip.part001",
+      "bytes": 33554432,
+      "sha256": "f968d2f0f5fc881c6ebe309cbe7c4962e481d3e5bd4eca50e9c9ac66d563ae85"
+    },
+    {
+      "path": "frozen-assets.zip.part002",
+      "bytes": 33554432,
+      "sha256": "1c35f636f92f0f7236d49002d8a77bf51be92dbc0703ef353fd4258390281349"
+    },
+    {
+      "path": "frozen-assets.zip.part003",
+      "bytes": 33554432,
+      "sha256": "45d8e2d8fa7d832e373eac21c2fc5b6326bef9d80e46d2014cc626add55b43aa"
+    },
+    {
+      "path": "frozen-assets.zip.part004",
+      "bytes": 33554432,
+      "sha256": "13ee7287b3ac87db3fe87e4bd4154e4e5bf5345677e503ade7faebeaabc61ac4"
+    },
+    {
+      "path": "frozen-assets.zip.part005",
+      "bytes": 33554432,
+      "sha256": "3ce4821ad8a2aa3429e0705f7debba93978adba9cfeda9f7f5d92e94330c952c"
+    },
+    {
+      "path": "frozen-assets.zip.part006",
+      "bytes": 3936021,
+      "sha256": "2c97f454a2ce1fbe50acc6e8c4733546af5d0184a6c50abf124d85807c687e17"
+    }
+  ],
+  "original_files": 1154,
+  "original_bytes": 889427885,
+  "lossless": true,
+  "source_bytes_changed": false,
+  "credentials_included": false
+}

@@ -1,5 +1,13 @@
 # Kalshi Weather
 
+> **Four-city frozen testing branch:** For the saved Los Angeles, New York,
+> Miami and Phoenix models, nine paper strategies, and Offline History tools,
+> follow [final_testing/README.md](final_testing/README.md). Clone branch
+> `final_testing_temp`, use **64-bit Windows Python 3.12**, then run
+> `final_testing\setup.ps1` and `final_testing\Start.ps1`. The four-city page
+> opens on port **9020**. The older LA instructions below describe the original
+> application and use different launchers and dependencies.
+
 Local fake-money tools for watching Kalshi Los Angeles high-temperature markets.
 
 The easiest thing to run is the model tournament dashboard. It tracks the current

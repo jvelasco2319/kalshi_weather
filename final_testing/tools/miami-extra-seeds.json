@@ -1,0 +1,631 @@
+{
+  "schema": 1,
+  "paths": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\94482392c6244bf8a88b998dbc073b65\\packet.json",
+      "sha256": "64878b947e3ef14a84934794e9be5ee66ad36a1d49571c9b6cf6bc0ac34079a2",
+      "bytes": 105114,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\ac9159d2a9c145f0956df6a79364d261.raw",
+      "sha256": "ef3d415410b6d86c520177afd6d1a56f526ef23f677031751b49811df20f3df9",
+      "bytes": 239448,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f3780a3e3d0c4a7aa379787a484dd990.raw",
+      "sha256": "327b7697ef93c938475d580bbccb201295d8afda090696acc55d9484de85299c",
+      "bytes": 5118,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\b4b1bc1ecb604b2aa57d400bc4900768.raw",
+      "sha256": "7425209840fd5011c72f33a6376cf025d93e2a45695238893d2aa45d8bde4b5d",
+      "bytes": 234243,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6a29282c2c6542ce8804271eed19b062.raw",
+      "sha256": "c8f0fc05e94ac15e932551dcf5ada8055f2fe338a5aa86e15f0fab4e5991b297",
+      "bytes": 5116,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\d13ab9789cbb4991903ee25389e97a08.raw",
+      "sha256": "14f641cdc17fec629067b73caecd34053fb380db43b0a713e50a401be057b7c3",
+      "bytes": 231665,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\539ff84148b9458288be805c4713b30c.raw",
+      "sha256": "c7a0532615e2555bec31c238ee726e6d7b74f4d4cd99f04dcb4ed085241d65cb",
+      "bytes": 5116,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\9af2a74cfc134fa799288da40ef2e036.raw",
+      "sha256": "68138e4b21ccd6502a04867fdb5626ef7dc1f4096980906e407a4128f315ce1b",
+      "bytes": 230394,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\54a587fdc8e04e4ea2ad48e75f0efc15.raw",
+      "sha256": "125452f2344155cf1d569576f89b6e2e84dd4499380b5cabd6659753963b8c83",
+      "bytes": 5202,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\cc91afa6ec244ebc8a68c37ed62cc419.raw",
+      "sha256": "5970177165f4d03eea7b688b74cc8bae39dab32e1eec4ea4599ff7212bcac75e",
+      "bytes": 230188,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\06aafe94f5924e87932136dcf80a89cd.raw",
+      "sha256": "316f31bcb79d76f8ff00af7a49bbfc7a9155b68214c61d76005258b3422efd53",
+      "bytes": 5216,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\be97297f84a5445caa4e2ce82110030a.raw",
+      "sha256": "497480197bcde898f40aef3a45be83dc4d17193ac7c3dd4f77f1559c71935a06",
+      "bytes": 228421,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\1572fccc38834ec5bff22469e23a34ff.raw",
+      "sha256": "9558952813aef0ea3315678bee349acd34854ecffc5879635d59eebb17cba257",
+      "bytes": 5216,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\b9c75904f5764bfb9ba48e577604b4f1.raw",
+      "sha256": "7490500efb851fee9ea0d2194543d91b59788295201f77f562fe336970510125",
+      "bytes": 226668,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6d9445cc65ac4de9ab58aba3a254aa5c.raw",
+      "sha256": "81f481af24e2982df58ffb144db321b1c575053740ac105f5ffb7e44668fe403",
+      "bytes": 5215,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\780d85cf49234e5c88369ac043bbde61.raw",
+      "sha256": "f83076aeea4afe291967b6dcfeb403d703342118cb2713123251720279fd84ad",
+      "bytes": 225340,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\b1e0e4dea70644cfba663a3e5fe010bb.raw",
+      "sha256": "aba06c34a8f1e488559387a47d8a18f303d5a549686d0cc9fa0bda2278d40d85",
+      "bytes": 5214,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e4e6fe3eaa164ce192e7c01dde863d08.raw",
+      "sha256": "859d4024c7d024e87c0f94f429e4988c84f38572ecfaba66f3b370c3e188f402",
+      "bytes": 224597,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\118302ad3d9741f0bc614f4973118b02.raw",
+      "sha256": "73b40191e72ac224d0323de4a999c492e8d9084071f6bc5786d9a8ac231f0ef8",
+      "bytes": 5212,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\9902035e6a5a4ba496b79c46c6e5baab.raw",
+      "sha256": "a51ce5dafbce426dee24f02d7c58d4293277f3e0a30017e7f8e5fae7a84f027a",
+      "bytes": 223858,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\30fbe9785941438699b134458c7698b5.raw",
+      "sha256": "6764b37c395cadc490703c2eec1b4e8e61b7de0f115852163787a124676c54b5",
+      "bytes": 5211,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6b75716132074262b993c2d6b2135e6b.raw",
+      "sha256": "bdcc09094f1299541bcb34a5187b0eb2c08be9e6818f44a7daa540545ea800c6",
+      "bytes": 167411,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f1abd069666549b08075ba7e375ab2dc.raw",
+      "sha256": "e8e0f4a18c15c21b30ddd4819a810b875fb6a192d003feacc587005782b1ae95",
+      "bytes": 5345,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\c4b2a74f680b4038934c3c9e9aa643e6.raw",
+      "sha256": "094570d3319b3b9b6c5d32ab43f71f6fc412558f431548900fb0cab688a14883",
+      "bytes": 172471,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\95b05cf965624a718597afb6d10e71ed.raw",
+      "sha256": "232ea3ea8d55ea6299ee5587d452750666451bbbbaff18d49ae03eccfcdc1413",
+      "bytes": 5345,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\bab92403a5a840a498e6a1b10c97aa4d.raw",
+      "sha256": "aed2b25e4429525d34a5079494f544cffe4e214732af9691f00253b2453ea467",
+      "bytes": 171935,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\4b9ea0577c4b4b1a9cef4aa38a20de22.raw",
+      "sha256": "3f00eaace7104604e685fbfe1f5cc4e58b7955e3b925fe0290f7868b83a62456",
+      "bytes": 5348,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\ce8844f1d5af46608b485c395eb87a51.raw",
+      "sha256": "c046e3125893e2c822aedea7b8967501b87baf4f7f0a6f36238cef5603332132",
+      "bytes": 174229,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\585df0c1b8fd4ed4b4aa22a994e9b34c.raw",
+      "sha256": "b3aca330a93370aed7fe9a9806a84d6e16771ed056fc8a3a3ddcc85c42cc0c2a",
+      "bytes": 5441,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\b7f03163be9d418e8889a0d287b2be23.raw",
+      "sha256": "9485b8f85c8c3ab235dc691fef684b2c86c75cbe67929149f6dbcd4f02dd4efd",
+      "bytes": 178095,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\c00a63e6e93d4aef96f9078ba40fc381.raw",
+      "sha256": "91ae1cde6193ae34d15a80f55076825bb16f19a31d2163cbcce9b3fcf09ec48e",
+      "bytes": 5455,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\bac06052c86541789b905c7c4321eb9c.raw",
+      "sha256": "e7bec1735ffaa0fb43084b96bf20156366af4b2191d954ee0cac55474f885a32",
+      "bytes": 176591,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\115ee0537b2645318ba156f8979eec01.raw",
+      "sha256": "7bd08bbde1083ab80cfef23cc05a45f311d62d57c58e20139e6cb5d242cc597f",
+      "bytes": 5456,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\be22861edba94d1ba66cd8f9f46a13d8.raw",
+      "sha256": "3f09218cf1841493a0acd5569a8f051f925e33fe20fc879c2361f2a085a8cc77",
+      "bytes": 171756,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\1af185e5aa9540f7b444e477546a4f5c.raw",
+      "sha256": "0c0f8dbe72d3ee50f1243b801f534454ddb65885ff827cde04284e4d312bc7cb",
+      "bytes": 5452,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6f3ddd984b6c478f86b926f7aa660a4e.raw",
+      "sha256": "bdbc44aff26d012729247fb110321bef565039d8a4a165715384422f1d879a58",
+      "bytes": 171398,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6d05455cbcac44f9a54edb8c39d189ea.raw",
+      "sha256": "87d423978c47b49adb516e24d62240672cde7d6e5153a811080d490b0fc086c4",
+      "bytes": 5456,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\95ab012a5dce4694933332cb70dad522.raw",
+      "sha256": "24db8e934a410b4bb6a88a3d058e5bbb50084ca20b4995657021354174b3dc17",
+      "bytes": 174572,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\201ba3ca458b44d5a088be23260e66a8.raw",
+      "sha256": "845a4b551faa6339025319b7e35d5aa8b64eeed10e9cba5dc8ab043172afee6c",
+      "bytes": 5451,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\8bbbf54442f74397b174bfa37c540bb3.raw",
+      "sha256": "3257727be4426bdd78b9d439d290dd29c51ff6fbd32187acf8021c3e879bb089",
+      "bytes": 174732,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\7cc79a04190e4cc0a30ee22a0336dfe5.raw",
+      "sha256": "96d21a9d0ab1527aeb914bf658b3a146e43a4c3d7e4b9b99d33b52f9fa28b0ad",
+      "bytes": 5451,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\0c9b56f007b743ae912c4e79bb9e5664.raw",
+      "sha256": "28a1dc9b843b0273b62628817e191659f39a4f23cca6571b178d1b03a27ad79e",
+      "bytes": 1188195,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\72055d3737ec4916b6eb86742a75f245.raw",
+      "sha256": "d32d93bac47ebb4f0dc4ab133a386facce0edde204101fe695c6f9e66280717e",
+      "bytes": 10362,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\947f2822c40645f9b159e544222516fd.raw",
+      "sha256": "218af2105ad4443e0c90bf2566f9904ff1a1743fc8f34735199a5aa5394cc41f",
+      "bytes": 1183871,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\847adecde90849e980f6fd9ebb3e073b.raw",
+      "sha256": "e832a2e7468caf491b43e89e8d5cfb9ec773468f06c70cfe1d4231cc50e4e520",
+      "bytes": 9000,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e4972b40b4c548bfbb9c40266dbb7707.raw",
+      "sha256": "3d42e19308759dc7781b7ecfa8ccbb8f3b017388890cd4a1baa7356725bfd2ad",
+      "bytes": 1181908,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\ced2d7b7981e4b83845c93911eae19bc.raw",
+      "sha256": "175bb9e732739ce608e471f84752d8fcbc627336a61a3969749407313d8ed1de",
+      "bytes": 10176,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\d24a56d6638e4fa0a55ff4bae96d34dd.raw",
+      "sha256": "3f090336e850b99cba97db9aaa7cf9a5440b427e43c27df96e029eacdc33c986",
+      "bytes": 1183549,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\2faebfdc0e724896b465482598026cd9.raw",
+      "sha256": "14502991babecd4bf1439136fe1fa9dd39db0f402c13669f0d5e9fa1762bf505",
+      "bytes": 10354,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f5a87549583640e08d2f4df232879bfc.raw",
+      "sha256": "5c283c70013f8743968fa0d05f052412ba41561f92089c08bfe3b6a309835577",
+      "bytes": 1187608,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6110613f2ddd42ce8119608761f69b25.raw",
+      "sha256": "f90edd5f58b9c95927fbdb14b5b8191adfc90cfb7048af8bea9ec56ff9976a72",
+      "bytes": 10354,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f6ab0c0ad22e4af2a2df171e6d960944.raw",
+      "sha256": "0d58f1e9c7b9826a588141d996fbaf7608a7cd1ee272cc1622290620a4cd89e9",
+      "bytes": 1191095,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\604764946e84439681696f3b07d6aea5.raw",
+      "sha256": "98352046e414c1d38fab16928a6e6fc1acfb467b41d1b0348630e4d45940c8e7",
+      "bytes": 10355,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\1ec2d5a2f5d7446f966e0a1ac376f73e.raw",
+      "sha256": "36b7e4011cfb506656fc0c45a3cbe06699e6045ae9a72b063cf46a2c1f7d8a70",
+      "bytes": 1195512,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e2def34cef154259bace8756b1fb8df8.raw",
+      "sha256": "1baaf5737afad908508f8e55dd07bd4365b17f484d9fe218aad349e68d4849a5",
+      "bytes": 10360,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\883ad412b7dc45c1b19e56c408669626.raw",
+      "sha256": "d54874237207a11012eece62dd7816506b21654512ecc657fd29765713ac7245",
+      "bytes": 1197800,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e4965d3de52b467882ca8e99de0ce43f.raw",
+      "sha256": "9df5971501e617c880d9cacaaadb68adc37f34c2f54996f26bbc84442a1a9d5b",
+      "bytes": 10363,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6f210c5e1a024f11b61211c8cc452864.raw",
+      "sha256": "dca4fb1049dacd7ffaf60a4f24675211a0e19ff7379f14a480eba4800262de9d",
+      "bytes": 1179804,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\9330f51df35040ff946d4eebef55292f.raw",
+      "sha256": "c51f2eb2a67d3db52841a4765d964b0f1011eb606430caa71b4248aad1567856",
+      "bytes": 10363,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e50d0ceaa049473797387d854d416a82.raw",
+      "sha256": "6aeca40864c207f6ded3ab85c916c5babaafbdac83091aed721de74c742277f0",
+      "bytes": 1183915,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\161057cf32384b379f12bb128da7168b.raw",
+      "sha256": "983ed669274f7ef59125bced6102fface2a04105de22d696953436abe2a24392",
+      "bytes": 10363,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\529af0580d874336928656e7153ba2c0.raw",
+      "sha256": "d07e423c33e25cdf5dd2cb7a91244e86df0f50a9c1d0381b6bb78d0aa673c4cc",
+      "bytes": 1172204,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\a38674e02da141b19d2f0af6b6250d00.raw",
+      "sha256": "e22c90183d391f6740ec6f9e8b6134df8a10149e265df222fa237a5151d50cbd",
+      "bytes": 10364,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\613d1aec56e343919322e4e3b60b6db5.raw",
+      "sha256": "ee22e4d7c91b78848d74fa39e9f285130a0d399a5ce15283dcda1d02d0a2cc0c",
+      "bytes": 1181035,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\99ceb40794a1481493053771b42e147c.raw",
+      "sha256": "35d37e9a70906fbffc101dab8aa495fc6c8680fd337ccf060c26520d1cecd59a",
+      "bytes": 10537,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\4337b201f6b247ed9de5361c46e82c70.raw",
+      "sha256": "2a4d58e305dcb75c25bb9bc8501e4f06a9a2e2e8027f2413b2d53f843ae1a93c",
+      "bytes": 1187997,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\6be844ef8b124f45b725b75b12bbcca5.raw",
+      "sha256": "194f5f5f3dcb995b1564b1675142696ccbc914958a3352b5c74590f0c50896cd",
+      "bytes": 10561,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\328022ebbf26444e9d04aa75154f7088.raw",
+      "sha256": "9c9a10a098cae861561c249e45df7c6a8e51ea212dbf079224fa2e571eaaf171",
+      "bytes": 1193857,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\1e0cfeb75f8841159539b1247e4fbe1b.raw",
+      "sha256": "1da4a47264e25830dbdb073df433f41ff0fa07ac2edc3b6c12a5f717a9868602",
+      "bytes": 10561,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\7c377dd8cb614d75837efd7f6032242c.raw",
+      "sha256": "cc649965742c48236a5af3a9715fc2d9a14d57a767732d534760332bc634ee0b",
+      "bytes": 1197707,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f37935f5c5754cc89cabc1059e420c9b.raw",
+      "sha256": "2d8e8a052a23f289bacf62fa19637b4f3f1bd8327b2cb09696ddf7e0fd806e54",
+      "bytes": 10560,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\3db81159f9144f6b86d065c6c8425431.raw",
+      "sha256": "19a59e3fc8c869687b66c0892357392505825eeb49b50481ca25d1754b8b7d80",
+      "bytes": 1198321,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\0084dccd08394d9aaec35d9fff952afd.raw",
+      "sha256": "b78ef86ba48c8ad20735c90692edd3bdecbb79e7f221d28f5cbf3eaa653c17b5",
+      "bytes": 10560,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\3d6d396773c2449f8b5ee298b5dddeeb.raw",
+      "sha256": "19a90303d3866c37c371acaddd744026aac982ca4cbe414de0eb17b30dbb3a55",
+      "bytes": 1213281,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e501fa0592e1407f9ce309d67c76ec0f.raw",
+      "sha256": "dfec6011baeefb825fb07639693748fcd58525bde71cdc54672fa53a67125b46",
+      "bytes": 10561,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\06681bfc40b94f1f96254ec4e8580c88.raw",
+      "sha256": "68a0284780ec53f5f92227334e578c81b8af97593db29626b5f59cdd829247ab",
+      "bytes": 1196602,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\b5de2258ab0c4defa54ca49c9b3fc225.raw",
+      "sha256": "607cd6ec66e55889aa69d1a18a803c4e993ae6c4948a60e04de7a20690adbfdb",
+      "bytes": 10560,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\f6d3ab0947d745c58db951943e4ce6d0.raw",
+      "sha256": "4a744b39e0d84cbcfaabae84afa6eb2c4adbcbab6adcc8d7dd1698fb8a9a2085",
+      "bytes": 1189737,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\3ccde6e741df4dc5b9d1ffc5edc290f6.raw",
+      "sha256": "35077903eca25389f8b2a6df73e35ee07e0fc6a20dff291199e370716acb8775",
+      "bytes": 10559,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\c3c6ed822546445fa8ac58352f96d82f.raw",
+      "sha256": "eb87647c8622d453a8ae7b29c56b8886e69b279de65f7255f7981921506da466",
+      "bytes": 1182962,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\79d5e272e1c3469baccb690e04219aee.raw",
+      "sha256": "ff190ed65bd6c88392705690888fcb7615de82d9e0d39b094bb3bad6d1b48793",
+      "bytes": 10558,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\ffec37c049f94b01bb5e735480094770.raw",
+      "sha256": "04078d0d46b2c7a0daed521a890ce77f11fd2867c7161e2d389310129fa13552",
+      "bytes": 1183837,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e08a6fa402654b14b0eb1d479590d9fc.raw",
+      "sha256": "4e33280eb1f21568903797071822d7e95089c7627b59305095fd49dd9f91be26",
+      "bytes": 10555,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\c3fbe75f63d54f689bfe25cd8a9dae21.raw",
+      "sha256": "45bdc16da064b0596424245f36ff7f0d4341cd3fdbe7af3309d35052b5fec6fc",
+      "bytes": 1200920,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\04584c8d3be1433c97c94779b4bfc758.raw",
+      "sha256": "2fa7734f4d9b4716ddf640e957632f2b48438338b1a2082ba28895b2482da6b5",
+      "bytes": 10553,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\05cb73093dca40e8ae7a35c2c2b97cee.raw",
+      "sha256": "5a90faf09cadeae9a05a14e49a2bedd0fa6a054563733e68322bb8f9a5aa5759",
+      "bytes": 1204694,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\e7a7ee9463c04690a174135b8b1d8570.raw",
+      "sha256": "15780651b05358e1782dbf4c56ae5dbb44d24ac3580be326791779244a3b9614",
+      "bytes": 10558,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\638d0407848744db9563249d5e8018a1.raw",
+      "sha256": "303bf21e92880163ae873716e5ec21714dfb224a1be9cf815f61008b5429c378",
+      "bytes": 1206779,
+      "follow_json": false,
+      "required": true
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\miami\\weather\\2026-10-12\\397d27ba3aac4e50b5b510ca3650983d\\0a93a987b2084357a60e4437ab305b2a.raw",
+      "sha256": "7e51b50dd19d662e89e03360e06ab7bb2cb50a2df1cba11df6ab22ab2d640d1d",
+      "bytes": 10558,
+      "follow_json": false,
+      "required": true
+    }
+  ],
+  "source": "CompleteOct12weatheroriginalsourceparents",
+  "new_fits": 0,
+  "real_orders": 0
+}
