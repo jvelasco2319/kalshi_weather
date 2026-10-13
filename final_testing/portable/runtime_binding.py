@@ -67,6 +67,22 @@ def install():
         }
 
     bridge.Release.__init__ = portable_init
+    if os.environ.get('TEMP_DESK_PORTABLE_MODE') == 'offline':
+        # Resolve the sealed application's explicitly relative model reference
+        # for LA's unchanged gate. This is deployment metadata, not model math.
+        offline_la = importlib.import_module('tempdesk.offline_la')
+        original_read = offline_la._read
+        model_root = Path(os.environ['TEMP_DESK_PORTABLE_ROOT']) / config['application_online']
+        expected_reference = 'REPO_RELATIVE:' + config['application_online']
+        def application_read(path):
+            value = original_read(path)
+            if Path(path).resolve() == (app/'offline-manifest.json').resolve():
+                if (value.get('model_release_path') != expected_reference or
+                    value.get('model_manifest_sha256') != config['application_model_sha256']):
+                    raise RuntimeError('Portable offline model binding differs from registration.')
+                value = {**value, 'model_release_path': str(model_root)}
+            return value
+        offline_la._read = application_read
     original_urlopen = urllib.request.urlopen
     port = int(os.environ.get('TEMP_DESK_PORTABLE_ONLINE_PORT', config['online_port']))
     if not 1024 <= port <= 65535:

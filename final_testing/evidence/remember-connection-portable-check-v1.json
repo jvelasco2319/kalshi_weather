@@ -1,0 +1,12 @@
+{
+  "passes": true,
+  "tests": 52,
+  "portable_server_restores_saved_connection": true,
+  "history_export_contains_no_auth_fields": true,
+  "write_sql_rejected": true,
+  "real_orders": 0,
+  "models_unchanged": true,
+  "portable_LA_native_review_gate_passed": true,
+  "offline_release": "FOUR-CITY-OFFLINE-REMEMBER-DOWNLOAD-v5",
+  "offline_manifest_sha256": "d641d874248e0bf7327c4357dd19d03f69bb1fd17330c66bb08ef2bd1f3bb233"
+}

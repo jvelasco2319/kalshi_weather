@@ -62,12 +62,20 @@ missing market and weather data, and updates the figures. It can continue after
 the browser tab closes while the server runs. Repeated clicks do not create a
 second copy of the same active job.
 
-For new historical order books, use **Connect read-only archive** and enter
-**your own Probalytics read-only database login**. A website login alone does
-not supply this database connection. Credentials stay in server memory and are
-released when it stops. No credentials, connection tokens or author wallet
-databases are included in this repository. Public market and weather reads do
-not require a trading-enabled Kalshi account.
+For new historical order books, sign into **Probalytics**, open its SQL page,
+and select **Use this query in Python** to find your existing read-only download
+connection. In Offline History, select **Connect Probalytics** and enter that
+username and password once. This is the connection supplied by the website;
+you do not need to create a separate account.
+
+**Remember connection on this computer** is selected by default. After verifying
+the login, the app saves it in **Windows Credential Manager** for your Windows
+account on this PC and reconnects automatically when the server restarts. Use
+**Forget saved connection** to remove it. Unchecking Remember keeps a connection
+only in server memory. Saved credentials are never returned in the history API
+or exports. No credentials, connection tokens or author wallet databases are
+included in GitHub. Your friend connects with their own Probalytics account.
+Public market and weather reads do not require a trading-enabled Kalshi account.
 
 The page shows balances, daily closed-trade profits, wins and losses, contracts,
 fees, pending days, source receipts and saved result exports. **Pending or
@@ -203,3 +211,13 @@ The command refuses wallets with orders, positions, fees, losses or completed
 history. It keeps a backup and records the migration. Active paper histories
 need a separate migration; they are never reset by this helper. The offline
 history and its saved financial calculation modules remain unchanged.
+
+The archive reader allows bounded responses up to 512 MiB (still capped at
+500,000 rows per requested day). Larger or incomplete captures remain unknown.
+Brief Windows file-reader locks are retried before a progress update fails.
+
+Downloads cover the nine saved traders’ required decision and arrival windows.
+New York, Miami and Phoenix retain every revision within their five-second
+freshness intervals; LA retains its full 30-minute lookback and 17–20 UTC
+replay window. Prices, depth, invalid latest states and conflicting tied rows
+are kept. These captures are not complete all-day books for arbitrary strategies.

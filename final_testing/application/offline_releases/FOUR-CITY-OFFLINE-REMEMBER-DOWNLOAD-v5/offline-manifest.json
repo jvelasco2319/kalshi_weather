@@ -1,0 +1,201 @@
+{
+  "release_id": "FOUR-CITY-OFFLINE-REMEMBER-DOWNLOAD-v5",
+  "created_ns": 1791930895911040500,
+  "files": [
+    {
+      "path": "evidence/la-acquisition-independent-producer-review-h1b-v1.json",
+      "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0"
+    },
+    {
+      "path": "evidence/la-fee-temporal-producer-review-v1.json",
+      "sha256": "d4daf378b8194262a1ceabca0a7888adf68cd924d13684926a64fbfddf35b06e"
+    },
+    {
+      "path": "evidence/la-h1-completed-money-review-v1.json",
+      "sha256": "faf376007239a2e9222f4074226cbab44e7275f997bc0f8b64e857b03cd40afa"
+    },
+    {
+      "path": "evidence/la-oct12-cached-weather-independent-review-h1b-v1.json",
+      "sha256": "b9d238f36d7b2426c60892cb44058c999309a6a9d2da308f6ed45f63a2fb3704"
+    },
+    {
+      "path": "evidence/la-offline-independent-review-v1.json",
+      "sha256": "b4a61132f08e9d765b7e693010ed51989468c0aba4d1b1750551565fac09e591"
+    },
+    {
+      "path": "evidence/la-source-independent-review-h1b-v1.json",
+      "sha256": "e7b0b2fe375886d24f6d48475c5cad1536fbf8944ac577f9c639881b3d5f20bd"
+    },
+    {
+      "path": "evidence/remember-connection-check-v1.json",
+      "sha256": "ce488b40caec3d4dafd7d8e9ee418c218a9f3d87522e4c0b16d14b0e0d755cc8"
+    },
+    {
+      "path": "static/app.js",
+      "sha256": "d69d4913c1dafb63a9ba912efd10bb1ee04619141d0a27112f87726bd04d9356"
+    },
+    {
+      "path": "static/index.html",
+      "sha256": "b695617f64482c5f55cb7b354df6ea9c48932ef19f0815c43b9c44a239c54c43"
+    },
+    {
+      "path": "static/offline.js",
+      "sha256": "2e94d72e8138e1f8beed5aa0c4108f26ebc264fa728173a96e15c94bc3429637"
+    },
+    {
+      "path": "static/styles.css",
+      "sha256": "4ea1fdf7f3e01b67be325f4616add98f04e14d351b75e496b8505612af42bb86"
+    },
+    {
+      "path": "tempdesk/__init__.py",
+      "sha256": "4697c8bf197906e4c28f716fba9c3b67e8b08e53dee194875ea4e480815a3f40"
+    },
+    {
+      "path": "tempdesk/adapters/__init__.py",
+      "sha256": "475b7f4a5a208612c9fa2157cc14053f7b2c1bf9cd1947722975796df7db1295"
+    },
+    {
+      "path": "tempdesk/adapters/la.py",
+      "sha256": "65ec918a6fe8c2ee36c5a6a038b986377bed1c37905281bf772121774e474c60"
+    },
+    {
+      "path": "tempdesk/adapters/miami.py",
+      "sha256": "013f0fa5c1bc46289e67a06bd830b27860d259e14904835d94bd48b32a4f6459"
+    },
+    {
+      "path": "tempdesk/adapters/ny.py",
+      "sha256": "f02ea6e44b69c0542ad7359e7a0321d7c411bb0bd73e24fdad95c9f0cee6d36a"
+    },
+    {
+      "path": "tempdesk/adapters/phoenix.py",
+      "sha256": "369408638f616de10ce8c3fec8d813e7c8c044b1e6c2807e3c6c329dcb232bf9"
+    },
+    {
+      "path": "tempdesk/archive_credentials.py",
+      "sha256": "73b9559f3ba85ba6d9dbfcf415dd739db97e573cb9162aa932dd6fa7b8a9bcf1"
+    },
+    {
+      "path": "tempdesk/bridge.py",
+      "sha256": "73dfa51270c23f9a0b7d04504c853b5e4250d10594a9504ee51bc81b91dd3c0c"
+    },
+    {
+      "path": "tempdesk/impossible_exit.py",
+      "sha256": "9535375fd3efc9f05790075a5d8a0a07da65b728ecfebbaa1cbdda3486cf1960"
+    },
+    {
+      "path": "tempdesk/integrity_cache.py",
+      "sha256": "520a5729191a71b49a4353a391d0de718cdda361a7e22665fff892bf8353dc6e"
+    },
+    {
+      "path": "tempdesk/la_impossible_native.py",
+      "sha256": "0d82370c68de39f14b6b0a8aab928bc2c9d387baa7ea0f03d33ffdcffc3e9b3b"
+    },
+    {
+      "path": "tempdesk/la_live.py",
+      "sha256": "6fa46d3f2f1c964d4a2c4d43c63caa1be8e2d979a93ceed9d6ddd09d398b9ebc"
+    },
+    {
+      "path": "tempdesk/la_weather_repair.py",
+      "sha256": "bfba7c6a0e35de0730918a6376fba229a82208ee28df78b243a02e08df293b31"
+    },
+    {
+      "path": "tempdesk/ledger.py",
+      "sha256": "6e49b7d3921ba699c6448ffc08251b40068fd493ec6da462a4ba37921cb16d15"
+    },
+    {
+      "path": "tempdesk/live_worker.py",
+      "sha256": "2323e9c28dfc13d936c80ee462aad0911f06a9615b9bac35be491d158fc98f88"
+    },
+    {
+      "path": "tempdesk/offline_history.py",
+      "sha256": "0b1359e3035d00fdfdcebab20ceca558aa34e3ef664eabeea1a9e420260b5d2c"
+    },
+    {
+      "path": "tempdesk/offline_la.py",
+      "sha256": "b549a4eec9839dc629203e18a0d85c3d940326e3bff13732b31875569750b883"
+    },
+    {
+      "path": "tempdesk/offline_la_acquisition.py",
+      "sha256": "3813064f479162619c72378d596dc6d4725e71f7bdcba6ba6693995eccd4aad4"
+    },
+    {
+      "path": "tempdesk/offline_la_fee.py",
+      "sha256": "d9d82ecece84cb4f23143b2df57421ac488e7d703801f187fc888e2e7e3cdb74"
+    },
+    {
+      "path": "tempdesk/offline_la_native.py",
+      "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672"
+    },
+    {
+      "path": "tempdesk/offline_la_weather.py",
+      "sha256": "2644add4f68da2c5e3ec82e57336534b8049f72c9197bee8dffc3f6666272ff3"
+    },
+    {
+      "path": "tempdesk/offline_miami.py",
+      "sha256": "c7b2f80a43f9639aaf7db22a7eb28d8b90c28d73d6c29b8bae1b4fc50fc92bf9"
+    },
+    {
+      "path": "tempdesk/offline_ny.py",
+      "sha256": "d4edd874aad5584f91606fd0d8314211e0419b6f9081c1ebec57012612cbadf3"
+    },
+    {
+      "path": "tempdesk/offline_phoenix.py",
+      "sha256": "be50205d5fadc4597c9cd64260ed69c45404a5b27b982699a359033b1033e6ce"
+    },
+    {
+      "path": "tempdesk/offline_server.py",
+      "sha256": "aef1a696e2df31c8b69ef64b89c35e83d4a886953f6b47ac7ffb469974e0f5ab"
+    },
+    {
+      "path": "tempdesk/offline_sources.py",
+      "sha256": "c5763313f4fd7564790b25ce34e9cd22766e27372b9ba7f873ba4036dbaa3452"
+    },
+    {
+      "path": "tempdesk/offline_worker.py",
+      "sha256": "8a8e3f08095981c525cde6c24cc75838c78cb852155d637b914411bc17315c05"
+    },
+    {
+      "path": "tempdesk/policy_receipts.py",
+      "sha256": "4301601edf6defe5ec8147ec6ec712612806bf209d549ff501a6ceb609f750a3"
+    },
+    {
+      "path": "tempdesk/public-policy-registration.json",
+      "sha256": "8cdcd094d1c73777c3490cf47b388d53343205c459f0fe8349232a495f42e8d8"
+    },
+    {
+      "path": "tempdesk/public_data.py",
+      "sha256": "6978c29d88d4d9dcf7855f6a9016b366d936176737198631391c32d1d4fcc12d"
+    },
+    {
+      "path": "tempdesk/server.py",
+      "sha256": "247916447826897556cf1fb84feb0cd54470da7c74c283143568aa8ddf171b50"
+    },
+    {
+      "path": "tempdesk/service.py",
+      "sha256": "d7bb3301837403346f2e753667dd06056356151730f96c964191c18338cbe90e"
+    },
+    {
+      "path": "tempdesk/twc.py",
+      "sha256": "9e2d8008ac62da245f03624fa154ba6e4029559835b27984c08c0e26b3ac809d"
+    },
+    {
+      "path": "tempdesk/warm_bridge.py",
+      "sha256": "993fc9fd0560ecaf5093c08b052e073d0fd58c497f1ecc476adbc36038e03518"
+    },
+    {
+      "path": "tempdesk/weather_retry.py",
+      "sha256": "32a11310dccd79ff80e36d7796e3850a383fe5d1377ec0b6f578c2c7e9e6a815"
+    }
+  ],
+  "model_release_path": "REPO_RELATIVE:final_testing/application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1",
+  "model_manifest_sha256": "9f46c7894e0c5ec3131cde89e4a888bb088ba54441e69970ade1bbc10f561fbc",
+  "initial_day": "2026-10-01",
+  "initial_cash_per_strategy": 100,
+  "offline_only": true,
+  "mode": "CONDITIONAL_ARCHIVE_REPLAY",
+  "online_current_unchanged": true,
+  "python": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\.venv\\Scripts\\python.exe",
+  "python_sha256": "5fc3c5244b5eef01a82fbefd1932d1382b79c72fe6e64ffe8df1e3ce3643f02f",
+  "parent_release_id": "FOUR-CITY-OFFLINE-TWC-EXIT-v1",
+  "parent_manifest_sha256": "afdcf2d785b8074576f5539587d641622b572971e35d803bb81f540e51344601"
+}

@@ -1,0 +1,12 @@
+{
+  "passes": true,
+  "scope": "Read-only connection UI and Windows Credential Manager only",
+  "tests": 12,
+  "synthetic_native_store_roundtrip_passed": true,
+  "source_model_and_financial_replay_bytes_unchanged": true,
+  "copied_LA_native_review_gate_passed": true,
+  "no_credentials_in_repository": true,
+  "actual_orders": 0,
+  "new_fits": 0,
+  "local_source_validation_sha256": "732756f013bec9b6a1f82fd05fd085edbc98163e1415836dd1c78b5f68cef7cc"
+}
