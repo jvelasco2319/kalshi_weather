@@ -1,0 +1,58 @@
+{
+  "schema": "ROOT_SERVICE_RELIABILITY_INDEPENDENT_REVIEW_v1",
+  "passes": true,
+  "reviewer": "offline_parity_ui agent independently reviewing root-owned service changes",
+  "scope": "candidate Service, execution clocks, LA transport and actual Ledger integration",
+  "source_pins": [
+    {
+      "path": "tempdesk/service.py",
+      "sha256": "a7f956584e801db76e7a4444dbcd50479ded6829f887f6f91273485ada521d71"
+    },
+    {
+      "path": "tempdesk/execution_clock.py",
+      "sha256": "1d92307756c0824a1c956ea0608624353e044af994743061698ddd3001c3030d"
+    },
+    {
+      "path": "tempdesk/la_live.py",
+      "sha256": "7d000c3d0b2921d81bc75e010520f86fd0b53a2cfe4c3ecf79cf74e3aa8a072e"
+    },
+    {
+      "path": "tempdesk/ledger.py",
+      "sha256": "ff52e9305fcb6180716fac95bd774837727a9ed86de2c5315adb9c25d833b5cd"
+    },
+    {
+      "path": "tempdesk/wallet_lifecycle.py",
+      "sha256": "dbbe46d68942bd3fd55d2f14c07d215a5ff9a3e99031e5f7bda010474b45a1a4"
+    },
+    {
+      "path": "tests/test_service_reliability.py",
+      "sha256": "090ab7bae44549b560e9e9873cdc96621074106dd004c3d40bc019715e20c1f5"
+    }
+  ],
+  "focused_tests_passed": 8,
+  "fixture": "Clearly labelled synthetic clocks, books and money; actual candidate Service and durable Ledger; native worker is a controlled stub",
+  "checks": [
+    "Two concurrent arrivals preserve both native-state updates and common cash",
+    "Book failure before execution cancels a provably unattempted paper intent",
+    "Post-attempt failure retains unknown execution and reservation",
+    "Restart commits a recorded result once without native redispatch",
+    "Missed fixed buying slots cannot be reopened",
+    "Phoenix preparation must finish genuinely before anchor",
+    "LA capture occurs at or after its original native arrival due clock",
+    "Fatal scheduler errors become visible"
+  ],
+  "issues": [
+    {
+      "finding": "Protective modern SELL fee metadata omitted verified series multiplier",
+      "status": "Root corrected coefficient*multiplier; static source inspected",
+      "legacy": "Native legacy fixed fee convention retained separately"
+    }
+  ],
+  "limitations": [
+    "No assertion of real fills, trading profitability or zero future operational failures",
+    "Controlled native stub isolates coordinator; real native city economic controls are separate",
+    "Genuine network/worker calculation speed can still miss strict slots; misses are retained, not backdated"
+  ],
+  "actual_orders": 0,
+  "new_fits": 0
+}

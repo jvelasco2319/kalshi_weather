@@ -1,0 +1,58 @@
+{
+  "schema": "LA_H1B_INDEPENDENT_SOURCE_AMENDMENT_REVIEW_V1",
+  "passes": true,
+  "scope": "COVERAGE_AWARE_AUTHENTIC_RAW_SOURCE_ADMISSION_ONLY",
+  "actual_receipt_created_utc": "2026-10-13T04:12:08.672823+00:00",
+  "code_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_native.py",
+      "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672",
+      "bytes": 38729
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la.py",
+      "sha256": "b549a4eec9839dc629203e18a0d85c3d940326e3bff13732b31875569750b883",
+      "bytes": 23419
+    }
+  ],
+  "preserved_code_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la_native-h1a-before-source-repair.py",
+      "sha256": "f9133aaded5e6e17edcaf1e856f3f0b9f6584d29cf464c83877424173f9f7f44",
+      "bytes": 32202
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\offline_la-h1a-before-source-repair.py",
+      "sha256": "8c25dce26663c360f871fdade4a9b3974c061c5b38ad69db1b25583d5f57769e",
+      "bytes": 23415
+    }
+  ],
+  "synthetic_fixture_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\h1b-src-1791864607702443900\\result.json",
+    "sha256": "37d7b0e29b307bbeb2fb1796c727b54644319b99275348339a53604a173c2854",
+    "bytes": 1712
+  },
+  "unchanged_financial_function_asts": [
+    "_receipt_queue",
+    "_closed_episode_totals",
+    "_episode_counts",
+    "_calendar_cash",
+    "run_prepared"
+  ],
+  "prepare_change": "Additional source-admission reporting field only; original config/forecast/risk preparation unchanged.",
+  "normalization": "Newest available event/path/index with all exact ties, full levels and native quality flags unchanged.",
+  "cache": "Compact name with raw/code/date/path namespace; full raw/producer/receipt hashes remain in checked seal.",
+  "reviewed_new_guards": [
+    "Incomplete selected-pair grids or all selected pairs older than the unchanged60s guard request bounded richer acquisition.",
+    "Advertised-complete corrupt captures require force repair; absent connection remains an acquisition gap.",
+    "Only matching immutable raw/receipt SHA/bytes, positive bounded rows, actual query clocks and registered-window bounds admit richer runtime precedence.",
+    "Complete refers to the registered decision/arrival query window, not feed heartbeat, freshness or full trading-day activity.",
+    "A genuine complete raw capture prevents futile freshness-driven download loops, while old fallback remains explicitly labeled.",
+    "Official immutable paths, six-contract/binary crosswalks and actual settlement-availability clocks remain checked.",
+    "No carried quotes, fallback to older high-quality rows, invented no-trade outcomes or60s relaxation."
+  ],
+  "actual_new_market_data_admitted": false,
+  "financial_runs_by_this_review": 0,
+  "forecast_inference_calls_by_this_review": 0,
+  "network_requests_by_this_review": 0
+}

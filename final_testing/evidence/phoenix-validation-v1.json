@@ -1,0 +1,37 @@
+{
+  "classification": "BOUNDED_NATIVE_EXECUTION_VALIDATION; controlled clocks/receipts/books; no live performance claim",
+  "tests_run": 7,
+  "failures": [],
+  "errors": [],
+  "passed": true,
+  "duration_seconds": 35.15,
+  "native_files_unchanged": true,
+  "native_source_file_count": 46,
+  "fixture_path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Development\\Phoenix\\PHOENIX-ORIGINAL-DEMO-v2-20261011\\pinned\\numerical-fixtures\\oct09.json",
+  "fixture_sha256": "eef6b52e0a0cfeab13bc75621e9656c1ebca0bcee60aa677e896aaf8c28a49bf",
+  "fixture_classification": "OFFLINE_NUMERICAL_REGRESSION_ONLY; archival receipts are unproved and not live-eligible",
+  "test_source_sha256": "31caf2b3bb7e83162d659bde3c7ebc7a114a26bf0c4a2e7936f9287d49cc99f9",
+  "control_buy_results": [
+    {
+      "profile_id": "03-V10-Ensemble-Quarter-Kelly",
+      "fixture_ticker": "KXHIGHTPHX-26OCT09-T99",
+      "quantity": 11,
+      "principal": "8.36",
+      "fee": "0.1405",
+      "classification": "SYNTHETIC_CONTROL_FLOW_FIXTURE_NOT_ACTUAL_HTTP_OR_LIVE_FILL"
+    },
+    {
+      "profile_id": "01-V19-Temperature-Set-Quarter-Kelly",
+      "fixture_ticker": "KXHIGHTPHX-26OCT09-T99",
+      "quantity": 11,
+      "principal": "8.36",
+      "fee": "0.1405",
+      "classification": "SYNTHETIC_CONTROL_FLOW_FIXTURE_NOT_ACTUAL_HTTP_OR_LIVE_FILL"
+    }
+  ],
+  "adapter_path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\work\\online-buying-repairs-20261013\\online\\tempdesk\\adapters\\phoenix.py",
+  "adapter_sha256": "4549756e1f68658847d21f5643a5f1408a34bff2b1e12a4fb9b4017b012e51bb",
+  "live_wallets_or_services_touched": false,
+  "network_requests": 0,
+  "new_fits": 0
+}

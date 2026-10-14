@@ -1,0 +1,120 @@
+{
+  "schema": "LA_OFFLINE_FEE_STATIC_PRODUCER_INDEPENDENT_REVIEW_V1",
+  "passes": true,
+  "scope": "LA_OFFLINE_CONDITIONAL_FEE_TEMPORAL_EXTENSION_V1",
+  "review_mode": "PREAPPROVED_AUTHENTIC_METADATA_PRODUCER",
+  "metadata_producer_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\tempdesk\\offline_la_fee.py",
+    "sha256": "d9d82ecece84cb4f23143b2df57421ac488e7d703801f187fc888e2e7e3cdb74",
+    "bytes": 17892
+  },
+  "actual_receipt_created_utc": "2026-10-13T03:21:19.950477+00:00",
+  "climate_days": [
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-05",
+    "2026-10-06",
+    "2026-10-07",
+    "2026-10-08",
+    "2026-10-09",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-12",
+    "2026-10-13",
+    "2026-10-14",
+    "2026-10-15",
+    "2026-10-16",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-19",
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-10-31"
+  ],
+  "unchanged_recipe": {
+    "coefficient": ".07",
+    "multiplier": "1",
+    "rounding": "RETAIL_CENT",
+    "fee_type": "quadratic",
+    "series": "KXHIGHLAX"
+  },
+  "limitations": [
+    "HISTORICAL_FEE_EFFECTIVE_DATE_COVERAGE_UNPROVEN",
+    "PRIVATE_ACCOUNT_PRECISION_AND_COUNTERPARTY_SPLITTING_UNPROVEN",
+    "CONDITIONAL_ARCHIVE_ONLY_NOT_LIVE_FEE_VERIFICATION"
+  ],
+  "retained_pdf_sha256": "c326a69f596a11e8f8be2620402d39a8d4823920c21cc97c93a114d862699601",
+  "retained_manifest_sha256": "a5d7a57f8a41ee2d729cdcfad314cff1a6100cc36ce94b57e519523019b97cc2",
+  "source_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\series.json",
+      "sha256": "c35e0cab20f1c3b5471a5d06e4d8c326ba338dfce3982dc8380da9bfab6339b8",
+      "bytes": 1538
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\series-receipt.json",
+      "sha256": "daecc58fd54760f71be54b01e173d1b95e8a029a5e81fbf473a89dd2f3fdc7f6",
+      "bytes": 466
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\fee-changes.json",
+      "sha256": "6780c8eb7edbb5e1ca3b15166f17cef054befacb2cc8f4bc479c54074a9a2c18",
+      "bytes": 28
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\fee-changes-receipt.json",
+      "sha256": "9f7090698d8371d0e22b62737e24f6164b22bbfd2f771d048be38792004a878c",
+      "bytes": 558
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\general-fee.pdf",
+      "sha256": "c326a69f596a11e8f8be2620402d39a8d4823920c21cc97c93a114d862699601",
+      "bytes": 281129
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\sources\\la\\fee-metadata\\general-fee-receipt.json",
+      "sha256": "5f026da7e70900a5e56f158c7e9c9778d28c0eed41e6a6a247876fe306e5bcd9",
+      "bytes": 974
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\v5p\\acquisition\\economics\\manifests\\source-manifest.json",
+      "sha256": "a5d7a57f8a41ee2d729cdcfad314cff1a6100cc36ce94b57e519523019b97cc2",
+      "bytes": 7226
+    }
+  ],
+  "reused_retained_source_fixture_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-fee-retained-metadata-fixtures-v1.json",
+    "sha256": "a682a46d73bcd9548fae5802510c9618d6a5246bcc4914aa9cfb2005781be5d3",
+    "bytes": 1454
+  },
+  "reused_schema_fixture_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-fee-schema-metadata-fixtures-v1.json",
+    "sha256": "f14614591b4d58a8956f64d673c1ad0cf605377da69c9c3a6eeed9f4a785f5cb",
+    "bytes": 402
+  },
+  "source_clock_qualification": "September27 original campaign completion is a proxy, not an exact original HTTP time. Current local reuse is not a new PDF download.",
+  "allowed_operations": [
+    "Two exact read-only official GETs for KXHIGHLAX quadratic multiplier1 and empty fee-change metadata.",
+    "Immutable source captures and finite October admissions; failure prevents older-admission fallback.",
+    "Copy native fee dictionary, extending only valid-through UTC and source-reference metadata."
+  ],
+  "restrictions": [
+    "Only actual past/current Pacific October dates; no November or future-data use.",
+    "No coefficient, rounding, multiplier, fitting, native money, budget or strategy changes.",
+    "Static producer review does not claim a new independent review on each day.",
+    "This conditional temporal control is not live/private-account fee proof."
+  ],
+  "financial_runs_by_this_review": 0,
+  "network_calls_by_this_review": 0
+}

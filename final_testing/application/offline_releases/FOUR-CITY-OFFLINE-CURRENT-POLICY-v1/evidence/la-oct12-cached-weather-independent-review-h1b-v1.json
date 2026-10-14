@@ -1,0 +1,88 @@
+{
+  "schema": "LA_OCT12_H1B_INDEPENDENT_FORECAST_PAYLOAD_REVIEW_V1",
+  "passes": true,
+  "scope": "FIXED_STATE_SOURCE_CLOCK_PAYLOAD_ONLY_NO_FINANCIAL_SCORE",
+  "actual_receipt_created_utc": "2026-10-13T03:55:30.007716+00:00",
+  "qualification_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-oct12-cached-weather-qualification-h1b-v1.json",
+    "sha256": "7d612130ab29e579e467ffaea93abdc692d2cc98281694d4aa0e3d35aade100c",
+    "bytes": 7036
+  },
+  "forecast_packet_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-history\\history\\la\\2026-10-12\\acquisition-20261013T035306573293\\forecasts.json",
+    "sha256": "a1bcd27e445eb33fbe1955dbfcf00e563f4e67b5e0a9df3611694b71afb673ff",
+    "bytes": 818480
+  },
+  "producer_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-independent-producer-review-h1b-v1.json",
+    "sha256": "76bbe66206802292288c1dd1a0830e712684c2d4108006855a369b9bcb6668b0",
+    "bytes": 8083
+  },
+  "row_checks": [
+    {
+      "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "model_id": "V10-F3-PHYSICAL-ADAPTER",
+      "asof_utc": "2026-10-12T17:00:00+00:00",
+      "checkpoint_sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167",
+      "inputs_max_available_ns": 1791823920000000000,
+      "probability_sum": 0.9999999999999999
+    },
+    {
+      "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+      "model_id": "V10-F3-PHYSICAL-ADAPTER",
+      "asof_utc": "2026-10-12T18:00:00+00:00",
+      "checkpoint_sha256": "95787f89cebccf867c48ed7f71234cda4212560d27c6b66b996a55eb921d4167",
+      "inputs_max_available_ns": 1791824880000000000,
+      "probability_sum": 0.9999999999999999
+    },
+    {
+      "profile_id": "F6_HYBRID_STAGED5",
+      "model_id": "F6-Daggett-Palmdale-2026-10",
+      "asof_utc": "2026-10-12T17:00:00+00:00",
+      "checkpoint_sha256": "2df517846bb4e1cdeee13265cb47906cc1f204b8103e02932802d8574ca9af30",
+      "inputs_max_available_ns": 1791823920000000000,
+      "probability_sum": 0.9999999999999999
+    },
+    {
+      "profile_id": "F6_HYBRID_STAGED5",
+      "model_id": "F6-Daggett-Palmdale-2026-10",
+      "asof_utc": "2026-10-12T18:00:00+00:00",
+      "checkpoint_sha256": "2df517846bb4e1cdeee13265cb47906cc1f204b8103e02932802d8574ca9af30",
+      "inputs_max_available_ns": 1791824880000000000,
+      "probability_sum": 1.0
+    },
+    {
+      "profile_id": "V8D_NO18_SETTLEMENT",
+      "model_id": "V8D",
+      "asof_utc": "2026-10-12T18:00:00+00:00",
+      "checkpoint_sha256": "302e45607d84cfae2540316d9da5f14ff78466365dc1e41a79f550b069b1d88d",
+      "inputs_max_available_ns": 1791824880000000000,
+      "probability_sum": 1.0
+    }
+  ],
+  "unchanged_inherited_dependency_pins_reused": 167,
+  "new_or_distinct_source_pins_checked_once": 108,
+  "fixed_math_recomputed": false,
+  "parity_fixture_reused_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-acquisition-source-fixture-attempt-v3.json",
+    "sha256": "0453ace4ed4844dd5f42c2dbef57bb1d519de81be54e6b0ccbcf5c0459d62ab2",
+    "bytes": 46220
+  },
+  "facts": {
+    "rows": 5,
+    "contracts_per_row": 6,
+    "new_fits": 0,
+    "original_publication_proven": false,
+    "target_equivalence_proven": false,
+    "money_scored": false
+  },
+  "qualifications": [
+    "Source clocks are archival issue/LastModified and observed+15m proxies; actual late retrieval/generation clocks are retained.",
+    "Research target_compatible fields do not establish NWS/The Weather Company equivalence or live trade eligibility.",
+    "The retained old CSV requested1/3/4; this H1B normalization explicitly excludes MADISHF and retains exclusions. Future requests are3/4.",
+    "No native book/receipt admission, independent shared capacity or financial return follows from this source-only pass."
+  ],
+  "network_requests": 0,
+  "forecast_inference_calls": 0,
+  "financial_runs": 0
+}

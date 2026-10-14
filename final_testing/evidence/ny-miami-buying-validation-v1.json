@@ -1,0 +1,94 @@
+{
+  "classification": "CONTROLLED_ENGINEERING_PROBABILITIES_BOOK_CLOCK_FLAGS; ARCHIVED_LAYOUTS_CHECKPOINTS; NOT_LIVE_EXECUTION_EVIDENCE",
+  "tests_run": 4,
+  "passed": true,
+  "errors": [],
+  "failures": [],
+  "duration_seconds": 4.262,
+  "native_control_results": [
+    {
+      "city": "miami",
+      "profile_id": "SELECTED_CHAMPION",
+      "day": "2026-10-01",
+      "orders": 5,
+      "quantity": 15,
+      "cash": "95.2795",
+      "fees": "0.2205",
+      "outlay": "4.7205",
+      "policy_state_version": 6,
+      "classification": "CONTROLLED_ENGINEERING_PROBABILITIES_BOOK_CLOCK_FLAGS; ARCHIVED_LAYOUTS_CHECKPOINTS; NOT_LIVE_EXECUTION_EVIDENCE"
+    },
+    {
+      "city": "miami",
+      "profile_id": "RAW_ORIGINAL",
+      "day": "2026-10-01",
+      "orders": 5,
+      "quantity": 12,
+      "cash": "96.2236",
+      "fees": "0.1764",
+      "outlay": "3.7764",
+      "policy_state_version": 6,
+      "classification": "CONTROLLED_ENGINEERING_PROBABILITIES_BOOK_CLOCK_FLAGS; ARCHIVED_LAYOUTS_CHECKPOINTS; NOT_LIVE_EXECUTION_EVIDENCE"
+    },
+    {
+      "city": "ny",
+      "profile_id": "CONSERVATIVE_P09",
+      "day": "2026-10-11",
+      "orders": 5,
+      "quantity": 12,
+      "cash": "90.7264",
+      "fees": "0.1536",
+      "outlay": "9.2736",
+      "policy_state_version": 6,
+      "classification": "CONTROLLED_ENGINEERING_PROBABILITIES_BOOK_CLOCK_FLAGS; ARCHIVED_LAYOUTS_CHECKPOINTS; NOT_LIVE_EXECUTION_EVIDENCE"
+    },
+    {
+      "city": "ny",
+      "profile_id": "SAFE5_TARGET_ONLY",
+      "day": "2026-10-11",
+      "orders": 1,
+      "quantity": 3,
+      "cash": "97.68",
+      "fees": "0.04",
+      "outlay": "2.32",
+      "policy_state_version": 2,
+      "classification": "CONTROLLED_ENGINEERING_PROBABILITIES_BOOK_CLOCK_FLAGS; ARCHIVED_LAYOUTS_CHECKPOINTS; NOT_LIVE_EXECUTION_EVIDENCE"
+    }
+  ],
+  "archived_inputs": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Development\\New York\\NY-REALITY-SIM-v1-20261012\\inputs\\2026-10-11\\forecast.json",
+      "sha256": "f50816468a3ff3182725d3559f7e008de3c4f3885dd5c7d30633791dd7515d9d",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Miami\\Frozen\\MIAMI-V10-P09-v1\\weather\\daily\\2026-10-01.json",
+      "sha256": "d824768364d657158988a7c1eef48165fe0efa45630ab470f6f2483d31d7f33f",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Miami\\Frozen\\MIAMI-V10-P09-v1\\experiments\\MIAMI-V10-P09-v2-1h\\model\\portable-v2\\dated-layouts.json",
+      "sha256": "25d03ac2800343d1d1f076646240bf0ecf201e67c25765058f8f87592584e47d",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Miami\\Frozen\\MIAMI-V10-P09-v1\\weather\\daily\\2026-10-01.json",
+      "sha256": "d824768364d657158988a7c1eef48165fe0efa45630ab470f6f2483d31d7f33f",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Miami\\Frozen\\MIAMI-V10-P09-v1\\experiments\\MIAMI-V10-P09-v2-1h\\model\\portable-v2\\dated-layouts.json",
+      "sha256": "25d03ac2800343d1d1f076646240bf0ecf201e67c25765058f8f87592584e47d",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Development\\New York\\NY-REALITY-SIM-v1-20261012\\inputs\\2026-10-11\\forecast.json",
+      "sha256": "f50816468a3ff3182725d3559f7e008de3c4f3885dd5c7d30633791dd7515d9d",
+      "role": "ARCHIVED_TEST_INPUT; NOT_FIRST_DELIVERY"
+    }
+  ],
+  "new_fits": 0,
+  "network_requests": 0,
+  "live_state_touched": false,
+  "test_sha256": "d13b17079329b3124c6d7fa7ad114dcd25df78e5c100da0e50c03bc7c8dee27f"
+}

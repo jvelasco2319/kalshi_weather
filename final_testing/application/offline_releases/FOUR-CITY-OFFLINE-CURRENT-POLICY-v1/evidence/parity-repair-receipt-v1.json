@@ -1,0 +1,74 @@
+{
+  "schema": "OFFLINE_CURRENT_POLICY_AND_UI_REPAIR_v1",
+  "at_ns": 1791950400576423300,
+  "policy_namespace": "CURRENT_LIVE_PARITY_v1",
+  "legacy_namespace": "LEGACY_ARCHIVE_NATIVE_EXITS_v1",
+  "current_state_path": "runtime/offline-history/policy-histories/CURRENT_LIVE_PARITY_v1/history.json",
+  "old_state_path": "runtime/offline-history/history.json",
+  "old_results_overwritten": false,
+  "native_models_and_buy_rules_changed": false,
+  "extra_wallets_added": false,
+  "real_orders": 0,
+  "new_fits": 0,
+  "current_la_exit": "Pinned completed-daily-report protection; F3 soft forecast exit disabled",
+  "hard_exit_scope": "Recorded pre-close completed-report proof only. Producer earliest report versus dated close proves ordinary no-exit window. Extended-close market requires full trade-life evidence and remains UNKNOWN.",
+  "tests": [
+    "6 labelled isolated Python controls passed",
+    "Node exact-clock/current-policy/uncertainty and shading controls passed",
+    "Genuine Oct1 saved forecast/book native replay: identical 78 BUY contracts and $0.21 native fees"
+  ],
+  "source_regression": {
+    "day": "2026-10-01",
+    "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+    "buys_identical": true,
+    "contracts": 78,
+    "fees": "0.21",
+    "baseline_sell_count": 0,
+    "current_sell_count": 0,
+    "passes": true
+  },
+  "limitations": [
+    "No new strategy profit ranking or new year-round validation.",
+    "Historical first delivery, source target equivalence and actual exchange fills remain unproved.",
+    "Archived separate-wallet replay does not establish simultaneous shared-liquidity portfolio returns.",
+    "Current completed-report protection is not a dependable intraday temperature stop."
+  ],
+  "files": [
+    {
+      "path": "tempdesk/offline_history.py",
+      "sha256": "1edd5d05619d38aaf7f0fe40db573773b35a40524d185925542aa28309bdb5ff",
+      "bytes": 15398
+    },
+    {
+      "path": "tempdesk/offline_la.py",
+      "sha256": "741fa0ca805ad73631b75742c3d968160c402aedd0546b96a4836fe7879eb943",
+      "bytes": 24063
+    },
+    {
+      "path": "tempdesk/offline_la_native.py",
+      "sha256": "24ea43d64e0aeeabf8757309b34dc890450c80ec3f90fe9a625f8be4eca51ec8",
+      "bytes": 39936
+    },
+    {
+      "path": "tempdesk/parity_policy.py",
+      "sha256": "56a758fc3bd2972fe225a47fd47504fadab8b702e083fe04711914baf478c14b",
+      "bytes": 3457
+    },
+    {
+      "path": "tempdesk/parity_la_exit.py",
+      "sha256": "db5821241f494f4159a992bdb75756c4f0f2164a02d56132fee20968962e0faf",
+      "bytes": 8669
+    },
+    {
+      "path": "static/app.js",
+      "sha256": "c540ee9d5a6c82beb6dff35a3a41c9fab0dae8a77f56662e8ef76cdead4a8294",
+      "bytes": 22265
+    },
+    {
+      "path": "static/offline.js",
+      "sha256": "743a0557cf91081af8c5fb228c7c95be541adcc42866a36e30f4a2d97d60ffae",
+      "bytes": 17259
+    }
+  ],
+  "passes": true
+}

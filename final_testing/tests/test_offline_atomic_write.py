@@ -1,3 +1,4 @@
+from _current_application import APPLICATION
 import json,tempfile,unittest,os
 from pathlib import Path
 from unittest.mock import patch

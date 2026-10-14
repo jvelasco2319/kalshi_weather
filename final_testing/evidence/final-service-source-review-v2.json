@@ -1,0 +1,54 @@
+{
+  "schema": "FINAL_SERVICE_SOURCE_DELTA_INDEPENDENT_REVIEW_v2",
+  "at_ns": 1791951711182784300,
+  "passes": true,
+  "reviewer": "offline_parity_ui independently reviewing root-owned final delta",
+  "prior_review_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\work\\online-buying-repairs-20261013\\online\\tests\\service-reliability-review-v1.json",
+    "sha256": "329d40879f02d4aa13701cb64ca40a026d454de85f4919f9406046622a4e11fa"
+  },
+  "baseline_service_pin": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\releases\\FOUR-CITY-PAPER-F4B-20261013\\tempdesk\\service.py",
+    "sha256": "a7f956584e801db76e7a4444dbcd50479ded6829f887f6f91273485ada521d71"
+  },
+  "sealed_releases": [
+    {
+      "release_id": "FOUR-CITY-PAPER-F4C-20261013",
+      "manifest_sha256": "0d85c869d8ceaab1c4e3e893fba7d4a4fb111fa1d61623f64105d563ab0aeb5f",
+      "service_sha256": "c417033843776a0e39285e3ef6231563185ddf0ebd89125ca791d2e97e9dfcc2"
+    },
+    {
+      "release_id": "FOUR-CITY-PAPER-BUYING-RELIABILITY-v2",
+      "manifest_sha256": "1b3cc38089afcfa4a10b7b69fcaee0c0b23d40ee8a5c3d900ea77f74e80ad3a1",
+      "service_sha256": "c417033843776a0e39285e3ef6231563185ddf0ebd89125ca791d2e97e9dfcc2"
+    }
+  ],
+  "exact_semantic_delta": "arrival_pool ThreadPoolExecutor max_workers 12 -> 19; added explanatory comments only",
+  "ast_delta_verified": true,
+  "lexical_delta": [
+    "--- reviewed Service12",
+    "+++ sealed Service19",
+    "@@ -28,7 +28,8 @@",
+    "   self.public_pool=ThreadPoolExecutor(max_workers=4,thread_name_prefix='temperature-and-market')",
+    "   self.busy=set();self.weather_busy=set();self.feed={};self.last_public={};self.last_weather={};self.clock_seen=set()",
+    "   self.clock_pool=ThreadPoolExecutor(max_workers=4,thread_name_prefix='paper-clock')",
+    "-  self.arrival_pool=ThreadPoolExecutor(max_workers=12,thread_name_prefix='paper-arrival')",
+    "+  # Native14UTC maximum: NY P09 six + SAFE one + two Miami baskets six each.",
+    "+  self.arrival_pool=ThreadPoolExecutor(max_workers=19,thread_name_prefix='paper-arrival')",
+    "   self.publish_seen=set()",
+    "   self.la_protection=self.release.manifest.get('la_exit_policy',{}).get('policy_id')==POLICY_ID",
+    "   self.operational=self.release.manifest.get('operational_repairs')=='FOUR_CITY_LIVE_PAPER_REPAIRS_v1'"
+  ],
+  "resource_basis": "Finite maximum simultaneous native arrivals: NY Conservative6 + SAFE1 + Miami selected6 + RAW6 =19; capacity and wallet serialization unchanged",
+  "reused_passing_controls": 8,
+  "tests_repeated": false,
+  "financial_logic_and_clocks_unchanged": true,
+  "real_orders": 0,
+  "new_fits": 0,
+  "scope": "Source delta and exact sealed-source hash verification only",
+  "qualifications": [
+    "No assertion of real fills, trading profitability or zero future operational failures",
+    "Controlled native stub isolates coordinator; real native city economic controls are separate",
+    "Genuine network/worker calculation speed can still miss strict slots; misses are retained, not backdated"
+  ]
+}

@@ -1,3 +1,4 @@
+from _current_application import APPLICATION
 """Meaningful hard-invalidation and conditional liquidation accounting checks.
 
 All certificates and books here are explicitly synthetic test fixtures. They
@@ -5,7 +6,6 @@ do not establish compatibility of the currently connected NWS/TWC sources.
 """
 from pathlib import Path
 import sys
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1'))
 from copy import deepcopy
 from decimal import Decimal as D
 from pathlib import Path

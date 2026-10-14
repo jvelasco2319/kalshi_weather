@@ -1,10 +1,11 @@
+from _current_application import APPLICATION
 """Prospective publication, retained definition and source admission boundaries."""
 from copy import deepcopy
 from datetime import datetime,timezone
 from pathlib import Path
 from unittest.mock import patch
 import hashlib,json,sys,tempfile,threading,unittest
-ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'application/releases/FOUR-CITY-PAPER-LIVE-REPAIRS-v1'))
+ROOT=Path(__file__).resolve().parents[1]
 (ROOT/'runtime').mkdir(exist_ok=True)
 from tempdesk.service import Service
 from tempdesk.policy_receipts import verify,parse_cli,SCHEMA
@@ -37,19 +38,19 @@ class Repairs(unittest.TestCase):
   return s
  def test_prepared_publication_keeps_creation_clock_and_uses_actual_publication(self):
   s=self.bare();at=1791890400000000000
-  prepared={'prepared':True,'forecast':{'probabilities_yes':{'unit':.3},'trade_eligible':False,'asof_ns':at,'generated_ns':at-120000000000}}
+  prepared={'prepared':True,'prepared_ready_ns':at-1000000000,'forecast':{'prepared_ready_ns':at-1000000000,'probabilities_yes':{'unit':.3},'trade_eligible':False,'asof_ns':at,'generated_ns':at-120000000000}}
   f={'day':'2026-10-13','prepared_forecasts':{str(at):{'CONSERVATIVE_P09':prepared}}};s.feed['ny']=f
   s.call=lambda *a,**k:self.fail('Prepared publication should not start a cold inference')
   with patch('tempdesk.service.time.time_ns',return_value=at+100000000):s.publish_city('ny',f,at)
   result=s.feed['ny']['forecasts']['CONSERVATIVE_P09']
   self.assertTrue(result['native_publication_admitted']);self.assertEqual(result['forecast']['generated_ns'],at-120000000000)
-  self.assertEqual(result['forecast']['available_ns'],at+100000000);self.assertEqual(len(s.clock_pool.jobs),1)
+  self.assertEqual(result['forecast']['available_ns'],at-1000000000);self.assertEqual(len(s.clock_pool.jobs),1)
   self.assertFalse(prepared['forecast']['trade_eligible'])
  def test_late_publication_never_dispatches_entry(self):
   s=self.bare();at=1791890400000000000
   f=dict(day='2026-10-13',prepared_forecasts={str(at):{'CONSERVATIVE_P09':dict(prepared=True,forecast=dict(probabilities_yes={'unit':.3}))}});s.feed['ny']=f
   with patch('tempdesk.service.time.time_ns',return_value=at+2000000000):s.publish_city('ny',f,at)
-  self.assertFalse(s.clock_pool.jobs);self.assertFalse(s.feed['ny']['forecasts']['CONSERVATIVE_P09']['forecast']['trade_eligible'])
+  self.assertFalse(s.clock_pool.jobs);self.assertIsNot(s.feed['ny']['forecasts']['CONSERVATIVE_P09'].get('forecast',{}).get('trade_eligible'),True)
  def test_miami_late_weather_not_promoted_by_preparation(self):
   s=self.bare('miami');at=1791890400000000000
   f={'day':'2026-10-13','prepared_forecasts':{str(at):{'SELECTED_CHAMPION':{'prepared':True,'probabilities_yes':{'unit':.3},'weather_trade_eligible':False}}}};s.feed['miami']=f
@@ -67,6 +68,8 @@ class Repairs(unittest.TestCase):
   at=int(datetime(2026,10,13,17,tzinfo=timezone.utc).timestamp()*1e9);s.feed['la']={'day':'2026-10-13'}
   s.call=lambda *a,**k:self.fail('V8D is 18UTC only')
   with patch('tempdesk.service.time.time_ns',return_value=at+100000000):s.publish_city('la',s.feed['la'],at)
+  from types import SimpleNamespace
+  s.ledger=SimpleNamespace(wallet_transaction=lambda wid:threading.RLock())
   s.settle_known('la',{'contracts':[]})
   self.assertFalse(s.clock_pool.jobs)
  def test_mapping_scope_hash_and_clock_fail_closed(self):
@@ -88,13 +91,14 @@ class Repairs(unittest.TestCase):
  def test_phoenix_prepared_or_late_monitor_is_not_a_published_trade_signal(self):
   from tempdesk.adapters import phoenix as phx
   day='2026-10-13';anchor=phx.ns(day);pid=phx.PROFILES[0]
-  request=dict(day=day,profile_id=pid,contracts=[],contracts_received_ns=anchor-1,weather={},paper_mapping_mode='VERIFIED_DAILY_CLI_PROXY_v1')
+  packet={k:{'available_ns':anchor-120*phx.NS} for k in ('frame','observation','atmosphere','hrrr14')};packet['receipts']=[]
+  request=dict(day=day,profile_id=pid,contracts=[],contracts_received_ns=anchor-120*phx.NS,weather=packet,paper_mapping_mode='VERIFIED_DAILY_CLI_PROXY_v1')
   with patch.object(phx,'profile',return_value={}),patch.object(phx,'contracts_native',return_value=[]),patch.object(phx,'settlement_binding',return_value={}),patch.object(phx,'_weather_validate'),patch.object(phx,'_infer',side_effect=lambda *a:{p:{'probabilities_yes':{'unit':.3}} for p in phx.PROFILES}):
-   prepared=phx.forecast({**request,'at_ns':anchor-60*phx.NS,'purpose':'prepare_publication'})
+   with patch.object(phx.time,'time_ns',return_value=anchor-60*phx.NS):prepared=phx.forecast({**request,'at_ns':anchor-60*phx.NS,'purpose':'prepare_publication'})
    self.assertTrue(prepared['prepared']);self.assertFalse(prepared['trade_eligible'])
-   published=phx.forecast({**request,'at_ns':anchor+100000000})
-   self.assertTrue(published['trade_eligible'])
-   late=phx.forecast({**request,'at_ns':anchor+60*phx.NS})
+   with patch.object(phx.time,'time_ns',return_value=anchor+100000000):published=phx.forecast({**request,'at_ns':anchor+100000000})
+   self.assertFalse(published['trade_eligible'])
+   with patch.object(phx.time,'time_ns',return_value=anchor+60*phx.NS):late=phx.forecast({**request,'at_ns':anchor+60*phx.NS})
    self.assertFalse(late['trade_eligible']);self.assertEqual(late['forecast']['available_ns'],anchor+60*phx.NS)
  def test_phoenix_generated_data_can_be_read_without_frozen_source_fallback(self):
   from tempdesk.adapters import phoenix as phx

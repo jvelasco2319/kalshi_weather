@@ -1,0 +1,72 @@
+{
+  "schema": "PORTABLE_BUYING_WALLET_RELIABILITY_CHECK_v1",
+  "recorded_ns": 1791951145055655200,
+  "status": "PASS",
+  "test_methods": 9,
+  "active_application": "FOUR-CITY-PAPER-BUYING-RELIABILITY-v2",
+  "active_manifest_sha256": "1b3cc38089afcfa4a10b7b69fcaee0c0b23d40ee8a5c3d900ea77f74e80ad3a1",
+  "actual_old_new_source_cap_comparison": "PASS",
+  "unchanged_vendor_file_pins": 132,
+  "checks": [
+    "Two concurrent same-wallet updates preserve cash, fee-inclusive spend and native/common positions",
+    "Three wallets cannot duplicate two visible shared contracts",
+    "Stale results reject without overwriting cash",
+    "Genuine future intent remains resumable; known unattempted expired intent cancels native/common together",
+    "Interrupted attempted execution remains UNKNOWN with reserved funds",
+    "Unused100wallet migration preserves every wallet/capacity field, backup and journal",
+    "Changed native SHA, changed cap, unknown source, activecash/orders/positions/history/native state are rejected without reset"
+  ],
+  "files": {
+    "final_testing/tools/migrate_buying_reliability_wallets.py": "a8cb9e3eccdba685c5144e780fe0d5bed858b585c3c79765e6ec26749ad54a9f",
+    "final_testing/tests/test_buying_wallet_reliability.py": "e25595065590d55b7e3a7308df40e759c4f0a4340ee4e027f2ab54cb2eb925cf"
+  },
+  "reproduction": "python -B -m unittest final_testing.tests.test_buying_wallet_reliability -v",
+  "limitations": [
+    "Control fixtures are synthetic and asset independent; this is not weather accuracy or strategy return evidence",
+    "No live wallet migration, server restart, order, source/model/vendor edit or Git operation performed by this colony"
+  ],
+  "fanout_bound": {
+    "type": "Exact code-derived upper bound for one prospective BUY dispatch slot; not an observed trading count",
+    "14_utc_maximum_orders": 19,
+    "17_utc_maximum_orders": 5,
+    "18_utc_maximum_orders": 5,
+    "profiles": {
+      "ny:CONSERVATIVE_P09": 6,
+      "ny:SAFE5_TARGET_ONLY": 1,
+      "miami:SELECTED_CHAMPION": 6,
+      "miami:RAW_ORIGINAL": 6,
+      "la:F3_V10_PHYSICAL_FORECAST_EXIT": 1,
+      "la:F6_HYBRID_STAGED5": 1,
+      "la:V8D_NO18_SETTLEMENT": 1,
+      "phoenix:03-V10-Ensemble-Quarter-Kelly": 1,
+      "phoenix:01-V19-Temperature-Set-Quarter-Kelly": 1
+    },
+    "source_references": {
+      "NY_P09": [
+        "vendor/ab199da7c278/ny_replay_kernel_v1.py:138",
+        "vendor/ab199da7c278/ny_replay_kernel_v1.py:147"
+      ],
+      "NY_SAFE5": [
+        "vendor/ab199da7c278/ny_replay_kernel_v1.py:200"
+      ],
+      "MIAMI_BOTH": [
+        "tempdesk/adapters/miami.py:546",
+        "vendor/d7be42be994d/p09_policy.py:44",
+        "vendor/d7be42be994d/p09_policy.py:104"
+      ],
+      "LA_MODERN": [
+        "vendor/9064b839d21c/engine.py:654",
+        "vendor/1bced330d850/engine.py:599"
+      ],
+      "LA_V8D": [
+        "vendor/22a92bf702c3/policies.py:496",
+        "vendor/476ca920378a/paper_trader_adapter.py:243"
+      ],
+      "PHOENIX_BOTH": [
+        "vendor/b12e3075763d/allocation_policy_v5.py:43",
+        "vendor/bcb0232a3222/allocation_policy_v5.py:47"
+      ]
+    },
+    "timing_limitation": "Enough pool slots removes queue waiting behind the first due-time batch; no promise about API latency, native/source availability or valid fills."
+  }
+}

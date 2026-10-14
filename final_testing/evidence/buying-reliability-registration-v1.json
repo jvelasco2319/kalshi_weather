@@ -1,0 +1,24 @@
+{
+  "models_unchanged": true,
+  "native_copies_unchanged": 132,
+  "weights_fitted": 0,
+  "actual_orders": 0,
+  "live_release": "FOUR-CITY-PAPER-BUYING-RELIABILITY-v2",
+  "offline_release": "FOUR-CITY-OFFLINE-CURRENT-POLICY-v2",
+  "local_release": "FOUR-CITY-PAPER-F4C-20261013",
+  "local_live_sha256": "0d85c869d8ceaab1c4e3e893fba7d4a4fb111fa1d61623f64105d563ab0aeb5f",
+  "portable_live_sha256": "1b3cc38089afcfa4a10b7b69fcaee0c0b23d40ee8a5c3d900ea77f74e80ad3a1",
+  "portable_offline_sha256": "9db8b48dbfae043e3dfb1ff5897012c202ee81af6ce4e0dd208af6bd17684e36",
+  "current_offline_policy_namespace": "CURRENT_LIVE_PARITY_v1",
+  "full_regression": {
+    "passes": true,
+    "tests": 172,
+    "failures": 0,
+    "errors": 0,
+    "started_ns": 1791950109553331900,
+    "finished_ns": 1791950138280573700,
+    "log": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\work\\online-buying-repairs-20261013\\full-checks-v1.txt"
+  },
+  "nested_native_manifest_included": true,
+  "maximum_parallel_arrival_preparations": 19
+}

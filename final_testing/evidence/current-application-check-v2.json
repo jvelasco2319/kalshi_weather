@@ -1,0 +1,50 @@
+{
+  "passes": true,
+  "started_ns": 1791951215416991100,
+  "finished_ns": 1791951236945123800,
+  "checks": [
+    {
+      "mode": "online",
+      "passes": true,
+      "workers": {
+        "la": {
+          "describe": "READY",
+          "dependencies": "READY",
+          "prepare_runtime": "RESIDENT_READY"
+        },
+        "ny": {
+          "describe": "READY",
+          "dependencies": "READY",
+          "prepare_runtime": "RESIDENT_READY"
+        },
+        "miami": {
+          "describe": "AVAILABLE",
+          "dependencies": "AVAILABLE",
+          "prepare_runtime": "RESIDENT_READY"
+        },
+        "phoenix": {
+          "describe": "READY",
+          "dependencies": "READY",
+          "prepare_runtime": "RESIDENT_READY"
+        }
+      },
+      "freeze": {
+        "status": "VERIFIED",
+        "release_id": "FOUR-CITY-PAPER-BUYING-RELIABILITY-v2",
+        "files": 174
+      },
+      "actual_orders": 0
+    },
+    {
+      "mode": "offline",
+      "passes": true,
+      "reviewed_source_pins": 224,
+      "policy_namespace": "CURRENT_LIVE_PARITY_v1",
+      "job_status": "IDLE",
+      "actual_orders": 0,
+      "history_replayed": false
+    }
+  ],
+  "actual_orders": 0,
+  "new_fits": 0
+}

@@ -1,0 +1,207 @@
+{
+  "schema": "CURRENT_POLICY_NATIVE_SOURCE_PARITY_CONTROL_v1",
+  "day": "2026-10-01",
+  "profile_id": "F3_V10_PHYSICAL_FORECAST_EXIT",
+  "baseline_source": {
+    "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\offline_releases\\FOUR-CITY-OFFLINE-H4B-20261013\\tempdesk\\offline_la_native.py",
+    "sha256": "7cbb45e7d5b79db3e8c93e3606135d03c519b8f8760444ab607ff42f3ee5d672"
+  },
+  "fixture": "GENUINE_SAVED_OCTOBER_FORECAST_AND_ARCHIVED_BOOKS; conditional execution, not forward performance",
+  "buys_identical": true,
+  "contracts": 78,
+  "fees": "0.21",
+  "baseline_conditional_cash": "96.67",
+  "current_conditional_cash": "96.67",
+  "baseline_sell_count": 0,
+  "current_sell_count": 0,
+  "exit_policy_evidence": {
+    "policy_id": "LA-IMPOSSIBLE-ONLY-EXIT-v1",
+    "soft_forecast_exit_enabled": false,
+    "recorded_completed_reports": 0,
+    "intraday_temperature_proof": "UNAVAILABLE",
+    "missing_proof_action": "HOLD_TO_OFFICIAL_SETTLEMENT",
+    "archive_monitoring_scope": "Saved native entry/monitoring grid only; no invented full trade-life books",
+    "completed_report_window_proof": {
+      "earliest_completed_report_ns": 1790928000000000000,
+      "dated_close_ns": [
+        1790928000000000000,
+        1790928000000000000,
+        1790928000000000000,
+        1790928000000000000,
+        1790928000000000000,
+        1790928000000000000
+      ],
+      "protection_opportunity": "NONE_BEFORE_DATED_MARKET_CLOSE_UNDER_CURRENT_PRODUCER",
+      "basis": "Exact pinned TWC producer completed-day requirement plus dated official market windows"
+    },
+    "exact_live_delivery_equivalence": false
+  },
+  "source_pins": [
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Dashboard\\runtime\\offline-preparation-20261012\\la-weather-source-pins-v3.json",
+      "sha256": "8b11a6ba8f996eca89c05ac6dcbff5b645df5f6644a60c84f464a82d7654abb0",
+      "bytes": 47691
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\weather\\october-window\\f3-oct1-9-original-family-forecasts.json",
+      "sha256": "2bf39a7e2ba54ac4be74c429a8fe640339ac321e8097e4a4b7dfed00bb938c99",
+      "bytes": 534245
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-all-model-simulation-20261011\\market\\original-policy-adapter-v1.py",
+      "sha256": "57523749ec5893d8933d48c07c433add646e1be795626183ca359f559c2ce17f",
+      "bytes": 21275
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\market\\oct11_sources_v1.py",
+      "sha256": "82b26e034a9fac0eadf1ce8aa3f6e32f8ecb6e2f61ea6909ed4b54a0d664db9c",
+      "bytes": 13322
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\market.py",
+      "sha256": "ab2ec8d18bdd383b58287e8cad21f5b2ffda118e6e2b3a7ad318d500f11ca6a0",
+      "bytes": 12973
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\weather.py",
+      "sha256": "b87f830ec05d618e2dd3eb529a8b41ea7ad55b0d8be9551dcfc53dabca0ebbd7",
+      "bytes": 11204
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\src\\la_reality_sim\\legacy_adapter.py",
+      "sha256": "84b00f6c7bddbe0d729b2cd2f541bb37c9fa8404e61885c22452d8db95a813fd",
+      "bytes": 16044
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F3_V10_PHYSICAL_FORECAST_EXIT.json",
+      "sha256": "8f9e7e11076db1c893df189392f5401693a6ee251dc33c70781d1d3278d5a2ab",
+      "bytes": 250947
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\runs\\la-three-bot-oct11-20261012\\modern\\F6_HYBRID_STAGED5.json",
+      "sha256": "52848665895b7abfc4f1afa5ccd00acc4fcf1d62714f892cc07047aaf2d52c8a",
+      "bytes": 1534642
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F3-OCT9-20261010\\trader\\f3_execution.py",
+      "sha256": "ec856a948f21d24125a185afa6e11cc42728258316cd2d0567e75400c3cedd33",
+      "bytes": 7078
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\engine.py",
+      "sha256": "953212aec1433b1ba924711c3a77e11afd294dfa31b3b145517c546186398664",
+      "bytes": 45642
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\native_books.py",
+      "sha256": "d950ed7a4dd27981e62398277a5b0c4146af365a4cc5d82cd5e264a27ba057e9",
+      "bytes": 15077
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\fixed_kernel\\replay.py",
+      "sha256": "552bc883d73701a88d5cfe5945ba12ca363d3f864d5e80ef75cd798b8d8f50d1",
+      "bytes": 15487
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\engine.py",
+      "sha256": "ce978ee6d195b8d1616af36a1e02482717f0bbcc3df81fcb563fface68d2a977",
+      "bytes": 52447
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\native_books.py",
+      "sha256": "f9f6beda4f0796d2795ca3fa4adc53b4c61a4ab3833116302204fb15dbf0c86d",
+      "bytes": 15078
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\fixed_kernel\\replay.py",
+      "sha256": "b4b55b8a80e24fdf7627294ad1b8e466616046459317df75d5730ccb7609f122",
+      "bytes": 15661
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\research.py",
+      "sha256": "f89599fb63d32fc407c83e541ec5b11bc1bf14bb00fba152ba21fdba68b3d25b",
+      "bytes": 25088
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f3_execution.py",
+      "sha256": "868751d176c6c1000d565444ecb8d2b7ea38ed7cbc484c02b9f9c717b18b1372",
+      "bytes": 7158
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\f4_execution.py",
+      "sha256": "912ad039e009cb35002f36ee0c41eb78ac85710f5b29cadb812c0c0025f7f9f7",
+      "bytes": 11865
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F4-COLONIES-20261010-2H\\trading\\retained_transition_v4.py",
+      "sha256": "35489b50281a9456fe8a7a0eadf4736b60e42d5b1cfc8eafa5a88670663c6ba4",
+      "bytes": 15627
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\engine.py",
+      "sha256": "a3e80d08332d40c601fd169dd22f5e915ffb951e9968108d2b3359ea6a184494",
+      "bytes": 28649
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies.py",
+      "sha256": "72c1b43a120e19315c334307273a65f5ac80255af9ede2b29e51d2c19bb32e6b",
+      "bytes": 34706
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v2.py",
+      "sha256": "52a5956f48ad3e3889a35d21e02e369d001f7990c016ed41a8e51436700598bc",
+      "bytes": 8574
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\september-simulation-preparation-20261005\\execution\\policies_v3.py",
+      "sha256": "049a92c3d34889abf741714c2878fa4725c51d87c70e46bbb1919e998d71c2a1",
+      "bytes": 495
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\work\\entry-exit-matrix-20261006\\composed_policy_v1.py",
+      "sha256": "5c2bbec07f6eac2a49a88729d3c84f729abe3e78fa3027b62350869ff12fd1a5",
+      "bytes": 2119
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\daily24-master-october-20261007\\market\\probalytics\\direct-v2\\books-oct01-hour01-minute-v2.raw.json",
+      "bytes": 1904467,
+      "mtime_ns": 1791390275169930000,
+      "actual_sha256": "d8c70c19497ece0fdaaa91f73e04e69f200f21b41918013bfbed14acbfc02919",
+      "declared_sha256": "d8c70c19497ece0fdaaa91f73e04e69f200f21b41918013bfbed14acbfc02919",
+      "hash_verification": "MATCHED_DECLARED_ACCEPTED_PIN"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\daily24-master-october-20261007\\market\\probalytics\\direct-v2\\books-oct01-hour02-minute-v2.raw.json",
+      "bytes": 1991571,
+      "mtime_ns": 1791390275316454100,
+      "actual_sha256": "89df56427c6b24719111ba46309601dc408380a1156a1326b5b0d41c8a522252",
+      "declared_sha256": "89df56427c6b24719111ba46309601dc408380a1156a1326b5b0d41c8a522252",
+      "hash_verification": "MATCHED_DECLARED_ACCEPTED_PIN"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\daily24-master-october-20261007\\market\\probalytics\\direct-v2\\books-oct01-hour03-minute-v2.raw.json",
+      "bytes": 1944722,
+      "mtime_ns": 1791390275013925500,
+      "actual_sha256": "616845963582aeaeee2284efb6b2f9bee15ea4a6e34a7c6d15107f390aff972f",
+      "declared_sha256": "616845963582aeaeee2284efb6b2f9bee15ea4a6e34a7c6d15107f390aff972f",
+      "hash_verification": "MATCHED_DECLARED_ACCEPTED_PIN"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi\\_weather\\_llm\\runs\\daily24-master-october-20261007\\market\\probalytics\\direct-v2\\books-oct01-hour04-minute-v2.raw.json",
+      "bytes": 1940987,
+      "mtime_ns": 1791390277110003500,
+      "actual_sha256": "b75d8a9b7fa9b3e8326f1d9f282d872c2ed5c2ca3e85526fa5491136e1e880cc",
+      "declared_sha256": "b75d8a9b7fa9b3e8326f1d9f282d872c2ed5c2ca3e85526fa5491136e1e880cc",
+      "hash_verification": "MATCHED_DECLARED_ACCEPTED_PIN"
+    },
+    {
+      "path": "C:\\Users\\jarve\\Documents\\Codex\\Kalshi Temp Bot\\Los Angeles\\experiments\\LA-F2-MAY-OCT9-20261010\\trader\\replay\\2026-10\\2026-10-01-DIAG-POINT-KNOWN.json",
+      "sha256": "ca180a6031e652d64943ed97e69ad9eae072c11538b95979011a4d8fbb0157b3",
+      "bytes": 9757
+    }
+  ],
+  "new_fits": 0,
+  "real_orders": 0,
+  "at_ns": 1791949509245786700,
+  "passes": true
+}

@@ -116,6 +116,9 @@ paper traders; they do not place real Kalshi orders.
 7. Expand **Selected strategy: daily record & sources** for its daily numbers,
    or **Pending or uncertain strategy-days** to see what is missing.
 8. Click **Download saved results** to save a JSON copy of the displayed history.
+   The current replay uses the online application's buy/sell policies. Earlier
+   results remain separately labelled under **Download earlier-policy results**;
+   their balances are never mixed into the new replay.
 
 Results appear in these places:
 
@@ -267,6 +270,9 @@ fees, contract counts and uncertain-day statuses matched. The combined UI and
 online/offline isolation were also checked. See
 [evidence/portable-acceptance.json](evidence/portable-acceptance.json) and
 [evidence/ny-final-portable-acceptance-v2.json](evidence/ny-final-portable-acceptance-v2.json).
+These older history receipts describe the earlier archive exit policy. The
+current-policy reliability checks and their limits are described in
+[BUYING_RELIABILITY.md](BUYING_RELIABILITY.md).
 
 For focused deployment tests after setup:
 
@@ -281,33 +287,30 @@ application.
 
 ## Updating an earlier paper installation
 
-For the shaded-bet graph and walkthrough update, stop the launcher, pull the
+For the buying and recovery update, stop the launcher, pull the
 branch, and run:
 
 ```powershell
 git pull origin final_testing_temp
 .\final_testing\setup.ps1 -SkipInstall
-.\.venv\Scripts\python.exe -B -m final_testing.tools.migrate_ui_application_wallets
+.\.venv\Scripts\python.exe -B -m final_testing.tools.migrate_buying_reliability_wallets
 .\final_testing\Start.ps1
 ```
 
-This UI-only upgrade verifies unchanged model and trader code and preserves
-all wallet cash, reservations, orders, positions, history and shared capacity.
-It refuses an upgrade that changes the trading code or controls. A fresh
+This upgrade checks all 132 original native file hashes and each trader's
+unchanged budgets, sizing, fees and model identities. It preserves **unused**
+$100 wallets exactly, keeps a backup and records the migration. A fresh
 installation has no previous wallet records to migrate.
 
-Stop its launcher first. Run setup to verify the new code and original assets.
-If the new launcher reports that an existing paper ledger belongs to the previous
-application, this explicit command preserves **unused** wallets at $100 each:
+The helper refuses wallets with orders, positions, fees, gains, losses or
+completed history. Keep those records; an active installation needs a reviewed
+migration and must not reset its wallet file. The older UI-only migration helper
+does not apply to this change in execution code.
 
-```powershell
-.\.venv\Scripts\python.exe -B -m final_testing.tools.migrate_unused_application_wallets
-```
-
-The command refuses wallets with orders, positions, fees, losses or completed
-history. It keeps a backup and records the migration. Active paper histories
-need a separate migration; they are never reset by this helper. The offline
-history and its saved financial calculation modules remain unchanged.
+Offline History now saves current-policy results separately. Click **Analyze
+missing days** to calculate that history from October 1. Existing downloads can
+be reused, while missing source evidence stays pending or unknown. The original
+`history.json` is retained and exportable as earlier-policy results.
 
 The archive reader allows bounded responses up to 512 MiB (still capped at
 500,000 rows per requested day). Larger or incomplete captures remain unknown.

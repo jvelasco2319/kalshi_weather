@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TempDesk · Frozen city traders</title><link rel="stylesheet" href="/styles.css"></head>
+<body><main class="app"><header><div class="brand"><b class="logo">T</b><div><h1>TempDesk</h1><p>Four cities. Your saved models. Paper trading.</p></div></div><div class="header-actions"><span id="freeze" class="pill">Checking freeze…</span><button id="refresh">Refresh data ↻</button></div></header>
+<div id="notice" class="notice">Connecting to the local paper dashboard…</div>
+<div class="topline"><div><span class="eyebrow">INDEPENDENT PAPER WALLETS</span><strong id="total">—</strong><span id="walletCount" class="muted"></span></div><div class="muted" id="updated">Waiting for real sources</div></div>
+<section id="cities" class="city-grid" aria-label="Choose city"></section>
+<nav class="views"><button class="selected" data-view="overview">City overview</button><button data-view="wallets">Bets & wallets</button><span class="pill blue">Paper only · no real orders</span></nav>
+<section id="content"></section><footer><span id="release"></span><span>Saved weights · no automatic model changes</span></footer></main><script src="/app.js"></script></body></html>

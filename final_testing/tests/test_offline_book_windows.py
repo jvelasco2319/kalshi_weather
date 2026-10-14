@@ -1,3 +1,4 @@
+from _current_application import APPLICATION
 import unittest
 from datetime import datetime,timedelta
 from tempdesk.offline_sources import replay_book_window

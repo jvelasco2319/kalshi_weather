@@ -1,0 +1,56 @@
+{
+  "schema": "WALLET_SAFETY_RECOVERY_REPAIR_v1",
+  "recorded_ns": 1791950587200981600,
+  "status": "PASS",
+  "test_methods": 24,
+  "native_profile_subcases": {
+    "la": 16,
+    "ny": 2,
+    "miami": 2,
+    "phoenix": 2
+  },
+  "checks": [
+    "two and three simultaneous same-wallet arrival controls preserve native/common cash, order state, position quantity/basis and fee-inclusive spend",
+    "three independent wallets cannot fill more than the shared two-contract physical capacity",
+    "stale worker state and divergent native position state reject before common financial commit",
+    "mixed official settlement/arrival serializes without losing native cash updates",
+    "durable future preparation, expired known-unattempted cancellation, legacy/attempted unknown quarantine and recorded-result single commit",
+    "sealed original LA F3/F6/V8D states recover using original native reservation/cancellation methods",
+    "original LA modern partial buys and six-decimal per-fill/cent accumulator rebate accounting match common ledger",
+    "original V8D budget-bound variable quantity and aggregate four-decimal outlay accounting match common ledger",
+    "root LA live wrapper fee/fill normalization tested into actual native arrival and common ledger",
+    "six other named city native financial kernels checked through common fee-inclusive cash and official settlement",
+    "Actual Service.arrive waits until frozen LA due time before quote retrieval, then actual la_live.handler/native arrival and common ledger fill pass all three source engines; model/source control fixtures are labelled"
+  ],
+  "api": {
+    "wallet_lock": "ledger.wallet_transaction(wid)",
+    "capacity_lock": "ledger.capacity_transaction(); acquire only after wallet lock",
+    "version": "ledger.version(wallet), request_cash policy_state_version, optional expected_version on reserve/reconcile/settle",
+    "durable_phases": [
+      "INTENT_RECORDED",
+      "ARRIVAL_PREPARING",
+      "ATTEMPT_STARTED",
+      "RESULT_RECORDED",
+      "COMMITTED",
+      "UNKNOWN"
+    ],
+    "recovery": "recover_orders(now_ns), recovery_transition(...), recover_la_pending(native_module,request)"
+  },
+  "constraints": [
+    "No real orders, downloads, new weather fits or live/runtime/database changes performed by this colony",
+    "All weights/checkpoints and original vendor source bytes untouched",
+    "Controls use clearly synthetic forecast vectors and books; no strategy-return or whole live feed readiness claim",
+    "A LA ambiguous result must obtain retained sealed state from durable pre-attempt base via native recover_pending before common reconciliation",
+    "Ambiguous legacy/potential native attempts remain UNKNOWN with reservations, never automatic cash release",
+    "NY/Miami/Phoenix remain frozen-quantity FOK; widened LA behavior only after sealed source order checks",
+    "Root owns service lock wiring, full prepared forecast/source path tests, offline integration, migration, activation and Git push"
+  ],
+  "files": {
+    "online/tempdesk/ledger.py": "ff52e9305fcb6180716fac95bd774837727a9ed86de2c5315adb9c25d833b5cd",
+    "online/tempdesk/wallet_lifecycle.py": "dbbe46d68942bd3fd55d2f14c07d215a5ff9a3e99031e5f7bda010474b45a1a4",
+    "tests/test_wallet_lifecycle.py": "60574f7e903dc710fc998b23a240aaef96f9123adfc8636bd291cc76c966ac9a",
+    "tests/test_wallet_la_native.py": "5eafbe0d5f69357756b323c616992b9dac9d4650403af7df533029c04e380b94",
+    "tests/test_wallet_city_native.py": "e5bba6e45404e4f5ec3c5b05b0e5998b077532530885ff99db222a995c732861"
+  },
+  "reproduction": "python -B -m unittest discover -s work/online-buying-repairs-20261013/tests -p test_wallet*.py -v"
+}

@@ -1,3 +1,4 @@
+from _current_application import APPLICATION
 import json
 import os
 import threading
